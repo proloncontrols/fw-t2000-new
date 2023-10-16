@@ -57,8 +57,7 @@ LoaderBR24L04-W.hex \
 
 
 # All Target
-all:
-	+@$(MAKE) --no-print-directory main-build && $(MAKE) --no-print-directory post-build
+all: main-build
 
 # Main-build Target
 main-build: LoaderBR24L04-W.elf secondary-outputs
@@ -89,10 +88,6 @@ clean:
 	-$(RM) LoaderBR24L04-W.elf LoaderBR24L04-W.hex LoaderBR24L04-W.list LoaderBR24L04-W.map default.size.stdout
 	-@echo ' '
 
-post-build:
-	"C:\ProlonDev\DevTools\Loader\CopyLoader.bat" "C:\ProlonDev\Projects\T2000\Firmware\Code\LoaderBR24L04-W\Debug\LoaderBR24L04-W.elf" "C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin\ExternalLoader\LoaderBR24L04-W.stldr"
-	-@echo ' '
-
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
 fail-specified-linker-script-missing:
@@ -102,6 +97,6 @@ fail-specified-linker-script-missing:
 warn-no-linker-script-specified:
 	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
 
-.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified post-build
+.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified
 
 -include ../makefile.targets

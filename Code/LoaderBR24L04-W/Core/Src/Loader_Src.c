@@ -24,7 +24,7 @@
 //
 //int Write(uint32_t Address, uint32_t Size, uint8_t *Buffer)
 //{
-//	if(E2_Write(Buffer, Address - StorageInfo.DeviceStartAddress, Size) == 0)
+//	if(E2_Write(Buffer, Address - StrInfo.DeviceStartAddress, Size) == 0)
 //		return 0;
 //
 //	return 1;
@@ -32,7 +32,7 @@
 //
 //int Read(uint32_t Address, uint32_t Size, uint8_t *Buffer)
 //{
-//	if(E2_Read(Buffer, Address - StorageInfo.DeviceStartAddress, Size) == 0)
+//	if(E2_Read(Buffer, Address - StrInfo.DeviceStartAddress, Size) == 0)
 //		return 0;
 //
 //	return 1;

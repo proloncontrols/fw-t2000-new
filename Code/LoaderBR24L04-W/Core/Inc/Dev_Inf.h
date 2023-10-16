@@ -29,4 +29,4 @@ struct StorageInfo
 	struct DeviceSectors sectors[SECTOR_NUM];
 };
 
-extern struct StorageInfo StorageInfo;
+extern struct StorageInfo StrInfo;
