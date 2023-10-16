@@ -1,0 +1,11 @@
+main.c:216:13:MX_I2C2_Init	4
+main.c:157:6:SystemClock_Config	4
+main.c:68:5:main	1
+main.c:345:5:Init	1
+main.c:354:5:Write	1
+main.c:362:5:Read	1
+main.c:384:5:SectorErase	1
+main.c:389:5:MassErase	1
+main.c:394:10:CheckSum	1
+main.c:399:10:Verify	1
+main.c:409:6:Error_Handler	1
