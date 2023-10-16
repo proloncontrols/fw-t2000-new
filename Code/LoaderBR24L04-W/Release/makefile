@@ -34,26 +34,26 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := LoaderM32C64
+BUILD_ARTIFACT_NAME := LoaderBR24L04-W
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-LoaderM32C64.elf \
+LoaderBR24L04-W.elf \
 
 MAP_FILES += \
-LoaderM32C64.map \
+LoaderBR24L04-W.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-LoaderM32C64.list \
+LoaderBR24L04-W.list \
 
 OBJCOPY_HEX += \
-LoaderM32C64.hex \
+LoaderBR24L04-W.hex \
 
 
 # All Target
@@ -61,11 +61,11 @@ all:
 	+@$(MAKE) --no-print-directory main-build && $(MAKE) --no-print-directory post-build
 
 # Main-build Target
-main-build: LoaderM32C64.elf secondary-outputs
+main-build: LoaderBR24L04-W.elf secondary-outputs
 
 # Tool invocations
-LoaderM32C64.elf LoaderM32C64.map: $(OBJS) $(USER_OBJS) C:\ProlonDev\Projects\T2000\Firmware\Code\LoaderM32C64\STM32H735IGKX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LoaderM32C64.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"C:\ProlonDev\Projects\T2000\Firmware\Code\LoaderM32C64\STM32H735IGKX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LoaderM32C64.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LoaderBR24L04-W.elf LoaderBR24L04-W.map: $(OBJS) $(USER_OBJS) fail-specified-linker-script-missing makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LoaderBR24L04-W.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 --specs=nosys.specs -Wl,-Map="LoaderBR24L04-W.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -74,23 +74,23 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-LoaderM32C64.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "LoaderM32C64.list"
+LoaderBR24L04-W.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "LoaderBR24L04-W.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-LoaderM32C64.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "LoaderM32C64.hex"
+LoaderBR24L04-W.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "LoaderBR24L04-W.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) LoaderM32C64.elf LoaderM32C64.hex LoaderM32C64.list LoaderM32C64.map default.size.stdout
+	-$(RM) LoaderBR24L04-W.elf LoaderBR24L04-W.hex LoaderBR24L04-W.list LoaderBR24L04-W.map default.size.stdout
 	-@echo ' '
 
 post-build:
-	"C:\ProlonDev\DevTools\Loader\CopyLoader.bat" "C:\ProlonDev\Projects\T2000\Firmware\Code\LoaderM32C64\Release\LoaderM32C64.elf" "C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin\ExternalLoader\LoaderM32C64.stldr"
+	"C:\ProlonDev\DevTools\Loader\CopyLoader.bat" "C:\ProlonDev\Projects\T2000\Firmware\Code\LoaderBR24L04-W\Release\LoaderBR24L04-W.elf" "C:\Program Files\STMicroelectronics\STM32Cube\STM32CubeProgrammer\bin\ExternalLoader\LoaderBR24L04-W.stldr"
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
