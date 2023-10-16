@@ -31,9 +31,6 @@
 #define E2_WRITE_ENABLE()    (HAL_GPIO_WritePin(E2_WP_GPIO_Port, E2_WP_Pin, GPIO_PIN_RESET))
 #define E2_WRITE_DISABLE()   (HAL_GPIO_WritePin(E2_WP_GPIO_Port, E2_WP_Pin, GPIO_PIN_SET))
 
-#define E2_ADDRESS_MSB(x)    (E2_I2C_ADDRESS | ((x >> 7) & E2_I2C_ADDRESS_MASK))
-#define E2_ADDRESS_LSB(x)    (x & 0xFFU)
-
 
 //=============================================================================
 //  M E T H O D S
@@ -63,7 +60,7 @@ uint16_t E2_Read(void* pData, uint16_t Address, uint16_t Count)
 	E2_WRITE_DISABLE();
 
 	//Read data
-	if(HAL_I2C_Mem_Read(&E2_I2C, E2_ADDRESS_MSB(Address), E2_ADDRESS_LSB(Address), 1, pData, Count, E2_TIMEOUT) != HAL_OK)
+	if(HAL_I2C_Mem_Read(&E2_I2C, E2_PHY_ADDRESS(Address), E2_MEM_ADDRESS(Address), 1, pData, Count, E2_TIMEOUT) != HAL_OK)
 		return 0;
 
 	return Count;
@@ -116,7 +113,7 @@ uint16_t E2_Write(void* pData, uint16_t Address, uint16_t Count)
 		Offset = Address % E2_PAGE_SIZE;
 
 		//Read contents of that page in temporary buffer
-		if(HAL_I2C_Mem_Read(&E2_I2C, E2_ADDRESS_MSB(Page), E2_ADDRESS_LSB(Page), 1, TmpBuffer, E2_PAGE_SIZE, E2_TIMEOUT) != HAL_OK)
+		if(HAL_I2C_Mem_Read(&E2_I2C, E2_PHY_ADDRESS(Page), E2_MEM_ADDRESS(Page), 1, TmpBuffer, E2_PAGE_SIZE, E2_TIMEOUT) != HAL_OK)
 			Error = TRUE;
 
 		//Write data from input buffer to current page range
@@ -131,11 +128,11 @@ uint16_t E2_Write(void* pData, uint16_t Address, uint16_t Count)
 		while((Offset < E2_PAGE_SIZE) && (Count > 0));
 
 		//Write page back to E2
-		if(HAL_I2C_Mem_Write(&E2_I2C, E2_ADDRESS_MSB(Page), E2_ADDRESS_LSB(Page), 1, TmpBuffer, E2_PAGE_SIZE, E2_TIMEOUT) != HAL_OK)
+		if(HAL_I2C_Mem_Write(&E2_I2C, E2_PHY_ADDRESS(Page), E2_MEM_ADDRESS(Page), 1, TmpBuffer, E2_PAGE_SIZE, E2_TIMEOUT) != HAL_OK)
 			Error = TRUE;
 
 		//Wait for write cycle to complete
-		if(HAL_I2C_IsDeviceReady(&E2_I2C, E2_I2C_ADDRESS, E2_BUSY_CHECK, E2_TIMEOUT) != HAL_OK)
+		if(HAL_I2C_IsDeviceReady(&E2_I2C, E2_ADDRESS, E2_BUSY_CHECK, E2_TIMEOUT) != HAL_OK)
 			Error = TRUE;
 	}
 	while((Count > 0) && (!Error));

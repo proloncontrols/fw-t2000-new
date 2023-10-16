@@ -28,15 +28,35 @@
 
 
 //=============================================================================
+//  D E V I C E   S E L E C T I O N
+//-----------------------------------------------------------------------------
+#define E2_24x04
+//#define E2_24x32
+
+
+//=============================================================================
 //  C O N F I G U R A T I O N
 //-----------------------------------------------------------------------------
-#define E2_I2C                hi2c2   //Actual peripheral instance handler
-#define E2_TIMEOUT            500     //500 msec
-#define E2_I2C_ADDRESS        0xA0    //Physical address
-#define E2_I2C_ADDRESS_MASK   0x2U    //Physical address MSB mask
-#define E2_SIZE               512     //512 bytes
-#define E2_PAGE_SIZE          16      //16 bytes
-#define E2_BUSY_CHECK         100     //Check 100 times max
+#define E2_I2C                 hi2c2   //I2C peripheral instance handler
+#define E2_ADDRESS             0xA0    //Fixed device type code
+#define E2_TIMEOUT             500     //500 msec
+#define E2_BUSY_CHECK          100     //Check 100 times max
+
+#ifdef E2_24x04
+#define E2_SIZE                512     //512 bytes
+#define E2_PAGE_SIZE           16      //16 bytes page write size
+#define E2_PHY_ADDRESS(x)     (E2_ADDRESS | ((x >> 7) & 0x2U))
+#define E2_MEM_ADDRESS(x)     (x & 0xFFU)
+#define E2_MEM_ADDRESS_SIZE    1       //1 byte memory address length
+#endif
+
+#ifdef E2_24x32
+#define E2_SIZE                4096    //4KB bytes
+#define E2_PAGE_SIZE           32      //32 bytes page write size
+#define E2_PHY_ADDRESS(x)      E2_ADDRESS
+#define E2_MEM_ADDRESS(x)     (x & 0xFFFU)
+#define E2_MEM_ADDRESS_SIZE    2       //2 bytes memory address length
+#endif
 
 
 //=============================================================================
