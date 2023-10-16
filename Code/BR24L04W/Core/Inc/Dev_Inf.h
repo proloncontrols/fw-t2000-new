@@ -10,53 +10,58 @@
 //
 //                        (c) Copyright  2022-2023
 //------------------------------------------------------------------------------
-//         File : e2.h
+//         File : Dev_Inf.h
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //------------------------------------------------------------------------------
-//  Description : Serial EEPROM header file
+//  Description : STM32CubeProgrammer external loader driver device information header file
 //==============================================================================
-#ifndef E2_H
-#define E2_H
+#ifndef DEV_INF_H
+#define DEV_INF_H
 
 
 //=============================================================================
-//  I N C L U D E S
+//  D E F I N E S
 //-----------------------------------------------------------------------------
-#include "main.h"
-#include "basic.h"
+#define MCU_FLASH 	 1
+#define NAND_FLASH   2
+#define NOR_FLASH    3
+#define SRAM         4
+#define PSRAM        5
+#define PC_CARD      6
+#define SPI_FLASH    7
+#define I2C_FLASH    8
+#define SDRAM        9
+#define I2C_EEPROM   10
+
+#define SECTOR_NUM   10   //Maximum number of sector types
 
 
 //=============================================================================
-//  C O N F I G U R A T I O N
+//  S T R U C T U R E S
 //-----------------------------------------------------------------------------
-#define E2_I2C                 hi2c2   //I2C peripheral instance handler
-#define E2_ADDRESS             0xA0    //Fixed device type code
-#define E2_TIMEOUT             500     //500 msec
-#define E2_BUSY_CHECK          100     //Check 100 times max
+struct DeviceSectors  
+{
+	unsigned long SectorNum;    //Number of sectors
+	unsigned long SectorSize;   //Sector size in bytes
+};
 
-#ifdef E2_DEVICE_BR24L04W
-#define E2_SIZE                512     //512 bytes
-#define E2_PAGE_SIZE           16      //16 bytes page write size
-#define E2_PHY_ADDRESS(x)     (E2_ADDRESS | ((x >> 7) & 0x2U))
-#define E2_MEM_ADDRESS(x)     (x & 0xFFU)
-#define E2_MEM_ADDRESS_SIZE    1       //1 byte memory address length
-#endif
-
-#ifdef E2_DEVICE_M24C32DFDW6TP
-#define E2_SIZE                4096    //4KB bytes
-#define E2_PAGE_SIZE           32      //32 bytes page write size
-#define E2_PHY_ADDRESS(x)      E2_ADDRESS
-#define E2_MEM_ADDRESS(x)     (x & 0xFFFU)
-#define E2_MEM_ADDRESS_SIZE    2       //2 bytes memory address length
-#endif
+struct StorageInfo  
+{
+	char                 DeviceName[100];       //Device name and description
+	unsigned short       DeviceType;            //Device type: ONCHIP, EXT8BIT, EXT16BIT, ...
+	unsigned long        DeviceStartAddress;    //Default device start address
+	unsigned long        DeviceSize;            //Total size of device
+	unsigned long        PageSize;              //Programming page size
+	unsigned char        EraseValue;            //Content of erased memory
+	struct DeviceSectors sectors[SECTOR_NUM];
+};
 
 
 //=============================================================================
-//  M E T H O D S
+//  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
-extern uint16_t E2_Read  (void* pData, uint16_t Address, uint16_t Count);
-extern uint16_t E2_Write (void* pData, uint16_t Address, uint16_t Count);
+extern struct StorageInfo StorageInfo;
 
 
-#endif   //E2_H
+#endif   //DEV_INF_H

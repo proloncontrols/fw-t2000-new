@@ -1,0 +1,7 @@
+../Core/Src/Loader_Src.c:33:5:Init	8	static,ignoring_inline_asm
+../Core/Src/Loader_Src.c:43:5:Write	8	static
+../Core/Src/Loader_Src.c:52:5:Read	8	static
+../Core/Src/Loader_Src.c:61:5:SectorErase	0	static
+../Core/Src/Loader_Src.c:67:5:MassErase	0	static
+../Core/Src/Loader_Src.c:73:10:CheckSum	0	static
+../Core/Src/Loader_Src.c:79:10:Verify	0	static
