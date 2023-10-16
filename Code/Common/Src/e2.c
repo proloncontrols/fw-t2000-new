@@ -90,6 +90,7 @@ uint16_t E2_Write(void* pData, uint16_t Address, uint16_t Count)
 	uint16_t Index;
 	uint8_t  TmpBuffer[E2_PAGE_SIZE];
 	bool_t   Error;
+	uint8_t* Data;
 
 	//Validate arguments
 	if((pData == NULL) || (Address >= E2_SIZE) || (Count == 0))
@@ -98,6 +99,8 @@ uint16_t E2_Write(void* pData, uint16_t Address, uint16_t Count)
 	//Validate access range
 	if((Address + Count) > E2_SIZE)
 		return 0;
+
+	Data = (uint8_t*)pData;
 
 	//Write data
 	Index = 0;   //Pointer to data in input buffer
@@ -109,17 +112,19 @@ uint16_t E2_Write(void* pData, uint16_t Address, uint16_t Count)
 	do
 	{
 		//Get base page address where to write data
-		Page = Address & ~(E2_PAGE_SIZE - 1);
+		Page   = (Address / E2_PAGE_SIZE) * E2_PAGE_SIZE;
+		Offset = Address % E2_PAGE_SIZE;
 
 		//Read contents of that page in temporary buffer
 		if(HAL_I2C_Mem_Read(&E2_I2C, E2_ADDRESS_MSB(Page), E2_ADDRESS_LSB(Page), 1, TmpBuffer, E2_PAGE_SIZE, E2_TIMEOUT) != HAL_OK)
 			Error = TRUE;
 
 		//Write data from input buffer to current page range
-		Offset = Address - Page;
 		do
 		{
-			TmpBuffer[Offset++] = *(uint8_t*)(pData + Index++);
+			TmpBuffer[Offset] = Data[Index];
+			Offset++;
+			Index++;
 			Address++;
 			Count--;
 		}

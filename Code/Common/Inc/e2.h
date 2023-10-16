@@ -34,7 +34,7 @@
 #define E2_TIMEOUT            500     //500 msec
 #define E2_I2C_ADDRESS        0xA0    //Physical address
 #define E2_I2C_ADDRESS_MASK   0x2U    //Physical address MSB mask
-#define E2_SIZE               4096    //4KB
+#define E2_SIZE               512     //512 bytes
 #define E2_PAGE_SIZE          16      //16 bytes
 #define E2_BUSY_CHECK         100     //Check 100 times max
 

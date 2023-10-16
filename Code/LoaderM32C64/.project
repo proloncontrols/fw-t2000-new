@@ -35,5 +35,15 @@
 			<type>2</type>
 			<locationURI>WORKSPACE_LOC/Lib</locationURI>
 		</link>
+		<link>
+			<name>Core/Inc/e2.h</name>
+			<type>1</type>
+			<location>C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Inc/e2.h</location>
+		</link>
+		<link>
+			<name>Core/Src/e2.c</name>
+			<type>1</type>
+			<location>C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/e2.c</location>
+		</link>
 	</linkedResources>
 </projectDescription>

@@ -97,12 +97,9 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-#define DEVICE_SIZE   4096
-#define PAGE_SIZE     256
-
-
-#define SIZE    256
-#define COUNT   2
+#define DEVICE_SIZE   512
+#define SIZE          256
+#define COUNT         2
 
   uint8_t Buff[SIZE*COUNT];
 
