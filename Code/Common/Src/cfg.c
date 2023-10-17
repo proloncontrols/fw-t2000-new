@@ -33,35 +33,6 @@
 #define CFG_E2_ADDRESS   0   //Configuration data base address in E2
 
 
-
-
-
-//#define CFG_DATA_LENGTH   0x00001000   //EEPROM data size in bytes (4KB)
-
-//#if defined(PROJECT_APP) && defined(RELEASE)
-//const uint8_t __attribute__((section(".app_data"))) CFG_E2Data[CFG_DATA_LENGTH] = { 0 };
-//#endif
-
-//#define CFG_E2_MODBUS_ID_ADDR          CFG_E2_ADDRESS
-//#define CFG_E2_MODBUS_ID_SIZE          sizeof(uint8_t)
-//#define CFG_E2_MODBUS_NAME_ADDR       (CFG_E2_MODBUS_ID_ADDR + CFG_E2_MODBUS_ID_SIZE)
-//#define CFG_E2_MODBUS_NAME_SIZE       (sizeof(char) * 8)
-//
-//#define CFG_E2_COM_BAUD_ADDR          (CFG_E2_MODBUS_NAME_ADDR + CFG_E2_MODBUS_NAME_SIZE)
-//#define CFG_E2_COM_BAUD_SIZE           sizeof(uint8_t)
-//#define CFG_E2_COM_STOP_ADDR          (CFG_E2_COM_BAUD_ADDR + CFG_E2_COM_BAUD_SIZE)
-//#define CFG_E2_COM_STOP_SIZE           sizeof(uint8_t)
-//#define CFG_E2_COM_PARITY_ADDR        (CFG_E2_COM_STOP_ADDR + CFG_E2_COM_STOP_SIZE)
-//#define CFG_E2_COM_PARITY_SIZE         sizeof(uint8_t)
-//
-//#define CFG_E2_SCR_LANGUAGE_ADDR      (CFG_E2_COM_PARITY_SIZE + CFG_E2_COM_PARITY_SIZE)
-//#define CFG_E2_SCR_LANGUAGE_SIZE       sizeof(uint8_t)
-//#define CFG_E2_SCR_ORIENTATION_ADDR   (CFG_E2_SCR_LANGUAGE_ADDR + CFG_E2_SCR_LANGUAGE_SIZE)
-//#define CFG_E2_SCR_ORIENTATION_SIZE    sizeof(uint8_t)
-//#define CFG_E2_SCR_TIMEOUT_ADDR       (CFG_E2_SCR_ORIENTATION_ADDR + CFG_E2_SCR_ORIENTATION_SIZE)
-//#define CFG_E2_SCR_TIMEOUT_SIZE        sizeof(uint16_t)
-
-
 typedef enum {
 	CfgFieldUint8,
 	CfgFieldUint16,
@@ -108,19 +79,6 @@ const CFG_Data_t __attribute__((section(".app_data"))) CFG_DefaultData =
 };
 #endif
 
-//static const CFG_HoldingRegisterLookup_t CFG_HoldingRegisterLookup [] =
-//{
-//	{ CfgHrModBusID,       &CFG_Config.ModBusID,       CFG_E2_MODBUS_ID_ADDR,       CFG_E2_MODBUS_ID_SIZE       },
-//	{ CfgHrModBusName,      CFG_Config.ModBusName,     CFG_E2_MODBUS_NAME_ADDR,     CFG_E2_MODBUS_NAME_SIZE     },
-//
-//	{ CfgHrComBaudRate,    &CFG_Config.ComBaudRate,    CFG_E2_COM_BAUD_ADDR,        CFG_E2_COM_BAUD_SIZE        },
-//	{ CfgHrComStopBits,    &CFG_Config.ComStopBits,    CFG_E2_COM_STOP_SIZE,        CFG_E2_COM_STOP_SIZE        },
-//	{ CfgHrComParity,      &CFG_Config.ComParity,      CFG_E2_COM_PARITY_ADDR,      CFG_E2_COM_PARITY_SIZE      },
-//
-//	{ CfgHrScrLanguage,    &CFG_Config.ScrLanguage,    CFG_E2_SCR_LANGUAGE_ADDR,    CFG_E2_SCR_LANGUAGE_SIZE    },
-//	{ CfgHrScrOrientation, &CFG_Config.ScrOrientation, CFG_E2_SCR_ORIENTATION_ADDR, CFG_E2_SCR_ORIENTATION_SIZE },
-//	{ CfgHrScrTimeout,     &CFG_Config.ScrTimeout,     CFG_E2_SCR_TIMEOUT_ADDR,     CFG_E2_SCR_TIMEOUT_SIZE     }
-//};
 
 //-----------------------------------------------------------------------------
 static const CFG_HoldingRegisterLookup_t* CFG_GetLookup(CFG_HoldingRegister_t Register)
@@ -134,7 +92,7 @@ static const CFG_HoldingRegisterLookup_t* CFG_GetLookup(CFG_HoldingRegister_t Re
 }
 
 //-----------------------------------------------------------------------------
-bool_t CFG_RegRead(CFG_HoldingRegister_t Register, uint16_t Count, void* Data)
+bool_t CFG_RegRead(CFG_HoldingRegister_t Register, void* Data)
 {
 	const CFG_HoldingRegisterLookup_t* Lookup = CFG_GetLookup(Register);
 
@@ -144,28 +102,26 @@ bool_t CFG_RegRead(CFG_HoldingRegister_t Register, uint16_t Count, void* Data)
 		{
 			case CfgFieldUint8:
 			{
-				memcpy(Data, (uint8_t*)Lookup->FieldAddress, Count);
+				uint8_t* Src = (uint8_t*)Lookup->FieldAddress;
+				uint16_t* Dst = (uint16_t*)Data;
+				*Dst = *Src;
 			}
 			break;
 
 			case CfgFieldUint16:
 			{
-				uint16_t* Src = (uint16_t*)Data;
-				uint16_t* Dst = (uint16_t*)Lookup->FieldAddress;
-				for(uint16_t i = 0; i < Count; i++)
-					Dst[i] = SWAP_ENDIANESS(Src[i]);
+				uint16_t* Src = (uint16_t*)Lookup->FieldAddress;
+				uint16_t* Dst = (uint16_t*)Data;
+				*Dst = *Src;
 			}
 			break;
 
 			case CfgFieldName:
-			{
-			}
+				memcpy(Data, Lookup->FieldAddress, CFG_MODBUS_NAME_SIZE);
 			break;
 
 			default:
-			{
 				return FALSE;
-			}
 			break;
 		}
 		return TRUE;
@@ -174,9 +130,41 @@ bool_t CFG_RegRead(CFG_HoldingRegister_t Register, uint16_t Count, void* Data)
 }
 
 //-----------------------------------------------------------------------------
-bool_t CFG_RegWrite(CFG_HoldingRegister_t Register, uint16_t Count, void* Data)
+bool_t CFG_RegWrite(CFG_HoldingRegister_t Register, void* Data)
 {
-	return TRUE;
+	const CFG_HoldingRegisterLookup_t* Lookup = CFG_GetLookup(Register);
+
+	if(Lookup)
+	{
+		switch(Lookup->FieldType)
+		{
+			case CfgFieldUint8:
+			{
+				uint8_t* Src = (uint8_t*)Data;
+				uint8_t* Dst = (uint8_t*)Lookup->FieldAddress;
+				*Dst = *Src;
+			}
+			break;
+
+			case CfgFieldUint16:
+			{
+				uint16_t* Src = (uint16_t*)Data;
+				uint16_t* Dst = (uint16_t*)Lookup->FieldAddress;
+				*Dst = *Src;
+			}
+			break;
+
+			case CfgFieldName:
+				memcpy(Lookup->FieldAddress, Data, CFG_MODBUS_NAME_SIZE);
+			break;
+
+			default:
+				return FALSE;
+			break;
+		}
+		return TRUE;
+	}
+	return FALSE;
 }
 
 

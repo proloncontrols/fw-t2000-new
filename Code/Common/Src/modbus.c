@@ -26,6 +26,7 @@
 #include "modbus.h"
 #include "com.h"
 #include "e2.h"
+#include "cfg.h"
 
 
 //=============================================================================
@@ -194,7 +195,7 @@ static void MB_ReadInputRegisters(COM_Connexion_t* Conx)
 static void MB_ReadHoldingRegisters(COM_Connexion_t* Conx)
 {
 	MB_FctRdHldRegsReq_t* Req = (MB_FctRdHldRegsReq_t*)&MB.PktRx->Function;
-//	MB_FctRdHldRegsAns_t* Ans = (MB_FctRdHldRegsAns_t*)&MB.PktTx->Function;
+	MB_FctRdHldRegsAns_t* Ans = (MB_FctRdHldRegsAns_t*)&MB.PktTx->Function;
 
 	Req->Address  = SWAP_ENDIANESS(Req->Address);
 	Req->Quantity = SWAP_ENDIANESS(Req->Quantity);
@@ -207,20 +208,15 @@ static void MB_ReadHoldingRegisters(COM_Connexion_t* Conx)
 
 	else
 	{
-//		Ans->ByteCount = Req->Quantity * sizeof(uint16_t);
-//		uint16_t* AnsData = (uint16_t*)(&Ans + sizeof(MB_FctReadAns_t));
-//		uint16_t ReadCount;
-//		for(int i = 0; i < Req->Quantity; i++)
-//		{
-//			ReadCount = E2_Read(&AnsData[i], (Req->Address + (i * sizeof(uint16_t))), sizeof(uint16_t));
-//			if(ReadCount == 0)
-//			{
-//				MB_SendError(Conx, MbErrSlaveDeviceFailure);
-//				return;
-//			}
-//			AnsData[i] = MB_SWAP_ENDIANESS(AnsData[i]);
-//		}
-//		MB_Tx(Conx, sizeof(MB_FctReadAns_t) + Ans->ByteCount);
+		uint16_t* Ptr = (uint16_t*)((uint32_t)Ans + sizeof(MB_FctRdHldRegsAns_t));
+
+		Ans->ByteCount = Req->Quantity * sizeof(uint16_t);
+		for(uint16_t i = 0; i < Req->Quantity; i++)
+		{
+			CFG_RegRead(Req->Address++, &Ptr[i]);
+			Ptr[i] = SWAP_ENDIANESS(Ptr[i]);
+		}
+		MB_Tx(Conx, sizeof(MB_FctRdHldRegsAns_t) + Ans->ByteCount);
 	}
 }
 
@@ -313,7 +309,7 @@ static void MB_WriteSingleRegister(COM_Connexion_t* Conx)
 static void MB_WriteMultipleRegisters(COM_Connexion_t* Conx)
 {
 	MB_FctWrMplRegsReq_t* Req = (MB_FctWrMplRegsReq_t*)&MB.PktRx->Function;
-//	MB_FctWrMplRegsAns_t* Ans = (MB_FctWrMplRegsAns_t*)&MB.PktTx->Function;
+	MB_FctWrMplRegsAns_t* Ans = (MB_FctWrMplRegsAns_t*)&MB.PktTx->Function;
 
 	Req->Address  = SWAP_ENDIANESS(Req->Address);
 	Req->Quantity = SWAP_ENDIANESS(Req->Quantity);
@@ -326,6 +322,16 @@ static void MB_WriteMultipleRegisters(COM_Connexion_t* Conx)
 
 	else
 	{
+		uint16_t* Ptr = (uint16_t*)((uint32_t)Req + sizeof(MB_FctWrMplRegsReq_t));
+
+		Ans->Address = SWAP_ENDIANESS(Req->Address);
+		Ans->QtyWritten = SWAP_ENDIANESS(Req->Quantity);
+		for(uint16_t i = 0; i < Req->Quantity; i++)
+		{
+			Ptr[i] = SWAP_ENDIANESS(Ptr[i]);
+			CFG_RegWrite(Req->Address++, &Ptr[i]);
+		}
+		MB_Tx(Conx, sizeof(MB_FctWrMplRegsAns_t));
 	}
 }
 

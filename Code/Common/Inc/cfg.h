@@ -83,8 +83,10 @@ typedef struct {
 } CFG_Data_t;
 #pragma pack()
 
-bool_t CFG_RegRead  (CFG_HoldingRegister_t Register, uint16_t Count, void* Data);
-bool_t CFG_RegWrite (CFG_HoldingRegister_t Register, uint16_t Count, void* Data);
+bool_t CFG_RegRead  (CFG_HoldingRegister_t Register, void* Data);
+bool_t CFG_RegWrite (CFG_HoldingRegister_t Register, void* Data);
+//bool_t CFG_RegRead  (CFG_HoldingRegister_t Register, uint16_t Count, void* Data);
+//bool_t CFG_RegWrite (CFG_HoldingRegister_t Register, uint16_t Count, void* Data);
 
 CFG_EXTERN CFG_Data_t CFG_Data;
 
@@ -108,20 +110,20 @@ CFG_EXTERN CFG_Data_t CFG_Data;
 
 
 
-#define CFG_DEF_BAUDRATE    3     //0=9600 1=19200 2=38400 3=57600
-#define CFG_DEF_PARITY      1     //0=none 1=odd 2=even
-#define CFG_DEF_STOPBITS    2     //0=1 1=1.5 2=2
-#define CFG_DEF_ADDRESS     123   //ModBus device address TODO: Change to correct value
-#define CFG_DEF_ORIENTATION 0     //0=portrait 1=landscape
-#define CFG_DEF_TIMEOUT     0     //In seconds (0=disabled)
-#define CFG_DEF_TEMP_UNIT   0     //0=celsius 1=fahrenheit
+//#define CFG_DEF_BAUDRATE    3     //0=9600 1=19200 2=38400 3=57600
+//#define CFG_DEF_PARITY      1     //0=none 1=odd 2=even
+//#define CFG_DEF_STOPBITS    2     //0=1 1=1.5 2=2
+//#define CFG_DEF_ADDRESS     123   //ModBus device address TODO: Change to correct value
+//#define CFG_DEF_ORIENTATION 0     //0=portrait 1=landscape
+//#define CFG_DEF_TIMEOUT     0     //In seconds (0=disabled)
+//#define CFG_DEF_TEMP_UNIT   0     //0=celsius 1=fahrenheit
 
 
 //=============================================================================
 //  E N U M S
 //-----------------------------------------------------------------------------
-//Screen orientation is based on the thermostat unit itself and not on the LCD unit.
-//The LCD unit is the opposite of the thermostat.
+//Screen orientation is based on the thermostat unit itself, not on the LCD unit.
+//LCD unit orientation is the opposite of thermostat's.
 typedef enum {
 	CfgOrientP = 0,   //Portrait in relation to the thermostat (landscape for LCD)
 	CfgOrientL        //Landscape in relation to the thermostat (portrait for LCD)
