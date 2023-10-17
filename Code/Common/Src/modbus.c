@@ -21,7 +21,6 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#define MB_GLOBAL
 #include "basic.h"
 #include "modbus.h"
 #include "com.h"
@@ -82,12 +81,6 @@
 
 
 //=============================================================================
-//  M A C R O S
-//-----------------------------------------------------------------------------
-//#define MB_SWAP_ENDIANESS(x)   ((uint16_t)(((x >> 8) & 0x00FF) + ((x << 8) & 0xFF00)))   //Swap the byte order of a uint16_t type (ModBus is big endian as opposed to STM32 devices which are little endian)
-
-
-//=============================================================================
 //  T Y P E D E F S
 //-----------------------------------------------------------------------------
 typedef struct {
@@ -113,7 +106,6 @@ static void MB_WriteSingleCoil        (COM_Connexion_t* Conx);
 static void MB_WriteMultipleCoils     (COM_Connexion_t* Conx);
 static void MB_WriteSingleRegister    (COM_Connexion_t* Conx);
 static void MB_WriteMultipleRegisters (COM_Connexion_t* Conx);
-
 static void MB_SendError              (COM_Connexion_t* Conx, MB_Error_t Err);
 static void MB_Tx                     (COM_Connexion_t* Conx, uint16_t Length);
 
@@ -353,26 +345,3 @@ static void MB_Tx(COM_Connexion_t* Conx, uint16_t Length)
 	Conx->PacketOut.Length += sizeof(COM_Checksum_t);
 	COM_Tx(Conx);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

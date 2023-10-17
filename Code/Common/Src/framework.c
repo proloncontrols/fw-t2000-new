@@ -179,7 +179,6 @@ void FMK_Init(void)
 	APP_OnInitBegin();
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-//	CFG_Defaults(&FMK_Config);   //Uncomment if a configuration reset to defaults is needed
 	CFG_Load(&CFG_Data);
 	UI_Init();
 	FMK_Flags = osEventFlagsNew(NULL);

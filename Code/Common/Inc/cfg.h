@@ -40,11 +40,31 @@ extern "C" {
 
 
 //=============================================================================
-//  V E R S I O N
+//  D E F I N E S
 //-----------------------------------------------------------------------------
-#define CFG_VERSION   0x0001   //0.0.0.1
+#define CFG_MODBUS_NAME_SIZE   16
 
 
+//=============================================================================
+//  D E F A U L T S   V A L U E S
+//-----------------------------------------------------------------------------
+#define CFG_DEF_MODBUS_ADDRESS    123
+#define CFG_DEF_MODBUS_NAME       "ModuleName"
+
+#define CFG_DEF_COM_BAUDRATE      3
+#define CFG_DEF_COM_STOPBITS      1
+#define CFG_DEF_COM_PARITY        0
+
+#define CFG_DEF_SCR_LANGUAGE      0
+#define CFG_DEF_SCR_ORIENTATION   0
+#define CFG_DEF_SCR_TIMEOUT       0
+
+#define CFG_DEF_ENV_TEMP_UNIT     0
+
+
+//=============================================================================
+//  H O L D I N G   R E G I S T E R S
+//-----------------------------------------------------------------------------
 typedef enum {
 	CfgHrDeviceType = 1,
 	CfgHrSoftVer,
@@ -64,7 +84,6 @@ typedef enum {
 	CfgHrTempUnit
 } CFG_HoldingRegister_t;
 
-#define CFG_MODBUS_NAME_SIZE   16
 
 #pragma pack(1)
 typedef struct {
@@ -83,83 +102,63 @@ typedef struct {
 } CFG_Data_t;
 #pragma pack()
 
-bool_t CFG_RegRead  (CFG_HoldingRegister_t Register, void* Data);
-bool_t CFG_RegWrite (CFG_HoldingRegister_t Register, void* Data);
-//bool_t CFG_RegRead  (CFG_HoldingRegister_t Register, uint16_t Count, void* Data);
-//bool_t CFG_RegWrite (CFG_HoldingRegister_t Register, uint16_t Count, void* Data);
-
-CFG_EXTERN CFG_Data_t CFG_Data;
-
-
-//=============================================================================
-//  D E F A U L T S
-//-----------------------------------------------------------------------------
-#define CFG_DEF_MODBUS_ADDRESS    123
-#define CFG_DEF_MODBUS_NAME       "ModuleName"
-
-#define CFG_DEF_COM_BAUDRATE      3
-#define CFG_DEF_COM_STOPBITS      1
-#define CFG_DEF_COM_PARITY        0
-
-#define CFG_DEF_SCR_LANGUAGE      0
-#define CFG_DEF_SCR_ORIENTATION   0
-#define CFG_DEF_SCR_TIMEOUT       0
-
-#define CFG_DEF_ENV_TEMP_UNIT     0
-
-
-
-
-//#define CFG_DEF_BAUDRATE    3     //0=9600 1=19200 2=38400 3=57600
-//#define CFG_DEF_PARITY      1     //0=none 1=odd 2=even
-//#define CFG_DEF_STOPBITS    2     //0=1 1=1.5 2=2
-//#define CFG_DEF_ADDRESS     123   //ModBus device address TODO: Change to correct value
-//#define CFG_DEF_ORIENTATION 0     //0=portrait 1=landscape
-//#define CFG_DEF_TIMEOUT     0     //In seconds (0=disabled)
-//#define CFG_DEF_TEMP_UNIT   0     //0=celsius 1=fahrenheit
-
 
 //=============================================================================
 //  E N U M S
 //-----------------------------------------------------------------------------
+typedef enum {
+	CfgComBaud1200 = 0,
+	CfgComBaud2400,
+	CfgComBaud4800,
+	CfgComBaud19200,
+	CfgComBaud38400,
+	CfgComBaud57600,
+	CfgComBaud115200
+} CFG_ComBaud_t;
+
+typedef enum {
+	CfgComStop1 = 0,
+	CfgComStop1_5,
+	CfgComStop2
+} CFG_ComStop_t;
+
+typedef enum {
+	CfgComParityNone = 0,
+	CfgComParityEven,
+	CfgComParityOdd
+} CFG_ComParity_t;
+
+typedef enum {
+	CfgScrLanEnglish = 0,
+	CfgScrLanFrench
+} CFG_ScrLanguage_t;
+
 //Screen orientation is based on the thermostat unit itself, not on the LCD unit.
 //LCD unit orientation is the opposite of thermostat's.
 typedef enum {
-	CfgOrientP = 0,   //Portrait in relation to the thermostat (landscape for LCD)
-	CfgOrientL        //Landscape in relation to the thermostat (portrait for LCD)
-} CFG_Orientation_t;
+	CfgScrOrientP = 0,   //Portrait in relation to the thermostat (landscape for LCD)
+	CfgScrOrientL        //Landscape in relation to the thermostat (portrait for LCD)
+} CFG_ScrOrientation_t;
 
 typedef enum {
-	CfgTempC = 0,
-	CfgTempF
-} CFG_TempUnit_t;
+	CfgEnvTempC = 0,
+	CfgEnvTempF
+} CFG_EnvTempUnit_t;
 
 
 //=============================================================================
-//  T Y P E D E F S
+//  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
-//#pragma pack(1)
-//
-//typedef struct {
-//	uint16_t Version;
-//	uint8_t  BaudRate;
-//	uint8_t  Parity;
-//	uint8_t  StopBits;
-//	uint8_t  Address;
-//	uint8_t  ScreenOrientation;
-//	uint16_t ScreenTimeout;
-//	uint8_t  TempUnit;
-//} CFG_Config_t;
-//
-//#pragma pack()
+CFG_EXTERN CFG_Data_t CFG_Data;
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-extern void CFG_Load     (CFG_Data_t* Cfg);
-extern void CFG_Save     (CFG_Data_t* Cfg);
-extern void CFG_Defaults (CFG_Data_t* Cfg);
+extern void   CFG_Load     (CFG_Data_t* Cfg);
+extern void   CFG_Save     (CFG_Data_t* Cfg);
+extern bool_t CFG_RegRead  (CFG_HoldingRegister_t Register, void* Data);
+extern bool_t CFG_RegWrite (CFG_HoldingRegister_t Register, void* Data);
 
 
 #ifdef __cplusplus

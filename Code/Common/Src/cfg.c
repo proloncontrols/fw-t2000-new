@@ -33,18 +33,29 @@
 #define CFG_E2_ADDRESS   0   //Configuration data base address in E2
 
 
+//=============================================================================
+//  E N U M S
+//-----------------------------------------------------------------------------
 typedef enum {
 	CfgFieldUint8,
 	CfgFieldUint16,
 	CfgFieldName
 } CFG_FieldType_t;
 
+
+//=============================================================================
+//  S T R U C T S
+//-----------------------------------------------------------------------------
 typedef struct {
 	CFG_HoldingRegister_t Register;
 	void*                 FieldAddress;
 	CFG_FieldType_t       FieldType;
 } CFG_HoldingRegisterLookup_t;
 
+
+//=============================================================================
+//  C O N S T A N T S
+//-----------------------------------------------------------------------------
 static const CFG_HoldingRegisterLookup_t CFG_HoldingRegisterLookup [] =
 {
 	{ CfgHrModBusID,       &CFG_Data.ModBusID,       CfgFieldUint8  },
@@ -61,6 +72,10 @@ static const CFG_HoldingRegisterLookup_t CFG_HoldingRegisterLookup [] =
 	{ CfgHrTempUnit,       &CFG_Data.EnvTempUnit,    CfgFieldUint8  }
 };
 
+
+//=============================================================================
+//  F A C T O R Y   D E F A U L T S   (placed in HEX file)
+//-----------------------------------------------------------------------------
 #ifdef PROJECT_APP
 const CFG_Data_t __attribute__((section(".app_data"))) CFG_DefaultData =
 {
@@ -80,15 +95,24 @@ const CFG_Data_t __attribute__((section(".app_data"))) CFG_DefaultData =
 #endif
 
 
+//=============================================================================
+//  P R O T O T Y P E S
 //-----------------------------------------------------------------------------
-static const CFG_HoldingRegisterLookup_t* CFG_GetLookup(CFG_HoldingRegister_t Register)
+static const CFG_HoldingRegisterLookup_t* CFG_GetLookup (CFG_HoldingRegister_t Register);
+
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CFG_Load(CFG_Data_t* Cfg)
 {
-	for(int i = 0; i < NUMBER_OF_ELEMENTS_IN(CFG_HoldingRegisterLookup); i++)
-	{
-		if(CFG_HoldingRegisterLookup[i].Register == Register)
-			return &CFG_HoldingRegisterLookup[i];
-	}
-	return NULL;
+	E2_Read(Cfg, CFG_E2_ADDRESS, sizeof(CFG_Data_t));
+}
+
+//-----------------------------------------------------------------------------
+void CFG_Save(CFG_Data_t* Cfg)
+{
+	E2_Write(Cfg, CFG_E2_ADDRESS, sizeof(CFG_Data_t));
 }
 
 //-----------------------------------------------------------------------------
@@ -168,34 +192,15 @@ bool_t CFG_RegWrite(CFG_HoldingRegister_t Register, void* Data)
 }
 
 
-
-
-
 //=============================================================================
-//  M E T H O D S
+//  P R I V A T E S
 //-----------------------------------------------------------------------------
-void CFG_Load(CFG_Data_t* Cfg)
+static const CFG_HoldingRegisterLookup_t* CFG_GetLookup(CFG_HoldingRegister_t Register)
 {
-	E2_Read(Cfg, CFG_E2_ADDRESS, sizeof(CFG_Data_t));
-}
-
-//-----------------------------------------------------------------------------
-void CFG_Save(CFG_Data_t* Cfg)
-{
-	E2_Write(Cfg, CFG_E2_ADDRESS, sizeof(CFG_Data_t));
-}
-
-//-----------------------------------------------------------------------------
-void CFG_Defaults(CFG_Data_t* Cfg)
-{
-//	Cfg->Version           = CFG_VERSION;
-//	Cfg->BaudRate          = CFG_DEF_BAUDRATE;
-//	Cfg->Parity            = CFG_DEF_PARITY;
-//	Cfg->StopBits          = CFG_DEF_STOPBITS;
-//	Cfg->Address           = CFG_DEF_ADDRESS;
-//	Cfg->ScreenOrientation = CFG_DEF_ORIENTATION;
-//	Cfg->ScreenTimeout     = CFG_DEF_TIMEOUT;
-//	Cfg->TempUnit          = CFG_DEF_TEMP_UNIT;
-
-	CFG_Save(Cfg);
+	for(int i = 0; i < NUMBER_OF_ELEMENTS_IN(CFG_HoldingRegisterLookup); i++)
+	{
+		if(CFG_HoldingRegisterLookup[i].Register == Register)
+			return &CFG_HoldingRegisterLookup[i];
+	}
+	return NULL;
 }
