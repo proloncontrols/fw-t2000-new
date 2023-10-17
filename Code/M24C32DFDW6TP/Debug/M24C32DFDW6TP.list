@@ -123,7 +123,7 @@ int Write(uint32_t Address, uint32_t Size, uint8_t *Buffer)
 240003c2:	60f8      	str	r0, [r7, #12]
 240003c4:	60b9      	str	r1, [r7, #8]
 240003c6:	607a      	str	r2, [r7, #4]
-	if(E2_Write(Buffer, Address - StorageInfo.DeviceStartAddress, Size) == 0)
+	if(E2_Write(Buffer, (uint16_t)(Address - StorageInfo.DeviceStartAddress), (uint16_t)Size) == 0)
 240003c8:	68fb      	ldr	r3, [r7, #12]
 240003ca:	b29a      	uxth	r2, r3
 240003cc:	4b0a      	ldr	r3, [pc, #40]	; (240003f8 <Write+0x3c>)

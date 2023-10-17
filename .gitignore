@@ -13,13 +13,13 @@ Code/BootU/.settings/
 Code/BootU/Debug/
 Code/BootU/Release/
 
-Code/LoaderBR24L04_W/.settings/
-Code/LoaderBR24L04_W/Debug/
-Code/LoaderBR24L04_W/Release/
+Code/BR24L04W/.settings/
+Code/BR24L04W/Debug/
+Code/BR24L04W/Release/
 
-Code/LoaderM24C32_DFDW6TP/.settings/
-Code/LoaderM24C32_DFDW6TP/Debug/
-Code/LoaderM24C32_DFDW6TP/Release/
+Code/M24C32DFDW6TP/.settings/
+Code/M24C32DFDW6TP/Debug/
+Code/M24C32DFDW6TP/Release/
 
 Code/Production/.settings/
 Code/Production/Debug/
