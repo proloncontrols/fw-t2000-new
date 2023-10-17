@@ -1,7 +1,7 @@
 Loader_Src.c:33:5:Init	1
-Loader_Src.c:43:5:Write	2
-Loader_Src.c:52:5:Read	2
-Loader_Src.c:61:5:SectorErase	1
-Loader_Src.c:67:5:MassErase	1
-Loader_Src.c:73:10:CheckSum	1
-Loader_Src.c:79:10:Verify	1
+Loader_Src.c:46:5:Write	2
+Loader_Src.c:55:5:Read	2
+Loader_Src.c:64:5:SectorErase	1
+Loader_Src.c:70:5:MassErase	1
+Loader_Src.c:76:10:CheckSum	1
+Loader_Src.c:82:10:Verify	1

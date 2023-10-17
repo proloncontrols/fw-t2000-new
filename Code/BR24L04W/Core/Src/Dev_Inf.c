@@ -30,14 +30,14 @@
 //-----------------------------------------------------------------------------
 struct StorageInfo __attribute__((section(".Dev_info"))) StorageInfo =
 {
-    "BR24L04W_PROLON",   //Device name
-	I2C_EEPROM,          //Device type
-    0x07000000,          //Device start address
-    0x00000200,          //Device size 512B
-    0x10,                //Programming page size 16B
-    0xFF,                //Initial content of erased memory
+    "BR24L04W_T2000",   //Device name
+	I2C_EEPROM,         //Device type
+    0x07000000,         //Device start address
+    0x00000200,         //Device size 512B
+    0x10,               //Programming page size 16B
+    0xFF,               //Initial content of erased memory
     {
-		{ 0x00000000, 0x00000000 },
+		{ 0x00000001, 0x00000200 },
 		{ 0x00000000, 0x00000000 },
 		{ 0x00000000, 0x00000000 },
 		{ 0x00000000, 0x00000000 },

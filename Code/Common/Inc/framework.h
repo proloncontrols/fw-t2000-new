@@ -288,7 +288,7 @@ typedef enum {
 //-----------------------------------------------------------------------------
 FMK_EXTERN osEventFlagsId_t FMK_Flags;
 FMK_EXTERN COM_Connexion_t* FMK_Conx;
-FMK_EXTERN CFG_Config_t     FMK_Config;
+//FMK_EXTERN CFG_Data_t       FMK_Config;
 
 
 //=============================================================================

@@ -25,6 +25,7 @@
 #include "Dev_Inf.h"
 #include "Loader_Src.h"
 #include "e2.h"
+#include "system_stm32h7xx.h"
 
 
 //=============================================================================
@@ -33,6 +34,9 @@
 int Init(void)
 {
 	__disable_irq();
+	SystemInit();
+	HAL_Init();
+	MX_GPIO_Init_External();
 	MX_I2C2_Init_External();
 	__enable_irq();
 
@@ -42,7 +46,7 @@ int Init(void)
 //-----------------------------------------------------------------------------
 int Write(uint32_t Address, uint32_t Size, uint8_t *Buffer)
 {
-	if(E2_Write(Buffer, Address - StorageInfo.DeviceStartAddress, Size) == 0)
+	if(E2_Write(Buffer, (uint16_t)(Address - StorageInfo.DeviceStartAddress), (uint16_t)Size) == 0)
 		return 0;
 
 	return 1;

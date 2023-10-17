@@ -1,7 +1,7 @@
 ../Core/Src/Loader_Src.c:33:5:Init	8	static,ignoring_inline_asm
-../Core/Src/Loader_Src.c:43:5:Write	24	static
-../Core/Src/Loader_Src.c:52:5:Read	24	static
-../Core/Src/Loader_Src.c:61:5:SectorErase	16	static
-../Core/Src/Loader_Src.c:67:5:MassErase	4	static
-../Core/Src/Loader_Src.c:73:10:CheckSum	24	static
-../Core/Src/Loader_Src.c:79:10:Verify	24	static
+../Core/Src/Loader_Src.c:46:5:Write	24	static
+../Core/Src/Loader_Src.c:55:5:Read	24	static
+../Core/Src/Loader_Src.c:64:5:SectorErase	16	static
+../Core/Src/Loader_Src.c:70:5:MassErase	4	static
+../Core/Src/Loader_Src.c:76:10:CheckSum	24	static
+../Core/Src/Loader_Src.c:82:10:Verify	24	static

@@ -242,6 +242,11 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void MX_GPIO_Init_External(void)
+{
+	MX_GPIO_Init();
+}
+
 void MX_I2C2_Init_External(void)
 {
 	MX_I2C2_Init();

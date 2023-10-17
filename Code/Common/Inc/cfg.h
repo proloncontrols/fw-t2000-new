@@ -79,19 +79,35 @@ typedef struct {
 	uint8_t  ScrOrientation;
 	uint16_t ScrTimeout;
 
-	uint8_t  TempUnit;
-} CFG_Config_t;
+	uint8_t  EnvTempUnit;
+} CFG_Data_t;
 #pragma pack()
 
 bool_t CFG_RegRead  (CFG_HoldingRegister_t Register, uint16_t Count, void* Data);
 bool_t CFG_RegWrite (CFG_HoldingRegister_t Register, uint16_t Count, void* Data);
 
-CFG_EXTERN CFG_Config_t CFG_Config;
+CFG_EXTERN CFG_Data_t CFG_Data;
 
 
 //=============================================================================
 //  D E F A U L T S
 //-----------------------------------------------------------------------------
+#define CFG_DEF_MODBUS_ADDRESS    123
+#define CFG_DEF_MODBUS_NAME       "ModuleName"
+
+#define CFG_DEF_COM_BAUDRATE      3
+#define CFG_DEF_COM_STOPBITS      1
+#define CFG_DEF_COM_PARITY        0
+
+#define CFG_DEF_SCR_LANGUAGE      0
+#define CFG_DEF_SCR_ORIENTATION   0
+#define CFG_DEF_SCR_TIMEOUT       0
+
+#define CFG_DEF_ENV_TEMP_UNIT     0
+
+
+
+
 #define CFG_DEF_BAUDRATE    3     //0=9600 1=19200 2=38400 3=57600
 #define CFG_DEF_PARITY      1     //0=none 1=odd 2=even
 #define CFG_DEF_STOPBITS    2     //0=1 1=1.5 2=2
@@ -139,9 +155,9 @@ typedef enum {
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-extern void CFG_Load     (CFG_Config_t* Cfg);
-extern void CFG_Save     (CFG_Config_t* Cfg);
-extern void CFG_Defaults (CFG_Config_t* Cfg);
+extern void CFG_Load     (CFG_Data_t* Cfg);
+extern void CFG_Save     (CFG_Data_t* Cfg);
+extern void CFG_Defaults (CFG_Data_t* Cfg);
 
 
 #ifdef __cplusplus

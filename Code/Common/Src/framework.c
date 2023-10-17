@@ -180,7 +180,7 @@ void FMK_Init(void)
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //	CFG_Defaults(&FMK_Config);   //Uncomment if a configuration reset to defaults is needed
-	CFG_Load(&FMK_Config);
+	CFG_Load(&CFG_Data);
 	UI_Init();
 	FMK_Flags = osEventFlagsNew(NULL);
 	MB_Init();
@@ -285,7 +285,7 @@ static void FMK_OnSystem(void)
 				FMK.CmdIn = (FMK_Cmd_t*)&PktIn->Function.FctMEIT.Data;
 				FMK.CmdOut = (FMK_Cmd_t*)&PktOut->Function.FctMEIT.Data;
 
-				PktOut->Header.Address               = CFG_Config.ModBusID; // FMK_Config.Address;
+				PktOut->Header.Address               = CFG_Data.ModBusID; // FMK_Config.Address;
 				PktOut->Header.Function              = MbFctMEIT;
 				PktOut->Function.FctMEIT.SubFunction = MbSubFctMEITUpgrade;
 			}
@@ -361,7 +361,7 @@ static bool_t FMK_ComModBus(COM_Connexion_t* Conx)
 	if(PktIn->Header.Address == MB_ADDR_BROADCAST)
 		return FALSE;   //On broadcast packet, pass control to application
 
-	if(PktIn->Header.Address != CFG_Config.ModBusID)
+	if(PktIn->Header.Address != CFG_Data.ModBusID)
 //	if(PktIn->Header.Address != FMK_Config.Address)
 	{
 		COM_Rx(Conx);
@@ -384,7 +384,7 @@ static bool_t FMK_ComModBus(COM_Connexion_t* Conx)
 		return TRUE;
 	}
 
-	Conx->ModBusAddress = CFG_Config.ModBusID;
+	Conx->ModBusAddress = CFG_Data.ModBusID;
 //	Conx->ModBusAddress = FMK_Config.Address;
 	return FALSE;                               //Pass control to application
 }

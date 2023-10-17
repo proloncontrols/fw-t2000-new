@@ -14,7 +14,7 @@ MEMORY
   RAM_D3        (xrw) : ORIGIN = 0x38000000,             LENGTH = 16K
 
   /* EEPROM */
-  DATA          (xrw) : ORIGIN = DATA_ORIGIN,            LENGTH = DATA_LENGTH
+  DEFAULTS      (xrw) : ORIGIN = DATA_ORIGIN,            LENGTH = DATA_LENGTH
 
   /* FLASH */
   BOOTL_VECTORS (rx)  : ORIGIN = BOOTL_VECTORS_ORIGIN,   LENGTH = BOOTL_VECTORS_LENGTH
@@ -45,12 +45,12 @@ _Min_Stack_Size = 0x1000;	/* required amount of stack */
 SECTIONS
 {
   /*=============== EEPROM data memory ==========================================================*/
-  .app_data ORIGIN(DATA) :
+  .app_data ORIGIN(DEFAULTS) :
   {
     . = ALIGN(4);
     KEEP(*(.app_data))
     . = ALIGN(4);
-  } >DATA
+  } >DEFAULTS
 
   /*=============== The startup code into "FLASH" Rom type memory ===============================*/
   .isr_vector ORIGIN(APP_VECTORS) :

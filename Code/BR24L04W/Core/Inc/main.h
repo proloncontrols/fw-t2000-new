@@ -53,6 +53,7 @@ extern I2C_HandleTypeDef hi2c2;
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+void MX_GPIO_Init_External();
 void MX_I2C2_Init_External();
 /* USER CODE END EFP */
 

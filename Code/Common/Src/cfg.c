@@ -36,11 +36,11 @@
 
 
 
-#define CFG_DATA_LENGTH   0x00001000   //EEPROM data size in bytes (4KB)
+//#define CFG_DATA_LENGTH   0x00001000   //EEPROM data size in bytes (4KB)
 
-#if defined(PROJECT_APP) && defined(RELEASE)
-const uint8_t __attribute__((section(".app_data"))) CFG_E2Data[CFG_DATA_LENGTH] = { 0 };
-#endif
+//#if defined(PROJECT_APP) && defined(RELEASE)
+//const uint8_t __attribute__((section(".app_data"))) CFG_E2Data[CFG_DATA_LENGTH] = { 0 };
+//#endif
 
 //#define CFG_E2_MODBUS_ID_ADDR          CFG_E2_ADDRESS
 //#define CFG_E2_MODBUS_ID_SIZE          sizeof(uint8_t)
@@ -76,19 +76,37 @@ typedef struct {
 
 static const CFG_HoldingRegisterLookup_t CFG_HoldingRegisterLookup [] =
 {
-	{ CfgHrModBusID,       &CFG_Config.ModBusID,       CfgFieldUint8  },
-	{ CfgHrModBusName,      CFG_Config.ModBusName,     CfgFieldName   },
+	{ CfgHrModBusID,       &CFG_Data.ModBusID,       CfgFieldUint8  },
+	{ CfgHrModBusName,      CFG_Data.ModBusName,     CfgFieldName   },
 
-	{ CfgHrComBaudRate,    &CFG_Config.ComBaudRate,    CfgFieldUint8  },
-	{ CfgHrComStopBits,    &CFG_Config.ComStopBits,    CfgFieldUint8  },
-	{ CfgHrComParity,      &CFG_Config.ComParity,      CfgFieldUint8  },
+	{ CfgHrComBaudRate,    &CFG_Data.ComBaudRate,    CfgFieldUint8  },
+	{ CfgHrComStopBits,    &CFG_Data.ComStopBits,    CfgFieldUint8  },
+	{ CfgHrComParity,      &CFG_Data.ComParity,      CfgFieldUint8  },
 
-	{ CfgHrScrLanguage,    &CFG_Config.ScrLanguage,    CfgFieldUint8  },
-	{ CfgHrScrOrientation, &CFG_Config.ScrOrientation, CfgFieldUint8  },
-	{ CfgHrScrTimeout,     &CFG_Config.ScrTimeout,     CfgFieldUint16 },
+	{ CfgHrScrLanguage,    &CFG_Data.ScrLanguage,    CfgFieldUint8  },
+	{ CfgHrScrOrientation, &CFG_Data.ScrOrientation, CfgFieldUint8  },
+	{ CfgHrScrTimeout,     &CFG_Data.ScrTimeout,     CfgFieldUint16 },
 
-	{ CfgHrTempUnit,       &CFG_Config.TempUnit,       CfgFieldUint8  }
+	{ CfgHrTempUnit,       &CFG_Data.EnvTempUnit,    CfgFieldUint8  }
 };
+
+#ifdef PROJECT_APP
+const CFG_Data_t __attribute__((section(".app_data"))) CFG_DefaultData =
+{
+	.ModBusID       = CFG_DEF_MODBUS_ADDRESS,
+	.ModBusName     = CFG_DEF_MODBUS_NAME,
+
+	.ComBaudRate    = CFG_DEF_COM_BAUDRATE,
+	.ComStopBits    = CFG_DEF_COM_STOPBITS,
+	.ComParity      = CFG_DEF_COM_PARITY,
+
+	.ScrLanguage    = CFG_DEF_SCR_LANGUAGE,
+	.ScrOrientation = CFG_DEF_SCR_ORIENTATION,
+	.ScrTimeout     = CFG_DEF_SCR_TIMEOUT,
+
+	.EnvTempUnit    = CFG_DEF_ENV_TEMP_UNIT
+};
+#endif
 
 //static const CFG_HoldingRegisterLookup_t CFG_HoldingRegisterLookup [] =
 //{
@@ -168,19 +186,19 @@ bool_t CFG_RegWrite(CFG_HoldingRegister_t Register, uint16_t Count, void* Data)
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CFG_Load(CFG_Config_t* Cfg)
+void CFG_Load(CFG_Data_t* Cfg)
 {
-	E2_Read(Cfg, CFG_E2_ADDRESS, sizeof(CFG_Config_t));
+	E2_Read(Cfg, CFG_E2_ADDRESS, sizeof(CFG_Data_t));
 }
 
 //-----------------------------------------------------------------------------
-void CFG_Save(CFG_Config_t* Cfg)
+void CFG_Save(CFG_Data_t* Cfg)
 {
-	E2_Write(Cfg, CFG_E2_ADDRESS, sizeof(CFG_Config_t));
+	E2_Write(Cfg, CFG_E2_ADDRESS, sizeof(CFG_Data_t));
 }
 
 //-----------------------------------------------------------------------------
-void CFG_Defaults(CFG_Config_t* Cfg)
+void CFG_Defaults(CFG_Data_t* Cfg)
 {
 //	Cfg->Version           = CFG_VERSION;
 //	Cfg->BaudRate          = CFG_DEF_BAUDRATE;
