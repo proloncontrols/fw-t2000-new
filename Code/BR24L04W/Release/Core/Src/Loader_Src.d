@@ -29,8 +29,7 @@ Core/Src/Loader_Src.o: ../Core/Src/Loader_Src.c ../Core/Inc/main.h \
  ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
  ../Core/Inc/Dev_Inf.h ../Core/Inc/Loader_Src.h \
  C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Inc/e2.h \
- C:/ProlonDev/Projects/T2000/Firmware/Code/Lib/Inc/basic.h \
- ../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h
+ C:/ProlonDev/Projects/T2000/Firmware/Code/Lib/Inc/basic.h
 ../Core/Inc/main.h:
 ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 ../Core/Inc/stm32h7xx_hal_conf.h:
@@ -64,4 +63,3 @@ Core/Src/Loader_Src.o: ../Core/Src/Loader_Src.c ../Core/Inc/main.h \
 ../Core/Inc/Loader_Src.h:
 C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Inc/e2.h:
 C:/ProlonDev/Projects/T2000/Firmware/Code/Lib/Inc/basic.h:
-../Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h:
