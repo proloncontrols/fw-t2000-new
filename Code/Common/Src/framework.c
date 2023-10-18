@@ -79,6 +79,7 @@ const PRD_Banner_t __attribute__((section(".app_footer"))) FMK_Footer = PRD_BOOT
 //-----------------------------------------------------------------------------
 #define FMK_FRAMEWORK_DATA_SIZE   1024
 #define FMK_MODBUS_DATA_SIZE      128
+#define FMK_E2_ACQUIRE_TIMEOUT    5000   //5 seconds
 
 
 //=============================================================================
@@ -104,12 +105,13 @@ const FMK_SharedFlash_t __attribute__((section(".shared_flash"))) FMK_SharedFlas
 //  T Y P E D E F S
 //-----------------------------------------------------------------------------
 typedef struct {
+	osMutexId_t       E2Mutex;
 	FMK_SystemEvent_t Event;
-	FMK_Cmd_t*     CmdIn;
-	FMK_Cmd_t*     CmdOut;
-	uint16_t       CalculatedCRC;
-	FLASH_Device_t FlashDevice;
-	uint16_t       FlashDataSize;
+	FMK_Cmd_t*        CmdIn;
+	FMK_Cmd_t*        CmdOut;
+	uint16_t          CalculatedCRC;
+	FLASH_Device_t    FlashDevice;
+	uint16_t          FlashDataSize;
 } FMK_t;
 
 typedef void (*EntryPoint)(void);
@@ -179,6 +181,7 @@ void FMK_Init(void)
 	APP_OnInitBegin();
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+	FMK.E2Mutex = osMutexNew(NULL);
 	CFG_Load(&CFG_Data);
 	UI_Init();
 	FMK_Flags = osEventFlagsNew(NULL);
@@ -256,6 +259,20 @@ void FMK_PostSystemEvent(FMK_SystemEvent_t Event)
 	osEventFlagsSet(FMK_Flags, NUM2POS(EvtGrpSys));
 }
 
+//-----------------------------------------------------------------------------
+void FMK_E2Acquire(void)
+{
+	if(osMutexAcquire(FMK.E2Mutex, FMK_E2_ACQUIRE_TIMEOUT) != osOK)
+		Error_Handler();
+}
+
+//-----------------------------------------------------------------------------
+void FMK_E2Release(void)
+{
+	if(osMutexRelease(FMK.E2Mutex) != osOK)
+		Error_Handler();
+}
+
 
 //=============================================================================
 //  P R I V A T E
@@ -302,6 +319,13 @@ static void FMK_OnSystem(void)
 	{
 		__disable_irq();
 		NVIC_SystemReset();
+	}
+
+	else if(FMK.Event == FmkSysEvtUpdCfg)
+	{
+		FMK_E2Acquire();
+		CFG_Save(&CFG_Data);
+		FMK_E2Release();
 	}
 }
 

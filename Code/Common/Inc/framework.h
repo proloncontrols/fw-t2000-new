@@ -231,22 +231,6 @@ typedef struct {
 	uint8_t Data;   //<-- Used as pointer to data in packet
 } FMK_CmdDataWrite_t;
 
-
-
-//typedef union {
-//	struct {
-//		uint8_t Command;
-//		uint8_t Index;
-//		uint32_t Address;
-//		uint16_t Length;
-//	} Query;
-//	struct {
-//		uint8_t Command;
-//		uint8_t Data;   //<-- Used as pointer to data in packet
-//		//Checksum follows preceeding data
-//	} Answer;
-//} FMK_CmdRead_t;
-
 typedef struct {
 	uint8_t Command;
 	uint8_t Result;
@@ -262,7 +246,6 @@ typedef union {
 	FMK_CmdAssetErase_t CmdAssetErase;
 	FMK_CmdAssetWrite_t CmdAssetWrite;
 	FMK_CmdDataWrite_t CmdDataWrite;
-//	FMK_CmdRead_t CmdRead;
 	FMK_CmdResult_t CmdResult;
 } FMK_Cmd_t;
 
@@ -278,8 +261,9 @@ typedef struct {
 #pragma pack()
 
 typedef enum {
-	FmkSysEvtRdy,
-	FmkSysEvtRst
+	FmkSysEvtRdy,     //System is ready
+	FmkSysEvtRst,     //Reset system
+	FmkSysEvtUpdCfg   //Update EEPROM configuration
 } FMK_SystemEvent_t;
 
 
@@ -288,7 +272,6 @@ typedef enum {
 //-----------------------------------------------------------------------------
 FMK_EXTERN osEventFlagsId_t FMK_Flags;
 FMK_EXTERN COM_Connexion_t* FMK_Conx;
-//FMK_EXTERN CFG_Data_t       FMK_Config;
 
 
 //=============================================================================
@@ -300,6 +283,9 @@ extern void FMK_Main            (void);
 extern void FMK_SetBootAddress  (uint32_t Address);
 extern void FMK_PostFlag        (uint32_t Flag);
 extern void FMK_PostSystemEvent (FMK_SystemEvent_t Event);
+
+extern void FMK_E2Acquire       (void);
+extern void FMK_E2Release       (void);
 
 
 #ifdef __cplusplus

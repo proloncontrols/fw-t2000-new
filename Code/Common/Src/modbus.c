@@ -26,6 +26,7 @@
 #include "com.h"
 #include "e2.h"
 #include "cfg.h"
+#include "framework.h"
 
 
 //=============================================================================
@@ -257,6 +258,7 @@ static void MB_WriteSingleCoil(COM_Connexion_t* Conx)
 
 	else
 	{
+		FMK_PostSystemEvent(FmkSysEvtUpdCfg);
 	}
 }
 
@@ -277,6 +279,7 @@ static void MB_WriteMultipleCoils(COM_Connexion_t* Conx)
 
 	else
 	{
+		FMK_PostSystemEvent(FmkSysEvtUpdCfg);
 	}
 }
 
@@ -294,6 +297,7 @@ static void MB_WriteSingleRegister(COM_Connexion_t* Conx)
 
 	else
 	{
+		FMK_PostSystemEvent(FmkSysEvtUpdCfg);
 	}
 }
 
@@ -324,6 +328,7 @@ static void MB_WriteMultipleRegisters(COM_Connexion_t* Conx)
 			CFG_RegWrite(Req->Address++, &Ptr[i]);
 		}
 		MB_Tx(Conx, sizeof(MB_FctWrMplRegsAns_t));
+		FMK_PostSystemEvent(FmkSysEvtUpdCfg);
 	}
 }
 
