@@ -158,9 +158,7 @@ typedef enum {
 	FmkErrErase,
 	FmkErrWrite,
 	FmkErrRead,
-	FmkErrFirmwareCRC,
-	FmkErrAssetsCRC,
-	FmkErrAssetsVersion,
+	FmkErrTransferCRC,
 	//Add errors here
 	FmkErrCount,
 } FMK_Error_t;
@@ -171,19 +169,14 @@ typedef enum {
 //-----------------------------------------------------------------------------
 #pragma pack(1)
 
-typedef union {
-	struct {
-		uint8_t Command;
-	} Query;
-	struct {
-		uint8_t Command;
-		uint8_t Firmware;
-		uint8_t FamilyID;
-		uint8_t ProductID;
-		uint16_t HardwareVersion;
-		uint16_t BootVersion;
-		uint16_t AppVersion;
-	} Answer;
+typedef struct {
+	uint8_t Command;
+	uint8_t Firmware;
+	uint8_t FamilyID;
+	uint8_t ProductID;
+	uint16_t HardwareVersion;
+	uint16_t BootVersion;
+	uint16_t AppVersion;
 } FMK_CmdIdentify_t;
 
 typedef struct {
@@ -222,8 +215,6 @@ typedef struct {
 	uint8_t Data;   //<-- Used as pointer to data in packet
 } FMK_CmdAssetWrite_t;
 
-
-
 typedef struct {
 	uint8_t Command;
 	uint32_t Address;
@@ -260,6 +251,10 @@ typedef struct {
 
 #pragma pack()
 
+
+//=============================================================================
+//  E V E N T S
+//-----------------------------------------------------------------------------
 typedef enum {
 	FmkSysEvtRdy,     //System is ready
 	FmkSysEvtRst,     //Reset system

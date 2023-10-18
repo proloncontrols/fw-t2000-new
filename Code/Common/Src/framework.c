@@ -457,23 +457,23 @@ static void FMK_CmdIdentify(COM_Connexion_t* Conx)
 {
 	FMK_CmdIdentify_t* CmdOut = (FMK_CmdIdentify_t*)FMK.CmdOut;
 
-	CmdOut->Answer.Command         = FmkCmdIdentify;
-	CmdOut->Answer.FamilyID        = FMK_SharedFlash->FamilyID;
-	CmdOut->Answer.ProductID       = FMK_SharedFlash->ProductID;
-	CmdOut->Answer.HardwareVersion = FMK_SharedFlash->HardwareVersion;
-	CmdOut->Answer.BootVersion     = FMK_SharedFlash->BootVersion;
+	CmdOut->Command         = FmkCmdIdentify;
+	CmdOut->FamilyID        = FMK_SharedFlash->FamilyID;
+	CmdOut->ProductID       = FMK_SharedFlash->ProductID;
+	CmdOut->HardwareVersion = FMK_SharedFlash->HardwareVersion;
+	CmdOut->BootVersion     = FMK_SharedFlash->BootVersion;
 #ifdef PROJECT_APP
-	CmdOut->Answer.Firmware        = FmkFirmApp;
-	CmdOut->Answer.AppVersion      = APP_VERSION;
+	CmdOut->Firmware        = FmkFirmApp;
+	CmdOut->AppVersion      = APP_VERSION;
 #endif
 #ifdef PROJECT_BOOTL
-	CmdOut->Answer.Firmware        = FmkFirmBootL;
-	CmdOut->Answer.AppVersion      = 0;
+	CmdOut->Firmware        = FmkFirmBootL;
+	CmdOut->AppVersion      = 0;
 #endif
 #ifdef PROJECT_BOOTU
-	CmdOut->Answer.Firmware        = FmkFirmBootU;
-	CmdOut->Answer.BootVersion     = FMK_BOOT_VERSION;
-	CmdOut->Answer.AppVersion      = APP_VERSION;
+	CmdOut->Firmware        = FmkFirmBootU;
+	CmdOut->BootVersion     = FMK_BOOT_VERSION;
+	CmdOut->AppVersion      = APP_VERSION;
 #endif
 
 	Conx->PacketOut.Length = sizeof(FMK_CmdIdentify_t);
@@ -503,7 +503,7 @@ static void FMK_CmdLeave(COM_Connexion_t* Conx)
 	uint16_t ReceivedCRC = ((FMK_CmdLeave_t*)FMK.CmdIn)->CalculatedCRC;
 
 	if((ReceivedCRC != 0xFFFF) && ((ReceivedCRC == 0x0000) || (ReceivedCRC != FMK_CRCGet())))
-		FMK_CmdResult(Conx, FmkErrFirmwareCRC);
+		FMK_CmdResult(Conx, FmkErrTransferCRC);
 	else
 	{
 		FLASH_Reset(FlashDeviceExt);
