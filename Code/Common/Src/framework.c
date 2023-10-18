@@ -221,20 +221,6 @@ void FMK_Main(void)
 }
 
 //-----------------------------------------------------------------------------
-void FMK_E2Acquire(void)
-{
-	if(osMutexAcquire(FMK.E2Mutex, FMK_E2_ACQUIRE_TIMEOUT) != osOK)
-		Error_Handler();
-}
-
-//-----------------------------------------------------------------------------
-void FMK_E2Release(void)
-{
-	if(osMutexRelease(FMK.E2Mutex) != osOK)
-		Error_Handler();
-}
-
-//-----------------------------------------------------------------------------
 void FMK_SetBootAddress(uint32_t Address)
 {
 	FLASH_OBProgramInitTypeDef Init;
@@ -271,6 +257,18 @@ void FMK_PostSystemEvent(FMK_SystemEvent_t Event)
 {
 	FMK.Event = Event;
 	osEventFlagsSet(FMK_Flags, NUM2POS(EvtGrpSys));
+}
+
+//-----------------------------------------------------------------------------
+void FMK_SaveConfig(void)
+{
+	if(osMutexAcquire(FMK.E2Mutex, FMK_E2_ACQUIRE_TIMEOUT) != osOK)
+		Error_Handler();
+
+	CFG_Save(&CFG_Data);
+
+	if(osMutexRelease(FMK.E2Mutex) != osOK)
+		Error_Handler();
 }
 
 
@@ -322,11 +320,7 @@ static void FMK_OnSystem(void)
 	}
 
 	else if(FMK.Event == FmkSysEvtUpdCfg)
-	{
-		FMK_E2Acquire();
-		CFG_Save(&CFG_Data);
-		FMK_E2Release();
-	}
+		FMK_SaveConfig();
 }
 
 //-----------------------------------------------------------------------------
@@ -384,7 +378,11 @@ static bool_t FMK_ComModBus(COM_Connexion_t* Conx)
 	if(PktIn->Header.Address == MB_ADDR_BROADCAST)
 		return FALSE;   //On broadcast packet, pass control to application
 
-	if(PktIn->Header.Address != CFG_Data.ModBusID)
+	CFG_DataModBusId_t Id;
+	CFG_RegGet(CfgHrModBusID, &Id);
+
+	if(PktIn->Header.Address != Id)
+//	if(PktIn->Header.Address != CFG_Data.ModBusID)
 //	if(PktIn->Header.Address != FMK_Config.Address)
 	{
 		COM_Rx(Conx);
@@ -408,7 +406,6 @@ static bool_t FMK_ComModBus(COM_Connexion_t* Conx)
 	}
 
 	Conx->ModBusAddress = CFG_Data.ModBusID;
-//	Conx->ModBusAddress = FMK_Config.Address;
 	return FALSE;                               //Pass control to application
 }
 

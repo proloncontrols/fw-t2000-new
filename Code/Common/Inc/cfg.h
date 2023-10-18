@@ -46,61 +46,54 @@ extern "C" {
 
 
 //=============================================================================
-//  D E F A U L T S   V A L U E S
+//  C O N F I G U R A T I O N   S T R U C T U R E   F I E L D   T Y P E S
 //-----------------------------------------------------------------------------
-#define CFG_DEF_MODBUS_ADDRESS    123
-#define CFG_DEF_MODBUS_NAME       "ModuleName"
+typedef uint8_t  CFG_DataModBusId_t;
+typedef char     CFG_DataModBusName_t[CFG_MODBUS_NAME_SIZE];
+typedef uint8_t  CFG_DataComBaudRate_t;
+typedef uint8_t  CFG_DataComStopBits_t;
+typedef uint8_t  CFG_DataComParity_t;
+typedef uint8_t  CFG_DataScrLanguage_t;
+typedef uint8_t  CFG_DataScrOrientation_t;
+typedef uint16_t CFG_DataScrTimeout_t;
+typedef uint8_t  CFG_DataEnvTempUnit_t;
 
-#define CFG_DEF_COM_BAUDRATE      3
-#define CFG_DEF_COM_STOPBITS      1
-#define CFG_DEF_COM_PARITY        0
 
-#define CFG_DEF_SCR_LANGUAGE      0
-#define CFG_DEF_SCR_ORIENTATION   0
-#define CFG_DEF_SCR_TIMEOUT       0
-
-#define CFG_DEF_ENV_TEMP_UNIT     0
+//=============================================================================
+//  C O N F I G U R A T I O N   S T R U C T U R E
+//-----------------------------------------------------------------------------
+#pragma pack(1)
+typedef struct {
+	CFG_DataModBusId_t       ModBusID;
+	CFG_DataModBusName_t     ModBusName;
+	CFG_DataComBaudRate_t    ComBaudRate;
+	CFG_DataComStopBits_t    ComStopBits;
+	CFG_DataComParity_t      ComParity;
+	CFG_DataScrLanguage_t    ScrLanguage;
+	CFG_DataScrOrientation_t ScrOrientation;
+	CFG_DataScrTimeout_t     ScrTimeout;
+	CFG_DataEnvTempUnit_t    EnvTempUnit;
+} CFG_Data_t;
+#pragma pack()
 
 
 //=============================================================================
 //  H O L D I N G   R E G I S T E R S
 //-----------------------------------------------------------------------------
 typedef enum {
-	CfgHrDeviceType = 1,
-	CfgHrSoftVer,
-	CfgHrHardVer,
-
+	CfgHrDeviceType = 1,   //These are hardcoded values
+	CfgHrSoftVer,          //
+	CfgHrHardVer,          //
 	CfgHrModBusID,
 	CfgHrModBusName,
-
 	CfgHrComBaudRate,
 	CfgHrComStopBits,
 	CfgHrComParity,
-
 	CfgHrScrLanguage,
 	CfgHrScrOrientation,
 	CfgHrScrTimeout,
-
 	CfgHrTempUnit
 } CFG_HoldingRegister_t;
-
-
-#pragma pack(1)
-typedef struct {
-	uint8_t  ModBusID;
-	char     ModBusName[CFG_MODBUS_NAME_SIZE];
-
-	uint8_t  ComBaudRate;
-	uint8_t  ComStopBits;
-	uint8_t  ComParity;
-
-	uint8_t  ScrLanguage;
-	uint8_t  ScrOrientation;
-	uint16_t ScrTimeout;
-
-	uint8_t  EnvTempUnit;
-} CFG_Data_t;
-#pragma pack()
 
 
 //=============================================================================
@@ -147,18 +140,34 @@ typedef enum {
 
 
 //=============================================================================
+//  D E F A U L T S   V A L U E S
+//-----------------------------------------------------------------------------
+#define CFG_DEF_MODBUS_ADDRESS    ((CFG_DataModBusId_t)       123)
+#define CFG_DEF_MODBUS_NAME       ((CFG_DataModBusName_t)    {'M','o','d','u','l','e','N','a','m','e',0,0,0,0,0,0})
+#define CFG_DEF_COM_BAUDRATE      ((CFG_DataComBaudRate_t)    CfgComBaud57600)
+#define CFG_DEF_COM_STOPBITS      ((CFG_DataComStopBits_t)    CfgComStop1)
+#define CFG_DEF_COM_PARITY        ((CFG_DataComParity_t)      CfgComParityNone)
+#define CFG_DEF_SCR_LANGUAGE      ((CFG_DataScrLanguage_t)    CfgScrLanEnglish)
+#define CFG_DEF_SCR_ORIENTATION   ((CFG_DataScrOrientation_t) CfgScrOrientP)
+#define CFG_DEF_SCR_TIMEOUT       ((CFG_DataScrTimeout_t)     0)
+#define CFG_DEF_ENV_TEMP_UNIT     ((CFG_DataEnvTempUnit_t)    CfgEnvTempC)
+
+
+//=============================================================================
 //  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
-CFG_EXTERN CFG_Data_t CFG_Data;
+//CFG_EXTERN CFG_Data_t CFG_Data;
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-extern void   CFG_Load     (CFG_Data_t* Cfg);
-extern void   CFG_Save     (CFG_Data_t* Cfg);
-extern bool_t CFG_RegRead  (CFG_HoldingRegister_t Register, void* Data);
-extern bool_t CFG_RegWrite (CFG_HoldingRegister_t Register, void* Data);
+extern void CFG_Load     (CFG_Data_t* Cfg);
+extern void CFG_Save     (CFG_Data_t* Cfg);
+extern void CFG_RegRead  (CFG_HoldingRegister_t Register, void* Data);
+extern void CFG_RegWrite (CFG_HoldingRegister_t Register, void* Data);
+extern void CFG_RegGet   (CFG_HoldingRegister_t Register, void* Data);
+extern void CFG_RegSet   (CFG_HoldingRegister_t Register, void* Data);
 
 
 #ifdef __cplusplus

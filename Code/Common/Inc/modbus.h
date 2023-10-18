@@ -37,17 +37,14 @@
 //  F U N C T I O N S
 //-----------------------------------------------------------------------------
 typedef enum {
-	MbFctRdDscIn     = 2,
 	MbFctRdCoils     = 1,
-	MbFctWrSglCoil   = 5,
-	MbFctWrMplCoils  = 15,
 	MbFctRdInRegs    = 4,
 	MbFctRdHldRegs   = 3,
+	MbFctRdDscIn     = 2,
+	MbFctWrSglCoil   = 5,
+	MbFctWrMplCoils  = 15,
 	MbFctWrSglReg    = 6,
 	MbFctWrMplRegs   = 16,
-	MbFctRdWrMplRegs = 23,
-	MbFctMskWrReg    = 22,
-	MbFctRdFifoQueue = 24,
 	MbFctMEIT        = 43
 } MB_Function_t;
 

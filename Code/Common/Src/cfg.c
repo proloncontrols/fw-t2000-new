@@ -25,6 +25,7 @@
 #include "basic.h"
 #include "cfg.h"
 #include "e2.h"
+#include "framework.h"
 
 
 //=============================================================================
@@ -34,23 +35,16 @@
 
 
 //=============================================================================
-//  E N U M S
-//-----------------------------------------------------------------------------
-typedef enum {
-	CfgFieldUint8,
-	CfgFieldUint16,
-	CfgFieldName
-} CFG_FieldType_t;
-
-
-//=============================================================================
 //  S T R U C T S
 //-----------------------------------------------------------------------------
 typedef struct {
 	CFG_HoldingRegister_t Register;
 	void*                 FieldAddress;
-	CFG_FieldType_t       FieldType;
+	int                   FieldSize;
 } CFG_HoldingRegisterLookup_t;
+
+
+static CFG_Data_t CFG_Data;
 
 
 //=============================================================================
@@ -58,18 +52,18 @@ typedef struct {
 //-----------------------------------------------------------------------------
 static const CFG_HoldingRegisterLookup_t CFG_HoldingRegisterLookup [] =
 {
-	{ CfgHrModBusID,       &CFG_Data.ModBusID,       CfgFieldUint8  },
-	{ CfgHrModBusName,      CFG_Data.ModBusName,     CfgFieldName   },
+	{ CfgHrModBusID,       &CFG_Data.ModBusID,       sizeof(CFG_DataModBusId_t)       },
+	{ CfgHrModBusName,      CFG_Data.ModBusName,     sizeof(CFG_DataModBusName_t)     },
 
-	{ CfgHrComBaudRate,    &CFG_Data.ComBaudRate,    CfgFieldUint8  },
-	{ CfgHrComStopBits,    &CFG_Data.ComStopBits,    CfgFieldUint8  },
-	{ CfgHrComParity,      &CFG_Data.ComParity,      CfgFieldUint8  },
+	{ CfgHrComBaudRate,    &CFG_Data.ComBaudRate,    sizeof(CFG_DataComBaudRate_t)    },
+	{ CfgHrComStopBits,    &CFG_Data.ComStopBits,    sizeof(CFG_DataComStopBits_t)    },
+	{ CfgHrComParity,      &CFG_Data.ComParity,      sizeof(CFG_DataComParity_t)      },
 
-	{ CfgHrScrLanguage,    &CFG_Data.ScrLanguage,    CfgFieldUint8  },
-	{ CfgHrScrOrientation, &CFG_Data.ScrOrientation, CfgFieldUint8  },
-	{ CfgHrScrTimeout,     &CFG_Data.ScrTimeout,     CfgFieldUint16 },
+	{ CfgHrScrLanguage,    &CFG_Data.ScrLanguage,    sizeof(CFG_DataScrLanguage_t)    },
+	{ CfgHrScrOrientation, &CFG_Data.ScrOrientation, sizeof(CFG_DataScrOrientation_t) },
+	{ CfgHrScrTimeout,     &CFG_Data.ScrTimeout,     sizeof(CFG_DataScrTimeout_t)     },
 
-	{ CfgHrTempUnit,       &CFG_Data.EnvTempUnit,    CfgFieldUint8  }
+	{ CfgHrTempUnit,       &CFG_Data.EnvTempUnit,    sizeof(CFG_DataEnvTempUnit_t)    }
 };
 
 
@@ -116,15 +110,15 @@ void CFG_Save(CFG_Data_t* Cfg)
 }
 
 //-----------------------------------------------------------------------------
-bool_t CFG_RegRead(CFG_HoldingRegister_t Register, void* Data)
+void CFG_RegRead(CFG_HoldingRegister_t Register, void* Data)
 {
 	const CFG_HoldingRegisterLookup_t* Lookup = CFG_GetLookup(Register);
 
 	if(Lookup)
 	{
-		switch(Lookup->FieldType)
+		switch(Lookup->FieldSize)
 		{
-			case CfgFieldUint8:
+			case sizeof(uint8_t):
 			{
 				uint8_t* Src = (uint8_t*)Lookup->FieldAddress;
 				uint16_t* Dst = (uint16_t*)Data;
@@ -132,7 +126,7 @@ bool_t CFG_RegRead(CFG_HoldingRegister_t Register, void* Data)
 			}
 			break;
 
-			case CfgFieldUint16:
+			case sizeof(uint16_t):
 			{
 				uint16_t* Src = (uint16_t*)Lookup->FieldAddress;
 				uint16_t* Dst = (uint16_t*)Data;
@@ -140,29 +134,23 @@ bool_t CFG_RegRead(CFG_HoldingRegister_t Register, void* Data)
 			}
 			break;
 
-			case CfgFieldName:
-				memcpy(Data, Lookup->FieldAddress, CFG_MODBUS_NAME_SIZE);
-			break;
-
-			default:
-				return FALSE;
+			case sizeof(CFG_DataModBusName_t):
+				memcpy(Data, Lookup->FieldAddress, sizeof(CFG_DataModBusName_t));
 			break;
 		}
-		return TRUE;
 	}
-	return FALSE;
 }
 
 //-----------------------------------------------------------------------------
-bool_t CFG_RegWrite(CFG_HoldingRegister_t Register, void* Data)
+void CFG_RegWrite(CFG_HoldingRegister_t Register, void* Data)
 {
 	const CFG_HoldingRegisterLookup_t* Lookup = CFG_GetLookup(Register);
 
 	if(Lookup)
 	{
-		switch(Lookup->FieldType)
+		switch(Lookup->FieldSize)
 		{
-			case CfgFieldUint8:
+			case sizeof(uint8_t):
 			{
 				uint8_t* Src = (uint8_t*)Data;
 				uint8_t* Dst = (uint8_t*)Lookup->FieldAddress;
@@ -170,7 +158,7 @@ bool_t CFG_RegWrite(CFG_HoldingRegister_t Register, void* Data)
 			}
 			break;
 
-			case CfgFieldUint16:
+			case sizeof(uint16_t):
 			{
 				uint16_t* Src = (uint16_t*)Data;
 				uint16_t* Dst = (uint16_t*)Lookup->FieldAddress;
@@ -178,17 +166,24 @@ bool_t CFG_RegWrite(CFG_HoldingRegister_t Register, void* Data)
 			}
 			break;
 
-			case CfgFieldName:
-				memcpy(Lookup->FieldAddress, Data, CFG_MODBUS_NAME_SIZE);
-			break;
-
-			default:
-				return FALSE;
+			case sizeof(CFG_DataModBusName_t):
+				memcpy(Lookup->FieldAddress, Data, sizeof(CFG_DataModBusName_t));
 			break;
 		}
-		return TRUE;
 	}
-	return FALSE;
+}
+
+//-----------------------------------------------------------------------------
+void CFG_RegGet(CFG_HoldingRegister_t Register, void* Data)
+{
+	CFG_RegRead(Register, Data);
+}
+
+//-----------------------------------------------------------------------------
+void CFG_RegSet(CFG_HoldingRegister_t Register, void* Data)
+{
+	CFG_RegWrite(Register, Data);
+	FMK_PostSystemEvent(FmkSysEvtUpdCfg);
 }
 
 
