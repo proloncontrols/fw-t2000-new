@@ -221,6 +221,20 @@ void FMK_Main(void)
 }
 
 //-----------------------------------------------------------------------------
+void FMK_E2Acquire(void)
+{
+	if(osMutexAcquire(FMK.E2Mutex, FMK_E2_ACQUIRE_TIMEOUT) != osOK)
+		Error_Handler();
+}
+
+//-----------------------------------------------------------------------------
+void FMK_E2Release(void)
+{
+	if(osMutexRelease(FMK.E2Mutex) != osOK)
+		Error_Handler();
+}
+
+//-----------------------------------------------------------------------------
 void FMK_SetBootAddress(uint32_t Address)
 {
 	FLASH_OBProgramInitTypeDef Init;
@@ -257,20 +271,6 @@ void FMK_PostSystemEvent(FMK_SystemEvent_t Event)
 {
 	FMK.Event = Event;
 	osEventFlagsSet(FMK_Flags, NUM2POS(EvtGrpSys));
-}
-
-//-----------------------------------------------------------------------------
-void FMK_E2Acquire(void)
-{
-	if(osMutexAcquire(FMK.E2Mutex, FMK_E2_ACQUIRE_TIMEOUT) != osOK)
-		Error_Handler();
-}
-
-//-----------------------------------------------------------------------------
-void FMK_E2Release(void)
-{
-	if(osMutexRelease(FMK.E2Mutex) != osOK)
-		Error_Handler();
 }
 
 
