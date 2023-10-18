@@ -101,9 +101,6 @@ extern void TouchGFX_Task(void *argument);
 
 /* USER CODE BEGIN PFP */
 void NV3052_RGB_init(void);
-//void WriteCommand(unsigned char cmd);
-//void WriteData(unsigned char dat);
-//void Wrt_Reg_3052(unsigned char d1,unsigned char d2);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
