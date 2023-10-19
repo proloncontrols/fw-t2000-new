@@ -183,7 +183,6 @@ void FMK_Init(void)
 
 	FMK.E2Mutex = osMutexNew(NULL);
 	CFG_Load();
-//	CFG_Load(&CFG_Data);
 	UI_Init();
 	FMK_Flags = osEventFlagsNew(NULL);
 	MB_Init();
@@ -267,7 +266,6 @@ void FMK_SaveConfig(void)
 		Error_Handler();
 
 	CFG_Save();
-//	CFG_Save(&CFG_Data);
 
 	if(osMutexRelease(FMK.E2Mutex) != osOK)
 		Error_Handler();
