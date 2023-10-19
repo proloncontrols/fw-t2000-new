@@ -218,7 +218,7 @@ static void MB_ReadHoldingRegisters(COM_Connexion_t* Conx)
 
 		else if(Req->Address == CfgHrHardVer)
 		{
-			*Ptr = REVERSE_ORDER_16(FMK_GetSharedFlash()->BootVersion);
+			*Ptr = REVERSE_ORDER_16(FMK_GetSharedFlash()->HardwareVersion);
 		}
 
 		else
