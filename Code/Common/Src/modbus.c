@@ -27,6 +27,7 @@
 #include "e2.h"
 #include "cfg.h"
 #include "framework.h"
+#include "app.h"
 
 
 //=============================================================================
@@ -150,8 +151,8 @@ static void MB_ReadCoils(COM_Connexion_t* Conx)
 	MB_FctRdCoilsReq_t* Req = (MB_FctRdCoilsReq_t*)&MB.PktRx->Function;
 //	MB_FctRdCoilsAns_t* Ans = (MB_FctRdCoilsAns_t*)&MB.PktTx->Function;
 
-	Req->Address  = SWAP_ENDIANESS(Req->Address);
-	Req->Quantity = SWAP_ENDIANESS(Req->Quantity);
+	Req->Address  = REVERSE_ORDER_16(Req->Address);
+	Req->Quantity = REVERSE_ORDER_16(Req->Quantity);
 
 	if((Req->Address < MB_RD_COILS_ADDR_MIN) || (Req->Address > MB_RD_COILS_ADDR_MAX))
 		MB_SendError(Conx, MbErrIllegalDataAddress);
@@ -170,8 +171,8 @@ static void MB_ReadInputRegisters(COM_Connexion_t* Conx)
 	MB_FctRdInRegsReq_t* Req = (MB_FctRdInRegsReq_t*)&MB.PktRx->Function;
 //	MB_FctRdInRegsAns_t* Ans = (MB_FctRdInRegsAns_t*)&MB.PktTx->Function;
 
-	Req->Address  = SWAP_ENDIANESS(Req->Address);
-	Req->Quantity = SWAP_ENDIANESS(Req->Quantity);
+	Req->Address  = REVERSE_ORDER_16(Req->Address);
+	Req->Quantity = REVERSE_ORDER_16(Req->Quantity);
 
 	if((Req->Address < MB_RD_IN_REGS_ADDR_MIN) || (Req->Address > MB_RD_IN_REGS_ADDR_MAX))
 		MB_SendError(Conx, MbErrIllegalDataAddress);
@@ -190,8 +191,8 @@ static void MB_ReadHoldingRegisters(COM_Connexion_t* Conx)
 	MB_FctRdHldRegsReq_t* Req = (MB_FctRdHldRegsReq_t*)&MB.PktRx->Function;
 	MB_FctRdHldRegsAns_t* Ans = (MB_FctRdHldRegsAns_t*)&MB.PktTx->Function;
 
-	Req->Address  = SWAP_ENDIANESS(Req->Address);
-	Req->Quantity = SWAP_ENDIANESS(Req->Quantity);
+	Req->Address  = REVERSE_ORDER_16(Req->Address);
+	Req->Quantity = REVERSE_ORDER_16(Req->Quantity);
 
 	if((Req->Address < MB_RD_HLD_REG_ADDR_MIN) || (Req->Address > MB_RD_HLD_REG_ADDR_MAX))
 		MB_SendError(Conx, MbErrIllegalDataAddress);
@@ -204,10 +205,29 @@ static void MB_ReadHoldingRegisters(COM_Connexion_t* Conx)
 		uint16_t* Ptr = (uint16_t*)((uint32_t)Ans + sizeof(MB_FctRdHldRegsAns_t));
 
 		Ans->ByteCount = Req->Quantity * sizeof(uint16_t);
-		for(uint16_t i = 0; i < Req->Quantity; i++)
+
+		if(Req->Address == CfgHrDeviceType)
 		{
-			CFG_RegRead(Req->Address++, &Ptr[i]);
-			Ptr[i] = SWAP_ENDIANESS(Ptr[i]);
+			*Ptr = REVERSE_ORDER_16(0xAA55);
+		}
+
+		else if(Req->Address == CfgHrSoftVer)
+		{
+			*Ptr = REVERSE_ORDER_16(APP_VERSION);
+		}
+
+		else if(Req->Address == CfgHrHardVer)
+		{
+			*Ptr = REVERSE_ORDER_16(FMK_GetSharedFlash()->BootVersion);
+		}
+
+		else
+		{
+			for(uint16_t i = 0; i < Req->Quantity; i++)
+			{
+				CFG_Read(Req->Address++, &Ptr[i]);
+				Ptr[i] = REVERSE_ORDER_16(Ptr[i]);
+			}
 		}
 		MB_Tx(Conx, sizeof(MB_FctRdHldRegsAns_t) + Ans->ByteCount);
 	}
@@ -219,8 +239,8 @@ static void MB_ReadDiscreteInputs(COM_Connexion_t* Conx)
 	MB_FctRdDscInsReq_t* Req = (MB_FctRdDscInsReq_t*)&MB.PktRx->Function;
 //	MB_FctRdDscInsAns_t* Ans = (MB_FctRdDscInsAns_t*)&MB.PktTx->Function;
 
-	Req->Address  = SWAP_ENDIANESS(Req->Address);
-	Req->Quantity = SWAP_ENDIANESS(Req->Quantity);
+	Req->Address  = REVERSE_ORDER_16(Req->Address);
+	Req->Quantity = REVERSE_ORDER_16(Req->Quantity);
 
 	if((Req->Address < MB_RD_DISC_IN_ADDR_MIN) || (Req->Address > MB_RD_DISC_IN_ADDR_MAX))
 		MB_SendError(Conx, MbErrIllegalDataAddress);
@@ -247,8 +267,8 @@ static void MB_WriteSingleCoil(COM_Connexion_t* Conx)
 	MB_FctWrSglCoilReq_t* Req = (MB_FctWrSglCoilReq_t*)&MB.PktRx->Function;
 //	MB_FctWrSglCoilAns_t* Ans = (MB_FctWrSglCoilAns_t*)&MB.PktTx->Function;
 
-	Req->Address = SWAP_ENDIANESS(Req->Address);
-	Req->Value   = SWAP_ENDIANESS(Req->Value);
+	Req->Address = REVERSE_ORDER_16(Req->Address);
+	Req->Value   = REVERSE_ORDER_16(Req->Value);
 
 	if((Req->Address < MB_WR_SGL_COIL_ADDR_MIN) || (Req->Address > MB_WR_SGL_COIL_ADDR_MAX))
 		MB_SendError(Conx, MbErrIllegalDataAddress);
@@ -268,8 +288,8 @@ static void MB_WriteMultipleCoils(COM_Connexion_t* Conx)
 	MB_FctWrMplCoilsReq_t* Req = (MB_FctWrMplCoilsReq_t*)&MB.PktRx->Function;
 //	MB_FctWrMplCoilsAns_t* Ans = (MB_FctWrMplCoilsAns_t*)&MB.PktTx->Function;
 
-	Req->Address  = SWAP_ENDIANESS(Req->Address);
-	Req->Quantity = SWAP_ENDIANESS(Req->Quantity);
+	Req->Address  = REVERSE_ORDER_16(Req->Address);
+	Req->Quantity = REVERSE_ORDER_16(Req->Quantity);
 
 	if((Req->Address < MB_WR_MPL_COILS_ADDR_MIN) || (Req->Address > MB_WR_MPL_COILS_ADDR_MAX))
 		MB_SendError(Conx, MbErrIllegalDataAddress);
@@ -289,8 +309,8 @@ static void MB_WriteSingleRegister(COM_Connexion_t* Conx)
 	MB_FctWrSglRegReq_t* Req = (MB_FctWrSglRegReq_t*)&MB.PktRx->Function;
 //	MB_FctWrSglRegAns_t* Ans = (MB_FctWrSglRegAns_t*)&MB.PktTx->Function;
 
-	Req->Address = SWAP_ENDIANESS(Req->Address);
-	Req->Value   = SWAP_ENDIANESS(Req->Value);
+	Req->Address = REVERSE_ORDER_16(Req->Address);
+	Req->Value   = REVERSE_ORDER_16(Req->Value);
 
 	if((Req->Address < MB_WR_SGL_REG_ADDR_MIN) || (Req->Address > MB_WR_SGL_REG_ADDR_MAX))
 		MB_SendError(Conx, MbErrIllegalDataAddress);
@@ -307,8 +327,8 @@ static void MB_WriteMultipleRegisters(COM_Connexion_t* Conx)
 	MB_FctWrMplRegsReq_t* Req = (MB_FctWrMplRegsReq_t*)&MB.PktRx->Function;
 	MB_FctWrMplRegsAns_t* Ans = (MB_FctWrMplRegsAns_t*)&MB.PktTx->Function;
 
-	Req->Address  = SWAP_ENDIANESS(Req->Address);
-	Req->Quantity = SWAP_ENDIANESS(Req->Quantity);
+	Req->Address  = REVERSE_ORDER_16(Req->Address);
+	Req->Quantity = REVERSE_ORDER_16(Req->Quantity);
 
 	if((Req->Address < MB_WR_MPL_REGS_ADDR_MIN) || (Req->Address > MB_WR_MPL_REGS_ADDR_MAX))
 		MB_SendError(Conx, MbErrIllegalDataAddress);
@@ -320,12 +340,12 @@ static void MB_WriteMultipleRegisters(COM_Connexion_t* Conx)
 	{
 		uint16_t* Ptr = (uint16_t*)((uint32_t)Req + sizeof(MB_FctWrMplRegsReq_t));
 
-		Ans->Address = SWAP_ENDIANESS(Req->Address);
-		Ans->QtyWritten = SWAP_ENDIANESS(Req->Quantity);
+		Ans->Address = REVERSE_ORDER_16(Req->Address);
+		Ans->QtyWritten = REVERSE_ORDER_16(Req->Quantity);
 		for(uint16_t i = 0; i < Req->Quantity; i++)
 		{
-			Ptr[i] = SWAP_ENDIANESS(Ptr[i]);
-			CFG_RegWrite(Req->Address++, &Ptr[i]);
+			Ptr[i] = REVERSE_ORDER_16(Ptr[i]);
+			CFG_Write(Req->Address++, &Ptr[i]);
 		}
 		MB_Tx(Conx, sizeof(MB_FctWrMplRegsAns_t));
 		FMK_PostSystemEvent(FmkSysEvtUpdCfg);
@@ -344,7 +364,7 @@ static void MB_SendError(COM_Connexion_t* Conx, MB_Error_t Err)
 static void MB_Tx(COM_Connexion_t* Conx, uint16_t Length)
 {
 	Conx->PacketOut.Length = sizeof(MB_PktHeader_t) + Length;
-	COM_Checksum_t Checksum = SWAP_ENDIANESS(COM_CRC16(Conx->PacketOut.Payload, Conx->PacketOut.Length));
+	COM_Checksum_t Checksum = REVERSE_ORDER_16(COM_CRC16(Conx->PacketOut.Payload, Conx->PacketOut.Length));
 	COM_Checksum_t* ChecksumPtr = (COM_Checksum_t*)(Conx->PacketOut.Payload + Conx->PacketOut.Length);
 	*ChecksumPtr = Checksum;
 	Conx->PacketOut.Length += sizeof(COM_Checksum_t);

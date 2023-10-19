@@ -87,7 +87,6 @@ static void FEA_GetRect270(touchgfx::Rect& Rect0)
 void FEA_PlaceText(touchgfx::TextArea& Text)
 {
 	if(CFG_Data.ScrOrientation == CfgScrOrientL)
-//	if(FMK_Config.ScreenOrientation == CfgOrientL)
 	{
 		touchgfx::Rect TextRect = Text.getAbsoluteRect();
 
@@ -100,7 +99,6 @@ void FEA_PlaceText(touchgfx::TextArea& Text)
 void FEA_PlaceButtonLabel(touchgfx::ButtonWithLabel& Button)
 {
     if(CFG_Data.ScrOrientation == CfgScrOrientL)
-//    if(FMK_Config.ScreenOrientation == CfgOrientL)
 	{
     	touchgfx::Rect ButtonRect = Button.getRect();
 
@@ -114,7 +112,6 @@ void FEA_PlaceButtonLabel(touchgfx::ButtonWithLabel& Button)
 void FEA_PlaceButtonIcon(touchgfx::ButtonWithIcon& Button)
 {
     if(CFG_Data.ScrOrientation == CfgScrOrientL)
-//    if(FMK_Config.ScreenOrientation == CfgOrientL)
 	{
     	touchgfx::Rect ButtonRect = Button.getRect();
 
@@ -128,7 +125,6 @@ void FEA_PlaceButtonIcon(touchgfx::ButtonWithIcon& Button)
 void FEA_PlaceImage(touchgfx::TextureMapper& Image)
 {
     if(CFG_Data.ScrOrientation == CfgScrOrientL)
-//    if(FMK_Config.ScreenOrientation == CfgOrientL)
     {
 	    touchgfx::Bitmap ImageBit  = Image.getBitmap();
     	touchgfx::Rect   ImageRect = Image.getAbsoluteRect();

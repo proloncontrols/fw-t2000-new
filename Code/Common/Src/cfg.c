@@ -44,9 +44,6 @@ typedef struct {
 } CFG_HoldingRegisterLookup_t;
 
 
-static CFG_Data_t CFG_Data;
-
-
 //=============================================================================
 //  C O N S T A N T S
 //-----------------------------------------------------------------------------
@@ -98,19 +95,25 @@ static const CFG_HoldingRegisterLookup_t* CFG_GetLookup (CFG_HoldingRegister_t R
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CFG_Load(CFG_Data_t* Cfg)
+void CFG_Load(void)
 {
-	E2_Read(Cfg, CFG_E2_ADDRESS, sizeof(CFG_Data_t));
+	E2_Read(&CFG_Data, CFG_E2_ADDRESS, sizeof(CFG_Data_t));
 }
 
 //-----------------------------------------------------------------------------
-void CFG_Save(CFG_Data_t* Cfg)
+void CFG_Save(void)
 {
-	E2_Write(Cfg, CFG_E2_ADDRESS, sizeof(CFG_Data_t));
+	E2_Write(&CFG_Data, CFG_E2_ADDRESS, sizeof(CFG_Data_t));
 }
 
 //-----------------------------------------------------------------------------
-void CFG_RegRead(CFG_HoldingRegister_t Register, void* Data)
+void CFG_Modified(void)
+{
+	FMK_PostSystemEvent(FmkSysEvtUpdCfg);
+}
+
+//-----------------------------------------------------------------------------
+void CFG_Read(CFG_HoldingRegister_t Register, void* Data)
 {
 	const CFG_HoldingRegisterLookup_t* Lookup = CFG_GetLookup(Register);
 
@@ -142,7 +145,7 @@ void CFG_RegRead(CFG_HoldingRegister_t Register, void* Data)
 }
 
 //-----------------------------------------------------------------------------
-void CFG_RegWrite(CFG_HoldingRegister_t Register, void* Data)
+void CFG_Write(CFG_HoldingRegister_t Register, void* Data)
 {
 	const CFG_HoldingRegisterLookup_t* Lookup = CFG_GetLookup(Register);
 
@@ -170,20 +173,9 @@ void CFG_RegWrite(CFG_HoldingRegister_t Register, void* Data)
 				memcpy(Lookup->FieldAddress, Data, sizeof(CFG_DataModBusName_t));
 			break;
 		}
+
+		FMK_PostSystemEvent(FmkSysEvtUpdCfg);
 	}
-}
-
-//-----------------------------------------------------------------------------
-void CFG_RegGet(CFG_HoldingRegister_t Register, void* Data)
-{
-	CFG_RegRead(Register, Data);
-}
-
-//-----------------------------------------------------------------------------
-void CFG_RegSet(CFG_HoldingRegister_t Register, void* Data)
-{
-	CFG_RegWrite(Register, Data);
-	FMK_PostSystemEvent(FmkSysEvtUpdCfg);
 }
 
 

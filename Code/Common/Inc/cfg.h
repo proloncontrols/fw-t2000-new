@@ -156,18 +156,17 @@ typedef enum {
 //=============================================================================
 //  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
-//CFG_EXTERN CFG_Data_t CFG_Data;
+CFG_EXTERN CFG_Data_t CFG_Data;
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-extern void CFG_Load     (CFG_Data_t* Cfg);
-extern void CFG_Save     (CFG_Data_t* Cfg);
-extern void CFG_RegRead  (CFG_HoldingRegister_t Register, void* Data);
-extern void CFG_RegWrite (CFG_HoldingRegister_t Register, void* Data);
-extern void CFG_RegGet   (CFG_HoldingRegister_t Register, void* Data);
-extern void CFG_RegSet   (CFG_HoldingRegister_t Register, void* Data);
+extern void CFG_Load     (void);
+extern void CFG_Save     (void);
+extern void CFG_Modified (void);
+extern void CFG_Read     (CFG_HoldingRegister_t Register, void* Data);
+extern void CFG_Write    (CFG_HoldingRegister_t Register, void* Data);
 
 
 #ifdef __cplusplus

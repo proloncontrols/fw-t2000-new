@@ -70,11 +70,7 @@ void APP_OnPeriodic(void)
 {
 	//Called every periodic timeout (defined in app.h APP_IDLE_PERIODIC_TIMEOUT)
 
-	CFG_DataScrTimeout_t Timeout;
-
-	CFG_RegGet(CfgHrScrTimeout, &Timeout);
-	UI_ScreenTimeout(Timeout);
-//	UI_ScreenTimeout(CFG_Data.ScrTimeout);
+	UI_ScreenTimeout(CFG_Data.ScrTimeout);
 //	UI_ScreenTimeout(FMK_Config.ScreenTimeout);
 }
 
@@ -106,13 +102,9 @@ void APP_OnFlag(uint32_t Flag)
 			if(APP.Env.Device > EnvDevNone)
 			{
 				UI_Text_t Text;
-				CFG_DataEnvTempUnit_t CfgHrTempUnit;
 
 				Text.TextLabel = UiTextTemp;
-
-				CFG_RegGet(CfgHrTempUnit, &TempUnit);
 				if(CFG_Data.EnvTempUnit == CfgEnvTempC)
-//				if(CFG_Data.EnvTempUnit == CfgEnvTempC)
 //				if(FMK_Config.TempUnit == CfgTempC)
 					sprintf((char*)Text.Text, "%.1f°C", APP.Env.TempC);
 				else

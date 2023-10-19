@@ -182,7 +182,8 @@ void FMK_Init(void)
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	FMK.E2Mutex = osMutexNew(NULL);
-	CFG_Load(&CFG_Data);
+	CFG_Load();
+//	CFG_Load(&CFG_Data);
 	UI_Init();
 	FMK_Flags = osEventFlagsNew(NULL);
 	MB_Init();
@@ -265,10 +266,17 @@ void FMK_SaveConfig(void)
 	if(osMutexAcquire(FMK.E2Mutex, FMK_E2_ACQUIRE_TIMEOUT) != osOK)
 		Error_Handler();
 
-	CFG_Save(&CFG_Data);
+	CFG_Save();
+//	CFG_Save(&CFG_Data);
 
 	if(osMutexRelease(FMK.E2Mutex) != osOK)
 		Error_Handler();
+}
+
+//-----------------------------------------------------------------------------
+FMK_SharedFlash_t* FMK_GetSharedFlash(void)
+{
+	return FMK_SharedFlash;
 }
 
 
@@ -299,7 +307,7 @@ static void FMK_OnSystem(void)
 				FMK.CmdIn = (FMK_Cmd_t*)&PktIn->Function.FctMEIT.Data;
 				FMK.CmdOut = (FMK_Cmd_t*)&PktOut->Function.FctMEIT.Data;
 
-				PktOut->Header.Address               = CFG_Data.ModBusID; // FMK_Config.Address;
+				PktOut->Header.Address               = CFG_Data.ModBusID;
 				PktOut->Header.Function              = MbFctMEIT;
 				PktOut->Function.FctMEIT.SubFunction = MbSubFctMEITUpgrade;
 			}
@@ -378,12 +386,7 @@ static bool_t FMK_ComModBus(COM_Connexion_t* Conx)
 	if(PktIn->Header.Address == MB_ADDR_BROADCAST)
 		return FALSE;   //On broadcast packet, pass control to application
 
-	CFG_DataModBusId_t Id;
-	CFG_RegGet(CfgHrModBusID, &Id);
-
-	if(PktIn->Header.Address != Id)
-//	if(PktIn->Header.Address != CFG_Data.ModBusID)
-//	if(PktIn->Header.Address != FMK_Config.Address)
+	if(PktIn->Header.Address != CFG_Data.ModBusID)
 	{
 		COM_Rx(Conx);
 		return TRUE;    //Ignore packet if it does not belong to us

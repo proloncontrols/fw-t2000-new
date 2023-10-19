@@ -44,7 +44,7 @@ typedef uint8_t bool_t;
 //-----------------------------------------------------------------------------
 #define NUM2POS(x)                 (1 << x)
 #define NUMBER_OF_ELEMENTS_IN(x)   (sizeof(x) / sizeof(*x))
-#define SWAP_ENDIANESS(x)         ((uint16_t)(((x >> 8) & 0x00FF) + ((x << 8) & 0xFF00)))   //Swap uint16_t type low and high order bytes
+#define REVERSE_ORDER_16(x)        ((uint16_t)(((x >> 8) & 0x00FF) + ((x << 8) & 0xFF00)))   //Reverse uint16_t type low and high order bytes
 
 
 #endif   //BASIC_H
