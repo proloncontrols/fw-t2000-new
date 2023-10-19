@@ -272,14 +272,15 @@ FMK_EXTERN COM_Connexion_t* FMK_Conx;
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-extern void FMK_Init            (void);
-extern void FMK_Entry           (void);
-extern void FMK_Main            (void);
-extern void FMK_SetBootAddress  (uint32_t Address);
-extern void FMK_PostFlag        (uint32_t Flag);
-extern void FMK_PostSystemEvent (FMK_SystemEvent_t Event);
-extern void FMK_SaveConfig      (void);
-extern FMK_SharedFlash_t* FMK_GetSharedFlash (void);
+extern void               FMK_Init            (void);
+extern void               FMK_Entry           (void);
+extern void               FMK_Main            (void);
+extern void               FMK_SetBootAddress  (uint32_t Address);
+extern void               FMK_PostFlag        (uint32_t Flag);
+extern void               FMK_PostSystemEvent (FMK_SystemEvent_t Event);
+extern void               FMK_SaveConfig      (void);
+extern FMK_SharedRam_t*   FMK_GetSharedRam    (void);
+extern FMK_SharedFlash_t* FMK_GetSharedFlash  (void);
 
 
 #ifdef __cplusplus

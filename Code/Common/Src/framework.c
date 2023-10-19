@@ -274,6 +274,12 @@ void FMK_SaveConfig(void)
 }
 
 //-----------------------------------------------------------------------------
+FMK_SharedRam_t* FMK_GetSharedRam(void)
+{
+	return FMK_SharedRam;
+}
+
+//-----------------------------------------------------------------------------
 FMK_SharedFlash_t* FMK_GetSharedFlash(void)
 {
 	return FMK_SharedFlash;
