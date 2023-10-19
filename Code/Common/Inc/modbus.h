@@ -37,15 +37,15 @@
 //  F U N C T I O N S
 //-----------------------------------------------------------------------------
 typedef enum {
-	MbFctRdCoils     = 1,
-	MbFctRdInRegs    = 4,
-	MbFctRdHldRegs   = 3,
-	MbFctRdDscIn     = 2,
-	MbFctWrSglCoil   = 5,
-	MbFctWrMplCoils  = 15,
-	MbFctWrSglReg    = 6,
-	MbFctWrMplRegs   = 16,
-	MbFctMEIT        = 43
+	MbFctRdCoils    = 1,
+	MbFctRdInRegs   = 4,
+	MbFctRdHldRegs  = 3,
+	MbFctRdDscIn    = 2,
+	MbFctWrSglCoil  = 5,
+	MbFctWrMplCoils = 15,
+	MbFctWrSglReg   = 6,
+	MbFctWrMplRegs  = 16,
+	MbFctMEIT       = 43
 } MB_Function_t;
 
 typedef enum {
@@ -129,7 +129,7 @@ typedef struct {
 typedef struct {
 	uint16_t Address;
 	uint16_t Quantity;
-	uint8_t ByteCount;
+	uint8_t  ByteCount;
 } MB_FctWrMplCoilsReq_t;
 //-------
 typedef struct {
@@ -152,7 +152,7 @@ typedef struct {
 typedef struct {
 	uint16_t Address;
 	uint16_t Quantity;
-	uint8_t ByteCount;
+	uint8_t  ByteCount;
 } MB_FctWrMplRegsReq_t;
 //-------
 typedef struct {
@@ -171,13 +171,13 @@ typedef struct {
 } MB_FctError_t;
 
 typedef union {
-	MB_FctMEIT_t FctMEIT;
+	MB_FctMEIT_t  FctMEIT;
 	MB_FctError_t Error;
 } MB_Fct_t;
 
 typedef struct {
 	MB_PktHeader_t Header;
-	MB_Fct_t Function;
+	MB_Fct_t       Function;
 } MB_Packet_t;
 
 #pragma pack()

@@ -191,7 +191,7 @@ static void MB_ReadHoldingRegisters(COM_Connexion_t* Conx)
 	MB_FctRdHldRegsReq_t* Req = (MB_FctRdHldRegsReq_t*)&MB.PktRx->Function;
 	MB_FctRdHldRegsAns_t* Ans = (MB_FctRdHldRegsAns_t*)&MB.PktTx->Function;
 
-	Req->Address  = REVERSE_ORDER_16(Req->Address);
+	Req->Address  = REVERSE_ORDER_16(Req->Address) + 1;   //Focus holding registers are 0 based
 	Req->Quantity = REVERSE_ORDER_16(Req->Quantity);
 
 	if((Req->Address < MB_RD_HLD_REG_ADDR_MIN) || (Req->Address > MB_RD_HLD_REG_ADDR_MAX))
@@ -208,7 +208,7 @@ static void MB_ReadHoldingRegisters(COM_Connexion_t* Conx)
 
 		if(Req->Address == CfgHrDeviceType)
 		{
-			*Ptr = REVERSE_ORDER_16(0xAA55);
+			*Ptr = REVERSE_ORDER_16(4);   //4 simulates a T1100
 		}
 
 		else if(Req->Address == CfgHrSoftVer)
