@@ -104,7 +104,7 @@ void APP_OnFlag(uint32_t Flag)
 				UI_Text_t Text;
 
 				Text.TextLabel = UiTextTemp;
-				if(CFG_Data.EnvTempUnit == CfgEnvTempC)
+				if(CFG_Data.TempUnit == CfgEnvTempC)
 //				if(FMK_Config.TempUnit == CfgTempC)
 					sprintf((char*)Text.Text, "%.1f°C", APP.Env.TempC);
 				else

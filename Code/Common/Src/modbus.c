@@ -206,7 +206,7 @@ static void MB_ReadHoldingRegisters(COM_Connexion_t* Conx)
 
 		Ans->ByteCount = Req->Quantity * sizeof(uint16_t);
 
-		if(Req->Address == CfgHrDeviceType)
+		if(Req->Address == CfgHrDevType)
 		{
 			*Ptr = REVERSE_ORDER_16(4);   //4 simulates a T1100
 		}
