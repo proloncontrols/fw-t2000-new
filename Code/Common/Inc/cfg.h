@@ -40,298 +40,9 @@ extern "C" {
 
 
 //=============================================================================
-//  N O T E
-//-----------------------------------------------------------------------------
-//  Standard C coding practice regarding location of variables and constants
-//  is to place their definition in a header file (.h), and their implementation
-//  in a seperate source file (.c).
-//  For the purpose of this project, everything is placed in this header file.
-//  This is done to facilitate its manipulation when needed.
-//-----------------------------------------------------------------------------
-
-
-//=============================================================================
-//  I N S T R U C T I O N S
-//-----------------------------------------------------------------------------
-//  To add a new holding register or configuration item, the following steps MUST be obeyed:
-//
-//  1- OPTIONAL  - Create a specific data typedef for the register/item in the "SPECIFIC DATA TYPES DEFINITION" section
-//  2- MANDATORY - Add register in the CFG_HldReg_t enum and initialize it to its corresponding number
-//  3- MANDATORY - Add register/item in the CFG_Data_t structure (as its newly created typedef if applicable)
-//  4- MANDATORY - Create its format in the "HOLDING REGISTERS FORMAT DEFINITION" section
-//  5- MANDATORY - Define its default value in the "FACTOTY DEFAULTS" section
-//  6- OPTIONAL  - Define its parameters in the "CONFIGURATION PARAMETERS DEFINITION" section (if needed)
-//-----------------------------------------------------------------------------
-
-
-//=============================================================================
 //  D E F I N E S
 //-----------------------------------------------------------------------------
 #define CFG_MODBUS_NAME_SIZE   16
-
-
-//=============================================================================
-//  S P E C I F I C   D A T A   T Y P E S   D E F I N I T I O N
-//-----------------------------------------------------------------------------
-typedef uint8_t  CFG_Data8_t;
-typedef int8_t   CFG_Data8S_t;
-typedef uint16_t CFG_Data16_t;
-typedef char     CFG_DataLoc_t[CFG_MODBUS_NAME_SIZE];
-typedef uint16_t CFG_DataTemp_t;
-typedef uint16_t CFG_Multiplier_t;
-
-
-//=============================================================================
-//  H O L D I N G   R E G I S T E R S   D E F I N I T I O N
-//-----------------------------------------------------------------------------
-typedef enum {
-	CfgHrDevType           = 1,     //Read-only
-	CfgHrSoftVer           = 2,     //
-	CfgHrHardVer           = 3,     //
-	//-------------------------
-	CfgHrDefHeatSP         = 4,
-	CfgHrDefCoolSP         = 5,
-	CfgHrProp              = 6,
-	CfgHrCoolInt           = 7,
-	CfgHrHeatInt           = 8,
-	CfgHrMinHeatSP         = 9,
-	CfgHrMaxHeatSP         = 10,
-	CfgHrMinCoolSP         = 11,
-	CfgHrMaxCoolSP         = 12,
-	CfgHrUnocHeatOffset    = 13,
-	CfgHrUnocCoolOffset    = 14,
-	CfgHrUnocHeatSPLim     = 15,
-	CfgHrUnocCoolSPLim     = 16,
-	CfgHrDOSource          = 17,
-	CfgHrDOSP              = 18,
-	CfgHrDOMode            = 19,
-	CfgHrDOBand            = 20,
-	CfgHrDORevAct          = 21,
-	CfgHrAOSource          = 22,
-	CfgHrAOSP              = 23,
-	CfgHrAOMode            = 24,
-	CfgHrAOBand            = 25,
-	CfgHrAORevAct          = 26,
-	CfgHrAOPulsed          = 27,
-	CfgHrAORange           = 28,
-	CfgHrGroupCode1        = 29,
-	CfgHrGroupCode2        = 30,
-	CfgHrGroupCode3        = 31,
-	CfgHrGroupWeight1      = 32,
-	CfgHrGroupWeight2      = 33,
-	CfgHrGroupWeight3      = 34,
-	CfgHrGlobalWeight      = 35,
-	CfgHrRoomTempCal       = 36,
-	CfgHrUnocModeOverrTime = 37,
-	CfgHrRadFloorId        = 38,
-	CfgHrMinSlabTemp       = 39,
-	CfgHrMaxSlabTemp       = 40,
-	CfgHrMinSlabTempUnoc   = 41,
-	CfgHrOutTempRadCutoff  = 42,
-	CfgHrRadProp           = 43,
-	CfgHrRadInt            = 44,
-	CfgHrCalAuxInTemp      = 45,
-	CfgHrRadCycleTime      = 46,
-	CfgHrAIMode            = 47,
-	CfgHrMorningWarmUpTemp = 48,
-	CfgHrAddress           = 49,
-	CfgHrTempUnit          = 50,
-	//-------------------------
-	CfgHrLocation          = 52,
-	//-------------------------
-	CfgHrBaudrate          = 60,
-	CfgHrParity            = 61,
-	CfgHrStopBits          = 62,
-	//-------------------------
-	CfgHrLanguage          = 64,
-	CfgHrDisMinSP          = 65,
-	CfgHrDisMidSP          = 66,
-	CfgHrDisMaxSP          = 67,
-	CfgHrDisMinDem         = 68,
-	CfgHrDisMidDem         = 69,
-	CfgHrDisMaxDem         = 70,
-	CfgHrDisProp           = 71,
-	CfgHrDisInt            = 72,
-	CfgHrDisMode           = 73,
-	CfgHrIntDropRate       = 74,
-	CfgHrDOOverride        = 75,
-	CfgHrAOOverride        = 76,
-	CfgHrSchOverride       = 77,
-	//-------------------------
-	CfgHrScrOrientation    = 78,    //T2000 specific
-	CfgHrScrTimeout        = 79,    //
-	//-------------------------
-	CfgHrReset             = 100,   //Processes
-	CfgHrReprogram         = 101    //
-} CFG_HldReg_t;
-
-
-//=============================================================================
-//  C O N F I G U R A T I O N   D A T A   S T R U C T U R E   I N   R A M
-//-----------------------------------------------------------------------------
-#pragma pack(1)
-typedef struct {
-	CFG_DataTemp_t DefHeatSP;
-	CFG_DataTemp_t DefCoolSP;
-	CFG_DataTemp_t Prop;
-	CFG_Data8_t    CoolInt;
-	CFG_Data8_t    HeatInt;
-	CFG_DataTemp_t MinHeatSP;
-	CFG_DataTemp_t MaxHeatSP;
-	CFG_DataTemp_t MinCoolSP;
-	CFG_DataTemp_t MaxCoolSP;
-	CFG_DataTemp_t UnocHeatOffset;
-	CFG_DataTemp_t UnocCoolOffset;
-	CFG_DataTemp_t UnocHeatSPLim;
-	CFG_DataTemp_t UnocCoolSPLim;
-	CFG_Data8_t    DOSource;
-	CFG_Data8_t    DOSP;
-	CFG_Data8_t    DOMode;
-	CFG_Data8_t    DOBand;
-	CFG_Data8_t    DORevAct;
-	CFG_Data8_t    AOSource;
-	CFG_Data8_t    AOSP;
-	CFG_Data8_t    AOMode;
-	CFG_Data8_t    AOBand;
-	CFG_Data8_t    AORevAct;
-	CFG_Data8_t    AOPulsed;
-	CFG_Data8_t    AORange;
-	CFG_Data8_t    GroupCode1;
-	CFG_Data8_t    GroupCode2;
-	CFG_Data8_t    GroupCode3;
-	CFG_Data8_t    GroupWeight1;
-	CFG_Data8_t    GroupWeight2;
-	CFG_Data8_t    GroupWeight3;
-	CFG_Data8_t    GlobalWeight;
-	CFG_DataTemp_t RoomTempCal;
-	CFG_Data8_t    UnocModeOverrTime;
-	CFG_Data8_t    RadFloorId;
-	CFG_DataTemp_t MinSlabTemp;
-	CFG_DataTemp_t MaxSlabTemp;
-	CFG_DataTemp_t MinSlabTempUnoc;
-	CFG_DataTemp_t OutTempRadCutoff;
-	CFG_DataTemp_t RadProp;
-	CFG_Data16_t   RadInt;
-	CFG_DataTemp_t CalAuxInTemp;
-	CFG_Data16_t   RadCycleTime;
-	CFG_Data8_t    AIMode;
-	CFG_Data8_t    MorningWarmUpTemp;
-	CFG_Data8_t    Address;
-	CFG_Data8_t    TempUnit;
-	//-------------------------
-	CFG_DataLoc_t  Location;
-	//-------------------------
-	CFG_Data8_t    Baudrate;
-	CFG_Data8_t    Parity;
-	CFG_Data8_t    StopBits;
-	//-------------------------
-	CFG_Data8_t    Language;
-	CFG_DataTemp_t DisMinSP;
-	CFG_DataTemp_t DisMidSP;
-	CFG_DataTemp_t DisMaxSP;
-	CFG_Data8S_t   DisMinDem;
-	CFG_Data8_t    DisMidDem;
-	CFG_Data8_t    DisMaxDem;
-	CFG_DataTemp_t DisProp;
-	CFG_Data8_t    DisInt;
-	CFG_Data8_t    DisMode;
-	CFG_Data8_t    IntDropRate;
-	CFG_Data8_t    DOOverride;
-	CFG_Data8_t    AOOverride;
-	CFG_Data8_t    SchOverride;
-	//-------------------------
-	CFG_Data8_t    ScrOrientation;
-	CFG_Data16_t   ScrTimeout;
-} CFG_Data_t;
-#pragma pack()
-
-CFG_EXTERN CFG_Data_t CFG_Data;
-
-
-//=============================================================================
-//  H O L D I N G   R E G I S T E R S   F O R M A T   D E F I N I T I O N
-//-----------------------------------------------------------------------------
-typedef struct {
-	CFG_HldReg_t     Register;
-	CFG_Multiplier_t Multiplier;
-	void*            RamAddress;
-	uint16_t         RamSize;
-} CFG_HldRegFormat_t;
-
-#ifndef CFG_GLOBAL
-extern const CFG_HldRegFormat_t CFG_HldRegFormat[];
-#else
-const CFG_HldRegFormat_t CFG_HldRegFormat[] =
-{
-	{ CfgHrDefHeatSP,         100,   &CFG_Data.DefHeatSP,         sizeof(CFG_DataTemp_t) },
-	{ CfgHrDefCoolSP,         100,   &CFG_Data.DefCoolSP,         sizeof(CFG_DataTemp_t) },
-	{ CfgHrProp,              100,   &CFG_Data.Prop,              sizeof(CFG_DataTemp_t) },
-	{ CfgHrCoolInt,             1,   &CFG_Data.CoolInt,           sizeof(CFG_Data8_t)    },
-	{ CfgHrHeatInt,             1,   &CFG_Data.HeatInt,           sizeof(CFG_Data8_t)    },
-	{ CfgHrMinHeatSP,         100,   &CFG_Data.MinHeatSP,         sizeof(CFG_DataTemp_t) },
-	{ CfgHrMaxHeatSP,         100,   &CFG_Data.MaxHeatSP,         sizeof(CFG_DataTemp_t) },
-	{ CfgHrMinCoolSP,         100,   &CFG_Data.MinCoolSP,         sizeof(CFG_DataTemp_t) },
-	{ CfgHrMaxCoolSP,         100,   &CFG_Data.MaxCoolSP,         sizeof(CFG_DataTemp_t) },
-	{ CfgHrUnocHeatOffset,    100,   &CFG_Data.UnocHeatOffset,    sizeof(CFG_DataTemp_t) },
-	{ CfgHrUnocCoolOffset,    100,   &CFG_Data.UnocCoolOffset,    sizeof(CFG_DataTemp_t) },
-	{ CfgHrUnocHeatSPLim,     100,   &CFG_Data.UnocHeatSPLim,     sizeof(CFG_DataTemp_t) },
-	{ CfgHrUnocCoolSPLim,     100,   &CFG_Data.UnocCoolSPLim,     sizeof(CFG_DataTemp_t) },
-	{ CfgHrDOSource,            1,   &CFG_Data.DOSource,          sizeof(CFG_Data8_t)    },
-	{ CfgHrDOSP,                1,   &CFG_Data.DOSP,              sizeof(CFG_Data8_t)    },
-	{ CfgHrDOMode,              1,   &CFG_Data.DOMode,            sizeof(CFG_Data8_t)    },
-	{ CfgHrDOBand,              1,   &CFG_Data.DOBand,            sizeof(CFG_Data8_t)    },
-	{ CfgHrDORevAct,            1,   &CFG_Data.DORevAct,          sizeof(CFG_Data8_t)    },
-	{ CfgHrAOSource,            1,   &CFG_Data.AOSource,          sizeof(CFG_Data8_t)    },
-	{ CfgHrAOSP,                1,   &CFG_Data.AOSP,              sizeof(CFG_Data8_t)    },
-	{ CfgHrAOMode,              1,   &CFG_Data.AOMode,            sizeof(CFG_Data8_t)    },
-	{ CfgHrAOBand,              1,   &CFG_Data.AOBand,            sizeof(CFG_Data8_t)    },
-	{ CfgHrAORevAct,            1,   &CFG_Data.AORevAct,          sizeof(CFG_Data8_t)    },
-	{ CfgHrAOPulsed,            1,   &CFG_Data.AOPulsed,          sizeof(CFG_Data8_t)    },
-	{ CfgHrAORange,             1,   &CFG_Data.AORange,           sizeof(CFG_Data8_t)    },
-	{ CfgHrGroupCode1,          1,   &CFG_Data.GroupCode1,        sizeof(CFG_Data8_t)    },
-	{ CfgHrGroupCode2,          1,   &CFG_Data.GroupCode2,        sizeof(CFG_Data8_t)    },
-	{ CfgHrGroupCode3,          1,   &CFG_Data.GroupCode3,        sizeof(CFG_Data8_t)    },
-	{ CfgHrGroupWeight1,        1,   &CFG_Data.GroupWeight1,      sizeof(CFG_Data8_t)    },
-	{ CfgHrGroupWeight2,        1,   &CFG_Data.GroupWeight2,      sizeof(CFG_Data8_t)    },
-	{ CfgHrGroupWeight3,        1,   &CFG_Data.GroupWeight3,      sizeof(CFG_Data8_t)    },
-	{ CfgHrGlobalWeight,        1,   &CFG_Data.GlobalWeight,      sizeof(CFG_Data8_t)    },
-	{ CfgHrRoomTempCal,       100,   &CFG_Data.RoomTempCal,       sizeof(CFG_DataTemp_t) },
-	{ CfgHrUnocModeOverrTime,   1,   &CFG_Data.UnocModeOverrTime, sizeof(CFG_Data8_t)    },
-	{ CfgHrRadFloorId,          1,   &CFG_Data.RadFloorId,        sizeof(CFG_Data8_t)    },
-	{ CfgHrMinSlabTemp,       100,   &CFG_Data.MinSlabTemp,       sizeof(CFG_DataTemp_t) },
-	{ CfgHrMaxSlabTemp,       100,   &CFG_Data.MaxSlabTemp,       sizeof(CFG_DataTemp_t) },
-	{ CfgHrMinSlabTempUnoc,   100,   &CFG_Data.MinSlabTempUnoc,   sizeof(CFG_DataTemp_t) },
-	{ CfgHrOutTempRadCutoff,  100,   &CFG_Data.OutTempRadCutoff,  sizeof(CFG_DataTemp_t) },
-	{ CfgHrRadProp,           100,   &CFG_Data.RadProp,           sizeof(CFG_DataTemp_t) },
-	{ CfgHrRadInt,              1,   &CFG_Data.RadInt,            sizeof(CFG_Data16_t)   },
-	{ CfgHrCalAuxInTemp,      100,   &CFG_Data.CalAuxInTemp,      sizeof(CFG_DataTemp_t) },
-	{ CfgHrRadCycleTime,        1,   &CFG_Data.RadCycleTime,      sizeof(CFG_Data16_t)   },
-	{ CfgHrAIMode,              1,   &CFG_Data.AIMode,            sizeof(CFG_Data8_t)    },
-	{ CfgHrMorningWarmUpTemp,   1,   &CFG_Data.MorningWarmUpTemp, sizeof(CFG_Data8_t)    },
-	{ CfgHrAddress,             1,   &CFG_Data.Address,           sizeof(CFG_Data8_t)    },
-	{ CfgHrTempUnit,            1,   &CFG_Data.TempUnit,          sizeof(CFG_Data8_t)    },
-	{ CfgHrLocation,            1,    CFG_Data.Location,          sizeof(CFG_DataLoc_t)  },
-	{ CfgHrBaudrate,            1,   &CFG_Data.Baudrate,          sizeof(CFG_Data8_t)    },
-	{ CfgHrParity,              1,   &CFG_Data.Parity,            sizeof(CFG_Data8_t)    },
-	{ CfgHrStopBits,            1,   &CFG_Data.StopBits,          sizeof(CFG_Data8_t)    },
-	{ CfgHrLanguage,            1,   &CFG_Data.Language,          sizeof(CFG_Data8_t)    },
-	{ CfgHrDisMinSP,          100,   &CFG_Data.DisMinSP,          sizeof(CFG_DataTemp_t) },
-	{ CfgHrDisMidSP,          100,   &CFG_Data.DisMidSP,          sizeof(CFG_DataTemp_t) },
-	{ CfgHrDisMaxSP,          100,   &CFG_Data.DisMaxSP,          sizeof(CFG_DataTemp_t) },
-	{ CfgHrDisMinDem,           1,   &CFG_Data.DisMinDem,         sizeof(CFG_Data8_t)    },
-	{ CfgHrDisMidDem,           1,   &CFG_Data.DisMidDem,         sizeof(CFG_Data8_t)    },
-	{ CfgHrDisMaxDem,           1,   &CFG_Data.DisMaxDem,         sizeof(CFG_Data8_t)    },
-	{ CfgHrDisProp,           100,   &CFG_Data.DisProp,           sizeof(CFG_DataTemp_t) },
-	{ CfgHrDisInt,              1,   &CFG_Data.DisInt,            sizeof(CFG_Data8_t)    },
-	{ CfgHrDisMode,             1,   &CFG_Data.DisMode,           sizeof(CFG_Data8_t)    },
-	{ CfgHrIntDropRate,         1,   &CFG_Data.IntDropRate,       sizeof(CFG_Data8_t)    },
-	{ CfgHrDOOverride,          1,   &CFG_Data.DOOverride,        sizeof(CFG_Data8_t)    },
-	{ CfgHrAOOverride,          1,   &CFG_Data.AOOverride,        sizeof(CFG_Data8_t)    },
-	{ CfgHrSchOverride,         1,   &CFG_Data.SchOverride,       sizeof(CFG_Data8_t)    },
-	{ CfgHrScrOrientation,      1,   &CFG_Data.ScrOrientation,    sizeof(CFG_Data8_t)    },
-	{ CfgHrScrTimeout,          1,   &CFG_Data.ScrTimeout,        sizeof(CFG_Data16_t)   }
-};
-#endif
 
 
 //=============================================================================
@@ -376,18 +87,214 @@ typedef enum {
 
 
 //=============================================================================
+//  S P E C I F I C   D A T A   T Y P E S   D E F I N I T I O N
+//-----------------------------------------------------------------------------
+typedef enum {
+	RegType8 = 0,
+	RegType16,
+	RegTypeLoc,
+	RegTypeTemp,
+	RegTypePercent
+} CFG_RegType_t;
+
+typedef uint8_t  Type8_t;
+typedef uint16_t Type16_t;
+typedef int16_t  TypeTemp_t;
+typedef int8_t   TypePercent_t;
+
+typedef uint16_t Multiplier_t;
+
+typedef struct {
+	uint16_t      Number;
+	CFG_RegType_t Type;
+	Multiplier_t  Multiplier;
+	void*         RamAddress;
+} CFG_RegFormat_t;
+
+
+//=============================================================================
+//  C O N F I G U R A T I O N   D A T A   S T R U C T U R E S   I N   R A M
+//-----------------------------------------------------------------------------
+#pragma pack(1)
+typedef struct {
+	Type8_t  DevType;
+	Type16_t SoftVer;
+	Type16_t HardVer;
+} CFG_Product_t;
+
+typedef struct {
+	TypeTemp_t    DefHeatSP;
+	TypeTemp_t    DefCoolSP;
+	TypeTemp_t    Prop;
+	Type8_t       CoolInt;
+	Type8_t       HeatInt;
+	TypeTemp_t    MinHeatSP;
+	TypeTemp_t    MaxHeatSP;
+	TypeTemp_t    MinCoolSP;
+	TypeTemp_t    MaxCoolSP;
+	TypeTemp_t    UnocHeatOff;
+	TypeTemp_t    UnocCoolOff;
+	TypeTemp_t    UnocHeatSPLim;
+	TypeTemp_t    UnocCoolSPLim;
+	Type8_t       DOSource;
+	TypePercent_t DOSP;
+	Type8_t       DOMode;
+	TypePercent_t DOBand;
+	Type8_t       DORevAct;
+	Type8_t       AOSource;
+	TypePercent_t AOSP;
+	Type8_t       AOMode;
+	TypePercent_t AOBand;
+	Type8_t       AORevAct;
+	Type8_t       AOPulsed;
+	Type8_t       AORange;
+	Type8_t       GrpCode1;
+	Type8_t       GrpCode2;
+	Type8_t       GrpCode3;
+	Type8_t       GrpWeight1;
+	Type8_t       GrpWeight2;
+	Type8_t       GrpWeight3;
+	Type8_t       GblWeight;
+	TypeTemp_t    RoomTempCal;
+	Type8_t       UnocModeOverrTime;
+	Type8_t       RadFloorId;
+	TypeTemp_t    MinSlabTemp;
+	TypeTemp_t    MaxSlabTemp;
+	TypeTemp_t    MinSlabTempUnoc;
+	TypeTemp_t    OutTempRadCutOff;
+	TypeTemp_t    RadProp;
+	Type16_t      RadInt;
+	TypeTemp_t    CalAuxInTemp;
+	Type16_t      RadCycleTime;
+	Type8_t       AIMode;
+	Type8_t       MorningWarmUpTime;
+	//-----------------------
+	Type8_t       Address;
+	Type8_t       TempUnit;
+	//-----------------------
+	Type8_t       Location[CFG_MODBUS_NAME_SIZE];
+	//-----------------------
+	Type8_t       BaudRate;
+	Type8_t       Parity;
+	Type8_t       StopBits;
+	//-----------------------
+	Type8_t       Language;
+	TypeTemp_t    DisMinSP;
+	TypeTemp_t    DisMidSP;
+	TypeTemp_t    DisMaxSP;
+	TypePercent_t DisMinDem;
+	TypePercent_t DisMidDem;
+	TypePercent_t DisMaxDem;
+	TypeTemp_t    DisProp;
+	Type8_t       DisInt;
+	Type8_t       DisMode;
+	Type8_t       IntDropRate;
+	TypePercent_t DOOverr;
+	TypePercent_t AOOverr;
+	Type8_t       SchOverr;
+	//-----------------------
+	Type8_t       ScrOrientation;
+	Type8_t       ScrBrightness;
+	Type16_t      ScrTimeout;
+} CFG_Data_t;
+
+typedef struct {
+	CFG_Product_t Product;
+	CFG_Data_t    Data;
+} CFG_t;
+#pragma pack()
+
+CFG_EXTERN CFG_t CFG;
+
+
+//=============================================================================
+//  C O N F I G U R A T I O N   F O R M A T   D E F I N I T I O N
+//-----------------------------------------------------------------------------
+static const CFG_RegFormat_t CFG_RegFormat[] =
+{
+	{  1,   RegType8,           1,   &CFG.Product.DevType        },
+	{  2,   RegType16,          1,   &CFG.Product.SoftVer        },
+	{  3,   RegType16,          1,   &CFG.Product.HardVer        },
+	//------------------------------------------------------------
+	{  4,   RegType16,        100,   &CFG.Data.DefHeatSP         },
+	{  5,   RegType16,        100,   &CFG.Data.DefCoolSP         },
+	{  6,   RegType16,        100,   &CFG.Data.Prop              },
+	{  7,   RegType8,           1,   &CFG.Data.CoolInt           },
+	{  8,   RegType8,           1,   &CFG.Data.HeatInt           },
+	{  9,   RegTypeTemp,      100,   &CFG.Data.MinHeatSP         },
+	{ 10,   RegTypeTemp,      100,   &CFG.Data.MaxHeatSP         },
+	{ 11,   RegTypeTemp,      100,   &CFG.Data.MinCoolSP         },
+	{ 12,   RegTypeTemp,      100,   &CFG.Data.MaxCoolSP         },
+	{ 13,   RegTypeTemp,      100,   &CFG.Data.UnocHeatOff       },
+	{ 14,   RegTypeTemp,      100,   &CFG.Data.UnocCoolOff       },
+	{ 15,   RegTypeTemp,      100,   &CFG.Data.UnocHeatSPLim     },
+	{ 16,   RegTypeTemp,      100,   &CFG.Data.UnocCoolSPLim     },
+	{ 17,   RegType8,           1,   &CFG.Data.DOSource          },
+	{ 18,   RegTypePercent,     1,   &CFG.Data.DOSP              },
+	{ 19,   RegType8,           1,   &CFG.Data.DOMode            },
+	{ 20,   RegTypePercent,     1,   &CFG.Data.DOBand            },
+	{ 21,   RegType8,           1,   &CFG.Data.DORevAct          },
+	{ 22,   RegType8,           1,   &CFG.Data.AOSource          },
+	{ 23,   RegTypePercent,     1,   &CFG.Data.AOSP              },
+	{ 24,   RegType8,           1,   &CFG.Data.AOMode            },
+	{ 25,   RegTypePercent,     1,   &CFG.Data.AOBand            },
+	{ 26,   RegType8,           1,   &CFG.Data.AORevAct          },
+	{ 27,   RegType8,           1,   &CFG.Data.AOPulsed          },
+	{ 28,   RegType8,           1,   &CFG.Data.AORange           },
+	{ 29,   RegType8,           1,   &CFG.Data.GrpCode1          },
+	{ 30,   RegType8,           1,   &CFG.Data.GrpCode2          },
+	{ 31,   RegType8,           1,   &CFG.Data.GrpCode3          },
+	{ 32,   RegType8,           1,   &CFG.Data.GrpWeight1        },
+	{ 33,   RegType8,           1,   &CFG.Data.GrpWeight2        },
+	{ 34,   RegType8,           1,   &CFG.Data.GrpWeight3        },
+	{ 35,   RegType8,           1,   &CFG.Data.GblWeight         },
+	{ 36,   RegTypeTemp,      100,   &CFG.Data.RoomTempCal       },
+	{ 37,   RegType8,           1,   &CFG.Data.UnocModeOverrTime },
+	{ 38,   RegType8,           1,   &CFG.Data.RadFloorId        },
+	{ 39,   RegTypeTemp,      100,   &CFG.Data.MinSlabTemp       },
+	{ 40,   RegTypeTemp,      100,   &CFG.Data.MaxSlabTemp       },
+	{ 41,   RegTypeTemp,      100,   &CFG.Data.MinSlabTempUnoc   },
+	{ 42,   RegTypeTemp,      100,   &CFG.Data.OutTempRadCutOff  },
+	{ 43,   RegTypeTemp,      100,   &CFG.Data.RadProp           },
+	{ 44,   RegType16,          1,   &CFG.Data.RadInt            },
+	{ 45,   RegTypeTemp,      100,   &CFG.Data.CalAuxInTemp      },
+	{ 46,   RegType16,          1,   &CFG.Data.RadCycleTime      },
+	{ 47,   RegType8,           1,   &CFG.Data.AIMode            },
+	{ 48,   RegType8,           1,   &CFG.Data.MorningWarmUpTime },
+	//------------------------------------------------------------
+	{ 49,   RegType8,           1,   &CFG.Data.Address           },
+	{ 50,   RegType8,           1,   &CFG.Data.TempUnit          },
+	//------------------------------------------------------------
+	{ 52,   RegTypeLoc,         1,    CFG.Data.Location          },
+	//------------------------------------------------------------
+	{ 60,   RegType8,           1,   &CFG.Data.BaudRate          },
+	{ 61,   RegType8,           1,   &CFG.Data.Parity            },
+	{ 62,   RegType8,           1,   &CFG.Data.StopBits          },
+	//------------------------------------------------------------
+	{ 64,   RegType8,           1,   &CFG.Data.Language          },
+	{ 65,   RegTypeTemp,      100,   &CFG.Data.DisMinSP          },
+	{ 66,   RegTypeTemp,      100,   &CFG.Data.DisMidSP          },
+	{ 67,   RegTypeTemp,      100,   &CFG.Data.DisMaxSP          },
+	{ 68,   RegTypePercent,     1,   &CFG.Data.DisMinDem         },
+	{ 69,   RegTypePercent,     1,   &CFG.Data.DisMidDem         },
+	{ 70,   RegTypePercent,     1,   &CFG.Data.DisMaxDem         },
+	{ 71,   RegTypeTemp,      100,   &CFG.Data.DisProp           },
+	{ 72,   RegType8,           1,   &CFG.Data.DisInt            },
+	{ 73,   RegType8,           1,   &CFG.Data.DisMode           },
+	{ 74,   RegType8,           1,   &CFG.Data.IntDropRate       },
+	{ 75,   RegTypePercent,     1,   &CFG.Data.DOOverr           },
+	{ 76,   RegTypePercent,     1,   &CFG.Data.AOOverr           },
+	{ 77,   RegType8,           1,   &CFG.Data.SchOverr          },
+	//------------------------------------------------------------
+	{ 78,   RegType8,           1,   &CFG.Data.ScrOrientation    },
+	{ 79,   RegType8,           1,   &CFG.Data.ScrBrightness     },
+	{ 80,   RegType16,          1,   &CFG.Data.ScrTimeout        },
+};
+
+
+//=============================================================================
 //  F A C T O R Y   D E F A U L T S
 //-----------------------------------------------------------------------------
-//#define CFG_DEF_MODBUS_ADDRESS    ((CFG_DataModBusId_t)       123)
-//#define CFG_DEF_MODBUS_NAME       ((CFG_DataModBusName_t)    {'M','o','d','u','l','e','N','a','m','e',0,0,0,0,0,0})
-//#define CFG_DEF_COM_BAUDRATE      ((CFG_DataComBaudRate_t)    CfgComBaud57600)
-//#define CFG_DEF_COM_STOPBITS      ((CFG_DataComStopBits_t)    CfgComStop1)
-//#define CFG_DEF_COM_PARITY        ((CFG_DataComParity_t)      CfgComParityNone)
-//#define CFG_DEF_SCR_LANGUAGE      ((CFG_DataScrLanguage_t)    CfgScrLanEnglish)
-//#define CFG_DEF_SCR_ORIENTATION   ((CFG_DataScrOrientation_t) CfgScrOrientP)
-//#define CFG_DEF_SCR_TIMEOUT       ((CFG_DataScrTimeout_t)     0)
-//#define CFG_DEF_ENV_TEMP_UNIT     ((CFG_DataEnvTempUnit_t)    CfgEnvTempC)
-
 #ifdef CFG_GLOBAL
 #ifdef PROJECT_APP
 const CFG_Data_t __attribute__((section(".app_data"))) CFG_DefaultData =
@@ -401,8 +308,8 @@ const CFG_Data_t __attribute__((section(".app_data"))) CFG_DefaultData =
 	.MaxHeatSP         =  2500,
 	.MinCoolSP         =  2000,
 	.MaxCoolSP         =  2600,
-	.UnocHeatOffset    =  300,
-	.UnocCoolOffset    =  500,
+	.UnocHeatOff       =  300,
+	.UnocCoolOff       =  500,
 	.UnocHeatSPLim     =  1500,
 	.UnocCoolSPLim     =  3000,
 	.DOSource          =  0,
@@ -417,33 +324,32 @@ const CFG_Data_t __attribute__((section(".app_data"))) CFG_DefaultData =
 	.AORevAct          =  0,
 	.AOPulsed          =  0,
 	.AORange           =  0,
-	.GroupCode1        =  0,
-	.GroupCode2        =  0,
-	.GroupCode3        =  0,
-	.GroupWeight1      =  0,
-	.GroupWeight2      =  0,
-	.GroupWeight3      =  0,
-	.GlobalWeight      =  1,
+	.GrpCode1          =  0,
+	.GrpCode2          =  0,
+	.GrpCode3          =  0,
+	.GrpWeight1        =  0,
+	.GrpWeight2        =  0,
+	.GrpWeight3        =  0,
+	.GblWeight         =  1,
 	.RoomTempCal       =  0,
 	.UnocModeOverrTime =  0,
 	.RadFloorId        =  0,
 	.MinSlabTemp       =  2100,
 	.MaxSlabTemp       =  2700,
 	.MinSlabTempUnoc   =  1900,
-	.OutTempRadCutoff  =  1500,
+	.OutTempRadCutOff  =  1500,
 	.RadProp           =  100,
 	.RadInt            =  60,
 	.CalAuxInTemp      =  0,
 	.RadCycleTime      =  15,
 	.AIMode            =  0,
-	.MorningWarmUpTemp =  0,
+	.MorningWarmUpTime =  0,
 	.Address           =  123,
 	.TempUnit          =  CfgEnvTempC,
 	//-------------------------
 	.Location          = {'M','o','d','u','l','e','N','a','m','e',0,0,0,0,0,0},
-//	.Location          = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	//-------------------------
-	.Baudrate          =  CfgComBaud57600,
+	.BaudRate          =  CfgComBaud57600,
 	.Parity            =  CfgComParityNone,
 	.StopBits          =  CfgComStopBits1,
 	//-------------------------
@@ -458,78 +364,16 @@ const CFG_Data_t __attribute__((section(".app_data"))) CFG_DefaultData =
 	.DisInt            =  15,
 	.DisMode           =  0,
 	.IntDropRate       =  3,
-	.DOOverride        =  255,
-	.AOOverride        =  255,
-	.SchOverride       =  255,
+	.DOOverr           =  255,
+	.AOOverr           =  255,
+	.SchOverr          =  255,
 	//-------------------------
 	.ScrOrientation    =  CfgScrOrientP,
+	.ScrBrightness     =  0,
 	.ScrTimeout        =  0
 };
 #endif
 #endif
-
-
-//=============================================================================
-//  D E F I N E S
-//-----------------------------------------------------------------------------
-//#define CFG_MODBUS_NAME_SIZE   16
-
-
-//=============================================================================
-//  C O N F I G U R A T I O N   S T R U C T U R E   F I E L D   T Y P E S
-//-----------------------------------------------------------------------------
-//typedef uint8_t  CFG_DataModBusId_t;
-//typedef char     CFG_DataModBusName_t[CFG_MODBUS_NAME_SIZE];
-//typedef uint8_t  CFG_DataComBaudRate_t;
-//typedef uint8_t  CFG_DataComStopBits_t;
-//typedef uint8_t  CFG_DataComParity_t;
-//typedef uint8_t  CFG_DataScrLanguage_t;
-//typedef uint8_t  CFG_DataScrOrientation_t;
-//typedef uint16_t CFG_DataScrTimeout_t;
-//typedef uint8_t  CFG_DataEnvTempUnit_t;
-
-
-//=============================================================================
-//  C O N F I G U R A T I O N   S T R U C T U R E
-//-----------------------------------------------------------------------------
-//#pragma pack(1)
-//typedef struct {
-//	CFG_DataModBusId_t       ModBusID;
-//	CFG_DataModBusName_t     ModBusName;
-//	CFG_DataComBaudRate_t    ComBaudRate;
-//	CFG_DataComStopBits_t    ComStopBits;
-//	CFG_DataComParity_t      ComParity;
-//	CFG_DataScrLanguage_t    ScrLanguage;
-//	CFG_DataScrOrientation_t ScrOrientation;
-//	CFG_DataScrTimeout_t     ScrTimeout;
-//	CFG_DataEnvTempUnit_t    EnvTempUnit;
-//} CFG_Data_t;
-//#pragma pack()
-
-
-//=============================================================================
-//  H O L D I N G   R E G I S T E R S
-//-----------------------------------------------------------------------------
-//typedef enum {
-//	CfgHrDeviceType = 1,   //These are hardcoded values
-////	CfgHrSoftVer,          //
-////	CfgHrHardVer,          //
-//	CfgHrModBusID,
-//	CfgHrModBusName,
-//	CfgHrComBaudRate,
-//	CfgHrComStopBits,
-//	CfgHrComParity,
-//	CfgHrScrLanguage,
-//	CfgHrScrOrientation,
-//	CfgHrScrTimeout,
-////	CfgHrTempUnit
-//} CFG_HoldingRegister_t;
-
-
-//=============================================================================
-//  G L O B A L   V A R I A B L E S
-//-----------------------------------------------------------------------------
-//CFG_EXTERN CFG_Data_t CFG_Data;
 
 
 //=============================================================================
@@ -538,8 +382,8 @@ const CFG_Data_t __attribute__((section(".app_data"))) CFG_DefaultData =
 extern void CFG_Load     (void);
 extern void CFG_Save     (void);
 extern void CFG_Modified (void);
-extern void CFG_Read     (CFG_HldReg_t Register, void* Data);
-extern void CFG_Write    (CFG_HldReg_t Register, void* Data);
+extern void CFG_Read     (uint16_t Register, uint16_t Quantity, uint16_t* Data);
+extern void CFG_Write    (uint16_t Register, uint16_t Quantity, uint16_t* Data);
 
 
 #ifdef __cplusplus

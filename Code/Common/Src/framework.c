@@ -311,7 +311,7 @@ static void FMK_OnSystem(void)
 				FMK.CmdIn = (FMK_Cmd_t*)&PktIn->Function.FctMEIT.Data;
 				FMK.CmdOut = (FMK_Cmd_t*)&PktOut->Function.FctMEIT.Data;
 
-				PktOut->Header.Address               = CFG_Data.Address;
+				PktOut->Header.Address               = CFG.Data.Address;
 				PktOut->Header.Function              = MbFctMEIT;
 				PktOut->Function.FctMEIT.SubFunction = MbSubFctMEITUpgrade;
 			}
@@ -390,7 +390,7 @@ static bool_t FMK_ComModBus(COM_Connexion_t* Conx)
 	if(PktIn->Header.Address == MB_ADDR_BROADCAST)
 		return FALSE;   //On broadcast packet, pass control to application
 
-	if(PktIn->Header.Address != CFG_Data.Address)
+	if(PktIn->Header.Address != CFG.Data.Address)
 	{
 		COM_Rx(Conx);
 		return TRUE;    //Ignore packet if it does not belong to us
@@ -412,7 +412,7 @@ static bool_t FMK_ComModBus(COM_Connexion_t* Conx)
 		return TRUE;
 	}
 
-	Conx->ModBusAddress = CFG_Data.Address;
+	Conx->ModBusAddress = CFG.Data.Address;
 	return FALSE;                               //Pass control to application
 }
 

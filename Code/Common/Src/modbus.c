@@ -205,33 +205,56 @@ static void MB_ReadHoldingRegisters(COM_Connexion_t* Conx)
 		uint16_t* Ptr = (uint16_t*)((uint32_t)Ans + sizeof(MB_FctRdHldRegsAns_t));
 
 		Ans->ByteCount = Req->Quantity * sizeof(uint16_t);
-
-		if(Req->Address == CfgHrDevType)
-		{
-			*Ptr = REVERSE_ORDER_16(4);   //4 simulates a T1100
-		}
-
-		else if(Req->Address == CfgHrSoftVer)
-		{
-			*Ptr = REVERSE_ORDER_16(APP_VERSION);
-		}
-
-		else if(Req->Address == CfgHrHardVer)
-		{
-			*Ptr = REVERSE_ORDER_16(FMK_GetSharedFlash()->HardwareVersion);
-		}
-
-		else
-		{
-			for(uint16_t i = 0; i < Req->Quantity; i++)
-			{
-				CFG_Read(Req->Address++, &Ptr[i]);
-				Ptr[i] = REVERSE_ORDER_16(Ptr[i]);
-			}
-		}
+		CFG_Read(Req->Address, Req->Quantity, Ptr);
 		MB_Tx(Conx, sizeof(MB_FctRdHldRegsAns_t) + Ans->ByteCount);
 	}
 }
+//static void MB_ReadHoldingRegisters(COM_Connexion_t* Conx)
+//{
+//	MB_FctRdHldRegsReq_t* Req = (MB_FctRdHldRegsReq_t*)&MB.PktRx->Function;
+//	MB_FctRdHldRegsAns_t* Ans = (MB_FctRdHldRegsAns_t*)&MB.PktTx->Function;
+//
+//	Req->Address  = REVERSE_ORDER_16(Req->Address) + 1;   //Focus holding registers are 0 based
+//	Req->Quantity = REVERSE_ORDER_16(Req->Quantity);
+//
+//	if((Req->Address < MB_RD_HLD_REG_ADDR_MIN) || (Req->Address > MB_RD_HLD_REG_ADDR_MAX))
+//		MB_SendError(Conx, MbErrIllegalDataAddress);
+//
+//	else if((Req->Quantity < MB_RD_HLD_REG_MIN) || (Req->Quantity > MB_RD_HLD_REG_MAX))
+//		MB_SendError(Conx, MbErrIllegalDataValue);
+//
+//	else
+//	{
+//		uint16_t* Ptr = (uint16_t*)((uint32_t)Ans + sizeof(MB_FctRdHldRegsAns_t));
+//
+//		Ans->ByteCount = Req->Quantity * sizeof(uint16_t);
+//
+//		if(Req->Address == CfgHrDevType)
+//		{
+//			*Ptr = REVERSE_ORDER_16(4);   //4 simulates a T1100
+//		}
+//
+//		else if(Req->Address == CfgHrSoftVer)
+//		{
+//			*Ptr = REVERSE_ORDER_16(APP_VERSION);
+//		}
+//
+//		else if(Req->Address == CfgHrHardVer)
+//		{
+//			*Ptr = REVERSE_ORDER_16(FMK_GetSharedFlash()->HardwareVersion);
+//		}
+//
+//		else
+//		{
+//			for(uint16_t i = 0; i < Req->Quantity; i++)
+//			{
+//				CFG_Read(Req->Address++, &Ptr[i]);
+//				Ptr[i] = REVERSE_ORDER_16(Ptr[i]);
+//			}
+//		}
+//		MB_Tx(Conx, sizeof(MB_FctRdHldRegsAns_t) + Ans->ByteCount);
+//	}
+//}
 
 //-----------------------------------------------------------------------------
 static void MB_ReadDiscreteInputs(COM_Connexion_t* Conx)
@@ -345,7 +368,7 @@ static void MB_WriteMultipleRegisters(COM_Connexion_t* Conx)
 		for(uint16_t i = 0; i < Req->Quantity; i++)
 		{
 			Ptr[i] = REVERSE_ORDER_16(Ptr[i]);
-			CFG_Write(Req->Address++, &Ptr[i]);
+//			CFG_Write(Req->Address++, &Ptr[i]);
 		}
 		MB_Tx(Conx, sizeof(MB_FctWrMplRegsAns_t));
 		FMK_PostSystemEvent(FmkSysEvtUpdCfg);

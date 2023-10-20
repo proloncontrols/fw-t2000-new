@@ -35,7 +35,7 @@
 #define PRJ_PRD_HEADER         PRD_THERMOSTAT_T2000_HEADER
 #define PRJ_PRD_FOOTER         PRD_THERMOSTAT_T2000_FOOTER
 
-#define PRJ_HARDWARE_VERSION   0x0001   //Version 0.0.0.1
+#define PRJ_HARDWARE_VERSION   100   //Version 1
 
 
 #endif   //PRJ_H
