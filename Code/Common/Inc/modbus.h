@@ -37,16 +37,23 @@
 //  F U N C T I O N S
 //-----------------------------------------------------------------------------
 typedef enum {
-	MbFctRdCoils    = 1,
-	MbFctRdInRegs   = 4,
 	MbFctRdHldRegs  = 3,
-	MbFctRdDscIn    = 2,
-	MbFctWrSglCoil  = 5,
-	MbFctWrMplCoils = 15,
+	MbFctRdInRegs   = 4,
 	MbFctWrSglReg   = 6,
 	MbFctWrMplRegs  = 16,
 	MbFctMEIT       = 43
 } MB_Function_t;
+//typedef enum {
+//	MbFctRdCoils    = 1,
+//	MbFctRdInRegs   = 4,
+//	MbFctRdHldRegs  = 3,
+//	MbFctRdDscIn    = 2,
+//	MbFctWrSglCoil  = 5,
+//	MbFctWrMplCoils = 15,
+//	MbFctWrSglReg   = 6,
+//	MbFctWrMplRegs  = 16,
+//	MbFctMEIT       = 43
+//} MB_Function_t;
 
 typedef enum {
 	MbSubFctMEITUpgrade = 1,    //Firmware upgrade
@@ -74,25 +81,15 @@ typedef struct {
 	uint8_t Function;
 } MB_PktHeader_t;
 
-//--------------------------------
-typedef struct {
-	uint16_t Address;
-	uint16_t Quantity;
-} MB_FctRdCoilsReq_t;
-//-------
-typedef struct {
-	uint8_t ByteCount;
-} MB_FctRdCoilsAns_t;
-
-//--------------------------------
-typedef struct {
-	uint16_t Address;
-	uint16_t Quantity;
-} MB_FctRdInRegsReq_t;
-//-------
-typedef struct {
-	uint8_t ByteCount;
-} MB_FctRdInRegsAns_t;
+////--------------------------------
+//typedef struct {
+//	uint16_t Address;
+//	uint16_t Quantity;
+//} MB_FctRdCoilsReq_t;
+////-------
+//typedef struct {
+//	uint8_t ByteCount;
+//} MB_FctRdCoilsAns_t;
 
 //--------------------------------
 typedef struct {
@@ -108,34 +105,44 @@ typedef struct {
 typedef struct {
 	uint16_t Address;
 	uint16_t Quantity;
-} MB_FctRdDscInsReq_t;
+} MB_FctRdInRegsReq_t;
 //-------
 typedef struct {
 	uint8_t ByteCount;
-} MB_FctRdDscInsAns_t;
+} MB_FctRdInRegsAns_t;
 
-//--------------------------------
-typedef struct {
-	uint16_t Address;
-	uint16_t Value;
-} MB_FctWrSglCoilReq_t;
-//-------
-typedef struct {
-	uint16_t Address;
-	uint16_t Value;
-} MB_FctWrSglCoilAns_t;
+////--------------------------------
+//typedef struct {
+//	uint16_t Address;
+//	uint16_t Quantity;
+//} MB_FctRdDscInsReq_t;
+////-------
+//typedef struct {
+//	uint8_t ByteCount;
+//} MB_FctRdDscInsAns_t;
 
-//--------------------------------
-typedef struct {
-	uint16_t Address;
-	uint16_t Quantity;
-	uint8_t  ByteCount;
-} MB_FctWrMplCoilsReq_t;
-//-------
-typedef struct {
-	uint16_t Address;
-	uint16_t Quantity;
-} MB_FctWrMplCoilsAns_t;
+////--------------------------------
+//typedef struct {
+//	uint16_t Address;
+//	uint16_t Value;
+//} MB_FctWrSglCoilReq_t;
+////-------
+//typedef struct {
+//	uint16_t Address;
+//	uint16_t Value;
+//} MB_FctWrSglCoilAns_t;
+
+////--------------------------------
+//typedef struct {
+//	uint16_t Address;
+//	uint16_t Quantity;
+//	uint8_t  ByteCount;
+//} MB_FctWrMplCoilsReq_t;
+////-------
+//typedef struct {
+//	uint16_t Address;
+//	uint16_t Quantity;
+//} MB_FctWrMplCoilsAns_t;
 
 //--------------------------------
 typedef struct {

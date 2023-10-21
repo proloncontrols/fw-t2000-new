@@ -99,7 +99,7 @@ void CFG_Read(uint16_t Register, uint16_t Quantity, uint16_t* Data)
 				case RegTypePercent:
 					Data[i] = REVERSE_ORDER_16((uint16_t)(*((int8_t*)Format->RamAddress)));
 				break;
-}
+			}
 		}
 	}
 
