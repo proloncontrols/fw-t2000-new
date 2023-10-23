@@ -22,7 +22,7 @@
 //  P R O F I L E   S E L E C T I O N
 //-----------------------------------------------------------------------------
 #ifdef MB_PROFILE_DEFAULTS
-#include "cfg_profile_defaults.h"
+#include "cfg_profile_default.h"
 #else
-#error "***** You must select a ModBus profile *****"
+#error "***** Please select a ModBus profile *****"
 #endif

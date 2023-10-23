@@ -25,7 +25,7 @@
 
 
 //=============================================================================
-//  P R O F I L E   D E F A U L T S
+//  P R O F I L E   I N I T I A L I Z A T I O N
 //-----------------------------------------------------------------------------
 #ifdef PROJECT_APP
 const CFG_Data_t __attribute__((section(".app_data"))) CFG_ProfileData =
