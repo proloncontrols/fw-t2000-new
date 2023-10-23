@@ -41,7 +41,7 @@ void MainView::tearDownScreen()
 
 void MainView::OnButtonRotateClick()
 {
-	CFG.Data.ScrOrientation ^= 1;
+	CFG.Dta.ScrOrientation ^= 1;
 	CFG_Modified();
     application().gotoResetScreenNoTransition();
 }

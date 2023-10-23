@@ -30,6 +30,15 @@
 #include "cfg.h"
 
 
+const MB_Register_t APP_Registers[] =
+{
+	{  1,   MbRegTemp,      100,   &APP.Env.Temp },
+	{  2,   MbRegTemp,      100,   &APP.HeatSP   },
+	{  3,   MbRegTemp,      100,   &APP.CoolSP   },
+	{  4,   MBRegPercent,     1,   &APP.Demand   }
+};
+
+
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
@@ -70,7 +79,7 @@ void APP_OnPeriodic(void)
 {
 	//Called every periodic timeout (defined in app.h APP_IDLE_PERIODIC_TIMEOUT)
 
-	UI_ScreenTimeout(CFG.Data.ScrTimeout);
+	UI_ScreenTimeout(CFG.Dta.ScrTimeout);
 //	UI_ScreenTimeout(FMK_Config.ScreenTimeout);
 }
 
@@ -104,7 +113,7 @@ void APP_OnFlag(uint32_t Flag)
 				UI_Text_t Text;
 
 				Text.TextLabel = UiTextTemp;
-				if(CFG.Data.TempUnit == CfgEnvTempC)
+				if(CFG.Dta.TempUnit == CfgEnvTempC)
 //				if(FMK_Config.TempUnit == CfgTempC)
 					sprintf((char*)Text.Text, "%.1f°C", APP.Env.TempC);
 				else

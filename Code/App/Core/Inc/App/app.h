@@ -55,11 +55,24 @@
 
 
 //=============================================================================
+//  M O D B U S
+//-----------------------------------------------------------------------------
+#define APP_MB_ADD_MIN    0x0001   //TBD
+#define APP_MB_ADD_MAX    0xFFFE   //
+#define APP_MB_QTY_MIN    1
+#define APP_MB_QTY_MAX    125
+
+
+//=============================================================================
 //  T Y P E D E F S
 //-----------------------------------------------------------------------------
 typedef struct {
 	bool_t         SplashDone;
 	ENV_Readings_t Env;
+
+	int16_t        HeatSP;
+	int16_t        CoolSP;
+	int8_t         Demand;
 } APP_Obj_t;
 
 
@@ -68,6 +81,9 @@ typedef struct {
 //-----------------------------------------------------------------------------
 APP_EXTERN osMessageQueueId_t APP_Queue;   //TODO: For test purposes only, to be revomed
 APP_EXTERN APP_Obj_t          APP;
+
+
+extern const MB_Register_t APP_Registers[];
 
 
 //=============================================================================
