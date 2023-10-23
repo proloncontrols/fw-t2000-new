@@ -30,12 +30,15 @@
 #include "cfg.h"
 
 
+//=============================================================================
+//  M O D B U S   R E G I S T E R S   D E F I N I T I O N
+//-----------------------------------------------------------------------------
 const MB_Register_t APP_Registers[] =
 {
-	{  1,   MbRegTemp,      100,   &APP.Env.Temp },
-	{  2,   MbRegTemp,      100,   &APP.HeatSP   },
-	{  3,   MbRegTemp,      100,   &APP.CoolSP   },
-	{  4,   MBRegPercent,     1,   &APP.Demand   }
+	{ 1,   MbRegTemp,      100,   &APP.Env.Temp },
+	{ 2,   MbRegTemp,      100,   &APP.HeatSP   },
+	{ 3,   MbRegTemp,      100,   &APP.CoolSP   },
+	{ 4,   MBRegPercent,     1,   &APP.Demand   }
 };
 
 

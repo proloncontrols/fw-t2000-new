@@ -83,6 +83,9 @@ APP_EXTERN osMessageQueueId_t APP_Queue;   //TODO: For test purposes only, to be
 APP_EXTERN APP_Obj_t          APP;
 
 
+//=============================================================================
+//  M O D B U S   R E G I S T E R S   D E F I N I T I O N
+//-----------------------------------------------------------------------------
 extern const MB_Register_t APP_Registers[];
 
 

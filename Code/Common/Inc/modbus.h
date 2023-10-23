@@ -43,17 +43,6 @@ typedef enum {
 	MbFctWrMplRegs = 16,
 	MbFctMEIT      = 43
 } MB_Function_t;
-//typedef enum {
-//	MbFctRdCoils    = 1,
-//	MbFctRdInRegs   = 4,
-//	MbFctRdHldRegs  = 3,
-//	MbFctRdDscIn    = 2,
-//	MbFctWrSglCoil  = 5,
-//	MbFctWrMplCoils = 15,
-//	MbFctWrSglReg   = 6,
-//	MbFctWrMplRegs  = 16,
-//	MbFctMEIT       = 43
-//} MB_Function_t;
 
 typedef enum {
 	MbSubFctMEITUpgrade = 1    //Firmware upgrade
@@ -71,19 +60,9 @@ typedef enum {
 } MB_Error_t;
 
 
-
-
-
-
-
-
-//typedef void*    MB_Ram_t;
-//typedef uint8_t  MB_8bit_t;
-//typedef uint16_t MB_16bit_t;
-//typedef int16_t  MB_Temp_t;
-//typedef int8_t   MB_Percent_t;
-//typedef uint16_t MB_Multiplier_t;
-
+//=============================================================================
+//  D A T A  /  R E G I S T E R   T Y P E S
+//-----------------------------------------------------------------------------
 typedef enum {
 	MbReg8 = 0,
 	MbReg16,
@@ -99,15 +78,6 @@ typedef struct {
 	uint16_t Multiplier;
 	void*    Ram;
 } MB_Register_t;
-//typedef struct {
-//	MB_16bit_t      Number;
-//	MB_Reg_t        Type;
-//	MB_Multiplier_t Multiplier;
-//	MB_Ram_t        Ram;
-//} MB_Register_t;
-
-
-
 
 
 //=============================================================================
@@ -143,110 +113,10 @@ typedef struct {         //Answer to registers writing request
 	uint16_t Param;      //Function dependant parameter: WriteSingleRegister->requested data to write, WriteMultipleRegisters->number of registers written
 } MB_FctWriteAns_t;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////--------------------------------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Quantity;
-//} MB_FctRdCoilsReq_t;
-////-------
-//typedef struct {
-//	uint8_t ByteCount;
-//} MB_FctRdCoilsAns_t;
-
-//--------------------------------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Quantity;
-//} MB_FctRdHldRegsReq_t;
-//-------
-//typedef struct {
-//	uint8_t ByteCount;
-//} MB_FctRdHldRegsAns_t;
-
-//--------------------------------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Quantity;
-//} MB_FctRdInRegsReq_t;
-//-------
-//typedef struct {
-//	uint8_t ByteCount;
-//} MB_FctRdInRegsAns_t;
-
-////--------------------------------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Quantity;
-//} MB_FctRdDscInsReq_t;
-////-------
-//typedef struct {
-//	uint8_t ByteCount;
-//} MB_FctRdDscInsAns_t;
-
-////--------------------------------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Value;
-//} MB_FctWrSglCoilReq_t;
-////-------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Value;
-//} MB_FctWrSglCoilAns_t;
-
-////--------------------------------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Quantity;
-//	uint8_t  ByteCount;
-//} MB_FctWrMplCoilsReq_t;
-////-------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Quantity;
-//} MB_FctWrMplCoilsAns_t;
-
-//--------------------------------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Value;
-//} MB_FctWrSglRegReq_t;
-//-------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Value;
-//} MB_FctWrSglRegAns_t;
-
-//--------------------------------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t Quantity;
-//	uint8_t  ByteCount;
-//} MB_FctWrMplRegsReq_t;
-//-------
-//typedef struct {
-//	uint16_t Address;
-//	uint16_t QtyWritten;
-//} MB_FctWrMplRegsAns_t;
-
 //--------------------------------
 typedef struct {
 	uint8_t SubFunction;
-	uint8_t Data;       //<-- Used as pointer to data in packet
+	uint8_t Data;        //<-- Used as pointer to data in packet
 } MB_FctMEIT_t;
 
 typedef struct {
