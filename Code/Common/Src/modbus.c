@@ -135,7 +135,7 @@ static void MB_Read(COM_Connexion_t* Conx, MB_Function_t Function)
 		const MB_Register_t* Reg;
 		uint16_t* Data = (uint16_t*)((uint32_t)Ans + sizeof(MB_FctReadAns_t));
 
-		Ans->ByteCount = REVERSE_ORDER_16(Req->Quantity * sizeof(uint16_t));
+		Ans->ByteCount = Req->Quantity * sizeof(uint16_t);
 
 		for(uint16_t i = 0; i < Req->Quantity; i++)
 		{
@@ -183,12 +183,12 @@ static void MB_Write(COM_Connexion_t* Conx, MB_Function_t Function)
 		if(Reg)
 		{
 			Ans->Address = Req->Address;
-			Ans->Param = REVERSE_ORDER_16(Req->Param);
+			Ans->Param = REVERSE_ORDER_16(Req->Param);   //Data to write
 			MB_WriteRam(Reg, &Ans->Param);
 		}
 	}
 
-	else   //Multiple registers write
+	else   //Multiple register write
 	{
 		if((Req->Param < Section->QtyMin) || (Req->Param > Section->QtyMax))
 			MB_Error(Conx, MbErrIllegalDataValue);
@@ -225,8 +225,8 @@ static void MB_WriteRam(const MB_Register_t* Register, uint16_t* Data)
 			memcpy(Register->Ram, Data, CFG_MB_LOC_SIZE);
 		}
 		break;
-		case MbRegTemp:      { *((int16_t*)Register->Ram) = (int16_t)(REVERSE_ORDER_16(*Data));   break; }
-		case MBRegPercent:   { *((int8_t*)Register->Ram) = (int8_t)(REVERSE_ORDER_16(*Data));     break; }
+		case MbRegTemp:      { *((int16_t*)Register->Ram) = (int16_t)(REVERSE_ORDER_16(*Data));     break; }
+		case MBRegPercent:   { *((int8_t*)Register->Ram) = (int8_t)(REVERSE_ORDER_16(*Data));       break; }
 	}
 }
 
@@ -234,7 +234,7 @@ static void MB_WriteRam(const MB_Register_t* Register, uint16_t* Data)
 //-----------------------------------------------------------------------------
 static const MB_Register_t* MB_GetRegister(const MB_Section_t* Section, uint16_t Register)
 {
-	uint16_t Size = *(&Section->Registers + 1) - Section->Registers;
+	uint16_t Size = *(&Section->Registers + 1) - Section->Registers;   //Get the number of registers in section
 
 	for(uint16_t i = 0; i < Size; i++)
 	{
