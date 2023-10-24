@@ -3,11 +3,10 @@
 /*********************************************************************************/
 #include <gui_generated/main_screen/MainViewBase.hpp>
 #include <touchgfx/Color.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 #include <BitmapDatabase.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
-MainViewBase::MainViewBase() :
-    buttonCallback(this, &MainViewBase::buttonCallbackHandler)
+MainViewBase::MainViewBase()
 {
 
     __background.setPosition(0, 0, 720, 672);
@@ -16,49 +15,89 @@ MainViewBase::MainViewBase() :
     box1.setPosition(0, 0, 720, 672);
     box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    txtTemp.setPosition(60, 153, 600, 183);
-    txtTemp.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    txtTemp.setLinespacing(0);
-    txtTempBuffer[0] = 0;
-    txtTemp.setWildcard(txtTempBuffer);
-    txtTemp.setTypedText(touchgfx::TypedText(T___SINGLEUSE_LYVN));
+    imgCooling.setXY(72, 54);
+    imgCooling.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_ID));
 
-    btnDn.setXY(400, 450);
-    btnDn.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_DOWN_ARROW_48_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_DOWN_ARROW_48_ID));
-    btnDn.setIconXY(62, 17);
-    btnDn.setAction(buttonCallback);
+    txtTempEnt.setPosition(144, 157, 300, 242);
+    txtTempEnt.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    txtTempEnt.setLinespacing(0);
+    txtTempEntBuffer[0] = 0;
+    txtTempEnt.setWildcard(txtTempEntBuffer);
+    txtTempEnt.setTypedText(touchgfx::TypedText(T___SINGLEUSE_LYVN));
 
-    btnUp.setXY(141, 450);
-    btnUp.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_UP_ARROW_48_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_UP_ARROW_48_ID));
-    btnUp.setIconXY(62, 17);
-    btnUp.setAction(buttonCallback);
+    txtTempFrc.setPosition(441, 308, 183, 88);
+    txtTempFrc.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    txtTempFrc.setLinespacing(0);
+    txtTempFrcBuffer[0] = 0;
+    txtTempFrc.setWildcard(txtTempFrcBuffer);
+    txtTempFrc.setTypedText(touchgfx::TypedText(T___SINGLEUSE_R2UV));
+
+    txtTempUnit.setPosition(436, 199, 183, 88);
+    txtTempUnit.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    txtTempUnit.setLinespacing(0);
+    txtTempUnit.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CFMA));
+
+    imgSettings.setXY(644, 25);
+    imgSettings.setBitmap(touchgfx::Bitmap(BITMAP_SETTING_ID));
+
+    imgStandby.setXY(636, 593);
+    imgStandby.setBitmap(touchgfx::Bitmap(BITMAP_STANDBYMODE_ID));
+
+    txtHum.setPosition(25, 569, 85, 75);
+    txtHum.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
+    txtHum.setLinespacing(0);
+    txtHumBuffer[0] = 0;
+    txtHum.setWildcard(txtHumBuffer);
+    txtHum.setTypedText(touchgfx::TypedText(T___SINGLEUSE_UB3J));
+
+    txtHum_1.setPosition(25, 8, 85, 75);
+    txtHum_1.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
+    txtHum_1.setLinespacing(0);
+    txtHum_1Buffer[0] = 0;
+    txtHum_1.setWildcard(txtHum_1Buffer);
+    txtHum_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8EN3));
+
+    txtHum_2.setXY(111, 584);
+    txtHum_2.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
+    txtHum_2.setLinespacing(0);
+    txtHum_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DBNW));
+
+    image1.setXY(110, 613);
+    image1.setBitmap(touchgfx::Bitmap(BITMAP_HUMIDITY_ID));
+
+    txtHum_2_1.setXY(109, 23);
+    txtHum_2_1.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
+    txtHum_2_1.setLinespacing(0);
+    txtHum_2_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_W88E));
+
+    image2.setXY(113, 56);
+    image2.setBitmap(touchgfx::Bitmap(BITMAP_OUTSIDE_ID));
+
+    image3.setXY(335, 436);
+    image3.setBitmap(touchgfx::Bitmap(BITMAP_SNOWFLAKE_ID));
+
+    image4.setXY(273, 23);
+    image4.setBitmap(touchgfx::Bitmap(BITMAP_PROLON_40_1_ID));
 
     add(__background);
     add(box1);
-    add(txtTemp);
-    add(btnDn);
-    add(btnUp);
+    add(imgCooling);
+    add(txtTempEnt);
+    add(txtTempFrc);
+    add(txtTempUnit);
+    add(imgSettings);
+    add(imgStandby);
+    add(txtHum);
+    add(txtHum_1);
+    add(txtHum_2);
+    add(image1);
+    add(txtHum_2_1);
+    add(image2);
+    add(image3);
+    add(image4);
 }
 
 void MainViewBase::setupScreen()
 {
 
-}
-
-void MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
-{
-    if (&src == &btnDn)
-    {
-        //IntOnBtnDn
-        //When btnDn clicked call virtual function
-        //Call OnBtnDn
-        OnBtnDn();
-    }
-    else if (&src == &btnUp)
-    {
-        //IntOnBtnUp
-        //When btnUp clicked call virtual function
-        //Call OnBtnUp
-        OnBtnUp();
-    }
 }

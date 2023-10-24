@@ -1,14 +1,16 @@
 #include <gui/main_screen/MainView.hpp>
 
+#include "math.h"
 #include "stdio.h"
 #include "framework.h"
 #include "ui.h"
 
 MainView::MainView()
 {
-    FEA_PlaceText(txtTemp);
-    FEA_PlaceButtonIcon(btnUp);
-    FEA_PlaceButtonIcon(btnDn);
+    FEA_PlaceText(txtTempEnt);
+    FEA_PlaceText(txtTempFrc);
+//    FEA_PlaceButtonIcon(btnUp);
+//    FEA_PlaceButtonIcon(btnDn);
 
 //    FEA_PlaceImage(imgProlon);
 //    FEA_PlaceImage(imgGFX);
@@ -56,13 +58,54 @@ void MainView::OnBtnDn()
 //	UI_PostBtn(UiBtnTempDown);
 }
 
+void MainView::DisplayEnv(ENV_Readings_t* Env)
+{
+	char Tmp[4];
+
+	float Temp = Env->TempC;
+	if(CFG.Dta.TempUnit == CfgEnvTempF)
+		Temp = Env->TempF;
+
+	float Integral;
+	float Fractional = modf(Temp, &Integral) * 10.0;
+
+	sprintf(Tmp, "%d", (int)Integral);
+	Unicode::fromUTF8((uint8_t*)Tmp, txtTempEntBuffer, sizeof(txtTempEntBuffer));
+	txtTempEnt.invalidate();
+
+	sprintf(Tmp, "%d", (int)Fractional);
+	Unicode::fromUTF8((uint8_t*)Tmp, txtTempFrcBuffer, sizeof(txtTempFrcBuffer));
+	txtTempFrc.invalidate();
+
+
+
+
+//	float Temp = Env->TempC;
+//	if(CFG.Dta.TempUnit == CfgEnvTempF)
+//		Temp = Env->TempF;
+//
+//	int Integral = (int)Temp;
+//	char Tmp[4];
+//	sprintf(Tmp, "%.1f", (float)Temp - (float)Integral);
+//	strcpy(Tmp, strstr("0.", Tmp));
+//	int Fractional = atoi(Tmp);
+//
+//	sprintf(Tmp, "%d", Integral);
+//	Unicode::fromUTF8((uint8_t*)Tmp, txtTempEntBuffer, sizeof(txtTempEntBuffer));
+//	txtTempEnt.invalidate();
+//
+//	sprintf(Tmp, "%d", Fractional);
+//	Unicode::fromUTF8((uint8_t*)Tmp, txtTempFrcBuffer, sizeof(txtTempFrcBuffer));
+//	txtTempFrc.invalidate();
+}
+
 void MainView::DisplayTemp(uint8_t* Temp)
 {
 //	char Str[UI_TEXT_STRING_LENGTH];
 
 //	Unicode::fromUTF8((uint8_t*)Str, txtTempBuffer, sizeof(txtTempBuffer));
-	Unicode::fromUTF8(Temp, txtTempBuffer, sizeof(txtTempBuffer));
-	txtTemp.invalidate();
+	Unicode::fromUTF8(Temp, txtTempEntBuffer, sizeof(txtTempEntBuffer));
+	txtTempEnt.invalidate();
 }
 
 

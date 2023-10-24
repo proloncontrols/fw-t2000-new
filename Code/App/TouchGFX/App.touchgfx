@@ -97,12 +97,21 @@
             "Height": 672
           },
           {
+            "Type": "Image",
+            "Name": "imgCooling",
+            "X": 72,
+            "Y": 54,
+            "Width": 576,
+            "Height": 564,
+            "RelativeFilename": "CoolingON.png"
+          },
+          {
             "Type": "TextArea",
-            "Name": "txtTemp",
-            "X": 60,
-            "Y": 153,
-            "Width": 600,
-            "Height": 183,
+            "Name": "txtTempEnt",
+            "X": 144,
+            "Y": 157,
+            "Width": 300,
+            "Height": 242,
             "TextId": "__SingleUse_LYVN",
             "TextRotation": "0",
             "Color": {
@@ -112,50 +121,173 @@
             },
             "Wildcard1": {
               "UseBuffer": true,
-              "BufferSize": 16
+              "BufferSize": 4
             }
           },
           {
-            "Type": "ButtonWithIcon",
-            "Name": "btnDn",
-            "X": 400,
-            "Y": 450,
-            "Width": 170,
-            "Height": 60,
-            "Pressed": "__designer\\Blue_Buttons_Round_Edge_small_pressed.png",
-            "Released": "__designer\\Blue_Buttons_Round_Edge_small.png",
-            "IconPressed": "__designer\\Blue_Icons_Down_arrow_48.png",
-            "IconReleased": "__designer\\Blue_Icons_Down_arrow_48.png",
-            "IconX": 62,
-            "IconY": 17,
-            "IconHeight": 26,
-            "IconWidth": 46,
-            "ButtonStyle": "Style4"
+            "Type": "TextArea",
+            "Name": "txtTempFrc",
+            "X": 441,
+            "Y": 308,
+            "Width": 183,
+            "Height": 88,
+            "TextId": "__SingleUse_R2UV",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
           },
           {
-            "Type": "ButtonWithIcon",
-            "Name": "btnUp",
-            "X": 141,
-            "Y": 450,
-            "Width": 170,
-            "Height": 60,
-            "Pressed": "__designer\\Blue_Buttons_Round_Edge_small_pressed.png",
-            "Released": "__designer\\Blue_Buttons_Round_Edge_small.png",
-            "IconPressed": "__designer\\Blue_Icons_Up_arrow_48.png",
-            "IconReleased": "__designer\\Blue_Icons_Up_arrow_48.png",
-            "IconX": 62,
-            "IconY": 17,
-            "IconHeight": 26,
-            "IconWidth": 46,
-            "ButtonStyle": "Style4"
+            "Type": "TextArea",
+            "Name": "txtTempUnit",
+            "X": 436,
+            "Y": 199,
+            "Width": 183,
+            "Height": 88,
+            "TextId": "__SingleUse_CFMA",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "Image",
+            "Name": "imgSettings",
+            "X": 644,
+            "Y": 25,
+            "Width": 51,
+            "Height": 50,
+            "RelativeFilename": "Setting.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "imgStandby",
+            "X": 636,
+            "Y": 593,
+            "Width": 59,
+            "Height": 51,
+            "RelativeFilename": "StandbyMode.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "txtHum",
+            "X": 25,
+            "Y": 569,
+            "Width": 85,
+            "Height": 75,
+            "TextId": "__SingleUse_UB3J",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 186,
+              "Green": 188,
+              "Blue": 190
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "txtHum_1",
+            "X": 25,
+            "Y": 8,
+            "Width": 85,
+            "Height": 75,
+            "TextId": "__SingleUse_8EN3",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 186,
+              "Green": 188,
+              "Blue": 190
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "txtHum_2",
+            "X": 111,
+            "Y": 584,
+            "Width": 17,
+            "Height": 27,
+            "TextId": "__SingleUse_DBNW",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 186,
+              "Green": 188,
+              "Blue": 190
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "image1",
+            "X": 110,
+            "Y": 613,
+            "Width": 21,
+            "Height": 30,
+            "RelativeFilename": "Humidity.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "txtHum_2_1",
+            "X": 109,
+            "Y": 23,
+            "Width": 23,
+            "Height": 27,
+            "TextId": "__SingleUse_W88E",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 186,
+              "Green": 188,
+              "Blue": 190
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "Image",
+            "Name": "image2",
+            "X": 113,
+            "Y": 56,
+            "Width": 23,
+            "Height": 23,
+            "RelativeFilename": "Outside.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image3",
+            "X": 335,
+            "Y": 436,
+            "Width": 50,
+            "Height": 51,
+            "RelativeFilename": "Snowflake.png"
+          },
+          {
+            "Type": "Image",
+            "Name": "image4",
+            "X": 273,
+            "Y": 23,
+            "Width": 175,
+            "Height": 28,
+            "RelativeFilename": "Prolon_40_1.png"
           }
         ],
         "Interactions": [
           {
             "InteractionName": "IntOnBtnUp",
             "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnUp"
+              "Type": "TriggerClicked"
             },
             "Action": {
               "Type": "ActionCustom",
@@ -165,8 +297,7 @@
           {
             "InteractionName": "IntOnBtnDn",
             "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "btnDn"
+              "Type": "TriggerClicked"
             },
             "Action": {
               "Type": "ActionCustom",

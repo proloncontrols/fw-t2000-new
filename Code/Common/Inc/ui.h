@@ -36,6 +36,7 @@ extern "C" {
 #include "cmsis_os2.h"
 #include "basic.h"
 #include "com.h"
+#include "env.h"
 
 
 //=============================================================================
@@ -112,6 +113,7 @@ typedef enum {
 //=============================================================================
 //  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
+UI_EXTERN osMessageQueueId_t UI_QueueEnv;
 UI_EXTERN osMessageQueueId_t UI_QueueText;
 UI_EXTERN osMessageQueueId_t UI_QueueScreen;
 UI_EXTERN osMessageQueueId_t UI_QueueProgress;
@@ -130,6 +132,7 @@ extern void     UI_ScreenSwitchTo     (UI_ScrId_t Id);       //Switch to specifi
 
 //extern void     UI_PostBtn            (UI_Btn_t Button);     //Post button pressed from frontend for backend to retrieve
 //extern UI_Btn_t UI_ReadBtn            (void);                //Retrieve button pressed posted by frontend
+extern void     UI_PostEnv            (ENV_Readings_t* Env);     //Post text to display on LCD
 extern void     UI_PostText           (UI_Text_t* Text);     //Post text to display on LCD
 
 //extern void     UI_PostEvent          (void);                //Used by backend to post event to application

@@ -113,15 +113,18 @@ void APP_OnFlag(uint32_t Flag)
 		{
 			if(APP.Env.Device > EnvDevNone)
 			{
-				UI_Text_t Text;
-
-				Text.TextLabel = UiTextTemp;
-				if(CFG.Dta.TempUnit == CfgEnvTempC)
-//				if(FMK_Config.TempUnit == CfgTempC)
-					sprintf((char*)Text.Text, "%.1f°C", APP.Env.TempC);
-				else
-					sprintf((char*)Text.Text, "%.1f°F", APP.Env.TempF);
-				UI_PostText(&Text);
+//				UI_Text_t Text;
+//
+//				Text.TextLabel = UiTextTemp;
+//				if(CFG.Dta.TempUnit == CfgEnvTempC)
+////				if(FMK_Config.TempUnit == CfgTempC)
+//					sprintf((char*)Text.Text, "%f", APP.Env.TempC);
+////					sprintf((char*)Text.Text, "%.1f°C", APP.Env.TempC);
+//				else
+//					sprintf((char*)Text.Text, "%f", APP.Env.TempF);
+////					sprintf((char*)Text.Text, "%.1f°F", APP.Env.TempF);
+				UI_PostEnv(&APP.Env);
+////				UI_PostText(&Text);
 			}
 		}
 	}

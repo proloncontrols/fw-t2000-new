@@ -55,6 +55,8 @@ void UI_Init(void)
 //	UI_QueueAction = osMessageQueueNew(1, sizeof(UI_Action_t), NULL);
 //	UI_QueueEvent = osMessageQueueNew(1, sizeof(UI_Event_t), NULL);
 
+	UI_QueueEnv = osMessageQueueNew(1, sizeof(ENV_Readings_t), NULL);
+
 	UI_QueueText = osMessageQueueNew(1, sizeof(UI_Text_t), NULL);
 
 	UI_QueueScreen = osMessageQueueNew(1, sizeof(UI_Screen_t), NULL);
@@ -113,6 +115,12 @@ void UI_ScreenTimeoutReset(void)
 //{
 //	return UI.Btn;
 //}
+
+//-----------------------------------------------------------------------------
+void UI_PostEnv(ENV_Readings_t* Env)
+{
+	osMessageQueuePut(UI_QueueEnv, Env, 0, 0);
+}
 
 //-----------------------------------------------------------------------------
 void UI_PostText(UI_Text_t* Text)

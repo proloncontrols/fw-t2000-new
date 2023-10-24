@@ -21,7 +21,8 @@ public:
     void PostSystemReady();
     void PostSystemReset();
 
-	UI_Text_t UiText;
+//	UI_Text_t UiText;
+	ENV_Readings_t EnvReadings;
 
 protected:
     ModelListener* modelListener;

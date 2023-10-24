@@ -16,15 +16,18 @@ void Model::tick()
 //	if(osMessageQueueGet(APP_Queue, &Version, NULL, 0) == osOK)
 //		modelListener->DisplayVersion(Version);
 
-	if(osMessageQueueGet(UI_QueueText, &UiText, NULL, 0) == osOK)
-	{
-		switch(UiText.TextLabel)
-		{
-			case UiTextTemp:
-				modelListener->DisplayTemp(UiText.Text);
-			break;
-		}
-	}
+	if(osMessageQueueGet(UI_QueueEnv, &EnvReadings, NULL, 0) == osOK)
+		modelListener->DisplayEnv(&EnvReadings);
+
+//	if(osMessageQueueGet(UI_QueueText, &UiText, NULL, 0) == osOK)
+//	{
+//		switch(UiText.TextLabel)
+//		{
+//			case UiTextTemp:
+//				modelListener->DisplayTemp(UiText.Text);
+//			break;
+//		}
+//	}
 }
 
 void Model::PostSystemReady()

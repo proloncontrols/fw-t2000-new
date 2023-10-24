@@ -6,7 +6,25 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_LYVN" Alignment="Center" TypographyId="Temperature">
+      <Text Id="__SingleUse_W88E" Alignment="Left" TypographyId="T2000_Tiny">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="__SingleUse_DBNW" Alignment="Left" TypographyId="T2000_Tiny">
+        <Translation Language="GB">%</Translation>
+      </Text>
+      <Text Id="__SingleUse_8EN3" Alignment="Left" TypographyId="T2000_Small">
+        <Translation Language="GB">&lt;value&gt;19</Translation>
+      </Text>
+      <Text Id="__SingleUse_UB3J" Alignment="Left" TypographyId="T2000_Small">
+        <Translation Language="GB">&lt;value&gt;45</Translation>
+      </Text>
+      <Text Id="__SingleUse_CFMA" Alignment="Left" TypographyId="T2000_Small">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="__SingleUse_R2UV" Alignment="Left" TypographyId="T2000_Small">
+        <Translation Language="GB">.&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_LYVN" Alignment="Right" TypographyId="T2000_Large">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="btn_Rotate_ID" Alignment="Left" TypographyId="Default">
@@ -21,6 +39,8 @@
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="!-~" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Temperature" Font="calibri.ttf" Size="160" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°" WildcardCharacterRanges="0x20-0x7E" />
+    <Typography Id="T2000_Large" Font="AvenirNext-Medium-06.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°" WildcardCharacterRanges="0x20-0x7E" />
+    <Typography Id="T2000_Small" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°" WildcardCharacterRanges="0x20-0x7E" />
+    <Typography Id="T2000_Tiny" Font="AvenirNext-Regular-08.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°" WildcardCharacterRanges="0x20-0x7E" />
   </Typographies>
 </TextDatabase>

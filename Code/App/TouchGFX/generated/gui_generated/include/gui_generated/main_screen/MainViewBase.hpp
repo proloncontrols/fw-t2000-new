@@ -8,8 +8,9 @@
 #include <mvp/View.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/ButtonWithIcon.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -17,19 +18,6 @@ public:
     MainViewBase();
     virtual ~MainViewBase() {}
     virtual void setupScreen();
-
-    /*
-     * Virtual Action Handlers
-     */
-    virtual void OnBtnUp()
-    {
-        // Override and implement this function in Main
-    }
-
-    virtual void OnBtnDn()
-    {
-        // Override and implement this function in Main
-    }
 
 protected:
     FrontendApplication& application() {
@@ -41,27 +29,34 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::TextAreaWithOneWildcard txtTemp;
-    touchgfx::ButtonWithIcon btnDn;
-    touchgfx::ButtonWithIcon btnUp;
+    touchgfx::Image imgCooling;
+    touchgfx::TextAreaWithOneWildcard txtTempEnt;
+    touchgfx::TextAreaWithOneWildcard txtTempFrc;
+    touchgfx::TextArea txtTempUnit;
+    touchgfx::Image imgSettings;
+    touchgfx::Image imgStandby;
+    touchgfx::TextAreaWithOneWildcard txtHum;
+    touchgfx::TextAreaWithOneWildcard txtHum_1;
+    touchgfx::TextArea txtHum_2;
+    touchgfx::Image image1;
+    touchgfx::TextArea txtHum_2_1;
+    touchgfx::Image image2;
+    touchgfx::Image image3;
+    touchgfx::Image image4;
 
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TXTTEMP_SIZE = 16;
-    touchgfx::Unicode::UnicodeChar txtTempBuffer[TXTTEMP_SIZE];
+    static const uint16_t TXTTEMPENT_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar txtTempEntBuffer[TXTTEMPENT_SIZE];
+    static const uint16_t TXTTEMPFRC_SIZE = 3;
+    touchgfx::Unicode::UnicodeChar txtTempFrcBuffer[TXTTEMPFRC_SIZE];
+    static const uint16_t TXTHUM_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar txtHumBuffer[TXTHUM_SIZE];
+    static const uint16_t TXTHUM_1_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar txtHum_1Buffer[TXTHUM_1_SIZE];
 
 private:
-
-    /*
-     * Callback Declarations
-     */
-    touchgfx::Callback<MainViewBase, const touchgfx::AbstractButton&> buttonCallback;
-
-    /*
-     * Callback Handler Declarations
-     */
-    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 
