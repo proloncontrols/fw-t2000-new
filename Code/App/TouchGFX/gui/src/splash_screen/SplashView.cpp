@@ -2,7 +2,7 @@
 
 SplashView::SplashView()
 {
-    FEA_PlaceImage(imgProlon);
+    FEA_PlaceTexture(imgProlon);
 }
 
 void SplashView::setupScreen()

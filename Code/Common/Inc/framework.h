@@ -112,9 +112,9 @@ typedef struct {
 	PRD_Banner_t Header;
 	PRD_Banner_t Footer;
 	//Hardware
-	uint16_t HardwareVersion;   //Ex: 0x0001 = version 0.0.0.1
+	uint16_t HardwareVersion;
 	//Bootloader
-	uint16_t BootVersion;       //Ex: 0x5678 = version 5.6.7.8
+	uint16_t BootVersion;
 } FMK_SharedFlash_t;
 
 #pragma pack()

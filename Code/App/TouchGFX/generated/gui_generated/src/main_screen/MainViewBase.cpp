@@ -5,9 +5,13 @@
 #include <touchgfx/Color.hpp>
 #include <BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
+#include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
+
 
 MainViewBase::MainViewBase()
 {
+
+    touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     __background.setPosition(0, 0, 720, 672);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -15,8 +19,49 @@ MainViewBase::MainViewBase()
     box1.setPosition(0, 0, 720, 672);
     box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    imgCooling.setXY(72, 54);
-    imgCooling.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_ID));
+    lineClientBottom.setPosition(0, 0, 720, 672);
+    lineClientBottomPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
+    lineClientBottom.setPainter(lineClientBottomPainter);
+    lineClientBottom.setStart(48, 648);
+    lineClientBottom.setEnd(672, 648);
+    lineClientBottom.setLineWidth(1);
+    lineClientBottom.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    lineClientRight.setPosition(0, 0, 720, 672);
+    lineClientRightPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
+    lineClientRight.setPainter(lineClientRightPainter);
+    lineClientRight.setStart(672, 24);
+    lineClientRight.setEnd(672, 648);
+    lineClientRight.setLineWidth(1);
+    lineClientRight.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    lineClientTop.setPosition(0, 0, 720, 672);
+    lineClientTopPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
+    lineClientTop.setPainter(lineClientTopPainter);
+    lineClientTop.setStart(48, 24);
+    lineClientTop.setEnd(672, 24);
+    lineClientTop.setLineWidth(1);
+    lineClientTop.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    lineClientLeft.setPosition(0, 0, 720, 672);
+    lineClientLeftPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
+    lineClientLeft.setPainter(lineClientLeftPainter);
+    lineClientLeft.setStart(48, 24);
+    lineClientLeft.setEnd(48, 648);
+    lineClientLeft.setLineWidth(1);
+    lineClientLeft.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    textureCooling.setXY(24, 0);
+    textureCooling.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_ID));
+    textureCooling.setWidth(672);
+    textureCooling.setHeight(672);
+    textureCooling.setBitmapPosition(48.0f, 54.0f);
+    textureCooling.setScale(1.0f);
+    textureCooling.setCameraDistance(1000.0f);
+    textureCooling.setOrigo(336.0f, 336.0f, 1000.0f);
+    textureCooling.setCamera(336.0f, 336.0f);
+    textureCooling.setAngles(0.0f, 0.0f, 0.0f);
+    textureCooling.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 
     txtTempEnt.setPosition(144, 157, 300, 242);
     txtTempEnt.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -37,67 +82,129 @@ MainViewBase::MainViewBase()
     txtTempUnit.setLinespacing(0);
     txtTempUnit.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CFMA));
 
-    imgSettings.setXY(644, 25);
-    imgSettings.setBitmap(touchgfx::Bitmap(BITMAP_SETTING_ID));
-
-    imgStandby.setXY(636, 593);
-    imgStandby.setBitmap(touchgfx::Bitmap(BITMAP_STANDBYMODE_ID));
-
-    txtHum.setPosition(25, 569, 85, 75);
+    txtHum.setPosition(44, 577, 315, 75);
     txtHum.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
     txtHum.setLinespacing(0);
     txtHumBuffer[0] = 0;
     txtHum.setWildcard(txtHumBuffer);
     txtHum.setTypedText(touchgfx::TypedText(T___SINGLEUSE_UB3J));
 
-    txtHum_1.setPosition(25, 8, 85, 75);
-    txtHum_1.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
-    txtHum_1.setLinespacing(0);
-    txtHum_1Buffer[0] = 0;
-    txtHum_1.setWildcard(txtHum_1Buffer);
-    txtHum_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8EN3));
+    txtExtTemp.setPosition(45, 5, 315, 70);
+    txtExtTemp.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
+    txtExtTemp.setLinespacing(0);
+    txtExtTempBuffer[0] = 0;
+    txtExtTemp.setWildcard(txtExtTempBuffer);
+    txtExtTemp.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8EN3));
 
-    txtHum_2.setXY(111, 584);
-    txtHum_2.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
-    txtHum_2.setLinespacing(0);
-    txtHum_2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DBNW));
+    txtHumPercent.setPosition(45, 590, 315, 21);
+    txtHumPercent.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
+    txtHumPercent.setLinespacing(0);
+    txtHumPercent.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DBNW));
 
-    image1.setXY(110, 613);
-    image1.setBitmap(touchgfx::Bitmap(BITMAP_HUMIDITY_ID));
+    txtExtTempUnit.setPosition(45, 19, 315, 22);
+    txtExtTempUnit.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
+    txtExtTempUnit.setLinespacing(0);
+    txtExtTempUnit.setTypedText(touchgfx::TypedText(T___SINGLEUSE_W88E));
 
-    txtHum_2_1.setXY(109, 23);
-    txtHum_2_1.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
-    txtHum_2_1.setLinespacing(0);
-    txtHum_2_1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_W88E));
+    textureFlake.setXY(332, 440);
+    textureFlake.setBitmap(touchgfx::Bitmap(BITMAP_SNOWFLAKE_ID));
+    textureFlake.setWidth(56);
+    textureFlake.setHeight(56);
+    textureFlake.setBitmapPosition(3.0f, 2.5f);
+    textureFlake.setScale(1.0f);
+    textureFlake.setCameraDistance(1000.0f);
+    textureFlake.setOrigo(90.0f, 90.0f, 1000.0f);
+    textureFlake.setCamera(28.0f, 28.0f);
+    textureFlake.setAngles(0.0f, 0.0f, 0.0f);
+    textureFlake.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 
-    image2.setXY(113, 56);
-    image2.setBitmap(touchgfx::Bitmap(BITMAP_OUTSIDE_ID));
+    textureStandby.setXY(607, 591);
+    textureStandby.setBitmap(touchgfx::Bitmap(BITMAP_STANDBYMODE_ID));
+    textureStandby.setWidth(68);
+    textureStandby.setHeight(61);
+    textureStandby.setBitmapPosition(4.5f, 5.0f);
+    textureStandby.setScale(1.0f);
+    textureStandby.setCameraDistance(1000.0f);
+    textureStandby.setOrigo(34.0f, 30.5f, 1000.0f);
+    textureStandby.setCamera(34.0f, 30.5f);
+    textureStandby.setAngles(0.0f, 0.0f, 0.0f);
+    textureStandby.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 
-    image3.setXY(335, 436);
-    image3.setBitmap(touchgfx::Bitmap(BITMAP_SNOWFLAKE_ID));
+    textureLogo.setXY(24, 24);
+    textureLogo.setBitmap(touchgfx::Bitmap(BITMAP_PROLON_40_1_ID));
+    textureLogo.setWidth(672);
+    textureLogo.setHeight(28);
+    textureLogo.setBitmapPosition(248.5f, 0.0f);
+    textureLogo.setScale(1.0f);
+    textureLogo.setCameraDistance(1000.0f);
+    textureLogo.setOrigo(336.0f, 14.0f, 1000.0f);
+    textureLogo.setCamera(336.0f, 14.0f);
+    textureLogo.setAngles(0.0f, 0.0f, 0.0f);
+    textureLogo.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 
-    image4.setXY(273, 23);
-    image4.setBitmap(touchgfx::Bitmap(BITMAP_PROLON_40_1_ID));
+    textureDrop.setXY(125, 616);
+    textureDrop.setBitmap(touchgfx::Bitmap(BITMAP_HUMIDITY_ID));
+    textureDrop.setWidth(30);
+    textureDrop.setHeight(36);
+    textureDrop.setBitmapPosition(4.5f, 3.0f);
+    textureDrop.setScale(1.0f);
+    textureDrop.setCameraDistance(1000.0f);
+    textureDrop.setOrigo(15.0f, 18.0f, 1000.0f);
+    textureDrop.setCamera(15.0f, 18.0f);
+    textureDrop.setAngles(0.0f, 0.0f, 0.0f);
+    textureDrop.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+
+    textureExtTemp.setXY(130, 50);
+    textureExtTemp.setBitmap(touchgfx::Bitmap(BITMAP_OUTSIDE_ID));
+    textureExtTemp.setWidth(25);
+    textureExtTemp.setHeight(26);
+    textureExtTemp.setBitmapPosition(1.0f, 1.5f);
+    textureExtTemp.setScale(1.0f);
+    textureExtTemp.setCameraDistance(1000.0f);
+    textureExtTemp.setOrigo(12.5f, 13.0f, 1000.0f);
+    textureExtTemp.setCamera(12.5f, 13.0f);
+    textureExtTemp.setAngles(0.0f, 0.0f, 0.0f);
+    textureExtTemp.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+
+    flexSettings.setBoxWithBorderPosition(0, 0, 50, 50);
+    flexSettings.setBorderSize(0);
+    flexSettings.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 0, 0), touchgfx::Color::getColorFromRGB(0, 0, 0), touchgfx::Color::getColorFromRGB(0, 0, 0), touchgfx::Color::getColorFromRGB(0, 0, 0));
+    flexSettings.setBitmaps(Bitmap(BITMAP_SETTING_ID), Bitmap(BITMAP_SETTING_ID));
+    flexSettings.setBitmapXY(0, 0);
+    flexSettings.setPosition(620, 25, 50, 50);
 
     add(__background);
     add(box1);
-    add(imgCooling);
+    add(lineClientBottom);
+    add(lineClientRight);
+    add(lineClientTop);
+    add(lineClientLeft);
+    add(textureCooling);
     add(txtTempEnt);
     add(txtTempFrc);
     add(txtTempUnit);
-    add(imgSettings);
-    add(imgStandby);
     add(txtHum);
-    add(txtHum_1);
-    add(txtHum_2);
-    add(image1);
-    add(txtHum_2_1);
-    add(image2);
-    add(image3);
-    add(image4);
+    add(txtExtTemp);
+    add(txtHumPercent);
+    add(txtExtTempUnit);
+    add(textureFlake);
+    add(textureStandby);
+    add(textureLogo);
+    add(textureDrop);
+    add(textureExtTemp);
+    add(flexSettings);
 }
 
 void MainViewBase::setupScreen()
 {
 
+}
+
+//Called when the screen transition ends
+void MainViewBase::afterTransition()
+{
+    //Interaction1
+    //When screen transition ends call virtual function
+    //Call function1
+    function1();
 }

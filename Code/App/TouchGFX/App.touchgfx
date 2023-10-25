@@ -89,21 +89,104 @@
       },
       {
         "Name": "Main",
+        "CanvasBufferSize": 10800,
         "Components": [
           {
             "Type": "Box",
             "Name": "box1",
             "Width": 720,
-            "Height": 672
+            "Height": 672,
+            "LockPosition": true
           },
           {
-            "Type": "Image",
-            "Name": "imgCooling",
-            "X": 72,
-            "Y": 54,
-            "Width": 576,
-            "Height": 564,
-            "RelativeFilename": "CoolingON.png"
+            "Type": "Line",
+            "Name": "lineClientBottom",
+            "Width": 720,
+            "Height": 672,
+            "LockPosition": true,
+            "Color": {
+              "Red": 99,
+              "Green": 105,
+              "Blue": 100
+            },
+            "StartX": 48.0,
+            "StartY": 648.0,
+            "EndX": 672.0,
+            "EndY": 648.0,
+            "LineWidth": 1.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
+            "Name": "lineClientRight",
+            "Width": 720,
+            "Height": 672,
+            "LockPosition": true,
+            "Color": {
+              "Red": 99,
+              "Green": 105,
+              "Blue": 100
+            },
+            "StartX": 672.0,
+            "StartY": 24.0,
+            "EndX": 672.0,
+            "EndY": 648.0,
+            "LineWidth": 1.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
+            "Name": "lineClientTop",
+            "Width": 720,
+            "Height": 672,
+            "LockPosition": true,
+            "Color": {
+              "Red": 99,
+              "Green": 105,
+              "Blue": 100
+            },
+            "StartX": 48.0,
+            "StartY": 24.0,
+            "EndX": 672.0,
+            "EndY": 24.0,
+            "LineWidth": 1.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
+            "Name": "lineClientLeft",
+            "Width": 720,
+            "Height": 672,
+            "LockPosition": true,
+            "Color": {
+              "Red": 99,
+              "Green": 105,
+              "Blue": 100
+            },
+            "StartX": 48.0,
+            "StartY": 24.0,
+            "EndX": 48.0,
+            "EndY": 648.0,
+            "LineWidth": 1.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureCooling",
+            "X": 24,
+            "Width": 672,
+            "Height": 672,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "CoolingON.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 48.0,
+            "YBitmapPosition": 54.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 336.0,
+            "YOrigo": 336.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
           },
           {
             "Type": "TextArea",
@@ -141,7 +224,8 @@
             "Wildcard1": {
               "UseBuffer": true,
               "BufferSize": 3
-            }
+            },
+            "Fadeable": true
           },
           {
             "Type": "TextArea",
@@ -159,29 +243,11 @@
             }
           },
           {
-            "Type": "Image",
-            "Name": "imgSettings",
-            "X": 644,
-            "Y": 25,
-            "Width": 51,
-            "Height": 50,
-            "RelativeFilename": "Setting.png"
-          },
-          {
-            "Type": "Image",
-            "Name": "imgStandby",
-            "X": 636,
-            "Y": 593,
-            "Width": 59,
-            "Height": 51,
-            "RelativeFilename": "StandbyMode.png"
-          },
-          {
             "Type": "TextArea",
             "Name": "txtHum",
-            "X": 25,
-            "Y": 569,
-            "Width": 85,
+            "X": 44,
+            "Y": 577,
+            "Width": 315,
             "Height": 75,
             "TextId": "__SingleUse_UB3J",
             "TextRotation": "0",
@@ -197,11 +263,11 @@
           },
           {
             "Type": "TextArea",
-            "Name": "txtHum_1",
-            "X": 25,
-            "Y": 8,
-            "Width": 85,
-            "Height": 75,
+            "Name": "txtExtTemp",
+            "X": 45,
+            "Y": 5,
+            "Width": 315,
+            "Height": 70,
             "TextId": "__SingleUse_8EN3",
             "TextRotation": "0",
             "Color": {
@@ -216,71 +282,150 @@
           },
           {
             "Type": "TextArea",
-            "Name": "txtHum_2",
-            "X": 111,
-            "Y": 584,
-            "Width": 17,
-            "Height": 27,
+            "Name": "txtHumPercent",
+            "X": 45,
+            "Y": 590,
+            "Width": 315,
+            "Height": 21,
             "TextId": "__SingleUse_DBNW",
             "TextRotation": "0",
             "Color": {
               "Red": 186,
               "Green": 188,
               "Blue": 190
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "Image",
-            "Name": "image1",
-            "X": 110,
-            "Y": 613,
-            "Width": 21,
-            "Height": 30,
-            "RelativeFilename": "Humidity.png"
+            }
           },
           {
             "Type": "TextArea",
-            "Name": "txtHum_2_1",
-            "X": 109,
-            "Y": 23,
-            "Width": 23,
-            "Height": 27,
+            "Name": "txtExtTempUnit",
+            "X": 45,
+            "Y": 19,
+            "Width": 315,
+            "Height": 22,
             "TextId": "__SingleUse_W88E",
             "TextRotation": "0",
             "Color": {
               "Red": 186,
               "Green": 188,
               "Blue": 190
-            },
-            "AutoSize": true
+            }
           },
           {
-            "Type": "Image",
-            "Name": "image2",
-            "X": 113,
-            "Y": 56,
-            "Width": 23,
-            "Height": 23,
-            "RelativeFilename": "Outside.png"
+            "Type": "TextureMapper",
+            "Name": "textureFlake",
+            "X": 332,
+            "Y": 440,
+            "Width": 56,
+            "Height": 56,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Snowflake.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 3.0,
+            "YBitmapPosition": 2.5,
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
           },
           {
-            "Type": "Image",
-            "Name": "image3",
-            "X": 335,
-            "Y": 436,
-            "Width": 50,
-            "Height": 51,
-            "RelativeFilename": "Snowflake.png"
+            "Type": "TextureMapper",
+            "Name": "textureStandby",
+            "X": 607,
+            "Y": 591,
+            "Width": 68,
+            "Height": 61,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "StandbyMode.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 4.5,
+            "YBitmapPosition": 5.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 34.0,
+            "YOrigo": 30.5,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
           },
           {
-            "Type": "Image",
-            "Name": "image4",
-            "X": 273,
-            "Y": 23,
-            "Width": 175,
+            "Type": "TextureMapper",
+            "Name": "textureLogo",
+            "X": 24,
+            "Y": 24,
+            "Width": 672,
             "Height": 28,
-            "RelativeFilename": "Prolon_40_1.png"
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Prolon_40_1.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 248.5,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 336.0,
+            "YOrigo": 14.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureDrop",
+            "X": 125,
+            "Y": 616,
+            "Width": 30,
+            "Height": 36,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Humidity.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 4.5,
+            "YBitmapPosition": 3.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 15.0,
+            "YOrigo": 18.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureExtTemp",
+            "X": 130,
+            "Y": 50,
+            "Width": 25,
+            "Height": 26,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Outside.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 1.0,
+            "YBitmapPosition": 1.5,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 12.5,
+            "YOrigo": 13.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "flexSettings",
+            "X": 620,
+            "Y": 25,
+            "Width": 50,
+            "Height": 50,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "ImageButtonStyle",
+                "ImageReleased": "Setting.png",
+                "ImagePressed": "Setting.png"
+              },
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 50,
+                "Height": 50,
+                "LockToFlexButtonSize": true
+              }
+            ]
           }
         ],
         "Interactions": [
@@ -302,6 +447,16 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "OnBtnDn"
+            }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerScreenEntered"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "function1"
             }
           }
         ]

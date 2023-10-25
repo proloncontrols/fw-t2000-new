@@ -31,14 +31,14 @@
 
 
 //=============================================================================
-//  M O D B U S   R E G I S T E R S   D E F I N I T I O N
+//  M O D B U S   R E G I S T E R S   D E F I N I T I O N   (input)
 //-----------------------------------------------------------------------------
 const MB_Register_t APP_Registers[] =
 {
-	{ 1,   MbRegTemp,      100,   &APP.Env.Temp },
-	{ 2,   MbRegTemp,      100,   &APP.HeatSP   },
-	{ 3,   MbRegTemp,      100,   &APP.CoolSP   },
-	{ 4,   MBRegPercent,     1,   &APP.Demand   }
+	{ 1,   MbRegTemp,      100,   &APP.Env.TempC },
+	{ 2,   MbRegTemp,      100,   &APP.HeatSP    },
+	{ 3,   MbRegTemp,      100,   &APP.CoolSP    },
+	{ 4,   MBRegPercent,     1,   &APP.Demand    }
 };
 
 
@@ -97,7 +97,7 @@ void APP_OnCom(COM_Connexion_t* Conx)
 //-----------------------------------------------------------------------------
 void APP_OnFlag(uint32_t Flag)
 {
-	//Called on unhandled events (flags)
+	//Called on framework unhandled events (flags)
 
 	if(Flag & NUM2POS(EvtGrpUi))
 		UI_ScreenTimeoutReset();
@@ -112,20 +112,7 @@ void APP_OnFlag(uint32_t Flag)
 		if(APP.Env.Device > EnvDevPowerup)
 		{
 			if(APP.Env.Device > EnvDevNone)
-			{
-//				UI_Text_t Text;
-//
-//				Text.TextLabel = UiTextTemp;
-//				if(CFG.Dta.TempUnit == CfgEnvTempC)
-////				if(FMK_Config.TempUnit == CfgTempC)
-//					sprintf((char*)Text.Text, "%f", APP.Env.TempC);
-////					sprintf((char*)Text.Text, "%.1f°C", APP.Env.TempC);
-//				else
-//					sprintf((char*)Text.Text, "%f", APP.Env.TempF);
-////					sprintf((char*)Text.Text, "%.1f°F", APP.Env.TempF);
 				UI_PostEnv(&APP.Env);
-////				UI_PostText(&Text);
-			}
 		}
 	}
 }

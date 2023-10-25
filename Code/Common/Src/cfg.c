@@ -36,14 +36,14 @@
 
 
 //=============================================================================
-//  M O D B U S   R E G I S T E R S   D E F I N I T I O N
+//  M O D B U S   R E G I S T E R S   D E F I N I T I O N   (holding)
 //-----------------------------------------------------------------------------
 const MB_Register_t CFG_Registers[] =
 {
 	{  1,   MbReg8,           1,   &CFG.Prd.DevType           },
 	{  2,   MbReg16,          1,   &CFG.Prd.SoftVer           },
 	{  3,   MbReg16,          1,   &CFG.Prd.HardVer           },
-	//------------------------------------------------------------
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	{  4,   MbReg16,        100,   &CFG.Dta.DefHeatSP         },
 	{  5,   MbReg16,        100,   &CFG.Dta.DefCoolSP         },
 	{  6,   MbReg16,        100,   &CFG.Dta.Prop              },
@@ -89,7 +89,7 @@ const MB_Register_t CFG_Registers[] =
 	{ 46,   MbReg16,          1,   &CFG.Dta.RadCycleTime      },
 	{ 47,   MbReg8,           1,   &CFG.Dta.AIMode            },
 	{ 48,   MbReg8,           1,   &CFG.Dta.MorningWarmUpTime },
-	//------------------------------------------------------------
+	//---------------------------------------------------------
 	{ 49,   MbReg8,           1,   &CFG.Dta.Address           },
 	{ 50,   MbReg8,           1,   &CFG.Dta.TempUnit          },
 	{ 52,   MbRegLoc,         1,    CFG.Dta.Location          },
@@ -97,7 +97,7 @@ const MB_Register_t CFG_Registers[] =
 	{ 61,   MbReg8,           1,   &CFG.Dta.Parity            },
 	{ 62,   MbReg8,           1,   &CFG.Dta.StopBits          },
 	{ 64,   MbReg8,           1,   &CFG.Dta.Language          },
-	//------------------------------------------------------------
+	//---------------------------------------------------------
 	{ 65,   MbRegTemp,      100,   &CFG.Dta.DisMinSP          },
 	{ 66,   MbRegTemp,      100,   &CFG.Dta.DisMidSP          },
 	{ 67,   MbRegTemp,      100,   &CFG.Dta.DisMaxSP          },
@@ -111,7 +111,7 @@ const MB_Register_t CFG_Registers[] =
 	{ 75,   MBRegPercent,     1,   &CFG.Dta.DOOverr           },
 	{ 76,   MBRegPercent,     1,   &CFG.Dta.AOOverr           },
 	{ 77,   MbReg8,           1,   &CFG.Dta.SchOverr          },
-	//------------------------------------------------------------
+	//---------------------------------------------------------
 	{ 78,   MbReg8,           1,   &CFG.Dta.ScrOrientation    },
 	{ 79,   MbReg8,           1,   &CFG.Dta.ScrBrightness     },
 	{ 80,   MbReg16,          1,   &CFG.Dta.ScrTimeout        },

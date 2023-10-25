@@ -37,7 +37,11 @@
 //-----------------------------------------------------------------------------
 #ifdef PROJECT_APP
 #define FMK_BOOT_VERSION          0x0000
+#ifdef DEBUG
+#define FMK_SHARED_FLASH_ADDRESS  FMK_ADDR_APP_SHARED
+#else
 #define FMK_SHARED_FLASH_ADDRESS  FMK_ADDR_BOOTL_SHARED
+#endif
 
 const PRD_Banner_t __attribute__((section(".app_header"))) FMK_Header = PRJ_PRD_HEADER;
 const PRD_Banner_t __attribute__((section(".app_footer"))) FMK_Footer = PRJ_PRD_FOOTER;

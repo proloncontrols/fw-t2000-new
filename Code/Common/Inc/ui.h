@@ -113,6 +113,7 @@ typedef enum {
 //=============================================================================
 //  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
+UI_EXTERN osEventFlagsId_t   UI_Flags;
 UI_EXTERN osMessageQueueId_t UI_QueueEnv;
 UI_EXTERN osMessageQueueId_t UI_QueueText;
 UI_EXTERN osMessageQueueId_t UI_QueueScreen;
@@ -129,6 +130,8 @@ extern void     UI_ScreenOff          (void);
 extern void     UI_ScreenTimeout      (uint16_t Timeout);    //Validate screen OFF timer and turn OFF if needed
 extern void     UI_ScreenTimeoutReset (void);                //Reset screen OFF timeout timer
 extern void     UI_ScreenSwitchTo     (UI_ScrId_t Id);       //Switch to specified screen
+
+extern void     UI_ScreenSwitchCplt   (void);
 
 //extern void     UI_PostBtn            (UI_Btn_t Button);     //Post button pressed from frontend for backend to retrieve
 //extern UI_Btn_t UI_ReadBtn            (void);                //Retrieve button pressed posted by frontend

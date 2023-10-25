@@ -8,9 +8,14 @@
 #include <mvp/View.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/Image.hpp>
+#include <touchgfx/widgets/canvas/Line.hpp>
+#include <touchgfx/widgets/canvas/PainterARGB8888.hpp>
+#include <touchgfx/widgets/TextureMapper.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+#include <touchgfx/EasingEquations.hpp>
+#include <touchgfx/mixins/FadeAnimator.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -18,6 +23,15 @@ public:
     MainViewBase();
     virtual ~MainViewBase() {}
     virtual void setupScreen();
+    virtual void afterTransition();
+
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void function1()
+    {
+        // Override and implement this function in Main
+    }
 
 protected:
     FrontendApplication& application() {
@@ -29,20 +43,28 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::Image imgCooling;
+    touchgfx::Line lineClientBottom;
+    touchgfx::PainterARGB8888 lineClientBottomPainter;
+    touchgfx::Line lineClientRight;
+    touchgfx::PainterARGB8888 lineClientRightPainter;
+    touchgfx::Line lineClientTop;
+    touchgfx::PainterARGB8888 lineClientTopPainter;
+    touchgfx::Line lineClientLeft;
+    touchgfx::PainterARGB8888 lineClientLeftPainter;
+    touchgfx::TextureMapper textureCooling;
     touchgfx::TextAreaWithOneWildcard txtTempEnt;
-    touchgfx::TextAreaWithOneWildcard txtTempFrc;
+    touchgfx::FadeAnimator< touchgfx::TextAreaWithOneWildcard > txtTempFrc;
     touchgfx::TextArea txtTempUnit;
-    touchgfx::Image imgSettings;
-    touchgfx::Image imgStandby;
     touchgfx::TextAreaWithOneWildcard txtHum;
-    touchgfx::TextAreaWithOneWildcard txtHum_1;
-    touchgfx::TextArea txtHum_2;
-    touchgfx::Image image1;
-    touchgfx::TextArea txtHum_2_1;
-    touchgfx::Image image2;
-    touchgfx::Image image3;
-    touchgfx::Image image4;
+    touchgfx::TextAreaWithOneWildcard txtExtTemp;
+    touchgfx::TextArea txtHumPercent;
+    touchgfx::TextArea txtExtTempUnit;
+    touchgfx::TextureMapper textureFlake;
+    touchgfx::TextureMapper textureStandby;
+    touchgfx::TextureMapper textureLogo;
+    touchgfx::TextureMapper textureDrop;
+    touchgfx::TextureMapper textureExtTemp;
+    touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  flexSettings;
 
     /*
      * Wildcard Buffers
@@ -53,11 +75,16 @@ protected:
     touchgfx::Unicode::UnicodeChar txtTempFrcBuffer[TXTTEMPFRC_SIZE];
     static const uint16_t TXTHUM_SIZE = 4;
     touchgfx::Unicode::UnicodeChar txtHumBuffer[TXTHUM_SIZE];
-    static const uint16_t TXTHUM_1_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar txtHum_1Buffer[TXTHUM_1_SIZE];
+    static const uint16_t TXTEXTTEMP_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar txtExtTempBuffer[TXTEXTTEMP_SIZE];
 
 private:
 
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint16_t CANVAS_BUFFER_SIZE = 10800;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // MAINVIEWBASE_HPP

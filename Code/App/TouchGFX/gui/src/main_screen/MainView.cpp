@@ -7,18 +7,27 @@
 
 MainView::MainView()
 {
+	lineClientLeft.setVisible(false);
+	lineClientTop.setVisible(false);
+	lineClientRight.setVisible(false);
+	lineClientBottom.setVisible(false);
+
+    FEA_PlaceTexture(textureLogo);
+    FEA_PlaceTexture(textureCooling);
+    FEA_PlaceTexture(textureFlake);
+    FEA_PlaceTexture(textureStandby);
+    FEA_PlaceTexture(textureExtTemp);
+    FEA_PlaceTexture(textureDrop);
+
     FEA_PlaceText(txtTempEnt);
     FEA_PlaceText(txtTempFrc);
-//    FEA_PlaceButtonIcon(btnUp);
-//    FEA_PlaceButtonIcon(btnDn);
+    FEA_PlaceText(txtTempUnit);
+    FEA_PlaceText(txtExtTemp);
+    FEA_PlaceText(txtExtTempUnit);
+    FEA_PlaceText(txtHum);
+    FEA_PlaceText(txtHumPercent);
 
-//    FEA_PlaceImage(imgProlon);
-//    FEA_PlaceImage(imgGFX);
-
-//    FEA_PlaceText(txtContext);
-//    FEA_PlaceText(txtVersion);
-
-//    FEA_PlaceButton(btnRotate);
+    FEA_PlaceButtonFlex(flexSettings);
 }
 
 void MainView::setupScreen()
@@ -62,12 +71,12 @@ void MainView::DisplayEnv(ENV_Readings_t* Env)
 {
 	char Tmp[4];
 
-	float Temp = Env->TempC;
+	int16_t Temp = Env->TempC;
 	if(CFG.Dta.TempUnit == CfgEnvTempF)
 		Temp = Env->TempF;
 
-	float Integral;
-	float Fractional = modf(Temp, &Integral) * 10.0;
+	double Integral;
+	double Fractional = modf((double)Temp / 100.0, &Integral) * 10.0;
 
 	sprintf(Tmp, "%d", (int)Integral);
 	Unicode::fromUTF8((uint8_t*)Tmp, txtTempEntBuffer, sizeof(txtTempEntBuffer));
@@ -76,27 +85,6 @@ void MainView::DisplayEnv(ENV_Readings_t* Env)
 	sprintf(Tmp, "%d", (int)Fractional);
 	Unicode::fromUTF8((uint8_t*)Tmp, txtTempFrcBuffer, sizeof(txtTempFrcBuffer));
 	txtTempFrc.invalidate();
-
-
-
-
-//	float Temp = Env->TempC;
-//	if(CFG.Dta.TempUnit == CfgEnvTempF)
-//		Temp = Env->TempF;
-//
-//	int Integral = (int)Temp;
-//	char Tmp[4];
-//	sprintf(Tmp, "%.1f", (float)Temp - (float)Integral);
-//	strcpy(Tmp, strstr("0.", Tmp));
-//	int Fractional = atoi(Tmp);
-//
-//	sprintf(Tmp, "%d", Integral);
-//	Unicode::fromUTF8((uint8_t*)Tmp, txtTempEntBuffer, sizeof(txtTempEntBuffer));
-//	txtTempEnt.invalidate();
-//
-//	sprintf(Tmp, "%d", Fractional);
-//	Unicode::fromUTF8((uint8_t*)Tmp, txtTempFrcBuffer, sizeof(txtTempFrcBuffer));
-//	txtTempFrc.invalidate();
 }
 
 void MainView::DisplayTemp(uint8_t* Temp)
@@ -108,6 +96,10 @@ void MainView::DisplayTemp(uint8_t* Temp)
 	txtTempEnt.invalidate();
 }
 
+void MainView::function1()
+{
+	UI_ScreenSwitchCplt();
+}
 
 
 

@@ -7,16 +7,16 @@
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
       <Text Id="__SingleUse_W88E" Alignment="Left" TypographyId="T2000_Tiny">
-        <Translation Language="GB">°C</Translation>
+        <Translation Language="GB">                °C</Translation>
       </Text>
       <Text Id="__SingleUse_DBNW" Alignment="Left" TypographyId="T2000_Tiny">
-        <Translation Language="GB">%</Translation>
+        <Translation Language="GB">                 %</Translation>
       </Text>
       <Text Id="__SingleUse_8EN3" Alignment="Left" TypographyId="T2000_Small">
-        <Translation Language="GB">&lt;value&gt;19</Translation>
+        <Translation Language="GB">&lt;value&gt;22</Translation>
       </Text>
       <Text Id="__SingleUse_UB3J" Alignment="Left" TypographyId="T2000_Small">
-        <Translation Language="GB">&lt;value&gt;45</Translation>
+        <Translation Language="GB">&lt;value&gt;22</Translation>
       </Text>
       <Text Id="__SingleUse_CFMA" Alignment="Left" TypographyId="T2000_Small">
         <Translation Language="GB">°C</Translation>

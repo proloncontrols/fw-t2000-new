@@ -55,6 +55,8 @@ void UI_Init(void)
 //	UI_QueueAction = osMessageQueueNew(1, sizeof(UI_Action_t), NULL);
 //	UI_QueueEvent = osMessageQueueNew(1, sizeof(UI_Event_t), NULL);
 
+	UI_Flags = osEventFlagsNew(NULL);
+
 	UI_QueueEnv = osMessageQueueNew(1, sizeof(ENV_Readings_t), NULL);
 
 	UI_QueueText = osMessageQueueNew(1, sizeof(UI_Text_t), NULL);
@@ -134,6 +136,8 @@ void UI_ScreenSwitchTo(UI_ScrId_t Id)
 	UI.Screen.Name = UiScrSw;
 	UI.Screen.ScreenSwitch.Id = Id;
 	osMessageQueuePut(UI_QueueScreen, &UI.Screen, 0, 0);
+
+	osEventFlagsWait(UI_Flags, 1, osFlagsWaitAny, 1000);
 }
 //void UI_SwitchToScreen(UI_ScreenId_t Id)
 //{
@@ -143,6 +147,12 @@ void UI_ScreenSwitchTo(UI_ScrId_t Id)
 ////	UI.Action.SwScr.Id = Id;
 ////	osMessageQueuePut(UI_QueueAction, &UI.Action, 0, 0);
 //}
+
+//-----------------------------------------------------------------------------
+void UI_ScreenSwitchCplt(void)
+{
+	osEventFlagsSet(UI_Flags, 1);
+}
 
 //-----------------------------------------------------------------------------
 //void UI_PostEvent()

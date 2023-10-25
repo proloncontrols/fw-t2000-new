@@ -43,11 +43,12 @@ extern "C" {
 //=============================================================================
 //  D E F I N E S
 //-----------------------------------------------------------------------------
-#define CFG_MB_LOC_SIZE   16
-#define CFG_MB_ADD_MIN    0x0001   //TBD
-#define CFG_MB_ADD_MAX    0xFFFE   //
-#define CFG_MB_QTY_MIN    1
-#define CFG_MB_QTY_MAX    125
+#define CFG_MB_REG_COUNT   71       //***IMPORTANT*** This value MUST match the number of elements in structure APP_Registers
+#define CFG_MB_LOC_SIZE    16
+#define CFG_MB_ADD_MIN     0x0001   //TBD
+#define CFG_MB_ADD_MAX     0xFFFE   //
+#define CFG_MB_QTY_MIN     1
+#define CFG_MB_QTY_MAX     125
 
 
 //=============================================================================
@@ -192,6 +193,7 @@ CFG_EXTERN CFG_t CFG;
 //  M O D B U S   R E G I S T E R S   D E F I N I T I O N
 //-----------------------------------------------------------------------------
 extern const MB_Register_t CFG_Registers[];
+extern const uint16_t      CFG_RegisterCount;
 
 
 //=============================================================================

@@ -39,32 +39,24 @@
 //=============================================================================
 //  T Y P E D E F S
 //-----------------------------------------------------------------------------
-//typedef enum {
-//	EnvEvent = NUM2POS(UiEnd),
-//	//Add events here (add matching flag below)
-//} ENV_Event_t;
-//
-//typedef enum {
-//	EnvFlag = NUM2POS(EnvEvent),
-//	//Add flags here (matching corresponding events above)
-//	EnvFlags = (EnvFlag)   //<--OR newly created flag here
-//} ENV_Flag_t;
-
 typedef enum {
-	EnvDevPowerup,         //Sensor currently powering up (data is not be available during this state)
+	EnvDevPowerup,         //Sensor currently powering up (data is not available during this state)
 	EnvDevNone,            //No sensor detected or sensor not responding
-	EnvDevSHT4x,           //Sensirion models SHT4x
-	EnvDevSCD4x            //Sensirion models SCD4x
+	EnvDevSHT4x,           //Sensirion parts SHT4x
+	EnvDevSCD4x            //Sensirion parts SCD4x
 } ENV_Device_t;
 
 typedef struct {
 	ENV_Device_t Device;   //Sensor type
 	uint16_t     SN[3];    //Sensor serial number
 	uint16_t     Temp;     //Temperature
-	float        TempC;    //Temperature degree C
-	float        TempF;    //Temperature degree F
+	int16_t      TempC;    //Temperature degree C (multiplier applied)
+	int16_t      TempF;    //Temperature degree F (multiplier applied)
+//	float        TempC;    //Temperature degree C
+//	float        TempF;    //Temperature degree F
 	uint16_t     Hum;      //Humidity
-	float        HumP;     //Humidity percentage
+	uint16_t     HumP;     //Humidity percentage (multiplier applied)
+//	float        HumP;     //Humidity percentage
 	uint16_t     CO2;      //CO2
 } ENV_Readings_t;
 

@@ -12,11 +12,10 @@ const uint16_t BITMAP_COOLINGON_ID = 2;
 const uint16_t BITMAP_HUMIDITY_ID = 3;
 const uint16_t BITMAP_OUTSIDE_ID = 4;
 const uint16_t BITMAP_PROLON_40_1_ID = 5;
-const uint16_t BITMAP_PROLON_40_2_ID = 6;
-const uint16_t BITMAP_PROLON_LOGO_4_ID = 7;
-const uint16_t BITMAP_SETTING_ID = 8;
-const uint16_t BITMAP_SNOWFLAKE_ID = 9;
-const uint16_t BITMAP_STANDBYMODE_ID = 10;
+const uint16_t BITMAP_PROLON_LOGO_4_ID = 6;
+const uint16_t BITMAP_SETTING_ID = 7;
+const uint16_t BITMAP_SNOWFLAKE_ID = 8;
+const uint16_t BITMAP_STANDBYMODE_ID = 9;
 
 namespace BitmapDatabase
 {

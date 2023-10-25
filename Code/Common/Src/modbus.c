@@ -34,8 +34,8 @@
 //  D E F I N E S
 //-----------------------------------------------------------------------------
 #define MB_ERROR_FLAG    0x80
-#define MB_SECTION_CFG   0
-#define MB_SECTION_INP   1
+#define MB_SECTION_CFG   0      //Holding registers
+#define MB_SECTION_INP   1      //Input registers
 
 
 //=============================================================================
@@ -48,6 +48,7 @@ typedef struct {
 
 typedef struct {
 	const MB_Register_t* Registers;
+	      uint16_t       RegisterCount;
 	      uint16_t       AddMin;
 	      uint16_t       AddMax;
 	      uint16_t       QtyMin;
@@ -66,8 +67,8 @@ static MB_t MB;
 //-----------------------------------------------------------------------------
 static const MB_Section_t MB_Sections[] =
 {
-	{ CFG_Registers, CFG_MB_ADD_MIN, CFG_MB_ADD_MAX, CFG_MB_QTY_MIN, CFG_MB_QTY_MAX },
-	{ APP_Registers, APP_MB_ADD_MIN, APP_MB_ADD_MAX, APP_MB_QTY_MIN, APP_MB_QTY_MAX }
+	{ CFG_Registers, CFG_MB_REG_COUNT, CFG_MB_ADD_MIN, CFG_MB_ADD_MAX, CFG_MB_QTY_MIN, CFG_MB_QTY_MAX },
+	{ APP_Registers, APP_MB_REG_COUNT, APP_MB_ADD_MIN, APP_MB_ADD_MAX, APP_MB_QTY_MIN, APP_MB_QTY_MAX }
 };
 
 
@@ -117,9 +118,14 @@ static void MB_Read(COM_Connexion_t* Conx, MB_Function_t Function)
 	MB_FctReadReq_t* Req = (MB_FctReadReq_t*)&MB.PktRx->Function;
 	MB_FctReadAns_t* Ans = (MB_FctReadAns_t*)&MB.PktTx->Function;
 
-	const MB_Section_t* Section = &MB_Sections[MB_SECTION_CFG];
+	const MB_Section_t* Section;
 	if(Function == MbFctRdInpRegs)
 		Section = &MB_Sections[MB_SECTION_INP];
+	else
+		Section = &MB_Sections[MB_SECTION_CFG];
+//	const MB_Section_t* Section = &MB_Sections[MB_SECTION_CFG];
+//	if(Function == MbFctRdInpRegs)
+//		Section = &MB_Sections[MB_SECTION_INP];
 
 	Req->Address  = REVERSE_ORDER_16(Req->Address) + 1;   //Focus addresses are 0 based
 	Req->Quantity = REVERSE_ORDER_16(Req->Quantity);
@@ -234,9 +240,7 @@ static void MB_WriteRam(const MB_Register_t* Register, uint16_t* Data)
 //-----------------------------------------------------------------------------
 static const MB_Register_t* MB_GetRegister(const MB_Section_t* Section, uint16_t Register)
 {
-	uint16_t Size = *(&Section->Registers + 1) - Section->Registers;   //Get the number of registers in section
-
-	for(uint16_t i = 0; i < Size; i++)
+	for(uint16_t i = 0; i < Section->RegisterCount; i++)
 	{
 		if(Section->Registers[i].Number == Register)
 			return &Section->Registers[i];
@@ -262,3 +266,33 @@ static void MB_Tx(COM_Connexion_t* Conx, uint16_t Length)
 	Conx->PacketOut.Length += sizeof(COM_Checksum_t);
 	COM_Tx(Conx);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

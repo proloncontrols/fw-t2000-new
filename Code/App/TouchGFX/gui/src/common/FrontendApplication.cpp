@@ -109,20 +109,7 @@ void FEA_PlaceButtonLabel(touchgfx::ButtonWithLabel& Button)
 	}
 }
 
-void FEA_PlaceButtonIcon(touchgfx::ButtonWithIcon& Button)
-{
-    if(CFG.Dta.ScrOrientation == CfgScrOrientL)
-	{
-    	touchgfx::Rect ButtonRect = Button.getRect();
-
-//    	Button.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_270_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_270_ID));
-    	FEA_GetRect270(ButtonRect);
-    	Button.setPosition(ButtonRect.x, ButtonRect.y, ButtonRect.width, ButtonRect.height);
-//	    Button.setLabelRotation(touchgfx::TEXT_ROTATE_270);
-	}
-}
-
-void FEA_PlaceImage(touchgfx::TextureMapper& Image)
+void FEA_PlaceTexture(touchgfx::TextureMapper& Image)
 {
     if(CFG.Dta.ScrOrientation == CfgScrOrientL)
     {
@@ -139,3 +126,41 @@ void FEA_PlaceImage(touchgfx::TextureMapper& Image)
 	    Image.setAngles(0.0f, -0.0f, SCREEN_ANGLE);
     }
 }
+
+void FEA_PlaceButtonFlex(touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >& Button)
+{
+    if(CFG.Dta.ScrOrientation == CfgScrOrientL)
+    {
+    	touchgfx::Rect ButtonRect = Button.getRect();
+    	FEA_GetRect270(ButtonRect);
+    	Button.setPosition(ButtonRect.x, ButtonRect.y, ButtonRect.width, ButtonRect.height);
+
+//	    touchgfx::Bitmap ImageBit  = Button.getCurrentlyDisplayedBitmap();
+//    	touchgfx::Rect   ImageRect = ImageBit.getRect();
+//    	FEA_GetRect270(ImageRect);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

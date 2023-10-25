@@ -190,9 +190,12 @@ void ENV_SCD4x_Reset(ENV_Readings_t* Readings)
 //-----------------------------------------------------------------------------
 void ENV_SCD4x_Format(ENV_Readings_t* Readings)
 {
-	Readings->TempC = -45.0 + (175.0 * Readings->Temp / 65535);
-	Readings->TempF = -49.0 + (315.0 * Readings->Temp / 65535);
-	Readings->HumP  = -6.0  + (125.0 * Readings->Hum  / 65535);
+	Readings->TempC =  (int16_t)((-45.0 + (175.0 * Readings->Temp / 65535)) * 100.0);
+	Readings->TempF =  (int16_t)((-49.0 + (315.0 * Readings->Temp / 65535)) * 100.0);
+	Readings->HumP  = (uint16_t)((-6.0  + (125.0 * Readings->Hum  / 65535)) * 100.0);
+//	Readings->TempC = -45.0 + (175.0 * Readings->Temp / 65535);
+//	Readings->TempF = -49.0 + (315.0 * Readings->Temp / 65535);
+//	Readings->HumP  = -6.0  + (125.0 * Readings->Hum  / 65535);
 }
 
 

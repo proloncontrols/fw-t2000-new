@@ -94,10 +94,8 @@ void RS485_DeInit(void)
 }
 
 //-----------------------------------------------------------------------------
-int Cnt = 0;
 void RS485_Rx(void)
 {
-	Cnt++;
 	RS485.DataCounter = 0;
 	RS485.RxError = FALSE;
 

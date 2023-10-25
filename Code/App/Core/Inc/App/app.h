@@ -57,10 +57,11 @@
 //=============================================================================
 //  M O D B U S
 //-----------------------------------------------------------------------------
-#define APP_MB_ADD_MIN    0x0001   //TBD
-#define APP_MB_ADD_MAX    0xFFFE   //
-#define APP_MB_QTY_MIN    1
-#define APP_MB_QTY_MAX    125
+#define APP_MB_REG_COUNT   4        //***IMPORTANT*** This value MUST match the number of elements in structure APP_Registers
+#define APP_MB_ADD_MIN     0x0001   //TBD
+#define APP_MB_ADD_MAX     0xFFFE   //
+#define APP_MB_QTY_MIN     1
+#define APP_MB_QTY_MAX     125
 
 
 //=============================================================================
@@ -87,6 +88,7 @@ APP_EXTERN APP_Obj_t          APP;
 //  M O D B U S   R E G I S T E R S   D E F I N I T I O N
 //-----------------------------------------------------------------------------
 extern const MB_Register_t APP_Registers[];
+extern const uint16_t      APP_RegisterCount;
 
 
 //=============================================================================
