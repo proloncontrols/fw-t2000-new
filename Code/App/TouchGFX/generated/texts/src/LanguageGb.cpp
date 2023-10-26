@@ -17,6 +17,5 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     35, // T___SINGLEUSE_CFMA: "?C"
     42, // T___SINGLEUSE_R2UV: ".<>"
     43, // T___SINGLEUSE_LYVN: "<>"
-    45, // T_BTN_ROTATE_ID: "Rotate"
-    18  // T___SINGLEUSE_YRZ9: ""
+    45  // T_BTN_ROTATE_ID: "Rotate"
 };

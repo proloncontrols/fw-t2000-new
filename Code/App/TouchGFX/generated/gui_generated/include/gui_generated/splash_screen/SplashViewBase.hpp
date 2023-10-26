@@ -8,7 +8,6 @@
 #include <mvp/View.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/TextureMapper.hpp>
 
 class SplashViewBase : public touchgfx::View<SplashPresenter>
@@ -37,7 +36,6 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::ButtonWithLabel btnButton270;
     touchgfx::TextureMapper imgProlon;
 
 private:

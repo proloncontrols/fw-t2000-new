@@ -96,18 +96,18 @@ void FEA_PlaceText(touchgfx::TextArea& Text)
 	}
 }
 
-void FEA_PlaceButtonLabel(touchgfx::ButtonWithLabel& Button)
-{
-    if(CFG.Dta.ScrOrientation == CfgScrOrientL)
-	{
-    	touchgfx::Rect ButtonRect = Button.getRect();
-
-    	Button.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_270_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_270_ID));
-    	FEA_GetRect270(ButtonRect);
-    	Button.setPosition(ButtonRect.x, ButtonRect.y, ButtonRect.width, ButtonRect.height);
-	    Button.setLabelRotation(touchgfx::TEXT_ROTATE_270);
-	}
-}
+//void FEA_PlaceButtonLabel(touchgfx::ButtonWithLabel& Button)
+//{
+//    if(CFG.Dta.ScrOrientation == CfgScrOrientL)
+//	{
+//    	touchgfx::Rect ButtonRect = Button.getRect();
+//
+////    	Button.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_270_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_270_ID));
+//    	FEA_GetRect270(ButtonRect);
+//    	Button.setPosition(ButtonRect.x, ButtonRect.y, ButtonRect.width, ButtonRect.height);
+//	    Button.setLabelRotation(touchgfx::TEXT_ROTATE_270);
+//	}
+//}
 
 void FEA_PlaceTexture(touchgfx::TextureMapper& Image)
 {
@@ -134,10 +134,6 @@ void FEA_PlaceButtonFlex(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButt
     	touchgfx::Rect ButtonRect = Button.getRect();
     	FEA_GetRect270(ButtonRect);
     	Button.setPosition(ButtonRect.x, ButtonRect.y, ButtonRect.width, ButtonRect.height);
-
-//	    touchgfx::Bitmap ImageBit  = Button.getCurrentlyDisplayedBitmap();
-//    	touchgfx::Rect   ImageRect = ImageBit.getRect();
-//    	FEA_GetRect270(ImageRect);
     }
 }
 

@@ -11,27 +11,6 @@
             "Height": 672
           },
           {
-            "Type": "ButtonWithLabel",
-            "Name": "btnButton270",
-            "Width": 60,
-            "Height": 170,
-            "Visible": false,
-            "Pressed": "Blue_Buttons_Round_Edge_small_pressed_270.png",
-            "Released": "Blue_Buttons_Round_Edge_small_270.png",
-            "TextId": "__SingleUse_YRZ9",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "270"
-          },
-          {
             "Type": "TextureMapper",
             "Name": "imgProlon",
             "X": 24,
@@ -441,26 +420,6 @@
           }
         ],
         "Interactions": [
-          {
-            "InteractionName": "IntOnBtnUp",
-            "Trigger": {
-              "Type": "TriggerClicked"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "OnBtnUp"
-            }
-          },
-          {
-            "InteractionName": "IntOnBtnDn",
-            "Trigger": {
-              "Type": "TriggerClicked"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "OnBtnDn"
-            }
-          },
           {
             "InteractionName": "Interaction1",
             "Trigger": {

@@ -46,7 +46,7 @@ private:
 };
 
 void FEA_PlaceText(touchgfx::TextArea& Text);
-void FEA_PlaceButtonLabel(touchgfx::ButtonWithLabel& Button);
+//void FEA_PlaceButtonLabel(touchgfx::ButtonWithLabel& Button);
 void FEA_PlaceTexture(touchgfx::TextureMapper& Image);
 void FEA_PlaceButtonFlex(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& Button);
 
