@@ -127,7 +127,7 @@ void FEA_PlaceTexture(touchgfx::TextureMapper& Image)
     }
 }
 
-void FEA_PlaceButtonFlex(touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >& Button)
+void FEA_PlaceButtonFlex(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& Button)
 {
     if(CFG.Dta.ScrOrientation == CfgScrOrientL)
     {

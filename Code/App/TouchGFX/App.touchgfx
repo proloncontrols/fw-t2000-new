@@ -100,7 +100,7 @@
           },
           {
             "Type": "Line",
-            "Name": "lineClientBottom",
+            "Name": "ClientLineBottom",
             "Width": 720,
             "Height": 672,
             "LockPosition": true,
@@ -118,7 +118,7 @@
           },
           {
             "Type": "Line",
-            "Name": "lineClientRight",
+            "Name": "ClientLineRight",
             "Width": 720,
             "Height": 672,
             "LockPosition": true,
@@ -136,7 +136,7 @@
           },
           {
             "Type": "Line",
-            "Name": "lineClientTop",
+            "Name": "ClientLineTop",
             "Width": 720,
             "Height": 672,
             "LockPosition": true,
@@ -154,7 +154,7 @@
           },
           {
             "Type": "Line",
-            "Name": "lineClientLeft",
+            "Name": "ClientLineLeft",
             "Width": 720,
             "Height": 672,
             "LockPosition": true,
@@ -172,7 +172,7 @@
           },
           {
             "Type": "TextureMapper",
-            "Name": "textureCooling",
+            "Name": "CoolingImage",
             "X": 24,
             "Width": 672,
             "Height": 672,
@@ -189,27 +189,97 @@
             "CameraDistance": 1000.0
           },
           {
+            "Type": "TextureMapper",
+            "Name": "FlakeImage",
+            "X": 332,
+            "Y": 440,
+            "Width": 56,
+            "Height": 56,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Snowflake.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 3.0,
+            "YBitmapPosition": 2.5,
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "StandbyImage",
+            "X": 607,
+            "Y": 591,
+            "Width": 68,
+            "Height": 61,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "StandbyMode.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 4.5,
+            "YBitmapPosition": 5.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 34.0,
+            "YOrigo": 30.5,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "LogoImage",
+            "X": 24,
+            "Y": 24,
+            "Width": 672,
+            "Height": 28,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Prolon_40_1.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 248.5,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 336.0,
+            "YOrigo": 14.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "DropImage",
+            "X": 125,
+            "Y": 616,
+            "Width": 30,
+            "Height": 36,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Humidity.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": 4.5,
+            "YBitmapPosition": 3.0,
+            "Scale": 1.0,
+            "LockOrigoToCenter": true,
+            "XOrigo": 15.0,
+            "YOrigo": 18.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
             "Type": "TextArea",
-            "Name": "txtTempEnt",
-            "X": 144,
-            "Y": 157,
-            "Width": 300,
-            "Height": 242,
-            "TextId": "__SingleUse_LYVN",
+            "Name": "TempUnitText",
+            "X": 436,
+            "Y": 199,
+            "Width": 183,
+            "Height": 88,
+            "TextId": "__SingleUse_CFMA",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
               "Green": 255,
               "Blue": 255
-            },
-            "Wildcard1": {
-              "UseBuffer": true,
-              "BufferSize": 4
             }
           },
           {
             "Type": "TextArea",
-            "Name": "txtTempFrc",
+            "Name": "TempFrcText",
             "X": 441,
             "Y": 308,
             "Width": 183,
@@ -229,22 +299,41 @@
           },
           {
             "Type": "TextArea",
-            "Name": "txtTempUnit",
-            "X": 436,
-            "Y": 199,
-            "Width": 183,
-            "Height": 88,
-            "TextId": "__SingleUse_CFMA",
+            "Name": "TempEntText",
+            "X": 144,
+            "Y": 157,
+            "Width": 300,
+            "Height": 242,
+            "TextId": "__SingleUse_LYVN",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
               "Green": 255,
               "Blue": 255
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 4
             }
           },
           {
             "Type": "TextArea",
-            "Name": "txtHum",
+            "Name": "HumPercentText",
+            "X": 45,
+            "Y": 590,
+            "Width": 315,
+            "Height": 21,
+            "TextId": "__SingleUse_DBNW",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 186,
+              "Green": 188,
+              "Blue": 190
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "HumText",
             "X": 44,
             "Y": 577,
             "Width": 315,
@@ -263,7 +352,22 @@
           },
           {
             "Type": "TextArea",
-            "Name": "txtExtTemp",
+            "Name": "ExtTempUnitText",
+            "X": 45,
+            "Y": 19,
+            "Width": 315,
+            "Height": 22,
+            "TextId": "__SingleUse_W88E",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 186,
+              "Green": 188,
+              "Blue": 190
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ExtTempText",
             "X": 45,
             "Y": 5,
             "Width": 315,
@@ -281,112 +385,8 @@
             }
           },
           {
-            "Type": "TextArea",
-            "Name": "txtHumPercent",
-            "X": 45,
-            "Y": 590,
-            "Width": 315,
-            "Height": 21,
-            "TextId": "__SingleUse_DBNW",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 186,
-              "Green": 188,
-              "Blue": 190
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "txtExtTempUnit",
-            "X": 45,
-            "Y": 19,
-            "Width": 315,
-            "Height": 22,
-            "TextId": "__SingleUse_W88E",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 186,
-              "Green": 188,
-              "Blue": 190
-            }
-          },
-          {
             "Type": "TextureMapper",
-            "Name": "textureFlake",
-            "X": 332,
-            "Y": 440,
-            "Width": 56,
-            "Height": 56,
-            "RenderingAlgorithm": "Nearest-neighbor",
-            "FileNameImage": "Snowflake.png",
-            "LockBitmapToCenter": true,
-            "XBitmapPosition": 3.0,
-            "YBitmapPosition": 2.5,
-            "Scale": 1.0,
-            "XOrigo": 90.0,
-            "YOrigo": 90.0,
-            "ZOrigo": 1000.0,
-            "CameraDistance": 1000.0
-          },
-          {
-            "Type": "TextureMapper",
-            "Name": "textureStandby",
-            "X": 607,
-            "Y": 591,
-            "Width": 68,
-            "Height": 61,
-            "RenderingAlgorithm": "Nearest-neighbor",
-            "FileNameImage": "StandbyMode.png",
-            "LockBitmapToCenter": true,
-            "XBitmapPosition": 4.5,
-            "YBitmapPosition": 5.0,
-            "Scale": 1.0,
-            "LockOrigoToCenter": true,
-            "XOrigo": 34.0,
-            "YOrigo": 30.5,
-            "ZOrigo": 1000.0,
-            "CameraDistance": 1000.0
-          },
-          {
-            "Type": "TextureMapper",
-            "Name": "textureLogo",
-            "X": 24,
-            "Y": 24,
-            "Width": 672,
-            "Height": 28,
-            "RenderingAlgorithm": "Nearest-neighbor",
-            "FileNameImage": "Prolon_40_1.png",
-            "LockBitmapToCenter": true,
-            "XBitmapPosition": 248.5,
-            "Scale": 1.0,
-            "LockOrigoToCenter": true,
-            "XOrigo": 336.0,
-            "YOrigo": 14.0,
-            "ZOrigo": 1000.0,
-            "CameraDistance": 1000.0
-          },
-          {
-            "Type": "TextureMapper",
-            "Name": "textureDrop",
-            "X": 125,
-            "Y": 616,
-            "Width": 30,
-            "Height": 36,
-            "RenderingAlgorithm": "Nearest-neighbor",
-            "FileNameImage": "Humidity.png",
-            "LockBitmapToCenter": true,
-            "XBitmapPosition": 4.5,
-            "YBitmapPosition": 3.0,
-            "Scale": 1.0,
-            "LockOrigoToCenter": true,
-            "XOrigo": 15.0,
-            "YOrigo": 18.0,
-            "ZOrigo": 1000.0,
-            "CameraDistance": 1000.0
-          },
-          {
-            "Type": "TextureMapper",
-            "Name": "textureExtTemp",
+            "Name": "ExtTempImage",
             "X": 130,
             "Y": 50,
             "Width": 25,
@@ -405,7 +405,7 @@
           },
           {
             "Type": "FlexButton",
-            "Name": "flexSettings",
+            "Name": "SettingsButton",
             "X": 620,
             "Y": 25,
             "Width": 50,
@@ -415,17 +415,29 @@
             },
             "ButtonStyles": [
               {
-                "Type": "ImageButtonStyle",
-                "ImageReleased": "Setting.png",
-                "ImagePressed": "Setting.png"
-              },
-              {
                 "Type": "BoxWithBorderButtonStyle",
                 "Width": 50,
                 "Height": 50,
                 "LockToFlexButtonSize": true
               }
             ]
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "SettingsImage",
+            "X": 620,
+            "Y": 25,
+            "Width": 50,
+            "Height": 50,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Setting.png",
+            "LockBitmapToCenter": true,
+            "XBitmapPosition": -0.5,
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
           }
         ],
         "Interactions": [
@@ -457,6 +469,18 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "function1"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "SettingsButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Splash"
             }
           }
         ]

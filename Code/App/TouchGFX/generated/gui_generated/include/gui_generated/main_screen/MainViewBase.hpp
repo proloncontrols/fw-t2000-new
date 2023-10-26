@@ -11,8 +11,8 @@
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterARGB8888.hpp>
 #include <touchgfx/widgets/TextureMapper.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
 #include <touchgfx/EasingEquations.hpp>
 #include <touchgfx/mixins/FadeAnimator.hpp>
@@ -43,42 +43,53 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::Line lineClientBottom;
-    touchgfx::PainterARGB8888 lineClientBottomPainter;
-    touchgfx::Line lineClientRight;
-    touchgfx::PainterARGB8888 lineClientRightPainter;
-    touchgfx::Line lineClientTop;
-    touchgfx::PainterARGB8888 lineClientTopPainter;
-    touchgfx::Line lineClientLeft;
-    touchgfx::PainterARGB8888 lineClientLeftPainter;
-    touchgfx::TextureMapper textureCooling;
-    touchgfx::TextAreaWithOneWildcard txtTempEnt;
-    touchgfx::FadeAnimator< touchgfx::TextAreaWithOneWildcard > txtTempFrc;
-    touchgfx::TextArea txtTempUnit;
-    touchgfx::TextAreaWithOneWildcard txtHum;
-    touchgfx::TextAreaWithOneWildcard txtExtTemp;
-    touchgfx::TextArea txtHumPercent;
-    touchgfx::TextArea txtExtTempUnit;
-    touchgfx::TextureMapper textureFlake;
-    touchgfx::TextureMapper textureStandby;
-    touchgfx::TextureMapper textureLogo;
-    touchgfx::TextureMapper textureDrop;
-    touchgfx::TextureMapper textureExtTemp;
-    touchgfx::ImageButtonStyle< touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  >  flexSettings;
+    touchgfx::Line ClientLineBottom;
+    touchgfx::PainterARGB8888 ClientLineBottomPainter;
+    touchgfx::Line ClientLineRight;
+    touchgfx::PainterARGB8888 ClientLineRightPainter;
+    touchgfx::Line ClientLineTop;
+    touchgfx::PainterARGB8888 ClientLineTopPainter;
+    touchgfx::Line ClientLineLeft;
+    touchgfx::PainterARGB8888 ClientLineLeftPainter;
+    touchgfx::TextureMapper CoolingImage;
+    touchgfx::TextureMapper FlakeImage;
+    touchgfx::TextureMapper StandbyImage;
+    touchgfx::TextureMapper LogoImage;
+    touchgfx::TextureMapper DropImage;
+    touchgfx::TextArea TempUnitText;
+    touchgfx::FadeAnimator< touchgfx::TextAreaWithOneWildcard > TempFrcText;
+    touchgfx::TextAreaWithOneWildcard TempEntText;
+    touchgfx::TextArea HumPercentText;
+    touchgfx::TextAreaWithOneWildcard HumText;
+    touchgfx::TextArea ExtTempUnitText;
+    touchgfx::TextAreaWithOneWildcard ExtTempText;
+    touchgfx::TextureMapper ExtTempImage;
+    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  SettingsButton;
+    touchgfx::TextureMapper SettingsImage;
 
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TXTTEMPENT_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar txtTempEntBuffer[TXTTEMPENT_SIZE];
-    static const uint16_t TXTTEMPFRC_SIZE = 3;
-    touchgfx::Unicode::UnicodeChar txtTempFrcBuffer[TXTTEMPFRC_SIZE];
-    static const uint16_t TXTHUM_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar txtHumBuffer[TXTHUM_SIZE];
-    static const uint16_t TXTEXTTEMP_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar txtExtTempBuffer[TXTEXTTEMP_SIZE];
+    static const uint16_t TEMPFRCTEXT_SIZE = 3;
+    touchgfx::Unicode::UnicodeChar TempFrcTextBuffer[TEMPFRCTEXT_SIZE];
+    static const uint16_t TEMPENTTEXT_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar TempEntTextBuffer[TEMPENTTEXT_SIZE];
+    static const uint16_t HUMTEXT_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar HumTextBuffer[HUMTEXT_SIZE];
+    static const uint16_t EXTTEMPTEXT_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar ExtTempTextBuffer[EXTTEMPTEXT_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<MainViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
     /*
      * Canvas Buffer Size
