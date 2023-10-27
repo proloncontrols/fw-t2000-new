@@ -28,7 +28,6 @@ public:
     virtual ~MainPresenter() {};
 
     virtual void DisplayEnv(ENV_Readings_t* Env);
-    virtual void DisplayTemp(uint8_t* Temp);
     virtual void PostSystemReady();
 
 private:

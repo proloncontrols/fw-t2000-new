@@ -1,8 +1,7 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
-#include "basic.h"
-#include "ui.h"
+#include "env.h"
 
 class ModelListener;
 
@@ -21,7 +20,6 @@ public:
     void PostSystemReady();
     void PostSystemReset();
 
-//	UI_Text_t UiText;
 	ENV_Readings_t EnvReadings;
 
 protected:

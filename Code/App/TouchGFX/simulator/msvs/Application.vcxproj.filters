@@ -184,18 +184,6 @@
     <Filter Include="Header Files\generated\gui_generated\main_screen">
       <UniqueIdentifier>8AEF1BB1-C8D6-CBBC-B89F-855D7098A7F3</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\reset_screen">
-      <UniqueIdentifier>5D295C30-9D0B-A452-992F-5FB245427665</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\reset_screen">
-      <UniqueIdentifier>EC89BEB5-5DE2-FB29-EAB1-96C92B47476F</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\reset_screen">
-      <UniqueIdentifier>1E2E52C4-C090-F8FF-1CDA-A6CC6CAC0D1E</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\reset_screen">
-      <UniqueIdentifier>38716DF9-47BE-FCC7-9900-AA5830B24E1B</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\gui\splash_screen">
       <UniqueIdentifier>54D7944B-F22E-7B80-E061-1119025F6BE9</UniqueIdentifier>
     </Filter>
@@ -207,6 +195,18 @@
     </Filter>
     <Filter Include="Header Files\generated\gui_generated\splash_screen">
       <UniqueIdentifier>0C16E8F7-D631-CDC0-823E-1CBB64B462E1</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\clear_screen">
+      <UniqueIdentifier>EE40B59E-A5E6-DB98-E547-4789DC7529A8</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\clear_screen">
+      <UniqueIdentifier>AF1A8A99-256A-3664-488F-90C35B2A8AD7</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\clear_screen">
+      <UniqueIdentifier>4C354C93-8B69-1509-838A-91A6503B3BC8</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\clear_screen">
+      <UniqueIdentifier>1960F8BF-8CD2-704A-8FA4-CD1404DE9F42</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -249,15 +249,6 @@
     <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\main_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\reset_screen\ResetPresenter.cpp">
-      <Filter>Source Files\gui\reset_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\reset_screen\ResetView.cpp">
-      <Filter>Source Files\gui\reset_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\reset_screen\ResetViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\reset_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\splash_screen\SplashPresenter.cpp">
       <Filter>Source Files\gui\splash_screen</Filter>
     </ClCompile>
@@ -266,6 +257,15 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\splash_screen\SplashViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\splash_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\clear_screen\ClearPresenter.cpp">
+      <Filter>Source Files\gui\clear_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\clear_screen\ClearView.cpp">
+      <Filter>Source Files\gui\clear_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\clear_screen\ClearViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\clear_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -718,15 +718,6 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\main_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\reset_screen\ResetPresenter.hpp">
-      <Filter>Header Files\gui\reset_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\reset_screen\ResetView.hpp">
-      <Filter>Header Files\gui\reset_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\reset_screen\ResetViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\reset_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\splash_screen\SplashPresenter.hpp">
       <Filter>Header Files\gui\splash_screen</Filter>
     </ClInclude>
@@ -735,6 +726,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\splash_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\clear_screen\ClearPresenter.hpp">
+      <Filter>Header Files\gui\clear_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\clear_screen\ClearView.hpp">
+      <Filter>Header Files\gui\clear_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\clear_screen\ClearViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\clear_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

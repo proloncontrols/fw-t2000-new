@@ -22,11 +22,6 @@ void MainPresenter::DisplayEnv(ENV_Readings_t* Env)
 	view.DisplayEnv(Env);
 }
 
-void MainPresenter::DisplayTemp(uint8_t* Temp)
-{
-	view.DisplayTemp(Temp);
-}
-
 void MainPresenter::PostSystemReady()
 {
 	model->PostSystemReady();

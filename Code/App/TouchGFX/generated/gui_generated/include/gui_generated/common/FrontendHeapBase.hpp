@@ -14,8 +14,8 @@
 
 #include <gui/splash_screen/SplashView.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
-#include <gui/reset_screen/ResetView.hpp>
-#include <gui/reset_screen/ResetPresenter.hpp>
+#include <gui/clear_screen/ClearView.hpp>
+#include <gui/clear_screen/ClearPresenter.hpp>
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 
@@ -41,7 +41,7 @@ public:
      * @note All view types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< SplashView,
-            touchgfx::meta::TypeList< ResetView,
+            touchgfx::meta::TypeList< ClearView,
             touchgfx::meta::TypeList< MainView,
             touchgfx::meta::Nil > >
             > GeneratedViewTypes;
@@ -56,7 +56,7 @@ public:
      * @note All presenter types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< SplashPresenter,
-            touchgfx::meta::TypeList< ResetPresenter,
+            touchgfx::meta::TypeList< ClearPresenter,
             touchgfx::meta::TypeList< MainPresenter,
             touchgfx::meta::Nil > >
             > GeneratedPresenterTypes;

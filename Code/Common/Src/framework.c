@@ -746,7 +746,7 @@ static void FMK_Enter(COM_Connexion_t* Conx, uint32_t Address)
 	FMK_SharedRam->Entry    = FMK_ENTRY_FROM_CODE;
 	FMK_SharedRam->Media    = Conx->Media;
 	FMK_SharedRam->Protocol = Conx->Protocol;
-	UI_ScreenSwitchTo(UiScrIdReset);   //Will clear screen then reset unit
+	UI_ScreenSwitchTo(UiScreenIdClear);   //Will clear screen then reset unit
 }
 
 //-----------------------------------------------------------------------------

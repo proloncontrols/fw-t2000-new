@@ -14,8 +14,6 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
-#include <touchgfx/EasingEquations.hpp>
-#include <touchgfx/mixins/FadeAnimator.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -29,6 +27,11 @@ public:
      * Virtual Action Handlers
      */
     virtual void function1()
+    {
+        // Override and implement this function in Main
+    }
+
+    virtual void OnSettingsButton()
     {
         // Override and implement this function in Main
     }
@@ -47,17 +50,17 @@ protected:
     touchgfx::PainterARGB8888 ClientLineBottomPainter;
     touchgfx::Line ClientLineRight;
     touchgfx::PainterARGB8888 ClientLineRightPainter;
-    touchgfx::Line ClientLineTop;
-    touchgfx::PainterARGB8888 ClientLineTopPainter;
     touchgfx::Line ClientLineLeft;
     touchgfx::PainterARGB8888 ClientLineLeftPainter;
+    touchgfx::Line ClientLineTop;
+    touchgfx::PainterARGB8888 ClientLineTopPainter;
     touchgfx::TextureMapper CoolingImage;
     touchgfx::TextureMapper FlakeImage;
     touchgfx::TextureMapper StandbyImage;
     touchgfx::TextureMapper LogoImage;
     touchgfx::TextureMapper DropImage;
     touchgfx::TextArea TempUnitText;
-    touchgfx::FadeAnimator< touchgfx::TextAreaWithOneWildcard > TempFrcText;
+    touchgfx::TextAreaWithOneWildcard TempFrcText;
     touchgfx::TextAreaWithOneWildcard TempEntText;
     touchgfx::TextArea HumPercentText;
     touchgfx::TextAreaWithOneWildcard HumText;

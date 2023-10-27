@@ -36,14 +36,6 @@ MainViewBase::MainViewBase() :
     ClientLineRight.setLineWidth(1);
     ClientLineRight.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
 
-    ClientLineTop.setPosition(0, 0, 720, 672);
-    ClientLineTopPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
-    ClientLineTop.setPainter(ClientLineTopPainter);
-    ClientLineTop.setStart(48, 24);
-    ClientLineTop.setEnd(672, 24);
-    ClientLineTop.setLineWidth(1);
-    ClientLineTop.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
-
     ClientLineLeft.setPosition(0, 0, 720, 672);
     ClientLineLeftPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
     ClientLineLeft.setPainter(ClientLineLeftPainter);
@@ -51,6 +43,14 @@ MainViewBase::MainViewBase() :
     ClientLineLeft.setEnd(48, 648);
     ClientLineLeft.setLineWidth(1);
     ClientLineLeft.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
+
+    ClientLineTop.setPosition(0, 0, 720, 672);
+    ClientLineTopPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
+    ClientLineTop.setPainter(ClientLineTopPainter);
+    ClientLineTop.setStart(48, 24);
+    ClientLineTop.setEnd(672, 24);
+    ClientLineTop.setLineWidth(1);
+    ClientLineTop.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
 
     CoolingImage.setXY(24, 0);
     CoolingImage.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_ID));
@@ -100,7 +100,7 @@ MainViewBase::MainViewBase() :
     LogoImage.setAngles(0.0f, 0.0f, 0.0f);
     LogoImage.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 
-    DropImage.setXY(125, 616);
+    DropImage.setXY(48, 616);
     DropImage.setBitmap(touchgfx::Bitmap(BITMAP_HUMIDITY_ID));
     DropImage.setWidth(30);
     DropImage.setHeight(36);
@@ -112,50 +112,54 @@ MainViewBase::MainViewBase() :
     DropImage.setAngles(0.0f, 0.0f, 0.0f);
     DropImage.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 
-    TempUnitText.setPosition(436, 199, 183, 88);
+    TempUnitText.setXY(436, 199);
     TempUnitText.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     TempUnitText.setLinespacing(0);
     TempUnitText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_CFMA));
 
-    TempFrcText.setPosition(441, 308, 183, 88);
+    TempFrcText.setXY(436, 308);
     TempFrcText.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     TempFrcText.setLinespacing(0);
     TempFrcTextBuffer[0] = 0;
     TempFrcText.setWildcard(TempFrcTextBuffer);
+    TempFrcText.resizeToCurrentText();
     TempFrcText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_R2UV));
 
-    TempEntText.setPosition(144, 157, 300, 242);
+    TempEntText.setXY(435, 157);
     TempEntText.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     TempEntText.setLinespacing(0);
     TempEntTextBuffer[0] = 0;
     TempEntText.setWildcard(TempEntTextBuffer);
+    TempEntText.resizeToCurrentText();
     TempEntText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_LYVN));
 
-    HumPercentText.setPosition(45, 590, 315, 21);
+    HumPercentText.setXY(48, 590);
     HumPercentText.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
     HumPercentText.setLinespacing(0);
     HumPercentText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_DBNW));
 
-    HumText.setPosition(44, 577, 315, 75);
+    HumText.setXY(48, 575);
     HumText.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
     HumText.setLinespacing(0);
     HumTextBuffer[0] = 0;
     HumText.setWildcard(HumTextBuffer);
+    HumText.resizeToCurrentText();
     HumText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_UB3J));
 
-    ExtTempUnitText.setPosition(45, 19, 315, 22);
+    ExtTempUnitText.setXY(48, 18);
     ExtTempUnitText.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
     ExtTempUnitText.setLinespacing(0);
     ExtTempUnitText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_W88E));
 
-    ExtTempText.setPosition(45, 5, 315, 70);
+    ExtTempText.setXY(48, 5);
     ExtTempText.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
     ExtTempText.setLinespacing(0);
     ExtTempTextBuffer[0] = 0;
     ExtTempText.setWildcard(ExtTempTextBuffer);
+    ExtTempText.resizeToCurrentText();
     ExtTempText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8EN3));
 
-    ExtTempImage.setXY(130, 50);
+    ExtTempImage.setXY(48, 50);
     ExtTempImage.setBitmap(touchgfx::Bitmap(BITMAP_OUTSIDE_ID));
     ExtTempImage.setWidth(25);
     ExtTempImage.setHeight(26);
@@ -189,8 +193,8 @@ MainViewBase::MainViewBase() :
     add(box1);
     add(ClientLineBottom);
     add(ClientLineRight);
-    add(ClientLineTop);
     add(ClientLineLeft);
+    add(ClientLineTop);
     add(CoolingImage);
     add(FlakeImage);
     add(StandbyImage);
@@ -226,9 +230,9 @@ void MainViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonConta
 {
     if (&src == &SettingsButton)
     {
-        //Interaction2
-        //When SettingsButton clicked change screen to Splash
-        //Go to Splash with no screen transition
-        application().gotoSplashScreenNoTransition();
+        //SettingsButton
+        //When SettingsButton clicked call virtual function
+        //Call OnSettingsButton
+        OnSettingsButton();
     }
 }

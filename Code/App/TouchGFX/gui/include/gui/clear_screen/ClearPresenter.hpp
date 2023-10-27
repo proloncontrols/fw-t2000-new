@@ -1,17 +1,17 @@
-#ifndef RESETPRESENTER_HPP
-#define RESETPRESENTER_HPP
+#ifndef CLEARPRESENTER_HPP
+#define CLEARPRESENTER_HPP
 
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
 
 using namespace touchgfx;
 
-class ResetView;
+class ClearView;
 
-class ResetPresenter : public touchgfx::Presenter, public ModelListener
+class ClearPresenter : public touchgfx::Presenter, public ModelListener
 {
 public:
-    ResetPresenter(ResetView& v);
+    ClearPresenter(ClearView& v);
 
     /**
      * The activate function is called automatically when this screen is "switched in"
@@ -25,14 +25,12 @@ public:
      */
     virtual void deactivate();
 
-    virtual ~ResetPresenter() {};
-
-    virtual void PostSystemReset();
+    virtual ~ClearPresenter() {};
 
 private:
-    ResetPresenter();
+    ClearPresenter();
 
-    ResetView& view;
+    ClearView& view;
 };
 
-#endif // RESETPRESENTER_HPP
+#endif // CLEARPRESENTER_HPP

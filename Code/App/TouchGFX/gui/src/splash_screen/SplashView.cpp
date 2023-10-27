@@ -1,8 +1,11 @@
 #include <gui/splash_screen/SplashView.hpp>
 
+#include "ui_virtual.hpp"
+#include "cfg.h"
+
 SplashView::SplashView()
 {
-    FEA_PlaceTexture(imgProlon);
+	imgProlonEx->placeOnScreen();
 }
 
 void SplashView::setupScreen()

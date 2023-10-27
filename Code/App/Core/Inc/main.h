@@ -43,8 +43,6 @@ extern UART_HandleTypeDef huart3;
 extern I2C_HandleTypeDef  hi2c2;
 extern I2C_HandleTypeDef  hi2c5;
 extern OSPI_HandleTypeDef hospi1;
-//extern DMA_HandleTypeDef  hdma_usart3_rx;
-//extern DMA_HandleTypeDef  hdma_usart3_tx;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/

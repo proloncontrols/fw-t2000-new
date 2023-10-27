@@ -4,6 +4,8 @@
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 
+#include "ui_virtual.hpp"
+
 class SplashView : public SplashViewBase
 {
 public:
@@ -14,6 +16,7 @@ public:
 
     virtual void OnScreenTransitionEnd();
 protected:
+    WidgetEx* imgProlonEx = new TextureMapperEx(imgProlon);
 };
 
 #endif // SPLASHVIEW_HPP

@@ -105,7 +105,7 @@ void APP_OnFlag(uint32_t Flag)
 	if(Flag & NUM2POS(EvtGrpEnv))
 	{
 		if(!APP.SplashDone)
-			UI_ScreenSwitchTo(UiScrIdMain);
+			UI_ScreenSwitchTo(UiScreenIdMain);
 		APP.SplashDone = TRUE;
 
 		ENV_Read(&APP.Env);

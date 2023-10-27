@@ -49,65 +49,45 @@ extern "C" {
 //  T Y P E D E F S
 //-----------------------------------------------------------------------------
 typedef enum {
-	UiPrgInit,
-	UiPrgInc
-} UI_Prg_t;
-
-typedef struct {
-	UI_Prg_t Name;
-	uint32_t Steps;
-} UI_PrgInit_t;
-
-typedef struct {
-	UI_Prg_t Name;
-} UI_PrgInc_t;
-
-typedef union {
-	UI_Prg_t Name;
-	UI_PrgInit_t Initialize;
-	UI_PrgInc_t Increment;
-} UI_Progress_t;
-
-
+	UiScreenIdClear,
+	UiScreenIdMain
+} UI_ScreenId_t;
 
 typedef enum {
-	UiScrIdReset,
-	UiScrIdMain
-} UI_ScrId_t;
-
-typedef enum {
-	UiScrSw,
-} UI_Scr_t;
+	UiScreenActionSwitch,
+} UI_ScreenAction_t;
 
 typedef struct {
-	UI_Scr_t Name;
-	UI_ScrId_t Id;
-} UI_ScrSw_t;
+	UI_ScreenAction_t Action;
+	UI_ScreenId_t Id;
+} UI_ScreenActionSwitch_t;
 
 typedef union {
-	UI_Scr_t Name;
-	UI_ScrSw_t ScreenSwitch;
+	UI_ScreenAction_t Action;
+	UI_ScreenActionSwitch_t Switch;
 } UI_Screen_t;
 
 
 
 typedef enum {
-	UiTextTemp
-} UI_TextLabel_t;
+	UiProgressActionInit,
+	UiProgressActionInc
+} UI_ProgressAction_t;
 
 typedef struct {
-	UI_TextLabel_t TextLabel;
-	uint8_t Text[UI_TEXT_STRING_LENGTH];
-} UI_Text_t;
+	UI_ProgressAction_t Action;
+	uint32_t Steps;
+} UI_ProgressActionInit_t;
 
+typedef struct {
+	UI_ProgressAction_t Action;
+} UI_ProgressActionInc_t;
 
-//=============================================================================
-//  K E Y S
-//-----------------------------------------------------------------------------
-typedef enum {
-	UiBtnTempUp,
-	UiBtnTempDown
-} UI_Btn_t;
+typedef union {
+	UI_ProgressAction_t Action;
+	UI_ProgressActionInit_t Initialize;
+	UI_ProgressActionInc_t Increment;
+} UI_Progress_t;
 
 
 //=============================================================================
@@ -115,7 +95,6 @@ typedef enum {
 //-----------------------------------------------------------------------------
 UI_EXTERN osEventFlagsId_t   UI_Flags;
 UI_EXTERN osMessageQueueId_t UI_QueueEnv;
-UI_EXTERN osMessageQueueId_t UI_QueueText;
 UI_EXTERN osMessageQueueId_t UI_QueueScreen;
 UI_EXTERN osMessageQueueId_t UI_QueueProgress;
 
@@ -124,27 +103,43 @@ UI_EXTERN osMessageQueueId_t UI_QueueProgress;
 //  M E T H O D S
 //-----------------------------------------------------------------------------
 extern void     UI_Init               (void);
-
 extern void     UI_ScreenOn           (void);
 extern void     UI_ScreenOff          (void);
-extern void     UI_ScreenTimeout      (uint16_t Timeout);    //Validate screen OFF timer and turn OFF if needed
-extern void     UI_ScreenTimeoutReset (void);                //Reset screen OFF timeout timer
-extern void     UI_ScreenSwitchTo     (UI_ScrId_t Id);       //Switch to specified screen
-
+extern void     UI_ScreenTimeout      (uint16_t Timeout);      //Validate screen OFF timer and turn OFF if needed
+extern void     UI_ScreenTimeoutReset (void);                  //Reset screen OFF timeout timer
+extern void     UI_ScreenSwitchTo     (UI_ScreenId_t Id);      //Switch to specified screen
 extern void     UI_ScreenSwitchCplt   (void);
-
-//extern void     UI_PostBtn            (UI_Btn_t Button);     //Post button pressed from frontend for backend to retrieve
-//extern UI_Btn_t UI_ReadBtn            (void);                //Retrieve button pressed posted by frontend
-extern void     UI_PostEnv            (ENV_Readings_t* Env);     //Post text to display on LCD
-extern void     UI_PostText           (UI_Text_t* Text);     //Post text to display on LCD
-
-//extern void     UI_PostEvent          (void);                //Used by backend to post event to application
-
 extern void     UI_ProgressInit       (uint32_t Steps);
 extern void     UI_ProgressInc        (void);
+extern void     UI_PostEnv            (ENV_Readings_t* Env);   //Post environmental data to display on LCD
+
+
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif   //UI_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
