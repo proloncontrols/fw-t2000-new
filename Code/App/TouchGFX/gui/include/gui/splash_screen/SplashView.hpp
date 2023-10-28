@@ -4,7 +4,9 @@
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 
-#include "ui_virtual.hpp"
+#include "widget.hpp"
+
+#define  SPLASH_WIDGET_COUNT   1
 
 class SplashView : public SplashViewBase
 {
@@ -15,8 +17,12 @@ public:
     virtual void tearDownScreen();
 
     virtual void OnScreenTransitionEnd();
+
 protected:
-    WidgetEx* imgProlonEx = new TextureMapperEx(imgProlon);
+    CWidget* List[SPLASH_WIDGET_COUNT];
+
+private:
+    void updateScreen();
 };
 
 #endif // SPLASHVIEW_HPP

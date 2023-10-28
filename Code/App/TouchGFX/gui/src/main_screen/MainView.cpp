@@ -5,6 +5,9 @@
 #include "stdio.h"
 
 #include "cfg.h"
+#include "image.hpp"
+#include "text.hpp"
+#include "button.hpp"
 
 //-----------------------------------------------------------------------------
 MainView::MainView()
@@ -14,67 +17,30 @@ MainView::MainView()
 	ClientLineRight.setVisible(false);
 	ClientLineBottom.setVisible(false);
 
-//	CoolingImageEx->placeOnScreen();
-//	LogoImageEx->placeOnScreen();
-//	FlakeImageEx->placeOnScreen();
-//	StandbyImageEx->placeOnScreen();
-//	DropImageEx->placeOnScreen();
-//	ExtTempImageEx->placeOnScreen();
-//	SettingsImageEx->placeOnScreen();
-//
-//	TempUnitTextEx->placeOnScreen();
-//	TempEntTextEx->placeOnScreen();
-//	TempFrcTextEx->placeOnScreen();
-//	HumPercentTextEx->placeOnScreen();
-//	HumTextEx->placeOnScreen();
-//	ExtTempUnitTextEx->placeOnScreen();
-//	ExtTempTextEx->placeOnScreen();
-//
-//	SettingsButtonEx->placeOnScreen();
+    List[0]  = new CImage(CoolingImage);
+    List[1]  = new CImage(FlakeImage);
+    List[2]  = new CImage(StandbyImage);
+    List[3]  = new CImage(LogoImage);
+    List[4]  = new CImage(DropImage);
+    List[5]  = new CImage(ExtTempImage);
+    List[6]  = new CImage(SettingsImage);
 
-//	UIV_placeTexture(LogoImage);
-//	UIV_placeTexture(CoolingImage);
-//	UIV_placeTexture(FlakeImage);
-//	UIV_placeTexture(StandbyImage);
-//	UIV_placeTexture(DropImage);
+    List[7]  = new CText(TempUnitText);
+    List[8]  = new CText(TempEntText);
+    List[9]  = new CText(TempFrcText);
+    List[10] = new CText(HumPercentText);
+    List[11] = new CText(HumText);
+    List[12] = new CText(ExtTempUnitText);
+    List[13] = new CText(ExtTempText);
 
-//	UIV_placeText(TempEntText);
-//	UIV_placeText(TempFrcText);
-//	UIV_placeText(TempUnitText);
-
-//	UIV_placeText(HumText);
-//	UIV_placeText(HumPercentText);
-
-//	UIV_placeText(ExtTempUnitText);
-//	UIV_placeText(ExtTempText);
-//	UIV_placeTexture(ExtTempImage);
-
-//	UIV_placeButtonFlex(SettingsButton);
-//	UIV_placeTexture(SettingsImage);
+    List[14] = new CButton(SettingsButton);
 }
 
 //-----------------------------------------------------------------------------
 void MainView::setupScreen()
 {
     MainViewBase::setupScreen();
-
-	CoolingImageEx->placeOnScreen();
-	LogoImageEx->placeOnScreen();
-	FlakeImageEx->placeOnScreen();
-	StandbyImageEx->placeOnScreen();
-	DropImageEx->placeOnScreen();
-	ExtTempImageEx->placeOnScreen();
-	SettingsImageEx->placeOnScreen();
-
-	TempUnitTextEx->placeOnScreen();
-	TempEntTextEx->placeOnScreen();
-	TempFrcTextEx->placeOnScreen();
-	HumPercentTextEx->placeOnScreen();
-	HumTextEx->placeOnScreen();
-	ExtTempUnitTextEx->placeOnScreen();
-	ExtTempTextEx->placeOnScreen();
-
-	SettingsButtonEx->placeOnScreen();
+    updateScreen();
 }
 
 //-----------------------------------------------------------------------------
@@ -139,29 +105,18 @@ void MainView::function1()
 void MainView::OnSettingsButton()
 {
 	CFG.Dta.ScrOrientation ^= 1;
-
-	CoolingImageEx->placeOnScreen();
-	LogoImageEx->placeOnScreen();
-	FlakeImageEx->placeOnScreen();
-	StandbyImageEx->placeOnScreen();
-	DropImageEx->placeOnScreen();
-	ExtTempImageEx->placeOnScreen();
-	SettingsImageEx->placeOnScreen();
-
-	TempUnitTextEx->placeOnScreen();
-	TempEntTextEx->placeOnScreen();
-	TempFrcTextEx->placeOnScreen();
-	HumPercentTextEx->placeOnScreen();
-	HumTextEx->placeOnScreen();
-	ExtTempUnitTextEx->placeOnScreen();
-	ExtTempTextEx->placeOnScreen();
-
-	SettingsButtonEx->placeOnScreen();
-
+    updateScreen();
 	invalidate();
 }
 
-
+//-----------------------------------------------------------------------------
+void MainView::updateScreen()
+{
+    for(int i = 0; i < MAIN_WIDGET_COUNT; i++)
+    {
+    	List[i]->placeOnScreen();
+    }
+}
 
 
 
