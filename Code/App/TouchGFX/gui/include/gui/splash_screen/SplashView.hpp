@@ -5,8 +5,13 @@
 #include <gui/splash_screen/SplashPresenter.hpp>
 
 #include "widget.hpp"
+#include "widgets.hpp"
 
-#define  SPLASH_WIDGET_COUNT   1
+enum splashWidgets
+{
+	splashImgProlon,
+	splashCount
+};
 
 class SplashView : public SplashViewBase
 {
@@ -19,10 +24,7 @@ public:
     virtual void OnScreenTransitionEnd();
 
 protected:
-    CWidget* List[SPLASH_WIDGET_COUNT];
-
-private:
-    void updateScreen();
+    CWidgets* Widgets;
 };
 
 #endif // SPLASHVIEW_HPP

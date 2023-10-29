@@ -5,13 +5,26 @@
 
 SplashView::SplashView()
 {
-    List[0] = new CImage(imgProlon);
+	Widgets = new CWidgets(splashCount);
+
+
+	CWidget* Tmp = Widgets->get(splashImgProlon);
+
+
+//	Widgets[splashImgProlon] = new CImage(imgProlon);
+//	CWidget* Tmp = Widgets[splashImgProlon];
+//	CWidget* Tmp = Widgets->operator[](splashImgProlon);
+
+
+
+//	Widgets[splashImgProlon] = 0; //new CImage(imgProlon);
+	Widgets->set(splashImgProlon, new CImage(imgProlon));
 }
 
 void SplashView::setupScreen()
 {
     SplashViewBase::setupScreen();
-    updateScreen();
+    Widgets->updateScreen();
 }
 
 void SplashView::tearDownScreen()
@@ -22,13 +35,4 @@ void SplashView::tearDownScreen()
 void SplashView::OnScreenTransitionEnd()
 {
 	presenter->PostSystemReady();
-}
-
-//-----------------------------------------------------------------------------
-void SplashView::updateScreen()
-{
-    for(int i = 0; i < SPLASH_WIDGET_COUNT; i++)
-    {
-    	List[i]->placeOnScreen();
-    }
 }

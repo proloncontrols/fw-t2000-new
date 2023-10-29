@@ -17,30 +17,32 @@ MainView::MainView()
 	ClientLineRight.setVisible(false);
 	ClientLineBottom.setVisible(false);
 
-    List[0]  = new CImage(CoolingImage);
-    List[1]  = new CImage(FlakeImage);
-    List[2]  = new CImage(StandbyImage);
-    List[3]  = new CImage(LogoImage);
-    List[4]  = new CImage(DropImage);
-    List[5]  = new CImage(ExtTempImage);
-    List[6]  = new CImage(SettingsImage);
+	Widgets = new CWidgets(mainCount);
 
-    List[7]  = new CText(TempUnitText);
-    List[8]  = new CText(TempEntText);
-    List[9]  = new CText(TempFrcText);
-    List[10] = new CText(HumPercentText);
-    List[11] = new CText(HumText);
-    List[12] = new CText(ExtTempUnitText);
-    List[13] = new CText(ExtTempText);
-
-    List[14] = new CButton(SettingsButton);
+//	Widgets->set(mainImgCooling,     new CImage(CoolingImage));
+//	Widgets->set(mainImgFlake,       new CImage(FlakeImage));
+//	Widgets->set(mainImgStandby,     new CImage(StandbyImage));
+//	Widgets->set(mainImgLogo,        new CImage(LogoImage));
+//	Widgets->set(mainImgDrop,        new CImage(DropImage));
+//	Widgets->set(mainImgExtTemp,     new CImage(ExtTempImage));
+//	Widgets->set(mainImgSettings,    new CImage(SettingsImage));
+//
+//	Widgets->set(mainTxtTempUnit,    new CText(TempUnitText));
+//	Widgets->set(mainTxtTempInt,     new CText(TempEntText));
+//	Widgets->set(mainTxtTempFrc,     new CText(TempFrcText));
+//	Widgets->set(mainTxtHumPercent,  new CText(HumPercentText));
+//	Widgets->set(mainTxtHum,         new CText(HumText));
+//	Widgets->set(mainTxtExtTempUnit, new CText(ExtTempUnitText));
+//	Widgets->set(mainTxtExtTemp,     new CText(ExtTempText));
+//
+//	Widgets->set(mainBtnSettings,    new CButton(SettingsButton));
 }
 
 //-----------------------------------------------------------------------------
 void MainView::setupScreen()
 {
     MainViewBase::setupScreen();
-    updateScreen();
+    Widgets->updateScreen();
 }
 
 //-----------------------------------------------------------------------------
@@ -105,17 +107,8 @@ void MainView::function1()
 void MainView::OnSettingsButton()
 {
 	CFG.Dta.ScrOrientation ^= 1;
-    updateScreen();
+	Widgets->updateScreen();
 	invalidate();
-}
-
-//-----------------------------------------------------------------------------
-void MainView::updateScreen()
-{
-    for(int i = 0; i < MAIN_WIDGET_COUNT; i++)
-    {
-    	List[i]->placeOnScreen();
-    }
 }
 
 

@@ -5,8 +5,30 @@
 #include <gui/main_screen/MainPresenter.hpp>
 
 #include "widget.hpp"
+#include "widgets.hpp"
 
-#define  MAIN_WIDGET_COUNT   15
+enum mainWidgets
+{
+	mainImgCooling,
+	mainImgFlake,
+	mainImgStandby,
+	mainImgLogo,
+	mainImgDrop,
+	mainImgExtTemp,
+	mainImgSettings,
+
+	mainTxtTempUnit,
+	mainTxtTempInt,
+	mainTxtTempFrc,
+	mainTxtHumPercent,
+	mainTxtHum,
+	mainTxtExtTempUnit,
+	mainTxtExtTemp,
+
+	mainBtnSettings,
+
+	mainCount
+};
 
 class MainView : public MainViewBase
 {
@@ -21,10 +43,7 @@ public:
     virtual void OnSettingsButton();
 
 protected:
-    CWidget* List[MAIN_WIDGET_COUNT];
-
-private:
-    void updateScreen();
+    CWidgets* Widgets;
 };
 
 #endif // MAINVIEW_HPP

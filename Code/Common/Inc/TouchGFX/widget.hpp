@@ -72,6 +72,15 @@
 
 
 //=============================================================================
+//  T Y P E D E F S
+//-----------------------------------------------------------------------------
+typedef struct
+{
+
+} widgetDefinition_t;
+
+
+//=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
 class CWidget
@@ -81,6 +90,7 @@ public:
 	CWidget(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& Button);
 
 	virtual void placeOnScreen() = 0;   //Position widget on screen according to current orientation
+	virtual void setX(int16_t x);
 
 protected:
 	touchgfx::Rect RectP;               //Portrait rectangle

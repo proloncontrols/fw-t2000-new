@@ -10,68 +10,65 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : widget.cpp
+//         File : widgets.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX widget class/tools implementation file
+//  Description : TouchGFX widget container class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "widget.hpp"
+#include "stdlib.h"
+#include "widgets.hpp"
 
 
 //=============================================================================
 //  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
-CWidget::CWidget(touchgfx::Widget& Widget)
+CWidgets::CWidgets(int size)
 {
-	RectP = Widget.getRect();
-	RectL = Widget.getRect();
-	convertRectTo270deg(RectL);
-}
-
-//-----------------------------------------------------------------------------
-CWidget::CWidget(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& Button)
-{
-	RectP = Button.getRect();
-	RectL = Button.getRect();
-	convertRectTo270deg(RectL);
+	m_Size = size;
+	m_List = (CWidget**)malloc(sizeof(CWidget*) * size);
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-touchgfx::Rect* CWidget::getCurrentRect()
+void CWidgets::set(int index, CWidget* widget)
 {
-	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
-		return &RectL;
-	else
-		return &RectP;
+	if(index < m_Size)
+		m_List[index] = widget;
 }
 
 //-----------------------------------------------------------------------------
-void CWidget::setX(int16_t x)
+CWidget* CWidgets::get(int index)
 {
+	if(index < m_Size)
+		return m_List[index];
+	return NULL;
 }
 
-
-//=============================================================================
-//  P R I V A T E S
 //-----------------------------------------------------------------------------
-void CWidget::convertRectTo270deg(touchgfx::Rect& Rect)
+void CWidgets::updateScreen()
 {
-	int NewX = Rect.y + ((SCREEN_WIDTH - SCREEN_HEIGHT) / 2);                                  //Becomes the Y coordinate of the rotated screen
-	int NewWidth = Rect.height;
-	int NewY = SCREEN_HEIGHT - (Rect.x + Rect.width) + ((SCREEN_WIDTH - SCREEN_HEIGHT) / 2);   //Becomes the X coordinate of the rotated screen
-	int NewHeight = Rect.width;
+    for(int i = 0; i < m_Size; i++)
+    {
+    	m_List[i]->placeOnScreen();
+    }
+}
 
-	Rect.x = NewX;             //Apply new 270 degrees parameters
-	Rect.y = NewY;             //
-	Rect.width = NewWidth;     //
-	Rect.height = NewHeight;   //
+//CWidget* CWidgets::operator=(CWidget* Widget)
+//{
+//	return Widget;
+//}
+
+CWidget& CWidgets::operator[](int Index)
+{
+//	if(Index < m_Size)
+		return *(m_List[Index]);
+//	return NULL;
 }
