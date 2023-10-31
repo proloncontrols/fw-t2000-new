@@ -42,7 +42,7 @@
 //
 // Thermostat portrait orientation
 //
-//    LCD (landscape)
+//    Screen (landscape)
 //    -------------------------------------   --- ---
 //    |                                   |    24  |
 //    |        -------------------        |   ---  |
@@ -61,45 +61,79 @@
 //    |--------------- 720 ---------------|
 //
 //
-//The following defines are according to the thermostat orientation
-#define CLIENT_OFFSET_PER   24   //Number of pixels creating an inside perimeter offset
+//#define CLIENT_OFFSET_PER   24   //Number of pixels creating an inside perimeter offset
+//
+//#define CLIENT_ORIGIN_P_X   (((SCREEN_WIDTH - SCREEN_HEIGHT) / 2) + CLIENT_OFFSET_PER)
+//#define CLIENT_ORIGIN_P_Y   CLIENT_OFFSET_PER
+//
+//#define CLIENT_ORIGIN_L_X   (SCREEN_HEIGHT - CLIENT_OFFSET_PER)
+//#define CLIENT_ORIGIN_L_Y   CLIENT_ORIGIN_P_Y
 
-#define CLIENT_ORIGIN_X_P   (((SCREEN_WIDTH - SCREEN_HEIGHT) / 2) + CLIENT_OFFSET_PER)
-#define CLIENT_ORIGIN_Y_P   CLIENT_OFFSET_PER
-
-#define CLIENT_ORIGIN_X_L   (SCREEN_HEIGHT - CLIENT_OFFSET_PER)
-#define CLIENT_ORIGIN_Y_L   CLIENT_ORIGIN_Y_P
-
-
-//=============================================================================
-//  T Y P E D E F S
-//-----------------------------------------------------------------------------
-typedef struct
-{
-
-} widgetDefinition_t;
+#define CLIENT_OFFSET       24
+#define CLIENT_ORIGIN_X     (((SCREEN_WIDTH - SCREEN_HEIGHT) / 2) + CLIENT_OFFSET)
+#define CLIENT_ORIGIN_Y     CLIENT_OFFSET
 
 
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
+class CRect
+{
+public:
+	int16_t x;
+	int16_t y;
+	int16_t width;
+	int16_t height;
+
+	void operator=(const CRect& rect)
+	{
+		x = rect.x;
+		y = rect.y;
+		width = rect.width;
+		height = rect.height;
+	}
+
+	void operator=(const touchgfx::Rect& rect)
+	{
+		x = rect.x;
+		y = rect.y;
+		width = rect.width;
+		height = rect.height;
+	}
+};
+
+//-----------------------------------------------------------------------------
 class CWidget
 {
 public:
-	CWidget(touchgfx::Widget& Widget);
-	CWidget(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& Button);
+	CWidget(touchgfx::Widget& widget);
+	CWidget(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& button);
 
-	virtual void placeOnScreen() = 0;   //Position widget on screen according to current orientation
-	virtual void setX(int16_t x);
+	virtual touchgfx::Rect getRect() = 0;
+	virtual void initialize() = 0;               //Originally place widget on screen according to orientation
+	virtual void getPosition(CRect& rect) = 0;   //These are used to move widget around
+	virtual void setPosition(CRect& rect) = 0;   //
 
 protected:
-	touchgfx::Rect RectP;               //Portrait rectangle
-	touchgfx::Rect RectL;               //Landscape rectangle
+	CRect vRect;   //Virtual CRect
+	CRect fRect;   //Formatted CRect
+//	CRect RectP;
+//	CRect RectL;
 
-	touchgfx::Rect* getCurrentRect();
+	CRect oRect;
+	CRect cRect;
+	CRect sRect;
 
-private:
-	void convertRectTo270deg(touchgfx::Rect& Rect);
+//	CRect* getRect();
+	void formatRect();
+	CRect& getVRect();
+	void getRect(CRect& rect);
+	void setRect(CRect& rect);
+	void convertRectTo270deg(CRect& rect);
+
+	void screenToClient(CRect& rect);
+//	void screenToClient(const touchgfx::Rect& rect);
+	void clientToScreen(CRect& rect);
 };
 
 

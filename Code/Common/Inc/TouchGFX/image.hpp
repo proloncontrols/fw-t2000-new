@@ -35,8 +35,12 @@ private:
 	touchgfx::TextureMapper& m_Mapper;
 
 public:
-	CImage(touchgfx::TextureMapper& Mapper) : CWidget(Mapper), m_Mapper { Mapper } {};
-	virtual void placeOnScreen();
+	CImage(touchgfx::TextureMapper& Mapper);
+
+	virtual touchgfx::Rect getRect();
+	virtual void initialize();
+	virtual void getPosition(CRect& rect);
+	virtual void setPosition(CRect& rect);
 };
 
 

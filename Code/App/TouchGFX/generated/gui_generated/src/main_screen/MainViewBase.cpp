@@ -52,15 +52,15 @@ MainViewBase::MainViewBase() :
     ClientLineTop.setLineWidth(1);
     ClientLineTop.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
 
-    CoolingImage.setXY(24, 0);
+    CoolingImage.setXY(48, 24);
     CoolingImage.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_ID));
-    CoolingImage.setWidth(672);
-    CoolingImage.setHeight(672);
-    CoolingImage.setBitmapPosition(48.0f, 54.0f);
+    CoolingImage.setWidth(624);
+    CoolingImage.setHeight(624);
+    CoolingImage.setBitmapPosition(24.0f, 30.0f);
     CoolingImage.setScale(1.0f);
     CoolingImage.setCameraDistance(1000.0f);
-    CoolingImage.setOrigo(336.0f, 336.0f, 1000.0f);
-    CoolingImage.setCamera(336.0f, 336.0f);
+    CoolingImage.setOrigo(312.0f, 312.0f, 1000.0f);
+    CoolingImage.setCamera(312.0f, 312.0f);
     CoolingImage.setAngles(0.0f, 0.0f, 0.0f);
     CoolingImage.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 

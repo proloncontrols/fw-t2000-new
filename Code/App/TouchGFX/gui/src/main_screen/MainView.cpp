@@ -19,30 +19,30 @@ MainView::MainView()
 
 	Widgets = new CWidgets(mainCount);
 
-//	Widgets->set(mainImgCooling,     new CImage(CoolingImage));
-//	Widgets->set(mainImgFlake,       new CImage(FlakeImage));
-//	Widgets->set(mainImgStandby,     new CImage(StandbyImage));
-//	Widgets->set(mainImgLogo,        new CImage(LogoImage));
-//	Widgets->set(mainImgDrop,        new CImage(DropImage));
-//	Widgets->set(mainImgExtTemp,     new CImage(ExtTempImage));
-//	Widgets->set(mainImgSettings,    new CImage(SettingsImage));
-//
-//	Widgets->set(mainTxtTempUnit,    new CText(TempUnitText));
-//	Widgets->set(mainTxtTempInt,     new CText(TempEntText));
-//	Widgets->set(mainTxtTempFrc,     new CText(TempFrcText));
-//	Widgets->set(mainTxtHumPercent,  new CText(HumPercentText));
-//	Widgets->set(mainTxtHum,         new CText(HumText));
-//	Widgets->set(mainTxtExtTempUnit, new CText(ExtTempUnitText));
-//	Widgets->set(mainTxtExtTemp,     new CText(ExtTempText));
-//
-//	Widgets->set(mainBtnSettings,    new CButton(SettingsButton));
+	Widgets->set(mainImgCooling,     new CImage(CoolingImage));
+	Widgets->set(mainImgFlake,       new CImage(FlakeImage));
+	Widgets->set(mainImgStandby,     new CImage(StandbyImage));
+	Widgets->set(mainImgLogo,        new CImage(LogoImage));
+	Widgets->set(mainImgDrop,        new CImage(DropImage));
+	Widgets->set(mainImgExtTemp,     new CImage(ExtTempImage));
+	Widgets->set(mainImgSettings,    new CImage(SettingsImage));
+
+	Widgets->set(mainTxtTempUnit,    new CText(TempUnitText));
+	Widgets->set(mainTxtTempInt,     new CText(TempEntText));
+	Widgets->set(mainTxtTempFrc,     new CText(TempFrcText));
+	Widgets->set(mainTxtHumPercent,  new CText(HumPercentText));
+	Widgets->set(mainTxtHum,         new CText(HumText));
+	Widgets->set(mainTxtExtTempUnit, new CText(ExtTempUnitText));
+	Widgets->set(mainTxtExtTemp,     new CText(ExtTempText));
+
+	Widgets->set(mainBtnSettings,    new CButton(SettingsButton));
 }
 
 //-----------------------------------------------------------------------------
 void MainView::setupScreen()
 {
     MainViewBase::setupScreen();
-    Widgets->updateScreen();
+    Widgets->update();
 }
 
 //-----------------------------------------------------------------------------
@@ -54,47 +54,70 @@ void MainView::tearDownScreen()
 //-----------------------------------------------------------------------------
 void MainView::DisplayEnv(ENV_Readings_t* Env)
 {
-	static int16_t Tst = 22;
+	static int16_t tst = 22;
+	static int16_t tst2 = 77;
 
-	char Tmp[4];
+	char tmp[4];
 
 	//Temperature unit selection
-	int16_t Temp = Env->TempC;
+	int16_t temp = Env->TempC;
 	if(CFG.Dta.TempUnit == CfgEnvTempF)
-		Temp = Env->TempF;
+		temp = Env->TempF;
 
 	//Room temperature
-	double Integral;
-	double Fractional = modf((double)Temp / 100.0, &Integral) * 10.0;
-	sprintf(Tmp, "%d", (int)Integral);
-	Unicode::fromUTF8((uint8_t*)Tmp, TempEntTextBuffer, sizeof(TempEntTextBuffer));
+	double integral;
+	double fractional = modf((double)temp / 100.0, &integral) * 10.0;
+	sprintf(tmp, "%d", (int)integral);
+	Unicode::fromUTF8((uint8_t*)tmp, TempEntTextBuffer, sizeof(TempEntTextBuffer));
 	TempEntText.resizeToCurrentTextWithAlignment();
 	TempEntText.invalidate();
-	sprintf(Tmp, "%d", (int)Fractional);
-	Unicode::fromUTF8((uint8_t*)Tmp, TempFrcTextBuffer, sizeof(TempFrcTextBuffer));
+	sprintf(tmp, "%d", (int)fractional);
+	Unicode::fromUTF8((uint8_t*)tmp, TempFrcTextBuffer, sizeof(TempFrcTextBuffer));
 	TempFrcText.resizeToCurrentTextWithAlignment();
-	TempFrcText.invalidate();
 
 	//Exterior temperature
-	Tst *= -1;
-	sprintf(Tmp, "%d", (int)Tst);
-	Unicode::fromUTF8((uint8_t*)Tmp, ExtTempTextBuffer, sizeof(ExtTempTextBuffer));
+	tst *= -1;
+	sprintf(tmp, "%d", (int)tst);
+	Unicode::fromUTF8((uint8_t*)tmp, ExtTempTextBuffer, sizeof(ExtTempTextBuffer));
 	ExtTempText.resizeToCurrentTextWithAlignment();
-	ExtTempText.invalidate();
-	ExtTempUnitText.setX(ExtTempText.getX() + ExtTempText.getTextWidth());   //Maybe getWidth() instead
-	ExtTempUnitText.invalidate();
-	ExtTempImage.setX(ExtTempUnitText.getX());
-	ExtTempImage.invalidate();
+
+	CRect refRect;
+	CWidget* ref = Widgets->get(mainTxtExtTemp);
+	ref->getPosition(refRect);
+
+	CRect dstRect;
+	CWidget* dst = Widgets->get(mainTxtExtTempUnit);
+	dst->getPosition(dstRect);
+	dstRect.x = refRect.x + refRect.width;
+	dst->setPosition(dstRect);
+
+	dst = Widgets->get(mainImgExtTemp);
+	dst->getPosition(dstRect);
+	dstRect.x = refRect.x + refRect.width;
+	dst->setPosition(dstRect);
 
 	//Humidity
-	sprintf(Tmp, "%d", (int)(Env->HumP / 100));
-	Unicode::fromUTF8((uint8_t*)Tmp, HumTextBuffer, sizeof(HumTextBuffer));
+	tst2 *= -1;
+	sprintf(tmp, "%d", (int)tst2);
+//	sprintf(tmp, "%d", (int)(Env->HumP / 100));
+	Unicode::fromUTF8((uint8_t*)tmp, HumTextBuffer, sizeof(HumTextBuffer));
 	HumText.resizeToCurrentTextWithAlignment();
 	HumText.invalidate();
-	HumPercentText.setX(HumText.getX() + HumText.getWidth());
-	HumPercentText.invalidate();
-	DropImage.setX(HumPercentText.getX());
-	DropImage.invalidate();
+
+	ref = Widgets->get(mainTxtHum);
+	ref->getPosition(refRect);
+
+	dst = Widgets->get(mainTxtHumPercent);
+	dst->getPosition(dstRect);
+	dstRect.x = refRect.x + refRect.width;
+	dst->setPosition(dstRect);
+
+	dst = Widgets->get(mainImgDrop);
+	dst->getPosition(dstRect);
+	dstRect.x = refRect.x + refRect.width;
+	dst->setPosition(dstRect);
+
+	invalidate();
 }
 
 //-----------------------------------------------------------------------------
@@ -107,7 +130,7 @@ void MainView::function1()
 void MainView::OnSettingsButton()
 {
 	CFG.Dta.ScrOrientation ^= 1;
-	Widgets->updateScreen();
+	Widgets->update();
 	invalidate();
 }
 

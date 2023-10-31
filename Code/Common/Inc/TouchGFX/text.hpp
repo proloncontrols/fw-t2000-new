@@ -35,8 +35,12 @@ private:
 	touchgfx::TextArea& m_Text;
 
 public:
-	CText(touchgfx::TextArea& Text) : CWidget(Text), m_Text { Text } {};
-	virtual void placeOnScreen();
+	CText(touchgfx::TextArea& Text);
+
+	virtual touchgfx::Rect getRect();
+	virtual void initialize();
+	virtual void getPosition(CRect& rect);
+	virtual void setPosition(CRect& rect);
 };
 
 

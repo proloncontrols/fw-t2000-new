@@ -38,13 +38,6 @@ CWidgets::CWidgets(int size)
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CWidgets::set(int index, CWidget* widget)
-{
-	if(index < m_Size)
-		m_List[index] = widget;
-}
-
-//-----------------------------------------------------------------------------
 CWidget* CWidgets::get(int index)
 {
 	if(index < m_Size)
@@ -53,22 +46,17 @@ CWidget* CWidgets::get(int index)
 }
 
 //-----------------------------------------------------------------------------
-void CWidgets::updateScreen()
+void CWidgets::set(int index, CWidget* widget)
+{
+	if(index < m_Size)
+		m_List[index] = widget;
+}
+
+//-----------------------------------------------------------------------------
+void CWidgets::update()
 {
     for(int i = 0; i < m_Size; i++)
     {
-    	m_List[i]->placeOnScreen();
+    	m_List[i]->initialize();
     }
-}
-
-//CWidget* CWidgets::operator=(CWidget* Widget)
-//{
-//	return Widget;
-//}
-
-CWidget& CWidgets::operator[](int Index)
-{
-//	if(Index < m_Size)
-		return *(m_List[Index]);
-//	return NULL;
 }

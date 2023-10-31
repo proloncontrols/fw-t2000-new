@@ -3,6 +3,7 @@
     "Screens": [
       {
         "Name": "Splash",
+        "CanvasBufferSize": 10800,
         "Components": [
           {
             "Type": "Box",
@@ -13,21 +14,93 @@
           {
             "Type": "TextureMapper",
             "Name": "imgProlon",
-            "X": 24,
-            "Y": 146,
-            "Width": 672,
-            "Height": 190,
+            "X": 48,
+            "Y": 150,
+            "Width": 624,
+            "Height": 200,
             "RenderingAlgorithm": "Nearest-neighbor",
             "FileNameImage": "ProLon Logo 4.png",
             "LockBitmapToCenter": true,
-            "XBitmapPosition": 16.0,
-            "YBitmapPosition": 3.0,
+            "XBitmapPosition": -8.0,
+            "YBitmapPosition": 8.0,
             "Scale": 0.75,
             "LockOrigoToCenter": true,
-            "XOrigo": 336.0,
-            "YOrigo": 95.0,
+            "XOrigo": 312.0,
+            "YOrigo": 100.0,
             "ZOrigo": 1000.0,
             "CameraDistance": 1000.0
+          },
+          {
+            "Type": "Line",
+            "Name": "ClientLineTop",
+            "Width": 720,
+            "Height": 672,
+            "LockPosition": true,
+            "Color": {
+              "Red": 99,
+              "Green": 105,
+              "Blue": 100
+            },
+            "StartX": 48.0,
+            "StartY": 24.0,
+            "EndX": 672.0,
+            "EndY": 24.0,
+            "LineWidth": 1.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
+            "Name": "ClientLineLeft",
+            "Width": 720,
+            "Height": 672,
+            "LockPosition": true,
+            "Color": {
+              "Red": 99,
+              "Green": 105,
+              "Blue": 100
+            },
+            "StartX": 48.0,
+            "StartY": 24.0,
+            "EndX": 48.0,
+            "EndY": 648.0,
+            "LineWidth": 1.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
+            "Name": "ClientLineRight",
+            "Width": 720,
+            "Height": 672,
+            "LockPosition": true,
+            "Color": {
+              "Red": 99,
+              "Green": 105,
+              "Blue": 100
+            },
+            "StartX": 672.0,
+            "StartY": 24.0,
+            "EndX": 672.0,
+            "EndY": 648.0,
+            "LineWidth": 1.0,
+            "LineEndingStyle": "Round"
+          },
+          {
+            "Type": "Line",
+            "Name": "ClientLineBottom",
+            "Width": 720,
+            "Height": 672,
+            "LockPosition": true,
+            "Color": {
+              "Red": 99,
+              "Green": 105,
+              "Blue": 100
+            },
+            "StartX": 48.0,
+            "StartY": 648.0,
+            "EndX": 672.0,
+            "EndY": 648.0,
+            "LineWidth": 1.0,
+            "LineEndingStyle": "Round"
           }
         ],
         "Interactions": [
@@ -152,18 +225,19 @@
           {
             "Type": "TextureMapper",
             "Name": "CoolingImage",
-            "X": 24,
-            "Width": 672,
-            "Height": 672,
+            "X": 48,
+            "Y": 24,
+            "Width": 624,
+            "Height": 624,
             "RenderingAlgorithm": "Nearest-neighbor",
             "FileNameImage": "CoolingON.png",
             "LockBitmapToCenter": true,
-            "XBitmapPosition": 48.0,
-            "YBitmapPosition": 54.0,
+            "XBitmapPosition": 24.0,
+            "YBitmapPosition": 30.0,
             "Scale": 1.0,
             "LockOrigoToCenter": true,
-            "XOrigo": 336.0,
-            "YOrigo": 336.0,
+            "XOrigo": 312.0,
+            "YOrigo": 312.0,
             "ZOrigo": 1000.0,
             "CameraDistance": 1000.0
           },

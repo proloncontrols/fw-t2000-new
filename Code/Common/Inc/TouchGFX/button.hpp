@@ -35,8 +35,12 @@ private:
 	touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& m_Button;
 
 public:
-	CButton(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& Button) : CWidget(Button), m_Button { Button } {};
-	virtual void placeOnScreen();
+	CButton(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& Button);
+
+	virtual touchgfx::Rect getRect();
+	virtual void initialize();
+	virtual void getPosition(CRect& rect);
+	virtual void setPosition(CRect& rect);
 };
 
 

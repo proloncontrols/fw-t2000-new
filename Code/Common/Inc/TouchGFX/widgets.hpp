@@ -39,11 +39,9 @@ public:
 	CWidgets(int size);
 
 public:
-	void set(int index, CWidget* widget);
 	CWidget* get(int index);
-    void updateScreen();
-//    CWidget* operator=(CWidget* Widget);
-    CWidget& operator[](int index);
+	void set(int index, CWidget* widget);
+    void update();
 };
 
 

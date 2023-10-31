@@ -86,7 +86,7 @@
 class WidgetEx
 {
 public:
-	virtual void placeOnScreen() = 0;
+	virtual void initialize() = 0;
 
 protected:
 	touchgfx::Rect RectP;
@@ -134,7 +134,7 @@ public:
 		initRect(Mapper);
 	};
 
-	virtual void placeOnScreen()
+	virtual void initialize()
 	{
 		float AngleZ = 0.0;
 		touchgfx::Rect* CurRect = &RectP;
@@ -211,7 +211,7 @@ public:
 	{
 	};
 
-	virtual void placeOnScreen()
+	virtual void initialize()
 	{
 		if(CFG.Dta.ScrOrientation == CfgScrOrientL)
 	    {
@@ -237,7 +237,7 @@ public:
 	{
 	};
 
-	virtual void placeOnScreen()
+	virtual void initialize()
 	{
 		if(CFG.Dta.ScrOrientation == CfgScrOrientL)
 	    {

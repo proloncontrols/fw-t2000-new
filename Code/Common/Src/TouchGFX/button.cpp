@@ -25,11 +25,49 @@
 
 
 //=============================================================================
+//  C O N S T R U C T O R S
+//-----------------------------------------------------------------------------
+CButton::CButton(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& Button)
+	: CWidget(Button),
+	  m_Button { Button }
+{
+}
+
+//=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CButton::placeOnScreen()
+touchgfx::Rect CButton::getRect()
 {
-	touchgfx::Rect* CurRect = getCurrentRect();
+	return m_Button.getRect();
+}
 
-	m_Button.setPosition(CurRect->x, CurRect->y, CurRect->width, CurRect->height);
+void CButton::initialize()
+{
+//	CRect initialRect;
+//	getRect(initialRect);
+//	m_Button.setPosition(initialRect.x, initialRect.y, initialRect.width, initialRect.height);
+
+//	CRect* rect = getRect();
+
+//	m_Button.setPosition(rect->x, rect->y, rect->width, rect->height);
+
+//	formatRect();
+//	m_Button.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
+};
+
+//-----------------------------------------------------------------------------
+void CButton::getPosition(CRect& rect)
+{
+//	CRect widgetRect = (CRect&)m_Button.getRect();
+
+
+//	rect = m_Button.getRect();
+};
+
+//-----------------------------------------------------------------------------
+void CButton::setPosition(CRect& rect)
+{
+	vRect = rect;
+	formatRect();
+	m_Button.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
 };

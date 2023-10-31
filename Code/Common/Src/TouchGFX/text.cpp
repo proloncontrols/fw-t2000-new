@@ -25,16 +25,61 @@
 
 
 //=============================================================================
+//  C O N S T R U C T O R S
+//-----------------------------------------------------------------------------
+CText::CText(touchgfx::TextArea& Text)
+    : CWidget(Text),
+	  m_Text { Text }
+{
+}
+
+//=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CText::placeOnScreen()
+touchgfx::Rect CText::getRect()
 {
-	touchgfx::Rect* CurRect = getCurrentRect();
+	return m_Text.getRect();
+}
 
-	touchgfx::TextRotation Rotation = touchgfx::TEXT_ROTATE_0;
-	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
-		Rotation = touchgfx::TEXT_ROTATE_270;
+void CText::initialize()
+{
+//	CRect initialRect;
+//	getRect(initialRect);
 
-	m_Text.setPosition(CurRect->x, CurRect->y, CurRect->width, CurRect->height);
-	m_Text.setRotation(Rotation);
+//	touchgfx::TextRotation rotation = touchgfx::TEXT_ROTATE_0;
+//	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
+//		rotation = touchgfx::TEXT_ROTATE_270;
+//
+//	m_Text.setPosition(initialRect.x, initialRect.y, initialRect.width, initialRect.height);
+//	m_Text.setRotation(rotation);
+
+
+//	CRect* rect = getRect();
+//
+//	touchgfx::TextRotation rotation = touchgfx::TEXT_ROTATE_0;
+//	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
+//		rotation = touchgfx::TEXT_ROTATE_270;
+//
+//	m_Text.setPosition(rect->x, rect->y, rect->width, rect->height);
+//	m_Text.setRotation(rotation);
+};
+
+//-----------------------------------------------------------------------------
+void CText::getPosition(CRect& rect)
+{
+	rect = vRect;
+//	rect = m_Text.getRect();
+};
+
+//-----------------------------------------------------------------------------
+void CText::setPosition(CRect& rect)
+{
+	vRect = rect;
+	formatRect();
+	m_Text.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
+
+	//	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
+//		convertRectTo270deg(rect);
+//
+//	m_Text.setPosition(rect.x, rect.y, rect.width, rect.height);
 };
