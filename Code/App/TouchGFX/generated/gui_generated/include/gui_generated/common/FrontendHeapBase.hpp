@@ -18,6 +18,8 @@
 #include <gui/clear_screen/ClearPresenter.hpp>
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
+#include <gui/test_screen/TestView.hpp>
+#include <gui/test_screen/TestPresenter.hpp>
 
 
 /**
@@ -43,7 +45,8 @@ public:
     typedef touchgfx::meta::TypeList< SplashView,
             touchgfx::meta::TypeList< ClearView,
             touchgfx::meta::TypeList< MainView,
-            touchgfx::meta::Nil > >
+            touchgfx::meta::TypeList< TestView,
+            touchgfx::meta::Nil > > >
             > GeneratedViewTypes;
 
     /**
@@ -58,7 +61,8 @@ public:
     typedef touchgfx::meta::TypeList< SplashPresenter,
             touchgfx::meta::TypeList< ClearPresenter,
             touchgfx::meta::TypeList< MainPresenter,
-            touchgfx::meta::Nil > >
+            touchgfx::meta::TypeList< TestPresenter,
+            touchgfx::meta::Nil > > >
             > GeneratedPresenterTypes;
 
     /**

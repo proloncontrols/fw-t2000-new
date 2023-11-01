@@ -42,7 +42,7 @@ MainView::MainView()
 void MainView::setupScreen()
 {
     MainViewBase::setupScreen();
-    Widgets->update();
+    Widgets->place();
 }
 
 //-----------------------------------------------------------------------------
@@ -130,7 +130,7 @@ void MainView::function1()
 void MainView::OnSettingsButton()
 {
 	CFG.Dta.ScrOrientation ^= 1;
-	Widgets->update();
+	Widgets->place();
 	invalidate();
 }
 

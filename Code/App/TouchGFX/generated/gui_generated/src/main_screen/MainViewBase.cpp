@@ -161,13 +161,13 @@ MainViewBase::MainViewBase() :
 
     ExtTempImage.setXY(48, 50);
     ExtTempImage.setBitmap(touchgfx::Bitmap(BITMAP_OUTSIDE_ID));
-    ExtTempImage.setWidth(25);
-    ExtTempImage.setHeight(26);
-    ExtTempImage.setBitmapPosition(1.0f, 1.5f);
+    ExtTempImage.setWidth(98);
+    ExtTempImage.setHeight(25);
+    ExtTempImage.setBitmapPosition(37.5f, 1.0f);
     ExtTempImage.setScale(1.0f);
     ExtTempImage.setCameraDistance(1000.0f);
-    ExtTempImage.setOrigo(12.5f, 13.0f, 1000.0f);
-    ExtTempImage.setCamera(12.5f, 13.0f);
+    ExtTempImage.setOrigo(49.0f, 12.5f, 1000.0f);
+    ExtTempImage.setCamera(49.0f, 12.5f);
     ExtTempImage.setAngles(0.0f, 0.0f, 0.0f);
     ExtTempImage.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 

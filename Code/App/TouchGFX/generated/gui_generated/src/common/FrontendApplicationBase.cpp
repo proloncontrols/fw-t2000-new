@@ -15,6 +15,8 @@
 #include <gui/clear_screen/ClearPresenter.hpp>
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
+#include <gui/test_screen/TestView.hpp>
+#include <gui/test_screen/TestPresenter.hpp>
 
 using namespace touchgfx;
 

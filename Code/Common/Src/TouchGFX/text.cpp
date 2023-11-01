@@ -41,8 +41,17 @@ touchgfx::Rect CText::getRect()
 	return m_Text.getRect();
 }
 
-void CText::initialize()
+void CText::place()
 {
+	CRect* rect = getCurRect();
+
+	touchgfx::TextRotation rotation = touchgfx::TEXT_ROTATE_0;
+	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
+		rotation = touchgfx::TEXT_ROTATE_270;
+
+	m_Text.setPosition(rect->x, rect->y, rect->width, rect->height);
+	m_Text.setRotation(rotation);
+
 //	CRect initialRect;
 //	getRect(initialRect);
 
@@ -67,19 +76,56 @@ void CText::initialize()
 //-----------------------------------------------------------------------------
 void CText::getPosition(CRect& rect)
 {
-	rect = vRect;
+	CRect curRect = (CRect&)m_Text.getRect();
+	screenToClient(curRect);
+	rect = curRect;
+
+//	rect = vRect;
 //	rect = m_Text.getRect();
 };
 
 //-----------------------------------------------------------------------------
 void CText::setPosition(CRect& rect)
 {
-	vRect = rect;
-	formatRect();
-	m_Text.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
+	CRect newRect = rect;
+	clientToScreen(newRect);
+	m_Text.setPosition(newRect.x, newRect.y, newRect.width, newRect.height);
+
+//	vRect = rect;
+//	formatRect();
+//	m_Text.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
 
 	//	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
 //		convertRectTo270deg(rect);
 //
 //	m_Text.setPosition(rect.x, rect.y, rect.width, rect.height);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

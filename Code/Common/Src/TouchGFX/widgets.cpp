@@ -53,10 +53,10 @@ void CWidgets::set(int index, CWidget* widget)
 }
 
 //-----------------------------------------------------------------------------
-void CWidgets::update()
+void CWidgets::place()
 {
     for(int i = 0; i < m_Size; i++)
     {
-    	m_List[i]->initialize();
+    	m_List[i]->place();
     }
 }

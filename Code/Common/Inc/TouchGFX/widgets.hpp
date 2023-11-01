@@ -41,7 +41,7 @@ public:
 public:
 	CWidget* get(int index);
 	void set(int index, CWidget* widget);
-    void update();
+    void place();
 };
 
 

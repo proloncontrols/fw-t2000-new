@@ -35,9 +35,41 @@
 //=============================================================================
 //  D E F I N E S
 //-----------------------------------------------------------------------------
-#define SCREEN_WIDTH    720
-#define SCREEN_HEIGHT   672
-#define SCREEN_ANGLE    (-1.572f)   //Used for TextureMapper widget's Z angle
+#define SCREEN_WIDTH      720
+#define SCREEN_HEIGHT     672
+#define SCREEN_ANGLE      (-1.572f)   //Used for TextureMapper widget's Z angle
+#define SCREEN_OFFSET     24
+//#define SCREEN_OFFSET_Y   0
+#define SCREEN_FRAME      24
+//
+//
+// Thermostat portrait orientation
+//
+//    Screen (landscape)
+//    -------------------------------------   ---
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |     Client (square)     |    |   672
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    -------------------------------------   ---
+//
+//    |-24-|---------- 672 ----------|-24-|
+//    |--------------- 720 ---------------|
+//
+//
+
+
+
+
+
+
 //
 //
 // Thermostat portrait orientation
@@ -69,9 +101,9 @@
 //#define CLIENT_ORIGIN_L_X   (SCREEN_HEIGHT - CLIENT_OFFSET_PER)
 //#define CLIENT_ORIGIN_L_Y   CLIENT_ORIGIN_P_Y
 
-#define CLIENT_OFFSET       24
-#define CLIENT_ORIGIN_X     (((SCREEN_WIDTH - SCREEN_HEIGHT) / 2) + CLIENT_OFFSET)
-#define CLIENT_ORIGIN_Y     CLIENT_OFFSET
+//#define CLIENT_OFFSET       24
+//#define CLIENT_ORIGIN_X     (((SCREEN_WIDTH - SCREEN_HEIGHT) / 2) + CLIENT_OFFSET)
+//#define CLIENT_ORIGIN_Y     CLIENT_OFFSET
 
 
 //=============================================================================
@@ -109,12 +141,20 @@ public:
 	CWidget(touchgfx::Widget& widget);
 	CWidget(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& button);
 
+	virtual void place() = 0;
+	virtual void getPosition(CRect& rect) = 0;
+	virtual void setPosition(CRect& rect) = 0;
+
+
+
 	virtual touchgfx::Rect getRect() = 0;
-	virtual void initialize() = 0;               //Originally place widget on screen according to orientation
-	virtual void getPosition(CRect& rect) = 0;   //These are used to move widget around
-	virtual void setPosition(CRect& rect) = 0;   //
 
 protected:
+	CRect pRect;
+	CRect lRect;
+
+
+
 	CRect vRect;   //Virtual CRect
 	CRect fRect;   //Formatted CRect
 //	CRect RectP;
@@ -129,11 +169,17 @@ protected:
 	CRect& getVRect();
 	void getRect(CRect& rect);
 	void setRect(CRect& rect);
-	void convertRectTo270deg(CRect& rect);
 
 	void screenToClient(CRect& rect);
 //	void screenToClient(const touchgfx::Rect& rect);
 	void clientToScreen(CRect& rect);
+
+	CRect* getCurRect();
+
+private:
+//	void rotate270deg(CRect& rect);
+
+	void createRect270deg();
 };
 
 

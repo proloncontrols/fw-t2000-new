@@ -18,7 +18,7 @@ SplashView::SplashView()
 void SplashView::setupScreen()
 {
     SplashViewBase::setupScreen();
-    Widgets->update();
+    Widgets->place();
 }
 
 void SplashView::tearDownScreen()

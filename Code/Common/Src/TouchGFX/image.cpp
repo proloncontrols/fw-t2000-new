@@ -42,12 +42,9 @@ touchgfx::Rect CImage::getRect()
 	return m_Mapper.getRect();
 }
 
-void CImage::initialize()
+void CImage::place()
 {
-	CRect screenRect;
-	clientToScreen(screenRect);
-
-	clientToScreen((CRect&)m_Mapper.getRect());
+	CRect* rect = getCurRect();
 
 	touchgfx::Bitmap imageBit = m_Mapper.getBitmap();
 
@@ -55,13 +52,32 @@ void CImage::initialize()
 	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
 		angleZ = SCREEN_ANGLE;
 
-	m_Mapper.setPosition(cRect.x, cRect.y, cRect.width, cRect.height);
-	float newBitmapX = (((float)cRect.width / 2.0) - ((float)imageBit.getWidth() / 2.0));
-	float newBitmapY = (((float)cRect.height / 2.0) - ((float)imageBit.getHeight() / 2.0));
+	m_Mapper.setPosition(rect->x, rect->y, rect->width, rect->height);
+	float newBitmapX = (((float)rect->width / 2.0) - ((float)imageBit.getWidth() / 2.0));
+	float newBitmapY = (((float)rect->height / 2.0) - ((float)imageBit.getHeight() / 2.0));
 	m_Mapper.setBitmapPosition((float)newBitmapX, (float)newBitmapY);
-	m_Mapper.setOrigo((float)(cRect.width / 2), (float)(cRect.height / 2), 1000.0);
-	m_Mapper.setCamera((float)(cRect.width / 2), (float)(cRect.height / 2));
+	m_Mapper.setOrigo((float)(rect->width / 2), (float)(rect->height / 2), 1000.0);
+	m_Mapper.setCamera((float)(rect->width / 2), (float)(rect->height / 2));
 	m_Mapper.setAngles(0.0, -0.0, angleZ);
+
+//	CRect screenRect;
+//	clientToScreen(screenRect);
+//
+//	clientToScreen((CRect&)m_Mapper.getRect());
+//
+//	touchgfx::Bitmap imageBit = m_Mapper.getBitmap();
+//
+//	float angleZ = 0.0;
+//	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
+//		angleZ = SCREEN_ANGLE;
+//
+//	m_Mapper.setPosition(cRect.x, cRect.y, cRect.width, cRect.height);
+//	float newBitmapX = (((float)cRect.width / 2.0) - ((float)imageBit.getWidth() / 2.0));
+//	float newBitmapY = (((float)cRect.height / 2.0) - ((float)imageBit.getHeight() / 2.0));
+//	m_Mapper.setBitmapPosition((float)newBitmapX, (float)newBitmapY);
+//	m_Mapper.setOrigo((float)(cRect.width / 2), (float)(cRect.height / 2), 1000.0);
+//	m_Mapper.setCamera((float)(cRect.width / 2), (float)(cRect.height / 2));
+//	m_Mapper.setAngles(0.0, -0.0, angleZ);
 
 //	screenToClient(m_Mapper.getRect());
 
@@ -115,16 +131,55 @@ void CImage::initialize()
 //-----------------------------------------------------------------------------
 void CImage::getPosition(CRect& rect)
 {
-	rect = vRect;
-//	rect = m_Mapper.getRect();
+	CRect curRect = (CRect&)m_Mapper.getRect();
+
+	screenToClient(curRect);
+
+	rect = curRect;
+
+//	if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+//	{
+//		rect.x = curRect.x - CLIENT_ORIGIN_X;
+//		rect.y = curRect.y - CLIENT_ORIGIN_Y;
+//		rect.width = curRect.width;
+//		rect.height = curRect.height;
+//	}
+//	else
+//	{
+//		rect.x = curRect.y + CLIENT_OFFSET - SCREEN_HEIGHT;
+//		rect.y = curRect.x - CLIENT_ORIGIN_X + CLIENT_OFFSET;
+//		rect.width = curRect.height;
+//		rect.height = curRect.width;
+//	}
 };
 
 //-----------------------------------------------------------------------------
 void CImage::setPosition(CRect& rect)
 {
-	vRect = rect;
-	formatRect();
-	m_Mapper.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
+	CRect newRect = rect;
+
+	clientToScreen(newRect);
+
+//	if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+//	{
+//		newRect.x = rect.x + CLIENT_ORIGIN_X;
+//		newRect.y = rect.y + CLIENT_ORIGIN_Y;
+//		newRect.width = rect.width;
+//		newRect.height = rect.height;
+//	}
+//	else
+//	{
+//		newRect.x = rect.y - CLIENT_OFFSET + SCREEN_HEIGHT;
+//		newRect.y = rect.x + CLIENT_ORIGIN_X - CLIENT_OFFSET;
+//		newRect.width = rect.height;
+//		newRect.height = rect.width;
+//	}
+
+	m_Mapper.setPosition(newRect.x, newRect.y, newRect.width, newRect.height);
+
+//	vRect = rect;
+//	formatRect();
+//	m_Mapper.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
 
 //	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
 //		convertRectTo270deg(rect);

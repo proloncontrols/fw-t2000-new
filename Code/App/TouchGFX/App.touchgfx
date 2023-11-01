@@ -445,17 +445,17 @@
             "Name": "ExtTempImage",
             "X": 48,
             "Y": 50,
-            "Width": 25,
-            "Height": 26,
+            "Width": 98,
+            "Height": 25,
             "RenderingAlgorithm": "Nearest-neighbor",
             "FileNameImage": "Outside.png",
             "LockBitmapToCenter": true,
-            "XBitmapPosition": 1.0,
-            "YBitmapPosition": 1.5,
+            "XBitmapPosition": 37.5,
+            "YBitmapPosition": 1.0,
             "Scale": 1.0,
             "LockOrigoToCenter": true,
-            "XOrigo": 12.5,
-            "YOrigo": 13.0,
+            "XOrigo": 49.0,
+            "YOrigo": 12.5,
             "ZOrigo": 1000.0,
             "CameraDistance": 1000.0
           },
@@ -519,6 +519,88 @@
             }
           }
         ]
+      },
+      {
+        "Name": "Test",
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 720,
+            "Height": 672
+          },
+          {
+            "Type": "Container",
+            "Name": "extTemp",
+            "Width": 263,
+            "Height": 127,
+            "Components": [
+              {
+                "Type": "Box",
+                "Name": "box2",
+                "Width": 263,
+                "Height": 127,
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 0
+              },
+              {
+                "Type": "TextArea",
+                "Name": "txtTemp",
+                "X": 20,
+                "Y": 27,
+                "Width": 92,
+                "Height": 24,
+                "TextId": "__SingleUse_YA7K",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
+              },
+              {
+                "Type": "TextureMapper",
+                "Name": "imgTemp",
+                "X": 121,
+                "Y": 59,
+                "Width": 35,
+                "Height": 35,
+                "RenderingAlgorithm": "Nearest-neighbor",
+                "FileNameImage": "Outside.png",
+                "LockBitmapToCenter": true,
+                "XBitmapPosition": 6.0,
+                "YBitmapPosition": 6.0,
+                "Scale": 1.0,
+                "XOrigo": 90.0,
+                "YOrigo": 90.0,
+                "ZOrigo": 1000.0,
+                "CameraDistance": 1000.0
+              },
+              {
+                "Type": "TextArea",
+                "Name": "txtUnit",
+                "X": 121,
+                "Y": 27,
+                "Width": 92,
+                "Height": 24,
+                "TextId": "__SingleUse_Z950",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "AutoSize": true
+              }
+            ]
+          }
+        ],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [],

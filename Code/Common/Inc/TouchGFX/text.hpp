@@ -38,7 +38,7 @@ public:
 	CText(touchgfx::TextArea& Text);
 
 	virtual touchgfx::Rect getRect();
-	virtual void initialize();
+	virtual void place();
 	virtual void getPosition(CRect& rect);
 	virtual void setPosition(CRect& rect);
 };

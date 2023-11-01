@@ -41,8 +41,12 @@ touchgfx::Rect CButton::getRect()
 	return m_Button.getRect();
 }
 
-void CButton::initialize()
+void CButton::place()
 {
+	CRect* rect = getCurRect();
+
+	m_Button.setPosition(rect->x, rect->y, rect->width, rect->height);
+
 //	CRect initialRect;
 //	getRect(initialRect);
 //	m_Button.setPosition(initialRect.x, initialRect.y, initialRect.width, initialRect.height);
@@ -58,6 +62,10 @@ void CButton::initialize()
 //-----------------------------------------------------------------------------
 void CButton::getPosition(CRect& rect)
 {
+	CRect curRect = (CRect&)m_Button.getRect();
+	screenToClient(curRect);
+	rect = curRect;
+
 //	CRect widgetRect = (CRect&)m_Button.getRect();
 
 
@@ -67,7 +75,40 @@ void CButton::getPosition(CRect& rect)
 //-----------------------------------------------------------------------------
 void CButton::setPosition(CRect& rect)
 {
-	vRect = rect;
-	formatRect();
-	m_Button.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
+	CRect newRect = rect;
+	clientToScreen(newRect);
+	m_Button.setPosition(newRect.x, newRect.y, newRect.width, newRect.height);
+
+//	vRect = rect;
+//	formatRect();
+//	m_Button.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
