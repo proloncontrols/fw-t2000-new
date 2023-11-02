@@ -146,31 +146,6 @@ MainViewBase::MainViewBase() :
     HumText.resizeToCurrentText();
     HumText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_UB3J));
 
-    ExtTempUnitText.setXY(48, 18);
-    ExtTempUnitText.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
-    ExtTempUnitText.setLinespacing(0);
-    ExtTempUnitText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_W88E));
-
-    ExtTempText.setXY(48, 5);
-    ExtTempText.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
-    ExtTempText.setLinespacing(0);
-    ExtTempTextBuffer[0] = 0;
-    ExtTempText.setWildcard(ExtTempTextBuffer);
-    ExtTempText.resizeToCurrentText();
-    ExtTempText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_8EN3));
-
-    ExtTempImage.setXY(48, 50);
-    ExtTempImage.setBitmap(touchgfx::Bitmap(BITMAP_OUTSIDE_ID));
-    ExtTempImage.setWidth(98);
-    ExtTempImage.setHeight(25);
-    ExtTempImage.setBitmapPosition(37.5f, 1.0f);
-    ExtTempImage.setScale(1.0f);
-    ExtTempImage.setCameraDistance(1000.0f);
-    ExtTempImage.setOrigo(49.0f, 12.5f, 1000.0f);
-    ExtTempImage.setCamera(49.0f, 12.5f);
-    ExtTempImage.setAngles(0.0f, 0.0f, 0.0f);
-    ExtTempImage.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
-
     SettingsButton.setBoxWithBorderPosition(0, 0, 50, 50);
     SettingsButton.setBorderSize(0);
     SettingsButton.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 0, 0), touchgfx::Color::getColorFromRGB(0, 0, 0), touchgfx::Color::getColorFromRGB(0, 0, 0), touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -189,6 +164,41 @@ MainViewBase::MainViewBase() :
     SettingsImage.setAngles(0.0f, 0.0f, 0.0f);
     SettingsImage.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 
+    extTemp.setPosition(48, 24, 120, 60);
+
+    box2.setPosition(0, 0, 120, 60);
+    box2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    box2.setAlpha(38);
+    extTemp.add(box2);
+
+    txtTemp.setXY(0, -18);
+    txtTemp.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
+    txtTemp.setLinespacing(0);
+    txtTempBuffer[0] = 0;
+    txtTemp.setWildcard(txtTempBuffer);
+    txtTemp.resizeToCurrentText();
+    txtTemp.setTypedText(touchgfx::TypedText(T___SINGLEUSE_0D0P));
+    extTemp.add(txtTemp);
+
+    textureMapper1.setXY(3, 29);
+    textureMapper1.setBitmap(touchgfx::Bitmap(BITMAP_OUTSIDE_ID));
+    textureMapper1.setWidth(25);
+    textureMapper1.setHeight(25);
+    textureMapper1.setBitmapPosition(1.0f, 1.0f);
+    textureMapper1.setScale(1.0f);
+    textureMapper1.setCameraDistance(1000.0f);
+    textureMapper1.setOrigo(90.0f, 90.0f, 1000.0f);
+    textureMapper1.setCamera(12.5f, 12.5f);
+    textureMapper1.setAngles(0.0f, 0.0f, 0.0f);
+    textureMapper1.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+    extTemp.add(textureMapper1);
+
+    txtUnit.setXY(0, 0);
+    txtUnit.setColor(touchgfx::Color::getColorFromRGB(186, 188, 190));
+    txtUnit.setLinespacing(0);
+    txtUnit.setTypedText(touchgfx::TypedText(T___SINGLEUSE_1VL1));
+    extTemp.add(txtUnit);
+
     add(__background);
     add(box1);
     add(ClientLineBottom);
@@ -205,11 +215,9 @@ MainViewBase::MainViewBase() :
     add(TempEntText);
     add(HumPercentText);
     add(HumText);
-    add(ExtTempUnitText);
-    add(ExtTempText);
-    add(ExtTempImage);
     add(SettingsButton);
     add(SettingsImage);
+    add(extTemp);
 }
 
 void MainViewBase::setupScreen()

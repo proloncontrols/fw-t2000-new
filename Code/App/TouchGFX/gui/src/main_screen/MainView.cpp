@@ -24,7 +24,7 @@ MainView::MainView()
 	Widgets->set(mainImgStandby,     new CImage(StandbyImage));
 	Widgets->set(mainImgLogo,        new CImage(LogoImage));
 	Widgets->set(mainImgDrop,        new CImage(DropImage));
-	Widgets->set(mainImgExtTemp,     new CImage(ExtTempImage));
+//	Widgets->set(mainImgExtTemp,     new CImage(ExtTempImage));
 	Widgets->set(mainImgSettings,    new CImage(SettingsImage));
 
 	Widgets->set(mainTxtTempUnit,    new CText(TempUnitText));
@@ -32,8 +32,8 @@ MainView::MainView()
 	Widgets->set(mainTxtTempFrc,     new CText(TempFrcText));
 	Widgets->set(mainTxtHumPercent,  new CText(HumPercentText));
 	Widgets->set(mainTxtHum,         new CText(HumText));
-	Widgets->set(mainTxtExtTempUnit, new CText(ExtTempUnitText));
-	Widgets->set(mainTxtExtTemp,     new CText(ExtTempText));
+//	Widgets->set(mainTxtExtTempUnit, new CText(ExtTempUnitText));
+//	Widgets->set(mainTxtExtTemp,     new CText(ExtTempText));
 
 	Widgets->set(mainBtnSettings,    new CButton(SettingsButton));
 }
@@ -78,6 +78,7 @@ void MainView::DisplayEnv(ENV_Readings_t* Env)
 	//Exterior temperature
 	tst *= -1;
 	sprintf(tmp, "%d", (int)tst);
+	extTemp.
 	Unicode::fromUTF8((uint8_t*)tmp, ExtTempTextBuffer, sizeof(ExtTempTextBuffer));
 	ExtTempText.resizeToCurrentTextWithAlignment();
 

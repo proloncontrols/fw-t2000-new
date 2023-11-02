@@ -14,6 +14,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
+#include <touchgfx/containers/Container.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -64,11 +65,13 @@ protected:
     touchgfx::TextAreaWithOneWildcard TempEntText;
     touchgfx::TextArea HumPercentText;
     touchgfx::TextAreaWithOneWildcard HumText;
-    touchgfx::TextArea ExtTempUnitText;
-    touchgfx::TextAreaWithOneWildcard ExtTempText;
-    touchgfx::TextureMapper ExtTempImage;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  SettingsButton;
     touchgfx::TextureMapper SettingsImage;
+    touchgfx::Container extTemp;
+    touchgfx::Box box2;
+    touchgfx::TextAreaWithOneWildcard txtTemp;
+    touchgfx::TextureMapper textureMapper1;
+    touchgfx::TextArea txtUnit;
 
     /*
      * Wildcard Buffers
@@ -79,8 +82,8 @@ protected:
     touchgfx::Unicode::UnicodeChar TempEntTextBuffer[TEMPENTTEXT_SIZE];
     static const uint16_t HUMTEXT_SIZE = 4;
     touchgfx::Unicode::UnicodeChar HumTextBuffer[HUMTEXT_SIZE];
-    static const uint16_t EXTTEMPTEXT_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar ExtTempTextBuffer[EXTTEMPTEXT_SIZE];
+    static const uint16_t TXTTEMP_SIZE = 5;
+    touchgfx::Unicode::UnicodeChar txtTempBuffer[TXTTEMP_SIZE];
 
 private:
 

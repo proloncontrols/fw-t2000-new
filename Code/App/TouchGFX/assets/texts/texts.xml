@@ -6,20 +6,14 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_Z950" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">New Text</Translation>
-      </Text>
-      <Text Id="__SingleUse_YA7K" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">New Text</Translation>
-      </Text>
-      <Text Id="__SingleUse_W88E" Alignment="Left" TypographyId="T2000_Tiny">
+      <Text Id="__SingleUse_1VL1" Alignment="Left" TypographyId="T2000_Tiny">
         <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="__SingleUse_0D0P" Alignment="Left" TypographyId="T2000_Small">
+        <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_DBNW" Alignment="Left" TypographyId="T2000_Tiny">
         <Translation Language="GB">%</Translation>
-      </Text>
-      <Text Id="__SingleUse_8EN3" Alignment="Left" TypographyId="T2000_Small">
-        <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_UB3J" Alignment="Left" TypographyId="T2000_Small">
         <Translation Language="GB">&lt;value&gt;</Translation>
