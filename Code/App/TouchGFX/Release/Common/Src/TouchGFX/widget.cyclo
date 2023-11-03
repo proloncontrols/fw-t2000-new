@@ -1,0 +1,8 @@
+Drawable.hpp:198:17:const touchgfx::Rect& touchgfx::Drawable::getRect() const	1
+widget.hpp:84:7:void CRect::operator=(const CRect&)	1
+widget.hpp:92:7:void CRect::operator=(const touchgfx::Rect&)	1
+widget.cpp:30:1:CWidget::CWidget(touchgfx::Widget&)	1
+widget.cpp:39:1:CWidget::CWidget(touchgfx::BoxWithBorderButtonStyle<touchgfx::ClickButtonTrigger>&)	1
+widget.cpp:51:8:CRect* CWidget::getRect()	1
+widget.cpp:100:6:void CWidget::formatRect()	2
+widget.cpp:108:6:void CWidget::convertRectTo270deg(CRect&)	1

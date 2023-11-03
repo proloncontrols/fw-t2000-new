@@ -1,0 +1,8 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:198:17:const touchgfx::Rect& touchgfx::Drawable::getRect() const	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Inc/TouchGFX/widget.hpp:84:7:void CRect::operator=(const CRect&)	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Inc/TouchGFX/widget.hpp:92:7:void CRect::operator=(const touchgfx::Rect&)	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/widget.cpp:30:1:CWidget::CWidget(touchgfx::Widget&)	24	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/widget.cpp:39:1:CWidget::CWidget(touchgfx::BoxWithBorderButtonStyle<touchgfx::ClickButtonTrigger>&)	24	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/widget.cpp:51:8:CRect* CWidget::getRect()	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/widget.cpp:100:6:void CWidget::formatRect()	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/widget.cpp:108:6:void CWidget::convertRectTo270deg(CRect&)	24	static

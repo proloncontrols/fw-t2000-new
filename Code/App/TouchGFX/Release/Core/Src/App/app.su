@@ -1,0 +1,7 @@
+../Core/Src/App/app.c:48:6:APP_OnInitBegin	0	static
+../Core/Src/App/app.c:54:6:APP_OnInitEnd	0	static
+../Core/Src/App/app.c:69:6:APP_OnEntryBegin	0	static
+../Core/Src/App/app.c:74:6:APP_OnEntryEnd	0	static
+../Core/Src/App/app.c:81:6:APP_OnPeriodic	0	static
+../Core/Src/App/app.c:90:6:APP_OnCom	0	static
+../Core/Src/App/app.c:98:6:APP_OnFlag	8	static

@@ -1,0 +1,10 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:198:17:const touchgfx::Rect& touchgfx::Drawable::getRect() const	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:233:10:void touchgfx::Drawable::setPosition(int16_t, int16_t, int16_t, int16_t)	24	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:343:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Inc/TouchGFX/widget.hpp:84:7:void CRect::operator=(const CRect&)	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Inc/TouchGFX/widget.hpp:92:7:void CRect::operator=(const touchgfx::Rect&)	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/button.cpp:30:1:CButton::CButton(touchgfx::BoxWithBorderButtonStyle<touchgfx::ClickButtonTrigger>&)	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/button.cpp:39:6:virtual void CButton::placeOnScreen()	32	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/button.cpp:49:6:virtual void CButton::getPosition(CRect&)	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/button.cpp:55:6:virtual void CButton::setPosition(CRect&)	32	static

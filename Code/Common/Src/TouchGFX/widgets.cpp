@@ -57,6 +57,6 @@ void CWidgets::place()
 {
     for(int i = 0; i < m_Size; i++)
     {
-    	m_List[i]->place();
+//    	m_List[i]->place();
     }
 }

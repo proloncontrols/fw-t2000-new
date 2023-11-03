@@ -99,22 +99,22 @@ void APP_OnFlag(uint32_t Flag)
 {
 	//Called on framework unhandled events (flags)
 
-	if(Flag & NUM2POS(EvtGrpUi))
-		UI_ScreenTimeoutReset();
-
-	if(Flag & NUM2POS(EvtGrpEnv))
-	{
-		if(!APP.SplashDone)
-			UI_ScreenSwitchTo(UiScreenIdMain);
-		APP.SplashDone = TRUE;
-
-		ENV_Read(&APP.Env);
-		if(APP.Env.Device > EnvDevPowerup)
-		{
-			if(APP.Env.Device > EnvDevNone)
-				UI_PostEnv(&APP.Env);
-		}
-	}
+//	if(Flag & NUM2POS(EvtGrpUi))
+//		UI_ScreenTimeoutReset();
+//
+//	if(Flag & NUM2POS(EvtGrpEnv))
+//	{
+//		if(!APP.SplashDone)
+//			UI_ScreenSwitchTo(UiScreenIdMain);
+//		APP.SplashDone = TRUE;
+//
+//		ENV_Read(&APP.Env);
+//		if(APP.Env.Device > EnvDevPowerup)
+//		{
+//			if(APP.Env.Device > EnvDevNone)
+//				UI_PostEnv(&APP.Env);
+//		}
+//	}
 }
 
 

@@ -1,0 +1,5 @@
+flash_stm32h735.c:43:19:FLASH_STM32H735_Init	1
+flash_stm32h735.c:49:19:FLASH_STM32H735_Reset	1
+flash_stm32h735.c:55:19:FLASH_STM32H735_Erase	3
+flash_stm32h735.c:81:19:FLASH_STM32H735_Write	5
+flash_stm32h735.c:110:19:FLASH_STM32H735_Read	2

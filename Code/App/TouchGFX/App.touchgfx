@@ -3,104 +3,12 @@
     "Screens": [
       {
         "Name": "Splash",
-        "CanvasBufferSize": 10800,
         "Components": [
           {
             "Type": "Box",
             "Name": "box1",
             "Width": 720,
             "Height": 672
-          },
-          {
-            "Type": "TextureMapper",
-            "Name": "imgProlon",
-            "X": 48,
-            "Y": 150,
-            "Width": 624,
-            "Height": 200,
-            "RenderingAlgorithm": "Nearest-neighbor",
-            "FileNameImage": "ProLon Logo 4.png",
-            "LockBitmapToCenter": true,
-            "XBitmapPosition": -8.0,
-            "YBitmapPosition": 8.0,
-            "Scale": 0.75,
-            "LockOrigoToCenter": true,
-            "XOrigo": 312.0,
-            "YOrigo": 100.0,
-            "ZOrigo": 1000.0,
-            "CameraDistance": 1000.0
-          },
-          {
-            "Type": "Line",
-            "Name": "ClientLineTop",
-            "Width": 720,
-            "Height": 672,
-            "LockPosition": true,
-            "Color": {
-              "Red": 99,
-              "Green": 105,
-              "Blue": 100
-            },
-            "StartX": 48.0,
-            "StartY": 24.0,
-            "EndX": 672.0,
-            "EndY": 24.0,
-            "LineWidth": 1.0,
-            "LineEndingStyle": "Round"
-          },
-          {
-            "Type": "Line",
-            "Name": "ClientLineLeft",
-            "Width": 720,
-            "Height": 672,
-            "LockPosition": true,
-            "Color": {
-              "Red": 99,
-              "Green": 105,
-              "Blue": 100
-            },
-            "StartX": 48.0,
-            "StartY": 24.0,
-            "EndX": 48.0,
-            "EndY": 648.0,
-            "LineWidth": 1.0,
-            "LineEndingStyle": "Round"
-          },
-          {
-            "Type": "Line",
-            "Name": "ClientLineRight",
-            "Width": 720,
-            "Height": 672,
-            "LockPosition": true,
-            "Color": {
-              "Red": 99,
-              "Green": 105,
-              "Blue": 100
-            },
-            "StartX": 672.0,
-            "StartY": 24.0,
-            "EndX": 672.0,
-            "EndY": 648.0,
-            "LineWidth": 1.0,
-            "LineEndingStyle": "Round"
-          },
-          {
-            "Type": "Line",
-            "Name": "ClientLineBottom",
-            "Width": 720,
-            "Height": 672,
-            "LockPosition": true,
-            "Color": {
-              "Red": 99,
-              "Green": 105,
-              "Blue": 100
-            },
-            "StartX": 48.0,
-            "StartY": 648.0,
-            "EndX": 672.0,
-            "EndY": 648.0,
-            "LineWidth": 1.0,
-            "LineEndingStyle": "Round"
           }
         ],
         "Interactions": [
@@ -112,6 +20,42 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "OnScreenTransitionEnd"
+            }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionNone"
             }
           }
         ]

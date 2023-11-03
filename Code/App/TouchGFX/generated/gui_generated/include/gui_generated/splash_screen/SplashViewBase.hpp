@@ -8,9 +8,6 @@
 #include <mvp/View.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/TextureMapper.hpp>
-#include <touchgfx/widgets/canvas/Line.hpp>
-#include <touchgfx/widgets/canvas/PainterARGB8888.hpp>
 
 class SplashViewBase : public touchgfx::View<SplashPresenter>
 {
@@ -38,23 +35,9 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Box box1;
-    touchgfx::TextureMapper imgProlon;
-    touchgfx::Line ClientLineTop;
-    touchgfx::PainterARGB8888 ClientLineTopPainter;
-    touchgfx::Line ClientLineLeft;
-    touchgfx::PainterARGB8888 ClientLineLeftPainter;
-    touchgfx::Line ClientLineRight;
-    touchgfx::PainterARGB8888 ClientLineRightPainter;
-    touchgfx::Line ClientLineBottom;
-    touchgfx::PainterARGB8888 ClientLineBottomPainter;
 
 private:
 
-    /*
-     * Canvas Buffer Size
-     */
-    static const uint16_t CANVAS_BUFFER_SIZE = 10800;
-    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 };
 
 #endif // SPLASHVIEWBASE_HPP

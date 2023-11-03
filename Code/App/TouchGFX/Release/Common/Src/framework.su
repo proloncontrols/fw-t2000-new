@@ -1,0 +1,14 @@
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:447:13:FMK_Tx	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:464:13:FMK_CmdIdentify	4	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:698:13:FMK_CmdResult	4	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:506:13:FMK_CmdLeave	0	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:183:6:FMK_Init	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:200:6:FMK_Entry	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:228:6:FMK_SetBootAddress	88	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:424:13:FMK_Upgrade	88	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:254:6:FMK_PostFlag	0	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:260:6:FMK_PostSystemEvent	0	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:267:6:FMK_SaveConfig	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:212:6:FMK_Main	16	static,ignoring_inline_asm
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:279:18:FMK_GetSharedRam	0	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/framework.c:285:20:FMK_GetSharedFlash	0	static

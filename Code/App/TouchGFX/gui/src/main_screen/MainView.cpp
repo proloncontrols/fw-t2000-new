@@ -54,71 +54,71 @@ void MainView::tearDownScreen()
 //-----------------------------------------------------------------------------
 void MainView::DisplayEnv(ENV_Readings_t* Env)
 {
-	static int16_t tst = 22;
-	static int16_t tst2 = 77;
-
-	char tmp[4];
-
-	//Temperature unit selection
-	int16_t temp = Env->TempC;
-	if(CFG.Dta.TempUnit == CfgEnvTempF)
-		temp = Env->TempF;
-
-	//Room temperature
-	double integral;
-	double fractional = modf((double)temp / 100.0, &integral) * 10.0;
-	sprintf(tmp, "%d", (int)integral);
-	Unicode::fromUTF8((uint8_t*)tmp, TempEntTextBuffer, sizeof(TempEntTextBuffer));
-	TempEntText.resizeToCurrentTextWithAlignment();
-	TempEntText.invalidate();
-	sprintf(tmp, "%d", (int)fractional);
-	Unicode::fromUTF8((uint8_t*)tmp, TempFrcTextBuffer, sizeof(TempFrcTextBuffer));
-	TempFrcText.resizeToCurrentTextWithAlignment();
-
-	//Exterior temperature
-	tst *= -1;
-	sprintf(tmp, "%d", (int)tst);
-	extTemp.
-	Unicode::fromUTF8((uint8_t*)tmp, ExtTempTextBuffer, sizeof(ExtTempTextBuffer));
-	ExtTempText.resizeToCurrentTextWithAlignment();
-
-	CRect refRect;
-	CWidget* ref = Widgets->get(mainTxtExtTemp);
-	ref->getPosition(refRect);
-
-	CRect dstRect;
-	CWidget* dst = Widgets->get(mainTxtExtTempUnit);
-	dst->getPosition(dstRect);
-	dstRect.x = refRect.x + refRect.width;
-	dst->setPosition(dstRect);
-
-	dst = Widgets->get(mainImgExtTemp);
-	dst->getPosition(dstRect);
-	dstRect.x = refRect.x + refRect.width;
-	dst->setPosition(dstRect);
-
-	//Humidity
-	tst2 *= -1;
-	sprintf(tmp, "%d", (int)tst2);
-//	sprintf(tmp, "%d", (int)(Env->HumP / 100));
-	Unicode::fromUTF8((uint8_t*)tmp, HumTextBuffer, sizeof(HumTextBuffer));
-	HumText.resizeToCurrentTextWithAlignment();
-	HumText.invalidate();
-
-	ref = Widgets->get(mainTxtHum);
-	ref->getPosition(refRect);
-
-	dst = Widgets->get(mainTxtHumPercent);
-	dst->getPosition(dstRect);
-	dstRect.x = refRect.x + refRect.width;
-	dst->setPosition(dstRect);
-
-	dst = Widgets->get(mainImgDrop);
-	dst->getPosition(dstRect);
-	dstRect.x = refRect.x + refRect.width;
-	dst->setPosition(dstRect);
-
-	invalidate();
+//	static int16_t tst = 22;
+//	static int16_t tst2 = 77;
+//
+//	char tmp[4];
+//
+//	//Temperature unit selection
+//	int16_t temp = Env->TempC;
+//	if(CFG.Dta.TempUnit == CfgEnvTempF)
+//		temp = Env->TempF;
+//
+//	//Room temperature
+//	double integral;
+//	double fractional = modf((double)temp / 100.0, &integral) * 10.0;
+//	sprintf(tmp, "%d", (int)integral);
+//	Unicode::fromUTF8((uint8_t*)tmp, TempEntTextBuffer, sizeof(TempEntTextBuffer));
+//	TempEntText.resizeToCurrentTextWithAlignment();
+//	TempEntText.invalidate();
+//	sprintf(tmp, "%d", (int)fractional);
+//	Unicode::fromUTF8((uint8_t*)tmp, TempFrcTextBuffer, sizeof(TempFrcTextBuffer));
+//	TempFrcText.resizeToCurrentTextWithAlignment();
+//
+//	//Exterior temperature
+//	tst *= -1;
+//	sprintf(tmp, "%d", (int)tst);
+//	extTemp.
+//	Unicode::fromUTF8((uint8_t*)tmp, ExtTempTextBuffer, sizeof(ExtTempTextBuffer));
+//	ExtTempText.resizeToCurrentTextWithAlignment();
+//
+//	CRect refRect;
+//	CWidget* ref = Widgets->get(mainTxtExtTemp);
+//	ref->getPosition(refRect);
+//
+//	CRect dstRect;
+//	CWidget* dst = Widgets->get(mainTxtExtTempUnit);
+//	dst->getPosition(dstRect);
+//	dstRect.x = refRect.x + refRect.width;
+//	dst->setPosition(dstRect);
+//
+//	dst = Widgets->get(mainImgExtTemp);
+//	dst->getPosition(dstRect);
+//	dstRect.x = refRect.x + refRect.width;
+//	dst->setPosition(dstRect);
+//
+//	//Humidity
+//	tst2 *= -1;
+//	sprintf(tmp, "%d", (int)tst2);
+////	sprintf(tmp, "%d", (int)(Env->HumP / 100));
+//	Unicode::fromUTF8((uint8_t*)tmp, HumTextBuffer, sizeof(HumTextBuffer));
+//	HumText.resizeToCurrentTextWithAlignment();
+//	HumText.invalidate();
+//
+//	ref = Widgets->get(mainTxtHum);
+//	ref->getPosition(refRect);
+//
+//	dst = Widgets->get(mainTxtHumPercent);
+//	dst->getPosition(dstRect);
+//	dstRect.x = refRect.x + refRect.width;
+//	dst->setPosition(dstRect);
+//
+//	dst = Widgets->get(mainImgDrop);
+//	dst->getPosition(dstRect);
+//	dstRect.x = refRect.x + refRect.width;
+//	dst->setPosition(dstRect);
+//
+//	invalidate();
 }
 
 //-----------------------------------------------------------------------------

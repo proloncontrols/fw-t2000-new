@@ -3,14 +3,9 @@
 /*********************************************************************************/
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <touchgfx/Color.hpp>
-#include <BitmapDatabase.hpp>
-#include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
-
 
 SplashViewBase::SplashViewBase()
 {
-
-    touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     __background.setPosition(0, 0, 720, 672);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
@@ -18,57 +13,8 @@ SplashViewBase::SplashViewBase()
     box1.setPosition(0, 0, 720, 672);
     box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    imgProlon.setXY(48, 150);
-    imgProlon.setBitmap(touchgfx::Bitmap(BITMAP_PROLON_LOGO_4_ID));
-    imgProlon.setWidth(624);
-    imgProlon.setHeight(200);
-    imgProlon.setBitmapPosition(-8.0f, 8.0f);
-    imgProlon.setScale(0.75f);
-    imgProlon.setCameraDistance(1000.0f);
-    imgProlon.setOrigo(312.0f, 100.0f, 1000.0f);
-    imgProlon.setCamera(312.0f, 100.0f);
-    imgProlon.setAngles(0.0f, 0.0f, 0.0f);
-    imgProlon.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
-
-    ClientLineTop.setPosition(0, 0, 720, 672);
-    ClientLineTopPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
-    ClientLineTop.setPainter(ClientLineTopPainter);
-    ClientLineTop.setStart(48, 24);
-    ClientLineTop.setEnd(672, 24);
-    ClientLineTop.setLineWidth(1);
-    ClientLineTop.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
-
-    ClientLineLeft.setPosition(0, 0, 720, 672);
-    ClientLineLeftPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
-    ClientLineLeft.setPainter(ClientLineLeftPainter);
-    ClientLineLeft.setStart(48, 24);
-    ClientLineLeft.setEnd(48, 648);
-    ClientLineLeft.setLineWidth(1);
-    ClientLineLeft.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
-
-    ClientLineRight.setPosition(0, 0, 720, 672);
-    ClientLineRightPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
-    ClientLineRight.setPainter(ClientLineRightPainter);
-    ClientLineRight.setStart(672, 24);
-    ClientLineRight.setEnd(672, 648);
-    ClientLineRight.setLineWidth(1);
-    ClientLineRight.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
-
-    ClientLineBottom.setPosition(0, 0, 720, 672);
-    ClientLineBottomPainter.setColor(touchgfx::Color::getColorFromRGB(99, 105, 100));
-    ClientLineBottom.setPainter(ClientLineBottomPainter);
-    ClientLineBottom.setStart(48, 648);
-    ClientLineBottom.setEnd(672, 648);
-    ClientLineBottom.setLineWidth(1);
-    ClientLineBottom.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
-
     add(__background);
     add(box1);
-    add(imgProlon);
-    add(ClientLineTop);
-    add(ClientLineLeft);
-    add(ClientLineRight);
-    add(ClientLineBottom);
 }
 
 void SplashViewBase::setupScreen()

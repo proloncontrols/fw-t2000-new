@@ -1,0 +1,8 @@
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com_rs485.c:92:6:RS485_DeInit	0	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com_rs485.c:97:6:RS485_Rx	0	static,ignoring_inline_asm
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com_rs485.c:71:6:RS485_Init	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com_rs485.c:113:6:RS485_Tx	0	static,ignoring_inline_asm
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com_rs485.c:211:13:RS485_Thread	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com_rs485.c:122:10:RS485_TxRx	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com_rs485.c:130:18:RS485_GetConnexion	0	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com_rs485.c:139:6:RS485_IRQHandler	16	static,ignoring_inline_asm

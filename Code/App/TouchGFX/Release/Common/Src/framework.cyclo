@@ -1,0 +1,14 @@
+framework.c:447:13:FMK_Tx	2
+framework.c:464:13:FMK_CmdIdentify	1
+framework.c:698:13:FMK_CmdResult	1
+framework.c:506:13:FMK_CmdLeave	1
+framework.c:183:6:FMK_Init	1
+framework.c:200:6:FMK_Entry	1
+framework.c:228:6:FMK_SetBootAddress	6
+framework.c:424:13:FMK_Upgrade	16
+framework.c:254:6:FMK_PostFlag	1
+framework.c:260:6:FMK_PostSystemEvent	1
+framework.c:267:6:FMK_SaveConfig	3
+framework.c:212:6:FMK_Main	18
+framework.c:279:18:FMK_GetSharedRam	1
+framework.c:285:20:FMK_GetSharedFlash	1
