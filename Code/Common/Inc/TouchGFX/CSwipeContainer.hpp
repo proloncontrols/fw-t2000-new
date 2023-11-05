@@ -1,6 +1,11 @@
 
-#ifndef TOUCHGFX_CSWIPECONTAINER_HPP
-#define TOUCHGFX_CSWIPECONTAINER_HPP
+/**
+ * @file touchgfx/containers/SwipeContainer.hpp
+ *
+ * Declares the touchgfx::SwipeContainer class.
+ */
+#ifndef CSWIPECONTAINER_HPP
+#define CSWIPECONTAINER_HPP
 
 #include <touchgfx/containers/ListLayout.hpp>
 #include <touchgfx/events/ClickEvent.hpp>
@@ -22,7 +27,7 @@ namespace touchgfx
 class CSwipeContainer : public Container
 {
 public:
-	CSwipeContainer();
+	CSwipeContainer(bool verticalSwipe);
     virtual ~CSwipeContainer();
 
     virtual void handleTickEvent();
@@ -174,6 +179,8 @@ private:
 
     ListLayout pages;
 
+    bool vertical;
+
     void adjustPages();
 
     void animateSwipeCancelledLeft();
@@ -184,7 +191,7 @@ private:
     class PageIndicator : public Container
     {
     public:
-        PageIndicator();
+        PageIndicator(bool verticalSwipe);
         void setNumberOfPages(uint8_t size);
         void setBitmaps(const Bitmap& normalPage, const Bitmap& highlightedPage);
         void goRight();
@@ -198,9 +205,32 @@ private:
         Image selectedPage;
         uint8_t numberOfPages;
         uint8_t currentPage;
+
+        bool vertical;
     } pageIndicator;
 };
 
 } // namespace touchgfx
 
-#endif // TOUCHGFX_CSWIPECONTAINER_HPP
+#endif // CSWIPECONTAINER_HPP
+
+
+
+
+
+//
+//#include <touchgfx/containers/SwipeContainer.hpp>
+//
+//
+//namespace touchgfx
+//{
+//
+//class CSwipeContainer : public SwipeContainer
+//{
+//public:
+//	CSwipeContainer();
+//
+//	void handleClickEvent(const ClickEvent& event);
+//};
+//
+//}

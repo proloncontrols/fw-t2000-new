@@ -183,6 +183,26 @@ private:
 };
 
 
+
+
+
+
+class CWidget2
+{
+public:
+	CWidget2(touchgfx::Widget& widget);
+	CWidget2(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& button);
+
+	virtual void position() = 0;
+	virtual void getPosition(CRect& rect) = 0;
+	virtual void setPosition(CRect& rect) = 0;
+};
+
+
+
+
+
+
 #endif   //WGT_H
 
 

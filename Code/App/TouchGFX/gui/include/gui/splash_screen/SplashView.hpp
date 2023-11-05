@@ -1,10 +1,10 @@
 #ifndef SPLASHVIEW_HPP
 #define SPLASHVIEW_HPP
 
-#include <CSwipeContainerEx.hpp>
+#include <CSwipeContainer.hpp>
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
-#include <touchgfx/containers/SwipeContainer.hpp>
+//#include <touchgfx/containers/SwipeContainer.hpp>
 #include <touchgfx/containers/Container.hpp>
 #include "widget.hpp"
 #include "widgets.hpp"
@@ -30,7 +30,7 @@ public:
 protected:
     CWidgets* Widgets;
 
-    CSwipeContainerEx swipeContainer11;
+    CSwipeContainer* swipeContainer11;
     touchgfx::Container swipeContainer1Page1;
     touchgfx::Box box1;
     touchgfx::Container swipeContainer1Page2;
