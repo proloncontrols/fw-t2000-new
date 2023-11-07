@@ -10,16 +10,20 @@ SplashViewBase::SplashViewBase()
     __background.setPosition(0, 0, 720, 672);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    box1.setPosition(0, 0, 720, 672);
-    box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    containerMain.setXY(24, 0);
+    containerMain.setVisible(false);
+
+    customContainer11.setXY(24, 0);
 
     add(__background);
-    add(box1);
+    add(containerMain);
+    add(customContainer11);
 }
 
 void SplashViewBase::setupScreen()
 {
-
+    containerMain.initialize();
+    customContainer11.initialize();
 }
 
 //Called when the screen transition ends

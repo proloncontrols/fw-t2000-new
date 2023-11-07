@@ -10,38 +10,47 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : image.hpp
+//         File : CWidgets.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX image class/tools header file
+//  Description : TouchGFX widget container class header file
 //=============================================================================
-#ifndef IMG_H
-#define IMG_H
+#ifndef WIDGETS_HPP
+#define WIDGETS_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "widget.hpp"
+#include <CWidget.hpp>
+#include <CButton.hpp>
+#include <CImage.hpp>
+#include <CText.hpp>
+#include <CTextureMapper.hpp>
 
+
+namespace touchgfx
+{
 
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CImage : public CWidget
+class CWidgets
 {
-private:
-	touchgfx::TextureMapper& m_Mapper;
-
 public:
-	CImage(touchgfx::TextureMapper& Mapper);
+	CWidgets(int size);
 
-	virtual touchgfx::Rect getRect();
-	virtual void place();
-	virtual void getPosition(CRect& rect);
-	virtual void setPosition(CRect& rect);
+	CWidget* get(int index);
+	void set(int index, CWidget* widget);
+    void position();
+
+private:
+	int m_Size;
+	CWidget** m_List;
 };
 
+}   //namespace touchgfx
 
-#endif   //IMG_H
+
+#endif   //WIDGETS_HPP

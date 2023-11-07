@@ -10,7 +10,7 @@
 
 namespace touchgfx
 {
-CSwipeContainer::CSwipeContainer(bool verticalSwipe)
+CSwipeContainer::CSwipeContainer()
     : Container(),
       currentState(NO_ANIMATION),
       animationCounter(0),
@@ -20,17 +20,16 @@ CSwipeContainer::CSwipeContainer(bool verticalSwipe)
       startX(0),
       endElasticWidth(30),
       pages(EAST),
-      pageIndicator(verticalSwipe)
+      pageIndicator()
 {
     Application::getInstance()->registerTimerWidget(this);
 
     setTouchable(true);
 
-    vertical = verticalSwipe;
-    if(vertical)
+    if(CFG.Dta.ScrOrientation == CfgScrOrientP)
 		pages.setDirection(SOUTH);
 
-	Container::add(pages);
+    Container::add(pages);
     Container::add(pageIndicator);
 }
 
@@ -38,6 +37,26 @@ CSwipeContainer::~CSwipeContainer()
 {
     Application::getInstance()->unregisterTimerWidget(this);
 }
+
+
+
+void CSwipeContainer::arrangeChildren()
+{
+	CArrangeWidget arrange;
+	pages.forEachChild(&arrange);
+	pageIndicator.forEachChild(&arrange);
+	forEachChild(&arrange);
+}
+
+void CSwipeContainer::setPosition(int16_t x, int16_t y, int16_t width, int16_t height)
+{
+    if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+    	Container::setPosition(CLIENT_OFFSET + y, SCREEN_HEIGHT - x, height, width);
+    else
+    	Container::setPosition(CLIENT_OFFSET + x, y, width, height);
+}
+
+
 
 void CSwipeContainer::add(Drawable& page)
 {
@@ -105,26 +124,40 @@ void CSwipeContainer::setPageIndicatorBitmaps(const Bitmap& normalPage, const Bi
 
 void CSwipeContainer::setPageIndicatorXY(int16_t x, int16_t y)
 {
-	if(vertical)
-		pageIndicator.setXY(y+24, x);
+    if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+		pageIndicator.setXY(y, x);
 	else
 		pageIndicator.setXY(x, y);
 }
 
 void CSwipeContainer::setPageIndicatorXYWithCenteredX(int16_t x, int16_t y)
 {
-    setPageIndicatorCenteredX(x);
-    pageIndicator.setY(y);
+    if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+	{
+	    setPageIndicatorCenteredX(y);
+	    pageIndicator.setY(x);
+	}
+	else
+	{
+	    setPageIndicatorCenteredX(x);
+	    pageIndicator.setY(y);
+	}
 }
 
 void CSwipeContainer::setPageIndicatorCenteredX()
 {
-    setPageIndicatorCenteredX(getWidth() / 2);
+    if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+	    setPageIndicatorCenteredX(getHeight() / 2);
+	else
+		setPageIndicatorCenteredX(getWidth() / 2);
 }
 
 void CSwipeContainer::setPageIndicatorCenteredX(int16_t x)
 {
-    pageIndicator.setX(x - pageIndicator.getWidth() / 2);
+    if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+		pageIndicator.setY(x - pageIndicator.getHeight() / 2);
+	else
+		pageIndicator.setX(x - pageIndicator.getWidth() / 2);
 }
 
 void CSwipeContainer::setSelectedPage(uint8_t pageIndex)
@@ -254,6 +287,7 @@ void CSwipeContainer::handleGestureEvent(const GestureEvent& event)
 
 void CSwipeContainer::adjustPages()
 {
+//    pages.moveTo(0, -static_cast<int16_t>(getSelectedPage() * getWidth()) + dragX);
     pages.moveTo(-static_cast<int16_t>(getSelectedPage() * getWidth()) + dragX, 0);
 }
 
@@ -265,7 +299,6 @@ void CSwipeContainer::animateSwipeCancelledLeft()
     {
         int16_t delta = EasingEquations::backEaseOut(animationCounter, 0, -animateDistance, duration);
         dragX = animateDistance + delta;
-
         adjustPages();
     }
     else
@@ -287,7 +320,6 @@ void CSwipeContainer::animateSwipeCancelledRight()
     {
         int16_t delta = EasingEquations::backEaseOut(animationCounter, 0, animateDistance, duration);
         dragX = animateDistance - delta;
-
         adjustPages();
     }
     else
@@ -343,7 +375,7 @@ void CSwipeContainer::animateRight()
     animationCounter++;
 }
 
-CSwipeContainer::PageIndicator::PageIndicator(bool verticalSwipe)
+CSwipeContainer::PageIndicator::PageIndicator()
     : Container(),
       unselectedPages(),
       selectedPage(),
@@ -351,8 +383,6 @@ CSwipeContainer::PageIndicator::PageIndicator(bool verticalSwipe)
       currentPage(255)   //To force an initial page indicator update
 //      currentPage(0)
 {
-	vertical = verticalSwipe;
-
     unselectedPages.setXY(0, 0);
     selectedPage.setXY(0, 0);
 
@@ -369,7 +399,7 @@ void CSwipeContainer::PageIndicator::setNumberOfPages(uint8_t size)
     if (unselectedPages.getBitmapId() != BITMAP_INVALID)
     {
         int dotWidth = Bitmap(unselectedPages.getBitmap()).getWidth();
-        if(vertical)
+        if(CFG.Dta.ScrOrientation == CfgScrOrientP)
         	unselectedPages.setHeight(dotWidth * size);
         else
             unselectedPages.setWidth(dotWidth * size);
@@ -408,7 +438,7 @@ void CSwipeContainer::PageIndicator::setCurrentPage(uint8_t page)
     {
         currentPage = page;
         int dotWidth = Bitmap(unselectedPages.getBitmap()).getWidth();
-        if(vertical)
+        if(CFG.Dta.ScrOrientation == CfgScrOrientP)
         	selectedPage.moveTo(selectedPage.getX(), (numberOfPages * dotWidth) - ((page+1) * dotWidth));
         else
         	selectedPage.moveTo(page * dotWidth, selectedPage.getY());
@@ -425,33 +455,3 @@ uint8_t CSwipeContainer::PageIndicator::getCurrentPage() const
     return currentPage;
 }
 } // namespace touchgfx
-
-
-
-
-
-
-//
-//#include <CSwipeContainer.hpp>
-//#include "cfg.h"
-//
-//
-//namespace touchgfx
-//{
-//
-//CSwipeContainer::CSwipeContainer()
-//	: SwipeContainer()
-//{
-//
-//}
-//
-//void CSwipeContainer::handleClickEvent(const ClickEvent& event)
-//{
-//	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
-//		SwipeContainer::handleClickEvent(event);
-//	else
-//	{
-//	}
-//}
-//
-//}

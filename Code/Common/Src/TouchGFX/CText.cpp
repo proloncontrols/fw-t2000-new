@@ -10,39 +10,83 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : widgets.hpp
+//         File : CText.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX widget container class header file
+//  Description : TouchGFX text widget class/tools implementation file
 //=============================================================================
-#ifndef WGTS_H
-#define WGTS_H
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "widget.hpp"
+#include "CText.hpp"
 
+
+namespace touchgfx
+{
 
 //=============================================================================
-//  C L A S S E S
+//  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
-class CWidgets
+CText::CText(TextArea& text)
+    : CWidget(text),
+	  m_Text(text)
 {
-private:
-	int m_Size;
-	CWidget** m_List;
+}
 
-public:
-	CWidgets(int size);
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CText::position()
+{
+	Rect rect = getRect(m_Text.getRect());
+	TextRotation rotation = TEXT_ROTATE_0;
+	if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+		rotation = TEXT_ROTATE_270;
 
-public:
-	CWidget* get(int index);
-	void set(int index, CWidget* widget);
-    void place();
+	m_Text.setPosition(rect.x, rect.y, rect.width, rect.height);
+	m_Text.setRotation(rotation);
+};
+
+//-----------------------------------------------------------------------------
+void CText::getPosition(Rect& rect)
+{
+};
+
+//-----------------------------------------------------------------------------
+void CText::setPosition(Rect& rect)
+{
 };
 
 
-#endif   //WGTS_H
+}   //namespace touchgfx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

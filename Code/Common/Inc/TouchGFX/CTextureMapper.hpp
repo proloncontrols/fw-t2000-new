@@ -10,38 +10,43 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : button.hpp
+//         File : CTextureMapper.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX button class/tools header file
+//  Description : TouchGFX TextureMapper widget class/tools header file
 //=============================================================================
-#ifndef BTN_H
-#define BTN_H
+#ifndef WIDGET_TEXTUREMAPPER_HPP
+#define WIDGET_TEXTUREMAPPER_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "widget.hpp"
+#include <CWidget.hpp>
 
+
+namespace touchgfx
+{
 
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CButton : public CWidget
+class CTextureMapper : public CWidget
 {
-private:
-	touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& m_Button;
-
 public:
-	CButton(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& Button);
+	CTextureMapper(TextureMapper& mapper);
 
-	virtual touchgfx::Rect getRect();
-	virtual void place();
-	virtual void getPosition(CRect& rect);
-	virtual void setPosition(CRect& rect);
+	virtual void position();
+	virtual void getPosition(Rect& rect);
+	virtual void setPosition(Rect& rect);
+
+private:
+	TextureMapper& m_Mapper;
 };
 
+}   //namespace touchgfx
 
-#endif   //BTN_H
+
+#endif   //WIDGET_TEXTUREMAPPER_HPP
+

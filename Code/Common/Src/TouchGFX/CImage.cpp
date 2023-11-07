@@ -10,105 +10,61 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : button.cpp
+//         File : image.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX button class/tools implementation file
+//  Description : TouchGFX image class/tools implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "button.hpp"
+#include "CImage.hpp"
 
+
+namespace touchgfx
+{
 
 //=============================================================================
 //  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
-CButton::CButton(touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >& Button)
-	: CWidget(Button),
-	  m_Button { Button }
+CImage::CImage(TextureMapper& mapper)
+    : CWidget(mapper),
+	  m_Mapper(mapper)
 {
 }
+
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-touchgfx::Rect CButton::getRect()
+void CImage::position()
 {
-	return m_Button.getRect();
-}
+	Rect rect = getRect(m_Mapper.getRect());
+	Bitmap image = m_Mapper.getBitmap();
+	float angleZ = 0.0;
+	if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+		angleZ = SCREEN_ANGLE;
 
-void CButton::place()
-{
-	CRect* rect = getCurRect();
-
-	m_Button.setPosition(rect->x, rect->y, rect->width, rect->height);
-
-//	CRect initialRect;
-//	getRect(initialRect);
-//	m_Button.setPosition(initialRect.x, initialRect.y, initialRect.width, initialRect.height);
-
-//	CRect* rect = getRect();
-
-//	m_Button.setPosition(rect->x, rect->y, rect->width, rect->height);
-
-//	formatRect();
-//	m_Button.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
+	m_Mapper.setPosition(rect.x, rect.y, rect.width, rect.height);
+	float newBitmapX = (((float)rect.width / 2.0) - ((float)image.getWidth() / 2.0));
+	float newBitmapY = (((float)rect.height / 2.0) - ((float)image.getHeight() / 2.0));
+	m_Mapper.setBitmapPosition((float)newBitmapX, (float)newBitmapY);
+	m_Mapper.setOrigo((float)(rect.width / 2), (float)(rect.height / 2), 1000.0);
+	m_Mapper.setCamera((float)(rect.width / 2), (float)(rect.height / 2));
+	m_Mapper.setAngles(0.0, -0.0, angleZ);
 };
 
 //-----------------------------------------------------------------------------
-void CButton::getPosition(CRect& rect)
+void CImage::getPosition(Rect& rect)
 {
-	CRect curRect = (CRect&)m_Button.getRect();
-	screenToClient(curRect);
-	rect = curRect;
-
-//	CRect widgetRect = (CRect&)m_Button.getRect();
-
-
-//	rect = m_Button.getRect();
 };
 
 //-----------------------------------------------------------------------------
-void CButton::setPosition(CRect& rect)
+void CImage::setPosition(Rect& rect)
 {
-	CRect newRect = rect;
-	clientToScreen(newRect);
-	m_Button.setPosition(newRect.x, newRect.y, newRect.width, newRect.height);
-
-//	vRect = rect;
-//	formatRect();
-//	m_Button.setPosition(fRect.x, fRect.y, fRect.width, fRect.height);
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}   //namespace touchgfx

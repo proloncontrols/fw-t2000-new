@@ -6,6 +6,30 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_2QA1" Alignment="Left" TypographyId="T2000_Tiny">
+        <Translation Language="GB">&lt;value&gt;°C</Translation>
+      </Text>
+      <Text Id="__SingleUse_H63U" Alignment="Left" TypographyId="T2000_Small">
+        <Translation Language="GB">&lt;value&gt;19</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZM7M" Alignment="Left" TypographyId="T2000_Small">
+        <Translation Language="GB">&lt;value&gt;47</Translation>
+      </Text>
+      <Text Id="__SingleUse_9N3J" Alignment="Left" TypographyId="T2000_Tiny">
+        <Translation Language="GB">%</Translation>
+      </Text>
+      <Text Id="__SingleUse_VBKC" Alignment="Right" TypographyId="T2000_Large">
+        <Translation Language="GB">&lt;value&gt;25</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZIIQ" Alignment="Left" TypographyId="T2000_Small">
+        <Translation Language="GB">.&lt;value&gt;3</Translation>
+      </Text>
+      <Text Id="__SingleUse_KNZR" Alignment="Left" TypographyId="T2000_Small">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="__SingleUse_1OTR" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">New Text</Translation>
+      </Text>
       <Text Id="__SingleUse_1VL1" Alignment="Left" TypographyId="T2000_Tiny">
         <Translation Language="GB">°C</Translation>
       </Text>
@@ -25,7 +49,7 @@
         <Translation Language="GB">.&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_LYVN" Alignment="Right" TypographyId="T2000_Large">
-        <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="GB">&lt;value&gt;25</Translation>
       </Text>
       <Text Id="btn_Rotate_ID" Alignment="Left" TypographyId="Default">
         <Translation Language="GB" Alignment="Center">Rotate</Translation>

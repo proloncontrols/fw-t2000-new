@@ -1,11 +1,11 @@
 #ifndef MAINVIEW_HPP
 #define MAINVIEW_HPP
 
+#include <CWidget.hpp>
+#include <CWidgets.hpp>
 #include <gui_generated/main_screen/MainViewBase.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 
-#include "widget.hpp"
-#include "widgets.hpp"
 
 enum mainWidgets
 {

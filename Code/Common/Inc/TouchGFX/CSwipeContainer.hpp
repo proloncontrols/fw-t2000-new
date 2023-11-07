@@ -7,6 +7,7 @@
 #ifndef CSWIPECONTAINER_HPP
 #define CSWIPECONTAINER_HPP
 
+#include <CWidget.hpp>
 #include <touchgfx/containers/ListLayout.hpp>
 #include <touchgfx/events/ClickEvent.hpp>
 #include <touchgfx/events/DragEvent.hpp>
@@ -15,8 +16,34 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TiledImage.hpp>
 
+#include "cfg.h"
+
 namespace touchgfx
 {
+class CArrangeWidget : public GenericCallback< Drawable& >
+{
+public:
+	virtual void execute(Drawable& d) final
+	{
+	    if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+	    {
+	    	Rect rect = d.getRect();
+
+	    	int16_t newX = SCREEN_OFFSET + rect.y;
+	    	int16_t newY = SCREEN_HEIGHT - rect.x - rect.width;
+	    	int16_t newW = SCREEN_OFFSET + rect.height;
+	    	int16_t newH = rect.width;
+
+	    	d.setPosition(newX, newY, newW, newH);
+	    }
+	}
+
+	virtual bool isValid() const final
+	{
+		return true;
+	}
+};
+
 /**
  * A SwipeContainer is a Container with a horizontally laid out list of identically sized Drawables. The bottom of
  * the SwipeContainer shows a page indicator to indicate the position in the horizontal
@@ -27,13 +54,16 @@ namespace touchgfx
 class CSwipeContainer : public Container
 {
 public:
-	CSwipeContainer(bool verticalSwipe);
+	CSwipeContainer();
     virtual ~CSwipeContainer();
 
     virtual void handleTickEvent();
     virtual void handleClickEvent(const ClickEvent& event);
     virtual void handleDragEvent(const DragEvent& event);
     virtual void handleGestureEvent(const GestureEvent& event);
+
+    void arrangeChildren();
+    void setPosition(int16_t x, int16_t y, int16_t width, int16_t height);
 
     /**
      * Adds a page to the container.
@@ -179,8 +209,7 @@ private:
 
     ListLayout pages;
 
-    bool vertical;
-
+    void arrange(Drawable& child);
     void adjustPages();
 
     void animateSwipeCancelledLeft();
@@ -191,7 +220,7 @@ private:
     class PageIndicator : public Container
     {
     public:
-        PageIndicator(bool verticalSwipe);
+        PageIndicator();
         void setNumberOfPages(uint8_t size);
         void setBitmaps(const Bitmap& normalPage, const Bitmap& highlightedPage);
         void goRight();
@@ -205,8 +234,6 @@ private:
         Image selectedPage;
         uint8_t numberOfPages;
         uint8_t currentPage;
-
-        bool vertical;
     } pageIndicator;
 };
 

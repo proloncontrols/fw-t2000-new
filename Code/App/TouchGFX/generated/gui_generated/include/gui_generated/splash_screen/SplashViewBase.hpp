@@ -8,6 +8,8 @@
 #include <mvp/View.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <gui/containers/containerSplash.hpp>
+#include <gui/containers/CustomContainer1.hpp>
 
 class SplashViewBase : public touchgfx::View<SplashPresenter>
 {
@@ -34,7 +36,8 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::Box box1;
+    containerSplash containerMain;
+    CustomContainer1 customContainer11;
 
 private:
 

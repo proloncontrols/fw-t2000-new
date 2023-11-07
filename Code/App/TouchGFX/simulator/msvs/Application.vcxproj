@@ -30,6 +30,10 @@
     <ClCompile Include="..\..\gui\src\clear_screen\ClearPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\clear_screen\ClearView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\clear_screen\ClearViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\containerSplash.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\containerSplashBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\CustomContainer1.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\CustomContainer1Base.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -189,6 +193,10 @@
     <ClInclude Include="..\..\gui\include\gui\clear_screen\ClearPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\clear_screen\ClearView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\clear_screen\ClearViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\containerSplash.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\containerSplashBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\CustomContainer1.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\CustomContainer1Base.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

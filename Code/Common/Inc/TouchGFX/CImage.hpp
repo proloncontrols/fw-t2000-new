@@ -10,38 +10,43 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : text.hpp
+//         File : CImage.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX text class/tools header file
+//  Description : TouchGFX image widget class/tools header file
 //=============================================================================
-#ifndef TXT_H
-#define TXT_H
+#ifndef WIDGET_IMAGE_HPP
+#define WIDGET_IMAGE_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "widget.hpp"
+#include <CWidget.hpp>
 
+
+namespace touchgfx
+{
 
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CText : public CWidget
+class CImage : public CWidget
 {
-private:
-	touchgfx::TextArea& m_Text;
-
 public:
-	CText(touchgfx::TextArea& Text);
+	CImage(TextureMapper& mapper);
 
-	virtual touchgfx::Rect getRect();
-	virtual void place();
-	virtual void getPosition(CRect& rect);
-	virtual void setPosition(CRect& rect);
+	virtual void position();
+	virtual void getPosition(Rect& rect);
+	virtual void setPosition(Rect& rect);
+
+private:
+	TextureMapper& m_Mapper;
 };
 
+}   //namespace touchgfx
 
-#endif   //TXT_H
+
+#endif   //WIDGET_IMAGE_HPP
+

@@ -125,7 +125,7 @@ MainViewBase::MainViewBase() :
     TempFrcText.resizeToCurrentText();
     TempFrcText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_R2UV));
 
-    TempEntText.setXY(435, 157);
+    TempEntText.setXY(183, 158);
     TempEntText.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     TempEntText.setLinespacing(0);
     TempEntTextBuffer[0] = 0;
@@ -168,7 +168,7 @@ MainViewBase::MainViewBase() :
 
     box2.setPosition(0, 0, 120, 60);
     box2.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    box2.setAlpha(38);
+    box2.setAlpha(0);
     extTemp.add(box2);
 
     txtTemp.setXY(0, -18);

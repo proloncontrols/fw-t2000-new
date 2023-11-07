@@ -95,6 +95,6 @@
 #define CFG_PRO_AO_OVERR               255
 #define CFG_PRO_SCH_OVERR              255
 //-------------------------
-#define CFG_PRO_SCR_ORIENTATION        CfgScrOrientL
+#define CFG_PRO_SCR_ORIENTATION        CfgScrOrientP
 #define CFG_PRO_SCR_BRIGHTNESS         0
 #define CFG_PRO_SCR_TIMEOUT            0

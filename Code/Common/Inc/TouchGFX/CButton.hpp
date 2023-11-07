@@ -10,53 +10,89 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : widgets.cpp
+//         File : CButton.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX widget container class implementation file
+//  Description : TouchGFX button widget class/tools header file
 //=============================================================================
+#ifndef WIDGET_BUTTON_HPP
+#define WIDGET_BUTTON_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "stdlib.h"
-#include "widgets.hpp"
+#include <CWidget.hpp>
 
+
+namespace touchgfx
+{
 
 //=============================================================================
-//  C O N S T R U C T O R S
+//  C L A S S E S
 //-----------------------------------------------------------------------------
-CWidgets::CWidgets(int size)
-{
-	m_Size = size;
-	m_List = (CWidget**)malloc(sizeof(CWidget*) * size);
-}
+//class CButtonTrigger : public ClickButtonTrigger
+//{
+//    virtual void handleClickEvent(const ClickEvent& event)
+//    {
+//    	ClickButtonTrigger::handleClickEvent(event);
+//    }
+//};
 
 
-//=============================================================================
-//  M E T H O D S
-//-----------------------------------------------------------------------------
-CWidget* CWidgets::get(int index)
-{
-	if(index < m_Size)
-		return m_List[index];
-	return NULL;
-}
 
-//-----------------------------------------------------------------------------
-void CWidgets::set(int index, CWidget* widget)
+class CButton : public BoxWithBorderButtonStyle< ClickButtonTrigger >
 {
-	if(index < m_Size)
-		m_List[index] = widget;
-}
+public:
+	CButton();
 
-//-----------------------------------------------------------------------------
-void CWidgets::place()
-{
-    for(int i = 0; i < m_Size; i++)
-    {
-//    	m_List[i]->place();
-    }
-}
+    virtual void handleClickEvent(const ClickEvent& event) override;
+};
+
+//class CButton : public CWidget, BoxWithBorderButtonStyle< ClickButtonTrigger >
+//{
+//public:
+//	CButton(BoxWithBorderButtonStyle< ClickButtonTrigger >& button);
+//
+//	virtual void position();
+//	virtual void getPosition(Rect& rect);
+//	virtual void setPosition(Rect& rect);
+//
+////protected:
+//    virtual void handleClickEvent(const ClickEvent& event) override;
+//
+//private:
+//	BoxWithBorderButtonStyle< ClickButtonTrigger >& m_Button;
+//};
+
+
+}   //namespace touchgfx
+
+
+#endif   //WIDGET_BUTTON_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

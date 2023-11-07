@@ -1,3 +1,5 @@
+#include <CButton.hpp>
+#include <CImage.hpp>
 #include <gui/main_screen/MainView.hpp>
 #include <ui_virtual.hpp>
 
@@ -5,44 +7,41 @@
 #include "stdio.h"
 
 #include "cfg.h"
-#include "image.hpp"
-#include "text.hpp"
-#include "button.hpp"
 
 //-----------------------------------------------------------------------------
 MainView::MainView()
 {
-	ClientLineTop.setVisible(false);
-	ClientLineLeft.setVisible(false);
-	ClientLineRight.setVisible(false);
-	ClientLineBottom.setVisible(false);
-
-	Widgets = new CWidgets(mainCount);
-
-	Widgets->set(mainImgCooling,     new CImage(CoolingImage));
-	Widgets->set(mainImgFlake,       new CImage(FlakeImage));
-	Widgets->set(mainImgStandby,     new CImage(StandbyImage));
-	Widgets->set(mainImgLogo,        new CImage(LogoImage));
-	Widgets->set(mainImgDrop,        new CImage(DropImage));
-//	Widgets->set(mainImgExtTemp,     new CImage(ExtTempImage));
-	Widgets->set(mainImgSettings,    new CImage(SettingsImage));
-
-	Widgets->set(mainTxtTempUnit,    new CText(TempUnitText));
-	Widgets->set(mainTxtTempInt,     new CText(TempEntText));
-	Widgets->set(mainTxtTempFrc,     new CText(TempFrcText));
-	Widgets->set(mainTxtHumPercent,  new CText(HumPercentText));
-	Widgets->set(mainTxtHum,         new CText(HumText));
-//	Widgets->set(mainTxtExtTempUnit, new CText(ExtTempUnitText));
-//	Widgets->set(mainTxtExtTemp,     new CText(ExtTempText));
-
-	Widgets->set(mainBtnSettings,    new CButton(SettingsButton));
+//	ClientLineTop.setVisible(false);
+//	ClientLineLeft.setVisible(false);
+//	ClientLineRight.setVisible(false);
+//	ClientLineBottom.setVisible(false);
+//
+//	Widgets = new CWidgets(mainCount);
+//
+//	Widgets->set(mainImgCooling,     new CImage(CoolingImage));
+//	Widgets->set(mainImgFlake,       new CImage(FlakeImage));
+//	Widgets->set(mainImgStandby,     new CImage(StandbyImage));
+//	Widgets->set(mainImgLogo,        new CImage(LogoImage));
+//	Widgets->set(mainImgDrop,        new CImage(DropImage));
+////	Widgets->set(mainImgExtTemp,     new CImage(ExtTempImage));
+//	Widgets->set(mainImgSettings,    new CImage(SettingsImage));
+//
+//	Widgets->set(mainTxtTempUnit,    new CText(TempUnitText));
+//	Widgets->set(mainTxtTempInt,     new CText(TempEntText));
+//	Widgets->set(mainTxtTempFrc,     new CText(TempFrcText));
+//	Widgets->set(mainTxtHumPercent,  new CText(HumPercentText));
+//	Widgets->set(mainTxtHum,         new CText(HumText));
+////	Widgets->set(mainTxtExtTempUnit, new CText(ExtTempUnitText));
+////	Widgets->set(mainTxtExtTemp,     new CText(ExtTempText));
+//
+//	Widgets->set(mainBtnSettings,    new CButton(SettingsButton));
 }
 
 //-----------------------------------------------------------------------------
 void MainView::setupScreen()
 {
     MainViewBase::setupScreen();
-    Widgets->place();
+    Widgets->position();
 }
 
 //-----------------------------------------------------------------------------
@@ -131,7 +130,7 @@ void MainView::function1()
 void MainView::OnSettingsButton()
 {
 	CFG.Dta.ScrOrientation ^= 1;
-	Widgets->place();
+	Widgets->position();
 	invalidate();
 }
 
