@@ -10,7 +10,6 @@
             "X": 24,
             "Width": 672,
             "Height": 672,
-            "Visible": false,
             "CustomContainerDefinitionName": "containerSplash"
           },
           {
@@ -19,6 +18,7 @@
             "X": 24,
             "Width": 672,
             "Height": 672,
+            "Visible": false,
             "CustomContainerDefinitionName": "CustomContainer1"
           }
         ],
@@ -535,55 +535,37 @@
             "AutoSize": true
           },
           {
-            "Type": "FlexButton",
-            "Name": "flexButton1",
-            "X": 170,
-            "Y": 336,
-            "Width": 170,
-            "Height": 60,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 170,
-                "Height": 60,
-                "LockToFlexButtonSize": true,
-                "ColorReleased": {
-                  "Green": 102,
-                  "Blue": 153
-                },
-                "ColorPressed": {
-                  "Green": 153,
-                  "Blue": 204
-                },
-                "ColorBorderReleased": {
-                  "Green": 51,
-                  "Blue": 102
-                },
-                "ColorBorderPressed": {
-                  "Red": 51,
-                  "Green": 102,
-                  "Blue": 153
-                }
-              }
-            ]
+            "Type": "TextureMapper",
+            "Name": "textureMapper1",
+            "X": 80,
+            "Y": 500,
+            "Width": 200,
+            "Height": 50,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "ButtonBlue.png",
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureMapper2",
+            "X": 80,
+            "Y": 570,
+            "Width": 200,
+            "Height": 50,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "ButtonRed.png",
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
           }
         ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "flexButton1"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "function1"
-            }
-          }
-        ]
+        "Interactions": []
       },
       {
         "Name": "CustomContainer1",

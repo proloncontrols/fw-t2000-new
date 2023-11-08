@@ -11,9 +11,9 @@ SplashViewBase::SplashViewBase()
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
     containerMain.setXY(24, 0);
-    containerMain.setVisible(false);
 
     customContainer11.setXY(24, 0);
+    customContainer11.setVisible(false);
 
     add(__background);
     add(containerMain);

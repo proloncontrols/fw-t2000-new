@@ -42,7 +42,7 @@ CTextureMapper::CTextureMapper(TextureMapper& mapper)
 //-----------------------------------------------------------------------------
 void CTextureMapper::position()
 {
-	Rect rect = getRect(m_Mapper.getRect());
+	Rect rect = getCurRect(m_Mapper.getRect());
 	Bitmap image = m_Mapper.getBitmap();
 	float angleZ = 0.0;
 	if(CFG.Dta.ScrOrientation == CfgScrOrientP)

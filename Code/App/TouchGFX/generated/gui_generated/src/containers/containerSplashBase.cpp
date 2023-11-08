@@ -6,8 +6,7 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Color.hpp>
 
-containerSplashBase::containerSplashBase() :
-    flexButtonCallback(this, &containerSplashBase::flexButtonCallbackHandler)
+containerSplashBase::containerSplashBase()
 {
     setWidth(672);
     setHeight(672);
@@ -28,15 +27,34 @@ containerSplashBase::containerSplashBase() :
     textNewText.setLinespacing(0);
     textNewText.setTypedText(touchgfx::TypedText(T___SINGLEUSE_1OTR));
 
-    flexButton1.setBoxWithBorderPosition(0, 0, 170, 60);
-    flexButton1.setBorderSize(0);
-    flexButton1.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButton1.setPosition(170, 336, 170, 60);
-    flexButton1.setAction(flexButtonCallback);
+    textureMapper1.setXY(80, 500);
+    textureMapper1.setBitmap(touchgfx::Bitmap(BITMAP_BUTTONBLUE_ID));
+    textureMapper1.setWidth(200);
+    textureMapper1.setHeight(50);
+    textureMapper1.setBitmapPosition(0.0f, 0.0f);
+    textureMapper1.setScale(1.0f);
+    textureMapper1.setCameraDistance(1000.0f);
+    textureMapper1.setOrigo(90.0f, 90.0f, 1000.0f);
+    textureMapper1.setCamera(100.0f, 25.0f);
+    textureMapper1.setAngles(0.0f, 0.0f, 0.0f);
+    textureMapper1.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+
+    textureMapper2.setXY(80, 570);
+    textureMapper2.setBitmap(touchgfx::Bitmap(BITMAP_BUTTONRED_ID));
+    textureMapper2.setWidth(200);
+    textureMapper2.setHeight(50);
+    textureMapper2.setBitmapPosition(0.0f, 0.0f);
+    textureMapper2.setScale(1.0f);
+    textureMapper2.setCameraDistance(1000.0f);
+    textureMapper2.setOrigo(90.0f, 90.0f, 1000.0f);
+    textureMapper2.setCamera(100.0f, 25.0f);
+    textureMapper2.setAngles(0.0f, 0.0f, 0.0f);
+    textureMapper2.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 
     add(imageProlon);
     add(textNewText);
-    add(flexButton1);
+    add(textureMapper1);
+    add(textureMapper2);
 }
 
 containerSplashBase::~containerSplashBase()
@@ -47,16 +65,5 @@ containerSplashBase::~containerSplashBase()
 void containerSplashBase::initialize()
 {
 
-}
-
-void containerSplashBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
-{
-    if (&src == &flexButton1)
-    {
-        //Interaction1
-        //When flexButton1 clicked call virtual function
-        //Call function1
-        function1();
-    }
 }
 

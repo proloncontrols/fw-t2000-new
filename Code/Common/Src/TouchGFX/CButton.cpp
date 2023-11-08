@@ -30,38 +30,43 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
-CButton::CButton()
+CButton::CButton(CButtonCustom& button)
+	: CWidget(button),
+	  m_Button(button)
 {
 }
-//CButton::CButton(BoxWithBorderButtonStyle< ClickButtonTrigger >& button)
-//	: CWidget(button),
-//	  m_Button(button)
+//CButtonCustom::CButtonCustom()
 //{
 //}
-int Tmp = 0;
-void CButton::handleClickEvent(const ClickEvent& event)
-{
-	Tmp++;
-}
+////CButton::CButton(BoxWithBorderButtonStyle< ClickButtonTrigger >& button)
+////	: CWidget(button),
+////	  m_Button(button)
+////{
+////}
+//int Tmp = 0;
+//void CButtonCustom::handleClickEvent(const ClickEvent& event)
+//{
+//	Tmp++;
+//}
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-//void CButton::position()
-//{
+void CButton::position()
+{
 //	Rect rect = CWidget::getRect(m_Button.getRect());
 //
 //	m_Button.setPosition(rect.x, rect.y, rect.width, rect.height);
-//};
+};
 
 //-----------------------------------------------------------------------------
-//void CButton::getPosition(Rect& rect)
-//{
-//};
+void CButton::getPosition(Rect& rect)
+{
+};
 
 //-----------------------------------------------------------------------------
-//void CButton::setPosition(Rect& rect)
-//{
-//};
+void CButton::setPosition(Rect& rect)
+{
+};
 
 }   //namespace touchgfx

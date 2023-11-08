@@ -8,7 +8,6 @@
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/TextureMapper.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/containers/buttons/Buttons.hpp>
 
 class containerSplashBase : public touchgfx::Container
 {
@@ -16,14 +15,6 @@ public:
     containerSplashBase();
     virtual ~containerSplashBase();
     virtual void initialize();
-
-    /*
-     * Virtual Action Handlers
-     */
-    virtual void function1()
-    {
-        // Override and implement this function in containerSplash
-    }
 
 protected:
     FrontendApplication& application() {
@@ -35,19 +26,10 @@ protected:
      */
     touchgfx::TextureMapper imageProlon;
     touchgfx::TextArea textNewText;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  flexButton1;
+    touchgfx::TextureMapper textureMapper1;
+    touchgfx::TextureMapper textureMapper2;
 
 private:
-
-    /*
-     * Callback Declarations
-     */
-    touchgfx::Callback<containerSplashBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
-
-    /*
-     * Callback Handler Declarations
-     */
-    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 

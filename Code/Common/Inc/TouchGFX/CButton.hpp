@@ -25,6 +25,7 @@
 //-----------------------------------------------------------------------------
 #include <CWidget.hpp>
 
+#include "CButtonCustom.hpp"
 
 namespace touchgfx
 {
@@ -42,13 +43,13 @@ namespace touchgfx
 
 
 
-class CButton : public BoxWithBorderButtonStyle< ClickButtonTrigger >
-{
-public:
-	CButton();
-
-    virtual void handleClickEvent(const ClickEvent& event) override;
-};
+//class CButtonCustom : public BoxWithBorderButtonStyle< ClickButtonTrigger >
+//{
+//public:
+//	CButtonCustom();
+//
+//    virtual void handleClickEvent(const ClickEvent& event) override;
+//};
 
 //class CButton : public CWidget, BoxWithBorderButtonStyle< ClickButtonTrigger >
 //{
@@ -65,6 +66,19 @@ public:
 //private:
 //	BoxWithBorderButtonStyle< ClickButtonTrigger >& m_Button;
 //};
+
+class CButton : public CWidget
+{
+public:
+	CButton(CButtonCustom& button);
+
+	virtual void position();
+	virtual void getPosition(Rect& rect);
+	virtual void setPosition(Rect& rect);
+
+private:
+	CButtonCustom& m_Button;
+};
 
 
 }   //namespace touchgfx

@@ -27,10 +27,11 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextureMapper.hpp>
 #include <touchgfx/widgets/Button.hpp>
-#include <touchgfx/containers/buttons/BoxWithBorderButtonStyle.hpp>
-#include <touchgfx/containers/buttons/ClickButtonTrigger.hpp>
+//#include <touchgfx/containers/buttons/BoxWithBorderButtonStyle.hpp>
+//#include <touchgfx/containers/buttons/ClickButtonTrigger.hpp>
 
 #include "cfg.h"
+#include "CButtonCustom.hpp"
 
 
 namespace touchgfx
@@ -74,7 +75,8 @@ class CWidget
 {
 public:
 	CWidget(Widget& widget) {};
-	CWidget(BoxWithBorderButtonStyle< ClickButtonTrigger >& button) {};
+	CWidget(CButtonCustom& button) {};
+//	CWidget(BoxWithBorderButtonStyle< ClickButtonTrigger >& button) {};
 
 	virtual void position() = 0;
 	virtual void getPosition(Rect& rect) = 0;
@@ -83,7 +85,7 @@ public:
 protected:
 	Rect curRect;
 
-	Rect& getRect(const Rect& rect);
+	Rect& getCurRect(const Rect& rect);
 };
 
 }   //namespace touchgfx

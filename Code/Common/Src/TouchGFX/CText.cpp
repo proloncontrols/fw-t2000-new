@@ -41,7 +41,7 @@ CText::CText(TextArea& text)
 //-----------------------------------------------------------------------------
 void CText::position()
 {
-	Rect rect = getRect(m_Text.getRect());
+	Rect rect = getCurRect(m_Text.getRect());
 	TextRotation rotation = TEXT_ROTATE_0;
 	if(CFG.Dta.ScrOrientation == CfgScrOrientP)
 		rotation = TEXT_ROTATE_270;

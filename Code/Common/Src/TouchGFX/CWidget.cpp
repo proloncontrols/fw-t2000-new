@@ -44,7 +44,7 @@ namespace touchgfx
 //}
 
 //-----------------------------------------------------------------------------
-Rect& CWidget::getRect(const Rect& rect)
+Rect& CWidget::getCurRect(const Rect& rect)
 {
 	int16_t curX = rect.x;
 	int16_t curY = rect.y;
