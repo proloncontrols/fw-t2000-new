@@ -36,9 +36,9 @@ CButtonCustom::CButtonCustom(int16_t x, int16_t y, int16_t width, int16_t height
 	: imgReleased(imageReleased),
 	  imgPressed(imagePressed)
 {
-	setAlpha(0);
+	setAlpha(0);   //To see through original button background artifacts
 	setBoxWithBorderPosition(0, 0, width, height);
-    setBorderSize(0);
+    setBorderSize(0);   //No border
 
 	float angleZ = 0.0;
 	if(CFG.Dta.ScrOrientation == CfgScrOrientL)

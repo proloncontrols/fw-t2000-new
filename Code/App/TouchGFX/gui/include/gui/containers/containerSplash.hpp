@@ -21,14 +21,13 @@ public:
 
     virtual void initialize();
 
-protected:
-
 private:
     CWidgets* widgets;
+    CButtonCustom* button;
 
-    CButtonCustom* Button;
+    touchgfx::Callback<containerSplash, const touchgfx::AbstractButtonContainer&> buttonCallback;
 
-    touchgfx::Callback<containerSplashBase, const touchgfx::AbstractButtonContainer&> ButtonCallback;
+    void buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 };
 
 #endif // CONTAINERSPLASH_HPP

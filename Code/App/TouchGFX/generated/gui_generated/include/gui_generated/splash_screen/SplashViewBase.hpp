@@ -10,6 +10,8 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <gui/containers/containerSplash.hpp>
 #include <gui/containers/CustomContainer1.hpp>
+#include <touchgfx/containers/SwipeContainer.hpp>
+#include <touchgfx/containers/Container.hpp>
 
 class SplashViewBase : public touchgfx::View<SplashPresenter>
 {
@@ -38,6 +40,11 @@ protected:
     touchgfx::Box __background;
     containerSplash containerMain;
     CustomContainer1 customContainer11;
+    touchgfx::SwipeContainer swipeContainer1;
+    touchgfx::Container swipeContainer1Page1;
+    containerSplash containerSplash1;
+    touchgfx::Container swipeContainer1Page2;
+    CustomContainer1 customContainer12;
 
 private:
 

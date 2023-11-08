@@ -10,6 +10,7 @@
             "X": 24,
             "Width": 672,
             "Height": 672,
+            "Visible": false,
             "CustomContainerDefinitionName": "containerSplash"
           },
           {
@@ -20,6 +21,51 @@
             "Height": 672,
             "Visible": false,
             "CustomContainerDefinitionName": "CustomContainer1"
+          },
+          {
+            "Type": "SwipeContainer",
+            "Name": "swipeContainer1",
+            "X": 24,
+            "Width": 672,
+            "Height": 672,
+            "SwipeCutoff": 50,
+            "IndicatorImageNormal": "__designer\\Blue_PageIndicator_dot_indicator_small_normal.png",
+            "IndicatorImageHighlight": "__designer\\Blue_PageIndicator_dot_indicator_small_highlight.png",
+            "EndSwipeElasticWidth": 50,
+            "SelectedPage": "swipeContainer1Page2",
+            "Style": "Style1",
+            "Components": [
+              {
+                "Type": "Container",
+                "Name": "swipeContainer1Page1",
+                "Width": 672,
+                "Height": 672,
+                "Components": [
+                  {
+                    "Type": "CustomContainerInstance",
+                    "Name": "containerSplash1",
+                    "Width": 672,
+                    "Height": 672,
+                    "CustomContainerDefinitionName": "containerSplash"
+                  }
+                ]
+              },
+              {
+                "Type": "Container",
+                "Name": "swipeContainer1Page2",
+                "Width": 672,
+                "Height": 672,
+                "Components": [
+                  {
+                    "Type": "CustomContainerInstance",
+                    "Name": "customContainer12",
+                    "Width": 672,
+                    "Height": 672,
+                    "CustomContainerDefinitionName": "CustomContainer1"
+                  }
+                ]
+              }
+            ]
           }
         ],
         "Interactions": [
@@ -79,6 +125,53 @@
             "Name": "box1",
             "Width": 720,
             "Height": 672
+          },
+          {
+            "Type": "Container",
+            "Name": "container1",
+            "X": 172,
+            "Y": 244,
+            "Width": 250,
+            "Height": 250,
+            "Components": [
+              {
+                "Type": "FlexButton",
+                "Name": "flexButton1",
+                "X": 100,
+                "Y": 100,
+                "Width": 50,
+                "Height": 50,
+                "ButtonTrigger": {
+                  "Type": "ClickButtonTrigger"
+                },
+                "ButtonStyles": [
+                  {
+                    "Type": "BoxWithBorderButtonStyle",
+                    "Width": 50,
+                    "Height": 50,
+                    "LockToFlexButtonSize": true,
+                    "BorderSize": 5,
+                    "ColorReleased": {
+                      "Green": 102,
+                      "Blue": 153
+                    },
+                    "ColorPressed": {
+                      "Green": 153,
+                      "Blue": 204
+                    },
+                    "ColorBorderReleased": {
+                      "Green": 51,
+                      "Blue": 102
+                    },
+                    "ColorBorderPressed": {
+                      "Red": 51,
+                      "Green": 102,
+                      "Blue": 153
+                    }
+                  }
+                ]
+              }
+            ]
           }
         ],
         "Interactions": [
@@ -90,6 +183,28 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "OnScreenTransitionEnd"
+            }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButton1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "function1"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButton1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "function2"
             }
           }
         ]

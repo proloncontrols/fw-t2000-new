@@ -14,23 +14,23 @@
 
 
 
-class CArrangeScreen : public GenericCallback< Drawable& >
-{
-public:
-	virtual void execute(Drawable& d) final
-	{
-	    if(CFG.Dta.ScrOrientation == CfgScrOrientP)
-	    {
-	    	Rect rect = d.getRect();
-	    	d.setPosition(rect.y, SCREEN_HEIGHT - rect.x - rect.width, rect.height, rect.width);
-	    }
-	}
-
-	virtual bool isValid() const final
-	{
-		return true;
-	}
-};
+//class CArrangeScreen : public GenericCallback< Drawable& >
+//{
+//public:
+//	virtual void execute(Drawable& d) final
+//	{
+//	    if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+//	    {
+//	    	Rect rect = d.getRect();
+//	    	d.setPosition(rect.y, SCREEN_HEIGHT - rect.x - rect.width, rect.height, rect.width);
+//	    }
+//	}
+//
+//	virtual bool isValid() const final
+//	{
+//		return true;
+//	}
+//};
 
 
 
