@@ -14,14 +14,14 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX button widget class/tools implementation file
+//  Description : TouchGFX button widget class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "CButton.hpp"
+#include <CButton.hpp>
 
 
 namespace touchgfx
@@ -35,28 +35,13 @@ CButton::CButton(CButtonCustom& button)
 	  m_Button(button)
 {
 }
-//CButtonCustom::CButtonCustom()
-//{
-//}
-////CButton::CButton(BoxWithBorderButtonStyle< ClickButtonTrigger >& button)
-////	: CWidget(button),
-////	  m_Button(button)
-////{
-////}
-//int Tmp = 0;
-//void CButtonCustom::handleClickEvent(const ClickEvent& event)
-//{
-//	Tmp++;
-//}
+
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
 void CButton::position()
 {
-//	Rect rect = CWidget::getRect(m_Button.getRect());
-//
-//	m_Button.setPosition(rect.x, rect.y, rect.width, rect.height);
 };
 
 //-----------------------------------------------------------------------------

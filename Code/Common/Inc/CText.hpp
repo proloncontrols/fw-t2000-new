@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX text widget class/tools header file
+//  Description : TouchGFX text widget class header file
 //=============================================================================
 #ifndef WIDGET_TEXT_HPP
 #define WIDGET_TEXT_HPP
@@ -24,6 +24,7 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <CWidget.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 
 
 namespace touchgfx

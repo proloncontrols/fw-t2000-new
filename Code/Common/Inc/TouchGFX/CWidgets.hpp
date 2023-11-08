@@ -27,7 +27,6 @@
 #include <CButton.hpp>
 #include <CImage.hpp>
 #include <CText.hpp>
-#include <CTextureMapper.hpp>
 
 
 namespace touchgfx

@@ -9,7 +9,7 @@ enum splashWidgets
 {
 	splashImageProlon,
 	splashTextNewText,
-	splashButton2,
+	splashButton,
 	splashCount
 };
 
@@ -26,10 +26,9 @@ protected:
 private:
     CWidgets* widgets;
 
-    CButtonCustom* flexButton2;
-//    CButtonCustom flexButton2 {textureMapper1, textureMapper2};
+    CButtonCustom* Button;
 
-    touchgfx::Callback<containerSplashBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<containerSplashBase, const touchgfx::AbstractButtonContainer&> ButtonCallback;
 };
 
 #endif // CONTAINERSPLASH_HPP

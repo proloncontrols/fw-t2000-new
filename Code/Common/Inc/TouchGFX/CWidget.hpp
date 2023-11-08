@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX widget class/tools header file
+//  Description : TouchGFX widget class header file
 //=============================================================================
 #ifndef WIDGET_HPP
 #define WIDGET_HPP
@@ -23,15 +23,9 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <cfg.h>
+#include <CButtonCustom.hpp>
 #include <touchgfx/widgets/Widget.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/widgets/TextureMapper.hpp>
-#include <touchgfx/widgets/Button.hpp>
-//#include <touchgfx/containers/buttons/BoxWithBorderButtonStyle.hpp>
-//#include <touchgfx/containers/buttons/ClickButtonTrigger.hpp>
-
-#include "cfg.h"
-#include "CButtonCustom.hpp"
 
 
 namespace touchgfx
@@ -47,9 +41,9 @@ namespace touchgfx
 #define CLIENT_OFFSET     24
 //
 //
-// Thermostat portrait orientation
+// Thermostat orientation (portrait)
 //
-//    Screen (landscape)
+//    Screen orientation (landscape)
 //    -------------------------------------   ---
 //    |    |                         |    |    |
 //    |    |                         |    |    |
@@ -74,9 +68,8 @@ namespace touchgfx
 class CWidget
 {
 public:
-	CWidget(Widget& widget) {};
-	CWidget(CButtonCustom& button) {};
-//	CWidget(BoxWithBorderButtonStyle< ClickButtonTrigger >& button) {};
+	CWidget(Widget& widget);
+	CWidget(CButtonCustom& button);
 
 	virtual void position() = 0;
 	virtual void getPosition(Rect& rect) = 0;
@@ -92,33 +85,3 @@ protected:
 
 
 #endif   //WIDGET_HPP
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,18 +10,18 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : image.cpp
+//         File : CImage.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX image class/tools implementation file
+//  Description : TouchGFX image class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "CImage.hpp"
+#include <CImage.hpp>
 
 
 namespace touchgfx

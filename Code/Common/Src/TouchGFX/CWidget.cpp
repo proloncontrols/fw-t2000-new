@@ -14,14 +14,14 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX widgets class/tools implementation file
+//  Description : TouchGFX widgets class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "CWidget.hpp"
+#include <CWidget.hpp>
 
 
 namespace touchgfx
@@ -30,19 +30,18 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
-//CWidget::CWidget(Widget& widget)
-//{
-//}
-
-//CWidget::CWidget(Button& button)
-//{
-//}
+CWidget::CWidget(Widget& widget)
+{
+}
 
 //-----------------------------------------------------------------------------
-//CWidget::CWidget(BoxWithBorderButtonStyle< ClickButtonTrigger >& button)
-//{
-//}
+CWidget::CWidget(CButtonCustom& button)
+{
+}
 
+
+//=============================================================================
+//  M E T H O D S
 //-----------------------------------------------------------------------------
 Rect& CWidget::getCurRect(const Rect& rect)
 {
@@ -67,4 +66,4 @@ Rect& CWidget::getCurRect(const Rect& rect)
 	return curRect;
 }
 
-}
+}   //namespace touchgfx

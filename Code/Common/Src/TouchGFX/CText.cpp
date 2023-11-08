@@ -14,14 +14,14 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX text widget class/tools implementation file
+//  Description : TouchGFX text widget class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "CText.hpp"
+#include <CText.hpp>
 
 
 namespace touchgfx
@@ -60,33 +60,4 @@ void CText::setPosition(Rect& rect)
 {
 };
 
-
 }   //namespace touchgfx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

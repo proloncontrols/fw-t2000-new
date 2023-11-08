@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX image widget class/tools header file
+//  Description : TouchGFX image widget class header file
 //=============================================================================
 #ifndef WIDGET_IMAGE_HPP
 #define WIDGET_IMAGE_HPP
@@ -23,7 +23,8 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include "CWidget.hpp"
+#include <CWidget.hpp>
+#include <touchgfx/widgets/TextureMapper.hpp>
 
 
 namespace touchgfx
