@@ -31,8 +31,7 @@ namespace touchgfx
 //  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
 CImage::CImage(TextureMapper& mapper)
-    : CWidget(mapper),
-	  m_Mapper(mapper)
+	  : m_Mapper(mapper)
 {
 }
 
@@ -45,7 +44,7 @@ void CImage::position()
 	Rect rect = getCurRect(m_Mapper.getRect());
 	Bitmap image = m_Mapper.getBitmap();
 	float angleZ = 0.0;
-	if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+	if(curRotation == ROTATION_PORTRAIT)
 		angleZ = SCREEN_ANGLE;
 
 	m_Mapper.setPosition(rect.x, rect.y, rect.width, rect.height);

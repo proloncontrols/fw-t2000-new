@@ -39,6 +39,11 @@ namespace touchgfx
 #define SCREEN_ANGLE      (-1.572f)   //Used for TextureMapper widget's Z angle
 #define SCREEN_OFFSET     24
 #define CLIENT_OFFSET     24
+
+#define CLIENT_X          24
+#define CLIENT_Y          0
+#define CLIENT_WIDTH      672
+#define CLIENT_HEIGHT     672
 //
 //
 // Thermostat orientation (portrait)
@@ -62,14 +67,24 @@ namespace touchgfx
 //    |--------------- 720 ---------------|
 //
 //
+
+
+//=============================================================================
+//  T Y P E D E F S
+//-----------------------------------------------------------------------------
+typedef enum {
+	ROTATION_LANDSCAPE,
+	ROTATION_PORTRAIT
+} Rotation;
+
+
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
 class CWidget
 {
 public:
-	CWidget(Widget& widget);
-	CWidget(CButtonCustom& button);
+	Rotation curRotation;
 
 	virtual void position() = 0;
 	virtual void getPosition(Rect& rect) = 0;
@@ -77,7 +92,6 @@ public:
 
 protected:
 	Rect curRect;
-
 	Rect& getCurRect(const Rect& rect);
 };
 
@@ -85,3 +99,31 @@ protected:
 
 
 #endif   //WIDGET_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

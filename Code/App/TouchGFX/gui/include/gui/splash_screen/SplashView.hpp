@@ -6,56 +6,49 @@
 #include <CWidgets.hpp>
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
-//#include <touchgfx/containers/SwipeContainer.hpp>
 #include <touchgfx/containers/Container.hpp>
-
-
-
-
-
-
-//class CArrangeScreen : public GenericCallback< Drawable& >
-//{
-//public:
-//	virtual void execute(Drawable& d) final
-//	{
-//	    if(CFG.Dta.ScrOrientation == CfgScrOrientP)
-//	    {
-//	    	Rect rect = d.getRect();
-//	    	d.setPosition(rect.y, SCREEN_HEIGHT - rect.x - rect.width, rect.height, rect.width);
-//	    }
-//	}
-//
-//	virtual bool isValid() const final
-//	{
-//		return true;
-//	}
-//};
-
-
-
-
+#include <gui/containers/ctnrSplash.hpp>
+#include <gui/containers/ctnrHome.hpp>
+#include <gui/containers/containerBlue.hpp>
+#include <gui/containers/containerRed.hpp>
 
 class SplashView : public SplashViewBase
 {
 public:
     SplashView();
     virtual ~SplashView() {}
+
     virtual void setupScreen();
     virtual void tearDownScreen();
-
     virtual void OnScreenTransitionEnd();
 
-//    virtual void handleClickEvent(const ClickEvent& evt);
-
 protected:
-//    CWidgets* Widgets;
+    CSwipeContainer swipe;
+
+    touchgfx::Box back;
+    touchgfx::Container backPage;
+
+    touchgfx::Container page1;
+    touchgfx::Box page1Back;
+
+    static const uint16_t TEXTAREA1_SIZE = 10;
+    touchgfx::TextAreaWithOneWildcard textArea1;
+    touchgfx::Unicode::UnicodeChar textArea1Buffer[TEXTAREA1_SIZE];
+
+//    touchgfx::Box back2;
+//    touchgfx::Container backPage2;
+
+//    touchgfx::Container swipePageSplash;
+//    ctnrSplash splash;
 //
-//    CSwipeContainer* swipeContainer11;
-//    touchgfx::Container swipeContainer1Page1;
-//    touchgfx::Box box1;
-//    touchgfx::Container swipeContainer1Page2;
-//    touchgfx::Box box2;
+//    touchgfx::Container swipePageHome;
+//    ctnrHome home;
+//
+//    touchgfx::Container swipePageBlue;
+//    containerBlue blue;
+//
+//    touchgfx::Container swipePageRed;
+//    containerRed red;
 };
 
 #endif // SPLASHVIEW_HPP

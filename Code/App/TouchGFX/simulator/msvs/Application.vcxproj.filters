@@ -279,16 +279,28 @@
     <ClCompile Include="..\..\generated\gui_generated\src\clear_screen\ClearViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\clear_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\containers\containerSplash.cpp">
+    <ClCompile Include="..\..\gui\src\containers\containerBlue.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\containerSplashBase.cpp">
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\containerBlueBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\containers\CustomContainer1.cpp">
+    <ClCompile Include="..\..\gui\src\containers\containerRed.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\CustomContainer1Base.cpp">
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\containerRedBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\ctnrHome.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\ctnrHomeBase.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\ctnrSplash.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\ctnrSplashBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -760,16 +772,28 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\clear_screen\ClearViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\clear_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\containerSplash.hpp">
+    <ClInclude Include="..\..\gui\include\gui\containers\containerBlue.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\containerSplashBase.hpp">
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\containerBlueBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\CustomContainer1.hpp">
+    <ClInclude Include="..\..\gui\include\gui\containers\containerRed.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\CustomContainer1Base.hpp">
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\containerRedBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\ctnrHome.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ctnrHomeBase.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\ctnrSplash.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ctnrSplashBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>

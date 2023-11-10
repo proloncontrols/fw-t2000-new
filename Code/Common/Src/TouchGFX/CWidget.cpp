@@ -28,19 +28,6 @@ namespace touchgfx
 {
 
 //=============================================================================
-//  C O N S T R U C T O R S
-//-----------------------------------------------------------------------------
-CWidget::CWidget(Widget& widget)
-{
-}
-
-//-----------------------------------------------------------------------------
-CWidget::CWidget(CButtonCustom& button)
-{
-}
-
-
-//=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
 Rect& CWidget::getCurRect(const Rect& rect)
@@ -50,7 +37,7 @@ Rect& CWidget::getCurRect(const Rect& rect)
 	int16_t curW = rect.width;
 	int16_t curH = rect.height;
 
-	if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+	if(curRotation == ROTATION_PORTRAIT)
 	{
 		curX = rect.y;
 		curY = SCREEN_HEIGHT - rect.x - rect.width;

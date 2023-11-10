@@ -3,7 +3,6 @@
 /*********************************************************************************/
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <touchgfx/Color.hpp>
-#include <BitmapDatabase.hpp>
 
 SplashViewBase::SplashViewBase()
 {
@@ -11,43 +10,12 @@ SplashViewBase::SplashViewBase()
     __background.setPosition(0, 0, 720, 672);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    containerMain.setXY(24, 0);
-    containerMain.setVisible(false);
-
-    customContainer11.setXY(24, 0);
-    customContainer11.setVisible(false);
-
-    swipeContainer1.setXY(24, 0);
-    swipeContainer1.setSwipeCutoff(50);
-    swipeContainer1.setEndSwipeElasticWidth(50);
-
-    swipeContainer1Page1.setWidth(672);
-    swipeContainer1Page1.setHeight(672);
-
-    containerSplash1.setXY(0, 0);
-    swipeContainer1Page1.add(containerSplash1);
-    swipeContainer1.add(swipeContainer1Page1);
-
-    swipeContainer1Page2.setWidth(672);
-    swipeContainer1Page2.setHeight(672);
-
-    customContainer12.setXY(0, 0);
-    swipeContainer1Page2.add(customContainer12);
-    swipeContainer1.add(swipeContainer1Page2);
-    swipeContainer1.setSelectedPage(1);
-
     add(__background);
-    add(containerMain);
-    add(customContainer11);
-    add(swipeContainer1);
 }
 
 void SplashViewBase::setupScreen()
 {
-    containerMain.initialize();
-    customContainer11.initialize();
-    containerSplash1.initialize();
-    customContainer12.initialize();
+
 }
 
 //Called when the screen transition ends

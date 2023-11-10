@@ -3,71 +3,7 @@
     "Screens": [
       {
         "Name": "Splash",
-        "Components": [
-          {
-            "Type": "CustomContainerInstance",
-            "Name": "containerMain",
-            "X": 24,
-            "Width": 672,
-            "Height": 672,
-            "Visible": false,
-            "CustomContainerDefinitionName": "containerSplash"
-          },
-          {
-            "Type": "CustomContainerInstance",
-            "Name": "customContainer11",
-            "X": 24,
-            "Width": 672,
-            "Height": 672,
-            "Visible": false,
-            "CustomContainerDefinitionName": "CustomContainer1"
-          },
-          {
-            "Type": "SwipeContainer",
-            "Name": "swipeContainer1",
-            "X": 24,
-            "Width": 672,
-            "Height": 672,
-            "SwipeCutoff": 50,
-            "IndicatorImageNormal": "__designer\\Blue_PageIndicator_dot_indicator_small_normal.png",
-            "IndicatorImageHighlight": "__designer\\Blue_PageIndicator_dot_indicator_small_highlight.png",
-            "EndSwipeElasticWidth": 50,
-            "SelectedPage": "swipeContainer1Page2",
-            "Style": "Style1",
-            "Components": [
-              {
-                "Type": "Container",
-                "Name": "swipeContainer1Page1",
-                "Width": 672,
-                "Height": 672,
-                "Components": [
-                  {
-                    "Type": "CustomContainerInstance",
-                    "Name": "containerSplash1",
-                    "Width": 672,
-                    "Height": 672,
-                    "CustomContainerDefinitionName": "containerSplash"
-                  }
-                ]
-              },
-              {
-                "Type": "Container",
-                "Name": "swipeContainer1Page2",
-                "Width": 672,
-                "Height": 672,
-                "Components": [
-                  {
-                    "Type": "CustomContainerInstance",
-                    "Name": "customContainer12",
-                    "Width": 672,
-                    "Height": 672,
-                    "CustomContainerDefinitionName": "CustomContainer1"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
+        "Components": [],
         "Interactions": [
           {
             "InteractionName": "ScreenTransitionEnd",
@@ -612,7 +548,7 @@
     ],
     "CustomContainerDefinitions": [
       {
-        "Name": "containerSplash",
+        "Name": "ctnrSplash",
         "X": 24,
         "Width": 672,
         "Height": 672,
@@ -683,7 +619,7 @@
         "Interactions": []
       },
       {
-        "Name": "CustomContainer1",
+        "Name": "ctnrHome",
         "X": 24,
         "Width": 672,
         "Height": 672,
@@ -955,6 +891,46 @@
             "Wildcard1": {
               "UseBuffer": true,
               "BufferSize": 4
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "containerBlue",
+        "X": 24,
+        "Width": 672,
+        "Height": 440,
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 672,
+            "Height": 440,
+            "Color": {
+              "Red": 9,
+              "Green": 19,
+              "Blue": 112
+            }
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "containerRed",
+        "X": 24,
+        "Width": 672,
+        "Height": 440,
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 672,
+            "Height": 440,
+            "Color": {
+              "Red": 150,
+              "Green": 75,
+              "Blue": 75
             }
           }
         ],

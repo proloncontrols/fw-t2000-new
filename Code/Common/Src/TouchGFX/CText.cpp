@@ -31,8 +31,7 @@ namespace touchgfx
 //  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
 CText::CText(TextArea& text)
-    : CWidget(text),
-	  m_Text(text)
+	  : m_Text(text)
 {
 }
 
@@ -43,7 +42,7 @@ void CText::position()
 {
 	Rect rect = getCurRect(m_Text.getRect());
 	TextRotation rotation = TEXT_ROTATE_0;
-	if(CFG.Dta.ScrOrientation == CfgScrOrientP)
+	if(curRotation == ROTATION_PORTRAIT)
 		rotation = TEXT_ROTATE_270;
 
 	m_Text.setPosition(rect.x, rect.y, rect.width, rect.height);

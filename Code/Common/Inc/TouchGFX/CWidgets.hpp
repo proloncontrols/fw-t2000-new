@@ -38,7 +38,7 @@ namespace touchgfx
 class CWidgets
 {
 public:
-	CWidgets(int size);
+	CWidgets(int size, Rotation rotation);
 
 	CWidget* get(int index);
 	void set(int index, CWidget* widget);
@@ -47,6 +47,7 @@ public:
 private:
 	int m_Size;
 	CWidget** m_List;
+	Rotation curRotation;
 };
 
 }   //namespace touchgfx

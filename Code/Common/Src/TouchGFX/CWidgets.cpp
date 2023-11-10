@@ -31,10 +31,11 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
-CWidgets::CWidgets(int size)
+CWidgets::CWidgets(int size, Rotation rotation)
 {
 	m_Size = size;
 	m_List = (CWidget**)malloc(sizeof(CWidget*) * size);
+	curRotation = rotation;
 }
 
 
@@ -52,7 +53,10 @@ CWidget* CWidgets::get(int index)
 void CWidgets::set(int index, CWidget* widget)
 {
 	if(index < m_Size)
+	{
+		widget->curRotation = curRotation;
 		m_List[index] = widget;
+	}
 }
 
 //-----------------------------------------------------------------------------

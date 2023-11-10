@@ -31,8 +31,7 @@ namespace touchgfx
 //  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
 CButton::CButton(CButtonCustom& button)
-	: CWidget(button),
-	  m_Button(button)
+	  : m_Button(button)
 {
 }
 
