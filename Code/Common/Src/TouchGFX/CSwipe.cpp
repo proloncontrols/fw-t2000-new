@@ -15,13 +15,14 @@
 #include <touchgfx/Drawable.hpp>
 #include <touchgfx/EasingEquations.hpp>
 #include <touchgfx/containers/Container.hpp>
-#include <CSwipeContainer.hpp>
+#include <touchgfx/Color.hpp>
 #include <cfg.h>
+#include <CSwipe.hpp>
 #include <CWidget.hpp>
 
 namespace touchgfx
 {
-CSwipeContainer::CSwipeContainer()
+CSwipe::CSwipe()
     : Container(),
       currentState(NO_ANIMATION),
       animationCounter(0),
@@ -42,20 +43,14 @@ CSwipeContainer::CSwipeContainer()
     Container::add(pageIndicator);
 }
 
-CSwipeContainer::~CSwipeContainer()
+CSwipe::~CSwipe()
 {
     Application::getInstance()->unregisterTimerWidget(this);
 }
 
-void CSwipeContainer::add(Drawable& page)
+void CSwipe::add(Drawable& page)
 {
-    if(curRotation == ROTATION_LANDSCAPE)
-    {
-    	page.setWidthHeight(curW, curH);
-    }
-    else
-    {
-    }
+	page.setWidthHeight(curWidth, curHeight);
 
     pages.add(page);
 
@@ -65,7 +60,7 @@ void CSwipeContainer::add(Drawable& page)
     setWidthHeight(page);
 }
 
-void CSwipeContainer::remove(Drawable& page)
+void CSwipe::remove(Drawable& page)
 {
     Drawable* tmp = pages.getFirstChild();
 
@@ -104,17 +99,17 @@ void CSwipeContainer::remove(Drawable& page)
     }
 }
 
-void CSwipeContainer::setEndSwipeElasticWidth(uint16_t width)
+void CSwipe::setEndSwipeElasticWidth(uint16_t width)
 {
     endElasticWidth = width;
 }
 
-void CSwipeContainer::setSwipeCutoff(uint16_t cutoff)
+void CSwipe::setSwipeCutoff(uint16_t cutoff)
 {
     swipeCutoff = cutoff;
 }
 
-void CSwipeContainer::setPageIndicatorBitmaps(const Bitmap& normalPage, const Bitmap& highlightedPage)
+void CSwipe::setPageIndicatorBitmaps(const Bitmap& normalPage, const Bitmap& highlightedPage)
 {
     pageIndicator.setBitmaps(normalPage, highlightedPage);
 }
@@ -125,11 +120,67 @@ void CSwipeContainer::setPageIndicatorBitmaps(const Bitmap& normalPage, const Bi
 
 
 
-void CSwipeContainer::initialize(int16_t posX, int16_t posY, int16_t pageX, int16_t pageY, int16_t pageWidth, int16_t pageHeight, Rotation rotation)
+
+void CSwipe::initialize(Rotation rotation, int16_t x, int16_t y, int16_t width, int16_t height)
 {
+	curRotation = rotation;
+    curPosition = INDICATOR_NONE;
+
+	if(curRotation == ROTATION_LANDSCAPE)
+	{
+		curX = x;
+		curY = y;
+		curWidth = width;
+		curHeight = height;
+		curPageHeight = height;
+	}
+	else
+	{
+		curX = y;
+		curY = parent->getHeight()-x-width;
+		curWidth = height;
+		curHeight = width;
+		curPageHeight = width;
+	}
+	Container::setXY(curX, curY);
+
+	background.setPosition(curY, curY, curWidth, curHeight);
+	background.setColor(touchgfx::Color::getColorFromRGB(100, 0, 0));
+	add(background);
 }
 
-void CSwipeContainer::setXY(int16_t x, int16_t y, Rotation rotation)
+void CSwipe::initialize(Rotation rotation, int16_t x, int16_t y, int16_t width, int16_t height, PageIndicatorPosition position, const Bitmap& normalPage, const Bitmap& highlightedPage)
+{
+    curPosition = position;
+    setPageIndicatorBitmaps(normalPage, highlightedPage);
+}
+
+//void CSwipe::initialize(int16_t x, int16_t y, int16_t width, int16_t height, PageIndicatorPosition position, Rotation rotation)
+//{
+//	curX = x;
+//	curY = y;
+//	curWidth = width;
+//	curHeight = height;
+//   	curRotation = rotation;
+//   	curPosition = position;
+//
+//    if(curRotation == ROTATION_LANDSCAPE)
+//    {
+//    	Container::setPosition(curX, curY, curWidth, curHeight);
+//    }
+//    else
+//    {
+//    }
+//}
+
+
+
+
+
+
+
+
+void CSwipe::setXY(int16_t x, int16_t y, Rotation rotation)
 {
    	curRotation = rotation;
     if(curRotation == ROTATION_LANDSCAPE)
@@ -142,12 +193,12 @@ void CSwipeContainer::setXY(int16_t x, int16_t y, Rotation rotation)
     }
 }
 
-void CSwipeContainer::setPosition(int16_t x, int16_t y, int16_t width, int16_t height, Rotation rotation)
+void CSwipe::setPosition(int16_t x, int16_t y, int16_t width, int16_t height, Rotation rotation)
 {
 	curX = x;
 	curY = y;
-	curW = width;
-	curH = height;
+	curWidth = width;
+	curHeight = height;
    	curRotation = rotation;
     if(curRotation == ROTATION_LANDSCAPE)
     {
@@ -160,32 +211,32 @@ void CSwipeContainer::setPosition(int16_t x, int16_t y, int16_t width, int16_t h
     }
 }
 
-void CSwipeContainer::setPageIndicatorPosition(PageIndicatorPosition position)
+void CSwipe::setPageIndicatorPosition(PageIndicatorPosition position)
 {
-	#define FRAME_WIDTH 10
-
-    int16_t x;
-    int16_t y;
-    int16_t width  = (Bitmap(pageIndicator.unselectedPages.getBitmap()).getWidth()  * pageIndicator.numberOfPages) + (2 * FRAME_WIDTH);
-    int16_t height =  Bitmap(pageIndicator.unselectedPages.getBitmap()).getHeight() + (2 * FRAME_WIDTH);
-
-    if(curRotation == ROTATION_LANDSCAPE)
-	{
-    	switch(position)
-    	{
-    		case INDICATOR_TOP_LEFT:      { x = FRAME_WIDTH;                      y = FRAME_WIDTH;                        break; }
-    		case INDICATOR_TOP_CENTER:    { x = getWidth()/2 - width/2;           y = FRAME_WIDTH;                        break; }
-    		case INDICATOR_TOP_RIGHT:     { x = FRAME_WIDTH + getWidth() - width; y = FRAME_WIDTH;                        break; }
-    		case INDICATOR_BOTTOM_LEFT:   { x = FRAME_WIDTH;                      y = getHeight() - height + FRAME_WIDTH; break; }
-    		case INDICATOR_BOTTOM_CENTER: { x = getWidth()/2 - width/2;           y = getHeight() - height + FRAME_WIDTH; break; }
-    		case INDICATOR_BOTTOM_RIGHT:  { x = FRAME_WIDTH + getWidth() - width; y = getHeight() - height + FRAME_WIDTH; break; }
-    	}
-	}
-	else
-	{
-	}
-
-	pageIndicator.setXY(x, y);
+//	#define FRAME_WIDTH 10
+//
+//    int16_t x;
+//    int16_t y;
+//    int16_t width  = (Bitmap(pageIndicator.unselectedPages.getBitmap()).getWidth()  * pageIndicator.numberOfPages) + (2 * FRAME_WIDTH);
+//    int16_t height =  Bitmap(pageIndicator.unselectedPages.getBitmap()).getHeight() + (2 * FRAME_WIDTH);
+//
+//    if(curRotation == ROTATION_LANDSCAPE)
+//	{
+//    	switch(position)
+//    	{
+//    		case INDICATOR_TOP_LEFT:      { x = FRAME_WIDTH;                      y = FRAME_WIDTH;                        break; }
+//    		case INDICATOR_TOP_CENTER:    { x = getWidth()/2 - width/2;           y = FRAME_WIDTH;                        break; }
+//    		case INDICATOR_TOP_RIGHT:     { x = FRAME_WIDTH + getWidth() - width; y = FRAME_WIDTH;                        break; }
+//    		case INDICATOR_BOTTOM_LEFT:   { x = FRAME_WIDTH;                      y = getHeight() - height + FRAME_WIDTH; break; }
+//    		case INDICATOR_BOTTOM_CENTER: { x = getWidth()/2 - width/2;           y = getHeight() - height + FRAME_WIDTH; break; }
+//    		case INDICATOR_BOTTOM_RIGHT:  { x = FRAME_WIDTH + getWidth() - width; y = getHeight() - height + FRAME_WIDTH; break; }
+//    	}
+//	}
+//	else
+//	{
+//	}
+//
+//	pageIndicator.setXY(x, y);
 }
 
 
@@ -194,7 +245,7 @@ void CSwipeContainer::setPageIndicatorPosition(PageIndicatorPosition position)
 
 
 
-void CSwipeContainer::setPageIndicatorXY(int16_t x, int16_t y)
+void CSwipe::setPageIndicatorXY(int16_t x, int16_t y)
 {
 //	if(CFG.Dta.ScrOrientation == CfgScrOrientL)
 //		pageIndicator.setXY(x, y);
@@ -203,23 +254,23 @@ void CSwipeContainer::setPageIndicatorXY(int16_t x, int16_t y)
     pageIndicator.setXY(x, y);
 }
 
-void CSwipeContainer::setPageIndicatorXYWithCenteredX(int16_t x, int16_t y)
+void CSwipe::setPageIndicatorXYWithCenteredX(int16_t x, int16_t y)
 {
     setPageIndicatorCenteredX(x);
     pageIndicator.setY(y);
 }
 
-void CSwipeContainer::setPageIndicatorCenteredX()
+void CSwipe::setPageIndicatorCenteredX()
 {
     setPageIndicatorCenteredX(getWidth() / 2);
 }
 
-void CSwipeContainer::setPageIndicatorCenteredX(int16_t x)
+void CSwipe::setPageIndicatorCenteredX(int16_t x)
 {
     pageIndicator.setX(x - pageIndicator.getWidth() / 2);
 }
 
-void CSwipeContainer::setSelectedPage(uint8_t pageIndex)
+void CSwipe::setSelectedPage(uint8_t pageIndex)
 {
     if (pageIndex < getNumberOfPages())
     {
@@ -228,12 +279,12 @@ void CSwipeContainer::setSelectedPage(uint8_t pageIndex)
     }
 }
 
-uint8_t CSwipeContainer::getSelectedPage() const
+uint8_t CSwipe::getSelectedPage() const
 {
     return pageIndicator.getCurrentPage();
 }
 
-void CSwipeContainer::handleTickEvent()
+void CSwipe::handleTickEvent()
 {
     if (currentState == ANIMATE_SWIPE_CANCELLED_LEFT)
     {
@@ -253,7 +304,7 @@ void CSwipeContainer::handleTickEvent()
     }
 }
 
-void CSwipeContainer::handleClickEvent(const ClickEvent& event)
+void CSwipe::handleClickEvent(const ClickEvent& event)
 {
     // If an animation is already in progress do not
     // react to clicks
@@ -293,7 +344,7 @@ void CSwipeContainer::handleClickEvent(const ClickEvent& event)
     }
 }
 
-void CSwipeContainer::handleDragEvent(const DragEvent& event)
+void CSwipe::handleDragEvent(const DragEvent& event)
 {
     // If an animation is already in progress do not
     // react to drags
@@ -318,7 +369,7 @@ void CSwipeContainer::handleDragEvent(const DragEvent& event)
     adjustPages();
 }
 
-void CSwipeContainer::handleGestureEvent(const GestureEvent& event)
+void CSwipe::handleGestureEvent(const GestureEvent& event)
 {
     // Do not accept gestures while animating
     if (currentState != NO_ANIMATION)
@@ -344,12 +395,12 @@ void CSwipeContainer::handleGestureEvent(const GestureEvent& event)
     }
 }
 
-void CSwipeContainer::adjustPages()
+void CSwipe::adjustPages()
 {
     pages.moveTo(-static_cast<int16_t>(getSelectedPage() * getWidth()) + dragX, 0);
 }
 
-void CSwipeContainer::animateSwipeCancelledLeft()
+void CSwipe::animateSwipeCancelledLeft()
 {
     uint8_t duration = 14;
 
@@ -371,7 +422,7 @@ void CSwipeContainer::animateSwipeCancelledLeft()
     animationCounter++;
 }
 
-void CSwipeContainer::animateSwipeCancelledRight()
+void CSwipe::animateSwipeCancelledRight()
 {
     uint8_t duration = 14;
 
@@ -393,7 +444,7 @@ void CSwipeContainer::animateSwipeCancelledRight()
     animationCounter++;
 }
 
-void CSwipeContainer::animateLeft()
+void CSwipe::animateLeft()
 {
     uint8_t duration = 10;
 
@@ -414,7 +465,7 @@ void CSwipeContainer::animateLeft()
     animationCounter++;
 }
 
-void CSwipeContainer::animateRight()
+void CSwipe::animateRight()
 {
     uint8_t duration = 10;
 
@@ -435,7 +486,7 @@ void CSwipeContainer::animateRight()
     animationCounter++;
 }
 
-CSwipeContainer::PageIndicator::PageIndicator()
+CSwipe::PageIndicator::PageIndicator()
     : Container(),
       unselectedPages(),
       selectedPage(),
@@ -450,7 +501,7 @@ CSwipeContainer::PageIndicator::PageIndicator()
     Container::add(selectedPage);
 }
 
-void CSwipeContainer::PageIndicator::setNumberOfPages(uint8_t size)
+void CSwipe::PageIndicator::setNumberOfPages(uint8_t size)
 {
     numberOfPages = size;
 
@@ -469,7 +520,7 @@ void CSwipeContainer::PageIndicator::setNumberOfPages(uint8_t size)
     }
 }
 
-void CSwipeContainer::PageIndicator::setBitmaps(const Bitmap& normalPage, const Bitmap& highlightedPage)
+void CSwipe::PageIndicator::setBitmaps(const Bitmap& normalPage, const Bitmap& highlightedPage)
 {
     selectedPage.setBitmap(highlightedPage);
     unselectedPages.setBitmap(normalPage);
@@ -479,17 +530,17 @@ void CSwipeContainer::PageIndicator::setBitmaps(const Bitmap& normalPage, const 
     }
 }
 
-void CSwipeContainer::PageIndicator::goRight()
+void CSwipe::PageIndicator::goRight()
 {
     setCurrentPage((currentPage + 1) % numberOfPages);
 }
 
-void CSwipeContainer::PageIndicator::goLeft()
+void CSwipe::PageIndicator::goLeft()
 {
     setCurrentPage((currentPage + numberOfPages - 1) % numberOfPages);
 }
 
-void CSwipeContainer::PageIndicator::setCurrentPage(uint8_t page)
+void CSwipe::PageIndicator::setCurrentPage(uint8_t page)
 {
     if (page < numberOfPages && page != currentPage)
     {
@@ -505,12 +556,12 @@ void CSwipeContainer::PageIndicator::setCurrentPage(uint8_t page)
     }
 }
 
-uint8_t CSwipeContainer::PageIndicator::getNumberOfPages() const
+uint8_t CSwipe::PageIndicator::getNumberOfPages() const
 {
     return numberOfPages;
 }
 
-uint8_t CSwipeContainer::PageIndicator::getCurrentPage() const
+uint8_t CSwipe::PageIndicator::getCurrentPage() const
 {
     return currentPage;
 }

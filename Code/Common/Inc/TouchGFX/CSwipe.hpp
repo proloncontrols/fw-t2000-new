@@ -31,6 +31,7 @@
 namespace touchgfx
 {
 typedef enum {
+	INDICATOR_NONE,
 	INDICATOR_TOP_LEFT,
 	INDICATOR_TOP_CENTER,
 	INDICATOR_TOP_RIGHT,
@@ -46,23 +47,28 @@ typedef enum {
  *
  * @see ListLayout
  */
-class CSwipeContainer : public Container
+class CSwipe : public Container
 {
 public:
-	Rotation curRotation;
 	int16_t curX;
 	int16_t curY;
-	int16_t curW;
-	int16_t curH;
+	int16_t curWidth;
+	int16_t curHeight;
+	int16_t curPageHeight;
+	PageIndicatorPosition curPosition;
+	Rotation curRotation;
 
-    void initialize(int16_t posX, int16_t posY, int16_t pageX, int16_t pageY, int16_t pageWidth, int16_t pageHeight, Rotation rotation);
+    touchgfx::Box background;
+
+    void initialize(Rotation rotation, int16_t x, int16_t y, int16_t width, int16_t height);
+    void initialize(Rotation rotation, int16_t x, int16_t y, int16_t width, int16_t height, PageIndicatorPosition position, const Bitmap& normalPage, const Bitmap& highlightedPage);
 
     void setXY(int16_t x, int16_t y, Rotation rotation);
     void setPosition(int16_t x, int16_t y, int16_t width, int16_t height, Rotation rotation);
     void setPageIndicatorPosition(PageIndicatorPosition position);
 
-	CSwipeContainer();
-    virtual ~CSwipeContainer();
+    CSwipe();
+    virtual ~CSwipe();
 
     virtual void handleTickEvent();
     virtual void handleClickEvent(const ClickEvent& event);

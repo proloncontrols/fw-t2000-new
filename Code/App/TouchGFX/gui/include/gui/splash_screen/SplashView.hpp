@@ -1,7 +1,7 @@
 #ifndef SPLASHVIEW_HPP
 #define SPLASHVIEW_HPP
 
-#include <CSwipeContainer.hpp>
+#include <CSwipe.hpp>
 #include <CWidget.hpp>
 #include <CWidgets.hpp>
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
@@ -23,17 +23,23 @@ public:
     virtual void OnScreenTransitionEnd();
 
 protected:
-    CSwipeContainer swipe;
+    CSwipe swipe;
 
-    touchgfx::Box back;
-    touchgfx::Container backPage;
+//    touchgfx::Box back;
+//    touchgfx::Container backPage;
+//
+//    touchgfx::Container splashPage;
+//    touchgfx::Box splashPageBackground;
+//
+//    static const uint16_t TEXTAREA1_SIZE = 10;
+//    touchgfx::TextAreaWithOneWildcard textArea1;
+//    touchgfx::Unicode::UnicodeChar textArea1Buffer[TEXTAREA1_SIZE];
 
-    touchgfx::Container page1;
-    touchgfx::Box page1Back;
 
-    static const uint16_t TEXTAREA1_SIZE = 10;
-    touchgfx::TextAreaWithOneWildcard textArea1;
-    touchgfx::Unicode::UnicodeChar textArea1Buffer[TEXTAREA1_SIZE];
+
+
+
+
 
 //    touchgfx::Box back2;
 //    touchgfx::Container backPage2;

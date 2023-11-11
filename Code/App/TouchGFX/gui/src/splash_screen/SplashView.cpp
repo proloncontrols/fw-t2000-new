@@ -9,38 +9,62 @@
 
 SplashView::SplashView()
 {
-	swipe.initialize(0, 0, 24, 24, PAGE_WIDTH, PAGE_HEIGHT, (Rotation)CFG.Dta.ScrOrientation);
-
-
-
-	swipe.setPosition(0, 0, PAGE_WIDTH, PAGE_HEIGHT, (Rotation)CFG.Dta.ScrOrientation);
-
-	page1Back.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
-	page1.add(page1Back);
-	swipe.add(page1);
+	remove(__background);
+	__background.setPosition(CLIENT_X, CLIENT_Y, CLIENT_WIDTH, CLIENT_HEIGHT);   //Resize screen container to client area
+    __background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
+	add(__background);
 
 
 
 
 
-	back.setWidthHeight(500, 300);
-	back.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
-	backPage.setWidth(back.getWidth());
-	backPage.setHeight(back.getHeight());
 
-	textArea1.setXY(0, 0);
-    textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    textArea1.setLinespacing(0);
-    textArea1Buffer[0] = 0;
-    textArea1.setWildcard(textArea1Buffer);
-    textArea1.resizeToCurrentText();
-    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_1OTR));
 
-	backPage.add(back);
-	backPage.add(textArea1);
-
-	swipe.add(backPage);
     add(swipe);
+    swipe.initialize((Rotation)CFG.Dta.ScrOrientation, 0, 0, PAGE_WIDTH, PAGE_HEIGHT);
+
+
+
+
+
+
+
+
+
+
+//	swipe.initialize(0, 0, PAGE_WIDTH, PAGE_HEIGHT, INDICATOR_BOTTOM_CENTER, (Rotation)CFG.Dta.ScrOrientation);
+
+
+
+//	swipe.setPosition(0, 0, PAGE_WIDTH, PAGE_HEIGHT, (Rotation)CFG.Dta.ScrOrientation);
+
+//    splashPageBackground.setPosition(0, 0, PAGE_WIDTH, PAGE_HEIGHT);
+//	splashPageBackground.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
+//	splashPage.add(splashPageBackground);
+//	swipe.add(splashPage);
+
+
+
+
+
+//	back.setWidthHeight(500, 300);
+//	back.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
+//	backPage.setWidth(back.getWidth());
+//	backPage.setHeight(back.getHeight());
+//
+//	textArea1.setXY(0, 0);
+//    textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+//    textArea1.setLinespacing(0);
+//    textArea1Buffer[0] = 0;
+//    textArea1.setWildcard(textArea1Buffer);
+//    textArea1.resizeToCurrentText();
+//    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_1OTR));
+//
+//	backPage.add(back);
+//	backPage.add(textArea1);
+//
+//	swipe.add(backPage);
+//    add(swipe);
 
 
 

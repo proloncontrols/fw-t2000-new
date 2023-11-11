@@ -55,7 +55,7 @@ namespace touchgfx
 //    |    |                         |    |    |
 //    |    |                         |    |    |
 //    |    |                         |    |    |
-//    |    |     Client (square)     |    |   672
+//    | NU |     Client (square)     | NU |   672
 //    |    |                         |    |    |
 //    |    |                         |    |    |
 //    |    |                         |    |    |
