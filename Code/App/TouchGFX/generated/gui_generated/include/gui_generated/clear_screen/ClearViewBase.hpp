@@ -8,8 +8,6 @@
 #include <mvp/View.hpp>
 #include <gui/clear_screen/ClearPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/containers/Container.hpp>
-#include <touchgfx/containers/buttons/Buttons.hpp>
 
 class ClearViewBase : public touchgfx::View<ClearPresenter>
 {
@@ -41,26 +39,9 @@ protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
     }
-
-    /*
-     * Member Declarations
-     */
     touchgfx::Box __background;
-    touchgfx::Box box1;
-    touchgfx::Container container1;
-    touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  flexButton1;
 
 private:
-
-    /*
-     * Callback Declarations
-     */
-    touchgfx::Callback<ClearViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
-
-    /*
-     * Callback Handler Declarations
-     */
-    void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 
 };
 

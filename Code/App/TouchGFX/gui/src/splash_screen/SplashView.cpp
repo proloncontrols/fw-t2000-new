@@ -7,12 +7,62 @@
 #define PAGE_WIDTH    500
 #define PAGE_HEIGHT   300
 
+//    touchgfx::Box __background;
+//    touchgfx::SwipeContainer swipeContainer1;
+//    touchgfx::Container swipeContainer1Page1;
+
+//    __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+//
+//    swipeContainer1.setXY(0, 0);
+//    swipeContainer1.setSwipeCutoff(50);
+//    swipeContainer1.setEndSwipeElasticWidth(50);
+//
+//    swipeContainer1Page1.setWidth(250);
+//    swipeContainer1Page1.setHeight(250);
+//    swipeContainer1.add(swipeContainer1Page1);
+//    swipeContainer1.setSelectedPage(0);
+//
+//    add(__background);
+//    add(swipeContainer1);
+
 SplashView::SplashView()
 {
-	remove(__background);
-	__background.setPosition(CLIENT_X, CLIENT_Y, CLIENT_WIDTH, CLIENT_HEIGHT);   //Resize screen container to client area
-    __background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
-	add(__background);
+//	remove(__background);
+//	Screen::container.setPosition(CLIENT_X, CLIENT_Y, CLIENT_WIDTH, CLIENT_HEIGHT);
+//    __background.setPosition(0, 0, CLIENT_WIDTH, CLIENT_HEIGHT);
+//    __background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
+//	add(__background);
+
+//	container.setPosition(24, 24, PAGE_WIDTH, PAGE_HEIGHT);
+//
+//	containerClient.setPosition(0, 0, PAGE_WIDTH, PAGE_HEIGHT);
+//	containerClient.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+//	container.add(containerClient);
+//
+//    box1.setPosition(24, 24, 350, 200);
+//    box1.setColor(touchgfx::Color::getColorFromRGB(100, 0, 0));
+//	container.add(box1);
+//
+//	add(container);
+
+
+
+
+//	swipe.setXY(24, 24);
+//	swipe.setSwipeCutoff(10);
+//	swipe.setEndSwipeElasticWidth(10);
+//
+//    page1.setWidth(500);
+//	page1.setHeight(250);
+//
+//    box1.setPosition(24, 24, 500, 250);
+//    box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+//    page1.add(box1);
+//
+//    swipe.add(page1);
+//	swipe.setSelectedPage(0);
+//
+//	add(swipe);
 
 
 
@@ -20,8 +70,48 @@ SplashView::SplashView()
 
 
 
-    add(swipe);
-    swipe.initialize((Rotation)CFG.Dta.ScrOrientation, 0, 0, PAGE_WIDTH, PAGE_HEIGHT);
+
+
+
+
+
+
+
+//	swipe.setPosition(CLIENT_X, CLIENT_Y, CLIENT_WIDTH, CLIENT_HEIGHT);
+//	swipe.setXY(24, 0);
+//	swipe.setPageIndicatorBitmaps(touchgfx::Bitmap(BITMAP_DOT_INDICATOR_LARGE_NORMAL_ID), touchgfx::Bitmap(BITMAP_DOT_INDICATOR_LARGE_HIGHLIGHT_ID));
+//    swipe.setPageIndicatorXY(100, 610);
+//    swipe.setPageIndicatorXY(292, 610);
+//	swipe.setSwipeCutoff(50);
+//	swipe.setEndSwipeElasticWidth(50);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	swipePageBackground.setPosition(0, 0, PAGE_WIDTH, PAGE_HEIGHT);
+//	swipePage.add(swipePageBackground);
+//
+//	swipe.add(swipePage);
+//
+//	swipe.initialize((Rotation)CFG.Dta.ScrOrientation, 0, 0, PAGE_WIDTH, PAGE_HEIGHT);
+//    add(swipe);
 
 
 

@@ -7,10 +7,10 @@
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <touchgfx/containers/Container.hpp>
-#include <gui/containers/ctnrSplash.hpp>
-#include <gui/containers/ctnrHome.hpp>
-#include <gui/containers/containerBlue.hpp>
-#include <gui/containers/containerRed.hpp>
+//#include <gui/containers/ctnrSplash.hpp>
+//#include <gui/containers/ctnrHome.hpp>
+//#include <gui/containers/containerBlue.hpp>
+//#include <gui/containers/containerRed.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -23,7 +23,16 @@ public:
     virtual void OnScreenTransitionEnd();
 
 protected:
-    CSwipe swipe;
+//    touchgfx::Container container;
+//    touchgfx::Box containerClient;
+//
+//    touchgfx::Box box1;
+
+//    CSwipe swipe;
+//    touchgfx::Container page1;
+//    touchgfx::Box box1;
+
+
 
 //    touchgfx::Box back;
 //    touchgfx::Container backPage;
@@ -45,7 +54,7 @@ protected:
 //    touchgfx::Container backPage2;
 
 //    touchgfx::Container swipePageSplash;
-//    ctnrSplash splash;
+//    touchgfx::Box splash;
 //
 //    touchgfx::Container swipePageHome;
 //    ctnrHome home;

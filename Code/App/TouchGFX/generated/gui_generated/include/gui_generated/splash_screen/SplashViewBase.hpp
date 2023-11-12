@@ -8,6 +8,8 @@
 #include <mvp/View.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/containers/SwipeContainer.hpp>
+#include <touchgfx/containers/Container.hpp>
 
 class SplashViewBase : public touchgfx::View<SplashPresenter>
 {
@@ -29,7 +31,14 @@ protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
     }
+
+    /*
+     * Member Declarations
+     */
     touchgfx::Box __background;
+    touchgfx::Box box1;
+    touchgfx::SwipeContainer swipeContainer1;
+    touchgfx::Container swipeContainer1Page1;
 
 private:
 

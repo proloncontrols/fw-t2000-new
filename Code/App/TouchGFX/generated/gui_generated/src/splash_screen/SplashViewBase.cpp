@@ -3,6 +3,7 @@
 /*********************************************************************************/
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <touchgfx/Color.hpp>
+#include <BitmapDatabase.hpp>
 
 SplashViewBase::SplashViewBase()
 {
@@ -10,7 +11,21 @@ SplashViewBase::SplashViewBase()
     __background.setPosition(0, 0, 720, 672);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
+    box1.setPosition(24, 0, 672, 672);
+    box1.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
+
+    swipeContainer1.setXY(0, 0);
+    swipeContainer1.setSwipeCutoff(50);
+    swipeContainer1.setEndSwipeElasticWidth(50);
+
+    swipeContainer1Page1.setWidth(250);
+    swipeContainer1Page1.setHeight(250);
+    swipeContainer1.add(swipeContainer1Page1);
+    swipeContainer1.setSelectedPage(0);
+
     add(__background);
+    add(box1);
+    add(swipeContainer1);
 }
 
 void SplashViewBase::setupScreen()

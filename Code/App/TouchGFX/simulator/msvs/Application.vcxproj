@@ -30,14 +30,7 @@
     <ClCompile Include="..\..\gui\src\clear_screen\ClearPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\clear_screen\ClearView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\clear_screen\ClearViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\containerBlue.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\containerBlueBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\containerRed.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\containerRedBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\ctnrHome.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\ctnrHomeBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\ctnrSplash.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\ctnrSplashBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -197,14 +190,7 @@
     <ClInclude Include="..\..\gui\include\gui\clear_screen\ClearPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\clear_screen\ClearView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\clear_screen\ClearViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\containerBlue.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\containerBlueBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\containerRed.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\containerRedBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\ctnrHome.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ctnrHomeBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\ctnrSplash.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ctnrSplashBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

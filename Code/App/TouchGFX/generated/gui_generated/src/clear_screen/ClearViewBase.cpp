@@ -4,28 +4,13 @@
 #include <gui_generated/clear_screen/ClearViewBase.hpp>
 #include <touchgfx/Color.hpp>
 
-ClearViewBase::ClearViewBase() :
-    flexButtonCallback(this, &ClearViewBase::flexButtonCallbackHandler)
+ClearViewBase::ClearViewBase()
 {
 
     __background.setPosition(0, 0, 720, 672);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    box1.setPosition(0, 0, 720, 672);
-    box1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-
-    container1.setPosition(172, 244, 250, 250);
-
-    flexButton1.setBoxWithBorderPosition(0, 0, 50, 50);
-    flexButton1.setBorderSize(5);
-    flexButton1.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
-    flexButton1.setPosition(100, 100, 50, 50);
-    flexButton1.setAction(flexButtonCallback);
-    container1.add(flexButton1);
-
     add(__background);
-    add(box1);
-    add(container1);
 }
 
 void ClearViewBase::setupScreen()
@@ -40,20 +25,4 @@ void ClearViewBase::afterTransition()
     //When screen transition ends call virtual function
     //Call OnScreenTransitionEnd
     OnScreenTransitionEnd();
-}
-
-void ClearViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
-{
-    if (&src == &flexButton1)
-    {
-        //Interaction1
-        //When flexButton1 clicked call virtual function
-        //Call function1
-        function1();
-
-        //Interaction2
-        //When flexButton1 clicked call virtual function
-        //Call function2
-        function2();
-    }
 }
