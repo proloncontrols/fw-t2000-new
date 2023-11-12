@@ -44,6 +44,66 @@ CSwipe::~CSwipe()
     Application::getInstance()->unregisterTimerWidget(this);
 }
 
+
+
+
+
+void CSwipe::initialize(int16_t x, int16_t y, int16_t width, int16_t height)
+{
+	Container::setPosition(x, y, width, height);
+	pageWidth = width;
+	pageHeight = height;
+	clientRect.x = 0;
+	clientRect.y = 0;
+	clientRect.width = width;
+	clientRect.height = height;
+}
+
+void CSwipe::initialize(int16_t x, int16_t y, int16_t width, int16_t height, IndicatorLocation location, const Bitmap& normalPage, const Bitmap& highlightedPage)
+{
+	initialize(x, y, width, height);
+
+	curLocation = location;
+	pageIndicator.setBitmaps(normalPage, highlightedPage);
+
+	int16_t bitmapHeight = MAX(normalPage.getHeight(), highlightedPage.getHeight());
+	clientRect.x = 0;
+	clientRect.y = 0;
+	if((location == INDICATOR_TOP_LEFT) || (location == INDICATOR_TOP_CENTER) || location == INDICATOR_TOP_RIGHT)
+		clientRect.y = bitmapHeight;
+	clientRect.width = width;
+	clientRect.height = height - bitmapHeight;
+}
+
+void CSwipe::addPage(CSwipePage& page)
+{
+	page.initialize(pageWidth, pageHeight, clientRect);
+    add(page);
+
+    //Re-calculate page indicator location according to new number of pages
+	int16_t x;
+	int16_t y;
+    switch(curLocation)
+    {
+		case INDICATOR_TOP_LEFT:      x = 0;                                            y = 0;                                      break;
+		case INDICATOR_TOP_CENTER:    x = (pageWidth/2) - (pageIndicator.getWidth()/2); y = 0;                                      break;
+		case INDICATOR_TOP_RIGHT:     x = pageWidth - pageIndicator.getWidth();         y = 0;                                      break;
+		case INDICATOR_BOTTOM_LEFT:   x = 0;                                            y = pageHeight - pageIndicator.getHeight(); break;
+		case INDICATOR_BOTTOM_CENTER: x = (pageWidth/2) - (pageIndicator.getWidth()/2); y = pageHeight - pageIndicator.getHeight(); break;
+		case INDICATOR_BOTTOM_RIGHT:  x = pageWidth - pageIndicator.getWidth();         y = pageHeight - pageIndicator.getHeight(); break;
+    }
+    setPageIndicatorXY(x, y);
+}
+
+Rect& CSwipe::getClientRect()
+{
+	return clientRect;
+}
+
+
+
+
+
 void CSwipe::add(Drawable& page)
 {
     pages.add(page);
@@ -51,7 +111,7 @@ void CSwipe::add(Drawable& page)
     pageIndicator.setNumberOfPages(getNumberOfPages() + 1);
     setSelectedPage(getSelectedPage());
 
-    setWidthHeight(page);
+//    setWidthHeight(page);  //JFB: Done in initialize method with setPosition
 }
 
 void CSwipe::remove(Drawable& page)

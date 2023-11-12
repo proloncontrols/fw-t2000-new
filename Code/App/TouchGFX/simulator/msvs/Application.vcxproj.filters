@@ -172,18 +172,6 @@
     <Filter Include="Header Files\generated\simulator\include\simulator\video">
       <UniqueIdentifier>3C882194-54B2-503B-CC17-F4ABFD41F2E2</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\main_screen">
-      <UniqueIdentifier>B9D48392-326C-056A-6EAC-5ACBB21C0312</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\main_screen">
-      <UniqueIdentifier>3C1A8834-DA5D-03CC-F370-A7BF0D2F989B</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\main_screen">
-      <UniqueIdentifier>A89819D5-2626-8F3D-C9E5-A7EF993A2B94</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\main_screen">
-      <UniqueIdentifier>8AEF1BB1-C8D6-CBBC-B89F-855D7098A7F3</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\gui\splash_screen">
       <UniqueIdentifier>54D7944B-F22E-7B80-E061-1119025F6BE9</UniqueIdentifier>
     </Filter>
@@ -191,34 +179,10 @@
       <UniqueIdentifier>ABF4CCCD-E266-A8C6-05F2-49F5CB28FA40</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\generated\gui_generated\splash_screen">
-      <UniqueIdentifier>E552B857-3DC7-78E2-E408-93E983C13F07</UniqueIdentifier>
+      <UniqueIdentifier>83E03953-466D-E68B-7A64-8EE13662999E</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\generated\gui_generated\splash_screen">
-      <UniqueIdentifier>0C16E8F7-D631-CDC0-823E-1CBB64B462E1</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui\clear_screen">
-      <UniqueIdentifier>EE40B59E-A5E6-DB98-E547-4789DC7529A8</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\clear_screen">
-      <UniqueIdentifier>AF1A8A99-256A-3664-488F-90C35B2A8AD7</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\clear_screen">
-      <UniqueIdentifier>4C354C93-8B69-1509-838A-91A6503B3BC8</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\clear_screen">
-      <UniqueIdentifier>1960F8BF-8CD2-704A-8FA4-CD1404DE9F42</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\containers">
-      <UniqueIdentifier>21E16F25-6150-CC6C-4519-11DD75589EC2</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui\containers">
-      <UniqueIdentifier>ABAF3733-5275-8E90-D276-91D5AFFA6A2C</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\containers">
-      <UniqueIdentifier>0EDF5A4F-EC8D-FD6D-6FDD-10B494E83EF1</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\containers">
-      <UniqueIdentifier>7D9D5D1D-0095-22D3-7E3A-8E73A3036232</UniqueIdentifier>
+      <UniqueIdentifier>92DCCAC7-DE7A-5352-0577-79768CAE591A</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -252,15 +216,6 @@
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp">
       <Filter>Source Files\generated\simulator\video</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\main_screen\MainPresenter.cpp">
-      <Filter>Source Files\gui\main_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp">
-      <Filter>Source Files\gui\main_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\main_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\splash_screen\SplashPresenter.cpp">
       <Filter>Source Files\gui\splash_screen</Filter>
     </ClCompile>
@@ -269,18 +224,6 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\splash_screen\SplashViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\splash_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\clear_screen\ClearPresenter.cpp">
-      <Filter>Source Files\gui\clear_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\clear_screen\ClearView.cpp">
-      <Filter>Source Files\gui\clear_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\clear_screen\ClearViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\clear_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\containers\ctnrSplash.cpp">
-      <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -724,15 +667,6 @@
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp">
       <Filter>Header Files\generated\simulator\include\simulator\video</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainPresenter.hpp">
-      <Filter>Header Files\gui\main_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp">
-      <Filter>Header Files\gui\main_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\main_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\splash_screen\SplashPresenter.hpp">
       <Filter>Header Files\gui\splash_screen</Filter>
     </ClInclude>
@@ -741,18 +675,6 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\splash_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\clear_screen\ClearPresenter.hpp">
-      <Filter>Header Files\gui\clear_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\clear_screen\ClearView.hpp">
-      <Filter>Header Files\gui\clear_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\clear_screen\ClearViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\clear_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\ctnrSplash.hpp">
-      <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

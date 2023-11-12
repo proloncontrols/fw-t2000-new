@@ -18,20 +18,8 @@ public:
     virtual ~FrontendApplication() { }
     virtual void handleTickEvent();
 
-    // Reset
-    void gotoClearScreenNoTransition();
-
-    // Main
-    void gotoMainScreenNoTransition();
-
 protected:
     touchgfx::Callback<FrontendApplication> transitionCallback;
-
-    // Reset
-    void gotoClearScreenNoTransitionImpl();
-
-    // Main
-    void gotoMainScreenNoTransitionImpl();
 
 private:
 };

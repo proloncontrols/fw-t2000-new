@@ -21,16 +21,9 @@
     <ClCompile Include="..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp"/>
     <ClCompile Include="..\..\gui\src\model\Model.cpp"/>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp"/>
-    <ClCompile Include="..\..\gui\src\main_screen\MainPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\splash_screen\SplashPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\splash_screen\SplashView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\splash_screen\SplashViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\clear_screen\ClearPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\clear_screen\ClearView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\clear_screen\ClearViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\ctnrSplash.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -181,16 +174,9 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\splash_screen\SplashPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\splash_screen\SplashView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\clear_screen\ClearPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\clear_screen\ClearView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\clear_screen\ClearViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\ctnrSplash.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

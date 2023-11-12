@@ -16,8 +16,3 @@ void SplashPresenter::deactivate()
 {
 
 }
-
-void SplashPresenter::PostSystemReady()
-{
-	model->PostSystemReady();
-}

@@ -27,8 +27,6 @@ public:
 
     virtual ~SplashPresenter() {};
 
-    virtual void PostSystemReady();
-
 private:
     SplashPresenter();
 

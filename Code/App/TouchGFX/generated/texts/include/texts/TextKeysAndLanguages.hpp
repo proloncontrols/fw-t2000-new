@@ -12,7 +12,6 @@ enum LANGUAGES
 
 enum TEXTS
 {
-    T_BTN_ROTATE_ID,
     NUMBER_OF_TEXT_KEYS
 };
 

@@ -25,9 +25,44 @@
 #include <touchgfx/hal/Types.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TiledImage.hpp>
+#include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/Color.hpp>
+#include <touchgfx/widgets/TextureMapper.hpp>
 
 namespace touchgfx
 {
+typedef enum {
+	INDICATOR_TOP_LEFT,
+	INDICATOR_TOP_CENTER,
+	INDICATOR_TOP_RIGHT,
+	INDICATOR_BOTTOM_LEFT,
+	INDICATOR_BOTTOM_CENTER,
+	INDICATOR_BOTTOM_RIGHT
+} IndicatorLocation;
+
+class CSwipePage : public Container
+{
+public:
+    touchgfx::Box background;
+	Rect client;
+
+    void initialize(int16_t width, int16_t height, Rect& rect)
+    {
+    	client = rect;
+    	setWidth(width);
+    	setHeight(height);
+        background.setPosition(0, 0, width, height);
+        background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        add(background);
+    }
+
+    void addToClient(Drawable& d)
+    {
+    	d.setXY(d.getX()+client.x, d.getY()+client.y);
+    	add(d);
+    }
+};
+
 /**
  * A SwipeContainer is a Container with a horizontally laid out list of identically sized Drawables. The bottom of
  * the SwipeContainer shows a page indicator to indicate the position in the horizontal
@@ -41,7 +76,25 @@ public:
 	CSwipe();
     virtual ~CSwipe();
 
-    virtual void handleTickEvent();
+
+
+
+
+    int16_t pageWidth;
+    int16_t pageHeight;
+    IndicatorLocation curLocation;
+    Rect clientRect;
+
+    void initialize(int16_t x, int16_t y, int16_t width, int16_t height);
+    void initialize(int16_t x, int16_t y, int16_t width, int16_t height, IndicatorLocation location, const Bitmap& normalPage, const Bitmap& highlightedPage);
+	void addPage(CSwipePage& page);
+	Rect& getClientRect();
+
+
+
+
+
+	virtual void handleTickEvent();
     virtual void handleClickEvent(const ClickEvent& event);
     virtual void handleDragEvent(const DragEvent& event);
     virtual void handleGestureEvent(const GestureEvent& event);
