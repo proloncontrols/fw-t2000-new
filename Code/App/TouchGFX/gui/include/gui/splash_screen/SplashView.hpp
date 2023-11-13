@@ -4,6 +4,7 @@
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <CSwipe.hpp>
+#include <touchgfx/widgets/TextureMapper.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -14,17 +15,20 @@ public:
     virtual void tearDownScreen();
 
 protected:
-    touchgfx::Box client;
-    CSwipe swipe;
+//    touchgfx::Box client;
+//    CSwipe swipe;
+//
+//    CSwipePage swipePage1;
+//    touchgfx::Box box1;
+//
+//    CSwipePage swipePage2;
+//    touchgfx::Box box2;
+//
+//    touchgfx::Box box3;
+//    touchgfx::Box box4;
 
-    CSwipePage swipePage1;
-    touchgfx::Box box1;
-
-    CSwipePage swipePage2;
-    touchgfx::Box box2;
-
-    touchgfx::Box box3;
-    touchgfx::Box box4;
+    Image img;
+    touchgfx::TextureMapper textureMapper1;
 };
 
 #endif // SPLASHVIEW_HPP
