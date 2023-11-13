@@ -14,8 +14,6 @@ public:
     virtual void tearDownScreen();
 
 protected:
-
-    touchgfx::Box __background;
     touchgfx::Box client;
     CSwipe swipe;
 

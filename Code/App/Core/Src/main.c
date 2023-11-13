@@ -143,7 +143,8 @@ int main(void)
   PeriphCommonClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  MX_I2C2_Init();
+  FMK_Boot();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */

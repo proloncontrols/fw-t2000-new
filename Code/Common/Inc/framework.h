@@ -272,6 +272,7 @@ FMK_EXTERN COM_Connexion_t* FMK_Conx;
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
+extern void               FMK_Boot            (void);
 extern void               FMK_Init            (void);
 extern void               FMK_Entry           (void);
 extern void               FMK_Main            (void);

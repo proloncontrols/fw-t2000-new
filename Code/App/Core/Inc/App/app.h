@@ -94,6 +94,8 @@ extern const uint16_t      APP_RegisterCount;
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
+extern void APP_OnBootBegin  (void);
+extern void APP_OnBootEnd    (void);
 extern void APP_OnInitBegin  (void);
 extern void APP_OnInitEnd    (void);
 extern void APP_OnEntryBegin (void);

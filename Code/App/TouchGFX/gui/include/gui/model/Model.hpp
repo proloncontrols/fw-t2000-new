@@ -22,7 +22,6 @@ public:
 
 	ENV_Readings_t EnvReadings;
 
-protected:
     ModelListener* modelListener;
 };
 

@@ -45,6 +45,20 @@ const MB_Register_t APP_Registers[] =
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
+void APP_OnBootBegin(void)
+{
+	//Called once before CPU peripherals are initialized
+	//(except for I2C port accessing the external E2
+	//(from beginning of calling function)
+}
+void APP_OnBootEnd(void)
+{
+	//Called once before CPU peripherals are initialized
+	//(except for I2C port accessing the external E2
+	//(from end of calling function)
+}
+
+//-----------------------------------------------------------------------------
 void APP_OnInitBegin(void)
 {
 	//Called once before the OS Kernel starts
