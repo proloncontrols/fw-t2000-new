@@ -19,8 +19,8 @@ SplashView::SplashView()
     add(client);
 
     //Initialize swipe container origin (absolute coordinates) and size (relative to origin)
-//    swipe.initialize(48, 24, 500, 250);
-    swipe.initialize(application().originX + 24, application().originY + 24, 500, 250, INDICATOR_TOP_CENTER, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_NORMAL_ID, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_HIGHLIGHT_ID);
+//    swipe.initialize(application().originX + 24, application().originY + 24, 500, 250);
+    swipe.initialize(application().originX + 24, application().originY + 24, 500, 250, INDICATOR_BOTTOM_CENTER, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_NORMAL_ID, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_HIGHLIGHT_ID);
     swipe.setSwipeCutoff(50);
     swipe.setEndSwipeElasticWidth(50);
 
