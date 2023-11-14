@@ -9,18 +9,12 @@
 FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
     : FrontendApplicationBase(m, heap)
 {
-	if(CFG.Dta.ScrOrientation == CfgScrOrientL)   //<-- T2000 orientation, not its screen
-	{
-		setScrOriginX(CLIENT_ORIGIN_PORTRAIT_X);
-		setScrOriginY(CLIENT_ORIGIN_PORTRAIT_Y);
-		setScrDirection(SCR_PORTRAIT);
-	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
-	}
+	if(CFG.Dta.ScrOrientation == CfgScrOrientP)   //<-- T2000 orientation, not its screen
+		initializeScreen(CLIENT_ORIGIN_LANDSCAPE_X, CLIENT_ORIGIN_LANDSCAPE_Y, SCR_LANDSCAPE);
 	else
 	{
-		setScrOriginX(CLIENT_ORIGIN_LANDSCAPE_X);
-		setScrOriginY(CLIENT_ORIGIN_LANDSCAPE_Y);
-		setScrDirection(SCR_LANDSCAPE);
+		initializeScreen(CLIENT_ORIGIN_PORTRAIT_X, CLIENT_ORIGIN_PORTRAIT_Y, SCR_PORTRAIT);
+	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
 	}
 }
 

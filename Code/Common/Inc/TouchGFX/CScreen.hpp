@@ -72,9 +72,7 @@ typedef enum {
 //=============================================================================
 //  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
-void setScrOriginX(int16_t x);
-void setScrOriginY(int16_t y);
-void setScrDirection(ScrDirection d);
+void initializeScreen(int16_t x, int16_t y, ScrDirection d);
 int16_t cnvScrX(int16_t);
 int16_t cnvScrY(int16_t);
 ScrDirection getScrDir();
@@ -83,3 +81,35 @@ ScrDirection getScrDir();
 
 
 #endif   //CSCREEN_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

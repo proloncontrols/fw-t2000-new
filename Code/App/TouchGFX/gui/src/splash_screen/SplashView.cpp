@@ -6,9 +6,35 @@ SplashView::SplashView()
 	if(getScrDir() == SCR_PORTRAIT)
 	    __background.setPosition(0, 0, 672, 720);
 
-	img.setXY(cnvScrX(56), cnvScrY(56));
-	img.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_560X560_ID));
-	add(img);
+//	swipe.initialize(cnvScrX(24), cnvScrY(24), 600, 600);
+	swipe.initialize(cnvScrX(24), cnvScrY(24), 600, 600, INDICATOR_BOTTOM_CENTER, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_NORMAL_ID, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_HIGHLIGHT_ID);
+	swipe.setSwipeCutoff(50);
+	swipe.setEndSwipeElasticWidth(50);
+
+	swipe.addPage(swipePage1);
+	swipe.addPage(swipePage2);
+	swipe.addPage(swipePage3);
+
+	img1.setXY(0, 0);
+	img1.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_560X560_ID));
+	swipePage1.add(img1);
+
+	img2.setXY(0, 0);
+	img2.setBitmap(touchgfx::Bitmap(BITMAP_ECOON_560X560_ID));
+	swipePage2.add(img2);
+
+	img3.setXY(0, 0);
+	img3.setBitmap(touchgfx::Bitmap(BITMAP_HEATINGON_560X560_ID));
+	swipePage3.add(img3);
+
+	swipe.setSelectedPage(0);
+	add(swipe);
+
+
+
+//	img.setXY(cnvScrX(56), cnvScrY(56));
+//	img.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_560X560_ID));
+//	add(img);
 
 
 

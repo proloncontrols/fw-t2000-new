@@ -20,15 +20,19 @@ protected:
     CSwipe swipe;
 
     CSwipePage swipePage1;
-    touchgfx::Box box1;
+//    touchgfx::Box box1;
 
     CSwipePage swipePage2;
-    touchgfx::Box box2;
+//    touchgfx::Box box2;
 
-    touchgfx::Box box3;
-    touchgfx::Box box4;
+    CSwipePage swipePage3;
 
-    CImage img;
+//    touchgfx::Box box3;
+//    touchgfx::Box box4;
+
+    CImage img1;
+    CImage img2;
+    CImage img3;
 };
 
 #endif // SPLASHVIEW_HPP

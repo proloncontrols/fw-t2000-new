@@ -46,20 +46,10 @@ static SCR_t SCR;
 //=============================================================================
 //  F U N C T I O N S
 //-----------------------------------------------------------------------------
-void setScrOriginX(int16_t x)
+void initializeScreen(int16_t x, int16_t y, ScrDirection d)
 {
 	SCR.originX = x;
-}
-
-//-----------------------------------------------------------------------------
-void setScrOriginY(int16_t y)
-{
 	SCR.originY = y;
-}
-
-//-----------------------------------------------------------------------------
-void setScrDirection(ScrDirection d)
-{
 	SCR.direction = d;
 }
 
