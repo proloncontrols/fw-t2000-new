@@ -15,20 +15,19 @@ public:
     virtual void tearDownScreen();
 
 protected:
-//    touchgfx::Box client;
-//    CSwipe swipe;
-//
-//    CSwipePage swipePage1;
-//    touchgfx::Box box1;
-//
-//    CSwipePage swipePage2;
-//    touchgfx::Box box2;
-//
-//    touchgfx::Box box3;
-//    touchgfx::Box box4;
+    touchgfx::Box client;
+    CSwipe swipe;
 
-    Image img;
-    touchgfx::TextureMapper textureMapper1;
+    CSwipePage swipePage1;
+    touchgfx::Box box1;
+
+    CSwipePage swipePage2;
+    touchgfx::Box box2;
+
+    touchgfx::Box box3;
+    touchgfx::Box box4;
+
+    TextureMapper textureMapper1;
 };
 
 #endif // SPLASHVIEW_HPP

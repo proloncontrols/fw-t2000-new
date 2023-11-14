@@ -4,8 +4,6 @@
 
 SplashView::SplashView()
 {
-//	image = new CImage(textureMapper1);
-
 	if(application().orientation == SCREEN_PORTRAIT)
 	{
 	    remove(__background);
@@ -14,30 +12,41 @@ SplashView::SplashView()
 	    add(__background);
 	}
 
-	img.setBitmap(Bitmap(BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_LARGE_HIGHLIGHT_ID));
-	img.setXY(0, 0);
+	textureMapper1.setXY(application().originX, application().originY);
+    textureMapper1.setBitmap(touchgfx::Bitmap(BITMAP_PROLON_LOGO_4_640X640_ID));
+    textureMapper1.setWidth(650);
+    textureMapper1.setHeight(650);
 
-	add(img);
+	Rect rect = textureMapper1.getRect();
+	Bitmap image = textureMapper1.getBitmap();
+	float newBitmapX = (((float)rect.width / 2.0) - ((float)image.getWidth() / 2.0));
+	float newBitmapY = (((float)rect.height / 2.0) - ((float)image.getHeight() / 2.0));
 
-//    textureMapper1.setXY(38, 330);
-//    textureMapper1.setBitmap(touchgfx::Bitmap(BITMAP_PROLON_LOGO_4_ID));
-//    textureMapper1.setWidth(521);
-//    textureMapper1.setHeight(180);
-//    textureMapper1.setBitmapPosition(26.0f, 26.0f);
-//    textureMapper1.setScale(0.7f);
+	textureMapper1.setBitmapPosition(newBitmapX, newBitmapY);
+    textureMapper1.setScale(1.0f);
+    textureMapper1.setCameraDistance(1000.0f);
+    textureMapper1.setOrigo((float)(rect.width / 2), (float)(rect.height / 2), 1000.0);
+    textureMapper1.setCamera((float)(rect.width / 2), (float)(rect.height / 2));
+    textureMapper1.setAngles(0.0f, -0.0f, -1.57f);
+    textureMapper1.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+
+    add(textureMapper1);
+
+//	textureMapper1.setXY(application().originX, application().originY);
+//    textureMapper1.setBitmap(touchgfx::Bitmap(BITMAP_PROLON_LOGO_4_640X640_ID));
+//    textureMapper1.setWidth(650);
+//    textureMapper1.setHeight(650);
+//	textureMapper1.setBitmapPosition(0.0f, 0.0f);
+//    textureMapper1.setScale(1.0f);
 //    textureMapper1.setCameraDistance(1000.0f);
 //    textureMapper1.setOrigo(90.0f, 90.0f, 1000.0f);
-//    textureMapper1.setCamera(260.5f, 90.0f);
+//    textureMapper1.setCamera(325.0f, 325.0f);
 //    textureMapper1.setAngles(0.0f, 0.0f, -1.57f);
 //    textureMapper1.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 //
 //    add(textureMapper1);
 
-
-
-
-
-//    //This is used to view the actual client area only (can be removed)
+    //    //This is used to view the actual client area only (can be removed)
 //    client.setPosition(application().originX, application().originY, 672, 672);
 //    client.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
 //    client.setAlpha(127);
