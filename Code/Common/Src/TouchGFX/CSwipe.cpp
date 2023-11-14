@@ -40,6 +40,11 @@ void CSwipe::initialize(int16_t x, int16_t y, int16_t width, int16_t height)
 	clientRect.height = height;
 	usingIndicator = false;
 }
+void CSwipe::initialize(int16_t x, int16_t y, int16_t width, int16_t height, bool showClient)
+{
+	initialize(x, y, width, height);
+	showClientRect = showClient;
+}
 
 //-----------------------------------------------------------------------------
 void CSwipe::initialize(int16_t x, int16_t y, int16_t width, int16_t height, IndicatorLocation location, const Bitmap& normalPage, const Bitmap& highlightedPage)
@@ -59,11 +64,16 @@ void CSwipe::initialize(int16_t x, int16_t y, int16_t width, int16_t height, Ind
 	clientRect.height = height - bitmapHeight;
 	usingIndicator = true;
 }
+void CSwipe::initialize(int16_t x, int16_t y, int16_t width, int16_t height, IndicatorLocation location, const Bitmap& normalPage, const Bitmap& highlightedPage, bool showClient)
+{
+	initialize(x, y, width, height, location, normalPage, highlightedPage);
+	showClientRect = showClient;
+}
 
 //-----------------------------------------------------------------------------
 void CSwipe::addPage(CSwipePage& page)
 {
-	page.initialize(pageWidth, pageHeight, clientRect);
+	page.initialize(pageWidth, pageHeight, clientRect, showClientRect);
     add(page);
 
     if(usingIndicator)

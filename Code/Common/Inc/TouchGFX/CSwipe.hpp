@@ -52,13 +52,16 @@ public:
     touchgfx::Box background;
 	Rect client;
 
-    void initialize(int16_t width, int16_t height, Rect& rect)
+    void initialize(int16_t width, int16_t height, Rect& rect, bool showClient)
     {
     	client = rect;
     	setWidth(width);
     	setHeight(height);
         background.setPosition(0, 0, width, height);
-        background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+        if(showClient)
+        	background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
+        else
+        	background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
         add(background);
     }
 
@@ -74,8 +77,11 @@ class CSwipe : public SwipeContainer
 {
 public:
     void initialize(int16_t x, int16_t y, int16_t width, int16_t height);
+    void initialize(int16_t x, int16_t y, int16_t width, int16_t height, bool showClient);
     void initialize(int16_t x, int16_t y, int16_t width, int16_t height, IndicatorLocation location, const Bitmap& normalPage, const Bitmap& highlightedPage);
-	void addPage(CSwipePage& page);
+    void initialize(int16_t x, int16_t y, int16_t width, int16_t height, IndicatorLocation location, const Bitmap& normalPage, const Bitmap& highlightedPage, bool showClient);
+
+    void addPage(CSwipePage& page);
 	Rect& getClientRect();
 
 private:
@@ -85,6 +91,7 @@ private:
     int16_t bitmapHeight;
     IndicatorLocation curLocation;
     Rect clientRect;
+    bool showClientRect;
     bool usingIndicator;
 };
 

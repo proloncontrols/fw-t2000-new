@@ -7,7 +7,7 @@ SplashView::SplashView()
 	    __background.setPosition(0, 0, 672, 720);
 
 //	swipe.initialize(cnvScrX(24), cnvScrY(24), 600, 600);
-	swipe.initialize(cnvScrX(24), cnvScrY(24), 600, 600, INDICATOR_BOTTOM_CENTER, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_NORMAL_ID, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_HIGHLIGHT_ID);
+	swipe.initialize(cnvScrX(0), cnvScrY(24), 672, 560+24, INDICATOR_BOTTOM_CENTER, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_NORMAL_ID, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_HIGHLIGHT_ID, true);
 	swipe.setSwipeCutoff(50);
 	swipe.setEndSwipeElasticWidth(50);
 
@@ -15,16 +15,20 @@ SplashView::SplashView()
 	swipe.addPage(swipePage2);
 	swipe.addPage(swipePage3);
 
-	img1.setXY(0, 0);
+//	box1.setPosition(swipePage1.client.x, swipePage1.client.y, swipePage1.client.width, swipePage1.client.height);
+//	box1.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
+//	swipePage1.add(box1);
+
 	img1.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_560X560_ID));
+	img1.setXY(swipePage1.getWidth()/2 - img1.getWidth()/2, 0);
 	swipePage1.add(img1);
 
-	img2.setXY(0, 0);
 	img2.setBitmap(touchgfx::Bitmap(BITMAP_ECOON_560X560_ID));
+	img2.setXY(swipePage2.getWidth()/2 - img2.getWidth()/2, 0);
 	swipePage2.add(img2);
 
-	img3.setXY(0, 0);
 	img3.setBitmap(touchgfx::Bitmap(BITMAP_HEATINGON_560X560_ID));
+	img3.setXY(swipePage3.getWidth()/2 - img3.getWidth()/2, 0);
 	swipePage3.add(img3);
 
 	swipe.setSelectedPage(0);
