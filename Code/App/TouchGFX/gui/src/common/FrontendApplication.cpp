@@ -4,22 +4,23 @@
 
 #include "ui.h"
 #include <cfg.h>
+#include <CScreen.hpp>
 
 FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
     : FrontendApplicationBase(m, heap)
 {
-	if(CFG.Dta.ScrOrientation == CfgScrOrientL)   //<-- T2000 landscape orientation, not the screen
+	if(CFG.Dta.ScrOrientation == CfgScrOrientL)   //<-- T2000 orientation, not its screen
 	{
-		originX = CLIENT_ORIGIN_PORTRAIT_X;
-		originY = CLIENT_ORIGIN_PORTRAIT_Y;
-		orientation = SCREEN_PORTRAIT;
+		setScrOriginX(CLIENT_ORIGIN_PORTRAIT_X);
+		setScrOriginY(CLIENT_ORIGIN_PORTRAIT_Y);
+		setScrDirection(SCR_PORTRAIT);
 	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
 	}
 	else
 	{
-		originX = CLIENT_ORIGIN_LANDSCAPE_X;
-		originY = CLIENT_ORIGIN_LANDSCAPE_Y;
-		orientation = SCREEN_LANDSCAPE;
+		setScrOriginX(CLIENT_ORIGIN_LANDSCAPE_X);
+		setScrOriginY(CLIENT_ORIGIN_LANDSCAPE_Y);
+		setScrDirection(SCR_LANDSCAPE);
 	}
 }
 

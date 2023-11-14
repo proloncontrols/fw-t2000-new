@@ -4,7 +4,8 @@
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <CSwipe.hpp>
-#include <touchgfx/widgets/TextureMapper.hpp>
+#include <CImage.hpp>
+#include <CScreen.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -27,7 +28,7 @@ protected:
     touchgfx::Box box3;
     touchgfx::Box box4;
 
-    TextureMapper textureMapper1;
+    CImage img;
 };
 
 #endif // SPLASHVIEW_HPP
