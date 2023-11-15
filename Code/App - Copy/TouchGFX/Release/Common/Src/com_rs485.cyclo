@@ -1,0 +1,8 @@
+com_rs485.c:92:6:RS485_DeInit	1
+com_rs485.c:97:6:RS485_Rx	3
+com_rs485.c:71:6:RS485_Init	2
+com_rs485.c:113:6:RS485_Tx	2
+com_rs485.c:211:13:RS485_Thread	8
+com_rs485.c:122:10:RS485_TxRx	1
+com_rs485.c:130:18:RS485_GetConnexion	1
+com_rs485.c:139:6:RS485_IRQHandler	22

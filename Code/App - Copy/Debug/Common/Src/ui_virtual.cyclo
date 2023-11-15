@@ -1,0 +1,3 @@
+ui_virtual.cpp:45:6:void UIV_placeText(touchgfx::TextArea&)	1
+ui_virtual.cpp:58:6:void UIV_placeTexture(touchgfx::TextureMapper&)	1
+ui_virtual.cpp:77:6:void UIV_placeButtonFlex(touchgfx::BoxWithBorderButtonStyle<touchgfx::ClickButtonTrigger>&)	1

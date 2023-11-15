@@ -1,0 +1,12 @@
+Types.hpp:91:5:touchgfx::colortype::colortype(uint32_t)	1
+Drawable.hpp:233:10:void touchgfx::Drawable::setPosition(int16_t, int16_t, int16_t, int16_t)	1
+Drawable.hpp:343:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	1
+Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	1
+SwipeContainer.hpp:149:13:uint8_t touchgfx::SwipeContainer::getNumberOfPages()	1
+Box.hpp:62:10:void touchgfx::Box::setColor(touchgfx::colortype)	1
+CSwipe.hpp:55:10:void touchgfx::CSwipePage::initialize(int16_t, int16_t, touchgfx::Rect&, bool)	2
+CSwipe.cpp:32:6:void touchgfx::CSwipe::initialize(int16_t, int16_t, int16_t, int16_t)	1
+CSwipe.cpp:46:6:void touchgfx::CSwipe::initialize(int16_t, int16_t, int16_t, int16_t, touchgfx::IndicatorLocation, const touchgfx::Bitmap&, const touchgfx::Bitmap&)	6
+CSwipe.cpp:66:6:void touchgfx::CSwipe::showBackground()	1
+CSwipe.cpp:72:6:void touchgfx::CSwipe::addPage(touchgfx::CSwipePage&)	12
+CSwipe.cpp:97:7:touchgfx::Rect& touchgfx::CSwipe::getClientRect()	1

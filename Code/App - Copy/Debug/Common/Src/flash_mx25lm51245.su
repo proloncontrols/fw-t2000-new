@@ -1,0 +1,5 @@
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash_mx25lm51245.c:42:19:FLASH_MX25LM51245_Init	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash_mx25lm51245.c:49:19:FLASH_MX25LM51245_Reset	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash_mx25lm51245.c:56:19:FLASH_MX25LM51245_Erase	32	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash_mx25lm51245.c:87:19:FLASH_MX25LM51245_Write	32	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash_mx25lm51245.c:98:19:FLASH_MX25LM51245_Read	24	static

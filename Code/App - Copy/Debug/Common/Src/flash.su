@@ -1,0 +1,5 @@
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash.c:54:19:FLASH_Init	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash.c:60:19:FLASH_Reset	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash.c:66:19:FLASH_Erase	24	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash.c:72:19:FLASH_Write	24	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash.c:81:19:FLASH_Read	24	static

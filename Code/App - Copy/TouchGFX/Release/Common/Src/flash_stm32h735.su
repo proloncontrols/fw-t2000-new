@@ -1,0 +1,5 @@
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash_stm32h735.c:43:19:FLASH_STM32H735_Init	0	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash_stm32h735.c:49:19:FLASH_STM32H735_Reset	0	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash_stm32h735.c:55:19:FLASH_STM32H735_Erase	32	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash_stm32h735.c:81:19:FLASH_STM32H735_Write	32	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/flash_stm32h735.c:110:19:FLASH_STM32H735_Read	8	static

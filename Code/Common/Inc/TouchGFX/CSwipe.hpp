@@ -77,10 +77,8 @@ class CSwipe : public SwipeContainer
 {
 public:
     void initialize(int16_t x, int16_t y, int16_t width, int16_t height);
-    void initialize(int16_t x, int16_t y, int16_t width, int16_t height, bool showClient);
     void initialize(int16_t x, int16_t y, int16_t width, int16_t height, IndicatorLocation location, const Bitmap& normalPage, const Bitmap& highlightedPage);
-    void initialize(int16_t x, int16_t y, int16_t width, int16_t height, IndicatorLocation location, const Bitmap& normalPage, const Bitmap& highlightedPage, bool showClient);
-
+    void showBackground();   //<-- This is just a test function to show the actual size/location of the swipe on screen
     void addPage(CSwipePage& page);
 	Rect& getClientRect();
 
@@ -91,7 +89,7 @@ private:
     int16_t bitmapHeight;
     IndicatorLocation curLocation;
     Rect clientRect;
-    bool showClientRect;
+    bool showBackgroundRect;
     bool usingIndicator;
 };
 

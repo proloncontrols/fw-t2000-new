@@ -1,0 +1,10 @@
+Drawable.hpp:198:17:const touchgfx::Rect& touchgfx::Drawable::getRect() const	1
+Drawable.hpp:233:10:void touchgfx::Drawable::setPosition(int16_t, int16_t, int16_t, int16_t)	1
+Drawable.hpp:293:13:int16_t touchgfx::Drawable::getWidth() const	1
+Drawable.hpp:303:13:int16_t touchgfx::Drawable::getHeight() const	1
+Drawable.hpp:343:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	1
+Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	1
+Image.hpp:88:12:touchgfx::Bitmap touchgfx::Image::getBitmap() const	1
+CWidgets.cpp:34:6:void touchgfx::rotateBox(touchgfx::Box&)	2
+CWidgets.cpp:44:6:void touchgfx::rotateTextureMapper(touchgfx::TextureMapper&)	8
+CWidgets.cpp:58:6:void touchgfx::rotateTextArea(touchgfx::TextArea&)	2

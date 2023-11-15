@@ -1,0 +1,94 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+# Toolchain: GNU Tools for STM32 (10.3-2021.10)
+################################################################################
+
+ELF_SRCS := 
+C_UPPER_SRCS := 
+CXX_SRCS := 
+C++_SRCS := 
+OBJ_SRCS := 
+S_SRCS := 
+CC_SRCS := 
+C_SRCS := 
+CPP_SRCS := 
+S_UPPER_SRCS := 
+O_SRCS := 
+CYCLO_FILES := 
+OBJDUMP_LIST := 
+C_UPPER_DEPS := 
+S_DEPS := 
+C_DEPS := 
+CC_DEPS := 
+OBJCOPY_HEX := 
+SIZE_OUTPUT := 
+C++_DEPS := 
+SU_FILES := 
+EXECUTABLES := 
+OBJS := 
+CXX_DEPS := 
+MAP_FILES := 
+S_UPPER_DEPS := 
+CPP_DEPS := 
+
+# Every subdirectory with source files must be described here
+SUBDIRS := \
+Common/Src/TouchGFX \
+Common/Src \
+Core/Inc \
+Core/Src/App \
+Core/Src \
+Core/Startup \
+Drivers/BSP/Components/ft5336 \
+Drivers/BSP/Components/mx25lm51245g \
+Drivers/BSP/Components/s70kl1281 \
+Drivers/BSP/STM32H735G-DK \
+Drivers/STM32H7xx_HAL_Driver/Src \
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 \
+Middlewares/Third_Party/FreeRTOS/Source \
+Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
+Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang \
+TouchGFX/App \
+TouchGFX/Release/Common/Src/TouchGFX \
+TouchGFX/Release/Common/Src \
+TouchGFX/Release/Core/Inc \
+TouchGFX/Release/Core/Src/App \
+TouchGFX/Release/Core/Src \
+TouchGFX/Release/Core/Startup \
+TouchGFX/Release/Drivers/BSP/Components/ft5336 \
+TouchGFX/Release/Drivers/BSP/Components/mx25lm51245g \
+TouchGFX/Release/Drivers/BSP/Components/s70kl1281 \
+TouchGFX/Release/Drivers/BSP/STM32H735G-DK \
+TouchGFX/Release/Drivers/STM32H7xx_HAL_Driver/Src \
+TouchGFX/Release/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 \
+TouchGFX/Release/Middlewares/Third_Party/FreeRTOS/Source \
+TouchGFX/Release/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
+TouchGFX/Release/Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang \
+TouchGFX/Release/TouchGFX/App \
+TouchGFX/Release/TouchGFX/generated/fonts/src \
+TouchGFX/Release/TouchGFX/generated/gui_generated/src/clear_screen \
+TouchGFX/Release/TouchGFX/generated/gui_generated/src/common \
+TouchGFX/Release/TouchGFX/generated/gui_generated/src/main_screen \
+TouchGFX/Release/TouchGFX/generated/gui_generated/src/splash_screen \
+TouchGFX/Release/TouchGFX/generated/images/src \
+TouchGFX/Release/TouchGFX/generated/texts/src \
+TouchGFX/Release/TouchGFX/gui/src/clear_screen \
+TouchGFX/Release/TouchGFX/gui/src/common \
+TouchGFX/Release/TouchGFX/gui/src/main_screen \
+TouchGFX/Release/TouchGFX/gui/src/model \
+TouchGFX/Release/TouchGFX/gui/src/splash_screen \
+TouchGFX/Release/TouchGFX/target \
+TouchGFX/Release/TouchGFX/target/generated \
+TouchGFX/generated/fonts/src \
+TouchGFX/generated/gui_generated/src/common \
+TouchGFX/generated/gui_generated/src/containers \
+TouchGFX/generated/gui_generated/src/splash_screen \
+TouchGFX/generated/images/src \
+TouchGFX/generated/texts/src \
+TouchGFX/gui/src/common \
+TouchGFX/gui/src/containers \
+TouchGFX/gui/src/model \
+TouchGFX/gui/src/splash_screen \
+TouchGFX/target \
+TouchGFX/target/generated \
+

@@ -1,0 +1,9 @@
+app.c:48:6:APP_OnBootBegin	1
+app.c:54:6:APP_OnBootEnd	1
+app.c:62:6:APP_OnInitBegin	1
+app.c:68:6:APP_OnInitEnd	1
+app.c:83:6:APP_OnEntryBegin	1
+app.c:88:6:APP_OnEntryEnd	1
+app.c:95:6:APP_OnPeriodic	1
+app.c:104:6:APP_OnCom	1
+app.c:112:6:APP_OnFlag	1

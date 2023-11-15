@@ -1,0 +1,107 @@
+Types.hpp:78:5:touchgfx::colortype::colortype()	1
+Types.hpp:91:5:touchgfx::colortype::colortype(uint32_t)	1
+Types.hpp:127:5:touchgfx::Rect::Rect()	1
+Types.hpp:140:5:touchgfx::Rect::Rect(int16_t, int16_t, int16_t, int16_t)	1
+ClickEvent.hpp:123:20:touchgfx::ClickEvent::ClickEventType touchgfx::ClickEvent::getType() const	1
+Bitmap.hpp:123:5:touchgfx::Bitmap::Bitmap(touchgfx::BitmapId)	1
+Drawable.hpp:48:5:touchgfx::Drawable::Drawable()	1
+Drawable.hpp:62:13:touchgfx::Drawable::~Drawable()	1
+Drawable.hpp:62:13:virtual touchgfx::Drawable::~Drawable()	1
+Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	2
+Drawable.hpp:147:23:virtual touchgfx::Drawable* touchgfx::Drawable::getFirstChild()	1
+Drawable.hpp:233:10:void touchgfx::Drawable::setPosition(int16_t, int16_t, int16_t, int16_t)	1
+Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	1
+Drawable.hpp:327:18:virtual void touchgfx::Drawable::setY(int16_t)	1
+Drawable.hpp:343:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	1
+Drawable.hpp:356:18:virtual void touchgfx::Drawable::setWidth(int16_t)	1
+Drawable.hpp:368:18:virtual void touchgfx::Drawable::setHeight(int16_t)	1
+Drawable.hpp:378:18:virtual void touchgfx::Drawable::childGeometryChanged()	1
+Drawable.hpp:389:18:virtual void touchgfx::Drawable::handleClickEvent(const touchgfx::ClickEvent&)	1
+Drawable.hpp:401:18:virtual void touchgfx::Drawable::handleGestureEvent(const touchgfx::GestureEvent&)	1
+Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	1
+Drawable.hpp:490:18:virtual void touchgfx::Drawable::handleDragEvent(const touchgfx::DragEvent&)	1
+Drawable.hpp:501:18:virtual void touchgfx::Drawable::handleTickEvent()	1
+Drawable.hpp:525:10:void touchgfx::Drawable::setTouchable(bool)	1
+Drawable.hpp:537:10:bool touchgfx::Drawable::isVisible() const	1
+Drawable.hpp:549:10:bool touchgfx::Drawable::isTouchable() const	1
+Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	1
+Drawable.hpp:625:10:void touchgfx::Drawable::resetDrawChainCache()	1
+Drawable.hpp:703:18:virtual void touchgfx::Drawable::setupDrawChain(const touchgfx::Rect&, touchgfx::Drawable**)	1
+Container.hpp:43:5:touchgfx::Container::Container()	1
+Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	1
+Widget.hpp:45:18:virtual void touchgfx::Widget::getLastChild(int16_t, int16_t, touchgfx::Drawable**)	4
+Widget.hpp:36:7:touchgfx::Widget::Widget()	1
+Widget.hpp:36:7:touchgfx::Widget::~Widget()	1
+Widget.hpp:36:7:virtual touchgfx::Widget::~Widget()	1
+Image.hpp:50:5:touchgfx::Image::Image(const touchgfx::Bitmap&)	1
+TextureMapper.hpp:91:18:virtual void touchgfx::TextureMapper::setRenderingAlgorithm(touchgfx::TextureMapper::RenderingAlgorithm)	1
+TextureMapper.hpp:303:18:virtual void touchgfx::TextureMapper::setOrigo(float, float, float)	1
+TextureMapper.hpp:371:18:virtual void touchgfx::TextureMapper::setCamera(float, float)	1
+TextureMapper.hpp:411:18:virtual void touchgfx::TextureMapper::setCameraDistance(float)	2
+TextureMapper.hpp:438:18:virtual void touchgfx::TextureMapper::setBitmapPosition(float, float)	1
+TypedText.hpp:59:5:touchgfx::TypedText::TypedText(touchgfx::TypedTextId)	1
+TypedText.hpp:65:13:touchgfx::TypedText::~TypedText()	1
+TypedText.hpp:65:13:virtual touchgfx::TypedText::~TypedText()	1
+TextArea.hpp:43:5:touchgfx::TextArea::TextArea()	1
+TextArea.hpp:48:18:virtual void touchgfx::TextArea::setWidth(int16_t)	1
+TextArea.hpp:54:18:virtual void touchgfx::TextArea::setHeight(int16_t)	1
+TextArea.hpp:60:18:virtual touchgfx::Rect touchgfx::TextArea::getSolidRect() const	1
+TextArea.hpp:89:18:virtual void touchgfx::TextArea::setAlpha(uint8_t)	1
+TextArea.hpp:111:18:virtual void touchgfx::TextArea::setBaselineY(int16_t)	1
+TextArea.hpp:127:18:virtual void touchgfx::TextArea::setXBaselineY(int16_t, int16_t)	1
+TextArea.hpp:246:22:const touchgfx::TypedText& touchgfx::TextArea::getTypedText() const	1
+TextArea.hpp:403:41:virtual const UnicodeChar* touchgfx::TextArea::getWildcard2() const	1
+TextArea.hpp:429:9:touchgfx::TextArea::BoundingArea::BoundingArea()	1
+TextArea.hpp:40:7:touchgfx::TextArea::~TextArea()	1
+TextArea.hpp:40:7:virtual touchgfx::TextArea::~TextArea()	1
+TextAreaWithWildcard.hpp:36:5:touchgfx::TextAreaWithWildcardBase::TextAreaWithWildcardBase()	1
+TextAreaWithWildcard.hpp:46:36:virtual touchgfx::TextArea::BoundingArea touchgfx::TextAreaWithWildcardBase::calculateBoundingArea() const	1
+TextAreaWithWildcard.hpp:33:7:touchgfx::TextAreaWithWildcardBase::~TextAreaWithWildcardBase()	1
+TextAreaWithWildcard.hpp:33:7:virtual touchgfx::TextAreaWithWildcardBase::~TextAreaWithWildcardBase()	1
+TextAreaWithWildcard.hpp:62:5:touchgfx::TextAreaWithOneWildcard::TextAreaWithOneWildcard()	1
+TextAreaWithWildcard.hpp:76:10:void touchgfx::TextAreaWithOneWildcard::setWildcard1(const UnicodeChar*)	1
+TextAreaWithWildcard.hpp:81:41:virtual const UnicodeChar* touchgfx::TextAreaWithOneWildcard::getWildcard1() const	1
+TextAreaWithWildcard.hpp:95:10:void touchgfx::TextAreaWithOneWildcard::setWildcard(const UnicodeChar*)	1
+Container.hpp:40:7:touchgfx::Container::~Container()	1
+Container.hpp:40:7:virtual touchgfx::Container::~Container()	1
+AbstractButtonContainer.hpp:37:5:touchgfx::AbstractButtonContainer::AbstractButtonContainer()	1
+AbstractButtonContainer.hpp:51:10:void touchgfx::AbstractButtonContainer::setPressed(bool)	1
+AbstractButtonContainer.hpp:64:10:bool touchgfx::AbstractButtonContainer::getPressed()	1
+AbstractButtonContainer.hpp:77:13:uint8_t touchgfx::AbstractButtonContainer::getAlpha() const	1
+AbstractButtonContainer.hpp:99:18:virtual void touchgfx::AbstractButtonContainer::executeAction()	4
+AbstractButtonContainer.hpp:114:18:virtual void touchgfx::AbstractButtonContainer::handlePressedUpdated()	1
+AbstractButtonContainer.hpp:119:18:virtual void touchgfx::AbstractButtonContainer::handleAlphaUpdated()	1
+Image.hpp:38:7:touchgfx::Image::~Image()	1
+Image.hpp:38:7:virtual touchgfx::Image::~Image()	1
+Box.hpp:33:5:touchgfx::Box::Box()	1
+Box.hpp:62:10:void touchgfx::Box::setColor(touchgfx::colortype)	1
+Box.hpp:82:10:void touchgfx::Box::setAlpha(uint8_t)	1
+Box.hpp:29:7:touchgfx::Box::~Box()	1
+Box.hpp:29:7:virtual touchgfx::Box::~Box()	1
+BoxWithBorder.hpp:34:5:touchgfx::BoxWithBorder::BoxWithBorder()	1
+BoxWithBorder.hpp:61:10:void touchgfx::BoxWithBorder::setBorderColor(touchgfx::colortype)	1
+BoxWithBorder.hpp:85:10:void touchgfx::BoxWithBorder::setBorderSize(uint16_t)	1
+ClickButtonTrigger.hpp:47:18:virtual void touchgfx::ClickButtonTrigger::handleClickEvent(const touchgfx::ClickEvent&)	8
+AbstractButtonContainer.hpp:34:7:touchgfx::AbstractButtonContainer::~AbstractButtonContainer()	1
+AbstractButtonContainer.hpp:34:7:virtual touchgfx::AbstractButtonContainer::~AbstractButtonContainer()	1
+CustomContainer1Base.cpp:9:1:CustomContainer1Base::CustomContainer1Base()	1
+CustomContainer1Base.cpp:160:1:CustomContainer1Base::~CustomContainer1Base()	1
+CustomContainer1Base.cpp:160:1:virtual CustomContainer1Base::~CustomContainer1Base()	1
+CustomContainer1Base.cpp:165:6:virtual void CustomContainer1Base::initialize()	1
+ClickButtonTrigger.hpp:35:7:touchgfx::ClickButtonTrigger::ClickButtonTrigger()	1
+ClickButtonTrigger.hpp:35:7:touchgfx::ClickButtonTrigger::~ClickButtonTrigger()	1
+ClickButtonTrigger.hpp:35:7:virtual touchgfx::ClickButtonTrigger::~ClickButtonTrigger()	1
+BoxWithBorder.hpp:31:7:touchgfx::BoxWithBorder::~BoxWithBorder()	1
+BoxWithBorder.hpp:31:7:virtual touchgfx::BoxWithBorder::~BoxWithBorder()	1
+BoxWithBorderButtonStyle.hpp:44:5:touchgfx::BoxWithBorderButtonStyle<T>::BoxWithBorderButtonStyle() [with T = touchgfx::ClickButtonTrigger]	1
+BoxWithBorderButtonStyle.hpp:61:10:void touchgfx::BoxWithBorderButtonStyle<T>::setBoxWithBorderPosition(int16_t, int16_t, int16_t, int16_t) [with T = touchgfx::ClickButtonTrigger]	1
+BoxWithBorderButtonStyle.hpp:110:10:void touchgfx::BoxWithBorderButtonStyle<T>::setBorderSize(uint8_t) [with T = touchgfx::ClickButtonTrigger]	1
+BoxWithBorderButtonStyle.hpp:94:10:void touchgfx::BoxWithBorderButtonStyle<T>::setBoxWithBorderColors(touchgfx::colortype, touchgfx::colortype, touchgfx::colortype, touchgfx::colortype) [with T = touchgfx::ClickButtonTrigger]	1
+BoxWithBorderButtonStyle.hpp:123:18:void touchgfx::BoxWithBorderButtonStyle<T>::handlePressedUpdated() [with T = touchgfx::ClickButtonTrigger]	3
+BoxWithBorderButtonStyle.hpp:41:7:touchgfx::BoxWithBorderButtonStyle<touchgfx::ClickButtonTrigger>::~BoxWithBorderButtonStyle()	1
+BoxWithBorderButtonStyle.hpp:41:7:virtual touchgfx::BoxWithBorderButtonStyle<touchgfx::ClickButtonTrigger>::~BoxWithBorderButtonStyle()	1
+TextAreaWithWildcard.hpp:59:7:touchgfx::TextAreaWithOneWildcard::~TextAreaWithOneWildcard()	1
+TextAreaWithWildcard.hpp:59:7:virtual touchgfx::TextAreaWithOneWildcard::~TextAreaWithOneWildcard()	1
+TextureMapper.hpp:46:7:touchgfx::TextureMapper::~TextureMapper()	1
+TextureMapper.hpp:46:7:virtual touchgfx::TextureMapper::~TextureMapper()	1
+BoxWithBorderButtonStyle.hpp:131:18:void touchgfx::BoxWithBorderButtonStyle<T>::handleAlphaUpdated() [with T = touchgfx::ClickButtonTrigger]	1

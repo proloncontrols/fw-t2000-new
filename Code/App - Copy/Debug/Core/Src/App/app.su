@@ -1,0 +1,9 @@
+../Core/Src/App/app.c:48:6:APP_OnBootBegin	4	static
+../Core/Src/App/app.c:54:6:APP_OnBootEnd	4	static
+../Core/Src/App/app.c:62:6:APP_OnInitBegin	4	static
+../Core/Src/App/app.c:68:6:APP_OnInitEnd	8	static
+../Core/Src/App/app.c:83:6:APP_OnEntryBegin	4	static
+../Core/Src/App/app.c:88:6:APP_OnEntryEnd	4	static
+../Core/Src/App/app.c:95:6:APP_OnPeriodic	8	static
+../Core/Src/App/app.c:104:6:APP_OnCom	16	static
+../Core/Src/App/app.c:112:6:APP_OnFlag	16	static

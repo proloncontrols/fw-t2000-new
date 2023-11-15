@@ -7,7 +7,248 @@
         "Interactions": []
       }
     ],
-    "CustomContainerDefinitions": [],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "cntBlue",
+        "Width": 624,
+        "Height": 624,
+        "Components": [
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "Width": 624,
+            "Height": 624
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureMapper1",
+            "X": 574,
+            "Width": 50,
+            "Height": 50,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Setting50x50.png",
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureMapper2",
+            "X": 32,
+            "Y": 32,
+            "Width": 560,
+            "Height": 560,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "CoolingON_560x560.png",
+            "LockBitmapToCenter": true,
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureMapper3",
+            "X": 224,
+            "Width": 176,
+            "Height": 176,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Prolon_176x176.png",
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureMapper4",
+            "X": 287,
+            "Y": 415,
+            "Width": 50,
+            "Height": 50,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Snowflake_50x50.png",
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureMapper5",
+            "X": 562,
+            "Y": 562,
+            "Width": 60,
+            "Height": 60,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "StandbyMode_60x60.png",
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureMapper6",
+            "X": 88,
+            "Y": 29,
+            "Width": 24,
+            "Height": 24,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Outside_24x24.png",
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextureMapper",
+            "Name": "textureMapper7",
+            "X": 86,
+            "Y": 590,
+            "Width": 30,
+            "Height": 30,
+            "RenderingAlgorithm": "Nearest-neighbor",
+            "FileNameImage": "Drop_30x30.png",
+            "Scale": 1.0,
+            "XOrigo": 90.0,
+            "YOrigo": 90.0,
+            "ZOrigo": 1000.0,
+            "CameraDistance": 1000.0
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 82,
+            "Width": 25,
+            "Height": 24,
+            "TextId": "__SingleUse_3JBL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 186,
+              "Green": 188,
+              "Blue": 190
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1_1",
+            "X": 85,
+            "Y": 561,
+            "Width": 21,
+            "Height": 24,
+            "TextId": "__SingleUse_RVHL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 186,
+              "Green": 188,
+              "Blue": 190
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea2",
+            "Y": -16,
+            "Width": 81,
+            "Height": 95,
+            "TextId": "__SingleUse_ABG9",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 186,
+              "Green": 188,
+              "Blue": 190
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea2_1",
+            "Y": 547,
+            "Width": 81,
+            "Height": 95,
+            "TextId": "__SingleUse_AYH0",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 186,
+              "Green": 188,
+              "Blue": 190
+            },
+            "AutoSize": true,
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 3
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea3",
+            "X": 5,
+            "Y": 137,
+            "Width": 385,
+            "Height": 236,
+            "TextId": "__SingleUse_KSU9",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea3_1",
+            "X": 378,
+            "Y": 286,
+            "Width": 249,
+            "Height": 87,
+            "TextId": "__SingleUse_1XRD",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 4
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea3_1_1",
+            "X": 378,
+            "Y": 181,
+            "Width": 251,
+            "Height": 105,
+            "TextId": "__SingleUse_O8JC",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          }
+        ],
+        "Interactions": []
+      }
+    ],
     "Name": "MyApplication",
     "Resolution": {
       "Width": 720,

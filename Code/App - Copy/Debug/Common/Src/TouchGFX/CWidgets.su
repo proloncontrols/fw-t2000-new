@@ -1,0 +1,10 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:198:17:const touchgfx::Rect& touchgfx::Drawable::getRect() const	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:233:10:void touchgfx::Drawable::setPosition(int16_t, int16_t, int16_t, int16_t)	24	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:293:13:int16_t touchgfx::Drawable::getWidth() const	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:303:13:int16_t touchgfx::Drawable::getHeight() const	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:343:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Image.hpp:88:12:touchgfx::Bitmap touchgfx::Image::getBitmap() const	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/CWidgets.cpp:34:6:void touchgfx::rotateBox(touchgfx::Box&)	40	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/CWidgets.cpp:44:6:void touchgfx::rotateTextureMapper(touchgfx::TextureMapper&)	48	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/CWidgets.cpp:58:6:void touchgfx::rotateTextArea(touchgfx::TextArea&)	48	static

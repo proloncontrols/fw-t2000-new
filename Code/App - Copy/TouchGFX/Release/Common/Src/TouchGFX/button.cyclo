@@ -1,0 +1,10 @@
+Drawable.hpp:198:17:const touchgfx::Rect& touchgfx::Drawable::getRect() const	1
+Drawable.hpp:233:10:void touchgfx::Drawable::setPosition(int16_t, int16_t, int16_t, int16_t)	1
+Drawable.hpp:343:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	1
+Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	1
+widget.hpp:84:7:void CRect::operator=(const CRect&)	1
+widget.hpp:92:7:void CRect::operator=(const touchgfx::Rect&)	1
+button.cpp:30:1:CButton::CButton(touchgfx::BoxWithBorderButtonStyle<touchgfx::ClickButtonTrigger>&)	1
+button.cpp:39:6:virtual void CButton::placeOnScreen()	1
+button.cpp:49:6:virtual void CButton::getPosition(CRect&)	1
+button.cpp:55:6:virtual void CButton::setPosition(CRect&)	1

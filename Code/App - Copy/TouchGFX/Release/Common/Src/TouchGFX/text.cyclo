@@ -1,0 +1,9 @@
+Drawable.hpp:198:17:const touchgfx::Rect& touchgfx::Drawable::getRect() const	1
+Drawable.hpp:233:10:void touchgfx::Drawable::setPosition(int16_t, int16_t, int16_t, int16_t)	1
+Drawable.hpp:343:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	1
+Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	1
+widget.hpp:92:7:void CRect::operator=(const touchgfx::Rect&)	1
+text.cpp:30:1:CText::CText(touchgfx::TextArea&)	1
+text.cpp:39:6:virtual void CText::placeOnScreen()	2
+text.cpp:58:6:virtual void CText::getPosition(CRect&)	1
+text.cpp:64:6:virtual void CText::setPosition(CRect&)	2

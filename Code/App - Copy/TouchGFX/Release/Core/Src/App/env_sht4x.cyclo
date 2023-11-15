@@ -1,0 +1,4 @@
+env_sht4x.c:206:16:ENV_SHT4x_CalculateCRC.constprop	4
+env_sht4x.c:111:6:ENV_SHT4x_Read	8
+env_sht4x.c:147:6:ENV_SHT4x_Reset	7
+env_sht4x.c:192:6:ENV_SHT4x_Format	1

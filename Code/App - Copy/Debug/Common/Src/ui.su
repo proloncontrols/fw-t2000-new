@@ -1,0 +1,10 @@
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui.c:50:6:UI_Init	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui.c:60:6:UI_ScreenOn	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui.c:70:6:UI_ScreenOff	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui.c:76:6:UI_ScreenTimeout	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui.c:88:6:UI_ScreenTimeoutReset	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui.c:95:6:UI_PostEnv	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui.c:101:6:UI_ScreenSwitchTo	24	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui.c:112:6:UI_ScreenSwitchCplt	8	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui.c:118:6:UI_ProgressInit	24	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui.c:127:6:UI_ProgressInc	16	static

@@ -1,0 +1,10 @@
+com.c:102:6:COM_Init	2
+com.c:109:6:COM_DeInit	2
+com.c:116:6:COM_Rx	1
+com.c:122:6:COM_Tx	1
+com.c:128:10:COM_TxRx	1
+com.c:134:13:COM_GetMedia	1
+com.c:140:18:COM_GetConnexion	1
+com.c:146:8:COM_ValidateCRC	2
+com.c:161:10:COM_CRC16	2
+com.c:181:6:COM_PostMedia	1

@@ -38,6 +38,8 @@ namespace touchgfx
 #define CLIENT_ORIGIN_PORTRAIT_Y    24
 #define CLIENT_WIDTH                672
 #define CLIENT_HEIGHT               672
+
+#define TEXTUREMAPPER_270_ANGLE_Z  -1.572f
 ////
 //// Thermostat orientation (portrait)
 ////

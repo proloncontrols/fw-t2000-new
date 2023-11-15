@@ -1,0 +1,11 @@
+../Core/Src/main.c:677:13:MX_SPI5_Init	8	static,ignoring_inline_asm
+../Core/Src/main.c:1076:6:StartDefaultTask	8	static
+../Core/Src/main.c:220:6:SystemClock_Config	128	static,ignoring_inline_asm
+../Core/Src/main.c:280:6:PeriphCommonClock_Config	192	static,ignoring_inline_asm
+../Core/Src/main.c:1046:6:WriteCommand	16	static
+../Core/Src/main.c:1054:6:WriteData	16	static
+../Core/Src/main.c:1062:6:Wrt_Reg_3052	8	static
+../Core/Src/main.c:832:6:NV3052_RGB_init	8	static
+../Core/Src/main.c:115:5:main	144	static,ignoring_inline_asm
+../Core/Src/main.c:1167:6:HAL_TIM_PeriodElapsedCallback	0	static
+../Core/Src/main.c:1184:6:Error_Handler	0	static,ignoring_inline_asm

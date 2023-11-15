@@ -1,0 +1,4 @@
+CScreen.cpp:49:6:void touchgfx::initializeScreen(int16_t, int16_t, touchgfx::ScrDirection)	1
+CScreen.cpp:57:9:int16_t touchgfx::cnvScrX(int16_t)	1
+CScreen.cpp:63:9:int16_t touchgfx::cnvScrY(int16_t)	1
+CScreen.cpp:69:14:touchgfx::ScrDirection touchgfx::getScrDir()	1

@@ -1,37 +1,46 @@
+
+//=============================================================================
+//         PPPPPPP   RRRRRRR    OOOOOO   LL      OOOOOO   NN    NN
+//         PP    PP  RR    RR  OO    OO  LL     OO    OO  NNN   NN
+//         PP    PP  RR    RR  OO    OO  LL     OO    OO  NN N  NN
+//         PPPPPPP   RRRRRRR   OO    OO  LL     OO    OO  NN NN NN
+//         PP        RR  RR    OO    OO  LL     OO    OO  NN  N NN
+//         PP        RR   RR   OO    OO  LL     OO    OO  NN   NNN
+//         PP        RR    RR   OOOOOO   LLLLLL  OOOOOO   NN    NN
 //
-////=============================================================================
-////         PPPPPPP   RRRRRRR    OOOOOO   LL      OOOOOO   NN    NN
-////         PP    PP  RR    RR  OO    OO  LL     OO    OO  NNN   NN
-////         PP    PP  RR    RR  OO    OO  LL     OO    OO  NN N  NN
-////         PPPPPPP   RRRRRRR   OO    OO  LL     OO    OO  NN NN NN
-////         PP        RR  RR    OO    OO  LL     OO    OO  NN  N NN
-////         PP        RR   RR   OO    OO  LL     OO    OO  NN   NNN
-////         PP        RR    RR   OOOOOO   LLLLLL  OOOOOO   NN    NN
-////
-////                        (c) Copyright  2022-2023
-////-----------------------------------------------------------------------------
-////         File : CWidgets.hpp
-////         Date : -----------
-////       Author : Jean-Francois Barriere
-////-----------------------------------------------------------------------------
-////  Description : TouchGFX widget container class header file
-////=============================================================================
-//#ifndef WIDGETS_HPP
-//#define WIDGETS_HPP
-//
-//
-////=============================================================================
-////  I N C L U D E S
-////-----------------------------------------------------------------------------
+//                        (c) Copyright  2022-2023
+//-----------------------------------------------------------------------------
+//         File : CWidgets.hpp
+//         Date : -----------
+//       Author : Jean-Francois Barriere
+//-----------------------------------------------------------------------------
+//  Description : TouchGFX widget container class header file
+//=============================================================================
+#ifndef WIDGETS_HPP
+#define WIDGETS_HPP
+
+
+//=============================================================================
+//  I N C L U D E S
+//-----------------------------------------------------------------------------
+#include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/TextureMapper.hpp>
 //#include <CWidget.hpp>
 //#include <CButton.hpp>
 //#include <CImage.hpp>
 //#include <CText.hpp>
-//
-//
-//namespace touchgfx
-//{
-//
+
+
+namespace touchgfx
+{
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void rotateTextureMapper(TextureMapper& mapper);
+void rotateBox(Box& box);
+
+
 ////=============================================================================
 ////  C L A S S E S
 ////-----------------------------------------------------------------------------
@@ -50,7 +59,7 @@
 //	Rotation curRotation;
 //};
 //
-//}   //namespace touchgfx
-//
-//
-//#endif   //WIDGETS_HPP
+}   //namespace touchgfx
+
+
+#endif   //WIDGETS_HPP

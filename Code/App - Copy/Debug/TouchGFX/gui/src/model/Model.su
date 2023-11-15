@@ -1,0 +1,4 @@
+../TouchGFX/gui/src/model/Model.cpp:9:1:Model::Model()	16	static
+../TouchGFX/gui/src/model/Model.cpp:15:6:void Model::tick()	16	static
+../TouchGFX/gui/src/model/Model.cpp:22:6:void Model::PostSystemReady()	16	static
+../TouchGFX/gui/src/model/Model.cpp:28:6:void Model::PostSystemReset()	16	static

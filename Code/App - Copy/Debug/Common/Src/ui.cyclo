@@ -1,0 +1,10 @@
+ui.c:50:6:UI_Init	1
+ui.c:60:6:UI_ScreenOn	2
+ui.c:70:6:UI_ScreenOff	1
+ui.c:76:6:UI_ScreenTimeout	4
+ui.c:88:6:UI_ScreenTimeoutReset	1
+ui.c:95:6:UI_PostEnv	1
+ui.c:101:6:UI_ScreenSwitchTo	1
+ui.c:112:6:UI_ScreenSwitchCplt	1
+ui.c:118:6:UI_ProgressInit	1
+ui.c:127:6:UI_ProgressInc	1

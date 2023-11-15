@@ -1,0 +1,12 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/hal/Types.hpp:91:5:touchgfx::colortype::colortype(uint32_t)	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:233:10:void touchgfx::Drawable::setPosition(int16_t, int16_t, int16_t, int16_t)	24	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:343:10:void touchgfx::Drawable::setXY(int16_t, int16_t)	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Drawable.hpp:413:10:void touchgfx::Drawable::setWidthHeight(int16_t, int16_t)	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/SwipeContainer.hpp:149:13:uint8_t touchgfx::SwipeContainer::getNumberOfPages()	16	static
+../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:62:10:void touchgfx::Box::setColor(touchgfx::colortype)	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Inc/TouchGFX/CSwipe.hpp:55:10:void touchgfx::CSwipePage::initialize(int16_t, int16_t, touchgfx::Rect&, bool)	56	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/CSwipe.cpp:32:6:void touchgfx::CSwipe::initialize(int16_t, int16_t, int16_t, int16_t)	40	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/CSwipe.cpp:46:6:void touchgfx::CSwipe::initialize(int16_t, int16_t, int16_t, int16_t, touchgfx::IndicatorLocation, const touchgfx::Bitmap&, const touchgfx::Bitmap&)	40	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/CSwipe.cpp:66:6:void touchgfx::CSwipe::showBackground()	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/CSwipe.cpp:72:6:void touchgfx::CSwipe::addPage(touchgfx::CSwipePage&)	32	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/TouchGFX/CSwipe.cpp:97:7:touchgfx::Rect& touchgfx::CSwipe::getClientRect()	16	static

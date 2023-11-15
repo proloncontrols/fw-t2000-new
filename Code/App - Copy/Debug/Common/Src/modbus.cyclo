@@ -1,0 +1,8 @@
+modbus.c:89:6:MB_Init	1
+modbus.c:94:6:MB_Process	6
+modbus.c:116:13:MB_Read	14
+modbus.c:173:13:MB_Write	9
+modbus.c:221:13:MB_WriteRam	7
+modbus.c:241:29:MB_GetRegister	3
+modbus.c:252:13:MB_Error	1
+modbus.c:260:13:MB_Tx	1

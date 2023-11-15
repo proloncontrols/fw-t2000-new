@@ -1,0 +1,8 @@
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/modbus.c:89:6:MB_Init	4	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/modbus.c:94:6:MB_Process	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/modbus.c:116:13:MB_Read	48	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/modbus.c:173:13:MB_Write	40	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/modbus.c:221:13:MB_WriteRam	24	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/modbus.c:241:29:MB_GetRegister	24	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/modbus.c:252:13:MB_Error	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/modbus.c:260:13:MB_Tx	32	static

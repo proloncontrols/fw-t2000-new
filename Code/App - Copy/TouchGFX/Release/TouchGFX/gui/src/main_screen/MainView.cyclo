@@ -1,0 +1,130 @@
+Types.hpp:127:5:touchgfx::Rect::Rect()	1
+Types.hpp:140:5:touchgfx::Rect::Rect(int16_t, int16_t, int16_t, int16_t)	1
+ClickEvent.hpp:123:20:touchgfx::ClickEvent::ClickEventType touchgfx::ClickEvent::getType() const	1
+Drawable.hpp:62:13:touchgfx::Drawable::~Drawable()	1
+Drawable.hpp:62:13:virtual touchgfx::Drawable::~Drawable()	1
+Drawable.hpp:121:18:virtual void touchgfx::Drawable::invalidateContent() const	2
+Drawable.hpp:147:23:virtual touchgfx::Drawable* touchgfx::Drawable::getFirstChild()	1
+Drawable.hpp:273:13:int16_t touchgfx::Drawable::getX() const	1
+Drawable.hpp:293:13:int16_t touchgfx::Drawable::getWidth() const	1
+Drawable.hpp:315:18:virtual void touchgfx::Drawable::setX(int16_t)	1
+Drawable.hpp:327:18:virtual void touchgfx::Drawable::setY(int16_t)	1
+Drawable.hpp:356:18:virtual void touchgfx::Drawable::setWidth(int16_t)	1
+Drawable.hpp:368:18:virtual void touchgfx::Drawable::setHeight(int16_t)	1
+Drawable.hpp:378:18:virtual void touchgfx::Drawable::childGeometryChanged()	1
+Drawable.hpp:389:18:virtual void touchgfx::Drawable::handleClickEvent(const touchgfx::ClickEvent&)	1
+Drawable.hpp:401:18:virtual void touchgfx::Drawable::handleGestureEvent(const touchgfx::GestureEvent&)	1
+Drawable.hpp:490:18:virtual void touchgfx::Drawable::handleDragEvent(const touchgfx::DragEvent&)	1
+Drawable.hpp:501:18:virtual void touchgfx::Drawable::handleTickEvent()	1
+Drawable.hpp:515:10:void touchgfx::Drawable::setVisible(bool)	1
+Drawable.hpp:537:10:bool touchgfx::Drawable::isVisible() const	1
+Drawable.hpp:549:10:bool touchgfx::Drawable::isTouchable() const	1
+Drawable.hpp:588:18:virtual void touchgfx::Drawable::moveTo(int16_t, int16_t)	1
+Drawable.hpp:625:10:void touchgfx::Drawable::resetDrawChainCache()	1
+Drawable.hpp:703:18:virtual void touchgfx::Drawable::setupDrawChain(const touchgfx::Rect&, touchgfx::Drawable**)	1
+Container.hpp:165:23:virtual touchgfx::Drawable* touchgfx::Container::getFirstChild()	1
+Screen.hpp:46:13:touchgfx::Screen::~Screen()	1
+Screen.hpp:46:13:virtual touchgfx::Screen::~Screen()	1
+Screen.hpp:93:18:virtual void touchgfx::Screen::setupScreen()	1
+Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
+Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	1
+Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	1
+Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
+Screen.hpp:267:10:void touchgfx::Screen::invalidate() const	1
+Widget.hpp:45:18:virtual void touchgfx::Widget::getLastChild(int16_t, int16_t, touchgfx::Drawable**)	4
+Widget.hpp:36:7:touchgfx::Widget::~Widget()	1
+Widget.hpp:36:7:virtual touchgfx::Widget::~Widget()	1
+Box.hpp:62:10:void touchgfx::Box::setColor(touchgfx::colortype)	1
+Box.hpp:82:10:void touchgfx::Box::setAlpha(uint8_t)	1
+AbstractPainter.hpp:50:13:touchgfx::AbstractPainter::~AbstractPainter()	1
+AbstractPainter.hpp:50:13:virtual touchgfx::AbstractPainter::~AbstractPainter()	1
+AbstractPainter.hpp:61:34:virtual touchgfx::HAL::RenderingMethod touchgfx::AbstractPainter::getRenderingMethod() const	1
+AbstractPainter.hpp:78:18:virtual bool touchgfx::AbstractPainter::setup(const touchgfx::Rect&) const	1
+AbstractPainter.hpp:90:18:virtual void touchgfx::AbstractPainter::tearDown() const	1
+AbstractPainterColor.hpp:49:13:touchgfx::AbstractPainterColor::~AbstractPainterColor()	1
+AbstractPainterColor.hpp:49:13:virtual touchgfx::AbstractPainterColor::~AbstractPainterColor()	1
+AbstractPainterColor.hpp:58:18:virtual void touchgfx::AbstractPainterColor::setColor(touchgfx::colortype)	1
+AbstractPainterARGB8888.hpp:34:7:touchgfx::AbstractPainterARGB8888::~AbstractPainterARGB8888()	1
+AbstractPainterARGB8888.hpp:34:7:virtual touchgfx::AbstractPainterARGB8888::~AbstractPainterARGB8888()	1
+TypedText.hpp:65:13:touchgfx::TypedText::~TypedText()	1
+TypedText.hpp:65:13:virtual touchgfx::TypedText::~TypedText()	1
+TextArea.hpp:48:18:virtual void touchgfx::TextArea::setWidth(int16_t)	1
+TextArea.hpp:54:18:virtual void touchgfx::TextArea::setHeight(int16_t)	1
+TextArea.hpp:60:18:virtual touchgfx::Rect touchgfx::TextArea::getSolidRect() const	1
+TextArea.hpp:89:18:virtual void touchgfx::TextArea::setAlpha(uint8_t)	1
+TextArea.hpp:111:18:virtual void touchgfx::TextArea::setBaselineY(int16_t)	1
+TextArea.hpp:127:18:virtual void touchgfx::TextArea::setXBaselineY(int16_t, int16_t)	1
+TextArea.hpp:246:22:const touchgfx::TypedText& touchgfx::TextArea::getTypedText() const	1
+TextArea.hpp:403:41:virtual const UnicodeChar* touchgfx::TextArea::getWildcard2() const	1
+TextArea.hpp:429:9:touchgfx::TextArea::BoundingArea::BoundingArea()	1
+TextArea.hpp:40:7:touchgfx::TextArea::~TextArea()	1
+TextArea.hpp:40:7:virtual touchgfx::TextArea::~TextArea()	1
+TextAreaWithWildcard.hpp:46:36:virtual touchgfx::TextArea::BoundingArea touchgfx::TextAreaWithWildcardBase::calculateBoundingArea() const	1
+TextAreaWithWildcard.hpp:33:7:touchgfx::TextAreaWithWildcardBase::~TextAreaWithWildcardBase()	1
+TextAreaWithWildcard.hpp:33:7:virtual touchgfx::TextAreaWithWildcardBase::~TextAreaWithWildcardBase()	1
+TextAreaWithWildcard.hpp:81:41:virtual const UnicodeChar* touchgfx::TextAreaWithOneWildcard::getWildcard1() const	1
+Container.hpp:40:7:touchgfx::Container::~Container()	1
+Container.hpp:40:7:virtual touchgfx::Container::~Container()	1
+AbstractButtonContainer.hpp:51:10:void touchgfx::AbstractButtonContainer::setPressed(bool)	1
+AbstractButtonContainer.hpp:64:10:bool touchgfx::AbstractButtonContainer::getPressed()	1
+AbstractButtonContainer.hpp:77:13:uint8_t touchgfx::AbstractButtonContainer::getAlpha() const	1
+AbstractButtonContainer.hpp:99:18:virtual void touchgfx::AbstractButtonContainer::executeAction()	4
+AbstractButtonContainer.hpp:114:18:virtual void touchgfx::AbstractButtonContainer::handlePressedUpdated()	1
+AbstractButtonContainer.hpp:119:18:virtual void touchgfx::AbstractButtonContainer::handleAlphaUpdated()	1
+Image.hpp:38:7:touchgfx::Image::~Image()	1
+Image.hpp:38:7:virtual touchgfx::Image::~Image()	1
+Box.hpp:29:7:touchgfx::Box::~Box()	1
+Box.hpp:29:7:virtual touchgfx::Box::~Box()	1
+BoxWithBorder.hpp:61:10:void touchgfx::BoxWithBorder::setBorderColor(touchgfx::colortype)	1
+ClickButtonTrigger.hpp:47:18:virtual void touchgfx::ClickButtonTrigger::handleClickEvent(const touchgfx::ClickEvent&)	8
+AbstractButtonContainer.hpp:34:7:touchgfx::AbstractButtonContainer::~AbstractButtonContainer()	1
+AbstractButtonContainer.hpp:34:7:virtual touchgfx::AbstractButtonContainer::~AbstractButtonContainer()	1
+View.hpp:36:7:touchgfx::View<MainPresenter>::~View()	1
+View.hpp:36:7:virtual touchgfx::View<MainPresenter>::~View()	1
+MainViewBase.hpp:22:13:MainViewBase::~MainViewBase()	1
+MainViewBase.hpp:22:13:virtual MainViewBase::~MainViewBase()	1
+widgets.hpp:37:7:CWidgets::~CWidgets()	1
+MainView.hpp:37:13:MainView::~MainView()	1
+MainView.hpp:37:13:virtual MainView::~MainView()	1
+MainView.cpp:13:1:MainView::MainView()	1
+MainView.cpp:48:6:virtual void MainView::setupScreen()	1
+MainView.cpp:55:6:virtual void MainView::tearDownScreen()	1
+MainView.cpp:61:6:virtual void MainView::DisplayEnv(ENV_Readings_t*)	2
+MainView.cpp:120:6:virtual void MainView::function1()	1
+MainView.cpp:126:6:virtual void MainView::OnSettingsButton()	1
+stl_vector.h:678:7:std::vector<_Tp, _Alloc>::~vector() [with _Tp = CWidget*; _Alloc = std::allocator<CWidget*>]	1
+stl_vector.h:128:14:std::_Vector_base<CWidget*, std::allocator<CWidget*> >::_Vector_impl::~_Vector_impl()	1
+stl_vector.h:333:7:std::_Vector_base<_Tp, _Alloc>::~_Vector_base() [with _Tp = CWidget*; _Alloc = std::allocator<CWidget*>]	1
+stl_vector.h:276:7:std::_Vector_base<_Tp, _Alloc>::_Tp_alloc_type& std::_Vector_base<_Tp, _Alloc>::_M_get_Tp_allocator() [with _Tp = CWidget*; _Alloc = std::allocator<CWidget*>]	1
+alloc_traits.h:735:5:void std::_Destroy(_ForwardIterator, _ForwardIterator, std::allocator<_T2>&) [with _ForwardIterator = CWidget**; _Tp = CWidget*]	1
+allocator.h:182:7:std::allocator< <template-parameter-1-1> >::~allocator() [with _Tp = CWidget*]	1
+stl_vector.h:350:7:void std::_Vector_base<_Tp, _Alloc>::_M_deallocate(std::_Vector_base<_Tp, _Alloc>::pointer, std::size_t) [with _Tp = CWidget*; _Alloc = std::allocator<CWidget*>]	2
+stl_construct.h:171:5:void std::_Destroy(_ForwardIterator, _ForwardIterator) [with _ForwardIterator = CWidget**]	1
+new_allocator.h:89:7:__gnu_cxx::new_allocator<_Tp>::~new_allocator() [with _Tp = CWidget*]	1
+alloc_traits.h:491:7:static void std::allocator_traits<std::allocator<_Tp1> >::deallocate(std::allocator_traits<std::allocator<_Tp1> >::allocator_type&, std::allocator_traits<std::allocator<_Tp1> >::pointer, std::allocator_traits<std::allocator<_Tp1> >::size_type) [with _Tp = CWidget*]	1
+stl_construct.h:161:9:static void std::_Destroy_aux<true>::__destroy(_ForwardIterator, _ForwardIterator) [with _ForwardIterator = CWidget**]	1
+new_allocator.h:126:7:void __gnu_cxx::new_allocator<_Tp>::deallocate(_Tp*, __gnu_cxx::new_allocator<_Tp>::size_type) [with _Tp = CWidget*]	1
+TextAreaWithWildcard.hpp:59:7:touchgfx::TextAreaWithOneWildcard::~TextAreaWithOneWildcard()	1
+TextAreaWithWildcard.hpp:59:7:virtual touchgfx::TextAreaWithOneWildcard::~TextAreaWithOneWildcard()	1
+CanvasWidget.hpp:33:7:touchgfx::CanvasWidget::~CanvasWidget()	1
+CanvasWidget.hpp:33:7:virtual touchgfx::CanvasWidget::~CanvasWidget()	1
+Line.hpp:50:7:touchgfx::Line::~Line()	1
+Line.hpp:50:7:virtual touchgfx::Line::~Line()	1
+PainterARGB8888.hpp:34:7:touchgfx::PainterARGB8888::~PainterARGB8888()	1
+PainterARGB8888.hpp:34:7:virtual touchgfx::PainterARGB8888::~PainterARGB8888()	1
+TextureMapper.hpp:46:7:touchgfx::TextureMapper::~TextureMapper()	1
+TextureMapper.hpp:46:7:virtual touchgfx::TextureMapper::~TextureMapper()	1
+ClickButtonTrigger.hpp:35:7:touchgfx::ClickButtonTrigger::~ClickButtonTrigger()	1
+ClickButtonTrigger.hpp:35:7:virtual touchgfx::ClickButtonTrigger::~ClickButtonTrigger()	1
+BoxWithBorder.hpp:31:7:touchgfx::BoxWithBorder::~BoxWithBorder()	1
+BoxWithBorder.hpp:31:7:virtual touchgfx::BoxWithBorder::~BoxWithBorder()	1
+BoxWithBorderButtonStyle.hpp:41:7:touchgfx::BoxWithBorderButtonStyle<touchgfx::ClickButtonTrigger>::~BoxWithBorderButtonStyle()	1
+BoxWithBorderButtonStyle.hpp:41:7:virtual touchgfx::BoxWithBorderButtonStyle<touchgfx::ClickButtonTrigger>::~BoxWithBorderButtonStyle()	1
+Callback.hpp:357:8:touchgfx::Callback<MainViewBase, const touchgfx::AbstractButtonContainer&>::~Callback()	1
+Callback.hpp:357:8:virtual touchgfx::Callback<MainViewBase, const touchgfx::AbstractButtonContainer&>::~Callback()	1
+Callback.hpp:138:13:touchgfx::GenericCallback<T1, void, void>::~GenericCallback() [with T1 = const touchgfx::AbstractButtonContainer&]	1
+Callback.hpp:138:13:touchgfx::GenericCallback<T1, void, void>::~GenericCallback() [with T1 = const touchgfx::AbstractButtonContainer&]	1
+Callback.hpp:386:18:void touchgfx::Callback<dest_type, T1, void, void>::execute(T1) [with dest_type = MainViewBase; T1 = const touchgfx::AbstractButtonContainer&]	2
+Callback.hpp:396:18:bool touchgfx::Callback<dest_type, T1, void, void>::isValid() const [with dest_type = MainViewBase; T1 = const touchgfx::AbstractButtonContainer&]	5
+BoxWithBorderButtonStyle.hpp:123:18:void touchgfx::BoxWithBorderButtonStyle<T>::handlePressedUpdated() [with T = touchgfx::ClickButtonTrigger]	3
+BoxWithBorderButtonStyle.hpp:131:18:void touchgfx::BoxWithBorderButtonStyle<T>::handleAlphaUpdated() [with T = touchgfx::ClickButtonTrigger]	1

@@ -1,0 +1,3 @@
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui_virtual.cpp:45:6:void UIV_placeText(touchgfx::TextArea&)	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui_virtual.cpp:58:6:void UIV_placeTexture(touchgfx::TextureMapper&)	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/ui_virtual.cpp:77:6:void UIV_placeButtonFlex(touchgfx::BoxWithBorderButtonStyle<touchgfx::ClickButtonTrigger>&)	16	static

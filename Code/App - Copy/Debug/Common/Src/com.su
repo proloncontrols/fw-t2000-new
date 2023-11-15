@@ -1,0 +1,10 @@
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com.c:102:6:COM_Init	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com.c:109:6:COM_DeInit	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com.c:116:6:COM_Rx	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com.c:122:6:COM_Tx	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com.c:128:10:COM_TxRx	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com.c:134:13:COM_GetMedia	4	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com.c:140:18:COM_GetConnexion	16	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com.c:146:8:COM_ValidateCRC	32	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com.c:161:10:COM_CRC16	24	static
+C:/ProlonDev/Projects/T2000/Firmware/Code/Common/Src/com.c:181:6:COM_PostMedia	16	static
