@@ -40,16 +40,18 @@ namespace touchgfx
 //  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
 CMeterTemp::CMeterTemp()
-	: CMeter(COLOR_RED, COLOR_GREEN, COLOR_BLUE, touchgfx::TypedText(T_T2000_METER_LARGE))
+	: CMeter(COLOR_RED, COLOR_GREEN, COLOR_BLUE, touchgfx::TypedText(T_T2000_METER_LARGE), touchgfx::TypedText(T_T2000_METER_SMALL))
 {
+	displayFractional = true;
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMeterTemp::display(float value)
+void CMeterTemp::display(double value)
 {
+	CMeter::display(value);
 }
 
 }   //namespace touchgfx

@@ -12,8 +12,11 @@ SplashView::SplashView()
 	swipe.setEndSwipeElasticWidth(50);
 
 	swipe.addPage(swipePage1);
-	tempInside.setXY(0, 0);
-	swipePage1.add(tempInside);
+//	tempInside.setXY(0, 0);
+//	swipePage1.add(tempInside);
+	MeterTemp.setXY(0, 0);
+	MeterTemp.display(-33.5);
+	swipePage1.add(MeterTemp);
 //	img1.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_560X560_ID));
 //	img1.setXY(swipePage1.getWidth()/2 - img1.getWidth()/2, 0);
 //	swipePage1.add(img1);
@@ -30,6 +33,9 @@ SplashView::SplashView()
 
 	swipe.setSelectedPage(0);
 	add(swipe);
+
+
+
 
 
 

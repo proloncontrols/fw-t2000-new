@@ -11,7 +11,7 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     16, // T___SINGLEUSE_4QO2: ".<>"
-    16, // T_T2000_METER_SMALL: ".<>"
+    2,  // T_T2000_METER_SMALL: "<>"
     2,  // T_T2000_METER_LARGE: "<>"
     2,  // T___SINGLEUSE_S23J: "<>"
     2,  // T___SINGLEUSE_R48S: "<>"

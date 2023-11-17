@@ -24,6 +24,7 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 
@@ -31,34 +32,47 @@ namespace touchgfx
 {
 
 //=============================================================================
+//  D E F I N E S
+//-----------------------------------------------------------------------------
+#define INTEGRAL_WEIGHT   3   //Hundreds, tenths and units
+
+
+//=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
 class CMeter : public Container
 {
 public:
-	CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& text);
+	CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textLarge, const TypedText& textSmall);
 	virtual void display(double value);
 
 protected:
+    touchgfx::Box background;
+
+	bool displayFractional;
+
+    static const uint16_t TXT_SIZE = 2;
+
     touchgfx::TextAreaWithOneWildcard txtSign;
-    static const uint16_t TXT_SIGN_SIZE = 2;
-    touchgfx::Unicode::UnicodeChar txtSignBuffer[TXT_SIGN_SIZE];
+    touchgfx::Unicode::UnicodeChar txtSignBuffer[TXT_SIZE];
 
-    touchgfx::TextAreaWithOneWildcard txtIntegralHundreds;
-    static const uint16_t TXT_INTEGRAL_HUNDREDS_SIZE = 2;
-    touchgfx::Unicode::UnicodeChar txtIntegralHundredsBuffer[TXT_INTEGRAL_HUNDREDS_SIZE];
+    touchgfx::TextAreaWithOneWildcard txtIntegral[INTEGRAL_WEIGHT];
+    touchgfx::Unicode::UnicodeChar txtIntegralBuffer[INTEGRAL_WEIGHT][TXT_SIZE];
 
-    touchgfx::TextAreaWithOneWildcard txtIntegralTenths;
-    static const uint16_t TXT_INTEGRAL_TENTHS_SIZE = 2;
-    touchgfx::Unicode::UnicodeChar txtIntegralTenthsBuffer[TXT_INTEGRAL_TENTHS_SIZE];
+//    touchgfx::TextAreaWithOneWildcard txtIntegralHundreds;
+//    touchgfx::Unicode::UnicodeChar txtIntegralHundredsBuffer[TXT_SIZE];
 
-    touchgfx::TextAreaWithOneWildcard txtIntegralUnits;
-    static const uint16_t TXT_INTEGRAL_UNITS_SIZE = 2;
-    touchgfx::Unicode::UnicodeChar txtIntegralUnitsBuffer[TXT_INTEGRAL_UNITS_SIZE];
+//    touchgfx::TextAreaWithOneWildcard txtIntegralTenths;
+//    touchgfx::Unicode::UnicodeChar txtIntegralTenthsBuffer[TXT_SIZE];
+
+//    touchgfx::TextAreaWithOneWildcard txtIntegralUnits;
+//    touchgfx::Unicode::UnicodeChar txtIntegralUnitsBuffer[TXT_SIZE];
+
+    touchgfx::TextAreaWithOneWildcard txtDot;
+    touchgfx::Unicode::UnicodeChar txtDotBuffer[TXT_SIZE];
 
     touchgfx::TextAreaWithOneWildcard txtFractional;
-    static const uint16_t TXT_FRACTIONAL_SIZE = 3;
-    touchgfx::Unicode::UnicodeChar txtFractionalBuffer[TXT_FRACTIONAL_SIZE];
+    touchgfx::Unicode::UnicodeChar txtFractionalBuffer[TXT_SIZE];
 };
 
 }   //namespace touchgfx

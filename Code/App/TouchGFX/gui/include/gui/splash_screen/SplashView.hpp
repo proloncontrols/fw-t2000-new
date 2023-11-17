@@ -9,6 +9,8 @@
 #include <gui/containers/cntBlue.hpp>
 #include <gui/containers/cntTempInside.hpp>
 
+#include <CMeterTemp.hpp>
+
 class SplashView : public SplashViewBase
 {
 public:
@@ -38,6 +40,8 @@ protected:
 
 //    cntBlue Blue;
     cntTempInside tempInside;
+
+    CMeterTemp MeterTemp;
 };
 
 #endif // SPLASHVIEW_HPP

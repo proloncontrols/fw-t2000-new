@@ -10,7 +10,7 @@
         <Translation Language="GB">.&lt;value&gt;</Translation>
       </Text>
       <Text Id="T2000_METER_SMALL" Alignment="Left" TypographyId="T2000_MeterSmall">
-        <Translation Language="GB">.&lt;value&gt;</Translation>
+        <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="T2000_METER_LARGE" Alignment="Left" TypographyId="T2000_MeterLarge">
         <Translation Language="GB">&lt;value&gt;</Translation>
