@@ -39,11 +39,30 @@ CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const Ty
 {
 	displayFractional = false;
 
-	setWidth(600);
-	setHeight(300);
+	for(int i = 0; i < DISPLAY_LENGTH; i++)
+	{
+	    displayString[i].buffer[0] = 0;
+	    displayString[i].widget.setWildcard(displayString[i].buffer);
+	    displayString[i].widget.setTypedText(textLarge);
+	    displayString[i].widget.setBaselineY(displayString[i].widget.getHeight()-10);
+	    add(displayString[i].widget);
+	}
+    displayString[DISPLAY_LENGTH-1].widget.setTypedText(textSmall);
+    displayString[DISPLAY_LENGTH-2].widget.setTypedText(textSmall);
+
+
+
+
+
+
+
+
+
+	setWidth(100);
+	setHeight(textLarge.getFont()->getFontHeight());
 
 	background.setPosition(*this);
-	background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+	background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
 	add(background);
 
     txtSign.setXY(0, 0);
@@ -53,6 +72,7 @@ CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const Ty
     txtSign.setWildcard(txtSignBuffer);
     txtSign.resizeToCurrentText();
     txtSign.setTypedText(textLarge);
+    txtSign.setBaselineY(txtSign.getHeight()-10);
     add(txtSign);
 
     for(int i = 0; i < INTEGRAL_WEIGHT; i++)
@@ -64,6 +84,10 @@ CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const Ty
     	txtIntegral[i].setWildcard(txtIntegralBuffer[i]);
     	txtIntegral[i].resizeToCurrentText();
     	txtIntegral[i].setTypedText(textLarge);
+
+//    	txtIntegral[i].setBaselineY(textLarge.getFont()->getFontHeight() - 10);
+    	txtIntegral[i].setBaselineY(txtIntegral[i].getHeight()-10);
+
         add(txtIntegral[i]);
     }
 
@@ -94,22 +118,24 @@ CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const Ty
 //    txtIntegralUnits.setTypedText(text);
 //    add(txtIntegralUnits);
 
-    txtDot.setXY(0, 0);
+    txtDot.setXY(0, 200);
     txtDot.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
     txtDot.setLinespacing(0);
     txtDotBuffer[0] = 0;
     txtDot.setWildcard(txtDotBuffer);
     txtDot.resizeToCurrentText();
     txtDot.setTypedText(textSmall);
+    txtDot.setBaselineY(txtDot.getHeight()-10);
     add(txtDot);
 
-    txtFractional.setXY(0, 0);
+    txtDot.setXY(0, 200);
     txtFractional.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
     txtFractional.setLinespacing(0);
     txtFractionalBuffer[0] = 0;
     txtFractional.setWildcard(txtFractionalBuffer);
     txtFractional.resizeToCurrentText();
     txtFractional.setTypedText(textSmall);
+    txtFractional.setBaselineY(txtFractional.getHeight()-10);
     add(txtFractional);
 }
 
@@ -119,6 +145,28 @@ CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const Ty
 //-----------------------------------------------------------------------------
 void CMeter::display(double value)
 {
+	if((value < -999.9) || (value > 999.9))
+		value = 0.0;
+
+	char strValue[DISPLAY_LENGTH+1];
+	sprintf(strValue, "%.1f", value);
+
+	int endOfString = strlen(strValue)-1;
+	if(!displayFractional)
+		endOfString -= 2;
+
+	for(int i = endOfString; i > 0; i--)
+	{
+
+	}
+
+
+
+
+
+
+
+
 	double tmpIntegral;
 	double tmpFractional = modf(value, &tmpIntegral);
 
@@ -143,7 +191,6 @@ void CMeter::display(double value)
 		glyph = font->getGlyph(txtFractional.getWildcard1()[0]);
 		txtFractional.setWidth(glyph->left + glyph->width());
 		totalWidth += txtFractional.getWidth();
-
 
 		Unicode::fromUTF8((uint8_t*)".", txtDotBuffer, 1);
 		font = txtDot.getTypedText().getFont();
@@ -180,14 +227,14 @@ void CMeter::display(double value)
 //		txtFractional.setX(totalWidth);
 //		txtFractional.setXY(totalWidth, getHeight()-txtFractional.getHeight()-5);
 //		txtFractional.setXY(totalWidth, getHeight()-txtIntegral[0].getHeight()-txtFractional.getHeight());
-		txtFractional.setXY(totalWidth, 100);
+		txtFractional.setXY(totalWidth, getHeight() - txtFractional.getTypedText().getFont()->getFontHeight());
 		txtFractional.invalidate();
 
 		totalWidth -= txtDot.getWidth();
 //		txtDot.setX(totalWidth);
 //		txtDot.setXY(totalWidth, getHeight()-txtDot.getHeight()-5);
 //		txtDot.setXY(totalWidth, getHeight()-txtIntegral[0].getHeight()-txtDot.getHeight());
-		txtDot.setXY(totalWidth, 100);
+		txtDot.setXY(totalWidth, getHeight() - txtFractional.getTypedText().getFont()->getFontHeight());
 		txtDot.invalidate();
 	}
 
@@ -208,6 +255,7 @@ void CMeter::display(double value)
 		txtSign.invalidate();
 	}
 
+	background.setPosition(*this);
 
 
 

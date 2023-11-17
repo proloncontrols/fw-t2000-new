@@ -36,7 +36,6 @@ class CMeterTemp : public CMeter
 {
 public:
 	CMeterTemp();
-	virtual void display(double value);
 
 private:
 };

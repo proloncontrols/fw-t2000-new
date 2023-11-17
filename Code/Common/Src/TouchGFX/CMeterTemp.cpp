@@ -45,13 +45,4 @@ CMeterTemp::CMeterTemp()
 	displayFractional = true;
 }
 
-
-//=============================================================================
-//  M E T H O D S
-//-----------------------------------------------------------------------------
-void CMeterTemp::display(double value)
-{
-	CMeter::display(value);
-}
-
 }   //namespace touchgfx

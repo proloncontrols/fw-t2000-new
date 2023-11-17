@@ -25,9 +25,7 @@
     <ClCompile Include="..\..\gui\src\splash_screen\SplashView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\splash_screen\SplashViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\cntBlue.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\cntBlueBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\cntTempInside.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\cntTempInsideBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -181,10 +179,6 @@
     <ClInclude Include="..\..\gui\include\gui\splash_screen\SplashPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\splash_screen\SplashView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\cntBlue.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\cntBlueBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\cntTempInside.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\cntTempInsideBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

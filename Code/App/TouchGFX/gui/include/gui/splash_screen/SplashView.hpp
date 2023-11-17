@@ -6,8 +6,8 @@
 #include <CSwipe.hpp>
 #include <CImage.hpp>
 #include <CScreen.hpp>
-#include <gui/containers/cntBlue.hpp>
-#include <gui/containers/cntTempInside.hpp>
+//#include <gui/containers/cntBlue.hpp>
+//#include <gui/containers/cntTempInside.hpp>
 
 #include <CMeterTemp.hpp>
 
@@ -39,7 +39,7 @@ protected:
     CImage img3;
 
 //    cntBlue Blue;
-    cntTempInside tempInside;
+//    cntTempInside tempInside;
 
     CMeterTemp MeterTemp;
 };

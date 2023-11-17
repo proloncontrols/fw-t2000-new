@@ -34,7 +34,19 @@ namespace touchgfx
 //=============================================================================
 //  D E F I N E S
 //-----------------------------------------------------------------------------
-#define INTEGRAL_WEIGHT   3   //Hundreds, tenths and units
+#define DISPLAY_LENGTH     6   //Maximum number of characters in the display string. Ex: "-100.0"
+#define CHAR_BUFFER_SIZE   2   //TextArea wildcard buffer size "including null"
+
+#define INTEGRAL_WEIGHT    3   //Hundreds, tenths and units
+
+
+//=============================================================================
+//  T Y P E D E F S
+//-----------------------------------------------------------------------------
+typedef struct {
+    touchgfx::TextAreaWithOneWildcard widget;
+    touchgfx::Unicode::UnicodeChar buffer[CHAR_BUFFER_SIZE];
+} DisplayChar;
 
 
 //=============================================================================
@@ -44,10 +56,15 @@ class CMeter : public Container
 {
 public:
 	CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textLarge, const TypedText& textSmall);
-	virtual void display(double value);
+	void display(double value);
 
 protected:
     touchgfx::Box background;
+
+    DisplayChar displayString[DISPLAY_LENGTH];
+
+
+
 
 	bool displayFractional;
 

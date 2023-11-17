@@ -187,9 +187,6 @@
     <Filter Include="Source Files\gui\containers">
       <UniqueIdentifier>8FF737F6-D63F-B0BD-C9C0-EFFB7B557701</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\containers">
-      <UniqueIdentifier>AE9FBD65-B670-90E3-EE20-7269A3576025</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\generated\gui_generated\containers">
       <UniqueIdentifier>9943087C-4888-1D68-4914-1BF56D604AAF</UniqueIdentifier>
     </Filter>
@@ -240,14 +237,8 @@
     <ClCompile Include="..\..\gui\src\containers\cntBlue.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\cntBlueBase.cpp">
-      <Filter>Source Files\generated\gui_generated\containers</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\cntTempInside.cpp">
       <Filter>Source Files\gui\containers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\cntTempInsideBase.cpp">
-      <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -699,18 +690,6 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\splash_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\cntBlue.hpp">
-      <Filter>Header Files\gui\containers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\cntBlueBase.hpp">
-      <Filter>Header Files\generated\gui_generated\containers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\cntTempInside.hpp">
-      <Filter>Header Files\gui\containers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\cntTempInsideBase.hpp">
-      <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

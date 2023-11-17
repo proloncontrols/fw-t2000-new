@@ -6,44 +6,11 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_4QO2" Alignment="Left" TypographyId="T2000_MeterSmall">
-        <Translation Language="GB">.&lt;value&gt;</Translation>
-      </Text>
       <Text Id="T2000_METER_SMALL" Alignment="Left" TypographyId="T2000_MeterSmall">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="T2000_METER_LARGE" Alignment="Left" TypographyId="T2000_MeterLarge">
         <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_S23J" Alignment="Left" TypographyId="T2000_MeterLarge">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_R48S" Alignment="Left" TypographyId="T2000_MeterLarge">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_MOZH" Alignment="Left" TypographyId="T2000_MeterLarge">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_O8JC" Alignment="Left" TypographyId="T2000_MeterSmall">
-        <Translation Language="GB">°C</Translation>
-      </Text>
-      <Text Id="__SingleUse_1XRD" Alignment="Left" TypographyId="T2000_MeterSmall">
-        <Translation Language="GB">.3&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_KSU9" Alignment="Right" TypographyId="T2000_MeterLarge">
-        <Translation Language="GB">25&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_AYH0" Alignment="Left" TypographyId="T2000_MeterSmall">
-        <Translation Language="GB">44&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_ABG9" Alignment="Left" TypographyId="T2000_MeterSmall">
-        <Translation Language="GB">22&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_RVHL" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">%</Translation>
-      </Text>
-      <Text Id="__SingleUse_3JBL" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">°C</Translation>
       </Text>
     </TextGroup>
   </Texts>
