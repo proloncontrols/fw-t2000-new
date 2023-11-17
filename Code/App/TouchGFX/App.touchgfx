@@ -247,6 +247,122 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "cntTempInside",
+        "Width": 720,
+        "Height": 672,
+        "Components": [
+          {
+            "Type": "Container",
+            "Name": "container1",
+            "X": 84,
+            "Y": 220,
+            "Width": 552,
+            "Height": 232,
+            "Components": [
+              {
+                "Type": "Box",
+                "Name": "box1",
+                "Width": 552,
+                "Height": 232
+              },
+              {
+                "Type": "TextArea",
+                "Name": "txtTempFractional",
+                "X": 399,
+                "Y": 115,
+                "Width": 18,
+                "Height": 95,
+                "TextId": "__SingleUse_4QO2",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 120,
+                  "Green": 14,
+                  "Blue": 14
+                },
+                "AutoSize": true,
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 3
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "txtTempIntegralTenths",
+                "X": 200,
+                "Y": -35,
+                "Width": 100,
+                "Height": 302,
+                "TextId": "__SingleUse_MOZH",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 120,
+                  "Green": 14,
+                  "Blue": 14
+                },
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 2
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "txtTempIntegralUnits",
+                "X": 300,
+                "Y": -35,
+                "Width": 100,
+                "Height": 302,
+                "TextId": "__SingleUse_R48S",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 120,
+                  "Green": 14,
+                  "Blue": 14
+                },
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 2
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "txtTempIntegralSign",
+                "X": 100,
+                "Y": -35,
+                "Width": 100,
+                "Height": 302,
+                "TextId": "__SingleUse_S23J",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 120,
+                  "Green": 14,
+                  "Blue": 14
+                },
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 2
+                }
+              },
+              {
+                "Type": "Line",
+                "Name": "line1",
+                "X": 400,
+                "Width": 10,
+                "Height": 232,
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "EndY": 232.0,
+                "LineWidth": 1.0,
+                "LineEndingStyle": "Round"
+              }
+            ]
+          }
+        ],
+        "Interactions": []
       }
     ],
     "Name": "MyApplication",

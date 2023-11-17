@@ -7,6 +7,7 @@
 #include <CImage.hpp>
 #include <CScreen.hpp>
 #include <gui/containers/cntBlue.hpp>
+#include <gui/containers/cntTempInside.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -35,7 +36,8 @@ protected:
     CImage img2;
     CImage img3;
 
-    cntBlue Blue;
+//    cntBlue Blue;
+    cntTempInside tempInside;
 };
 
 #endif // SPLASHVIEW_HPP

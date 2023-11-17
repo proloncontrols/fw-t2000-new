@@ -18,10 +18,10 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
     case Typography::SMALL:
         // verdana_10_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
-    case Typography::T2000_LARGE:
+    case Typography::T2000_METERLARGE:
         // AvenirNext_Medium_06_220_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
-    case Typography::T2000_SMALL:
+    case Typography::T2000_METERSMALL:
         // AvenirNext_Regular_08_70_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[4]);
     case Typography::T2000_TINY:

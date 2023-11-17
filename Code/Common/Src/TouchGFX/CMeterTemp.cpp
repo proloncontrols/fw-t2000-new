@@ -10,60 +10,46 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CWidgets.hpp
+//         File : CMeterTemp.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX widget container class header file
+//  Description : Inside temperature meter widget class implementation file
 //=============================================================================
-#ifndef WIDGETS_HPP
-#define WIDGETS_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/TextureMapper.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/FontManager.hpp>
-#include <fonts/ApplicationFontProvider.hpp>
-//#include <CWidget.hpp>
-//#include <CButton.hpp>
-//#include <CImage.hpp>
-//#include <CText.hpp>
+#include <CMeterTemp.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
+//  D E F I N E S
+//-----------------------------------------------------------------------------
+#define COLOR_RED     120
+#define COLOR_GREEN   14
+#define COLOR_BLUE    14
+
+
+//=============================================================================
+//  C O N S T R U C T O R S
+//-----------------------------------------------------------------------------
+CMeterTemp::CMeterTemp()
+	: CMeter(COLOR_RED, COLOR_GREEN, COLOR_BLUE, touchgfx::TypedText(T_T2000_METER_LARGE))
+{
+}
+
+
+//=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void rotateTextureMapper(TextureMapper& mapper);
-void rotateBox(Box& box);
-int16_t getStringWidth(TextArea& text, int16_t maxLength);
+void CMeterTemp::display(float value)
+{
+}
 
-
-////=============================================================================
-////  C L A S S E S
-////-----------------------------------------------------------------------------
-//class CWidgets
-//{
-//public:
-//	CWidgets(int size, Rotation rotation);
-//
-//	CWidget* get(int index);
-//	void set(int index, CWidget* widget);
-//    void position();
-//
-//private:
-//	int m_Size;
-//	CWidget** m_List;
-//	Rotation curRotation;
-//};
-//
 }   //namespace touchgfx
-
-
-#endif   //WIDGETS_HPP

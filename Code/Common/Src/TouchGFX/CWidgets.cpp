@@ -21,6 +21,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stdlib.h>
 #include <CWidgets.hpp>
 #include <CScreen.hpp>
 
@@ -52,6 +53,40 @@ void rotateTextureMapper(TextureMapper& mapper)
 	    mapper.setOrigo(mapper.getWidth()/2, mapper.getHeight()/2, 1000.0f);
 	    mapper.setAngles(0.0f, 0.0f, TEXTUREMAPPER_270_ANGLE_Z);
 	}
+}
+
+//-----------------------------------------------------------------------------
+int16_t getStringWidth(TextArea& text, int16_t maxLength)
+{
+	uint8_t* s = (uint8_t*)malloc(maxLength);
+	int16_t charCount = touchgfx::Unicode::toUTF8(text.getWildcard1(), s, maxLength) - 1;
+	free(s);
+
+	const GlyphNode* glyph;
+	const Font* font = text.getTypedText().getFont();
+
+	int16_t i = 0;
+	int16_t stringLength = 0;
+	do
+	{
+		glyph = font->getGlyph(text.getWildcard1()[i]);
+		stringLength += glyph->advance();
+		i++;
+	}
+	while(i < charCount-1);
+
+	glyph = font->getGlyph(text.getWildcard1()[i]);
+	stringLength += glyph->width();
+
+//	for(int16_t i = 0; i < charCount-1; i++)
+//	{
+//		glyph = font->getGlyph(text.getWildcard1()[i]);
+//		stringLength += glyph->_width;
+//	}
+
+//	int16_t l = glyph->left * 2;
+
+	return stringLength; // - glyph->left;
 }
 
 ////=============================================================================

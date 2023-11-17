@@ -6,19 +6,37 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_O8JC" Alignment="Left" TypographyId="T2000_Small">
+      <Text Id="__SingleUse_4QO2" Alignment="Left" TypographyId="T2000_MeterSmall">
+        <Translation Language="GB">.&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="T2000_METER_SMALL" Alignment="Left" TypographyId="T2000_MeterSmall">
+        <Translation Language="GB">.&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="T2000_METER_LARGE" Alignment="Left" TypographyId="T2000_MeterLarge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_S23J" Alignment="Left" TypographyId="T2000_MeterLarge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_R48S" Alignment="Left" TypographyId="T2000_MeterLarge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_MOZH" Alignment="Left" TypographyId="T2000_MeterLarge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_O8JC" Alignment="Left" TypographyId="T2000_MeterSmall">
         <Translation Language="GB">°C</Translation>
       </Text>
-      <Text Id="__SingleUse_1XRD" Alignment="Left" TypographyId="T2000_Small">
+      <Text Id="__SingleUse_1XRD" Alignment="Left" TypographyId="T2000_MeterSmall">
         <Translation Language="GB">.3&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_KSU9" Alignment="Right" TypographyId="T2000_Large">
+      <Text Id="__SingleUse_KSU9" Alignment="Right" TypographyId="T2000_MeterLarge">
         <Translation Language="GB">25&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_AYH0" Alignment="Left" TypographyId="T2000_Small">
+      <Text Id="__SingleUse_AYH0" Alignment="Left" TypographyId="T2000_MeterSmall">
         <Translation Language="GB">44&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_ABG9" Alignment="Left" TypographyId="T2000_Small">
+      <Text Id="__SingleUse_ABG9" Alignment="Left" TypographyId="T2000_MeterSmall">
         <Translation Language="GB">22&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_RVHL" Alignment="Left" TypographyId="Default">
@@ -33,8 +51,8 @@
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="!-~" />
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="T2000_Large" Font="AvenirNext-Medium-06.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7E" />
-    <Typography Id="T2000_Small" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7E" />
+    <Typography Id="T2000_MeterLarge" Font="AvenirNext-Medium-06.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0x30-0x39" />
+    <Typography Id="T2000_MeterSmall" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0x30-0x39" />
     <Typography Id="T2000_Tiny" Font="AvenirNext-Regular-08.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7E" />
   </Typographies>
 </TextDatabase>

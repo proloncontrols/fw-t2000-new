@@ -10,60 +10,38 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CWidgets.hpp
+//         File : CMeterTemp.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : TouchGFX widget container class header file
+//  Description : Inside temperature meter widget class header file
 //=============================================================================
-#ifndef WIDGETS_HPP
-#define WIDGETS_HPP
+#ifndef CMETER_TEMP_HPP
+#define CMETER_TEMP_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/TextureMapper.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/FontManager.hpp>
-#include <fonts/ApplicationFontProvider.hpp>
-//#include <CWidget.hpp>
-//#include <CButton.hpp>
-//#include <CImage.hpp>
-//#include <CText.hpp>
+#include <CMeter.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  M E T H O D S
+//  C L A S S E S
 //-----------------------------------------------------------------------------
-void rotateTextureMapper(TextureMapper& mapper);
-void rotateBox(Box& box);
-int16_t getStringWidth(TextArea& text, int16_t maxLength);
+class CMeterTemp : public CMeter
+{
+public:
+	CMeterTemp();
+	virtual void display(float value);
 
+private:
+};
 
-////=============================================================================
-////  C L A S S E S
-////-----------------------------------------------------------------------------
-//class CWidgets
-//{
-//public:
-//	CWidgets(int size, Rotation rotation);
-//
-//	CWidget* get(int index);
-//	void set(int index, CWidget* widget);
-//    void position();
-//
-//private:
-//	int m_Size;
-//	CWidget** m_List;
-//	Rotation curRotation;
-//};
-//
 }   //namespace touchgfx
 
 
-#endif   //WIDGETS_HPP
+#endif   //CMETER_TEMP_HPP

@@ -12,8 +12,8 @@ SplashView::SplashView()
 	swipe.setEndSwipeElasticWidth(50);
 
 	swipe.addPage(swipePage1);
-	Blue.setXY(0, 0);
-	swipePage1.add(Blue);
+	tempInside.setXY(0, 0);
+	swipePage1.add(tempInside);
 //	img1.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_560X560_ID));
 //	img1.setXY(swipePage1.getWidth()/2 - img1.getWidth()/2, 0);
 //	swipePage1.add(img1);
