@@ -37,8 +37,6 @@ namespace touchgfx
 #define DISPLAY_LENGTH     6   //Maximum number of characters in the display string. Ex: "-100.0"
 #define CHAR_BUFFER_SIZE   2   //TextArea wildcard buffer size "including null"
 
-#define INTEGRAL_WEIGHT    3   //Hundreds, tenths and units
-
 
 //=============================================================================
 //  T Y P E D E F S
@@ -59,36 +57,9 @@ public:
 	void display(double value);
 
 protected:
-    touchgfx::Box background;
-
-    DisplayChar displayString[DISPLAY_LENGTH];
-
-
-
 	bool displayFractional;
-
-//    static const uint16_t TXT_SIZE = 2;
-
-//    touchgfx::TextAreaWithOneWildcard txtSign;
-//    touchgfx::Unicode::UnicodeChar txtSignBuffer[TXT_SIZE];
-//
-//    touchgfx::TextAreaWithOneWildcard txtIntegral[INTEGRAL_WEIGHT];
-//    touchgfx::Unicode::UnicodeChar txtIntegralBuffer[INTEGRAL_WEIGHT][TXT_SIZE];
-//
-////    touchgfx::TextAreaWithOneWildcard txtIntegralHundreds;
-////    touchgfx::Unicode::UnicodeChar txtIntegralHundredsBuffer[TXT_SIZE];
-//
-////    touchgfx::TextAreaWithOneWildcard txtIntegralTenths;
-////    touchgfx::Unicode::UnicodeChar txtIntegralTenthsBuffer[TXT_SIZE];
-//
-////    touchgfx::TextAreaWithOneWildcard txtIntegralUnits;
-////    touchgfx::Unicode::UnicodeChar txtIntegralUnitsBuffer[TXT_SIZE];
-//
-//    touchgfx::TextAreaWithOneWildcard txtDot;
-//    touchgfx::Unicode::UnicodeChar txtDotBuffer[TXT_SIZE];
-//
-//    touchgfx::TextAreaWithOneWildcard txtFractional;
-//    touchgfx::Unicode::UnicodeChar txtFractionalBuffer[TXT_SIZE];
+    touchgfx::Box background;
+    DisplayChar displayString[DISPLAY_LENGTH];
 };
 
 }   //namespace touchgfx
