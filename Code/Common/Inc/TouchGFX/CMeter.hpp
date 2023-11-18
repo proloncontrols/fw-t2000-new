@@ -65,31 +65,30 @@ protected:
 
 
 
-
 	bool displayFractional;
 
-    static const uint16_t TXT_SIZE = 2;
+//    static const uint16_t TXT_SIZE = 2;
 
-    touchgfx::TextAreaWithOneWildcard txtSign;
-    touchgfx::Unicode::UnicodeChar txtSignBuffer[TXT_SIZE];
-
-    touchgfx::TextAreaWithOneWildcard txtIntegral[INTEGRAL_WEIGHT];
-    touchgfx::Unicode::UnicodeChar txtIntegralBuffer[INTEGRAL_WEIGHT][TXT_SIZE];
-
-//    touchgfx::TextAreaWithOneWildcard txtIntegralHundreds;
-//    touchgfx::Unicode::UnicodeChar txtIntegralHundredsBuffer[TXT_SIZE];
-
-//    touchgfx::TextAreaWithOneWildcard txtIntegralTenths;
-//    touchgfx::Unicode::UnicodeChar txtIntegralTenthsBuffer[TXT_SIZE];
-
-//    touchgfx::TextAreaWithOneWildcard txtIntegralUnits;
-//    touchgfx::Unicode::UnicodeChar txtIntegralUnitsBuffer[TXT_SIZE];
-
-    touchgfx::TextAreaWithOneWildcard txtDot;
-    touchgfx::Unicode::UnicodeChar txtDotBuffer[TXT_SIZE];
-
-    touchgfx::TextAreaWithOneWildcard txtFractional;
-    touchgfx::Unicode::UnicodeChar txtFractionalBuffer[TXT_SIZE];
+//    touchgfx::TextAreaWithOneWildcard txtSign;
+//    touchgfx::Unicode::UnicodeChar txtSignBuffer[TXT_SIZE];
+//
+//    touchgfx::TextAreaWithOneWildcard txtIntegral[INTEGRAL_WEIGHT];
+//    touchgfx::Unicode::UnicodeChar txtIntegralBuffer[INTEGRAL_WEIGHT][TXT_SIZE];
+//
+////    touchgfx::TextAreaWithOneWildcard txtIntegralHundreds;
+////    touchgfx::Unicode::UnicodeChar txtIntegralHundredsBuffer[TXT_SIZE];
+//
+////    touchgfx::TextAreaWithOneWildcard txtIntegralTenths;
+////    touchgfx::Unicode::UnicodeChar txtIntegralTenthsBuffer[TXT_SIZE];
+//
+////    touchgfx::TextAreaWithOneWildcard txtIntegralUnits;
+////    touchgfx::Unicode::UnicodeChar txtIntegralUnitsBuffer[TXT_SIZE];
+//
+//    touchgfx::TextAreaWithOneWildcard txtDot;
+//    touchgfx::Unicode::UnicodeChar txtDotBuffer[TXT_SIZE];
+//
+//    touchgfx::TextAreaWithOneWildcard txtFractional;
+//    touchgfx::Unicode::UnicodeChar txtFractionalBuffer[TXT_SIZE];
 };
 
 }   //namespace touchgfx

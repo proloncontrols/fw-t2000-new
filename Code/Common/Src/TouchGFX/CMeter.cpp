@@ -39,12 +39,21 @@ CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const Ty
 {
 	displayFractional = false;
 
+	setHeight(MAX(textLarge.getFont()->getFontHeight(), textSmall.getFont()->getFontHeight()));
+
+	background.setPosition(*this);
+	background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
+	add(background);
+
 	for(int i = 0; i < DISPLAY_LENGTH; i++)
 	{
+		displayString[i].widget.setXY(0, 0);
+		displayString[i].widget.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+	    displayString[i].widget.setLinespacing(0);
 	    displayString[i].buffer[0] = 0;
 	    displayString[i].widget.setWildcard(displayString[i].buffer);
+	    displayString[i].widget.resizeToCurrentText();
 	    displayString[i].widget.setTypedText(textLarge);
-	    displayString[i].widget.setBaselineY(displayString[i].widget.getHeight()-10);
 	    add(displayString[i].widget);
 	}
     displayString[DISPLAY_LENGTH-1].widget.setTypedText(textSmall);
@@ -58,85 +67,85 @@ CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const Ty
 
 
 
-	setWidth(100);
-	setHeight(textLarge.getFont()->getFontHeight());
-
-	background.setPosition(*this);
-	background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
-	add(background);
-
-    txtSign.setXY(0, 0);
-    txtSign.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-    txtSign.setLinespacing(0);
-    txtSignBuffer[0] = 0;
-    txtSign.setWildcard(txtSignBuffer);
-    txtSign.resizeToCurrentText();
-    txtSign.setTypedText(textLarge);
-    txtSign.setBaselineY(txtSign.getHeight()-10);
-    add(txtSign);
-
-    for(int i = 0; i < INTEGRAL_WEIGHT; i++)
-    {
-    	txtIntegral[i].setXY(0, 0);
-    	txtIntegral[i].setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-    	txtIntegral[i].setLinespacing(0);
-    	txtIntegralBuffer[0][i] = 0;
-    	txtIntegral[i].setWildcard(txtIntegralBuffer[i]);
-    	txtIntegral[i].resizeToCurrentText();
-    	txtIntegral[i].setTypedText(textLarge);
-
-//    	txtIntegral[i].setBaselineY(textLarge.getFont()->getFontHeight() - 10);
-    	txtIntegral[i].setBaselineY(txtIntegral[i].getHeight()-10);
-
-        add(txtIntegral[i]);
-    }
-
-//    txtIntegralHundreds.setXY(0, 0);
-//    txtIntegralHundreds.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-//    txtIntegralHundreds.setLinespacing(0);
-//    txtIntegralHundredsBuffer[0] = 0;
-//    txtIntegralHundreds.setWildcard(txtIntegralHundredsBuffer);
-//    txtIntegralHundreds.resizeToCurrentText();
-//    txtIntegralHundreds.setTypedText(text);
-//    add(txtIntegralHundreds);
+//	setWidth(100);
+//	setHeight(textLarge.getFont()->getFontHeight());
 //
-//    txtIntegralTenths.setXY(0, 0);
-//    txtIntegralTenths.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-//    txtIntegralTenths.setLinespacing(0);
-//    txtIntegralTenthsBuffer[0] = 0;
-//    txtIntegralTenths.setWildcard(txtIntegralTenthsBuffer);
-//    txtIntegralTenths.resizeToCurrentText();
-//    txtIntegralTenths.setTypedText(text);
-//    add(txtIntegralTenths);
+//	background.setPosition(*this);
+//	background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
+//	add(background);
 //
-//    txtIntegralUnits.setXY(0, 0);
-//    txtIntegralUnits.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-//    txtIntegralUnits.setLinespacing(0);
-//    txtIntegralUnitsBuffer[0] = 0;
-//    txtIntegralUnits.setWildcard(txtIntegralUnitsBuffer);
-//    txtIntegralUnits.resizeToCurrentText();
-//    txtIntegralUnits.setTypedText(text);
-//    add(txtIntegralUnits);
-
-    txtDot.setXY(0, 200);
-    txtDot.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-    txtDot.setLinespacing(0);
-    txtDotBuffer[0] = 0;
-    txtDot.setWildcard(txtDotBuffer);
-    txtDot.resizeToCurrentText();
-    txtDot.setTypedText(textSmall);
-    txtDot.setBaselineY(txtDot.getHeight()-10);
-    add(txtDot);
-
-    txtDot.setXY(0, 200);
-    txtFractional.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-    txtFractional.setLinespacing(0);
-    txtFractionalBuffer[0] = 0;
-    txtFractional.setWildcard(txtFractionalBuffer);
-    txtFractional.resizeToCurrentText();
-    txtFractional.setTypedText(textSmall);
-    txtFractional.setBaselineY(txtFractional.getHeight()-10);
-    add(txtFractional);
+//    txtSign.setXY(0, 0);
+//    txtSign.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+//    txtSign.setLinespacing(0);
+//    txtSignBuffer[0] = 0;
+//    txtSign.setWildcard(txtSignBuffer);
+//    txtSign.resizeToCurrentText();
+//    txtSign.setTypedText(textLarge);
+//    txtSign.setBaselineY(txtSign.getHeight()-10);
+//    add(txtSign);
+//
+//    for(int i = 0; i < INTEGRAL_WEIGHT; i++)
+//    {
+//    	txtIntegral[i].setXY(0, 0);
+//    	txtIntegral[i].setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+//    	txtIntegral[i].setLinespacing(0);
+//    	txtIntegralBuffer[0][i] = 0;
+//    	txtIntegral[i].setWildcard(txtIntegralBuffer[i]);
+//    	txtIntegral[i].resizeToCurrentText();
+//    	txtIntegral[i].setTypedText(textLarge);
+//
+////    	txtIntegral[i].setBaselineY(textLarge.getFont()->getFontHeight() - 10);
+//    	txtIntegral[i].setBaselineY(txtIntegral[i].getHeight()-10);
+//
+//        add(txtIntegral[i]);
+//    }
+//
+////    txtIntegralHundreds.setXY(0, 0);
+////    txtIntegralHundreds.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+////    txtIntegralHundreds.setLinespacing(0);
+////    txtIntegralHundredsBuffer[0] = 0;
+////    txtIntegralHundreds.setWildcard(txtIntegralHundredsBuffer);
+////    txtIntegralHundreds.resizeToCurrentText();
+////    txtIntegralHundreds.setTypedText(text);
+////    add(txtIntegralHundreds);
+////
+////    txtIntegralTenths.setXY(0, 0);
+////    txtIntegralTenths.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+////    txtIntegralTenths.setLinespacing(0);
+////    txtIntegralTenthsBuffer[0] = 0;
+////    txtIntegralTenths.setWildcard(txtIntegralTenthsBuffer);
+////    txtIntegralTenths.resizeToCurrentText();
+////    txtIntegralTenths.setTypedText(text);
+////    add(txtIntegralTenths);
+////
+////    txtIntegralUnits.setXY(0, 0);
+////    txtIntegralUnits.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+////    txtIntegralUnits.setLinespacing(0);
+////    txtIntegralUnitsBuffer[0] = 0;
+////    txtIntegralUnits.setWildcard(txtIntegralUnitsBuffer);
+////    txtIntegralUnits.resizeToCurrentText();
+////    txtIntegralUnits.setTypedText(text);
+////    add(txtIntegralUnits);
+//
+//    txtDot.setXY(0, 200);
+//    txtDot.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+//    txtDot.setLinespacing(0);
+//    txtDotBuffer[0] = 0;
+//    txtDot.setWildcard(txtDotBuffer);
+//    txtDot.resizeToCurrentText();
+//    txtDot.setTypedText(textSmall);
+//    txtDot.setBaselineY(txtDot.getHeight()-10);
+//    add(txtDot);
+//
+//    txtDot.setXY(0, 200);
+//    txtFractional.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+//    txtFractional.setLinespacing(0);
+//    txtFractionalBuffer[0] = 0;
+//    txtFractional.setWildcard(txtFractionalBuffer);
+//    txtFractional.resizeToCurrentText();
+//    txtFractional.setTypedText(textSmall);
+//    txtFractional.setBaselineY(txtFractional.getHeight()-10);
+//    add(txtFractional);
 }
 
 
@@ -145,117 +154,187 @@ CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const Ty
 //-----------------------------------------------------------------------------
 void CMeter::display(double value)
 {
+	int strLength;
+	int virtualWidth;
+	int firstCharLeft;
+	char* strPtr;
+	DisplayChar* dspPtr;
+	const GlyphNode* glyph;
+	char strValue[DISPLAY_LENGTH + 1];
+
+
 	if((value < -999.9) || (value > 999.9))
 		value = 0.0;
 
-	char strValue[DISPLAY_LENGTH+1];
 	sprintf(strValue, "%.1f", value);
-
-	int endOfString = strlen(strValue)-1;
+	strLength = strlen(strValue);
 	if(!displayFractional)
-		endOfString -= 2;
+		strLength -= 2;
 
-	for(int i = endOfString; i > 0; i--)
+	virtualWidth = 0;
+	strPtr = &strValue[strLength - 1];
+	dspPtr = &displayString[DISPLAY_LENGTH - 1];
+	for(int i = 0; i < strLength; i++)
 	{
+		Unicode::fromUTF8((uint8_t*)strPtr, dspPtr->buffer, 1);
+		glyph = dspPtr->widget.getTypedText().getFont()->getGlyph(dspPtr->buffer[0]);
+		dspPtr->widget.setWidth(glyph->left + glyph->width());
+		firstCharLeft = glyph->left;
+		virtualWidth += dspPtr->widget.getWidth();
+		strPtr--;
+		dspPtr--;
+	}
+	setWidth(virtualWidth + firstCharLeft);
 
+	dspPtr = &displayString[DISPLAY_LENGTH - 1];
+	for(int i = 0; i < strLength; i++)
+	{
+		virtualWidth -= dspPtr->widget.getWidth();
+		dspPtr->widget.setXY(virtualWidth, getHeight() - dspPtr->widget.getTypedText().getFont()->getFontHeight());
+		dspPtr->widget.setBaselineY(dspPtr->widget.getHeight() - 10);
+		dspPtr->widget.invalidate();
+		dspPtr--;
 	}
 
 
 
-
-
-
-
-
-	double tmpIntegral;
-	double tmpFractional = modf(value, &tmpIntegral);
-
-	bool negativeValue = false;
-	if(tmpIntegral < 0.0)
-		negativeValue = true;
-
-	int16_t integral = abs((int16_t)tmpIntegral);
-	int16_t fractional = abs((int16_t)(tmpFractional * 10.0));
-
-	int16_t totalWidth = 0;
-	char buffer[2];
-
-	const Font* font;
-	const GlyphNode* glyph;
-
-	if(displayFractional)
-	{
-		sprintf(buffer, "%.1d", fractional);
-		Unicode::fromUTF8((uint8_t*)buffer, txtFractionalBuffer, 1);
-		font = txtFractional.getTypedText().getFont();
-		glyph = font->getGlyph(txtFractional.getWildcard1()[0]);
-		txtFractional.setWidth(glyph->left + glyph->width());
-		totalWidth += txtFractional.getWidth();
-
-		Unicode::fromUTF8((uint8_t*)".", txtDotBuffer, 1);
-		font = txtDot.getTypedText().getFont();
-		glyph = font->getGlyph(txtDot.getWildcard1()[0]);
-		txtDot.setWidth(glyph->left + glyph->width());
-		totalWidth += txtDot.getWidth();
-	}
-
-	char strIntegral[INTEGRAL_WEIGHT+1];
-	sprintf(strIntegral, "%d", integral);
-    for(int i = (int)strlen(strIntegral)-1; i >= 0; i--)
-    {
-		Unicode::fromUTF8((uint8_t*)&strIntegral[i], &txtIntegralBuffer[i][0], 1);
-		font = txtIntegral[i].getTypedText().getFont();
-		glyph = font->getGlyph(txtIntegral[i].getWildcard1()[0]);
-		txtIntegral[i].setWidth(glyph->left + glyph->width());
-		totalWidth += txtIntegral[i].getWidth();
-    }
-
-	if(negativeValue)
-	{
-		Unicode::fromUTF8((uint8_t*)"-", txtSignBuffer, 1);
-		font = txtSign.getTypedText().getFont();
-		glyph = font->getGlyph(txtSign.getWildcard1()[0]);
-		txtSign.setWidth(glyph->left + glyph->width());
-		totalWidth += txtSign.getWidth();
-	}
-
-	setWidth(totalWidth);
-
-	if(displayFractional)
-	{
-		totalWidth -= txtFractional.getWidth();
-//		txtFractional.setX(totalWidth);
-//		txtFractional.setXY(totalWidth, getHeight()-txtFractional.getHeight()-5);
-//		txtFractional.setXY(totalWidth, getHeight()-txtIntegral[0].getHeight()-txtFractional.getHeight());
-		txtFractional.setXY(totalWidth, getHeight() - txtFractional.getTypedText().getFont()->getFontHeight());
-		txtFractional.invalidate();
-
-		totalWidth -= txtDot.getWidth();
-//		txtDot.setX(totalWidth);
-//		txtDot.setXY(totalWidth, getHeight()-txtDot.getHeight()-5);
-//		txtDot.setXY(totalWidth, getHeight()-txtIntegral[0].getHeight()-txtDot.getHeight());
-		txtDot.setXY(totalWidth, getHeight() - txtFractional.getTypedText().getFont()->getFontHeight());
-		txtDot.invalidate();
-	}
-
-    for(int i = INTEGRAL_WEIGHT-1; i >= 0; i--)
-    {
-    	if(txtIntegral[i].getWildcard1()[0] != 0)
-    	{
-    		totalWidth -= txtIntegral[i].getWidth();
-    		txtIntegral[i].setX(totalWidth);
-    		txtIntegral[i].invalidate();
-    	}
-    }
-
-    if(negativeValue)
-	{
-		totalWidth -= txtSign.getWidth();
-		txtSign.setX(totalWidth);
-		txtSign.invalidate();
-	}
+//	for(strIdx = strLength-1; strIdx >= 0; strIdx--)
+//	{
+//		dspChrPtr = &displayString[strIdx + DISPLAY_LENGTH - strLength];
+//
+//		bufIdx = strIdx + DISPLAY_LENGTH - strLength;
+//		Unicode::fromUTF8((uint8_t*)&strValue[strIdx], displayString[bufIdx].buffer, 1);
+//		glyph = displayString[bufIdx].widget.getTypedText().getFont()->getGlyph(displayString[bufIdx].buffer[0]);
+//		displayString[bufIdx].widget.setWidth(glyph->left + glyph->width());
+//		virtualWidth += displayString[bufIdx].widget.getWidth();
+//	}
+//
+//	setWidth(virtualWidth);
+//
+//	for(bufIdx = DISPLAY_LENGTH-1; bufIdx >= 0; bufIdx--)
+//	{
+//		virtualWidth -= displayString[bufIdx].widget.getWidth();
+//		displayString[bufIdx].widget.setXY(virtualWidth, getHeight() - displayString[bufIdx].widget.getTypedText().getFont()->getFontHeight());
+//		displayString[bufIdx].widget.invalidate();
+//	}
 
 	background.setPosition(*this);
+
+
+
+//	for(int i = strLength-1; i >= 0; i--)
+//	{
+//		Unicode::fromUTF8((uint8_t*)&strValue[i], displayString[i].buffer, 1);
+//		glyph = displayString[i].widget.getTypedText().getFont()->getGlyph(displayString[i].buffer[0]);
+//		displayString[i].widget.setWidth(glyph->left + glyph->width());
+//		virtualWidth += displayString[i].widget.getWidth();
+//	}
+//
+//	setWidth(virtualWidth);
+//
+//	for(int i = endOfString; i >= 0; i--)
+//	{
+//		virtualWidth -= displayString[i].widget.getWidth();
+//		displayString[i].widget.setXY(virtualWidth, getHeight() - displayString[i].widget.getTypedText().getFont()->getFontHeight());
+//		displayString[i].widget.invalidate();
+//	}
+//
+//	background.setPosition(*this);
+
+
+
+
+
+
+//	double tmpIntegral;
+//	double tmpFractional = modf(value, &tmpIntegral);
+//
+//	bool negativeValue = false;
+//	if(tmpIntegral < 0.0)
+//		negativeValue = true;
+//
+//	int16_t integral = abs((int16_t)tmpIntegral);
+//	int16_t fractional = abs((int16_t)(tmpFractional * 10.0));
+//
+//	int16_t totalWidth = 0;
+//	char buffer[2];
+//
+////	const Font* font;
+////	const GlyphNode* glyph;
+//
+//	if(displayFractional)
+//	{
+//		sprintf(buffer, "%.1d", fractional);
+//		Unicode::fromUTF8((uint8_t*)buffer, txtFractionalBuffer, 1);
+//		font = txtFractional.getTypedText().getFont();
+//		glyph = font->getGlyph(txtFractional.getWildcard1()[0]);
+//		txtFractional.setWidth(glyph->left + glyph->width());
+//		totalWidth += txtFractional.getWidth();
+//
+//		Unicode::fromUTF8((uint8_t*)".", txtDotBuffer, 1);
+//		font = txtDot.getTypedText().getFont();
+//		glyph = font->getGlyph(txtDot.getWildcard1()[0]);
+//		txtDot.setWidth(glyph->left + glyph->width());
+//		totalWidth += txtDot.getWidth();
+//	}
+//
+//	char strIntegral[INTEGRAL_WEIGHT+1];
+//	sprintf(strIntegral, "%d", integral);
+//    for(int i = (int)strlen(strIntegral)-1; i >= 0; i--)
+//    {
+//		Unicode::fromUTF8((uint8_t*)&strIntegral[i], &txtIntegralBuffer[i][0], 1);
+//		font = txtIntegral[i].getTypedText().getFont();
+//		glyph = font->getGlyph(txtIntegral[i].getWildcard1()[0]);
+//		txtIntegral[i].setWidth(glyph->left + glyph->width());
+//		totalWidth += txtIntegral[i].getWidth();
+//    }
+//
+//	if(negativeValue)
+//	{
+//		Unicode::fromUTF8((uint8_t*)"-", txtSignBuffer, 1);
+//		font = txtSign.getTypedText().getFont();
+//		glyph = font->getGlyph(txtSign.getWildcard1()[0]);
+//		txtSign.setWidth(glyph->left + glyph->width());
+//		totalWidth += txtSign.getWidth();
+//	}
+//
+//	setWidth(totalWidth);
+//
+//	if(displayFractional)
+//	{
+//		totalWidth -= txtFractional.getWidth();
+////		txtFractional.setX(totalWidth);
+////		txtFractional.setXY(totalWidth, getHeight()-txtFractional.getHeight()-5);
+////		txtFractional.setXY(totalWidth, getHeight()-txtIntegral[0].getHeight()-txtFractional.getHeight());
+//		txtFractional.setXY(totalWidth, getHeight() - txtFractional.getTypedText().getFont()->getFontHeight());
+//		txtFractional.invalidate();
+//
+//		totalWidth -= txtDot.getWidth();
+////		txtDot.setX(totalWidth);
+////		txtDot.setXY(totalWidth, getHeight()-txtDot.getHeight()-5);
+////		txtDot.setXY(totalWidth, getHeight()-txtIntegral[0].getHeight()-txtDot.getHeight());
+//		txtDot.setXY(totalWidth, getHeight() - txtFractional.getTypedText().getFont()->getFontHeight());
+//		txtDot.invalidate();
+//	}
+//
+//    for(int i = INTEGRAL_WEIGHT-1; i >= 0; i--)
+//    {
+//    	if(txtIntegral[i].getWildcard1()[0] != 0)
+//    	{
+//    		totalWidth -= txtIntegral[i].getWidth();
+//    		txtIntegral[i].setX(totalWidth);
+//    		txtIntegral[i].invalidate();
+//    	}
+//    }
+//
+//    if(negativeValue)
+//	{
+//		totalWidth -= txtSign.getWidth();
+//		txtSign.setX(totalWidth);
+//		txtSign.invalidate();
+//	}
+//
+//	background.setPosition(*this);
 
 
 
