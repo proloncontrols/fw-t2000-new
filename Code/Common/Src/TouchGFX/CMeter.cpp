@@ -25,7 +25,6 @@
 #include <string.h>
 #include <CMeter.hpp>
 #include <touchgfx/Color.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -40,11 +39,10 @@ CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const Ty
 
 	setHeight(MAX(textLarge.getFont()->getFontHeight(), textSmall.getFont()->getFontHeight()));
 
-#ifdef METER_SHOW_BACKGROUND
 	background.setPosition(*this);
+//	background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 	background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
 	add(background);
-#endif
 
 	for(int i = 0; i < DISPLAY_LENGTH; i++)
 	{
@@ -53,10 +51,7 @@ CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const Ty
 	    displayString[i].widget.setWildcard(displayString[i].buffer);
 	    displayString[i].widget.setTypedText(textLarge);
 	    add(displayString[i].widget);
-	}
-    displayString[DISPLAY_LENGTH-1].widget.setTypedText(textSmall);
-    displayString[DISPLAY_LENGTH-2].widget.setTypedText(textSmall);
-}
+	}}
 
 
 //=============================================================================
@@ -100,14 +95,11 @@ void CMeter::display(double value)
 	{
 		virtualWidth -= dspPtr->widget.getWidth();
 		dspPtr->widget.setXY(virtualWidth, getHeight() - dspPtr->widget.getTypedText().getFont()->getFontHeight());
-		dspPtr->widget.setBaselineY(dspPtr->widget.getHeight() - 10);
 		dspPtr->widget.invalidate();
 		dspPtr--;
 	}
 
-#ifdef METER_SHOW_BACKGROUND
 	background.setPosition(*this);
-#endif
 }
 
 
@@ -122,51 +114,14 @@ int16_t CMeter::getDotX()
 	return getWidth();
 }
 
+//-----------------------------------------------------------------------------
+void CMeter::setBaseline(int16_t base)
+{
+	for(int i = 0; i < DISPLAY_LENGTH; i++)
+		displayString[i].widget.setBaselineY(base);
+}
+
 }   //namespace touchgfx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

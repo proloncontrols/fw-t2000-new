@@ -14,9 +14,18 @@ SplashView::SplashView()
 //	swipe.addPage(swipePage1);
 //	tempInside.setXY(0, 0);
 //	swipePage1.add(tempInside);
-	MeterTempInt.setXY(0, 0);
-	MeterTempInt.display(-24.8, true);
-	add(MeterTempInt);
+
+
+
+	MeterTempExt.setXY(0, 0);
+	MeterTempExt.display(-33, true);
+	add(MeterTempExt);
+//	MeterTempExt.setXY(0, 0);
+//	MeterTempExt.display(-33.8, true);
+//	add(MeterTempExt);
+
+
+
 //	img1.setBitmap(touchgfx::Bitmap(BITMAP_COOLINGON_560X560_ID));
 //	img1.setXY(swipePage1.getWidth()/2 - img1.getWidth()/2, 0);
 //	swipePage1.add(img1);

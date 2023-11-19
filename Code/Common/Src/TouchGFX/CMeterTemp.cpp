@@ -23,7 +23,6 @@
 //-----------------------------------------------------------------------------
 #include <CMeterTemp.hpp>
 #include <touchgfx/Color.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -63,15 +62,15 @@ void CMeterTemp::display(double value, bool celsius)
 	width = glyph->width() + glyph->left;
 	glyph = unit.getTypedText().getFont()->getGlyph(unitBuffer[1]);
 	width += glyph->width() + glyph->left;
-	top = unit.getTypedText().getFont()->getFontHeight() - glyph->top();
 	unit.setWidth(width);
+
+	top = unit.getTypedText().getFont()->getFontHeight() - glyph->top();
 	unit.setXY(getDotX(), top);
+	curBaseline = getHeight() - top;
+	CMeter::setBaseline(curBaseline);
 
 	setWidth(MAX(getWidth(), unit.getX()+unit.getWidth()+firstCharLeftWidth));
-
-#ifdef METER_SHOW_BACKGROUND
 	background.setPosition(*this);
-#endif
 }
 
 }   //namespace touchgfx

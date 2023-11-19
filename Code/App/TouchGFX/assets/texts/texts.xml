@@ -6,10 +6,16 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="T2000_METER_LARGE" Alignment="Left" TypographyId="T2000_MeterLarge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="T2000_METER_MEDIUM" Alignment="Left" TypographyId="T2000_MeterMedium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="T2000_METER_SMALL" Alignment="Left" TypographyId="T2000_MeterSmall">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="T2000_METER_LARGE" Alignment="Left" TypographyId="T2000_MeterLarge">
+      <Text Id="T2000_METER_TINY" Alignment="Left" TypographyId="T2000_MeterTiny">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
     </TextGroup>
@@ -19,7 +25,8 @@
     <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="T2000_MeterLarge" Font="AvenirNext-Medium-06.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0x30-0x39" />
-    <Typography Id="T2000_MeterSmall" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="., °, C, F, %" WildcardCharacterRanges="0x30-0x39" />
-    <Typography Id="T2000_Tiny" Font="AvenirNext-Regular-08.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x20-0x7E" />
+    <Typography Id="T2000_MeterMedium" Font="AvenirNext-Medium-06.ttf" Size="150" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0x30-0x39" />
+    <Typography Id="T2000_MeterSmall" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-, ., °, C, F, %" WildcardCharacterRanges="0x30-0x39" />
+    <Typography Id="T2000_MeterTiny" Font="AvenirNext-Regular-08.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°, C, F, %" />
   </Typographies>
 </TextDatabase>

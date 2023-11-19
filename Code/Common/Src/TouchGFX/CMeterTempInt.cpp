@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Inside temperature meter widget class implementation file
+//  Description : Interior temperature meter widget class implementation file
 //=============================================================================
 
 
@@ -43,6 +43,9 @@ CMeterTempInt::CMeterTempInt()
 	: CMeterTemp(COLOR_RED, COLOR_GREEN, COLOR_BLUE, touchgfx::TypedText(T_T2000_METER_LARGE), touchgfx::TypedText(T_T2000_METER_SMALL))
 {
 	displayFractional = true;
+
+    displayString[DISPLAY_LENGTH-1].widget.setTypedText(touchgfx::TypedText(T_T2000_METER_SMALL));
+    displayString[DISPLAY_LENGTH-2].widget.setTypedText(touchgfx::TypedText(T_T2000_METER_SMALL));
 }
 
 

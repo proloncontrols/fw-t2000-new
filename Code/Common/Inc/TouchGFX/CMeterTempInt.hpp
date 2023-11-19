@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Inside temperature meter widget class header file
+//  Description : Interior temperature meter widget class header file
 //=============================================================================
 #ifndef CMETER_TEMP_INT_HPP
 #define CMETER_TEMP_INT_HPP

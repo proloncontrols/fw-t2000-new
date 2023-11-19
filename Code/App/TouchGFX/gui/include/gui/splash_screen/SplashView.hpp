@@ -6,6 +6,7 @@
 #include <CSwipe.hpp>
 #include <CImage.hpp>
 #include <CMeterTempInt.hpp>
+#include <CMeterTempExt.hpp>
 #include <CScreen.hpp>
 //#include <gui/containers/cntBlue.hpp>
 //#include <gui/containers/cntTempInside.hpp>
@@ -42,6 +43,7 @@ protected:
 //    cntTempInside tempInside;
 
     CMeterTempInt MeterTempInt;
+    CMeterTempExt MeterTempExt;
 };
 
 #endif // SPLASHVIEW_HPP

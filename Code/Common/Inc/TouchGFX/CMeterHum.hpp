@@ -10,20 +10,21 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterTemp.hpp
+//         File : CMeterHum.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Temperature meter widget class header file
+//  Description : Humidity meter widget class header file
 //=============================================================================
-#ifndef CMETER_TEMP_HPP
-#define CMETER_TEMP_HPP
+#ifndef CMETER_HUM_HPP
+#define CMETER_HUM_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <CMeter.hpp>
+#include <touchgfx/widgets/TextureMapper.hpp>
 
 
 namespace touchgfx
@@ -32,18 +33,17 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMeterTemp : public CMeter
+class CMeterHum : public CMeter
 {
 public:
-	CMeterTemp(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textLarge, const TypedText& textSmall);
-	void display(double value);
+	CMeterHum();
+	void display(double value, bool celsius);
 
 protected:
-    touchgfx::TextAreaWithOneWildcard unit;
-    touchgfx::Unicode::UnicodeChar unitBuffer[2];
+    touchgfx::TextureMapper image;
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMETER_TEMP_HPP
+#endif   //CMETER_TEMP_EXT_HPP
