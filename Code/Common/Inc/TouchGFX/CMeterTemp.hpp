@@ -36,7 +36,7 @@ class CMeterTemp : public CMeter
 {
 public:
 	CMeterTemp(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textLarge, const TypedText& textSmall);
-	void display(double value);
+	void display(double value, bool celsius);
 
 protected:
     touchgfx::TextAreaWithOneWildcard unit;

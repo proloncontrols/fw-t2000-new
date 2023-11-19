@@ -42,8 +42,8 @@ protected:
 //    cntBlue Blue;
 //    cntTempInside tempInside;
 
-    CMeterTempInt MeterTempInt;
-    CMeterTempExt MeterTempExt;
+//    CMeterTempInt MeterTempInt;
+//    CMeterTempExt MeterTempExt;
 };
 
 #endif // SPLASHVIEW_HPP

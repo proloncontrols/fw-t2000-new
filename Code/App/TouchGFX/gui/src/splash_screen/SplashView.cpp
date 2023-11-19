@@ -17,9 +17,9 @@ SplashView::SplashView()
 
 
 
-	MeterTempExt.setXY(0, 0);
-	MeterTempExt.display(-33, true);
-	add(MeterTempExt);
+//	MeterTempExt.setXY(0, 0);
+//	MeterTempExt.display(-33, true);
+//	add(MeterTempExt);
 //	MeterTempExt.setXY(0, 0);
 //	MeterTempExt.display(-33.8, true);
 //	add(MeterTempExt);
