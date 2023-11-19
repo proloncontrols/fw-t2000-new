@@ -34,27 +34,90 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
-CMeterValue::CMeterValue(int maxLen, uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& text)
+//CMeterDigit::CMeterDigit()
+//{
+//}
+
+
+
+CMeterValue::CMeterValue()
+{
+}
+
+
+
+CMeter::CMeter()
+{
+}
+
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+//char CMeterDigit::getDigit()
+//{
+//	uint8_t digit;
+//	Unicode::toUTF8(buffer, &digit, 1);
+//	return (char)digit;
+//}
+//
+//void CMeterDigit::setDigit(char digit)
+//{
+//	Unicode::fromUTF8((uint8_t*)&digit, buffer, 1);
+//}
+//
+//const Font* CMeterDigit::getFont()
+//{
+//	return widget.getTypedText().getFont();
+//}
+//
+//const GlyphNode* CMeterDigit::getGlyph()
+//{
+//	return getFont()->getGlyph(buffer[0]);
+//}
+//
+//touchgfx::TextAreaWithOneWildcard& CMeterDigit::getWidget()
+//{
+//	return widget;
+//}
+//
+//touchgfx::Unicode::UnicodeChar* CMeterDigit::getBuffer()
+//{
+//	return buffer;
+//}
+
+
+
+void CMeterValue::initialize(int maxLen, uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& text)
 {
 	value = (CMeterDigit*)(sizeof(CMeterDigit) * maxLen);
 
 	for(int i = 0; i < maxLen; i++)
 	{
-		value[i].widget.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-		value[i].buffer[0] = 0;
-		value[i].widget.setWildcard(value[i].buffer);
-		value[i].widget.setTypedText(text);
+		value[i].getWidget().setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+		value[i].getBuffer()[0] = 0;
+		value[i].getWidget().setWildcard(value[i].getBuffer());
+		value[i].getWidget().setTypedText(text);
 	}
 }
 
-//CMeter::CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textIntegral, const TypedText& textFractional)
-//{
-//}
+const Font* CMeterValue::getFont()
+{
+	return text.getFont();
+}
+
+void CMeter::initialize(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textIntegral, const TypedText& textFractional)
+{
+}
 
 
-////=============================================================================
-////  M E T H O D S
-////-----------------------------------------------------------------------------
+
+
+
+
+
+
+
 //void CMeter::display(double value)
 //{
 //	int strLength;

@@ -24,6 +24,7 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <stdlib.h>
+#include <CMeterDigit.hpp>
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
@@ -39,16 +40,16 @@ namespace touchgfx
 #define DISPLAY_MAX_LEN_FRACTIONAL   1
 
 #define DISPLAY_LENGTH     6   //Maximum number of characters in the display string. Ex: "-100.0"
-#define CHAR_BUFFER_SIZE   2   //TextArea wildcard buffer size "including null"
+//#define CHAR_BUFFER_SIZE   2   //TextArea wildcard buffer size "including null"
 
 
 //=============================================================================
 //  T Y P E D E F S
 //-----------------------------------------------------------------------------
-typedef struct {
-    touchgfx::TextAreaWithOneWildcard widget;
-    touchgfx::Unicode::UnicodeChar buffer[CHAR_BUFFER_SIZE];
-} DisplayChar;
+//typedef struct {
+//    touchgfx::TextAreaWithOneWildcard widget;
+//    touchgfx::Unicode::UnicodeChar buffer[CHAR_BUFFER_SIZE];
+//} DisplayChar;
 
 
 
@@ -57,12 +58,21 @@ typedef struct {
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMeterDigit
-{
-public:
-    touchgfx::TextAreaWithOneWildcard widget;
-    touchgfx::Unicode::UnicodeChar buffer[2];
-};
+//class CMeterDigit
+//{
+//public:
+//	CMeterDigit();
+//	char getDigit();
+//	void setDigit(char digit);
+//	const Font* getFont();
+//	const GlyphNode* getGlyph();
+//	touchgfx::TextAreaWithOneWildcard& getWidget();
+//	touchgfx::Unicode::UnicodeChar* getBuffer();
+//
+//private:
+//    touchgfx::TextAreaWithOneWildcard widget;
+//    touchgfx::Unicode::UnicodeChar buffer[2];
+//};
 
 
 
@@ -71,11 +81,12 @@ public:
 class CMeterValue
 {
 public:
-	CMeterValue(int maxLen, uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& typedText);
+	CMeterValue();
+	void initialize(int maxLen, uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& typedText);
+	const Font* getFont();
 
 protected:
 	CMeterDigit* value;
-	int digitCount;
     TypedText text;
 };
 
@@ -86,7 +97,8 @@ protected:
 class CMeter : public Container
 {
 public:
-	CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textIntegral, const TypedText& textFractional);
+	CMeter();
+	void initialize(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textIntegral, const TypedText& textFractional);
 //	void display(double value);
 //
 protected:
