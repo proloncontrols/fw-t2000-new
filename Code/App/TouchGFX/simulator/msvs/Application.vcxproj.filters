@@ -187,12 +187,6 @@
     <Filter Include="Source Files\gui\containers">
       <UniqueIdentifier>8FF737F6-D63F-B0BD-C9C0-EFFB7B557701</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\containers">
-      <UniqueIdentifier>9943087C-4888-1D68-4914-1BF56D604AAF</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\containers">
-      <UniqueIdentifier>6BB6E5B6-4994-F426-C831-82327709474F</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">

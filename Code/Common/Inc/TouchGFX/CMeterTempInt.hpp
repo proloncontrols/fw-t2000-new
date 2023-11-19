@@ -10,20 +10,20 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterTemp.hpp
+//         File : CMeterTempInt.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Temperature meter widget class header file
+//  Description : Inside temperature meter widget class header file
 //=============================================================================
-#ifndef CMETER_TEMP_HPP
-#define CMETER_TEMP_HPP
+#ifndef CMETER_TEMP_INT_HPP
+#define CMETER_TEMP_INT_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CMeter.hpp>
+#include <CMeterTemp.hpp>
 
 
 namespace touchgfx
@@ -32,18 +32,14 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMeterTemp : public CMeter
+class CMeterTempInt : public CMeterTemp
 {
 public:
-	CMeterTemp(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textLarge, const TypedText& textSmall);
+	CMeterTempInt();
 	void display(double value, bool celsius);
-
-private:
-    touchgfx::TextAreaWithOneWildcard unit;
-    touchgfx::Unicode::UnicodeChar unitBuffer[3];
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMETER_TEMP_HPP
+#endif   //CMETER_TEMP_INT_HPP

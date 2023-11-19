@@ -4,18 +4,24 @@
 
 FONT_TABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::GlyphNode glyphs_AvenirNext_Regular_08_70_4bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
-    {     0, 0x002E,   8,   8,   8,   5,  18,   0,   0, 0x00 },
-    {    32, 0x0030,  33,  53,  51,   4,  41,   0,   0, 0x00 },
-    {   933, 0x0031,  18,  50,  50,   8,  41,   0,   0, 0x00 },
-    {  1383, 0x0032,  33,  52,  51,   3,  41,   0,   0, 0x00 },
-    {  2267, 0x0033,  33,  53,  51,   3,  41,   0,   0, 0x00 },
-    {  3168, 0x0034,  36,  50,  50,   2,  41,   0,   0, 0x00 },
-    {  4068, 0x0035,  32,  52,  51,   4,  41,   0,   0, 0x00 },
-    {  4900, 0x0036,  33,  52,  51,   4,  41,   0,   0, 0x00 },
-    {  5784, 0x0037,  30,  51,  51,   5,  41,   0,   0, 0x00 },
-    {  6549, 0x0038,  33,  53,  51,   4,  41,   0,   0, 0x00 },
-    {  7450, 0x0039,  33,  52,  51,   4,  41,   0,   0, 0x00 },
-    {  8334, 0x003F,  28,  52,  51,   3,  34,   0,   0, 0x00 }
+    {     0, 0x0020,   0,   0,   0,   0,  18,   0,   0, 0x00 },
+    {     0, 0x0025,  54,  56,  53,   2,  58,   0,   0, 0x00 },
+    {  1512, 0x002C,  10,  17,   7,   3,  18,   0,   0, 0x00 },
+    {  1597, 0x002E,   8,   8,   8,   5,  18,   0,   0, 0x00 },
+    {  1629, 0x0030,  33,  53,  51,   4,  41,   0,   0, 0x00 },
+    {  2530, 0x0031,  18,  50,  50,   8,  41,   0,   0, 0x00 },
+    {  2980, 0x0032,  33,  52,  51,   3,  41,   0,   0, 0x00 },
+    {  3864, 0x0033,  33,  53,  51,   3,  41,   0,   0, 0x00 },
+    {  4765, 0x0034,  36,  50,  50,   2,  41,   0,   0, 0x00 },
+    {  5665, 0x0035,  32,  52,  51,   4,  41,   0,   0, 0x00 },
+    {  6497, 0x0036,  33,  52,  51,   4,  41,   0,   0, 0x00 },
+    {  7381, 0x0037,  30,  51,  51,   5,  41,   0,   0, 0x00 },
+    {  8146, 0x0038,  33,  53,  51,   4,  41,   0,   0, 0x00 },
+    {  9047, 0x0039,  33,  52,  51,   4,  41,   0,   0, 0x00 },
+    {  9931, 0x003F,  28,  52,  51,   3,  34,   0,   0, 0x00 },
+    { 10659, 0x0043,  46,  53,  51,   3,  50,   0,   0, 0x00 },
+    { 11878, 0x0046,  31,  51,  51,   6,  39,   0,   0, 0x00 },
+    { 12694, 0x00B0,  22,  21,  51,   3,  28,   0,   0, 0x00 }
 };
 
 // AvenirNext_Regular_08_70_4bpp
@@ -33,6 +39,6 @@ touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_70_4bpp();
 
 touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_70_4bpp()
 {
-    static touchgfx::GeneratedFont AvenirNext_Regular_08_70_4bpp(glyphs_AvenirNext_Regular_08_70_4bpp, 12, 70, 2, 4, 1, 0, 0, unicodes_AvenirNext_Regular_08_70_4bpp, kerning_AvenirNext_Regular_08_70_4bpp, 63, 0, 0, 0);
+    static touchgfx::GeneratedFont AvenirNext_Regular_08_70_4bpp(glyphs_AvenirNext_Regular_08_70_4bpp, 18, 70, 10, 4, 1, 0, 0, unicodes_AvenirNext_Regular_08_70_4bpp, kerning_AvenirNext_Regular_08_70_4bpp, 63, 0, 0, 0);
     return AvenirNext_Regular_08_70_4bpp;
 }

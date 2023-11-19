@@ -5,11 +5,11 @@
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <CSwipe.hpp>
 #include <CImage.hpp>
+#include <CMeterTempInt.hpp>
 #include <CScreen.hpp>
 //#include <gui/containers/cntBlue.hpp>
 //#include <gui/containers/cntTempInside.hpp>
 
-#include <CMeterTemp.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -41,7 +41,7 @@ protected:
 //    cntBlue Blue;
 //    cntTempInside tempInside;
 
-    CMeterTemp MeterTemp;
+    CMeterTempInt MeterTempInt;
 };
 
 #endif // SPLASHVIEW_HPP

@@ -10,24 +10,19 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeter.hpp
+//         File : CMeterTempInt.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Meter widget class header file
+//  Description : Inside temperature meter widget class implementation file
 //=============================================================================
-#ifndef CMETER_HPP
-#define CMETER_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <touchgfx/containers/Container.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#ifdef METER_SHOW_BACKGROUND
-#include <touchgfx/widgets/Box.hpp>
-#endif
+#include <CMeterTempInt.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -36,40 +31,27 @@ namespace touchgfx
 //=============================================================================
 //  D E F I N E S
 //-----------------------------------------------------------------------------
-#define DISPLAY_LENGTH     6   //Maximum number of characters in the display string. Ex: "-100.0"
-#define CHAR_BUFFER_SIZE   2   //TextArea wildcard buffer size "including null"
+#define COLOR_RED     120
+#define COLOR_GREEN   14
+#define COLOR_BLUE    14
 
 
 //=============================================================================
-//  T Y P E D E F S
+//  C O N S T R U C T O R S
 //-----------------------------------------------------------------------------
-typedef struct {
-    touchgfx::TextAreaWithOneWildcard widget;
-    touchgfx::Unicode::UnicodeChar buffer[CHAR_BUFFER_SIZE];
-} DisplayChar;
-
-
-//=============================================================================
-//  C L A S S E S
-//-----------------------------------------------------------------------------
-class CMeter : public Container
+CMeterTempInt::CMeterTempInt()
+	: CMeterTemp(COLOR_RED, COLOR_GREEN, COLOR_BLUE, touchgfx::TypedText(T_T2000_METER_LARGE), touchgfx::TypedText(T_T2000_METER_SMALL))
 {
-public:
-	CMeter(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textLarge, const TypedText& textSmall);
-	void display(double value);
+	displayFractional = true;
+}
 
-protected:
-	bool displayFractional;
-	int firstCharLeftWidth;
-    DisplayChar displayString[DISPLAY_LENGTH];
-#ifdef METER_SHOW_BACKGROUND
-    touchgfx::Box background;
-#endif
 
-    int16_t getDotX();
-};
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CMeterTempInt::display(double value, bool celsius)
+{
+	CMeterTemp::display(value, celsius);
+}
 
 }   //namespace touchgfx
-
-
-#endif   //CMETER_HPP
