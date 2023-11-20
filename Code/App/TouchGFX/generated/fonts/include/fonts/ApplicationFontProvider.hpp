@@ -28,9 +28,9 @@ struct TypographyFontIndex
     static const touchgfx::FontId LARGE = 1;             // verdana_40_4bpp
     static const touchgfx::FontId SMALL = 2;             // verdana_10_4bpp
     static const touchgfx::FontId T2000_METERLARGE = 3;  // AvenirNext_Medium_06_220_4bpp
-    static const touchgfx::FontId T2000_METERMEDIUM = 4; // AvenirNext_Medium_06_150_4bpp
+    static const touchgfx::FontId T2000_METERMEDIUM = 4; // AvenirNext_Medium_06_180_4bpp
     static const touchgfx::FontId T2000_METERSMALL = 5;  // AvenirNext_Regular_08_70_4bpp
-    static const touchgfx::FontId T2000_METERTINY = 6;   // AvenirNext_Regular_08_20_4bpp
+    static const touchgfx::FontId T2000_METERTINY = 6;   // AvenirNext_Medium_06_22_4bpp
     static const uint16_t NUMBER_OF_FONTS = 7;
 };
 

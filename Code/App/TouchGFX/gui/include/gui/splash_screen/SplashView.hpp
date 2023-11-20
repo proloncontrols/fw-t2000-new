@@ -8,6 +8,7 @@
 #include <CMeterTempInt.hpp>
 #include <CMeterTempExt.hpp>
 #include <CScreen.hpp>
+#include <CMeter.hpp>
 //#include <gui/containers/cntBlue.hpp>
 //#include <gui/containers/cntTempInside.hpp>
 
@@ -42,6 +43,8 @@ protected:
 //    cntBlue Blue;
 //    cntTempInside tempInside;
 
+    CMeter meter;
+    CMeter meter2;
 //    CMeterTempInt MeterTempInt;
 //    CMeterTempExt MeterTempExt;
 };

@@ -1,6 +1,7 @@
 #include <gui/splash_screen/SplashView.hpp>
 #include <BitmapDatabase.hpp>
 #include <CWidgets.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 SplashView::SplashView()
 {
@@ -16,6 +17,18 @@ SplashView::SplashView()
 //	swipePage1.add(tempInside);
 
 
+
+//	meter.setXY(0, 0);
+//	meter.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_MEDIUM), touchgfx::TypedText(T_T2000_METER_SMALL), false);
+//	meter.setUnit(METER_UNIT_FAHRENHEIT);
+//	meter.display(-33.8);
+//	add(meter);
+
+	meter2.setXY(0, 75);
+	meter2.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_LARGE), touchgfx::TypedText(T_T2000_METER_SMALL), false);
+	meter2.setUnit(METER_UNIT_CELSIUS);
+	meter2.display(-33.8);
+	add(meter2);
 
 //	MeterTempExt.setXY(0, 0);
 //	MeterTempExt.display(-33, true);

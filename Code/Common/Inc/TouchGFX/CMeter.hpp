@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Meter widget class header file
+//  Description : Meter class header file
 //=============================================================================
 #ifndef CMETER_HPP
 #define CMETER_HPP
@@ -23,11 +23,9 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <stdlib.h>
-#include <CMeterDigit.hpp>
-#include <touchgfx/containers/Container.hpp>
-#include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/Containers/Container.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/Box.hpp>
 
 
 namespace touchgfx
@@ -36,88 +34,65 @@ namespace touchgfx
 //=============================================================================
 //  D E F I N E S
 //-----------------------------------------------------------------------------
-#define DISPLAY_MAX_LEN_INTEGRAL     4
-#define DISPLAY_MAX_LEN_FRACTIONAL   1
-
-#define DISPLAY_LENGTH     6   //Maximum number of characters in the display string. Ex: "-100.0"
-//#define CHAR_BUFFER_SIZE   2   //TextArea wildcard buffer size "including null"
+#define METER_VALUE_MAX_CHAR   6   //Maximum number of character in value, ex: "-100.0"
+//#define METER_UNIT_MAX_CHAR    2   //Maximum number of character in unit, ex: "°C"
 
 
 //=============================================================================
 //  T Y P E D E F S
 //-----------------------------------------------------------------------------
-//typedef struct {
-//    touchgfx::TextAreaWithOneWildcard widget;
-//    touchgfx::Unicode::UnicodeChar buffer[CHAR_BUFFER_SIZE];
-//} DisplayChar;
-
-
-
+typedef enum {
+	METER_UNIT_NONE,
+	METER_UNIT_CELSIUS,
+	METER_UNIT_FAHRENHEIT,
+	METER_UNIT_HUMIDITY
+} MeterUnit;
 
 
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-//class CMeterDigit
-//{
-//public:
-//	CMeterDigit();
-//	char getDigit();
-//	void setDigit(char digit);
-//	const Font* getFont();
-//	const GlyphNode* getGlyph();
-//	touchgfx::TextAreaWithOneWildcard& getWidget();
-//	touchgfx::Unicode::UnicodeChar* getBuffer();
-//
-//private:
-//    touchgfx::TextAreaWithOneWildcard widget;
-//    touchgfx::Unicode::UnicodeChar buffer[2];
-//};
-
-
-
-
-
-class CMeterValue
-{
-public:
-	CMeterValue();
-	void initialize(int maxLen, uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& typedText);
-	const Font* getFont();
-
-protected:
-	CMeterDigit* value;
-    TypedText text;
-};
-
-
-
-
-
 class CMeter : public Container
 {
 public:
 	CMeter();
-	void initialize(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textIntegral, const TypedText& textFractional);
-//	void display(double value);
-//
+//	void initialize(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& text);
+//	void initialize(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textLarge, const TypedText& textSmall);
+
+	void initialize(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textLarge, const TypedText& textSmall, bool integral);
+	void setUnit(MeterUnit newUnit);
+	virtual void display(double newValue);
+
 protected:
-	CMeterValue valIntegral;
-	CMeterValue valFractional;
-////	CMeterIntegral valueIntegral;
-//
-//
-//	bool displayFractional;
-//	int firstCharLeftWidth;
-//	int16_t curBaseline;
-//    touchgfx::Box background;
-//    DisplayChar displayString[DISPLAY_LENGTH];
-//
-//    int16_t getDotX();
-//	void setBaseline(int16_t base);
+	class CDigit
+	{
+	public:
+		CDigit();
+		char getDigit();
+		void setDigit(char digit);
+		const Font* getFont();
+		const GlyphNode* getGlyph();
+		touchgfx::TextAreaWithOneWildcard& getWidget();
+		touchgfx::Unicode::UnicodeChar* getBuffer();
+
+	private:
+	    touchgfx::TextAreaWithOneWildcard widget;
+	    touchgfx::Unicode::UnicodeChar buffer[2];   //Character + null
+	};
+
+	bool integralOnly;
+    int leftMostCharacterLeftWidth;
+	touchgfx::Box background;
+	CDigit value[METER_VALUE_MAX_CHAR];
+//	CDigit unit[2];
+
+	MeterUnit curUnit;
+    touchgfx::TextAreaWithOneWildcard unit;
+    touchgfx::Unicode::UnicodeChar unitBuffer[3];   //Max unit length, ex: "°C" + null
+    void getUnitXY(int16_t& x, int16_t& y);
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMETER_HPP
+#endif   //CMETER_VALUE_HPP

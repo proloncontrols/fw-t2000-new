@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Temperature meter widget class header file
+//  Description : Temperature meter class header file
 //=============================================================================
 #ifndef CMETER_TEMP_HPP
 #define CMETER_TEMP_HPP
@@ -30,17 +30,22 @@ namespace touchgfx
 {
 
 //=============================================================================
+//  D E F I N E S
+//-----------------------------------------------------------------------------
+#define METER_UNIT_MAX_CHAR   2   //Maximum number of character in unit, ex: "°C"
+
+
+//=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
 class CMeterTemp : public CMeter
 {
 public:
 	CMeterTemp(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue, const TypedText& textLarge, const TypedText& textSmall);
-	void display(double value, bool celsius);
+	void display(double newValue, bool celsius);
 
 protected:
-    touchgfx::TextAreaWithOneWildcard unit;
-    touchgfx::Unicode::UnicodeChar unitBuffer[2];
+	CDigit unit[2];
 };
 
 }   //namespace touchgfx

@@ -22,13 +22,13 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
         // AvenirNext_Medium_06_220_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
     case Typography::T2000_METERMEDIUM:
-        // AvenirNext_Medium_06_150_4bpp
+        // AvenirNext_Medium_06_180_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[4]);
     case Typography::T2000_METERSMALL:
         // AvenirNext_Regular_08_70_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[5]);
     case Typography::T2000_METERTINY:
-        // AvenirNext_Regular_08_20_4bpp
+        // AvenirNext_Medium_06_22_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[6]);
     default:
         return 0;

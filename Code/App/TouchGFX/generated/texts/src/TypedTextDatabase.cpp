@@ -9,18 +9,18 @@ extern touchgfx::GeneratedFont& getFont_verdana_20_4bpp();
 extern touchgfx::GeneratedFont& getFont_verdana_40_4bpp();
 extern touchgfx::GeneratedFont& getFont_verdana_10_4bpp();
 extern touchgfx::GeneratedFont& getFont_AvenirNext_Medium_06_220_4bpp();
-extern touchgfx::GeneratedFont& getFont_AvenirNext_Medium_06_150_4bpp();
+extern touchgfx::GeneratedFont& getFont_AvenirNext_Medium_06_180_4bpp();
 extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_70_4bpp();
-extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_20_4bpp();
+extern touchgfx::GeneratedFont& getFont_AvenirNext_Medium_06_22_4bpp();
 
 const touchgfx::Font* touchgfx_fonts[] = {
     &(getFont_verdana_20_4bpp()),
     &(getFont_verdana_40_4bpp()),
     &(getFont_verdana_10_4bpp()),
     &(getFont_AvenirNext_Medium_06_220_4bpp()),
-    &(getFont_AvenirNext_Medium_06_150_4bpp()),
+    &(getFont_AvenirNext_Medium_06_180_4bpp()),
     &(getFont_AvenirNext_Regular_08_70_4bpp()),
-    &(getFont_AvenirNext_Regular_08_20_4bpp())
+    &(getFont_AvenirNext_Medium_06_22_4bpp())
 };
 
 extern const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[];
@@ -80,13 +80,13 @@ void resetFont(touchgfx::FontId fontId)
         touchgfx_fonts[3] = &(getFont_AvenirNext_Medium_06_220_4bpp());
         break;
     case 4:
-        touchgfx_fonts[4] = &(getFont_AvenirNext_Medium_06_150_4bpp());
+        touchgfx_fonts[4] = &(getFont_AvenirNext_Medium_06_180_4bpp());
         break;
     case 5:
         touchgfx_fonts[5] = &(getFont_AvenirNext_Regular_08_70_4bpp());
         break;
     case 6:
-        touchgfx_fonts[6] = &(getFont_AvenirNext_Regular_08_20_4bpp());
+        touchgfx_fonts[6] = &(getFont_AvenirNext_Medium_06_22_4bpp());
         break;
     }
 }
