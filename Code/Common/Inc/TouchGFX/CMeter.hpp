@@ -23,6 +23,8 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stddef.h>
+#include <string.h>
 #include <touchgfx/Containers/Container.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/Box.hpp>
@@ -31,6 +33,26 @@
 
 namespace touchgfx
 {
+
+class CMeterChar : public TextAreaWithOneWildcard
+{
+public:
+	CMeterChar() { setWildcard(buffer); }
+
+	void setFont(const TypedText& t) { setTypedText(t); }
+	void setFontColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue) { setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue)); }
+
+	const Font* getFont() { return getTypedText().getFont(); }
+	const GlyphNode* getGlyph() { return getFont()->getGlyph(buffer[0]); }
+	void setChar(char ch)
+	{
+		Unicode::fromUTF8((uint8_t*)&ch, buffer, 1);
+		resizeToCurrentText();
+	}
+
+protected:
+	Unicode::UnicodeChar buffer[2];
+};
 
 //#define MAX_LEN 32
 //class CText : public Container
@@ -67,6 +89,129 @@ namespace touchgfx
 //	TextAreaWithOneWildcard widget;
 //	Unicode::UnicodeChar buffer[MAX_LEN];
 //};
+
+class CMeterText : public Container
+{
+public:
+	CMeterText()
+	{
+		add(background);
+		background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+		strText = NULL;
+		strLen = 0;
+		charSpacingRatio = 0;
+		charSpacingWidth = 0;
+	}
+
+	void initialize(CMeterChar* newText, int newLen, const TypedText& t, uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue)
+	{
+		strText = newText;
+		strLen = newLen;
+		for(int i = 0; i < strLen; i++)
+		{
+			add(newText[i]);
+			newText[i].setTypedText(t);
+			newText[i].setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+		}
+
+		Container::setHeight(t.getFont()->getFontHeight());
+	}
+
+	void setColorBack(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue)
+	{
+		background.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+	}
+
+	void setCharSpacingRatio(uint8_t ratio)
+	{
+		charSpacingRatio = ratio;
+	}
+
+	void setText(char* newText)
+	{
+		int16_t len = strlen(newText);
+
+		char* newTextChar = &newText[len - 1];
+		CMeterChar* textChar = &strText[strLen - 1];
+
+		if(charSpacingRatio != 0)
+			charSpacingWidth = textChar->getFont()->getFontHeight() / charSpacingRatio;
+
+		int16_t newWidth = 0;
+		if(charSpacingRatio != 0)
+			newWidth = charSpacingWidth;
+
+		for(int16_t i = 0; (i < len) && (i < strLen); i++)
+		{
+			textChar->setChar(*newTextChar);
+			if(charSpacingWidth == 0)
+				newWidth += textChar->getWidth();
+			else
+				newWidth += (textChar->getGlyph()->width() + charSpacingWidth);
+			newTextChar--;
+			textChar--;
+		}
+
+		Container::setWidth(newWidth);
+
+		textChar = &strText[strLen - 1];
+
+		if(charSpacingRatio != 0)
+			newWidth -= charSpacingWidth;
+
+		for(int16_t i = 0; (i < len) && (i < strLen); i++)
+		{
+			if(charSpacingRatio == 0)
+			{
+				newWidth -= textChar->getWidth();
+				textChar->setXY(newWidth, Container::getHeight() - textChar->getHeight());
+			}
+			else
+			{
+				newWidth -= textChar->getGlyph()->width();
+				textChar->setXY(newWidth - textChar->getGlyph()->left, Container::getHeight() - textChar->getHeight());
+				newWidth -= charSpacingWidth;
+			}
+			textChar--;
+		}
+
+		background.setPosition(0, 0, Container::getWidth(), Container::getHeight());
+	}
+
+protected:
+	CMeterChar* strText;
+	int16_t strLen;
+	uint8_t charSpacingRatio;
+	int16_t charSpacingWidth;
+
+private:
+	touchgfx::Box background;
+};
+
+
+
+class CTextMeterValueIntegral : public CMeterText
+{
+public:
+	static const int charCount = 4;
+
+protected:
+	CMeterChar value[charCount];
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //=============================================================================
 //  D E F I N E S

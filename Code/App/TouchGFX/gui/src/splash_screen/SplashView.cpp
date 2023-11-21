@@ -25,19 +25,48 @@ SplashView::SplashView()
 //	text.setFontColorFore(186, 188, 190);
 //	text.setText((char*)"-31.8°C");
 
+//	add(ch);
+//	ch.setXY(30, 30);
+//	ch.setFont(touchgfx::TypedText(T_T2000_METER_LARGE));
+//	ch.setFontColor(186, 188, 190);
+//	ch.setChar('3');
 
 
-	meter.setXY(0, 0);
-	meter.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_MEDIUM), touchgfx::TypedText(T_T2000_METER_SMALL), false);
-	meter.setUnit(METER_UNIT_FAHRENHEIT);
-	meter.display(-31.8);
-	add(meter);
 
-	meter2.setXY(0, 300);
-	meter2.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_LARGE), touchgfx::TypedText(T_T2000_METER_SMALL), false);
-	meter2.setUnit(METER_UNIT_CELSIUS);
-	meter2.display(-31.8);
-	add(meter2);
+	add(meterText);
+	meterText.initialize(meterString, 4, touchgfx::TypedText(T_T2000_METER_LARGE), 186, 188, 190);
+	meterText.setXY(50, 50);
+	meterText.setColorBack(75, 75, 75);
+	meterText.setCharSpacingRatio(15);
+	meterText.setText((char*)"-33");
+
+	add(meterText2);
+	meterText2.initialize(meterString2, 2, touchgfx::TypedText(T_T2000_METER_SMALL), 186, 188, 190);
+	meterText2.setXY(meterText.getX() + meterText.getWidth(), meterText.getY() + (meterText.getHeight() - meterText2.getHeight()));
+	meterText2.setColorBack(75, 75, 75);
+	meterText2.setCharSpacingRatio(15);
+	meterText2.setText((char*)".8");
+
+	add(meterText3);
+	meterText3.initialize(meterString3, 2, touchgfx::TypedText(T_T2000_METER_SMALL), 186, 188, 190);
+	meterText3.setXY(meterText.getX() + meterText.getWidth(), meterText.getY());
+	meterText3.setColorBack(75, 75, 75);
+	meterText3.setCharSpacingRatio(15);
+	meterText3.setText((char*)"°C");
+
+
+
+//	meter.setXY(0, 0);
+//	meter.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_MEDIUM), touchgfx::TypedText(T_T2000_METER_SMALL), false);
+//	meter.setUnit(METER_UNIT_FAHRENHEIT);
+//	meter.display(-31.8);
+//	add(meter);
+//
+//	meter2.setXY(0, 300);
+//	meter2.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_LARGE), touchgfx::TypedText(T_T2000_METER_SMALL), false);
+//	meter2.setUnit(METER_UNIT_CELSIUS);
+//	meter2.display(-31.8);
+//	add(meter2);
 
 //	MeterTempExt.setXY(0, 0);
 //	MeterTempExt.display(-33, true);
