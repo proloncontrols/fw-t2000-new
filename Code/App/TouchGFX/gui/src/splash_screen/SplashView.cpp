@@ -18,16 +18,25 @@ SplashView::SplashView()
 
 
 
-//	meter.setXY(0, 0);
-//	meter.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_MEDIUM), touchgfx::TypedText(T_T2000_METER_SMALL), false);
-//	meter.setUnit(METER_UNIT_FAHRENHEIT);
-//	meter.display(-33.8);
-//	add(meter);
+//	add(text);
+//	text.setXY(50, 50);
+//	text.setFont(touchgfx::TypedText(T_T2000_METER_SMALL));
+//	text.setFontColorBack(75, 75, 75);
+//	text.setFontColorFore(186, 188, 190);
+//	text.setText((char*)"-31.8°C");
 
-	meter2.setXY(0, 75);
+
+
+	meter.setXY(0, 0);
+	meter.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_MEDIUM), touchgfx::TypedText(T_T2000_METER_SMALL), false);
+	meter.setUnit(METER_UNIT_FAHRENHEIT);
+	meter.display(-31.8);
+	add(meter);
+
+	meter2.setXY(0, 300);
 	meter2.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_LARGE), touchgfx::TypedText(T_T2000_METER_SMALL), false);
 	meter2.setUnit(METER_UNIT_CELSIUS);
-	meter2.display(-33.8);
+	meter2.display(-31.8);
 	add(meter2);
 
 //	MeterTempExt.setXY(0, 0);

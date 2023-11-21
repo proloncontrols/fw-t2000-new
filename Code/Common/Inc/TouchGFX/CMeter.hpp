@@ -26,10 +26,47 @@
 #include <touchgfx/Containers/Container.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/Color.hpp>
 
 
 namespace touchgfx
 {
+
+//#define MAX_LEN 32
+//class CText : public Container
+//{
+//public:
+//	CText()
+//	{
+//		add(background);
+//		background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+//		add(widget);
+//		widget.setWildcard(buffer);
+//	}
+//
+//	void setFont(const TypedText& t) { widget.setTypedText(t); }
+//	void setFontColorFore(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue) { widget.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue)); }
+//	void setFontColorBack(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue) { background.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue)); }
+//
+//	uint16_t getLength() { return Unicode::strlen(buffer); }
+//	const Font* getFont() { return widget.getTypedText().getFont(); }
+//	const GlyphNode* getGlyph(uint16_t index) { return getFont()->getGlyph(buffer[index]); }
+//
+//	void setText(char* s)
+//	{
+//		Unicode::fromUTF8((uint8_t*)s, buffer, MAX_LEN);
+//		widget.resizeToCurrentText();
+//		Container::setWidth(widget.getWidth());
+//		Container::setHeight(widget.getHeight());
+//		background.setPosition(0, 0, Container::getWidth(), Container::getHeight());
+//		invalidate();
+//	}
+//
+//protected:
+//	touchgfx::Box background;
+//	TextAreaWithOneWildcard widget;
+//	Unicode::UnicodeChar buffer[MAX_LEN];
+//};
 
 //=============================================================================
 //  D E F I N E S

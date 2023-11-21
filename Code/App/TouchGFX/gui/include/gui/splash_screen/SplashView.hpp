@@ -43,6 +43,7 @@ protected:
 //    cntBlue Blue;
 //    cntTempInside tempInside;
 
+//    CText text;
     CMeter meter;
     CMeter meter2;
 //    CMeterTempInt MeterTempInt;
