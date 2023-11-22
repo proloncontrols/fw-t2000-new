@@ -4,26 +4,61 @@
     <Language Id="GB" />
   </Languages>
   <Texts>
-    <TextGroup Id="Group1" />
-    <TextGroup Id="Unsorted">
-      <Text Id="T2000_METER_LARGE" Alignment="Left" TypographyId="T2000_MeterLarge">
+    <TextGroup Id="Meter">
+      <Text Id="METER_HUGE" Alignment="Left" TypographyId="MeterHuge">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="T2000_METER_MEDIUM" Alignment="Left" TypographyId="T2000_MeterMedium">
+      <Text Id="METER_HUGE_MINUS" Alignment="Left" TypographyId="MeterHugeMinus">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="T2000_METER_SMALL" Alignment="Left" TypographyId="T2000_MeterSmall">
+      <Text Id="METER_LARGE" Alignment="Left" TypographyId="MeterLarge">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="T2000_METER_TINY" Alignment="Left" TypographyId="T2000_MeterTiny">
+      <Text Id="METER_LARGE_MINUS" Alignment="Left" TypographyId="MeterLargeMinus">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_MEDIUM" Alignment="Left" TypographyId="MeterMedium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_MEDIUM_MINUS" Alignment="Left" TypographyId="MeterMediumMinus">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_MEDIUM_DOT" Alignment="Left" TypographyId="MeterMiduimDot">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_MEDIUM_TEMP" Alignment="Left" TypographyId="MeterMediumTemp">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_SMALL" Alignment="Left" TypographyId="MeterSmall">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_SMALL_DOT" Alignment="Left" TypographyId="MeterSmallDot">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_SMALL_TEMP" Alignment="Left" TypographyId="MeterSmallTemp">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_TINY_TEMP" Alignment="Left" TypographyId="MeterTinyTemp">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_TINY_PERCENT" Alignment="Left" TypographyId="MeterTinyPercent">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="T2000_MeterLarge" Font="AvenirNext-Medium-06.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0x30-0x39" />
-    <Typography Id="T2000_MeterMedium" Font="AvenirNext-Medium-06.ttf" Size="180" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0x30-0x39" />
-    <Typography Id="T2000_MeterSmall" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-, ., °, C, F, %" WildcardCharacterRanges="0x30-0x39" />
-    <Typography Id="T2000_MeterTiny" Font="AvenirNext-Medium-06.ttf" Size="22" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="., °, C, F, %" WildcardCharacterRanges="0x30-0x39" />
+    <Typography Id="MeterHuge" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="MeterHugeMinus" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" />
+    <Typography Id="MeterLarge" Font="AvenirNext-Regular-08.ttf" Size="180" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="MeterLargeMinus" Font="AvenirNext-Regular-08.ttf" Size="180" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" />
+    <Typography Id="MeterMedium" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="MeterMediumMinus" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" />
+    <Typography Id="MeterMiduimDot" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." />
+    <Typography Id="MeterMediumTemp" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°,C,F" />
+    <Typography Id="MeterSmall" Font="AvenirNext-Regular-08.ttf" Size="60" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="MeterSmallDot" Font="AvenirNext-Regular-08.ttf" Size="60" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." />
+    <Typography Id="MeterSmallTemp" Font="AvenirNext-Regular-08.ttf" Size="60" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°,C,F" />
+    <Typography Id="MeterTinyTemp" Font="AvenirNext-Regular-08.ttf" Size="22" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°,C,F" />
+    <Typography Id="MeterTinyPercent" Font="AvenirNext-Regular-08.ttf" Size="22" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="%" />
   </Typographies>
 </TextDatabase>

@@ -13,19 +13,37 @@ class FlashDataReader;
 
 struct Typography
 {
-    static const touchgfx::FontId T2000_METERLARGE = 0;
-    static const touchgfx::FontId T2000_METERMEDIUM = 1;
-    static const touchgfx::FontId T2000_METERSMALL = 2;
-    static const touchgfx::FontId T2000_METERTINY = 3;
+    static const touchgfx::FontId METERHUGE = 0;
+    static const touchgfx::FontId METERHUGEMINUS = 1;
+    static const touchgfx::FontId METERLARGE = 2;
+    static const touchgfx::FontId METERLARGEMINUS = 3;
+    static const touchgfx::FontId METERMEDIUM = 4;
+    static const touchgfx::FontId METERMEDIUMMINUS = 5;
+    static const touchgfx::FontId METERMIDUIMDOT = 6;
+    static const touchgfx::FontId METERMEDIUMTEMP = 7;
+    static const touchgfx::FontId METERSMALL = 8;
+    static const touchgfx::FontId METERSMALLDOT = 9;
+    static const touchgfx::FontId METERSMALLTEMP = 10;
+    static const touchgfx::FontId METERTINYTEMP = 11;
+    static const touchgfx::FontId METERTINYPERCENT = 12;
 };
 
 struct TypographyFontIndex
 {
-    static const touchgfx::FontId T2000_METERLARGE = 0;  // AvenirNext_Medium_06_220_4bpp
-    static const touchgfx::FontId T2000_METERMEDIUM = 1; // AvenirNext_Medium_06_180_4bpp
-    static const touchgfx::FontId T2000_METERSMALL = 2;  // AvenirNext_Regular_08_70_4bpp
-    static const touchgfx::FontId T2000_METERTINY = 3;   // AvenirNext_Medium_06_22_4bpp
-    static const uint16_t NUMBER_OF_FONTS = 4;
+    static const touchgfx::FontId METERHUGE = 0;        // AvenirNext_Regular_08_220_4bpp
+    static const touchgfx::FontId METERHUGEMINUS = 0;   // AvenirNext_Regular_08_220_4bpp
+    static const touchgfx::FontId METERLARGE = 1;       // AvenirNext_Regular_08_180_4bpp
+    static const touchgfx::FontId METERLARGEMINUS = 1;  // AvenirNext_Regular_08_180_4bpp
+    static const touchgfx::FontId METERMEDIUM = 2;      // AvenirNext_Regular_08_70_4bpp
+    static const touchgfx::FontId METERMEDIUMMINUS = 2; // AvenirNext_Regular_08_70_4bpp
+    static const touchgfx::FontId METERMIDUIMDOT = 2;   // AvenirNext_Regular_08_70_4bpp
+    static const touchgfx::FontId METERMEDIUMTEMP = 2;  // AvenirNext_Regular_08_70_4bpp
+    static const touchgfx::FontId METERSMALL = 3;       // AvenirNext_Regular_08_60_4bpp
+    static const touchgfx::FontId METERSMALLDOT = 3;    // AvenirNext_Regular_08_60_4bpp
+    static const touchgfx::FontId METERSMALLTEMP = 3;   // AvenirNext_Regular_08_60_4bpp
+    static const touchgfx::FontId METERTINYTEMP = 4;    // AvenirNext_Regular_08_22_4bpp
+    static const touchgfx::FontId METERTINYPERCENT = 4; // AvenirNext_Regular_08_22_4bpp
+    static const uint16_t NUMBER_OF_FONTS = 5;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider

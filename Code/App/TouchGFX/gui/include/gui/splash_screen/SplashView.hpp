@@ -44,21 +44,25 @@ protected:
 //    cntTempInside tempInside;
 
 //    CText text;
-    CMeterChar ch;
-    CMeter meter;
-    CMeter meter2;
-
-    CMeterChar meterString[4];
-    CMeterText meterText;
-
-    CMeterChar meterString2[2];
-    CMeterText meterText2;
-
-    CMeterChar meterString3[2];
-    CMeterText meterText3;
+//    CMeterChar ch;
+//    CMeter meter;
+//    CMeter meter2;
+//
+//    CMeterChar meterString[4];
+//    CMeterText meterText;
+//
+//    CMeterChar meterString2[2];
+//    CMeterText meterText2;
+//
+//    CMeterChar meterString3[2];
+//    CMeterText meterText3;
 
 //    CMeterTempInt MeterTempInt;
 //    CMeterTempExt MeterTempExt;
+
+    CText tL;
+    CText tP;
+    CText tS;
 };
 
 #endif // SPLASHVIEW_HPP

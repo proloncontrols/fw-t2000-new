@@ -9,18 +9,45 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
 {
     switch (typography)
     {
-    case Typography::T2000_METERLARGE:
-        // AvenirNext_Medium_06_220_4bpp
+    case Typography::METERHUGE:
+        // AvenirNext_Regular_08_220_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[0]);
-    case Typography::T2000_METERMEDIUM:
-        // AvenirNext_Medium_06_180_4bpp
+    case Typography::METERHUGEMINUS:
+        // AvenirNext_Regular_08_220_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[0]);
+    case Typography::METERLARGE:
+        // AvenirNext_Regular_08_180_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[1]);
-    case Typography::T2000_METERSMALL:
+    case Typography::METERLARGEMINUS:
+        // AvenirNext_Regular_08_180_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[1]);
+    case Typography::METERMEDIUM:
         // AvenirNext_Regular_08_70_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
-    case Typography::T2000_METERTINY:
-        // AvenirNext_Medium_06_22_4bpp
+    case Typography::METERMEDIUMMINUS:
+        // AvenirNext_Regular_08_70_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
+    case Typography::METERMIDUIMDOT:
+        // AvenirNext_Regular_08_70_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
+    case Typography::METERMEDIUMTEMP:
+        // AvenirNext_Regular_08_70_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
+    case Typography::METERSMALL:
+        // AvenirNext_Regular_08_60_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
+    case Typography::METERSMALLDOT:
+        // AvenirNext_Regular_08_60_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
+    case Typography::METERSMALLTEMP:
+        // AvenirNext_Regular_08_60_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
+    case Typography::METERTINYTEMP:
+        // AvenirNext_Regular_08_22_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[4]);
+    case Typography::METERTINYPERCENT:
+        // AvenirNext_Regular_08_22_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[4]);
     default:
         return 0;
     }

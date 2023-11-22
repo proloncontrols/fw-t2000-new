@@ -3,6 +3,8 @@
 #include <CWidgets.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
+#include <CMeter.hpp>
+
 SplashView::SplashView()
 {
 	rotateBox(__background);
@@ -33,26 +35,43 @@ SplashView::SplashView()
 
 
 
-	add(meterText);
-	meterText.initialize(meterString, 4, touchgfx::TypedText(T_T2000_METER_LARGE), 186, 188, 190);
-	meterText.setXY(50, 50);
-	meterText.setColorBack(75, 75, 75);
-	meterText.setCharSpacingRatio(15);
-	meterText.setText((char*)"-33");
+//	add(meterText);
+//	meterText.initialize(meterString, 4, touchgfx::TypedText(T_T2000_METER_LARGE), 186, 188, 190);
+//	meterText.setXY(50, 50);
+//	meterText.setColorBack(75, 75, 75);
+//	meterText.setCharSpacingRatio(15);
+//	meterText.setText((char*)"-33");
+//
+//	add(meterText2);
+//	meterText2.initialize(meterString2, 2, touchgfx::TypedText(T_T2000_METER_SMALL), 186, 188, 190);
+//	meterText2.setXY(meterText.getX() + meterText.getWidth(), meterText.getY() + (meterText.getHeight() - meterText2.getHeight()));
+//	meterText2.setColorBack(75, 75, 75);
+//	meterText2.setCharSpacingRatio(15);
+//	meterText2.setText((char*)".8");
+//
+//	add(meterText3);
+//	meterText3.initialize(meterString3, 2, touchgfx::TypedText(T_T2000_METER_SMALL), 186, 188, 190);
+//	meterText3.setXY(meterText.getX() + meterText.getWidth(), meterText.getY());
+//	meterText3.setColorBack(75, 75, 75);
+//	meterText3.setCharSpacingRatio(15);
+//	meterText3.setText((char*)"°C");
 
-	add(meterText2);
-	meterText2.initialize(meterString2, 2, touchgfx::TypedText(T_T2000_METER_SMALL), 186, 188, 190);
-	meterText2.setXY(meterText.getX() + meterText.getWidth(), meterText.getY() + (meterText.getHeight() - meterText2.getHeight()));
-	meterText2.setColorBack(75, 75, 75);
-	meterText2.setCharSpacingRatio(15);
-	meterText2.setText((char*)".8");
+//	add(tL);
+//	tL.initialize(touchgfx::TypedText(T_METER_LARGE), 186, 188, 190);
+//	tL.setText("33");
+//	tL.setXY(0, 0);
+//
+//	add(tP);
+//	tP.initialize(touchgfx::TypedText(T_METER_SMALL_DOT), 186, 188, 190);
+//	tP.setText(".");
+//	tP.setXY(tL.getWidth(), tL.getHeight() - tP.getHeight());
+//
+//	add(tS);
+//	tS.initialize(touchgfx::TypedText(T_METER_SMALL), 186, 188, 190);
+//	tS.setText("012345");
+//	tS.setXY(tL.getWidth() + tP.getWidth(), tL.getHeight() - tS.getHeight());
 
-	add(meterText3);
-	meterText3.initialize(meterString3, 2, touchgfx::TypedText(T_T2000_METER_SMALL), 186, 188, 190);
-	meterText3.setXY(meterText.getX() + meterText.getWidth(), meterText.getY());
-	meterText3.setColorBack(75, 75, 75);
-	meterText3.setCharSpacingRatio(15);
-	meterText3.setText((char*)"°C");
+
 
 
 

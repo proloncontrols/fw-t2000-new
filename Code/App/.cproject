@@ -164,7 +164,6 @@
             </toolChain>
           </folderInfo>
           <sourceEntries>
-            <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="CMeter.cpp"/>
             <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Common"/>
             <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
             <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
@@ -338,7 +337,6 @@
             </toolChain>
           </folderInfo>
           <sourceEntries>
-            <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="CMeter.cpp"/>
             <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Common"/>
             <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
             <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
