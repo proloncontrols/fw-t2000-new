@@ -31,6 +31,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Color.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
+#include <CString.hpp>
 
 
 namespace touchgfx
@@ -38,260 +39,306 @@ namespace touchgfx
 
 
 
-class CText : public Container
+class CMeter : public Container
 {
 public:
-	CText()
-	{
-		add(background);
-		add(text);
+	CMeter();
+	void setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue);
 
-		background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
-		buffer = NULL;
-	}
-
-	void initialize(const TypedText& t, uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue)
-	{
-		text.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-		text.setTypedText(t);
-		Container::setHeight(t.getFont()->getFontHeight());
-	}
-
-	void setText(const char* s)
-	{
-		int len = strlen(s);
-
-		if(buffer)
-			free(buffer);
-		buffer = (Unicode::UnicodeChar*)calloc(len+1, sizeof(Unicode::UnicodeChar));
-		text.setWildcard(buffer);
-
-		Unicode::fromUTF8((uint8_t*)s, buffer, len);
-		text.resizeToCurrentText();
-		Container::setWidthHeight(text);
-		background.setWidthHeight(text);
-	}
-
-	TextAreaWithOneWildcard text;
+protected:
+	CString* integer;
+	CString* decimal;
+	void resizeBackground();
 
 private:
 	touchgfx::Box background;
-	Unicode::UnicodeChar* buffer;
 };
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Temperature/humidity display base class
-//class CMeter : public Container
-//{
-//public:
-//	CMeter();
-//
-//protected:
-//	TextAreaWithOneWildcard minusText;
-//	Unicode::UnicodeChar minusBuffer[2];
-//
-//	TextAreaWithOneWildcard integerText;
-//	Unicode::UnicodeChar integerBuffer[4];
-//
-//	TextAreaWithOneWildcard dotText;
-//	Unicode::UnicodeChar dotBuffer[2];
-//
-//	TextAreaWithOneWildcard decimalText;
-//	Unicode::UnicodeChar decimalBuffer[2];
-//
-//	TextAreaWithOneWildcard unitText;
-//	Unicode::UnicodeChar unitBuffer[3];
-//
-//private:
-//	touchgfx::Box background;
-//};
-
-
-
-
-
-//Interior temperature display (home screen)
-class CMeterInt : public Container
+class CMeterInt : public CMeter
 {
 public:
 	CMeterInt();
 	void display(double value);
 
 private:
-	static const uint8_t ColorR = 255;
-	static const uint8_t ColorG = 255;
-	static const uint8_t ColorB = 255;
+	static const TypedTextId intText = T_METER_HUGE_DIGITS;
+	static const TypedTextId dotText = T_METER_MEDIUM_DOT;
+	static const TypedTextId decText = T_METER_MEDIUM_DIGITS;
 
-	static const TypedTextId minusType   = T_METER_HUGE_MINUS;
-	static const TypedTextId integerType = T_METER_HUGE;
-	static const TypedTextId dotType     = T_METER_MEDIUM_DOT;
-	static const TypedTextId decimalType = T_METER_MEDIUM;
-	static const TypedTextId unitType    = T_METER_MEDIUM_TEMP;
+	static const uint8_t intCharSpacingRation = 15;
+	static const uint8_t decCharSpacingRation = 15;
 
-	static const uint8_t minusTextBufferSize   = 1;
-	static const uint8_t integerTextBufferSize = 3;
-	static const uint8_t dotTextBufferSize     = 1;
-	static const uint8_t decimalTextBufferSize = 1;
-	static const uint8_t unitTextBufferSize    = 2;
+	static const uint8_t colorR = 186;
+	static const uint8_t colorG = 188;
+	static const uint8_t colorB = 190;
 
-	TextAreaWithOneWildcard minusText;
-	TextAreaWithOneWildcard integerText;
-	TextAreaWithOneWildcard dotText;
-	TextAreaWithOneWildcard decimalText;
-	TextAreaWithOneWildcard unitText;
+	static const uint8_t intPrecision = 3;   //Up to 3 digits integer
+	static const uint8_t decPrecision = 1;   //1 digit decimal
 
-	Unicode::UnicodeChar minusBuffer   [minusTextBufferSize   + 1];
-	Unicode::UnicodeChar integerBuffer [integerTextBufferSize + 1];
-	Unicode::UnicodeChar dotBuffer     [dotTextBufferSize     + 1];
-	Unicode::UnicodeChar decimalBuffer [decimalTextBufferSize + 1];
-	Unicode::UnicodeChar unitBuffer    [unitTextBufferSize    + 1];
+	CChar intString[intPrecision];
+	CChar decString[decPrecision];
 
-	touchgfx::Box background;
+	TextArea dot;
 };
 
 
 
-//Set points temperature adjustment (set points screen)
-class CMeterSet : public Container
-{
-public:
-	CMeterSet();
-	void display(double value);
-
-private:
-	static const uint8_t ColorR = 255;
-	static const uint8_t ColorG = 255;
-	static const uint8_t ColorB = 255;
-
-	static const TypedTextId minusType   = T_METER_LARGE_MINUS;
-	static const TypedTextId integerType = T_METER_LARGE;
-	static const TypedTextId dotType     = T_METER_SMALL_DOT;
-	static const TypedTextId decimalType = T_METER_SMALL;
-	static const TypedTextId unitType    = T_METER_SMALL_TEMP;
-
-	static const uint8_t minusTextBufferSize   = 1;
-	static const uint8_t integerTextBufferSize = 3;
-	static const uint8_t dotTextBufferSize     = 1;
-	static const uint8_t decimalTextBufferSize = 1;
-	static const uint8_t unitTextBufferSize    = 2;
-
-	TextAreaWithOneWildcard minusText;
-	TextAreaWithOneWildcard integerText;
-	TextAreaWithOneWildcard dotText;
-	TextAreaWithOneWildcard decimalText;
-	TextAreaWithOneWildcard unitText;
-
-	Unicode::UnicodeChar minusBuffer   [minusTextBufferSize   + 1];
-	Unicode::UnicodeChar integerBuffer [integerTextBufferSize + 1];
-	Unicode::UnicodeChar dotBuffer     [dotTextBufferSize     + 1];
-	Unicode::UnicodeChar decimalBuffer [decimalTextBufferSize + 1];
-	Unicode::UnicodeChar unitBuffer    [unitTextBufferSize    + 1];
-
-	touchgfx::Box background;
-};
-
-
-
-//Exterior temperature display (home screen)
-class CMeterExt : public Container
-{
-public:
-	CMeterExt();
-	void display(int16_t value);
-
-private:
-	static const uint8_t ColorR = 186;
-	static const uint8_t ColorG = 188;
-	static const uint8_t ColorB = 190;
-
-	static const TypedTextId minusType   = T_METER_MEDIUM_MINUS;
-	static const TypedTextId integerType = T_METER_MEDIUM;
-	static const TypedTextId unitType    = T_METER_TINY_TEMP;
-
-	static const uint8_t minusTextBufferSize   = 1;
-	static const uint8_t integerTextBufferSize = 3;
-	static const uint8_t unitTextBufferSize    = 2;
-
-	TextAreaWithOneWildcard minusText;
-	TextAreaWithOneWildcard integerText;
-	TextAreaWithOneWildcard unitText;
-
-	Unicode::UnicodeChar minusBuffer   [minusTextBufferSize   + 1];
-	Unicode::UnicodeChar integerBuffer [integerTextBufferSize + 1];
-	Unicode::UnicodeChar unitBuffer    [unitTextBufferSize    + 1];
-
-	touchgfx::Box background;
-};
-
-
-
-//Interior humidity display (home screen)
-class CMeterHum : public Container
-{
-public:
-	CMeterHum();
-	void display(uint8_t value);
-
-private:
-	static const uint8_t ColorR = 186;
-	static const uint8_t ColorG = 188;
-	static const uint8_t ColorB = 190;
-
-	static const TypedTextId integerType = T_METER_MEDIUM;
-	static const TypedTextId unitType    = T_METER_TINY_PERCENT;
-
-	static const uint8_t integerTextBufferSize = 3;
-	static const uint8_t unitTextBufferSize    = 2;
-
-	TextAreaWithOneWildcard integerText;
-	TextAreaWithOneWildcard unitText;
-
-	Unicode::UnicodeChar integerBuffer [integerTextBufferSize + 1];
-	Unicode::UnicodeChar unitBuffer    [unitTextBufferSize    + 1];
-
-	touchgfx::Box background;
-};
-
-
-
-
-
-
-//class CMeterChar : public TextAreaWithOneWildcard
+//class CText : public Container
 //{
 //public:
-//	CMeterChar() { setWildcard(buffer); }
-//
-//	void setFont(const TypedText& t) { setTypedText(t); }
-//	void setFontColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue) { setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue)); }
-//
-//	const Font* getFont() { return getTypedText().getFont(); }
-//	const GlyphNode* getGlyph() { return getFont()->getGlyph(buffer[0]); }
-//	void setChar(char ch)
+//	CText()
 //	{
-//		Unicode::fromUTF8((uint8_t*)&ch, buffer, 1);
-//		resizeToCurrentText();
+//		add(background);
+//		add(text);
+//
+//		background.setColor(touchgfx::Color::getColorFromRGB(75, 75, 75));
+//		buffer = NULL;
 //	}
 //
-//protected:
-//	Unicode::UnicodeChar buffer[2];
+//	void initialize(const TypedText& t, uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue)
+//	{
+//		text.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+//		text.setTypedText(t);
+//		Container::setHeight(t.getFont()->getFontHeight());
+//	}
+//
+//	void setText(const char* s)
+//	{
+//		int len = strlen(s);
+//
+//		if(buffer)
+//			free(buffer);
+//		buffer = (Unicode::UnicodeChar*)calloc(len+1, sizeof(Unicode::UnicodeChar));
+//		text.setWildcard(buffer);
+//
+//		Unicode::fromUTF8((uint8_t*)s, buffer, len);
+//		text.resizeToCurrentText();
+//		Container::setWidthHeight(text);
+//		background.setWidthHeight(text);
+//	}
+//
+//	TextAreaWithOneWildcard text;
+//
+//private:
+//	touchgfx::Box background;
+//	Unicode::UnicodeChar* buffer;
 //};
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+////Temperature/humidity display base class
+////class CMeter : public Container
+////{
+////public:
+////	CMeter();
+////
+////protected:
+////	TextAreaWithOneWildcard minusText;
+////	Unicode::UnicodeChar minusBuffer[2];
+////
+////	TextAreaWithOneWildcard integerText;
+////	Unicode::UnicodeChar integerBuffer[4];
+////
+////	TextAreaWithOneWildcard dotText;
+////	Unicode::UnicodeChar dotBuffer[2];
+////
+////	TextAreaWithOneWildcard decimalText;
+////	Unicode::UnicodeChar decimalBuffer[2];
+////
+////	TextAreaWithOneWildcard unitText;
+////	Unicode::UnicodeChar unitBuffer[3];
+////
+////private:
+////	touchgfx::Box background;
+////};
+//
+//
+//
+//
+//
+////Interior temperature display (home screen)
+//class CMeterInt : public Container
+//{
+//public:
+//	CMeterInt();
+//	void display(double value);
+//
+//private:
+//	static const uint8_t ColorR = 255;
+//	static const uint8_t ColorG = 255;
+//	static const uint8_t ColorB = 255;
+//
+//	static const TypedTextId minusType   = T_METER_HUGE_MINUS;
+//	static const TypedTextId integerType = T_METER_HUGE;
+//	static const TypedTextId dotType     = T_METER_MEDIUM_DOT;
+//	static const TypedTextId decimalType = T_METER_MEDIUM;
+//	static const TypedTextId unitType    = T_METER_MEDIUM_TEMP;
+//
+//	static const uint8_t minusTextBufferSize   = 1;
+//	static const uint8_t integerTextBufferSize = 3;
+//	static const uint8_t dotTextBufferSize     = 1;
+//	static const uint8_t decimalTextBufferSize = 1;
+//	static const uint8_t unitTextBufferSize    = 2;
+//
+//	TextAreaWithOneWildcard minusText;
+//	TextAreaWithOneWildcard integerText;
+//	TextAreaWithOneWildcard dotText;
+//	TextAreaWithOneWildcard decimalText;
+//	TextAreaWithOneWildcard unitText;
+//
+//	Unicode::UnicodeChar minusBuffer   [minusTextBufferSize   + 1];
+//	Unicode::UnicodeChar integerBuffer [integerTextBufferSize + 1];
+//	Unicode::UnicodeChar dotBuffer     [dotTextBufferSize     + 1];
+//	Unicode::UnicodeChar decimalBuffer [decimalTextBufferSize + 1];
+//	Unicode::UnicodeChar unitBuffer    [unitTextBufferSize    + 1];
+//
+//	touchgfx::Box background;
+//};
+//
+//
+//
+////Set points temperature adjustment (set points screen)
+//class CMeterSet : public Container
+//{
+//public:
+//	CMeterSet();
+//	void display(double value);
+//
+//private:
+//	static const uint8_t ColorR = 255;
+//	static const uint8_t ColorG = 255;
+//	static const uint8_t ColorB = 255;
+//
+//	static const TypedTextId minusType   = T_METER_LARGE_MINUS;
+//	static const TypedTextId integerType = T_METER_LARGE;
+//	static const TypedTextId dotType     = T_METER_SMALL_DOT;
+//	static const TypedTextId decimalType = T_METER_SMALL;
+//	static const TypedTextId unitType    = T_METER_SMALL_TEMP;
+//
+//	static const uint8_t minusTextBufferSize   = 1;
+//	static const uint8_t integerTextBufferSize = 3;
+//	static const uint8_t dotTextBufferSize     = 1;
+//	static const uint8_t decimalTextBufferSize = 1;
+//	static const uint8_t unitTextBufferSize    = 2;
+//
+//	TextAreaWithOneWildcard minusText;
+//	TextAreaWithOneWildcard integerText;
+//	TextAreaWithOneWildcard dotText;
+//	TextAreaWithOneWildcard decimalText;
+//	TextAreaWithOneWildcard unitText;
+//
+//	Unicode::UnicodeChar minusBuffer   [minusTextBufferSize   + 1];
+//	Unicode::UnicodeChar integerBuffer [integerTextBufferSize + 1];
+//	Unicode::UnicodeChar dotBuffer     [dotTextBufferSize     + 1];
+//	Unicode::UnicodeChar decimalBuffer [decimalTextBufferSize + 1];
+//	Unicode::UnicodeChar unitBuffer    [unitTextBufferSize    + 1];
+//
+//	touchgfx::Box background;
+//};
+//
+//
+//
+////Exterior temperature display (home screen)
+//class CMeterExt : public Container
+//{
+//public:
+//	CMeterExt();
+//	void display(int16_t value);
+//
+//private:
+//	static const uint8_t ColorR = 186;
+//	static const uint8_t ColorG = 188;
+//	static const uint8_t ColorB = 190;
+//
+//	static const TypedTextId minusType   = T_METER_MEDIUM_MINUS;
+//	static const TypedTextId integerType = T_METER_MEDIUM;
+//	static const TypedTextId unitType    = T_METER_TINY_TEMP;
+//
+//	static const uint8_t minusTextBufferSize   = 1;
+//	static const uint8_t integerTextBufferSize = 3;
+//	static const uint8_t unitTextBufferSize    = 2;
+//
+//	TextAreaWithOneWildcard minusText;
+//	TextAreaWithOneWildcard integerText;
+//	TextAreaWithOneWildcard unitText;
+//
+//	Unicode::UnicodeChar minusBuffer   [minusTextBufferSize   + 1];
+//	Unicode::UnicodeChar integerBuffer [integerTextBufferSize + 1];
+//	Unicode::UnicodeChar unitBuffer    [unitTextBufferSize    + 1];
+//
+//	touchgfx::Box background;
+//};
+//
+//
+//
+////Interior humidity display (home screen)
+//class CMeterHum : public Container
+//{
+//public:
+//	CMeterHum();
+//	void display(uint8_t value);
+//
+//private:
+//	static const uint8_t ColorR = 186;
+//	static const uint8_t ColorG = 188;
+//	static const uint8_t ColorB = 190;
+//
+//	static const TypedTextId integerType = T_METER_MEDIUM;
+//	static const TypedTextId unitType    = T_METER_TINY_PERCENT;
+//
+//	static const uint8_t integerTextBufferSize = 3;
+//	static const uint8_t unitTextBufferSize    = 2;
+//
+//	TextAreaWithOneWildcard integerText;
+//	TextAreaWithOneWildcard unitText;
+//
+//	Unicode::UnicodeChar integerBuffer [integerTextBufferSize + 1];
+//	Unicode::UnicodeChar unitBuffer    [unitTextBufferSize    + 1];
+//
+//	touchgfx::Box background;
+//};
+//
+//
+//
+//
+//
+//
+////class CMeterChar : public TextAreaWithOneWildcard
+////{
+////public:
+////	CMeterChar() { setWildcard(buffer); }
+////
+////	void setFont(const TypedText& t) { setTypedText(t); }
+////	void setFontColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue) { setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue)); }
+////
+////	const Font* getFont() { return getTypedText().getFont(); }
+////	const GlyphNode* getGlyph() { return getFont()->getGlyph(buffer[0]); }
+////	void setChar(char ch)
+////	{
+////		Unicode::fromUTF8((uint8_t*)&ch, buffer, 1);
+////		resizeToCurrentText();
+////	}
+////
+////protected:
+////	Unicode::UnicodeChar buffer[2];
+////};
 
 //#define MAX_LEN 32
 //class CText : public Container

@@ -74,6 +74,22 @@ SplashView::SplashView()
 
 
 
+//	s1 = new CString(a1, ARRAY1_SIZE, touchgfx::TypedText(T_METER_HUGE_DIGITS), 186, 188, 190);
+////	s1.initialize(a1, ARRAY1_SIZE, touchgfx::TypedText(T_METER_SMALL), 186, 188, 190);
+//	s1->setColorBack(75, 75, 75);
+////	s1->setCharSpacingRatio(5);
+//	s1->setText("0123456789");
+//	s1->setXY(50, 50);
+//	add(*s1);
+
+	add(mi);
+	mi.setXY(50, 50);
+	mi.setBackgroundColor(75, 75, 75);
+	mi.display(-33.1);
+
+
+
+
 
 //	meter.setXY(0, 0);
 //	meter.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_MEDIUM), touchgfx::TypedText(T_T2000_METER_SMALL), false);

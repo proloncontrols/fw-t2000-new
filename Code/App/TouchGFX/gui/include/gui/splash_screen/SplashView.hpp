@@ -9,6 +9,7 @@
 #include <CMeterTempExt.hpp>
 #include <CScreen.hpp>
 #include <CMeter.hpp>
+#include <CString.hpp>
 //#include <gui/containers/cntBlue.hpp>
 //#include <gui/containers/cntTempInside.hpp>
 
@@ -60,9 +61,15 @@ protected:
 //    CMeterTempInt MeterTempInt;
 //    CMeterTempExt MeterTempExt;
 
-    CText tL;
-    CText tP;
-    CText tS;
+//    CText tL;
+//    CText tP;
+//    CText tS;
+
+//#define ARRAY1_SIZE 10
+//    CChar a1[ARRAY1_SIZE];
+//    CString* s1;
+
+    CMeterInt mi;
 };
 
 #endif // SPLASHVIEW_HPP
