@@ -108,4 +108,4 @@ void CString::setText(const char* newText)
 	}
 }
 
-};   //namespace touchgfx
+}   //namespace touchgfx

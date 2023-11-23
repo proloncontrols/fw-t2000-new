@@ -47,7 +47,7 @@ private:
 	int16_t charSpacingWidth;
 };
 
-};   //namespace touchgfx
+}   //namespace touchgfx
 
 
 #endif   //CSTRING_HPP

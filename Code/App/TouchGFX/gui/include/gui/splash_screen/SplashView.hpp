@@ -5,10 +5,10 @@
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <CSwipe.hpp>
 #include <CImage.hpp>
-#include <CMeterTempInt.hpp>
-#include <CMeterTempExt.hpp>
 #include <CScreen.hpp>
 #include <CMeter.hpp>
+#include <CMeterInt.hpp>
+#include <CMeterSet.hpp>
 #include <CString.hpp>
 //#include <gui/containers/cntBlue.hpp>
 //#include <gui/containers/cntTempInside.hpp>
@@ -70,6 +70,7 @@ protected:
 //    CString* s1;
 
     CMeterInt mi;
+    CMeterSet se;
 };
 
 #endif // SPLASHVIEW_HPP

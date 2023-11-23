@@ -87,6 +87,10 @@ SplashView::SplashView()
 	mi.setBackgroundColor(75, 75, 75);
 	mi.display(-33.1);
 
+	add(se);
+	se.setXY(50, 300);
+	se.setBackgroundColor(75, 75, 75);
+	se.display(-24.8);
 
 
 

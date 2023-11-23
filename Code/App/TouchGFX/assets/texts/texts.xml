@@ -11,10 +11,22 @@
       <Text Id="METER_HUGE_DIGITS" Alignment="Left" TypographyId="MeterHugeDigits">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
+      <Text Id="METER_LARGE_DOT" Alignment="Left" TypographyId="MeterLarge">
+        <Translation Language="GB">.</Translation>
+      </Text>
+      <Text Id="METER_LARGE_DIGITS" Alignment="Left" TypographyId="MeterLargeDigits">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="METER_MEDIUM_DOT" Alignment="Left" TypographyId="MeterMedium">
         <Translation Language="GB">.</Translation>
       </Text>
       <Text Id="METER_MEDIUM_DIGITS" Alignment="Left" TypographyId="MeterMediumDigits">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_SMALL_DOT" Alignment="Left" TypographyId="MeterSmall">
+        <Translation Language="GB">.</Translation>
+      </Text>
+      <Text Id="METER_SMALL_DIGITS" Alignment="Left" TypographyId="MeterSmallDigits">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
     </TextGroup>
@@ -22,7 +34,11 @@
   <Typographies>
     <Typography Id="MeterHuge" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="MeterHugeDigits" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
+    <Typography Id="MeterLarge" Font="AvenirNext-Regular-08.ttf" Size="150" Bpp="4" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="MeterLargeDigits" Font="AvenirNext-Regular-08.ttf" Size="150" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
     <Typography Id="MeterMedium" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="MeterMediumDigits" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
+    <Typography Id="MeterSmall" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="MeterSmallDigits" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
   </Typographies>
 </TextDatabase>

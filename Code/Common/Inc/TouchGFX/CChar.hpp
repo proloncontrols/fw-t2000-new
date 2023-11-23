@@ -49,7 +49,7 @@ protected:
 	Unicode::UnicodeChar buffer[2];
 };
 
-};   //namespace touchgfx
+}   //namespace touchgfx
 
 
 #endif   //CCHAR_HPP

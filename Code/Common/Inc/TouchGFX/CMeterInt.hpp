@@ -10,64 +10,57 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CChar.cpp
+//         File : CMeterInt.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Font single character manipulation implementation file
+//  Description : Interior temperature meter class header file
 //=============================================================================
+#ifndef CMETER_INT_HPP
+#define CMETER_INT_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CChar.hpp>
-#include <touchgfx/Color.hpp>
+#include <CMeter.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C O N S T R U C T I O N
+//  C L A S S E S
 //-----------------------------------------------------------------------------
-CChar::CChar()
+class CMeterInt : public CMeter
 {
-	setWildcard(buffer);
-}
+public:
+	CMeterInt();
+	void display(double value);
 
+private:
+	static const TypedTextId intText = T_METER_HUGE_DIGITS;
+	static const TypedTextId dotText = T_METER_MEDIUM_DOT;
+	static const TypedTextId decText = T_METER_MEDIUM_DIGITS;
 
-//=============================================================================
-//  M E T H O D E S
-//-----------------------------------------------------------------------------
-void CChar::setFont(const TypedText& textType)
-{
-	setTypedText(textType);
-}
+	static const uint8_t intCharSpacingRation = 15;
+	static const uint8_t decCharSpacingRation = 15;
 
-//-----------------------------------------------------------------------------
-void CChar::setFontColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue)
-{
-	setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-}
+	static const uint8_t colorR = 186;
+	static const uint8_t colorG = 188;
+	static const uint8_t colorB = 190;
 
-//-----------------------------------------------------------------------------
-const Font* CChar::getFont()
-{
-	return getTypedText().getFont();
-}
+	static const uint8_t intPrecision = 4;   //Up to 3 digits integer and minus sign
+	static const uint8_t decPrecision = 1;   //1 digit decimal
 
-//-----------------------------------------------------------------------------
-const GlyphNode* CChar::getGlyph()
-{
-	return getFont()->getGlyph(buffer[0]);
-}
+	CChar intString[intPrecision];
+	CChar decString[decPrecision];
 
-//-----------------------------------------------------------------------------
-void CChar::setChar(char ch)
-{
-	Unicode::fromUTF8((uint8_t*)&ch, buffer, 1);
-	resizeToCurrentText();
-}
+	TextArea dot;
+};
 
 }   //namespace touchgfx
+
+
+#endif   //CMETER_INT_HPP

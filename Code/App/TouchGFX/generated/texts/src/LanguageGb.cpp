@@ -12,6 +12,10 @@ TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     2, // T_METER_HUGE_DOT: "."
     0, // T_METER_HUGE_DIGITS: "<>"
+    2, // T_METER_LARGE_DOT: "."
+    0, // T_METER_LARGE_DIGITS: "<>"
     2, // T_METER_MEDIUM_DOT: "."
-    0  // T_METER_MEDIUM_DIGITS: "<>"
+    0, // T_METER_MEDIUM_DIGITS: "<>"
+    2, // T_METER_SMALL_DOT: "."
+    0  // T_METER_SMALL_DIGITS: "<>"
 };

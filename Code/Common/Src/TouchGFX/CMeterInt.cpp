@@ -10,11 +10,11 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeter.cpp
+//         File : CMeterInt.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Meter base class implementation file
+//  Description : Interior temperature meter class implementation file
 //=============================================================================
 
 
@@ -23,8 +23,7 @@
 //-----------------------------------------------------------------------------
 #include <math.h>
 #include <stdio.h>
-#include <string.h>
-#include <CMeter.hpp>
+#include <CMeterInt.hpp>
 #include <touchgfx/Color.hpp>
 
 
@@ -34,25 +33,49 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMeter::CMeter()
+CMeterInt::CMeterInt()
 {
-	add(background);
-	background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+	integer = new CString(intString, intPrecision, touchgfx::TypedText(intText), colorR, colorG, colorB);
+	integer->setCharSpacingRatio(intCharSpacingRation);
+	add(*integer);
+
+	dot.setColor(touchgfx::Color::getColorFromRGB(colorR, colorG, colorB));
+	dot.setTypedText(touchgfx::TypedText(dotText));
+	add(dot);
+
+	decimal = new CString(decString, decPrecision, touchgfx::TypedText(decText), colorR, colorG, colorB);
+	decimal->setCharSpacingRatio(decCharSpacingRation);
+	add(*decimal);
+
+	Container::setHeight(MAX(touchgfx::TypedText(intText).getFont()->getFontHeight(), touchgfx::TypedText(decText).getFont()->getFontHeight()));
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMeter::setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue)
+void CMeterInt::display(double value)
 {
-	background.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-}
+	double intDoubleValue;
+	double decDoubleValue = modf(value, &intDoubleValue);
 
-//-----------------------------------------------------------------------------
-void CMeter::resizeBackground()
-{
-	background.setWidthHeight(*this);
+	int intValue = (int)intDoubleValue;
+	int decValue = (int)(decDoubleValue * pow(10.0, (double)decPrecision));
+
+	char strInteger[intPrecision + 1];
+	char strDecimal[decPrecision + 1];
+
+	sprintf(strInteger, "%d", intValue);
+	sprintf(strDecimal, "%d", decValue);
+
+	integer->setText(strInteger);
+	decimal->setText(strDecimal);
+
+	Container::setWidth(integer->getWidth() + dot.getWidth() + decimal->getWidth());
+	integer->setXY(0, Container::getHeight() - integer->getHeight());
+	dot.setXY(integer->getWidth(), Container::getHeight() - dot.getHeight());
+	decimal->setXY(integer->getWidth() + dot.getWidth(), Container::getHeight() - decimal->getHeight());
+	resizeBackground();
 }
 
 }   //namespace touchgfx
