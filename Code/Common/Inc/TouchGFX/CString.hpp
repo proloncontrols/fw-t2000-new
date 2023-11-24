@@ -26,7 +26,6 @@
 #include <CChar.hpp>
 #include <touchgfx/Containers/Container.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/Box.hpp>
 
 
 namespace touchgfx
@@ -55,37 +54,32 @@ private:
 
 
 
-class CMeterValue : public Container
-{
-protected:
-	typedef TextAreaWithOneWildcard MeterDigitWidget;
-	typedef Unicode::UnicodeChar MeterDigitBuffer[2];
-
-	class CMeterDigit
-	{
-	public:
-		MeterDigitWidget widget;
-		MeterDigitBuffer buffer;
-	};
-
-public:
-	CMeterValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTextType, uint8_t newColorRed, uint8_t newColorGreen, uint8_t newColorBlue);
-	void setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue);
-	void display(int16_t value);
-	int16_t getMaxGlyphHeight();
-
-private:
-	touchgfx::Box background;
-	char* valueString;
-	int16_t maxGlyphHeight;
-	CMeterDigit** digits;
-	uint8_t precision;
-	uint8_t spacingRatio;   //Set to 0 for no ratio
-	TypedText textType;
-	uint8_t colorR;
-	uint8_t colorG;
-	uint8_t colorB;
-};
+//class CMeterValue : public Container
+//{
+//public:
+//	CMeterValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTextType, uint8_t newColorRed, uint8_t newColorGreen, uint8_t newColorBlue);
+//	void display(int16_t value);
+//	int16_t getMaxGlyphHeight();
+//
+//protected:
+//	typedef TextAreaWithOneWildcard MeterDigitWidget;
+//	typedef Unicode::UnicodeChar MeterDigitBuffer[2];
+//
+//	class CMeterDigit
+//	{
+//	public:
+//		MeterDigitWidget widget;
+//		MeterDigitBuffer buffer = {0};
+//	};
+//
+//private:
+//	char* valueString;
+//	int16_t maxGlyphHeight;
+//	CMeterDigit** digits;
+//	uint8_t precision;
+//	uint8_t spacingRatio;   //Set to 0 for no ratio
+//	TypedText textType;
+//};
 
 
 

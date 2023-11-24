@@ -39,7 +39,7 @@ public:
 	CMeterInt();
 	void display(double value, bool celsius);
 
-private:
+protected:
 	static const uint8_t colorR = 186;
 	static const uint8_t colorG = 188;
 	static const uint8_t colorB = 190;

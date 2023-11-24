@@ -23,8 +23,8 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CString.hpp>
 #include <touchgfx/Containers/Container.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/Box.hpp>
 
 
@@ -41,34 +41,41 @@ public:
 	void setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue);
 
 protected:
-	CChar** intChars;
-	CChar** decChars;
-	CString* integer;
-	CString* decimal;
+	void addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& nexTextType, uint8_t newColorRed, uint8_t newColorGreen, uint8_t newColorBlue);
+	void addDecimal(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTextType, uint8_t newColorRed, uint8_t newColorGreen, uint8_t newColorBlue);
+	void resizeBackground();
+
+	class CMeterValue : public Container
+	{
+	public:
+		CMeterValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTextType, uint8_t newColorRed, uint8_t newColorGreen, uint8_t newColorBlue);
+		void display(int16_t value);
+		int16_t getMaxGlyphHeight();
+
+	protected:
+		typedef TextAreaWithOneWildcard MeterDigitWidget;
+		typedef Unicode::UnicodeChar MeterDigitBuffer[2];
+
+		class CMeterDigit
+		{
+		public:
+			MeterDigitWidget widget;
+			MeterDigitBuffer buffer = {0};
+		};
+
+	private:
+		char* valueString;
+		int16_t maxGlyphHeight;
+		CMeterDigit** digits;
+		uint8_t precision;
+		uint8_t spacingRatio;   //Set to 0 for no ratio
+		TypedText textType;
+	};
+
+	CMeterValue* integer;
+	CMeterValue* decimal;
 	TextArea* dot;
 	TextArea* unit;
-
-	uint8_t meterColorR;
-	uint8_t meterColorG;
-	uint8_t meterColorB;
-
-	TypedTextId meterIntText;
-	TypedTextId meterDotText;
-	TypedTextId meterDecText;
-	TypedTextId meterUnitCText;
-	TypedTextId meterUnitFText;
-
-	uint8_t meterIntPrecision;
-	uint8_t meterDecPrecision;
-
-	uint8_t meterIntCharSpacingRation;
-	uint8_t meterDecCharSpacingRation;
-
-	void addInteger();
-	void addDecimal();
-	void addDot();
-	void addUnit();
-	void resizeBackground();
 
 private:
 	touchgfx::Box background;

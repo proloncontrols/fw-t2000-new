@@ -35,20 +35,22 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 CMeterSet::CMeterSet()
 {
-	integer = new CString(intString, intPrecision, touchgfx::TypedText(intText), colorR, colorG, colorB);
-	integer->setCharSpacingRatio(intCharSpacingRation);
-	add(*integer);
+	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
+//	integer = new CMeterValue(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
+//	add(*integer);
 
-	dot.setColor(touchgfx::Color::getColorFromRGB(colorR, colorG, colorB));
-	dot.setTypedText(touchgfx::TypedText(dotText));
-	add(dot);
+	addDecimal(decPrecision, decCharSpacingRation, touchgfx::TypedText(decText), colorR, colorG, colorB);
+//	decimal = new CMeterValue(decPrecision, decCharSpacingRation, touchgfx::TypedText(decText), colorR, colorG, colorB);
+//	add(*decimal);
 
-	decimal = new CString(decString, decPrecision, touchgfx::TypedText(decText), colorR, colorG, colorB);
-	decimal->setCharSpacingRatio(decCharSpacingRation);
-	add(*decimal);
+	dot = new TextArea;
+	dot->setColor(touchgfx::Color::getColorFromRGB(colorR, colorG, colorB));
+	dot->setTypedText(touchgfx::TypedText(dotText));
+	add(*dot);
 
-	unit.setColor(touchgfx::Color::getColorFromRGB(colorR, colorG, colorB));
-	add(unit);
+	unit = new TextArea;
+	unit->setColor(touchgfx::Color::getColorFromRGB(colorR, colorG, colorB));
+	add(*unit);
 
 	Container::setHeight(MAX(touchgfx::TypedText(intText).getFont()->getFontHeight(), touchgfx::TypedText(decText).getFont()->getFontHeight()));
 }
@@ -57,34 +59,8 @@ CMeterSet::CMeterSet()
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMeterSet::display(double value, bool celsius)
-{
-	double intDoubleValue;
-	double decDoubleValue = modf(value, &intDoubleValue);
-
-	int intValue = (int)intDoubleValue;
-	int decValue = (int)(decDoubleValue * pow(10.0, (double)decPrecision));
-
-	char strInteger[intPrecision + 1];
-	char strDecimal[decPrecision + 1];
-
-	sprintf(strInteger, "%d", intValue);
-	sprintf(strDecimal, "%d", decValue);
-
-	integer->setText(strInteger);
-	decimal->setText(strDecimal);
-
-	if(celsius)
-		unit.setTypedText(touchgfx::TypedText(unitCText));
-	else
-		unit.setTypedText(touchgfx::TypedText(unitFText));
-	unit.setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit.getTypedText().getFont()->getFontHeight() - unit.getTypedText().getFont()->getGlyph(unit.getTypedText().getText()[0])->top()));
-
-	Container::setWidth(integer->getWidth() + MAX(unit.getWidth(), dot.getWidth() + decimal->getWidth()));
-	integer->setXY(0, Container::getHeight() - integer->getHeight());
-	dot.setXY(integer->getWidth(), Container::getHeight() - dot.getHeight());
-	decimal->setXY(integer->getWidth() + dot.getWidth(), Container::getHeight() - decimal->getHeight());
-	resizeBackground();
-}
+//void CMeterSet::display(double value, bool celsius)
+//{
+//}
 
 }   //namespace touchgfx

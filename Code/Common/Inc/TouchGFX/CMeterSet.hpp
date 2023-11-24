@@ -23,8 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CMeter.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
+#include <CMeterInt.hpp>
 
 
 namespace touchgfx
@@ -33,22 +32,13 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMeterSet : public CMeter
+class CMeterSet : public CMeterInt
 {
 public:
 	CMeterSet();
-	void display(double value, bool celsius);
+//	void display(double value, bool celsius);
 
-private:
-	static const TypedTextId intText   = T_METER_LARGE_DIGITS;
-	static const TypedTextId dotText   = T_METER_SMALL_DOT;
-	static const TypedTextId decText   = T_METER_SMALL_DIGITS;
-	static const TypedTextId unitCText = T_METER_SMALL_UNIT_C;
-	static const TypedTextId unitFText = T_METER_SMALL_UNIT_F;
-
-	static const uint8_t intCharSpacingRation = 15;
-	static const uint8_t decCharSpacingRation = 15;
-
+protected:
 	static const uint8_t colorR = 186;
 	static const uint8_t colorG = 188;
 	static const uint8_t colorB = 190;
@@ -56,11 +46,14 @@ private:
 	static const uint8_t intPrecision = 4;   //Up to 3 digits integer and minus sign
 	static const uint8_t decPrecision = 1;   //1 digit decimal
 
-	CChar intString[intPrecision];
-	CChar decString[decPrecision];
+	static const uint8_t intCharSpacingRation = 15;
+	static const uint8_t decCharSpacingRation = 15;
 
-	TextArea dot;
-	TextArea unit;
+	static const TypedTextId intText   = T_METER_LARGE_DIGITS;
+	static const TypedTextId dotText   = T_METER_SMALL_DOT;
+	static const TypedTextId decText   = T_METER_SMALL_DIGITS;
+	static const TypedTextId unitCText = T_METER_SMALL_UNIT_C;
+	static const TypedTextId unitFText = T_METER_SMALL_UNIT_F;
 };
 
 }   //namespace touchgfx

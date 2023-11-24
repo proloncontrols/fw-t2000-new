@@ -92,11 +92,25 @@ SplashView::SplashView()
 //	se.setBackgroundColor(75, 75, 75);
 //	se.display(-20.8, false);
 
-	mv = new CMeterValue(4, 15, touchgfx::TypedText(T_METER_HUGE_DIGITS), 186, 188, 190);
-	mv->setXY(50, 50);
-//	mv->setBackgroundColor(75, 75, 75);
-	mv->display(100);
-	add(*mv);
+
+
+
+
+//	mv = new CMeterValue(4, 15, touchgfx::TypedText(T_METER_HUGE_DIGITS), 186, 188, 190);
+//	mv->setXY(50, 50);
+////	mv->setBackgroundColor(75, 75, 75);
+//	mv->display(100);
+//	add(*mv);
+
+	m1.setXY(50, 50);
+	m1.setBackgroundColor(75, 75, 75);
+	m1.display(-33.8, false);
+	add(m1);
+
+	m2.setXY(50, 300);
+	m2.setBackgroundColor(75, 75, 75);
+	m2.display(-24.6, true);
+	add(m2);
 
 
 

@@ -69,7 +69,10 @@ protected:
 //    CChar a1[ARRAY1_SIZE];
 //    CString* s1;
 
-    CMeterValue* mv;
+//    CMeterValue* mv;
+    CMeterInt m1;
+
+    CMeterSet m2;
 
 //    CMeterInt mi;
 //    CMeterSet se;
