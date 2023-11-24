@@ -23,6 +23,7 @@
 //-----------------------------------------------------------------------------
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <CMeterInt.hpp>
 #include <touchgfx/Color.hpp>
 
@@ -35,20 +36,24 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 CMeterInt::CMeterInt()
 {
-	integer = new CString(intString, intPrecision, touchgfx::TypedText(intText), colorR, colorG, colorB);
-	integer->setCharSpacingRatio(intCharSpacingRation);
-	add(*integer);
+	meterColorR = colorR;
+	meterColorG = colorG;
+	meterColorB = colorB;
 
-	dot.setColor(touchgfx::Color::getColorFromRGB(colorR, colorG, colorB));
-	dot.setTypedText(touchgfx::TypedText(dotText));
-	add(dot);
+	meterIntText = intText;
+	meterIntPrecision = intPrecision;
+	meterIntCharSpacingRation = intCharSpacingRation;
+	addInteger();
 
-	decimal = new CString(decString, decPrecision, touchgfx::TypedText(decText), colorR, colorG, colorB);
-	decimal->setCharSpacingRatio(decCharSpacingRation);
-	add(*decimal);
+	meterDecText = decText;
+	meterDecPrecision = decPrecision;
+	meterDecCharSpacingRation = decCharSpacingRation;
+	addDecimal();
 
-	unit.setColor(touchgfx::Color::getColorFromRGB(colorR, colorG, colorB));
-	add(unit);
+	meterDotText = dotText;
+	addDot();
+
+	addUnit();
 
 	Container::setHeight(MAX(touchgfx::TypedText(intText).getFont()->getFontHeight(), touchgfx::TypedText(decText).getFont()->getFontHeight()));
 }
@@ -75,15 +80,15 @@ void CMeterInt::display(double value, bool celsius)
 	decimal->setText(strDecimal);
 
 	if(celsius)
-		unit.setTypedText(touchgfx::TypedText(unitCText));
+		unit->setTypedText(touchgfx::TypedText(unitCText));
 	else
-		unit.setTypedText(touchgfx::TypedText(unitFText));
-	unit.setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit.getTypedText().getFont()->getFontHeight() - unit.getTypedText().getFont()->getGlyph(unit.getTypedText().getText()[0])->top()));
+		unit->setTypedText(touchgfx::TypedText(unitFText));
+	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
 
-	Container::setWidth(integer->getWidth() + MAX(unit.getWidth(), dot.getWidth() + decimal->getWidth()));
+	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), dot->getWidth() + decimal->getWidth()));
 	integer->setXY(0, Container::getHeight() - integer->getHeight());
-	dot.setXY(integer->getWidth(), Container::getHeight() - dot.getHeight());
-	decimal->setXY(integer->getWidth() + dot.getWidth(), Container::getHeight() - decimal->getHeight());
+	dot->setXY(integer->getWidth(), Container::getHeight() - dot->getHeight());
+	decimal->setXY(integer->getWidth() + dot->getWidth(), Container::getHeight() - decimal->getHeight());
 
 	resizeBackground();
 }

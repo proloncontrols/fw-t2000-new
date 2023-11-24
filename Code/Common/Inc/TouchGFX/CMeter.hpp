@@ -41,8 +41,33 @@ public:
 	void setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue);
 
 protected:
+	CChar** intChars;
+	CChar** decChars;
 	CString* integer;
 	CString* decimal;
+	TextArea* dot;
+	TextArea* unit;
+
+	uint8_t meterColorR;
+	uint8_t meterColorG;
+	uint8_t meterColorB;
+
+	TypedTextId meterIntText;
+	TypedTextId meterDotText;
+	TypedTextId meterDecText;
+	TypedTextId meterUnitCText;
+	TypedTextId meterUnitFText;
+
+	uint8_t meterIntPrecision;
+	uint8_t meterDecPrecision;
+
+	uint8_t meterIntCharSpacingRation;
+	uint8_t meterDecCharSpacingRation;
+
+	void addInteger();
+	void addDecimal();
+	void addDot();
+	void addUnit();
 	void resizeBackground();
 
 private:

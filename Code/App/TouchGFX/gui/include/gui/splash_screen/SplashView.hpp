@@ -69,8 +69,10 @@ protected:
 //    CChar a1[ARRAY1_SIZE];
 //    CString* s1;
 
-    CMeterInt mi;
-    CMeterSet se;
+    CMeterValue* mv;
+
+//    CMeterInt mi;
+//    CMeterSet se;
 };
 
 #endif // SPLASHVIEW_HPP

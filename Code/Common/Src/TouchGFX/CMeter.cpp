@@ -50,6 +50,45 @@ void CMeter::setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t co
 }
 
 //-----------------------------------------------------------------------------
+void CMeter::addInteger()
+{
+	intChars = (CChar**)malloc(sizeof(CChar*) * meterIntPrecision);
+	for(uint8_t i = 0; i < meterIntPrecision; i++)
+		intChars[i] = new CChar();
+	integer = new CString(*intChars, meterIntPrecision, touchgfx::TypedText(meterIntText), meterColorR, meterColorG, meterColorB);
+	integer->setCharSpacingRatio(meterIntCharSpacingRation);
+	add(*integer);
+}
+
+//-----------------------------------------------------------------------------
+void CMeter::addDecimal()
+{
+	decChars = (CChar**)malloc(sizeof(CChar*) * meterDecPrecision);
+	for(uint8_t i = 0; i < meterDecPrecision; i++)
+		decChars[i] = new CChar();
+	decimal = new CString(*decChars, meterDecPrecision, touchgfx::TypedText(meterDecText), meterColorR, meterColorG, meterColorB);
+	decimal->setCharSpacingRatio(meterDecCharSpacingRation);
+	add(*decimal);
+}
+
+//-----------------------------------------------------------------------------
+void CMeter::addDot()
+{
+	dot = new TextArea;
+	dot->setColor(touchgfx::Color::getColorFromRGB(meterColorR, meterColorG, meterColorB));
+	dot->setTypedText(touchgfx::TypedText(meterDotText));
+	add(*dot);
+}
+
+//-----------------------------------------------------------------------------
+void CMeter::addUnit()
+{
+	unit = new TextArea;
+	unit->setColor(touchgfx::Color::getColorFromRGB(meterColorR, meterColorG, meterColorB));
+	add(*unit);
+}
+
+//-----------------------------------------------------------------------------
 void CMeter::resizeBackground()
 {
 	background.setWidthHeight(*this);
