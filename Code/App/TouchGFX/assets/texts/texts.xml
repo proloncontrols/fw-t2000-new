@@ -17,11 +17,26 @@
       <Text Id="METER_LARGE_DIGITS" Alignment="Left" TypographyId="MeterLargeDigits">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
+      <Text Id="METER_MEDIUM_UNIT_P" Alignment="Left" TypographyId="MeterMedium">
+        <Translation Language="GB">%</Translation>
+      </Text>
+      <Text Id="METER_MEDIUM_UNIT_C" Alignment="Left" TypographyId="MeterMedium">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="METER_MEDIUM_UNIT_F" Alignment="Left" TypographyId="MeterMedium">
+        <Translation Language="GB">°F</Translation>
+      </Text>
       <Text Id="METER_MEDIUM_DOT" Alignment="Left" TypographyId="MeterMedium">
         <Translation Language="GB">.</Translation>
       </Text>
       <Text Id="METER_MEDIUM_DIGITS" Alignment="Left" TypographyId="MeterMediumDigits">
         <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="METER_SMALL_UNIT_C" Alignment="Left" TypographyId="MeterSmall">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="METER_SMALL_UNIT_F" Alignment="Left" TypographyId="MeterSmall">
+        <Translation Language="GB">°F</Translation>
       </Text>
       <Text Id="METER_SMALL_DOT" Alignment="Left" TypographyId="MeterSmall">
         <Translation Language="GB">.</Translation>

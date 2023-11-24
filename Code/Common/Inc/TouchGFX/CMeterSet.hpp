@@ -37,12 +37,14 @@ class CMeterSet : public CMeter
 {
 public:
 	CMeterSet();
-	void display(double value);
+	void display(double value, bool celsius);
 
 private:
-	static const TypedTextId intText = T_METER_LARGE_DIGITS;
-	static const TypedTextId dotText = T_METER_SMALL_DOT;
-	static const TypedTextId decText = T_METER_SMALL_DIGITS;
+	static const TypedTextId intText   = T_METER_LARGE_DIGITS;
+	static const TypedTextId dotText   = T_METER_SMALL_DOT;
+	static const TypedTextId decText   = T_METER_SMALL_DIGITS;
+	static const TypedTextId unitCText = T_METER_SMALL_UNIT_C;
+	static const TypedTextId unitFText = T_METER_SMALL_UNIT_F;
 
 	static const uint8_t intCharSpacingRation = 15;
 	static const uint8_t decCharSpacingRation = 15;
@@ -58,6 +60,7 @@ private:
 	CChar decString[decPrecision];
 
 	TextArea dot;
+	TextArea unit;
 };
 
 }   //namespace touchgfx

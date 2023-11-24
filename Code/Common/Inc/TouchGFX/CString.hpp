@@ -39,12 +39,14 @@ public:
 	CString(CChar* array, int capacity, const TypedText& textType, uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue);
 	void setCharSpacingRatio(uint8_t ratio);
 	void setText(const char* newText);
+	int16_t getMaxGlyphHeight();
 
 private:
 	CChar* strArray;
 	int16_t strCapacity;
 	uint8_t charSpacingRatio;
 	int16_t charSpacingWidth;
+	int16_t maxGlyphHeight;
 };
 
 }   //namespace touchgfx

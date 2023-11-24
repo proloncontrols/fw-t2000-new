@@ -69,6 +69,7 @@ void CString::setText(const char* newText)
 	if(charSpacingRatio != 0)
 		charSpacingWidth = textChar->getFont()->getFontHeight() / charSpacingRatio;
 
+	maxGlyphHeight = 0;
 	int16_t newWidth = 0;
 	if(charSpacingRatio != 0)
 		newWidth = charSpacingWidth;
@@ -76,6 +77,8 @@ void CString::setText(const char* newText)
 	for(int16_t i = 0; (i < len) && (i < strCapacity); i++)
 	{
 		textChar->setChar(*newTextChar);
+		if(textChar->getGlyph()->top() > maxGlyphHeight)
+			maxGlyphHeight = textChar->getGlyph()->top();
 		if(charSpacingWidth == 0)
 			newWidth += textChar->getWidth();
 		else
@@ -106,6 +109,12 @@ void CString::setText(const char* newText)
 		}
 		textChar--;
 	}
+}
+
+//-----------------------------------------------------------------------------
+int16_t CString::getMaxGlyphHeight()
+{
+	return maxGlyphHeight;
 }
 
 }   //namespace touchgfx

@@ -16,7 +16,10 @@ KEEP extern const touchgfx::GlyphNode glyphs_AvenirNext_Regular_08_50_4bpp[] FON
     {  3007, 0x0037,  22,  36,  36,   3,  29,   0,   0, 0x00 },
     {  3403, 0x0038,  23,  37,  36,   3,  29,   0,   0, 0x00 },
     {  3847, 0x0039,  24,  36,  36,   3,  29,   0,   0, 0x00 },
-    {  4279, 0x003F,  21,  36,  36,   2,  24,   0,   0, 0x00 }
+    {  4279, 0x003F,  21,  36,  36,   2,  24,   0,   0, 0x00 },
+    {  4675, 0x0043,  33,  37,  36,   2,  36,   0,   0, 0x00 },
+    {  5304, 0x0046,  23,  36,  36,   4,  28,   0,   0, 0x00 },
+    {  5736, 0x00B0,  16,  15,  36,   2,  20,   0,   0, 0x00 }
 };
 
 // AvenirNext_Regular_08_50_4bpp
@@ -34,6 +37,6 @@ touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_50_4bpp();
 
 touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_50_4bpp()
 {
-    static touchgfx::GeneratedFont AvenirNext_Regular_08_50_4bpp(glyphs_AvenirNext_Regular_08_50_4bpp, 13, 50, 1, 4, 1, 0, 0, unicodes_AvenirNext_Regular_08_50_4bpp, kerning_AvenirNext_Regular_08_50_4bpp, 63, 0, 0, 0);
+    static touchgfx::GeneratedFont AvenirNext_Regular_08_50_4bpp(glyphs_AvenirNext_Regular_08_50_4bpp, 16, 50, 1, 4, 1, 0, 0, unicodes_AvenirNext_Regular_08_50_4bpp, kerning_AvenirNext_Regular_08_50_4bpp, 63, 0, 0, 0);
     return AvenirNext_Regular_08_50_4bpp;
 }

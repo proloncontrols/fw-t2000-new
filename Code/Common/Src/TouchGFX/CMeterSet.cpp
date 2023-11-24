@@ -47,6 +47,9 @@ CMeterSet::CMeterSet()
 	decimal->setCharSpacingRatio(decCharSpacingRation);
 	add(*decimal);
 
+	unit.setColor(touchgfx::Color::getColorFromRGB(colorR, colorG, colorB));
+	add(unit);
+
 	Container::setHeight(MAX(touchgfx::TypedText(intText).getFont()->getFontHeight(), touchgfx::TypedText(decText).getFont()->getFontHeight()));
 }
 
@@ -54,7 +57,7 @@ CMeterSet::CMeterSet()
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMeterSet::display(double value)
+void CMeterSet::display(double value, bool celsius)
 {
 	double intDoubleValue;
 	double decDoubleValue = modf(value, &intDoubleValue);
@@ -71,7 +74,13 @@ void CMeterSet::display(double value)
 	integer->setText(strInteger);
 	decimal->setText(strDecimal);
 
-	Container::setWidth(integer->getWidth() + dot.getWidth() + decimal->getWidth());
+	if(celsius)
+		unit.setTypedText(touchgfx::TypedText(unitCText));
+	else
+		unit.setTypedText(touchgfx::TypedText(unitFText));
+	unit.setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit.getTypedText().getFont()->getFontHeight() - unit.getTypedText().getFont()->getGlyph(unit.getTypedText().getText()[0])->top()));
+
+	Container::setWidth(integer->getWidth() + MAX(unit.getWidth(), dot.getWidth() + decimal->getWidth()));
 	integer->setXY(0, Container::getHeight() - integer->getHeight());
 	dot.setXY(integer->getWidth(), Container::getHeight() - dot.getHeight());
 	decimal->setXY(integer->getWidth() + dot.getWidth(), Container::getHeight() - decimal->getHeight());
