@@ -6,12 +6,8 @@
 #include <CSwipe.hpp>
 #include <CImage.hpp>
 #include <CScreen.hpp>
-#include <CMeter.hpp>
 #include <CMeterInt.hpp>
 #include <CMeterSet.hpp>
-#include <CString.hpp>
-//#include <gui/containers/cntBlue.hpp>
-//#include <gui/containers/cntTempInside.hpp>
 
 
 class SplashView : public SplashViewBase
@@ -44,38 +40,8 @@ protected:
 //    cntBlue Blue;
 //    cntTempInside tempInside;
 
-//    CText text;
-//    CMeterChar ch;
-//    CMeter meter;
-//    CMeter meter2;
-//
-//    CMeterChar meterString[4];
-//    CMeterText meterText;
-//
-//    CMeterChar meterString2[2];
-//    CMeterText meterText2;
-//
-//    CMeterChar meterString3[2];
-//    CMeterText meterText3;
-
-//    CMeterTempInt MeterTempInt;
-//    CMeterTempExt MeterTempExt;
-
-//    CText tL;
-//    CText tP;
-//    CText tS;
-
-//#define ARRAY1_SIZE 10
-//    CChar a1[ARRAY1_SIZE];
-//    CString* s1;
-
-//    CMeterValue* mv;
     CMeterInt m1;
-
     CMeterSet m2;
-
-//    CMeterInt mi;
-//    CMeterSet se;
 };
 
 #endif // SPLASHVIEW_HPP
