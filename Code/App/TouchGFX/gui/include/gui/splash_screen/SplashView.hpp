@@ -3,6 +3,7 @@
 
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
+
 #include <CSwipe.hpp>
 #include <CImage.hpp>
 #include <CScreen.hpp>
@@ -10,6 +11,7 @@
 #include <CMeterSet.hpp>
 #include <CMeterExt.hpp>
 #include <CMeterHum.hpp>
+#include <CButton.hpp>
 
 
 class SplashView : public SplashViewBase
@@ -46,6 +48,12 @@ protected:
     CMeterSet m2;
     CMeterExt m3;
     CMeterHum m4;
+
+    CButton b1;
+
+private:
+    touchgfx::Callback<SplashView, const touchgfx::AbstractButton&> buttonCallback;
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 };
 
 #endif // SPLASHVIEW_HPP

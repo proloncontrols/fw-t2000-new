@@ -6,6 +6,7 @@
 #include <CMeter.hpp>
 
 SplashView::SplashView()
+           :buttonCallback(this, &SplashView::buttonCallbackHandler)
 {
 	rotateBox(__background);
 
@@ -125,6 +126,15 @@ SplashView::SplashView()
 
 
 
+//	b1.setXY(400, 400);
+	b1.setPosition(400, 400, 200, 200);
+//	b1.setBitmaps(BITMAP_SETTING_ID, BITMAP_SETTING_DARK2_ID);
+    b1.setAction(buttonCallback);
+	add(b1);
+
+
+
+
 //	meter.setXY(0, 0);
 //	meter.initialize(186, 188, 190, touchgfx::TypedText(T_T2000_METER_MEDIUM), touchgfx::TypedText(T_T2000_METER_SMALL), false);
 //	meter.setUnit(METER_UNIT_FAHRENHEIT);
@@ -221,3 +231,38 @@ void SplashView::tearDownScreen()
 {
     SplashViewBase::tearDownScreen();
 }
+
+void SplashView::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
