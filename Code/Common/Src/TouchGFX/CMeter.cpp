@@ -19,6 +19,12 @@
 
 
 //=============================================================================
+//  S W I T C H E S
+//-----------------------------------------------------------------------------
+//#define CMETER_WITH_BACKGROUND   //Uncomment to apply a background to widget (for debug purposes only)
+
+
+//=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <stdio.h>
@@ -37,8 +43,10 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 CMeter::CMeter()
 {
+#ifdef CMETER_WITH_BACKGROUND
 	add(background);
 	background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+#endif
 }
 
 
@@ -47,7 +55,9 @@ CMeter::CMeter()
 //-----------------------------------------------------------------------------
 void CMeter::setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue)
 {
+#ifdef CMETER_WITH_BACKGROUND
 	background.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
+#endif
 }
 
 //-----------------------------------------------------------------------------
@@ -102,7 +112,9 @@ void CMeter::addImage(const Bitmap& bmp)
 //-----------------------------------------------------------------------------
 void CMeter::resizeBackground()
 {
+#ifdef CMETER_WITH_BACKGROUND
 	background.setWidthHeight(*this);
+#endif
 }
 
 
