@@ -73,11 +73,11 @@ void CMeter::addUnit(const TypedText& newTypedTextC, const TypedText& newTypedTe
 	add(*unit);
 }
 
-void CMeter::addUnit(const TypedText& newTypedTextP, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+void CMeter::addUnit(const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 {
 	unit = new TextArea;
 	unit->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
-	unitTempP = newTypedTextP;
+	unit->setTypedText(touchgfx::TypedText(newTypedText));
 	add(*unit);
 }
 

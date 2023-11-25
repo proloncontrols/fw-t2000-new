@@ -112,6 +112,16 @@ SplashView::SplashView()
 	m2.display(-24.6, true);
 	add(m2);
 
+	m3.setXY(50, 480);
+	m3.setBackgroundColor(75, 75, 75);
+	m3.display(-6, true);
+	add(m3);
+
+	m4.setXY(50, 580);
+	m4.setBackgroundColor(75, 75, 75);
+	m4.display(71);
+	add(m4);
+
 
 
 

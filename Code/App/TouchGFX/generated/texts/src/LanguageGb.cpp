@@ -14,7 +14,6 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     0,  // T_METER_HUGE_DIGITS: "<>"
     10, // T_METER_LARGE_DOT: "."
     0,  // T_METER_LARGE_DIGITS: "<>"
-    8,  // T_METER_MEDIUM_UNIT_P: "%"
     2,  // T_METER_MEDIUM_UNIT_C: "?C"
     5,  // T_METER_MEDIUM_UNIT_F: "?F"
     10, // T_METER_MEDIUM_DOT: "."
@@ -22,5 +21,8 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     2,  // T_METER_SMALL_UNIT_C: "?C"
     5,  // T_METER_SMALL_UNIT_F: "?F"
     10, // T_METER_SMALL_DOT: "."
-    0   // T_METER_SMALL_DIGITS: "<>"
+    0,  // T_METER_SMALL_DIGITS: "<>"
+    8,  // T_METER_TINY_UNIT_P: "%"
+    2,  // T_METER_TINY_UNIT_C: "?C"
+    5   // T_METER_TINY_UNIT_F: "?F"
 };

@@ -8,6 +8,8 @@
 #include <CScreen.hpp>
 #include <CMeterInt.hpp>
 #include <CMeterSet.hpp>
+#include <CMeterExt.hpp>
+#include <CMeterHum.hpp>
 
 
 class SplashView : public SplashViewBase
@@ -42,6 +44,8 @@ protected:
 
     CMeterInt m1;
     CMeterSet m2;
+    CMeterExt m3;
+    CMeterHum m4;
 };
 
 #endif // SPLASHVIEW_HPP

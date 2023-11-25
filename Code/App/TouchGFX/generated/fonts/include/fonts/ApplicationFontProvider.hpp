@@ -21,6 +21,7 @@ struct Typography
     static const touchgfx::FontId METERMEDIUMDIGITS = 5;
     static const touchgfx::FontId METERSMALL = 6;
     static const touchgfx::FontId METERSMALLDIGITS = 7;
+    static const touchgfx::FontId METERTINY = 8;
 };
 
 struct TypographyFontIndex
@@ -33,7 +34,8 @@ struct TypographyFontIndex
     static const touchgfx::FontId METERMEDIUMDIGITS = 2; // AvenirNext_Regular_08_70_4bpp
     static const touchgfx::FontId METERSMALL = 3;        // AvenirNext_Regular_08_50_4bpp
     static const touchgfx::FontId METERSMALLDIGITS = 3;  // AvenirNext_Regular_08_50_4bpp
-    static const uint16_t NUMBER_OF_FONTS = 4;
+    static const touchgfx::FontId METERTINY = 4;         // AvenirNext_Regular_08_22_4bpp
+    static const uint16_t NUMBER_OF_FONTS = 5;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider

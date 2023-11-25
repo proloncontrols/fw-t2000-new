@@ -44,7 +44,7 @@ protected:
 	void addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& nexTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 	void addDecimal(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 	void addUnit(const TypedText& newTypedTextC, const TypedText& newTypedTextF, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
-	void addUnit(const TypedText& newTypedTextP, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+	void addUnit(const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 	void addDot(const TypedText& newTypedTextP, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 	void resizeBackground();
 

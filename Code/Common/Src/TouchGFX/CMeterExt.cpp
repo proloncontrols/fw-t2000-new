@@ -10,11 +10,11 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterHum.cpp
+//         File : CMeterExt.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Humidity meter class implementation file
+//  Description : Exterior temperature meter class implementation file
 //=============================================================================
 
 
@@ -22,7 +22,7 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <math.h>
-#include <CMeterHum.hpp>
+#include <CMeterExt.hpp>
 
 
 namespace touchgfx
@@ -31,10 +31,10 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMeterHum::CMeterHum()
+CMeterExt::CMeterExt()
 {
 	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
-	addUnit(unitText, colorR, colorG, colorB);
+	addUnit(unitCText, unitFText, colorR, colorG, colorB);
 
 	Container::setHeight(touchgfx::TypedText(intText).getFont()->getFontHeight());
 }
@@ -43,16 +43,22 @@ CMeterHum::CMeterHum()
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMeterHum::display(double value)
+void CMeterExt::display(double value, bool celsius)
 {
 	double intDoubleValue;
 	double decDoubleValue = modf(value, &intDoubleValue);
 	(void)decDoubleValue;
 
-	int16_t intValue = (int16_t)abs(intDoubleValue);
+	int16_t intValue = (int16_t)intDoubleValue;
 
 	integer->display(intValue);
+
 	integer->setXY(0, 0);
+
+	if(celsius)
+		unit->setTypedText(touchgfx::TypedText(unitTempC));
+	else
+		unit->setTypedText(touchgfx::TypedText(unitTempF));
 	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
 
 	Container::setWidth(integer->getWidth() + unit->getWidth());
