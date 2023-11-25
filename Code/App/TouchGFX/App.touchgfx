@@ -5,6 +5,11 @@
         "Name": "Splash",
         "Components": [],
         "Interactions": []
+      },
+      {
+        "Name": "Home",
+        "Components": [],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [],

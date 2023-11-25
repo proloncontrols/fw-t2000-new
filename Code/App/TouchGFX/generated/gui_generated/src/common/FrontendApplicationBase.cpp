@@ -11,6 +11,8 @@
 #include <platform/driver/lcd/LCD32bpp.hpp>
 #include <gui/splash_screen/SplashView.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
+#include <gui/home_screen/HomeView.hpp>
+#include <gui/home_screen/HomePresenter.hpp>
 
 using namespace touchgfx;
 

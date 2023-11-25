@@ -187,6 +187,18 @@
     <Filter Include="Source Files\gui\containers">
       <UniqueIdentifier>8FF737F6-D63F-B0BD-C9C0-EFFB7B557701</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\home_screen">
+      <UniqueIdentifier>8865F358-BEDE-AD01-D504-919FC32C3C0D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\home_screen">
+      <UniqueIdentifier>9A70672B-C37C-840D-7CE0-EC6AD531B7BC</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\home_screen">
+      <UniqueIdentifier>E6436B11-53A9-00A7-175A-EA77B500E165</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\home_screen">
+      <UniqueIdentifier>FF60C029-EB48-3D6C-A079-F5D9C8727116</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -233,6 +245,15 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\cntTempInside.cpp">
       <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\home_screen\HomePresenter.cpp">
+      <Filter>Source Files\gui\home_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\home_screen\HomeView.cpp">
+      <Filter>Source Files\gui\home_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\home_screen\HomeViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\home_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -684,6 +705,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\splash_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\home_screen\HomePresenter.hpp">
+      <Filter>Header Files\gui\home_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\home_screen\HomeView.hpp">
+      <Filter>Header Files\gui\home_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\home_screen\HomeViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\home_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
