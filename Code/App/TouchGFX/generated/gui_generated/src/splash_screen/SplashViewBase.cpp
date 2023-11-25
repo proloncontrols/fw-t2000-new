@@ -3,17 +3,48 @@
 /*********************************************************************************/
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <touchgfx/Color.hpp>
+#include <BitmapDatabase.hpp>
 
-SplashViewBase::SplashViewBase()
+SplashViewBase::SplashViewBase() :
+    buttonCallback(this, &SplashViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 720, 672);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
+    imgSplashLogo.setXY(114, 101);
+    imgSplashLogo.setBitmap(touchgfx::Bitmap(BITMAP_PROLONLOGO470X470_ID));
+    imgSplashLogo.setWidth(470);
+    imgSplashLogo.setHeight(470);
+    imgSplashLogo.setBitmapPosition(0.0f, 0.0f);
+    imgSplashLogo.setScale(1.0f);
+    imgSplashLogo.setCameraDistance(1000.0f);
+    imgSplashLogo.setOrigo(90.0f, 90.0f, 1000.0f);
+    imgSplashLogo.setCamera(235.0f, 235.0f);
+    imgSplashLogo.setAngles(0.0f, 0.0f, 0.0f);
+    imgSplashLogo.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+
+    button1.setXY(275, 465);
+    button1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    button1.setAction(buttonCallback);
+
     add(__background);
+    add(imgSplashLogo);
+    add(button1);
 }
 
 void SplashViewBase::setupScreen()
 {
 
+}
+
+void SplashViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &button1)
+    {
+        //Interaction1
+        //When button1 clicked change screen to Home
+        //Go to Home with no screen transition
+        application().gotoHomeScreenNoTransition();
+    }
 }

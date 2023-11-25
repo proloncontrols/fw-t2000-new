@@ -11,6 +11,7 @@ SplashView::SplashView()
 {
 //	__background.setColor(touchgfx::Color::getColorFromRGB(10, 70, 25));
 	rotateBox(__background);
+	rotateTextureMapper(imgSplashLogo);
 
 ////	swipe.initialize(cnvScrX(24), cnvScrY(24), 624, 624, INDICATOR_BOTTOM_CENTER, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_NORMAL_ID, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_HIGHLIGHT_ID);
 ////	swipe.showBackground();

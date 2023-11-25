@@ -8,6 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/home_screen/HomePresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/Button.hpp>
 
 class HomeViewBase : public touchgfx::View<HomePresenter>
 {
@@ -20,9 +21,24 @@ protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
     }
+
+    /*
+     * Member Declarations
+     */
     touchgfx::Box __background;
+    touchgfx::Button button1;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<HomeViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

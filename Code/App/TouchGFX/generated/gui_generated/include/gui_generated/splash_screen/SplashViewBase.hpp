@@ -8,6 +8,8 @@
 #include <mvp/View.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/TextureMapper.hpp>
+#include <touchgfx/widgets/Button.hpp>
 
 class SplashViewBase : public touchgfx::View<SplashPresenter>
 {
@@ -20,9 +22,25 @@ protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
     }
+
+    /*
+     * Member Declarations
+     */
     touchgfx::Box __background;
+    touchgfx::TextureMapper imgSplashLogo;
+    touchgfx::Button button1;
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<SplashViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

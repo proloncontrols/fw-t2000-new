@@ -23,6 +23,9 @@ public:
     // Splash
     void gotoSplashScreenNoTransition();
 
+    // Home
+    void gotoHomeScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -30,6 +33,9 @@ protected:
 
     // Splash
     void gotoSplashScreenNoTransitionImpl();
+
+    // Home
+    void gotoHomeScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP
