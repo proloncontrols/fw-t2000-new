@@ -35,6 +35,7 @@ CMeterHum::CMeterHum()
 {
 	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
 	addUnit(unitText, colorR, colorG, colorB);
+	addImage(imageId);
 
 	Container::setHeight(touchgfx::TypedText(intText).getFont()->getFontHeight());
 }
@@ -55,7 +56,10 @@ void CMeterHum::display(double value)
 	integer->setXY(0, 0);
 	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
 
-	Container::setWidth(integer->getWidth() + unit->getWidth());
+	image->setXY(integer->getWidth(), Container::getHeight() - image->getHeight());
+	image->setBitmap(touchgfx::Bitmap(imageId));
+
+	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), image->getWidth()));
 	resizeBackground();
 }
 

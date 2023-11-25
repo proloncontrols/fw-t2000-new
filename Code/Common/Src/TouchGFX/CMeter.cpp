@@ -26,6 +26,7 @@
 #include <string.h>
 #include <CMeter.hpp>
 #include <touchgfx/Color.hpp>
+#include <touchgfx/Bitmap.hpp>
 
 
 namespace touchgfx
@@ -88,6 +89,14 @@ void CMeter::addDot(const TypedText& newTypedText, uint8_t newColorR, uint8_t ne
 	dot->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
 	dot->setTypedText(touchgfx::TypedText(newTypedText));
 	add(*dot);
+}
+
+//-----------------------------------------------------------------------------
+void CMeter::addImage(const Bitmap& bmp)
+{
+	image = new CImage;
+	image->setBitmap(bmp);
+	add(*image);
 }
 
 //-----------------------------------------------------------------------------

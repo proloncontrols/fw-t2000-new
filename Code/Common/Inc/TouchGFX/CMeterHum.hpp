@@ -24,6 +24,7 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <CMeter.hpp>
+#include <BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 
@@ -50,6 +51,8 @@ protected:
 
 	static const TypedTextId intText  = T_METER_MEDIUM_DIGITS;
 	static const TypedTextId unitText = T_METER_TINY_UNIT_P;
+
+	static const uint16_t imageId = BITMAP_HUMIDITY_30X30_ID;
 };
 
 }   //namespace touchgfx

@@ -35,6 +35,7 @@ CMeterExt::CMeterExt()
 {
 	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
 	addUnit(unitCText, unitFText, colorR, colorG, colorB);
+	addImage(imageId);
 
 	Container::setHeight(touchgfx::TypedText(intText).getFont()->getFontHeight());
 }
@@ -52,7 +53,6 @@ void CMeterExt::display(double value, bool celsius)
 	int16_t intValue = (int16_t)intDoubleValue;
 
 	integer->display(intValue);
-
 	integer->setXY(0, 0);
 
 	if(celsius)
@@ -61,7 +61,10 @@ void CMeterExt::display(double value, bool celsius)
 		unit->setTypedText(touchgfx::TypedText(unitTempF));
 	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
 
-	Container::setWidth(integer->getWidth() + unit->getWidth());
+	image->setXY(integer->getWidth(), Container::getHeight() - image->getHeight());
+	image->setBitmap(touchgfx::Bitmap(imageId));
+
+	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), image->getWidth()));
 	resizeBackground();
 }
 
