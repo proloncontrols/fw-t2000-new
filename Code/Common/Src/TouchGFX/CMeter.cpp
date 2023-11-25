@@ -112,11 +112,11 @@ void CMeter::resizeBackground()
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMeter::CMeterValue::CMeterValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTextType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+CMeter::CMeterValue::CMeterValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& nexTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 {
 	precision = newPrecision;
 	spacingRatio = newSpacingRatio;
-	textType = newTextType;
+	textType = nexTypedText;
 
 	digits = (CMeterDigit**)malloc(sizeof(CMeterDigit*) * precision);
 	for(uint8_t i = 0; i < precision; i++)
