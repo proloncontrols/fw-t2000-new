@@ -21,8 +21,8 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <CMeter.hpp>
 #include <touchgfx/Color.hpp>
@@ -50,17 +50,44 @@ void CMeter::setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t co
 }
 
 //-----------------------------------------------------------------------------
-void CMeter::addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& nexTextType, uint8_t newColorRed, uint8_t newColorGreen, uint8_t newColorBlue)
+void CMeter::addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 {
-	integer = new CMeterValue(newPrecision, newSpacingRatio, touchgfx::TypedText(nexTextType), newColorRed, newColorGreen, newColorBlue);
+	integer = new CMeterValue(newPrecision, newSpacingRatio, touchgfx::TypedText(newTypedText), newColorR, newColorG, newColorB);
 	add(*integer);
 }
 
 //-----------------------------------------------------------------------------
-void CMeter::addDecimal(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTextType, uint8_t newColorRed, uint8_t newColorGreen, uint8_t newColorBlue)
+void CMeter::addDecimal(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 {
-	decimal = new CMeterValue(newPrecision, newSpacingRatio, touchgfx::TypedText(newTextType), newColorRed, newColorGreen, newColorBlue);
+	decimal = new CMeterValue(newPrecision, newSpacingRatio, touchgfx::TypedText(newTypedText), newColorR, newColorG, newColorB);
 	add(*decimal);
+}
+
+//-----------------------------------------------------------------------------
+void CMeter::addUnit(const TypedText& newTypedTextC, const TypedText& newTypedTextF, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+{
+	unit = new TextArea;
+	unit->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
+	unitTempC = newTypedTextC;
+	unitTempF = newTypedTextF;
+	add(*unit);
+}
+
+void CMeter::addUnit(const TypedText& newTypedTextP, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+{
+	unit = new TextArea;
+	unit->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
+	unitTempP = newTypedTextP;
+	add(*unit);
+}
+
+//-----------------------------------------------------------------------------
+void CMeter::addDot(const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+{
+	dot = new TextArea;
+	dot->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
+	dot->setTypedText(touchgfx::TypedText(newTypedText));
+	add(*dot);
 }
 
 //-----------------------------------------------------------------------------
@@ -169,6 +196,12 @@ void CMeter::CMeterValue::display(int16_t value)
 
 		dspPtr--;
 	}
+}
+
+//-----------------------------------------------------------------------------
+uint8_t CMeter::CMeterValue::getPrecision()
+{
+	return precision;
 }
 
 //-----------------------------------------------------------------------------

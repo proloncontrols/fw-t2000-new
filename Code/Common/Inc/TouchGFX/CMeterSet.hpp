@@ -23,7 +23,8 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CMeterInt.hpp>
+#include <CMeterTemp.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -32,11 +33,10 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMeterSet : public CMeterInt
+class CMeterSet : public CMeterTemp
 {
 public:
 	CMeterSet();
-//	void display(double value, bool celsius);
 
 protected:
 	static const uint8_t colorR = 186;

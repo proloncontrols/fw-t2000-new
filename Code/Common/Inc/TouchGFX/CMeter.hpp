@@ -23,9 +23,9 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/Box.hpp>
 
 
 namespace touchgfx
@@ -41,15 +41,19 @@ public:
 	void setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue);
 
 protected:
-	void addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& nexTextType, uint8_t newColorRed, uint8_t newColorGreen, uint8_t newColorBlue);
-	void addDecimal(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTextType, uint8_t newColorRed, uint8_t newColorGreen, uint8_t newColorBlue);
+	void addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& nexTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+	void addDecimal(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+	void addUnit(const TypedText& newTypedTextC, const TypedText& newTypedTextF, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+	void addUnit(const TypedText& newTypedTextP, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+	void addDot(const TypedText& newTypedTextP, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 	void resizeBackground();
 
 	class CMeterValue : public Container
 	{
 	public:
-		CMeterValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTextType, uint8_t newColorRed, uint8_t newColorGreen, uint8_t newColorBlue);
+		CMeterValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 		void display(int16_t value);
+		uint8_t getPrecision();
 		int16_t getMaxGlyphHeight();
 
 	protected:
@@ -76,6 +80,9 @@ protected:
 	CMeterValue* decimal;
 	TextArea* dot;
 	TextArea* unit;
+	TypedText unitTempC;
+	TypedText unitTempF;
+	TypedText unitTempP;
 
 private:
 	touchgfx::Box background;

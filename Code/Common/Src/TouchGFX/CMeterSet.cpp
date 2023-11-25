@@ -21,10 +21,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <math.h>
-#include <stdio.h>
 #include <CMeterSet.hpp>
-#include <touchgfx/Color.hpp>
 
 
 namespace touchgfx
@@ -36,31 +33,11 @@ namespace touchgfx
 CMeterSet::CMeterSet()
 {
 	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
-//	integer = new CMeterValue(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
-//	add(*integer);
-
 	addDecimal(decPrecision, decCharSpacingRation, touchgfx::TypedText(decText), colorR, colorG, colorB);
-//	decimal = new CMeterValue(decPrecision, decCharSpacingRation, touchgfx::TypedText(decText), colorR, colorG, colorB);
-//	add(*decimal);
-
-	dot = new TextArea;
-	dot->setColor(touchgfx::Color::getColorFromRGB(colorR, colorG, colorB));
-	dot->setTypedText(touchgfx::TypedText(dotText));
-	add(*dot);
-
-	unit = new TextArea;
-	unit->setColor(touchgfx::Color::getColorFromRGB(colorR, colorG, colorB));
-	add(*unit);
+	addUnit(unitCText, unitFText, colorR, colorG, colorB);
+	addDot(dotText, colorR, colorG, colorB);
 
 	Container::setHeight(MAX(touchgfx::TypedText(intText).getFont()->getFontHeight(), touchgfx::TypedText(decText).getFont()->getFontHeight()));
 }
-
-
-//=============================================================================
-//  M E T H O D S
-//-----------------------------------------------------------------------------
-//void CMeterSet::display(double value, bool celsius)
-//{
-//}
 
 }   //namespace touchgfx
