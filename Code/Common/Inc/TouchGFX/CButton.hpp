@@ -60,12 +60,29 @@ namespace touchgfx
 //          void SplashView::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 //          {
 //          }
+//
+//   NOTE: To add other buttons to the screen, repeat only step 2 in both header and implementation files
 
 class CButton : public Button
 {
 	//This class is empty.
-	//It is declared for the sole purpose of adding the steps on how to use it
+	//It is declared for the sole purpose of documenting the steps on how to use it
 };
+
+
+//Kept as a possible future reference
+//-----------------------------------
+//class CButtonCustom : public BoxWithBorderButtonStyle< ClickButtonTrigger >
+//{
+//public:
+//	CButtonCustom(int16_t x, int16_t y, int16_t width, int16_t height, TextureMapper* imageReleased, TextureMapper* imagePressed);
+//
+//    virtual void handleClickEvent(const ClickEvent& event) override;
+//
+//private:
+//    TextureMapper* imgReleased;
+//    TextureMapper* imgPressed;
+//};
 
 }   //namespace touchgfx
 

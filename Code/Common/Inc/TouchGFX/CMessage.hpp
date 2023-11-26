@@ -10,53 +10,50 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterExt.hpp
+//         File : CMessage.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Exterior temperature meter class header file
+//  Description : Messages posting from GFX to application header file
 //=============================================================================
-#ifndef CMETER_EXT_HPP
-#define CMETER_EXT_HPP
+#ifndef CMESSAGE_HPP
+#define CMESSAGE_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CMeter.hpp>
-#include <BitmapDatabase.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
+#include <cmsis_os2.h>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C L A S S E S
+//  T Y P E D E F S
 //-----------------------------------------------------------------------------
-class CMeterExt : public CMeter
+typedef enum {
+	GFX_READY
+} GfxMessage;
+
+
+//=============================================================================
+//  F U N C T I O N S
+//-----------------------------------------------------------------------------
+//void gfxPostMessage(GfxMessage msg);
+
+
+class CMessage
 {
 public:
-	CMeterExt();
-	void display(double Value, bool celsius);
+	CMessage(int x);
+	void post(GfxMessage msg);
 
-protected:
-	static const uint8_t colorR = 186;
-	static const uint8_t colorG = 188;
-	static const uint8_t colorB = 190;
-
-	static const uint8_t intPrecision = 4;   //Up to 3 digits integer and minus sign
-
-	static const uint8_t intCharSpacingRation = 15;
-
-	static const TypedTextId intText   = T_METER_MEDIUM_DIGITS;
-	static const TypedTextId unitCText = T_METER_TINY_UNIT_C;
-	static const TypedTextId unitFText = T_METER_TINY_UNIT_F;
-
-	static const uint16_t imageId = BITMAP_OUTSIDE_24X24_ID;
+private:
+	osMessageQueueId_t queue;
 };
 
-}   //namespace touchgfx
+}
 
 
-#endif   //CMETER_EXT_HPP
+#endif   //CMESSAGE_HPP

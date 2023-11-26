@@ -18,60 +18,17 @@
             "YOrigo": 90.0,
             "ZOrigo": 1000.0,
             "CameraDistance": 1000.0
-          },
-          {
-            "Type": "Button",
-            "Name": "button1",
-            "X": 275,
-            "Y": 465,
-            "Width": 170,
-            "Height": 60,
-            "Pressed": "__designer\\Blue_Buttons_Round_Edge_small_pressed.png",
-            "Released": "__designer\\Blue_Buttons_Round_Edge_small.png",
-            "Style": "Style4"
           }
         ],
         "Interactions": [
           {
-            "InteractionName": "Interaction1",
+            "InteractionName": "TransitionEnd",
             "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "button1"
+              "Type": "TriggerScreenEntered"
             },
             "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Home"
-            }
-          }
-        ]
-      },
-      {
-        "Name": "Home",
-        "Components": [
-          {
-            "Type": "Button",
-            "Name": "button1",
-            "X": 275,
-            "Y": 105,
-            "Width": 170,
-            "Height": 60,
-            "Pressed": "__designer\\Blue_Buttons_Round_Edge_small_pressed.png",
-            "Released": "__designer\\Blue_Buttons_Round_Edge_small.png",
-            "Style": "Style4"
-          }
-        ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "button1"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Splash"
+              "Type": "ActionCustom",
+              "FunctionName": "OnTransitionEnd"
             }
           }
         ]

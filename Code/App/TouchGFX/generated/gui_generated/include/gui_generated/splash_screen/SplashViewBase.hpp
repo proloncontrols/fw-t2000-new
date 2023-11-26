@@ -9,7 +9,6 @@
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextureMapper.hpp>
-#include <touchgfx/widgets/Button.hpp>
 
 class SplashViewBase : public touchgfx::View<SplashPresenter>
 {
@@ -17,6 +16,15 @@ public:
     SplashViewBase();
     virtual ~SplashViewBase() {}
     virtual void setupScreen();
+    virtual void afterTransition();
+
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void OnTransitionEnd()
+    {
+        // Override and implement this function in Splash
+    }
 
 protected:
     FrontendApplication& application() {
@@ -28,19 +36,8 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::TextureMapper imgSplashLogo;
-    touchgfx::Button button1;
 
 private:
-
-    /*
-     * Callback Declarations
-     */
-    touchgfx::Callback<SplashViewBase, const touchgfx::AbstractButton&> buttonCallback;
-
-    /*
-     * Callback Handler Declarations
-     */
-    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

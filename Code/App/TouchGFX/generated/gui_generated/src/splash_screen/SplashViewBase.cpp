@@ -5,8 +5,7 @@
 #include <touchgfx/Color.hpp>
 #include <BitmapDatabase.hpp>
 
-SplashViewBase::SplashViewBase() :
-    buttonCallback(this, &SplashViewBase::buttonCallbackHandler)
+SplashViewBase::SplashViewBase()
 {
 
     __background.setPosition(0, 0, 720, 672);
@@ -24,13 +23,8 @@ SplashViewBase::SplashViewBase() :
     imgSplashLogo.setAngles(0.0f, 0.0f, 0.0f);
     imgSplashLogo.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 
-    button1.setXY(275, 465);
-    button1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    button1.setAction(buttonCallback);
-
     add(__background);
     add(imgSplashLogo);
-    add(button1);
 }
 
 void SplashViewBase::setupScreen()
@@ -38,13 +32,11 @@ void SplashViewBase::setupScreen()
 
 }
 
-void SplashViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+//Called when the screen transition ends
+void SplashViewBase::afterTransition()
 {
-    if (&src == &button1)
-    {
-        //Interaction1
-        //When button1 clicked change screen to Home
-        //Go to Home with no screen transition
-        application().gotoHomeScreenNoTransition();
-    }
+    //TransitionEnd
+    //When screen transition ends call virtual function
+    //Call OnTransitionEnd
+    OnTransitionEnd();
 }

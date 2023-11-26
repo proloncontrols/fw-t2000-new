@@ -10,11 +10,11 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterExt.cpp
+//         File : CMeterTemp.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Exterior temperature meter class implementation file
+//  Description : Interior/Setpoint temperature meter base class implementation file
 //=============================================================================
 
 
@@ -22,38 +22,30 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <math.h>
-#include <CMeterExt.hpp>
+#include <meter/CMeterTemp.hpp>
+#include <touchgfx/Color.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C O N S T R U C T I O N
-//-----------------------------------------------------------------------------
-CMeterExt::CMeterExt()
-{
-	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
-	addUnit(unitCText, unitFText, colorR, colorG, colorB);
-	addImage(imageId);
-
-	Container::setHeight(touchgfx::TypedText(intText).getFont()->getFontHeight());
-}
-
-
-//=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMeterExt::display(double value, bool celsius)
+void CMeterTemp::display(double value, bool celsius)
 {
 	double intDoubleValue;
 	double decDoubleValue = modf(value, &intDoubleValue);
-	(void)decDoubleValue;
 
 	int16_t intValue = (int16_t)intDoubleValue;
+	int16_t decValue = (int16_t)abs((decDoubleValue * pow(10.0, (double)decimal->getPrecision())));
 
 	integer->display(intValue);
+	decimal->display(decValue);
+
 	integer->setXY(0, 0);
+	dot->setXY(integer->getWidth(), Container::getHeight() - dot->getHeight());
+	decimal->setXY(integer->getWidth() + dot->getWidth(),  Container::getHeight() - decimal->getHeight());
 
 	if(celsius)
 		unit->setTypedText(touchgfx::TypedText(unitTempC));
@@ -61,10 +53,7 @@ void CMeterExt::display(double value, bool celsius)
 		unit->setTypedText(touchgfx::TypedText(unitTempF));
 	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
 
-	image->setXY(integer->getWidth(), Container::getHeight() - image->getHeight());
-	image->setBitmap(touchgfx::Bitmap(imageId));
-
-	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), image->getWidth()));
+	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), dot->getWidth() + decimal->getWidth()));
 	resizeBackground();
 }
 

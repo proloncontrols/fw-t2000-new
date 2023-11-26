@@ -39,6 +39,7 @@ extern "C" {
 #include "com.h"
 #include "cfg.h"
 #include "data.h"
+#include "event.h"
 
 
 //=============================================================================

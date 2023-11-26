@@ -10,19 +10,18 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterHum.cpp
+//         File : CMeterInt.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Humidity meter class implementation file
+//  Description : Interior temperature meter class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <math.h>
-#include <CMeterHum.hpp>
+#include <meter/CMeterInt.hpp>
 
 
 namespace touchgfx
@@ -31,36 +30,14 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMeterHum::CMeterHum()
+CMeterInt::CMeterInt()
 {
 	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
-	addUnit(unitText, colorR, colorG, colorB);
-	addImage(imageId);
+	addDecimal(decPrecision, decCharSpacingRation, touchgfx::TypedText(decText), colorR, colorG, colorB);
+	addUnit(unitCText, unitFText, colorR, colorG, colorB);
+	addDot(dotText, colorR, colorG, colorB);
 
-	Container::setHeight(touchgfx::TypedText(intText).getFont()->getFontHeight());
-}
-
-
-//=============================================================================
-//  M E T H O D S
-//-----------------------------------------------------------------------------
-void CMeterHum::display(double value)
-{
-	double intDoubleValue;
-	double decDoubleValue = modf(value, &intDoubleValue);
-	(void)decDoubleValue;
-
-	int16_t intValue = (int16_t)abs(intDoubleValue);
-
-	integer->display(intValue);
-	integer->setXY(0, 0);
-	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
-
-	image->setXY(integer->getWidth(), Container::getHeight() - image->getHeight());
-	image->setBitmap(touchgfx::Bitmap(imageId));
-
-	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), image->getWidth()));
-	resizeBackground();
+	Container::setHeight(MAX(touchgfx::TypedText(intText).getFont()->getFontHeight(), touchgfx::TypedText(decText).getFont()->getFontHeight()));
 }
 
 }   //namespace touchgfx

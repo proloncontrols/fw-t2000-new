@@ -10,43 +10,34 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CButtonCustom.hpp
+//         File : CMeterSet.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Custom button widget class header file
+//  Description : Setpoint temperature meter class implementation file
 //=============================================================================
-#ifndef WIDGET_BUTTON_CUSTOM_HPP
-#define WIDGET_BUTTON_CUSTOM_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <touchgfx/containers/buttons/BoxWithBorderButtonStyle.hpp>
-#include <touchgfx/containers/buttons/ClickButtonTrigger.hpp>
-#include <touchgfx/widgets/TextureMapper.hpp>
+#include <meter/CMeterSet.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C L A S S E S
+//  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-class CButtonCustom : public BoxWithBorderButtonStyle< ClickButtonTrigger >
+CMeterSet::CMeterSet()
 {
-public:
-	CButtonCustom(int16_t x, int16_t y, int16_t width, int16_t height, TextureMapper* imageReleased, TextureMapper* imagePressed);
+	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
+	addDecimal(decPrecision, decCharSpacingRation, touchgfx::TypedText(decText), colorR, colorG, colorB);
+	addUnit(unitCText, unitFText, colorR, colorG, colorB);
+	addDot(dotText, colorR, colorG, colorB);
 
-    virtual void handleClickEvent(const ClickEvent& event) override;
-
-private:
-    TextureMapper* imgReleased;
-    TextureMapper* imgPressed;
-};
+	Container::setHeight(MAX(touchgfx::TypedText(intText).getFont()->getFontHeight(), touchgfx::TypedText(decText).getFont()->getFontHeight()));
+}
 
 }   //namespace touchgfx
-
-
-#endif   //WIDGET_BUTTON_CUSTOM_HPP

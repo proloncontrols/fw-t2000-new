@@ -10,34 +10,29 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterInt.cpp
+//         File : CMessage.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Interior temperature meter class implementation file
+//  Description : Messages posting from GFX to application implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CMeterInt.hpp>
+#include <CMessage.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C O N S T R U C T I O N
+//  M E T H O D S
 //-----------------------------------------------------------------------------
-CMeterInt::CMeterInt()
+CMessage::CMessage(int x)
 {
-	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
-	addDecimal(decPrecision, decCharSpacingRation, touchgfx::TypedText(decText), colorR, colorG, colorB);
-	addUnit(unitCText, unitFText, colorR, colorG, colorB);
-	addDot(dotText, colorR, colorG, colorB);
-
-	Container::setHeight(MAX(touchgfx::TypedText(intText).getFont()->getFontHeight(), touchgfx::TypedText(decText).getFont()->getFontHeight()));
+	queue = osMessageQueueNew(1, sizeof(GfxMessage), NULL);
 }
 
-}   //namespace touchgfx
+}

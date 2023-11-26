@@ -10,20 +10,21 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterSet.hpp
+//         File : CMeterExt.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Setpoint temperature meter class header file
+//  Description : Exterior temperature meter class header file
 //=============================================================================
-#ifndef CMETER_SET_HPP
-#define CMETER_SET_HPP
+#ifndef CMETER_EXT_HPP
+#define CMETER_EXT_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CMeterTemp.hpp>
+#include <meter/CMeter.hpp>
+#include <BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 
@@ -33,10 +34,11 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMeterSet : public CMeterTemp
+class CMeterExt : public CMeter
 {
 public:
-	CMeterSet();
+	CMeterExt();
+	void display(double Value, bool celsius);
 
 protected:
 	static const uint8_t colorR = 186;
@@ -44,16 +46,14 @@ protected:
 	static const uint8_t colorB = 190;
 
 	static const uint8_t intPrecision = 4;   //Up to 3 digits integer and minus sign
-	static const uint8_t decPrecision = 1;   //1 digit decimal
 
 	static const uint8_t intCharSpacingRation = 15;
-	static const uint8_t decCharSpacingRation = 15;
 
-	static const TypedTextId intText   = T_METER_LARGE_DIGITS;
-	static const TypedTextId dotText   = T_METER_SMALL_DOT;
-	static const TypedTextId decText   = T_METER_SMALL_DIGITS;
-	static const TypedTextId unitCText = T_METER_SMALL_UNIT_C;
-	static const TypedTextId unitFText = T_METER_SMALL_UNIT_F;
+	static const TypedTextId intText   = T_METER_MEDIUM_DIGITS;
+	static const TypedTextId unitCText = T_METER_TINY_UNIT_C;
+	static const TypedTextId unitFText = T_METER_TINY_UNIT_F;
+
+	static const uint16_t imageId = BITMAP_OUTSIDE_24X24_ID;
 };
 
 }   //namespace touchgfx

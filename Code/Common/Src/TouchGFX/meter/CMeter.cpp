@@ -30,7 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <CMeter.hpp>
+#include <meter/CMeter.hpp>
 #include <touchgfx/Color.hpp>
 #include <touchgfx/Bitmap.hpp>
 

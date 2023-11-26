@@ -14,8 +14,6 @@
 
 #include <gui/splash_screen/SplashView.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
-#include <gui/home_screen/HomeView.hpp>
-#include <gui/home_screen/HomePresenter.hpp>
 
 
 /**
@@ -39,8 +37,7 @@ public:
      * @note All view types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< SplashView,
-            touchgfx::meta::TypeList< HomeView,
-            touchgfx::meta::Nil >
+            touchgfx::meta::Nil
             > GeneratedViewTypes;
 
     /**
@@ -53,8 +50,7 @@ public:
      * @note All presenter types used in the application MUST be added to this list!
      */
     typedef touchgfx::meta::TypeList< SplashPresenter,
-            touchgfx::meta::TypeList< HomePresenter,
-            touchgfx::meta::Nil >
+            touchgfx::meta::Nil
             > GeneratedPresenterTypes;
 
     /**

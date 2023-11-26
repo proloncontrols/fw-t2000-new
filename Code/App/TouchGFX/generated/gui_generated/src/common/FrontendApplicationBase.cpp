@@ -11,8 +11,6 @@
 #include <platform/driver/lcd/LCD32bpp.hpp>
 #include <gui/splash_screen/SplashView.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
-#include <gui/home_screen/HomeView.hpp>
-#include <gui/home_screen/HomePresenter.hpp>
 
 using namespace touchgfx;
 
@@ -42,17 +40,4 @@ void FrontendApplicationBase::gotoSplashScreenNoTransition()
 void FrontendApplicationBase::gotoSplashScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<SplashView, SplashPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
-}
-
-// Home
-
-void FrontendApplicationBase::gotoHomeScreenNoTransition()
-{
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoHomeScreenNoTransitionImpl);
-    pendingScreenTransitionCallback = &transitionCallback;
-}
-
-void FrontendApplicationBase::gotoHomeScreenNoTransitionImpl()
-{
-    touchgfx::makeTransition<HomeView, HomePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

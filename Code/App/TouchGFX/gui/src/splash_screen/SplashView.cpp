@@ -4,7 +4,8 @@
 //#include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Color.hpp>
 
-#include <CMeter.hpp>
+#include <meter/CMeter.hpp>
+#include "event.h"
 
 SplashView::SplashView()
 //           :buttonCallback(this, &SplashView::buttonCallbackHandler)
@@ -240,6 +241,17 @@ void SplashView::tearDownScreen()
 //
 //}
 
+void SplashView::OnTransitionEnd()
+{
+//	EVT_Event_t Evt;
+//
+//	Evt.Group = EVT_GROUP_GFX;
+//	Evt.Event = EVT_GFX_READY;
+//	EVT_PostToApp(&Evt);
+
+
+	EVT_PostToApp(EVT_GROUP_GFX, EVT_GFX_READY, EVT_DATA_TYPE_NONE, NULL);
+}
 
 
 

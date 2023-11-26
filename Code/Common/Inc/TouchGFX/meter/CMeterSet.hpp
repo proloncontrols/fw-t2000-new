@@ -10,20 +10,21 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterTemp.hpp
+//         File : CMeterSet.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Interior/Setpoint temperature meter base class header file
+//  Description : Setpoint temperature meter class header file
 //=============================================================================
-#ifndef CMETER_TEMP_HPP
-#define CMETER_TEMP_HPP
+#ifndef CMETER_SET_HPP
+#define CMETER_SET_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CMeter.hpp>
+#include <meter/CMeterTemp.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -32,13 +33,30 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMeterTemp : public CMeter
+class CMeterSet : public CMeterTemp
 {
 public:
-	void display(double Value, bool celsius);
+	CMeterSet();
+
+protected:
+	static const uint8_t colorR = 186;
+	static const uint8_t colorG = 188;
+	static const uint8_t colorB = 190;
+
+	static const uint8_t intPrecision = 4;   //Up to 3 digits integer and minus sign
+	static const uint8_t decPrecision = 1;   //1 digit decimal
+
+	static const uint8_t intCharSpacingRation = 15;
+	static const uint8_t decCharSpacingRation = 15;
+
+	static const TypedTextId intText   = T_METER_LARGE_DIGITS;
+	static const TypedTextId dotText   = T_METER_SMALL_DOT;
+	static const TypedTextId decText   = T_METER_SMALL_DIGITS;
+	static const TypedTextId unitCText = T_METER_SMALL_UNIT_C;
+	static const TypedTextId unitFText = T_METER_SMALL_UNIT_F;
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMETER_TEMP_HPP
+#endif   //CMETER_EXT_HPP

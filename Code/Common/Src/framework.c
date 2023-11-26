@@ -222,7 +222,7 @@ void FMK_Entry(void)
 //-----------------------------------------------------------------------------
 void FMK_Main(void)
 {
-	uint32_t Flag = osEventFlagsWait(FMK_Flags, EVT_ALL_GROUPS_MASK, osFlagsWaitAny, APP_IDLE_PERIODIC_TIMEOUT);
+	uint32_t Flag = osEventFlagsWait(FMK_Flags, EVNT_ALL_GROUPS_MASK, osFlagsWaitAny, APP_IDLE_PERIODIC_TIMEOUT);
 
 	if(Flag == osFlagsErrorTimeout)   //Execute periodic processes
 		APP_OnPeriodic();
