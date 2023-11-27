@@ -5,14 +5,13 @@
 #include <touchgfx/Color.hpp>
 
 #include <meter/CMeter.hpp>
-#include "event.h"
+#include <BitmapDatabase.hpp>
 
 SplashView::SplashView()
-//           :buttonCallback(this, &SplashView::buttonCallbackHandler)
+           :buttonCallback(this, &SplashView::buttonCallbackHandler)
 {
 //	__background.setColor(touchgfx::Color::getColorFromRGB(10, 70, 25));
 	rotateBox(__background);
-	rotateTextureMapper(imgSplashLogo);
 
 ////	swipe.initialize(cnvScrX(24), cnvScrY(24), 624, 624, INDICATOR_BOTTOM_CENTER, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_NORMAL_ID, BITMAP_DARK_PAGEINDICATOR_DOT_INDICATOR_SMALL_HIGHLIGHT_ID);
 ////	swipe.showBackground();
@@ -224,6 +223,24 @@ SplashView::SplashView()
 ////
 ////    swipe.setSelectedPage(0);
 ////    add(swipe);
+
+//	b1.setXY(25, 25);
+//	b1.setBitmaps(BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID);
+//	b1.setHeight(72);
+//	b1.setAction(buttonCallback);
+//	add(b1);
+//	rotateDrawable(b1);
+
+//	b2.setXY(25, 150);
+//	b2.setBitmaps(BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID);
+//	b2.setHeight(72);
+//	b2.setAction(buttonCallback);
+//	add(b2);
+//	rotateDrawable(b2);
+
+	b1.initialize(25, 25, 400, 400);
+	b1.setAction(buttonCallback);
+	add(b1);
 }
 
 void SplashView::setupScreen()
@@ -236,10 +253,19 @@ void SplashView::tearDownScreen()
     SplashViewBase::tearDownScreen();
 }
 
-//void SplashView::buttonCallbackHandler(const touchgfx::AbstractButton& src)
-//{
-//
-//}
+//int tmp = 0;
+void SplashView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+//	if(&src == &b1)
+//	{
+//		tmp = 1;
+//	}
+
+//	if(&src == &b2)
+//	{
+//		tmp = 2;
+//	}
+}
 
 void SplashView::OnTransitionEnd()
 {
@@ -250,7 +276,7 @@ void SplashView::OnTransitionEnd()
 //	EVT_PostToApp(&Evt);
 
 
-	EVT_PostToApp(EVT_GROUP_GFX, EVT_GFX_READY, EVT_DATA_TYPE_NONE, NULL);
+//	EVT_PostToApp(EVT_GROUP_GFX, EVT_GFX_READY, EVT_DATA_TYPE_NONE, NULL);
 }
 
 

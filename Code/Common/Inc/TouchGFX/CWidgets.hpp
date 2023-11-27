@@ -40,8 +40,9 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void rotateTextureMapper(TextureMapper& mapper);
+void rotateDrawable(Drawable& drawable);
 void rotateBox(Box& box);
+void rotateTextureMapper(TextureMapper& mapper);
 int16_t getStringWidth(TextArea& text, int16_t maxLength);
 
 

@@ -6,11 +6,12 @@
 #include <touchgfx/hal/Types.hpp>
 #include <touchgfx/Bitmap.hpp>
 
-const uint16_t BITMAP_HUMIDITY_30X30_ID = 0;
-const uint16_t BITMAP_OUTSIDE_24X24_ID = 1;
-const uint16_t BITMAP_PROLONLOGO470X470_ID = 2;
-const uint16_t BITMAP_SETTING_ID = 3;
-const uint16_t BITMAP_SETTING_DARK2_ID = 4;
+const uint16_t BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID = 0;
+const uint16_t BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID = 1;
+const uint16_t BITMAP_BLUE_ICONS_ADD_NEW_32_ID = 2;
+const uint16_t BITMAP_HUMIDITY_30X30_ID = 3;
+const uint16_t BITMAP_MENU_BUTTON_ID = 4;
+const uint16_t BITMAP_OUTSIDE_24X24_ID = 5;
 
 namespace BitmapDatabase
 {

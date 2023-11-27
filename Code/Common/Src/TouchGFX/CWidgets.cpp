@@ -32,6 +32,15 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
+void rotateDrawable(Drawable& drawable)
+{
+	if(getScrDir() == SCR_PORTRAIT)
+	{
+		Rect rect = drawable.getRect();
+		drawable.setPosition(rect.x, rect.y, rect.height, rect.width);
+	}
+}
+
 void rotateBox(Box& box)
 {
 	if(getScrDir() == SCR_PORTRAIT)

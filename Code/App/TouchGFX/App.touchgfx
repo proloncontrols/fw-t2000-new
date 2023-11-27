@@ -5,19 +5,20 @@
         "Name": "Splash",
         "Components": [
           {
-            "Type": "TextureMapper",
-            "Name": "imgSplashLogo",
-            "X": 114,
-            "Y": 101,
-            "Width": 470,
-            "Height": 470,
-            "RenderingAlgorithm": "Nearest-neighbor",
-            "FileNameImage": "ProlonLogo470x470.png",
-            "Scale": 1.0,
-            "XOrigo": 90.0,
-            "YOrigo": 90.0,
-            "ZOrigo": 1000.0,
-            "CameraDistance": 1000.0
+            "Type": "ButtonWithIcon",
+            "Name": "buttonWithIcon1",
+            "Width": 170,
+            "Height": 60,
+            "Pressed": "__designer\\Blue_Buttons_Round_Edge_small_pressed.png",
+            "Released": "__designer\\Blue_Buttons_Round_Edge_small.png",
+            "IconPressed": "__designer\\Blue_Icons_Add_new_32.png",
+            "IconReleased": "__designer\\Blue_Icons_Add_new_32.png",
+            "IconX": 71,
+            "IconY": 16,
+            "IconHeight": 29,
+            "IconWidth": 29,
+            "ButtonStyle": "Style4",
+            "IconStyle": "Icon1"
           }
         ],
         "Interactions": [
@@ -29,6 +30,17 @@
             "Action": {
               "Type": "ActionCustom",
               "FunctionName": "OnTransitionEnd"
+            }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithIcon1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "function1"
             }
           }
         ]

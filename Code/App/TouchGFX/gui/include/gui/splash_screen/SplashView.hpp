@@ -11,7 +11,7 @@
 //#include <CMeterSet.hpp>
 //#include <CMeterExt.hpp>
 //#include <CMeterHum.hpp>
-//#include <CButton.hpp>
+#include <CButton.hpp>
 
 
 class SplashView : public SplashViewBase
@@ -50,12 +50,15 @@ protected:
 //    CMeterSet m2;
 //    CMeterExt m3;
 //    CMeterHum m4;
-//
-//    CButton b1;
+
+    CButton b1;
+//    CButton b2;
 
 private:
 //    touchgfx::Callback<SplashView, const touchgfx::AbstractButton&> buttonCallback;
 //    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    touchgfx::Callback<SplashView, const touchgfx::AbstractButtonContainer&> buttonCallback;
+    void buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 };
 
 #endif // SPLASHVIEW_HPP

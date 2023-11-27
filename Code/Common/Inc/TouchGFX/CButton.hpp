@@ -23,8 +23,14 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stddef.h>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/AbstractButton.hpp>
+#include <touchgfx/Containers/Container.hpp>
+#include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/containers/buttons/BoxWithBorderButtonStyle.hpp>
+#include <touchgfx/containers/buttons/ClickButtonTrigger.hpp>
+#include <touchgfx/widgets/TextureMapper.hpp>
 
 
 namespace touchgfx
@@ -63,28 +69,76 @@ namespace touchgfx
 //
 //   NOTE: To add other buttons to the screen, repeat only step 2 in both header and implementation files
 
-class CButton : public Button
-{
-	//This class is empty.
-	//It is declared for the sole purpose of documenting the steps on how to use it
-};
+//This class is empty.
+//It is declared for the sole purpose of documenting the steps on how to use it
+//class CButton : public Container
+//{
+//public:
+//	CButton(int16_t x, int16_t y, int16_t width, int16_t height);
+//
+//private:
+//	Button button;
+//    touchgfx::Box background;
+//};
 
 
 //Kept as a possible future reference
 //-----------------------------------
-//class CButtonCustom : public BoxWithBorderButtonStyle< ClickButtonTrigger >
-//{
-//public:
-//	CButtonCustom(int16_t x, int16_t y, int16_t width, int16_t height, TextureMapper* imageReleased, TextureMapper* imagePressed);
-//
-//    virtual void handleClickEvent(const ClickEvent& event) override;
-//
-//private:
-//    TextureMapper* imgReleased;
-//    TextureMapper* imgPressed;
-//};
+class CButton : public BoxWithBorderButtonStyle< ClickButtonTrigger >
+{
+public:
+	CButton();
+
+	void initialize(int16_t x, int16_t y, int16_t width, int16_t height);
+	void initialize(int16_t x, int16_t y, TextureMapper* imageReleased, TextureMapper* imagePressed);
+	void initialize(int16_t x, int16_t y, int16_t height, TextureMapper* imageReleased, TextureMapper* imagePressed);
+//	void setAction(GenericCallback<const AbstractButtonContainer&>& callback);
+
+    virtual void handleClickEvent(const ClickEvent& event) override;
+
+private:
+    TextureMapper* imgReleased = NULL;
+    TextureMapper* imgPressed = NULL;
+};
 
 }   //namespace touchgfx
 
 
 #endif   //CBUTTON_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -5,26 +5,20 @@
 #include <touchgfx/Color.hpp>
 #include <BitmapDatabase.hpp>
 
-SplashViewBase::SplashViewBase()
+SplashViewBase::SplashViewBase() :
+    buttonCallback(this, &SplashViewBase::buttonCallbackHandler)
 {
 
     __background.setPosition(0, 0, 720, 672);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    imgSplashLogo.setXY(114, 101);
-    imgSplashLogo.setBitmap(touchgfx::Bitmap(BITMAP_PROLONLOGO470X470_ID));
-    imgSplashLogo.setWidth(470);
-    imgSplashLogo.setHeight(470);
-    imgSplashLogo.setBitmapPosition(0.0f, 0.0f);
-    imgSplashLogo.setScale(1.0f);
-    imgSplashLogo.setCameraDistance(1000.0f);
-    imgSplashLogo.setOrigo(90.0f, 90.0f, 1000.0f);
-    imgSplashLogo.setCamera(235.0f, 235.0f);
-    imgSplashLogo.setAngles(0.0f, 0.0f, 0.0f);
-    imgSplashLogo.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+    buttonWithIcon1.setXY(0, 0);
+    buttonWithIcon1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_ADD_NEW_32_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_ADD_NEW_32_ID));
+    buttonWithIcon1.setIconXY(71, 16);
+    buttonWithIcon1.setAction(buttonCallback);
 
     add(__background);
-    add(imgSplashLogo);
+    add(buttonWithIcon1);
 }
 
 void SplashViewBase::setupScreen()
@@ -39,4 +33,15 @@ void SplashViewBase::afterTransition()
     //When screen transition ends call virtual function
     //Call OnTransitionEnd
     OnTransitionEnd();
+}
+
+void SplashViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithIcon1)
+    {
+        //Interaction1
+        //When buttonWithIcon1 clicked call virtual function
+        //Call function1
+        function1();
+    }
 }
