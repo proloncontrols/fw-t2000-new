@@ -238,7 +238,7 @@ SplashView::SplashView()
 //	add(b2);
 //	rotateDrawable(b2);
 
-	b1.initialize(25, 25, 72, BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID);
+	b1.initialize(25, 25, 0, BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID);
 	b1.setAction(buttonCallback);
 	add(b1);
 }

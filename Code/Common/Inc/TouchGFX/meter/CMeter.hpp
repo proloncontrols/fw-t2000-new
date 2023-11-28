@@ -35,11 +35,11 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
+//This class is not meant to be called directly. Use its derived classes instead.
 class CMeter : public Container
 {
 public:
 	CMeter();
-	void setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue);
 
 protected:
 	void addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& nexTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
@@ -74,7 +74,7 @@ protected:
 		int16_t maxGlyphHeight;
 		CMeterDigit** digits;
 		uint8_t precision;
-		uint8_t spacingRatio;   //Set to 0 for no ratio
+		uint8_t spacingRatio;   //Set to 0 for no ratio (original font aspect)
 		TypedText textType;
 	};
 

@@ -28,66 +28,50 @@
 namespace touchgfx
 {
 
-CButton::CButton()
-{
-}
-
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
 void CButton::initialize(int16_t x, int16_t y, int16_t width, int16_t height)
 {
 	Container::setPosition(x, y, width, height);
 }
 
-//Both released and pressed images are assumed to have the same size.
-//If touchHeight is 0, button touch area covers the whole image height.
-//Different than 0 specifies the touch area height (used when button images are rectangular).
+//-----------------------------------------------------------------------------
 void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId released, BitmapId pressed)
 {
-	Bitmap image = touchgfx::Bitmap(released);
+	Bitmap image = touchgfx::Bitmap(released);     //Both released and pressed images are assumed to have the same size
 
 	Container::setXY(x, y);
 	Container::setWidth(image.getWidth());
 	if(touchHeight != 0)
-		Container::setHeight(touchHeight);
+		Container::setHeight(touchHeight);         //Touch area is the image visible area (rectangle)
 	else
-		Container::setHeight(image.getHeight());
+		Container::setHeight(image.getHeight());   //Touch area is the entire image area, visible and not visible (square)
 
-    imgReleased = new TextureMapper();
-    add(*imgReleased);
-	imgReleased->setXY(0, 0);
+	imgReleased = new CImage;
 	imgReleased->setBitmap(image);
+	imgReleased->setXY(0, 0);
 	imgReleased->setWidth(image.getWidth());
 	imgReleased->setHeight(image.getHeight());
-	imgReleased->setBitmapPosition(0.0f, 0.0f);
-	imgReleased->setScale(1.0f);
-	imgReleased->setCameraDistance(1000.0f);
-	imgReleased->setOrigo((float)(image.getWidth() / 2), (float)(image.getHeight() / 2), 1000.0f);
-	imgReleased->setCamera((float)(image.getWidth() / 2), (float)(image.getHeight() / 2));
-	imgReleased->setAngles(0.0f, 0.0f, 0.0f);
-	imgReleased->setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 	imgReleased->setVisible(true);
+	add(*imgReleased);
 
-	image = touchgfx::Bitmap(released);
-	imgPressed = new TextureMapper();
-    add(*imgPressed);
+	image = touchgfx::Bitmap(pressed);
+	imgPressed = new CImage;
+	imgPressed->setBitmap(image);
 	imgPressed->setXY(0, 0);
-	imgPressed->setBitmap(touchgfx::Bitmap(pressed));
 	imgPressed->setWidth(image.getWidth());
 	imgPressed->setHeight(image.getHeight());
-	imgPressed->setBitmapPosition(0.0f, 0.0f);
-	imgPressed->setScale(1.0f);
-	imgPressed->setCameraDistance(1000.0f);
-	imgPressed->setOrigo((float)(image.getWidth() / 2), (float)(image.getHeight() / 2), 1000.0f);
-	imgPressed->setCamera((float)(image.getWidth() / 2), (float)(image.getHeight() / 2));
-	imgPressed->setAngles(0.0f, 0.0f, 0.0f);
-	imgPressed->setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 	imgPressed->setVisible(false);
+	add(*imgPressed);
 }
 
+//-----------------------------------------------------------------------------
 void CButton::handleClickEvent(const ClickEvent& event)
 {
     bool wasPressed = getPressed();
     bool newPressedValue = (event.getType() == ClickEvent::PRESSED);
-    if ((newPressedValue && !wasPressed) || (!newPressedValue && wasPressed))
+    if((newPressedValue && !wasPressed) || (!newPressedValue && wasPressed))
     {
     	if(newPressedValue)
     	{
@@ -102,40 +86,8 @@ void CButton::handleClickEvent(const ClickEvent& event)
         setPressed(newPressedValue);
         invalidate();
     }
-    if (wasPressed && (event.getType() == ClickEvent::RELEASED))
-    {
+    if(wasPressed && (event.getType() == ClickEvent::RELEASED))
         executeAction();
-    }
 }
 
 }   //namespace touchgfx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

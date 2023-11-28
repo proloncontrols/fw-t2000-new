@@ -53,14 +53,6 @@ CMeter::CMeter()
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMeter::setBackgroundColor(uint8_t colorRed, uint8_t colorGreen, uint8_t colorBlue)
-{
-#ifdef CMETER_WITH_BACKGROUND
-	background.setColor(touchgfx::Color::getColorFromRGB(colorRed, colorGreen, colorBlue));
-#endif
-}
-
-//-----------------------------------------------------------------------------
 void CMeter::addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 {
 	integer = new CMeterValue(newPrecision, newSpacingRatio, touchgfx::TypedText(newTypedText), newColorR, newColorG, newColorB);
