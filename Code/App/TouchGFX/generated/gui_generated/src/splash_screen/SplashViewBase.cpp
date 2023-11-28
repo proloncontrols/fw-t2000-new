@@ -3,22 +3,14 @@
 /*********************************************************************************/
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <touchgfx/Color.hpp>
-#include <BitmapDatabase.hpp>
 
-SplashViewBase::SplashViewBase() :
-    buttonCallback(this, &SplashViewBase::buttonCallbackHandler)
+SplashViewBase::SplashViewBase()
 {
 
     __background.setPosition(0, 0, 720, 672);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
 
-    buttonWithIcon1.setXY(0, 0);
-    buttonWithIcon1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_ADD_NEW_32_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_ADD_NEW_32_ID));
-    buttonWithIcon1.setIconXY(71, 16);
-    buttonWithIcon1.setAction(buttonCallback);
-
     add(__background);
-    add(buttonWithIcon1);
 }
 
 void SplashViewBase::setupScreen()
@@ -33,15 +25,4 @@ void SplashViewBase::afterTransition()
     //When screen transition ends call virtual function
     //Call OnTransitionEnd
     OnTransitionEnd();
-}
-
-void SplashViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
-{
-    if (&src == &buttonWithIcon1)
-    {
-        //Interaction1
-        //When buttonWithIcon1 clicked call virtual function
-        //Call function1
-        function1();
-    }
 }

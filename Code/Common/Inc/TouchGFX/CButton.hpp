@@ -31,6 +31,9 @@
 #include <touchgfx/containers/buttons/BoxWithBorderButtonStyle.hpp>
 #include <touchgfx/containers/buttons/ClickButtonTrigger.hpp>
 #include <touchgfx/widgets/TextureMapper.hpp>
+#include <touchgfx/containers/buttons/Buttons.hpp>
+
+#include <BitmapDatabase.hpp>
 
 
 namespace touchgfx
@@ -82,17 +85,13 @@ namespace touchgfx
 //};
 
 
-//Kept as a possible future reference
-//-----------------------------------
-class CButton : public BoxWithBorderButtonStyle< ClickButtonTrigger >
+class CButton : public AbstractButtonContainer
 {
 public:
 	CButton();
 
 	void initialize(int16_t x, int16_t y, int16_t width, int16_t height);
-	void initialize(int16_t x, int16_t y, TextureMapper* imageReleased, TextureMapper* imagePressed);
-	void initialize(int16_t x, int16_t y, int16_t height, TextureMapper* imageReleased, TextureMapper* imagePressed);
-//	void setAction(GenericCallback<const AbstractButtonContainer&>& callback);
+	void initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId released, BitmapId pressed);
 
     virtual void handleClickEvent(const ClickEvent& event) override;
 

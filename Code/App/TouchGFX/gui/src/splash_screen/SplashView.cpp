@@ -238,7 +238,7 @@ SplashView::SplashView()
 //	add(b2);
 //	rotateDrawable(b2);
 
-	b1.initialize(25, 25, 400, 400);
+	b1.initialize(25, 25, 72, BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID);
 	b1.setAction(buttonCallback);
 	add(b1);
 }
@@ -253,13 +253,13 @@ void SplashView::tearDownScreen()
     SplashViewBase::tearDownScreen();
 }
 
-//int tmp = 0;
+int tmp = 0;
 void SplashView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-//	if(&src == &b1)
-//	{
-//		tmp = 1;
-//	}
+	if(&src == &b1)
+	{
+		tmp = 1;
+	}
 
 //	if(&src == &b2)
 //	{

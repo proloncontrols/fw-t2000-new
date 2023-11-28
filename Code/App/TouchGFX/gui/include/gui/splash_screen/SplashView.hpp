@@ -55,7 +55,7 @@ protected:
 //    CButton b2;
 
 private:
-//    touchgfx::Callback<SplashView, const touchgfx::AbstractButton&> buttonCallback;
+    //touchgfx::Callback<SplashView, const touchgfx::AbstractButton&> buttonCallback;
 //    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     touchgfx::Callback<SplashView, const touchgfx::AbstractButtonContainer&> buttonCallback;
     void buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
