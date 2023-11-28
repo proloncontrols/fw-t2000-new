@@ -21,6 +21,8 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stdlib.h>
+#include <string.h>
 #include <CButton.hpp>
 #include <touchgfx/Color.hpp>
 
@@ -67,6 +69,36 @@ void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId rel
 }
 
 //-----------------------------------------------------------------------------
+void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId released, BitmapId pressed, const TypedText& textType, int16_t textMaxLen, colortype textReleased, colortype textPressed)
+{
+	initialize(x, y, touchHeight, released, pressed);
+
+	textBuffer = (Unicode::UnicodeChar*)calloc(textMaxLen + 1, sizeof(Unicode::UnicodeChar));   //+1 = null termination character
+
+	text = new TextAreaWithOneWildcard;
+	text->setWildcard(textBuffer);
+	text->setTypedText(textType);
+	text->setColor(textReleased);
+	add(*text);
+
+	textColorReleased = textReleased;
+	textColorPressed = textPressed;
+}
+
+//-----------------------------------------------------------------------------
+void CButton::setText(const char* newText)
+{
+	Unicode::fromUTF8((uint8_t*)newText, textBuffer, strlen(newText));
+	text->resizeToCurrentText();
+}
+
+//-----------------------------------------------------------------------------
+void CButton::setTextPosition(int16_t x, int16_t y)
+{
+	text->setXY(x, y);
+}
+
+//-----------------------------------------------------------------------------
 void CButton::handleClickEvent(const ClickEvent& event)
 {
     bool wasPressed = getPressed();
@@ -77,11 +109,15 @@ void CButton::handleClickEvent(const ClickEvent& event)
     	{
         	imgReleased->setVisible(false);
         	imgPressed->setVisible(true);
+        	if(text)
+        		text->setColor(textColorPressed);
     	}
     	else
     	{
         	imgReleased->setVisible(true);
         	imgPressed->setVisible(false);
+        	if(text)
+        		text->setColor(textColorReleased);
     	}
         setPressed(newPressedValue);
         invalidate();

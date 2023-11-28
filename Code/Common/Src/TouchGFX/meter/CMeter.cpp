@@ -27,10 +27,10 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <Meter/CMeter.hpp>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <meter/CMeter.hpp>
 #include <touchgfx/Color.hpp>
 #include <touchgfx/Bitmap.hpp>
 

@@ -23,8 +23,11 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stddef.h>
 #include <CImage.hpp>
 #include <BitmapDatabase.hpp>
+#include <touchgfx/TypedText.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 
 
@@ -68,15 +71,60 @@ class CButton : public AbstractButtonContainer
 public:
 	void initialize(int16_t x, int16_t y, int16_t width, int16_t height);
 	void initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId released, BitmapId pressed);
+	void initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId released, BitmapId pressed, const TypedText& textType, int16_t textMaxLen, colortype textReleased, colortype textPressed);
+
+	void setText(const char* newText);
+	void setTextPosition(int16_t x, int16_t y);
 
     virtual void handleClickEvent(const ClickEvent& event);
 
 private:
     CImage* imgReleased;
     CImage* imgPressed;
+
+	TextAreaWithOneWildcard* text = NULL;
+	Unicode::UnicodeChar* textBuffer = NULL;
+	colortype textColorReleased;
+	colortype textColorPressed;
 };
 
 }   //namespace touchgfx
 
 
 #endif   //CBUTTON_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

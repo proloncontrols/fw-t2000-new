@@ -23,7 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <meter/CMeterTemp.hpp>
+#include <Meter/CMeterTemp.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 

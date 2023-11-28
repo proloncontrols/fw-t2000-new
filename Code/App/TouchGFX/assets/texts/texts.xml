@@ -50,6 +50,9 @@
       <Text Id="METER_TINY_UNIT_F" Alignment="Left" TypographyId="MeterTiny">
         <Translation Language="GB">°F</Translation>
       </Text>
+      <Text Id="MENU_BUTTON" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
     </TextGroup>
     <TextGroup Id="Unsorted" />
   </Texts>
@@ -63,5 +66,6 @@
     <Typography Id="MeterSmall" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" />
     <Typography Id="MeterSmallDigits" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
     <Typography Id="MeterTiny" Font="AvenirNext-Regular-08.ttf" Size="22" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°,C,F,%" />
+    <Typography Id="MenuButton" Font="AvenirNext-Regular-08.ttf" Size="45" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,A-Z,0x20" />
   </Typographies>
 </TextDatabase>

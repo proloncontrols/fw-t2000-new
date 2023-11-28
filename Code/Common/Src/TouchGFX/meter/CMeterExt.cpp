@@ -22,7 +22,7 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <math.h>
-#include <meter/CMeterExt.hpp>
+#include <Meter/CMeterExt.hpp>
 
 
 namespace touchgfx

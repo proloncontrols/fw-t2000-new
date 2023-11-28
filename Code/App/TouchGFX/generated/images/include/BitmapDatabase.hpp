@@ -8,9 +8,11 @@
 
 const uint16_t BITMAP_HUMIDITY_30X30_ID = 0;
 const uint16_t BITMAP_MENU_BUTTON_ID = 1;
-const uint16_t BITMAP_OUTSIDE_24X24_ID = 2;
-const uint16_t BITMAP_SETTING_ID = 3;
-const uint16_t BITMAP_SETTING_DARK2_ID = 4;
+const uint16_t BITMAP_MENU_LINE_GRAY_494X494X3_ID = 2;
+const uint16_t BITMAP_MENU_LINE_WHITE_496X496X5_ID = 3;
+const uint16_t BITMAP_OUTSIDE_24X24_ID = 4;
+const uint16_t BITMAP_SETTING_ID = 5;
+const uint16_t BITMAP_SETTING_DARK2_ID = 6;
 
 namespace BitmapDatabase
 {

@@ -22,7 +22,7 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <math.h>
-#include <meter/CMeterTemp.hpp>
+#include <Meter/CMeterTemp.hpp>
 #include <touchgfx/Color.hpp>
 
 

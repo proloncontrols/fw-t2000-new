@@ -24,5 +24,6 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     0,  // T_METER_SMALL_DIGITS: "<>"
     8,  // T_METER_TINY_UNIT_P: "%"
     2,  // T_METER_TINY_UNIT_C: "?C"
-    5   // T_METER_TINY_UNIT_F: "?F"
+    5,  // T_METER_TINY_UNIT_F: "?F"
+    0   // T_MENU_BUTTON: "<>"
 };

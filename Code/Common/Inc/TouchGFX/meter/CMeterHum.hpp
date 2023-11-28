@@ -23,8 +23,8 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <meter/CMeter.hpp>
 #include <BitmapDatabase.hpp>
+#include <Meter/CMeter.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 

@@ -4,11 +4,12 @@
 //#include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Color.hpp>
 
-#include <meter/CMeter.hpp>
 #include <BitmapDatabase.hpp>
+#include <Meter/CMeter.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 SplashView::SplashView()
-           :buttonCallback(this, &SplashView::buttonCallbackHandler)
+//           :buttonCallback(this, &SplashView::buttonCallbackHandler)
 {
 //	__background.setColor(touchgfx::Color::getColorFromRGB(10, 70, 25));
 	rotateBox(__background);
@@ -238,9 +239,45 @@ SplashView::SplashView()
 //	add(b2);
 //	rotateDrawable(b2);
 
-	b1.initialize(25, 25, 0, BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID);
-	b1.setAction(buttonCallback);
-	add(b1);
+//	b1.initialize(24, 24, 72, BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID, T_MENU_BUTTON, 32, touchgfx::Color::getColorFromRGB(255, 255, 255), touchgfx::Color::getColorFromRGB(75, 75, 75));
+//	b1.setAction(buttonCallback);
+//	b1.setTextPosition(30, 0);
+//	b1.setText("Options");
+//	add(b1);
+//
+//	b2.initialize(24, 124, 72, BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID, T_MENU_BUTTON, 32, touchgfx::Color::getColorFromRGB(255, 255, 255), touchgfx::Color::getColorFromRGB(75, 75, 75));
+//	b2.setAction(buttonCallback);
+//	b2.setTextPosition(30, 0);
+//	b2.setText("About me");
+//	add(b2);
+//
+//	b3.initialize(24, 224, 72, BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID, T_MENU_BUTTON, 32, touchgfx::Color::getColorFromRGB(255, 255, 255), touchgfx::Color::getColorFromRGB(75, 75, 75));
+//	b3.setAction(buttonCallback);
+//	b3.setTextPosition(30, 0);
+//	b3.setText("Visualize");
+//	add(b3);
+//
+//	b4.initialize(24, 324, 72, BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID, T_MENU_BUTTON, 32, touchgfx::Color::getColorFromRGB(255, 255, 255), touchgfx::Color::getColorFromRGB(75, 75, 75));
+//	b4.setAction(buttonCallback);
+//	b4.setTextPosition(30, 0);
+//	b4.setText("Device");
+//	add(b4);
+
+	mi1.setXY(24, 24);
+	mi1.setText((char*)"Options");
+	add(mi1);
+
+	mi2.setXY(24, mi1.getY() + mi1.getHeight());
+	mi2.setText((char*)"About me");
+	add(mi2);
+
+	mi3.setXY(24, mi2.getY() + mi2.getHeight());
+	mi3.setText((char*)"Visualize");
+	add(mi3);
+
+	mi4.setXY(24, mi3.getY() + mi3.getHeight());
+	mi4.setText((char*)"Device");
+	add(mi4);
 }
 
 void SplashView::setupScreen()
@@ -253,19 +290,19 @@ void SplashView::tearDownScreen()
     SplashViewBase::tearDownScreen();
 }
 
-int tmp = 0;
-void SplashView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
-{
-	if(&src == &b1)
-	{
-		tmp = 1;
-	}
-
-//	if(&src == &b2)
+//int tmp = 0;
+//void SplashView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+//{
+//	if(&src == &b1)
 //	{
-//		tmp = 2;
+//		tmp = 1;
 //	}
-}
+//
+////	if(&src == &b2)
+////	{
+////		tmp = 2;
+////	}
+//}
 
 void SplashView::OnTransitionEnd()
 {
