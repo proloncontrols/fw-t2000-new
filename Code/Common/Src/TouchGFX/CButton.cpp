@@ -39,7 +39,7 @@ void CButton::initialize(int16_t x, int16_t y, int16_t width, int16_t height)
 }
 
 //-----------------------------------------------------------------------------
-void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId released, BitmapId pressed)
+void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed)
 {
 	Bitmap image = touchgfx::Bitmap(released);     //Both released and pressed images are assumed to have the same size
 
@@ -69,7 +69,7 @@ void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId rel
 }
 
 //-----------------------------------------------------------------------------
-void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId released, BitmapId pressed, const TypedText& textType, int16_t textMaxLen, colortype textReleased, colortype textPressed)
+void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed, const TypedText& textType, int16_t textMaxLen, colortype textReleased, colortype textPressed)
 {
 	initialize(x, y, touchHeight, released, pressed);
 
@@ -96,6 +96,18 @@ void CButton::setText(const char* newText)
 void CButton::setTextPosition(int16_t x, int16_t y)
 {
 	text->setXY(x, y);
+}
+
+//-----------------------------------------------------------------------------
+void CButton::setId(int newId)
+{
+	id = newId;
+}
+
+//-----------------------------------------------------------------------------
+int CButton::getId()
+{
+	return id;
 }
 
 //-----------------------------------------------------------------------------

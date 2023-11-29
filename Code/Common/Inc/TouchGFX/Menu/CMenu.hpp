@@ -10,51 +10,52 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CImage.cpp
+//         File : CMenu.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Custom image class implementation file
+//  Description : Menu class header file
 //=============================================================================
+#ifndef CMENU_HPP
+#define CMENU_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <CImage.hpp>
-#include <CScreen.hpp>
+#include <CButton.hpp>
+#include <Menu/CMenuItem.hpp>
+#include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/Containers/Container.hpp>
+#include <touchgfx/Containers/Listlayout.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  M E T H O D S
+//  C L A S S E S
 //-----------------------------------------------------------------------------
-void CImage::setBitmap(const Bitmap& bmp)
+class CMenu : public Container
 {
-	TextureMapper::setBitmap(touchgfx::Bitmap(bmp));
+public:
+	CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuItemCount, GenericCallback<const AbstractButtonContainer&>& menuCallback);
+	ButtonId getButtonId(const touchgfx::AbstractButtonContainer& src);
 
-	if(getScreenDir() == SCR_LANDSCAPE)
-	{
-		setBitmapPosition(0.0f, 0.0f);
-		setOrigo(90.0f, 90.0f, 1000.0f);
-		setAngles(0.0f, 0.0f, 0.0f);
-	}
-	else
-	{
-	    Bitmap image = getBitmap();
-	    float newBitmapX = (getWidth()/2 - image.getWidth()/2);
-	    float newBitmapY = (getHeight()/2 - image.getHeight()/2);
-	    setBitmapPosition(newBitmapX, newBitmapY);
-	    setOrigo(getWidth()/2, getHeight()/2, 1000.0f);
-	    setAngles(0.0f, 0.0f, -1.572f);
-	}
-
-	setScale(1.0f);
-	setCameraDistance(1000.0f);
-	setCamera(getWidth()/2, getHeight()/2);
-	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
-}
+private:
+	touchgfx::Box background;
+	CButton home;
+	CButton back;
+	CImage logo;
+	CImage line;
+	TextAreaWithOneWildcard title;
+	Unicode::UnicodeChar* titleBuffer = NULL;
+	ListLayout items;
+};
 
 }   //namespace touchgfx
+
+
+#endif   //CMENU_HPP

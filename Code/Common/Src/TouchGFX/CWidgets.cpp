@@ -34,7 +34,7 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 void rotateBox(Box& box)
 {
-	if(getScrDir() == SCR_PORTRAIT)
+	if(getScreenDir() == SCR_PORTRAIT)
 	{
 		Rect rect = box.getRect();
 		box.setPosition(rect.x, rect.y, rect.height, rect.width);
@@ -44,7 +44,7 @@ void rotateBox(Box& box)
 //-----------------------------------------------------------------------------
 void rotateTextureMapper(TextureMapper& mapper)
 {
-	if(getScrDir() == SCR_PORTRAIT)
+	if(getScreenDir() == SCR_PORTRAIT)
 	{
 	    Bitmap image = mapper.getBitmap();
 	    float newBitmapX = (mapper.getWidth()/2 - image.getWidth()/2);

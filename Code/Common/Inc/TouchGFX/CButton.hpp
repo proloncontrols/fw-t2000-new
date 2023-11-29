@@ -70,15 +70,20 @@ class CButton : public AbstractButtonContainer
 {
 public:
 	void initialize(int16_t x, int16_t y, int16_t width, int16_t height);
-	void initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId released, BitmapId pressed);
-	void initialize(int16_t x, int16_t y, int16_t touchHeight, BitmapId released, BitmapId pressed, const TypedText& textType, int16_t textMaxLen, colortype textReleased, colortype textPressed);
+	void initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed);
+	void initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed, const TypedText& textType, int16_t textMaxLen, colortype textReleased, colortype textPressed);
 
 	void setText(const char* newText);
 	void setTextPosition(int16_t x, int16_t y);
 
+	void setId(int newId);
+	int getId();
+
     virtual void handleClickEvent(const ClickEvent& event);
 
 private:
+    int id;
+
     CImage* imgReleased;
     CImage* imgPressed;
 

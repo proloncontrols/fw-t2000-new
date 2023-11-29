@@ -75,9 +75,9 @@ typedef enum {
 //  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
 void initializeScreen(int16_t x, int16_t y, ScrDirection d);
-int16_t cnvScrX(int16_t);
-int16_t cnvScrY(int16_t);
-ScrDirection getScrDir();
+int16_t convertScreenX(int16_t);
+int16_t convertScreenY(int16_t);
+ScrDirection getScreenDir();
 
 }   //namespace touchgfx
 

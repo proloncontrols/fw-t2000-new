@@ -32,6 +32,13 @@
 namespace touchgfx
 {
 
+typedef enum {
+	buttonHome = -2,
+	buttonBack = -1,
+	buttonUser =  0
+} ButtonId;
+
+
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
@@ -40,15 +47,18 @@ class CMenuItem : public Container
 public:
 	CMenuItem();
 	void setText(char* newText);
+    void setAction(GenericCallback<const AbstractButtonContainer&>& callback);
+    CButton& getButton();
 
 private:
 	static const int16_t itemWidth = 500;
 	static const int16_t itemHeight = 110;
-	static const int16_t buttonHeight = 72;        //This is the height ot the button inside the image
-	static const int16_t separatorThickness = 3;   //This is the height of the separator line inside the image
+	static const int16_t buttonHeight = 72;   //This is the height ot the button inside the image
+	static const int16_t lineHeight = 3;      //This is the height of the separator line inside the image
 
     CButton button;
-	CImage separator;
+    ButtonId id;
+	CImage line;
     touchgfx::Box background;
 };
 

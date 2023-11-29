@@ -11,6 +11,7 @@ extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_70_4bpp();
 extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_50_4bpp();
 extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_22_4bpp();
 extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_45_4bpp();
+extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_60_4bpp();
 
 const touchgfx::Font* touchgfx_fonts[] = {
     &(getFont_AvenirNext_Regular_08_220_4bpp()),
@@ -18,7 +19,8 @@ const touchgfx::Font* touchgfx_fonts[] = {
     &(getFont_AvenirNext_Regular_08_70_4bpp()),
     &(getFont_AvenirNext_Regular_08_50_4bpp()),
     &(getFont_AvenirNext_Regular_08_22_4bpp()),
-    &(getFont_AvenirNext_Regular_08_45_4bpp())
+    &(getFont_AvenirNext_Regular_08_45_4bpp()),
+    &(getFont_AvenirNext_Regular_08_60_4bpp())
 };
 
 extern const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[];
@@ -41,7 +43,8 @@ const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[] TEXT_LOCAT
     { 4, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 4, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
     { 4, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
-    { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR }
+    { 5, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR },
+    { 6, touchgfx::LEFT, touchgfx::TEXT_DIRECTION_LTR }
 };
 
 TEXT_LOCATION_FLASH_PRAGMA
@@ -94,6 +97,9 @@ void resetFont(touchgfx::FontId fontId)
         break;
     case 5:
         touchgfx_fonts[5] = &(getFont_AvenirNext_Regular_08_45_4bpp());
+        break;
+    case 6:
+        touchgfx_fonts[6] = &(getFont_AvenirNext_Regular_08_60_4bpp());
         break;
     }
 }

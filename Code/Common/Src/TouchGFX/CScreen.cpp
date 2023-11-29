@@ -54,19 +54,19 @@ void initializeScreen(int16_t x, int16_t y, ScrDirection d)
 }
 
 //-----------------------------------------------------------------------------
-int16_t cnvScrX(int16_t x)
+int16_t convertScreenX(int16_t x)
 {
 	return SCR.originX + x;
 }
 
 //-----------------------------------------------------------------------------
-int16_t cnvScrY(int16_t y)
+int16_t convertScreenY(int16_t y)
 {
 	return SCR.originY + y;
 }
 
 //-----------------------------------------------------------------------------
-ScrDirection getScrDir()
+ScrDirection getScreenDir()
 {
 	return SCR.direction;
 }

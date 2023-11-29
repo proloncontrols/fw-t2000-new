@@ -11,6 +11,8 @@
 #include <platform/driver/lcd/LCD32bpp.hpp>
 #include <gui/splash_screen/SplashView.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
+#include <gui/menumain_screen/MenuMainView.hpp>
+#include <gui/menumain_screen/MenuMainPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -29,15 +31,15 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
  * Screen Transition Declarations
  */
 
-// Splash
+// MenuMain
 
-void FrontendApplicationBase::gotoSplashScreenNoTransition()
+void FrontendApplicationBase::gotoMenuMainScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoSplashScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoMenuMainScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoSplashScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoMenuMainScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<SplashView, SplashPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<MenuMainView, MenuMainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

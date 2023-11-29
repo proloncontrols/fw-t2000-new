@@ -16,6 +16,11 @@
             }
           }
         ]
+      },
+      {
+        "Name": "MenuMain",
+        "Components": [],
+        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [],
@@ -25,7 +30,7 @@
       "Height": 672
     },
     "SelectedColorDepth": 32,
-    "StartupScreenName": "Splash",
+    "StartupScreenName": "MenuMain",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

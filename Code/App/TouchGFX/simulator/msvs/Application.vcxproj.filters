@@ -187,6 +187,18 @@
     <Filter Include="Source Files\gui\containers">
       <UniqueIdentifier>8FF737F6-D63F-B0BD-C9C0-EFFB7B557701</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\menumain_screen">
+      <UniqueIdentifier>028378B7-D482-6E76-3649-0DE481CAE53C</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\menumain_screen">
+      <UniqueIdentifier>952EFCB0-CFC6-2FC5-1115-DBC7ED57FFD1</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\menumain_screen">
+      <UniqueIdentifier>FDC9A2E2-24B5-697C-72B3-E5C70F007E16</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\menumain_screen">
+      <UniqueIdentifier>82413DDB-0934-1D92-D259-8D087204DC8D</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -233,6 +245,15 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\cntTempInside.cpp">
       <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainPresenter.cpp">
+      <Filter>Source Files\gui\menumain_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainView.cpp">
+      <Filter>Source Files\gui\menumain_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\menumain_screen\MenuMainViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\menumain_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -684,6 +705,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\splash_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainPresenter.hpp">
+      <Filter>Header Files\gui\menumain_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainView.hpp">
+      <Filter>Header Files\gui\menumain_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\menumain_screen\MenuMainViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\menumain_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
