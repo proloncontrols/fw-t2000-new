@@ -99,15 +99,15 @@ void CButton::setTextPosition(int16_t x, int16_t y)
 }
 
 //-----------------------------------------------------------------------------
-void CButton::setId(int newId)
+void CButton::setData(uint32_t newData)
 {
-	id = newId;
+	data = newData;
 }
 
 //-----------------------------------------------------------------------------
-int CButton::getId()
+uint32_t CButton::getData()
 {
-	return id;
+	return data;
 }
 
 //-----------------------------------------------------------------------------

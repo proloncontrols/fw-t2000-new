@@ -31,4 +31,5 @@ void MenuMainView::tearDownScreen()
 void MenuMainView::onMenuButtonClick(const touchgfx::AbstractButtonContainer& src)
 {
 	ButtonId button = menu->getButtonId(src);
+	(void)button;
 }

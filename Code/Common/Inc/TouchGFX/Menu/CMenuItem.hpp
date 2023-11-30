@@ -33,6 +33,7 @@ namespace touchgfx
 {
 
 typedef enum {
+	buttonNone = -3,
 	buttonHome = -2,
 	buttonBack = -1,
 	buttonUser =  0
@@ -48,7 +49,7 @@ public:
 	CMenuItem();
 	void setText(char* newText);
     void setAction(GenericCallback<const AbstractButtonContainer&>& callback);
-    CButton& getButton();
+    CButton* getButton();
 
 private:
 	static const int16_t itemWidth = 500;
@@ -57,7 +58,6 @@ private:
 	static const int16_t lineHeight = 3;      //This is the height of the separator line inside the image
 
     CButton button;
-    ButtonId id;
 	CImage line;
     touchgfx::Box background;
 };

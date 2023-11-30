@@ -23,7 +23,6 @@
 //-----------------------------------------------------------------------------
 #include <stdlib.h>
 #include <string.h>
-#include <CScreen.hpp>
 #include <Menu/CMenu.hpp>
 #include <touchgfx/Color.hpp>
 #include <BitmapDatabase.hpp>
@@ -75,7 +74,7 @@ CMenu::CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuIte
 	items.setXY(line.getX(), line.getY() + 5 + 10);   //5 = line thickness, 10 = space after line
 	for(int i = 0; i < menuItemCount; i++)
 	{
-		menuItems[i].getButton().setId(buttonUser + i);
+		menuItems[i].getButton()->setData(buttonUser + i);
 		menuItems[i].setAction(menuCallback);
 		items.add(menuItems[i]);
 	}
@@ -91,7 +90,16 @@ ButtonId CMenu::getButtonId(const touchgfx::AbstractButtonContainer& src)
 	if(&src == &back)
 		return buttonBack;
 
-	return buttonUser;
+	CMenuItem* item = (CMenuItem*)items.getFirstChild();
+	while(item)
+	{
+		CButton* button = item->getButton();
+		if(&src == button)
+			return (ButtonId)button->getData();
+		item = (CMenuItem*)item->getNextSibling();
+	}
+
+	return buttonNone;
 }
 
 }   //namespace touchgfx

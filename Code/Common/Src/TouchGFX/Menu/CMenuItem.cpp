@@ -59,9 +59,9 @@ void CMenuItem::setAction(GenericCallback<const AbstractButtonContainer&>& callb
 	button.setAction(callback);
 }
 
-CButton& CMenuItem::getButton()
+CButton* CMenuItem::getButton()
 {
-	return button;
+	return &button;
 }
 
 }   //namespace touchgfx

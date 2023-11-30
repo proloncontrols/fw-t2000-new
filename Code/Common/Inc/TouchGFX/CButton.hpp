@@ -76,13 +76,13 @@ public:
 	void setText(const char* newText);
 	void setTextPosition(int16_t x, int16_t y);
 
-	void setId(int newId);
-	int getId();
+	void setData(uint32_t newData);
+	uint32_t getData();
 
     virtual void handleClickEvent(const ClickEvent& event);
 
 private:
-    int id;
+    uint32_t data;
 
     CImage* imgReleased;
     CImage* imgPressed;
