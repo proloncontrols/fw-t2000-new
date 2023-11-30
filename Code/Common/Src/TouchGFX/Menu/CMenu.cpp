@@ -36,7 +36,7 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-CMenu::CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuItemCount, GenericCallback<const AbstractButtonContainer&>& menuCallback)
+CMenu::CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuItemsCount, GenericCallback<const AbstractButtonContainer&>& menuCallback)
 {
 	Container::setWidthHeight(624, 624);
 
@@ -72,7 +72,7 @@ CMenu::CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuIte
 
 	items.setDirection(SOUTH);
 	items.setXY(line.getX(), line.getY() + 5 + 10);   //5 = line thickness, 10 = space after line
-	for(int i = 0; i < menuItemCount; i++)
+	for(int i = 0; i < menuItemsCount; i++)
 	{
 		menuItems[i].getButton()->setData(buttonUser + i);
 		menuItems[i].setAction(menuCallback);

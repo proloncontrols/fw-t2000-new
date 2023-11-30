@@ -12,7 +12,7 @@ MenuMainView::MenuMainView()
     menuItems[2].setText((char*)"Visualize");
     menuItems[3].setText((char*)"Device");
 
-    menu = new CMenu((char*)"Menu", false, menuItems, menuItemCount, menuButtonCallback);
+    menu = new CMenu((char*)"Menu", false, menuItems, menuItemsCount, menuButtonCallback);
     menu->setXY(convertScreenX(24), convertScreenY(24));
 
     add(*menu);
@@ -31,5 +31,7 @@ void MenuMainView::tearDownScreen()
 void MenuMainView::onMenuButtonClick(const touchgfx::AbstractButtonContainer& src)
 {
 	ButtonId button = menu->getButtonId(src);
-	(void)button;
+
+	if(button == buttonHome)
+		application().gotoHomeScreenNoTransition();
 }

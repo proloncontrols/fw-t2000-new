@@ -16,6 +16,10 @@
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <gui/menumain_screen/MenuMainView.hpp>
 #include <gui/menumain_screen/MenuMainPresenter.hpp>
+#include <gui/home_screen/HomeView.hpp>
+#include <gui/home_screen/HomePresenter.hpp>
+#include <gui/setpoints_screen/SetPointsView.hpp>
+#include <gui/setpoints_screen/SetPointsPresenter.hpp>
 
 
 /**
@@ -40,7 +44,9 @@ public:
      */
     typedef touchgfx::meta::TypeList< SplashView,
             touchgfx::meta::TypeList< MenuMainView,
-            touchgfx::meta::Nil >
+            touchgfx::meta::TypeList< HomeView,
+            touchgfx::meta::TypeList< SetPointsView,
+            touchgfx::meta::Nil > > >
             > GeneratedViewTypes;
 
     /**
@@ -54,7 +60,9 @@ public:
      */
     typedef touchgfx::meta::TypeList< SplashPresenter,
             touchgfx::meta::TypeList< MenuMainPresenter,
-            touchgfx::meta::Nil >
+            touchgfx::meta::TypeList< HomePresenter,
+            touchgfx::meta::TypeList< SetPointsPresenter,
+            touchgfx::meta::Nil > > >
             > GeneratedPresenterTypes;
 
     /**
@@ -77,7 +85,7 @@ public:
 
     virtual void gotoStartScreen(FrontendApplication& app)
     {
-        app.gotoMenuMainScreenNoTransition();
+        app.gotoHomeScreenNoTransition();
     }
 protected:
     FrontendHeapBase(touchgfx::AbstractPartition& presenters, touchgfx::AbstractPartition& views, touchgfx::AbstractPartition& transitions, FrontendApplication& app)

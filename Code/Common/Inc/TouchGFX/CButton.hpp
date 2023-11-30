@@ -82,10 +82,10 @@ public:
     virtual void handleClickEvent(const ClickEvent& event);
 
 private:
-    uint32_t data;
+    uint32_t data;   //User defined general purpose data associated with button
 
-    CImage* imgReleased;
-    CImage* imgPressed;
+    CImage* imgReleased = NULL;
+    CImage* imgPressed = NULL;
 
 	TextAreaWithOneWildcard* text = NULL;
 	Unicode::UnicodeChar* textBuffer = NULL;

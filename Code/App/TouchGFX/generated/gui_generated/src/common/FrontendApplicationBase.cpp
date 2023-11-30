@@ -13,6 +13,10 @@
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <gui/menumain_screen/MenuMainView.hpp>
 #include <gui/menumain_screen/MenuMainPresenter.hpp>
+#include <gui/home_screen/HomeView.hpp>
+#include <gui/home_screen/HomePresenter.hpp>
+#include <gui/setpoints_screen/SetPointsView.hpp>
+#include <gui/setpoints_screen/SetPointsPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -31,15 +35,15 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
  * Screen Transition Declarations
  */
 
-// MenuMain
+// Home
 
-void FrontendApplicationBase::gotoMenuMainScreenNoTransition()
+void FrontendApplicationBase::gotoHomeScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoMenuMainScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoHomeScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoMenuMainScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoHomeScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<MenuMainView, MenuMainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<HomeView, HomePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

@@ -18,10 +18,15 @@ public:
     virtual ~FrontendApplication() { }
     virtual void handleTickEvent();
 
+    void gotoMenuMainScreenNoTransition();
+    void gotoSetpointsScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplication> transitionCallback;
 
 private:
+    void gotoMenuMainScreenNoTransitionImpl();
+    void gotoSetpointsScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATION_HPP

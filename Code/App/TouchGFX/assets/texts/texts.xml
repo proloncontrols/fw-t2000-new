@@ -57,7 +57,32 @@
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
     </TextGroup>
-    <TextGroup Id="Unsorted" />
+    <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_8Y1Y" Alignment="Left" TypographyId="MeterMedium">
+        <Translation Language="GB">22</Translation>
+      </Text>
+      <Text Id="__SingleUse_59HU" Alignment="Left" TypographyId="MeterMedium">
+        <Translation Language="GB">20</Translation>
+      </Text>
+      <Text Id="__SingleUse_PWCC" Alignment="Left" TypographyId="MeterMedium">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="__SingleUse_OTSM" Alignment="Left" TypographyId="MeterLarge">
+        <Translation Language="GB">21</Translation>
+      </Text>
+      <Text Id="__SingleUse_2QOY" Alignment="Left" TypographyId="MeterMedium">
+        <Translation Language="GB">22</Translation>
+      </Text>
+      <Text Id="__SingleUse_CG67" Alignment="Left" TypographyId="MeterMedium">
+        <Translation Language="GB">20</Translation>
+      </Text>
+      <Text Id="__SingleUse_R7ST" Alignment="Left" TypographyId="MeterMedium">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="__SingleUse_G2VA" Alignment="Left" TypographyId="MeterLarge">
+        <Translation Language="GB">21</Translation>
+      </Text>
+    </TextGroup>
   </Texts>
   <Typographies>
     <Typography Id="MeterHuge" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" />

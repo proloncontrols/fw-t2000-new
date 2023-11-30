@@ -41,7 +41,7 @@ namespace touchgfx
 class CMenu : public Container
 {
 public:
-	CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuItemCount, GenericCallback<const AbstractButtonContainer&>& menuCallback);
+	CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuItemsCount, GenericCallback<const AbstractButtonContainer&>& menuCallback);
 	ButtonId getButtonId(const touchgfx::AbstractButtonContainer& src);
 
 private:

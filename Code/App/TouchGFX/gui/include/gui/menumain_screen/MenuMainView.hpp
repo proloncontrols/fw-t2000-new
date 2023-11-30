@@ -14,10 +14,10 @@ public:
     virtual void tearDownScreen();
 
 protected:
-    static const int menuItemCount = 4;
+    static const int menuItemsCount = 4;
 
     CMenu* menu;
-    CMenuItem menuItems[menuItemCount];
+    CMenuItem menuItems[menuItemsCount];
 
 private:
     touchgfx::Callback<MenuMainView, const touchgfx::AbstractButtonContainer&> menuButtonCallback;

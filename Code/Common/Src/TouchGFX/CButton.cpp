@@ -119,15 +119,19 @@ void CButton::handleClickEvent(const ClickEvent& event)
     {
     	if(newPressedValue)
     	{
-        	imgReleased->setVisible(false);
-        	imgPressed->setVisible(true);
+    		if(imgReleased)
+    			imgReleased->setVisible(false);
+    		if(imgPressed)
+    			imgPressed->setVisible(true);
         	if(text)
         		text->setColor(textColorPressed);
     	}
     	else
     	{
-        	imgReleased->setVisible(true);
-        	imgPressed->setVisible(false);
+    		if(imgReleased)
+    			imgReleased->setVisible(true);
+    		if(imgPressed)
+    			imgPressed->setVisible(false);
         	if(text)
         		text->setColor(textColorReleased);
     	}
