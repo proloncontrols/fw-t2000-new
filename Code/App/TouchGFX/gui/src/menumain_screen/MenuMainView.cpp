@@ -5,14 +5,14 @@
 MenuMainView::MenuMainView()
              :menuButtonCallback(this, &MenuMainView::onMenuButtonClick)
 {
-    __background.setColor(touchgfx::Color::getColorFromRGB(35, 35, 35));
+//    __background.setColor(touchgfx::Color::getColorFromRGB(35, 35, 35));
 
     menuItems[0].setText((char*)"Options");
     menuItems[1].setText((char*)"About me");
     menuItems[2].setText((char*)"Visualize");
     menuItems[3].setText((char*)"Device");
 
-    menu = new CMenu((char*)"Main menu", false, menuItems, menuItemCount, menuButtonCallback);
+    menu = new CMenu((char*)"Menu", false, menuItems, menuItemCount, menuButtonCallback);
     menu->setXY(convertScreenX(24), convertScreenY(24));
 
     add(*menu);

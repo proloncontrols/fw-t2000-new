@@ -45,13 +45,13 @@ _Min_Stack_Size = 0x1000;	/* required amount of stack */
 SECTIONS
 {
   /*=============== EEPROM data memory ==========================================================*/
-  .app_data ORIGIN(DEFAULTS) :
+/*  .app_data ORIGIN(DEFAULTS) :
   {
     . = ALIGN(4);
     KEEP(*(.app_data))
     . = ALIGN(4);
   } >DEFAULTS
-
+*/
   /*=============== The startup code into "FLASH" Rom type memory ===============================*/
   .isr_vector ORIGIN(APP_VECTORS) :
   {
