@@ -4,7 +4,7 @@
 
 #include "ui.h"
 #include <cfg.h>
-#include <CScreen.hpp>
+#include <CDisplay.hpp>
 
 FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
     : FrontendApplicationBase(m, heap),
@@ -12,10 +12,10 @@ FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
 
 {
 	if(CFG.Dta.ScrOrientation == CfgScrOrientP)   //<-- T2000 orientation, not its screen
-		initializeScreen(CLIENT_ORIGIN_LANDSCAPE_X, CLIENT_ORIGIN_LANDSCAPE_Y, SCR_LANDSCAPE);
+		Display.initialize(CDisplay::LANDSCAPE, NATIVE_WIDTH, NATIVE_HEIGHT, CLIENT_WIDTH, CLIENT_HEIGHT);
 	else
 	{
-		initializeScreen(CLIENT_ORIGIN_PORTRAIT_X, CLIENT_ORIGIN_PORTRAIT_Y, SCR_PORTRAIT);
+		Display.initialize(CDisplay::PORTRAIT, NATIVE_WIDTH, NATIVE_HEIGHT, CLIENT_WIDTH, CLIENT_HEIGHT);
 	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
 	}
 }

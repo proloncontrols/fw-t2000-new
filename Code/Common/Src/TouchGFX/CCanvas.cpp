@@ -10,19 +10,20 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CImage.cpp
+//         File : CCanvas.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Custom image class implementation file
+//  Description : Screen starting point class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CImage.hpp>
+#include <CCanvas.hpp>
 #include <CDisplay.hpp>
+#include <touchgfx/Color.hpp>
 
 
 namespace touchgfx
@@ -31,30 +32,34 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CImage::setBitmap(const Bitmap& bmp)
+CCanvas::CCanvas(Container& ownerContainer)
 {
-	TextureMapper::setBitmap(touchgfx::Bitmap(bmp));
+	owner = &ownerContainer;
 
-	if(Display.getOrientation() == CDisplay::LANDSCAPE)
-	{
-		setBitmapPosition(0.0f, 0.0f);
-		setOrigo(90.0f, 90.0f, 1000.0f);
-		setAngles(0.0f, 0.0f, 0.0f);
-	}
-	else
-	{
-	    Bitmap image = getBitmap();
-	    float newBitmapX = (getWidth()/2 - image.getWidth()/2);
-	    float newBitmapY = (getHeight()/2 - image.getHeight()/2);
-	    setBitmapPosition(newBitmapX, newBitmapY);
-	    setOrigo(getWidth()/2, getHeight()/2, 1000.0f);
-	    setAngles(0.0f, 0.0f, -1.572f);
-	}
+	Rect r = Display.getNative();
+	ownerContainer.setPosition(r.x, r.y, r.width, r.height);
+	frame.setPosition(ownerContainer);
 
-	setScale(1.0f);
-	setCameraDistance(1000.0f);
-	setCamera(getWidth()/2, getHeight()/2);
-	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+	r = Display.getClient();
+	client.setPosition(r.x, r.y, r.width, r.height);
+
+	setBackgroundColor(Color::getColorFromRGB(0, 0, 0));
+
+	owner->add(frame);
+	owner->add(client);
+}
+
+//-----------------------------------------------------------------------------
+void CCanvas::setBackgroundColor(colortype color)
+{
+	frame.setColor(color);
+	client.setColor(color);
+}
+
+//-----------------------------------------------------------------------------
+void CCanvas::showFrame()
+{
+	frame.setColor(Color::getColorFromRGB(FRAME_COLOR_R, FRAME_COLOR_G, FRAME_COLOR_B));
 }
 
 }   //namespace touchgfx

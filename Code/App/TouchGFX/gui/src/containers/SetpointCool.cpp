@@ -32,5 +32,5 @@ void SetpointCool::initialize()
 
 void SetpointCool::onButtonClick(const touchgfx::AbstractButtonContainer& src)
 {
-	application().gotoHomeScreenNoTransition();
+//	application().gotoHomeScreenNoTransition();
 }

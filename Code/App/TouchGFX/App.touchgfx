@@ -339,7 +339,17 @@
             ]
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          }
+        ]
       }
     ],
     "Name": "MyApplication",
@@ -348,7 +358,7 @@
       "Height": 672
     },
     "SelectedColorDepth": 32,
-    "StartupScreenName": "Home",
+    "StartupScreenName": "Splash",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

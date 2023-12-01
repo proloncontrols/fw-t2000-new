@@ -10,18 +10,18 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CImage.cpp
+//         File : CDisplay.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Custom image class implementation file
+//  Description : Display parameters implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CImage.hpp>
+#define CDISPLAY_GLOBAL
 #include <CDisplay.hpp>
 
 
@@ -31,30 +31,45 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CImage::setBitmap(const Bitmap& bmp)
+void CDisplay::initialize(Orientation orient, int16_t nativeWidth, int16_t nativeHeight, int16_t clientWidth, int16_t clientHeight)
 {
-	TextureMapper::setBitmap(touchgfx::Bitmap(bmp));
+	orientation = orient;
 
-	if(Display.getOrientation() == CDisplay::LANDSCAPE)
+	native.x = 0;
+	native.y = 0;
+	native.width = nativeWidth;
+	native.height = nativeHeight;
+
+	if(orientation == LANDSCAPE)
 	{
-		setBitmapPosition(0.0f, 0.0f);
-		setOrigo(90.0f, 90.0f, 1000.0f);
-		setAngles(0.0f, 0.0f, 0.0f);
+		client.x = (nativeWidth - clientWidth) / 2;
+		client.y = (nativeHeight - clientHeight) / 2;
 	}
 	else
 	{
-	    Bitmap image = getBitmap();
-	    float newBitmapX = (getWidth()/2 - image.getWidth()/2);
-	    float newBitmapY = (getHeight()/2 - image.getHeight()/2);
-	    setBitmapPosition(newBitmapX, newBitmapY);
-	    setOrigo(getWidth()/2, getHeight()/2, 1000.0f);
-	    setAngles(0.0f, 0.0f, -1.572f);
+		client.x = (nativeHeight - clientHeight) / 2;
+		client.y = (nativeWidth - clientWidth) / 2;
 	}
+	client.width = clientWidth;
+	client.height = clientHeight;
+}
 
-	setScale(1.0f);
-	setCameraDistance(1000.0f);
-	setCamera(getWidth()/2, getHeight()/2);
-	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+//-----------------------------------------------------------------------------
+CDisplay::Orientation CDisplay::getOrientation()
+{
+	return orientation;
+}
+
+//-----------------------------------------------------------------------------
+const Rect& CDisplay::getNative()
+{
+	return native;
+}
+
+//-----------------------------------------------------------------------------
+const Rect& CDisplay::getClient()
+{
+	return client;
 }
 
 }   //namespace touchgfx

@@ -10,51 +10,54 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CImage.cpp
+//         File : CCanvas.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Custom image class implementation file
+//  Description : Screen starting point class header file
 //=============================================================================
+#ifndef CCANVAS_HPP
+#define CCANVAS_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CImage.hpp>
-#include <CDisplay.hpp>
+#include <touchgfx/Color.hpp>
+#include <touchgfx/Widgets/Box.hpp>
+#include <touchgfx/Containers/Container.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  M E T H O D S
+//  D E F I N E S
 //-----------------------------------------------------------------------------
-void CImage::setBitmap(const Bitmap& bmp)
+#define FRAME_COLOR_R   35
+#define FRAME_COLOR_G   35
+#define FRAME_COLOR_B   35
+
+
+//=============================================================================
+//  C L A S S E S
+//-----------------------------------------------------------------------------
+class CCanvas
 {
-	TextureMapper::setBitmap(touchgfx::Bitmap(bmp));
+public:
+	CCanvas(Container& ownerContainer);
+	void setBackgroundColor(colortype newColor);
+	void showFrame();
 
-	if(Display.getOrientation() == CDisplay::LANDSCAPE)
-	{
-		setBitmapPosition(0.0f, 0.0f);
-		setOrigo(90.0f, 90.0f, 1000.0f);
-		setAngles(0.0f, 0.0f, 0.0f);
-	}
-	else
-	{
-	    Bitmap image = getBitmap();
-	    float newBitmapX = (getWidth()/2 - image.getWidth()/2);
-	    float newBitmapY = (getHeight()/2 - image.getHeight()/2);
-	    setBitmapPosition(newBitmapX, newBitmapY);
-	    setOrigo(getWidth()/2, getHeight()/2, 1000.0f);
-	    setAngles(0.0f, 0.0f, -1.572f);
-	}
+protected:
+	Container* owner;
 
-	setScale(1.0f);
-	setCameraDistance(1000.0f);
-	setCamera(getWidth()/2, getHeight()/2);
-	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
-}
+private:
+	Box frame;
+	Box client;
+};
 
 }   //namespace touchgfx
+
+
+#endif   //CCANVAS_HPP

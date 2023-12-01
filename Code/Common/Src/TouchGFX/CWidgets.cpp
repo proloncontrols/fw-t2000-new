@@ -23,18 +23,19 @@
 //-----------------------------------------------------------------------------
 #include <stdlib.h>
 #include <CWidgets.hpp>
-#include <CScreen.hpp>
+#include <CDisplay.hpp>
 
 
 namespace touchgfx
 {
+#define TEXTUREMAPPER_270_ANGLE_Z  -1.572f
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
 void rotateBox(Box& box)
 {
-	if(getScreenDir() == SCR_PORTRAIT)
+	if(Display.getOrientation() == CDisplay::PORTRAIT)
 	{
 		Rect rect = box.getRect();
 		box.setPosition(rect.x, rect.y, rect.height, rect.width);
@@ -44,7 +45,7 @@ void rotateBox(Box& box)
 //-----------------------------------------------------------------------------
 void rotateTextureMapper(TextureMapper& mapper)
 {
-	if(getScreenDir() == SCR_PORTRAIT)
+	if(Display.getOrientation() == CDisplay::PORTRAIT)
 	{
 	    Bitmap image = mapper.getBitmap();
 	    float newBitmapX = (mapper.getWidth()/2 - image.getWidth()/2);

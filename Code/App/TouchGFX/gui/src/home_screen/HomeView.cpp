@@ -8,7 +8,7 @@ HomeView::HomeView()
 {
 //	__background.setColor(touchgfx::Color::getColorFromRGB(35, 35, 35));
 
-    container.setPosition(convertScreenX(24), convertScreenY(24), 624, 624);
+//    container.setPosition(convertScreenX(24), convertScreenY(24), 624, 624);
     add(container);
 
 	background.setPosition(0, 0, container.getWidth(), container.getHeight());
