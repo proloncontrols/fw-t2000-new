@@ -31,45 +31,105 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CDisplay::initialize(Orientation orient, int16_t nativeWidth, int16_t nativeHeight, int16_t clientWidth, int16_t clientHeight)
+void CDisplay::initialize(Orientation orient, int16_t clientSize)
 {
+//	orientation = orient;
+//
+//	native.x = 0;
+//	native.y = 0;
+//	native.width = NATIVE_WIDTH;
+//	native.height = NATIVE_HEIGHT;
+//
+//	client.x = (NATIVE_WIDTH - clientSize) / 2;
+//	client.y = (NATIVE_HEIGHT - clientSize) / 2;
+//	if(orientation == PORTRAIT)
+//	{
+//		client.x = (NATIVE_HEIGHT - clientSize) / 2;
+//		client.y = (NATIVE_WIDTH - clientSize) / 2;
+//		native.width = NATIVE_HEIGHT;
+//		native.height = NATIVE_WIDTH;
+//	}
+//	client.width = clientSize;
+//	client.height = clientSize;
+//
+//	middle = clientSize / 2;
+
+//	orientation = orient;
+//
+//	if(orientation == LANDSCAPE)
+//	{
+//		native.x = 0;
+//		native.y = 0;
+//		native.width = NATIVE_WIDTH;
+//		native.height = NATIVE_HEIGHT;
+//
+//		client.x = (NATIVE_WIDTH - clientSize) / 2;
+//		client.y = (NATIVE_HEIGHT - clientSize) / 2;
+//		client.width = clientSize;
+//		client.height = clientSize;
+//	}
+//	else
+//	{
+//		native.x = 0;
+//		native.y = 0;
+//		native.width = NATIVE_HEIGHT;
+//		native.height = NATIVE_WIDTH;
+//
+//		client.x = (NATIVE_HEIGHT - clientSize) / 2;
+//		client.y = (NATIVE_WIDTH - clientSize) / 2;
+//		client.width = clientSize;
+//		client.height = clientSize;
+//	}
+//
+//	middle = clientSize / 2;
+
 	orientation = orient;
 
 	native.x = 0;
 	native.y = 0;
-	native.width = nativeWidth;
-	native.height = nativeHeight;
-
 	if(orientation == LANDSCAPE)
 	{
-		client.x = (nativeWidth - clientWidth) / 2;
-		client.y = (nativeHeight - clientHeight) / 2;
+		native.width = NATIVE_WIDTH;
+		native.height = NATIVE_HEIGHT;
+		client.x = (NATIVE_WIDTH - clientSize) / 2;
+		client.y = (NATIVE_HEIGHT - clientSize) / 2;
 	}
 	else
 	{
-		client.x = (nativeHeight - clientHeight) / 2;
-		client.y = (nativeWidth - clientWidth) / 2;
+		native.width = NATIVE_HEIGHT;
+		native.height = NATIVE_WIDTH;
+		client.x = (NATIVE_HEIGHT - clientSize) / 2;
+		client.y = (NATIVE_WIDTH - clientSize) / 2;
 	}
-	client.width = clientWidth;
-	client.height = clientHeight;
-}
-
-//-----------------------------------------------------------------------------
-CDisplay::Orientation CDisplay::getOrientation()
-{
-	return orientation;
-}
-
-//-----------------------------------------------------------------------------
-const Rect& CDisplay::getNative()
-{
-	return native;
-}
-
-//-----------------------------------------------------------------------------
-const Rect& CDisplay::getClient()
-{
-	return client;
+	client.width = clientSize;
+	client.height = clientSize;
+	client.middle = clientSize / 2;
 }
 
 }   //namespace touchgfx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

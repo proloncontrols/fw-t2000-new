@@ -12,23 +12,16 @@ FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
 
 {
 	if(CFG.Dta.ScrOrientation == CfgScrOrientP)   //<-- T2000 orientation, not its screen
-		Display.initialize(CDisplay::LANDSCAPE, NATIVE_WIDTH, NATIVE_HEIGHT, CLIENT_WIDTH, CLIENT_HEIGHT);
+		Display.initialize(CDisplay::LANDSCAPE, CLIENT_SIZE);
 	else
 	{
-		Display.initialize(CDisplay::PORTRAIT, NATIVE_WIDTH, NATIVE_HEIGHT, CLIENT_WIDTH, CLIENT_HEIGHT);
+		Display.initialize(CDisplay::PORTRAIT, CLIENT_SIZE);
 	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
 	}
 }
 
 void FrontendApplication::handleTickEvent()
 {
-	if(osMessageQueueGet(UI_QueueScreen, &Screen, NULL, 0) == osOK)
-	{
-		if(Screen.Action == UiScreenActionSwitch)
-		{
-		}
-	}
-
     model.tick();
     FrontendApplicationBase::handleTickEvent();
 }

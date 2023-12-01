@@ -34,8 +34,7 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 #define NATIVE_WIDTH    720
 #define NATIVE_HEIGHT   672
-#define CLIENT_WIDTH    624
-#define CLIENT_HEIGHT   624
+#define CLIENT_SIZE     648   //Client is square
 
 // Thermostat orientation (portrait)
 //
@@ -69,16 +68,19 @@ public:
 		PORTRAIT
 	};
 
-public:
-	void initialize(Orientation orient, int16_t nativeWidth, int16_t nativeHeight, int16_t clientWidth, int16_t clientHeight);
-	Orientation getOrientation();
-	const Rect& getNative();
-	const Rect& getClient();
+	struct Area {
+		int16_t x;
+		int16_t y;
+		int16_t width;
+		int16_t height;
+		int16_t middle;
+	};
 
-private:
+public:
+	void initialize(Orientation orient, int16_t clientSize);
 	Orientation orientation;
-	Rect native;
-	Rect client;
+	Area native;
+	Area client;
 };
 
 

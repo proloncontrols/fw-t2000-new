@@ -1,9 +1,10 @@
 #ifndef SPLASHVIEW_HPP
 #define SPLASHVIEW_HPP
 
-#include <CCanvas.hpp>
+#include <CScreen.hpp>
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
+#include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 
 
 
@@ -18,7 +19,11 @@ public:
     virtual void OnTransitionEnd();
 
 protected:
-    CCanvas canvas = CCanvas(container);
+    CScreen screen = CScreen(container, true);
+
+private:
+    touchgfx::Callback<SplashView, const touchgfx::AbstractButtonContainer&> buttonCallback;
+    void onButtonClick(const touchgfx::AbstractButtonContainer& src);
 };
 
 #endif // SPLASHVIEW_HPP

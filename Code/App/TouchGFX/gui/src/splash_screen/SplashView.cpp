@@ -7,8 +7,9 @@
 #include <texts/TextKeysAndLanguages.hpp>
 
 SplashView::SplashView()
+           :buttonCallback(this, &SplashView::onButtonClick)
 {
-	canvas.showFrame();
+	screen.showFrame();
 }
 
 void SplashView::setupScreen()
@@ -25,31 +26,7 @@ void SplashView::OnTransitionEnd()
 {
 }
 
+void SplashView::onButtonClick(const touchgfx::AbstractButtonContainer& src)
+{
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
