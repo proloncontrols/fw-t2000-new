@@ -145,13 +145,17 @@ int main(void)
   /* USER CODE BEGIN SysInit */
   MX_I2C2_Init();
   FMK_Boot();
+
+  MX_GPIO_Init();
+  MX_OCTOSPI2_Init();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
+  #define CUBEMX_INITIALIZATION_MODIFIED
   MX_GPIO_Init();
   MX_LTDC_Init();
   MX_OCTOSPI1_Init();
-  MX_OCTOSPI2_Init();
+//  MX_OCTOSPI2_Init();
   MX_SPI5_Init();
   MX_USART3_UART_Init();
   MX_CRC_Init();
@@ -162,6 +166,14 @@ int main(void)
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */
+
+ #ifndef CUBEMX_INITIALIZATION_MODIFIED
+#error "CubeMX generated hardware initialization sequence must be modified in main.c"
+//Copy and uncomment the following line at the top of the original section above
+//  #define CUBEMX_INITIALIZATION_MODIFIED
+//Comment the following line in the original section above
+//  MX_OCTOSPI2_Init();
+#endif
 
   /* USER CODE END 2 */
 
@@ -666,6 +678,11 @@ static void MX_OCTOSPI2_Init(void)
   {
     Error_Handler();
   }
+
+  //Reset frame buffer external RAM memory to all 0s in order to get rid of the white noise or previous screen at startup
+  uint32_t* ram = (uint32_t*)0x70000000U;
+  for(uint32_t i = 0; i < (((720*672*3)*2)/4) - 1; i++)
+    ram[i] = 0;
   /* USER CODE END OCTOSPI2_Init 2 */
 
 }
