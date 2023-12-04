@@ -66,7 +66,7 @@ public:
 	enum Orientation {
 		LANDSCAPE,
 		PORTRAIT
-	};
+	} orientation;
 
 	struct Area {
 		int16_t x;
@@ -74,13 +74,9 @@ public:
 		int16_t width;
 		int16_t height;
 		int16_t middle;
-	};
+	} native, client;
 
-public:
 	void initialize(Orientation orient, int16_t clientSize);
-	Orientation orientation;
-	Area native;
-	Area client;
 };
 
 
@@ -88,9 +84,9 @@ public:
 //  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
 #ifndef CDISPLAY_GLOBAL
-extern CDisplay Display;
+extern CDisplay dsp;
 #else
-CDisplay Display;
+CDisplay dsp;
 #endif
 
 }   //namespace touchgfx

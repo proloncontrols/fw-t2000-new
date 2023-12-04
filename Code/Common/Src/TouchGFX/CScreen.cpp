@@ -37,11 +37,11 @@ CScreen::CScreen(Container& ownerContainer, bool wLogo)
 {
 	owner = &ownerContainer;
 
-	ownerContainer.setPosition(Display.native.x, Display.native.y, Display.native.width, Display.native.height);
+	ownerContainer.setPosition(dsp.native.x, dsp.native.y, dsp.native.width, dsp.native.height);
 	frame.setPosition(ownerContainer);
 
-	client.setPosition(Display.client.x, Display.client.y, Display.client.width, Display.client.height);
-	clientBackground.setPosition(0, 0, Display.client.width, Display.client.height);
+	client.setPosition(dsp.client.x, dsp.client.y, dsp.client.width, dsp.client.height);
+	clientBackground.setPosition(0, 0, dsp.client.width, dsp.client.height);
 	add(clientBackground);
 
 	setBackgroundColor(Color::getColorFromRGB(0, 0, 0));
@@ -50,7 +50,7 @@ CScreen::CScreen(Container& ownerContainer, bool wLogo)
 	owner->add(client);
 
 	logo.setBitmap(Bitmap(BITMAP_PROLON_176X176_ID));
-	logo.setXY(Display.client.middle - logo.getWidth()/2, 0);
+	logo.setXY(dsp.client.middle - logo.getWidth()/2, 0);
 	add(logo);
 }
 

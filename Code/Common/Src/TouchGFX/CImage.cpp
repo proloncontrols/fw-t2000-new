@@ -35,7 +35,7 @@ void CImage::setBitmap(const Bitmap& bmp)
 {
 	TextureMapper::setBitmap(touchgfx::Bitmap(bmp));
 
-	if(Display.orientation == CDisplay::LANDSCAPE)
+	if(dsp.orientation == CDisplay::LANDSCAPE)
 	{
 		setBitmapPosition(0.0f, 0.0f);
 		setOrigo(90.0f, 90.0f, 1000.0f);
