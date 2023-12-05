@@ -15,8 +15,6 @@
 #include <gui/menumain_screen/MenuMainPresenter.hpp>
 #include <gui/home_screen/HomeView.hpp>
 #include <gui/home_screen/HomePresenter.hpp>
-#include <gui/setpoints_screen/SetPointsView.hpp>
-#include <gui/setpoints_screen/SetPointsPresenter.hpp>
 
 using namespace touchgfx;
 

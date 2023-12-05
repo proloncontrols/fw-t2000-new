@@ -31,82 +31,59 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CDisplay::initialize(Orientation orient, int16_t clientSize)
-{
-//	orientation = orient;
-//
-//	native.x = 0;
-//	native.y = 0;
-//	native.width = NATIVE_WIDTH;
-//	native.height = NATIVE_HEIGHT;
-//
-//	client.x = (NATIVE_WIDTH - clientSize) / 2;
-//	client.y = (NATIVE_HEIGHT - clientSize) / 2;
-//	if(orientation == PORTRAIT)
-//	{
-//		client.x = (NATIVE_HEIGHT - clientSize) / 2;
-//		client.y = (NATIVE_WIDTH - clientSize) / 2;
-//		native.width = NATIVE_HEIGHT;
-//		native.height = NATIVE_WIDTH;
-//	}
-//	client.width = clientSize;
-//	client.height = clientSize;
-//
-//	middle = clientSize / 2;
-
-//	orientation = orient;
+//void CDisplay::setPosition(Drawable& d)
+//{
+//	int16_t newX;
+//	int16_t newY;
+//	int16_t newW;
+//	int16_t newH;
 //
 //	if(orientation == LANDSCAPE)
 //	{
-//		native.x = 0;
-//		native.y = 0;
-//		native.width = NATIVE_WIDTH;
-//		native.height = NATIVE_HEIGHT;
-//
-//		client.x = (NATIVE_WIDTH - clientSize) / 2;
-//		client.y = (NATIVE_HEIGHT - clientSize) / 2;
-//		client.width = clientSize;
-//		client.height = clientSize;
+//		newX = NATIVE_WIDTH - d.getWidth() - 1;
+//		newY = NATIVE_HEIGHT - d.getHeight() - 1;
+//		newW = d.getWidth();
+//		newH = d.getHeight();
 //	}
 //	else
 //	{
-//		native.x = 0;
-//		native.y = 0;
-//		native.width = NATIVE_HEIGHT;
-//		native.height = NATIVE_WIDTH;
-//
-//		client.x = (NATIVE_HEIGHT - clientSize) / 2;
-//		client.y = (NATIVE_WIDTH - clientSize) / 2;
-//		client.width = clientSize;
-//		client.height = clientSize;
+//		newX = NATIVE_WIDTH - d.getHeight() - 1;
+//		newY = d.getX() + 1;
+//		newW = d.getHeight();
+//		newH = d.getWidth();
 //	}
 //
-//	middle = clientSize / 2;
+//	d.setPosition(newX, newY, newW, newH);
+//}
 
-	orientation = orient;
+void CDisplay::setPosition(Drawable& d)
+{
+	int16_t newX;
+	int16_t newY;
+	int16_t newW;
+	int16_t newH;
 
-	native.x = 0;
-	native.y = 0;
 	if(orientation == LANDSCAPE)
 	{
-		native.width = NATIVE_WIDTH;
-		native.height = NATIVE_HEIGHT;
-		client.x = (NATIVE_WIDTH - clientSize) / 2;
-		client.y = (NATIVE_HEIGHT - clientSize) / 2;
+		newX = d.getParent()->getWidth() - d.getWidth() - 1;
+		newY = d.getParent()->getHeight() - d.getHeight() - 1;
+		newW = d.getWidth();
+		newH = d.getHeight();
 	}
 	else
 	{
-		native.width = NATIVE_HEIGHT;
-		native.height = NATIVE_WIDTH;
-		client.x = (NATIVE_HEIGHT - clientSize) / 2;
-		client.y = (NATIVE_WIDTH - clientSize) / 2;
+//		newX = NATIVE_WIDTH - d.getHeight() - 1;
+//		newY = d.getX() + 1;
+//		newW = d.getHeight();
+//		newH = d.getWidth();
 	}
-	client.width = clientSize;
-	client.height = clientSize;
-	client.middle = clientSize / 2;
+
+	d.setPosition(newX, newY, newW, newH);
 }
 
 }   //namespace touchgfx
+
+
 
 
 

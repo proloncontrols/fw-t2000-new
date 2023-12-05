@@ -35,7 +35,8 @@ namespace touchgfx
 class CImage : public TextureMapper
 {
 public:
-	void setBitmap(const Bitmap& bmp);
+//	void setBitmap(const Bitmap& bmp);
+	void setXY(int16_t x, int16_t y);
 };
 
 }   //namespace touchgfx

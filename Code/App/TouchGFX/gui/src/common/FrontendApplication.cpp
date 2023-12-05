@@ -11,13 +11,13 @@ FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
       transitionCallback()
 
 {
-	if(CFG.Dta.ScrOrientation == CfgScrOrientP)   //<-- T2000 orientation, not its screen
-		dsp.initialize(CDisplay::LANDSCAPE, CLIENT_SIZE);
+	if(CFG.Dta.ScrOrientation == CfgScrOrientP)   //<-- T2000 orientation, not the display
+		dsp.orientation = CDisplay::LANDSCAPE;
 	else
-	{
-		dsp.initialize(CDisplay::PORTRAIT, CLIENT_SIZE);
-	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
-	}
+//	{
+		dsp.orientation = CDisplay::PORTRAIT;
+//	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
+//	}
 }
 
 void FrontendApplication::handleTickEvent()
@@ -47,5 +47,5 @@ void FrontendApplication::gotoSetpointsScreenNoTransition()
 
 void FrontendApplication::gotoSetpointsScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<SetPointsView, SetPointsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+//    touchgfx::makeTransition<SetPointsView, SetPointsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

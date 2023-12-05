@@ -220,18 +220,6 @@
     <Filter Include="Source Files\generated\gui_generated\containers">
       <UniqueIdentifier>16D6FEAD-DE2A-E65D-F91D-95A724E19326</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\setpoints_screen">
-      <UniqueIdentifier>2AC36832-5744-22BF-DD4D-DBBB2B5AF445</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui\setpoints_screen">
-      <UniqueIdentifier>D6F8FD07-9088-DAAD-3D84-011045F32835</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\setpoints_screen">
-      <UniqueIdentifier>FDE607D9-6FCF-DE80-0768-0757F2D419BE</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\setpoints_screen">
-      <UniqueIdentifier>D9B0FA4E-A7D1-E298-4CC5-D8654C1CE141</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -297,32 +285,11 @@
     <ClCompile Include="..\..\generated\gui_generated\src\home_screen\HomeViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\home_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\containers\CustomContainer1.cpp">
-      <Filter>Source Files\gui\containers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\CustomContainer1Base.cpp">
-      <Filter>Source Files\generated\gui_generated\containers</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\SetpointCool.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\SetpointCoolBase.cpp">
-      <Filter>Source Files\generated\gui_generated\containers</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\SetpointHeat.cpp">
       <Filter>Source Files\gui\containers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\SetpointHeatBase.cpp">
-      <Filter>Source Files\generated\gui_generated\containers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\setpoints_screen\SetPointsPresenter.cpp">
-      <Filter>Source Files\gui\setpoints_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\setpoints_screen\SetPointsView.cpp">
-      <Filter>Source Files\gui\setpoints_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\setpoints_screen\SetPointsViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\setpoints_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -793,32 +760,11 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\home_screen\HomeViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\home_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\CustomContainer1.hpp">
-      <Filter>Header Files\gui\containers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\CustomContainer1Base.hpp">
-      <Filter>Header Files\generated\gui_generated\containers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\containers\SetpointCool.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\SetpointCoolBase.hpp">
-      <Filter>Header Files\generated\gui_generated\containers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\containers\SetpointHeat.hpp">
       <Filter>Header Files\gui\containers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\SetpointHeatBase.hpp">
-      <Filter>Header Files\generated\gui_generated\containers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\setpoints_screen\SetPointsPresenter.hpp">
-      <Filter>Header Files\gui\setpoints_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\setpoints_screen\SetPointsView.hpp">
-      <Filter>Header Files\gui\setpoints_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\setpoints_screen\SetPointsViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\setpoints_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

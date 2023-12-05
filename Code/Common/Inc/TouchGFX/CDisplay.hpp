@@ -24,6 +24,29 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <touchgfx/hal/Types.hpp>
+#include <touchgfx/Widgets/Box.hpp>
+
+
+// Thermostat orientation (portrait)
+//
+//    Screen orientation (landscape)
+//    -------------------------------------   ---
+//    |                                   |    |
+//    |                                   |    |
+//    |                                   |    |
+//    |                                   |    |
+//    |                                   |    |
+//    |                                   |    |
+//    |                                   |   672
+//    |                                   |    |
+//    |                                   |    |
+//    |                                   |    |
+//    |                                   |    |
+//    |                                   |    |
+//    |                                   |    |
+//    -------------------------------------   ---
+//
+//    |--------------- 720 ---------------|
 
 
 namespace touchgfx
@@ -34,27 +57,6 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 #define NATIVE_WIDTH    720
 #define NATIVE_HEIGHT   672
-#define CLIENT_SIZE     648   //Client is square
-
-// Thermostat orientation (portrait)
-//
-//    Screen orientation (landscape)
-//    -------------------------------------   ---
-//    |    |                         |    |    |
-//    |    |                         |    |    |
-//    |    |                         |    |    |
-//    |    |                         |    |    |
-//    |    |                         |    |    |
-//    | NU |  Available Client area  | NU |   672
-//    |    |                         |    |    |
-//    |    |                         |    |    |
-//    |    |                         |    |    |
-//    |    |                         |    |    |
-//    |    |                         |    |    |
-//    -------------------------------------   ---
-//
-//    |-24-|---------- 672 ----------|-24-|
-//    |--------------- 720 ---------------|
 
 
 //=============================================================================
@@ -64,19 +66,11 @@ class CDisplay
 {
 public:
 	enum Orientation {
-		LANDSCAPE,
-		PORTRAIT
+		LANDSCAPE,   //Physical display is rotated 180° due to temperature/humidity sensor location
+		PORTRAIT     //Physical display is rotated 270° due to temperature/humidity sensor location
 	} orientation;
 
-	struct Area {
-		int16_t x;
-		int16_t y;
-		int16_t width;
-		int16_t height;
-		int16_t middle;
-	} native, client;
-
-	void initialize(Orientation orient, int16_t clientSize);
+	void setPosition(Drawable& d);
 };
 
 
@@ -84,10 +78,12 @@ public:
 //  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
 #ifndef CDISPLAY_GLOBAL
-extern CDisplay dsp;
+#define CDISPLAY_EXTERN   extern
 #else
-CDisplay dsp;
+#define CDISPLAY_EXTERN
 #endif
+
+CDISPLAY_EXTERN CDisplay dsp;
 
 }   //namespace touchgfx
 

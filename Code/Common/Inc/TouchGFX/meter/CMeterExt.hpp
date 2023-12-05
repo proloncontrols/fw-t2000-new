@@ -53,7 +53,7 @@ protected:
 	static const TypedTextId unitCText = T_METER_TINY_UNIT_C;
 	static const TypedTextId unitFText = T_METER_TINY_UNIT_F;
 
-	static const uint16_t imageId = BITMAP_OUTSIDE_24X24_ID;
+//	static const uint16_t imageId = BITMAP_OUTSIDE_24X24_ID;
 };
 
 }   //namespace touchgfx

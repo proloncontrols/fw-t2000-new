@@ -44,18 +44,18 @@ CMenu::CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuIte
     background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(background);
 
-    home.initialize(0, 0, 0, BITMAP_HOME_ID, BITMAP_HOME_ID);
-    home.setAction(menuCallback);
-	add(home);
+//    home.initialize(0, 0, 0, BITMAP_HOME_ID, BITMAP_HOME_ID);
+//    home.setAction(menuCallback);
+//	add(home);
 
-    logo.setBitmap(BITMAP_PROLON_176X176_ID);
-	logo.setXY((Container::getWidth() - logo.getBitmap().getWidth()) /2 , 0);
-	add(logo);
+//    logo.setBitmap(BITMAP_PROLON_176X176_ID);
+//	logo.setXY((Container::getWidth() - logo.getBitmap().getWidth()) /2 , 0);
+//	add(logo);
 
-    back.initialize(Container::getWidth() - Bitmap(BITMAP_RETURN_50X50_ID).getWidth(), 0, 0, BITMAP_RETURN_50X50_ID, BITMAP_RETURN_50X50_ID);
-    back.setAction(menuCallback);
-    back.setVisible(!menuAsRoot);
-	add(back);
+//    back.initialize(Container::getWidth() - Bitmap(BITMAP_RETURN_50X50_ID).getWidth(), 0, 0, BITMAP_RETURN_50X50_ID, BITMAP_RETURN_50X50_ID);
+//    back.setAction(menuCallback);
+//    back.setVisible(!menuAsRoot);
+//	add(back);
 
 	titleBuffer = (Unicode::UnicodeChar*)calloc(strlen(menuTitle) + 1, sizeof(Unicode::UnicodeChar));   //+1 = null termination character
 	title.setWildcard(titleBuffer);
@@ -66,9 +66,9 @@ CMenu::CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuIte
 	title.setXY((Container::getWidth() - title.getWidth()) / 2, 60);
 	add(title);
 
-	line.setBitmap(BITMAP_MENU_LINE_WHITE_496X496X5_ID);
-	line.setXY((Container::getWidth() - line.getBitmap().getWidth()) / 2, title.getY() + title.getHeight() + 5);
-	add(line);
+//	line.setBitmap(BITMAP_MENU_LINE_WHITE_496X496X5_ID);
+//	line.setXY((Container::getWidth() - line.getBitmap().getWidth()) / 2, title.getY() + title.getHeight() + 5);
+//	add(line);
 
 	items.setDirection(SOUTH);
 	items.setXY(line.getX(), line.getY() + 5 + 10);   //5 = line thickness, 10 = space after line

@@ -35,23 +35,38 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 CScreen::CScreen(Container& ownerContainer, bool wLogo)
 {
-	owner = &ownerContainer;
-
-	ownerContainer.setPosition(dsp.native.x, dsp.native.y, dsp.native.width, dsp.native.height);
 	frame.setPosition(ownerContainer);
+	ownerContainer.add(frame);
 
-	client.setPosition(dsp.client.x, dsp.client.y, dsp.client.width, dsp.client.height);
-	clientBackground.setPosition(0, 0, dsp.client.width, dsp.client.height);
+	client.setPosition((NATIVE_WIDTH - CLIENT_SIZE) / 2, (NATIVE_HEIGHT - CLIENT_SIZE) / 2, CLIENT_SIZE, CLIENT_SIZE);
+	ownerContainer.add(client);
+
+	clientBackground.setPosition(0, 0, CLIENT_SIZE, CLIENT_SIZE);
+	clientBackground.setColor(Color::getColorFromRGB(0, 0, 0));
 	add(clientBackground);
 
-	setBackgroundColor(Color::getColorFromRGB(0, 0, 0));
 
-	owner->add(frame);
-	owner->add(client);
 
-	logo.setBitmap(Bitmap(BITMAP_PROLON_176X176_ID));
-	logo.setXY(dsp.client.middle - logo.getWidth()/2, 0);
-	add(logo);
+
+//	owner = &ownerContainer;
+//
+//	ownerContainer.setPosition(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT);
+//	frame.setPosition(ownerContainer);
+//	owner->add(frame);
+//
+//	client.setPosition((NATIVE_WIDTH - CLIENT_SIZE) / 2, (NATIVE_HEIGHT - CLIENT_SIZE) / 2, CLIENT_SIZE, CLIENT_SIZE);
+//	clientBackground.setPosition(client);
+//	add(clientBackground);
+//	owner->add(client);
+
+//	setBackgroundColor(Color::getColorFromRGB(0, 0, 0));
+
+//	owner->add(frame);
+//	owner->add(client);
+
+//	logo.setBitmap(Bitmap(BITMAP_PROLON_178X178_ID));
+//	logo.setXY(0, 0);
+//	add(logo);
 }
 
 //-----------------------------------------------------------------------------
@@ -65,6 +80,7 @@ void CScreen::setBackgroundColor(colortype color)
 void CScreen::add(Drawable& d)
 {
 	client.add(d);
+ 	dsp.setPosition(d);
 }
 
 //-----------------------------------------------------------------------------
@@ -74,3 +90,33 @@ void CScreen::showFrame()
 }
 
 }   //namespace touchgfx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

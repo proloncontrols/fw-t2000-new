@@ -29,12 +29,36 @@
 #include <CImage.hpp>
 
 
+// Thermostat orientation (portrait)
+//
+//    Screen orientation (landscape)
+//    -------------------------------------   ---
+//    |    ---------------------------    |   --- 12
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |  Available Client Area  |    |   648
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    |                         |    |    |
+//    |    ---------------------------    |   --- 12
+//    -------------------------------------   ---
+//
+//    |-36-|---------- 648 ----------|-36-|
+//    |--------------- 720 ---------------|
+
+
 namespace touchgfx
 {
 
 //=============================================================================
 //  D E F I N E S
 //-----------------------------------------------------------------------------
+#define CLIENT_SIZE     648   //Client area is square
 #define FRAME_COLOR_R   35
 #define FRAME_COLOR_G   35
 #define FRAME_COLOR_B   35
@@ -53,9 +77,11 @@ public:
 
 private:
 	Container* owner;
+	Box frame;
+
 	Container client;
 	Box clientBackground;
-	Box frame;
+
 	CImage logo;
 };
 
@@ -63,3 +89,29 @@ private:
 
 
 #endif   //CSCREEN_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -33,9 +33,9 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 CMeterExt::CMeterExt()
 {
-	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
-	addUnit(unitCText, unitFText, colorR, colorG, colorB);
-	addImage(imageId);
+//	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
+//	addUnit(unitCText, unitFText, colorR, colorG, colorB);
+//	addImage(imageId);
 
 	Container::setHeight(touchgfx::TypedText(intText).getFont()->getFontHeight());
 }
@@ -61,8 +61,8 @@ void CMeterExt::display(double value, bool celsius)
 		unit->setTypedText(touchgfx::TypedText(unitTempF));
 	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
 
-	image->setXY(integer->getWidth(), Container::getHeight() - image->getHeight());
-	image->setBitmap(touchgfx::Bitmap(imageId));
+//	image->setXY(integer->getWidth(), Container::getHeight() - image->getHeight());
+//	image->setBitmap(touchgfx::Bitmap(imageId));
 
 	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), image->getWidth()));
 	resizeBackground();
