@@ -1,7 +1,7 @@
 #ifndef SPLASHVIEW_HPP
 #define SPLASHVIEW_HPP
 
-#include <CScreenLogo.hpp>
+#include <CScreen.hpp>
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
@@ -19,7 +19,7 @@ public:
     virtual void OnTransitionEnd();
 
 protected:
-    CScreenLogo screen = CScreenLogo(container);
+    CScreen screen = CScreen(container, true);
 
 private:
     touchgfx::Callback<SplashView, const touchgfx::AbstractButtonContainer&> buttonCallback;

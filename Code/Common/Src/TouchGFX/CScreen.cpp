@@ -33,7 +33,7 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-CScreen::CScreen(Container& ownerContainer)
+CScreen::CScreen(Container& ownerContainer, bool wLogo)
 {
 	frame.setPosition(ownerContainer);
 	ownerContainer.add(frame);
@@ -44,6 +44,19 @@ CScreen::CScreen(Container& ownerContainer)
 	clientBackground.setPosition(0, 0, client.getWidth(), client.getHeight());
 	clientBackground.setColor(Color::getColorFromRGB(0, 0, 0));
 	addToClient(clientBackground);
+
+	if(wLogo)
+	{
+		logo = new CImage();
+		logo->setBitmap(Bitmap(bitmap));
+		logo->setXY((client.getWidth() / 2) - (logo->getWidth() / 2), 0);
+		addToClient(*logo);
+	}
+}
+
+//-----------------------------------------------------------------------------
+void CScreen::setCallback(GenericCallback<const AbstractButtonContainer&>& callback)
+{
 }
 
 //-----------------------------------------------------------------------------

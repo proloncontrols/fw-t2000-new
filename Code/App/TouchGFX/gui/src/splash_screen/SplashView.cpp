@@ -3,6 +3,7 @@
 SplashView::SplashView()
            :buttonCallback(this, &SplashView::onButtonClick)
 {
+	screen.setCallback(buttonCallback);
 	screen.showFrame();
 }
 

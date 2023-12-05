@@ -38,33 +38,6 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-//void CImage::setBitmap(const Bitmap& bmp)
-//{
-//	TextureMapper::setBitmap(touchgfx::Bitmap(bmp));
-//
-//	if(dsp.orientation == CDisplay::LANDSCAPE)
-//	{
-//		setBitmapPosition(0.0f, 0.0f);
-//		setOrigo(90.0f, 90.0f, 1000.0f);
-//		setAngles(0.0f, 0.0f, 0.0f);
-//	}
-//	else
-//	{
-//	    Bitmap image = getBitmap();
-//	    float newBitmapX = (getWidth()/2 - image.getWidth()/2);
-//	    float newBitmapY = (getHeight()/2 - image.getHeight()/2);
-//	    setBitmapPosition(newBitmapX, newBitmapY);
-//	    setOrigo(getWidth()/2, getHeight()/2, 1000.0f);
-//	    setAngles(0.0f, 0.0f, -1.572f);
-//	}
-//
-//	setScale(1.0f);
-//	setCameraDistance(1000.0f);
-//	setCamera(getWidth()/2, getHeight()/2);
-//	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
-//}
-
-//-----------------------------------------------------------------------------
 void CImage::setXY(int16_t x, int16_t y)
 {
 	if(dsp.orientation == CDisplay::LANDSCAPE)
