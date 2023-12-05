@@ -33,40 +33,17 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-CScreen::CScreen(Container& ownerContainer, bool wLogo)
+CScreen::CScreen(Container& ownerContainer)
 {
 	frame.setPosition(ownerContainer);
 	ownerContainer.add(frame);
 
-	client.setPosition((NATIVE_WIDTH - CLIENT_SIZE) / 2, (NATIVE_HEIGHT - CLIENT_SIZE) / 2, CLIENT_SIZE, CLIENT_SIZE);
+	client.setPosition((ownerContainer.getWidth() - CLIENT_SIZE) / 2, (ownerContainer.getHeight() - CLIENT_SIZE) / 2, CLIENT_SIZE, CLIENT_SIZE);
 	ownerContainer.add(client);
 
-	clientBackground.setPosition(0, 0, CLIENT_SIZE, CLIENT_SIZE);
+	clientBackground.setPosition(0, 0, client.getWidth(), client.getHeight());
 	clientBackground.setColor(Color::getColorFromRGB(0, 0, 0));
-	add(clientBackground);
-
-
-
-
-//	owner = &ownerContainer;
-//
-//	ownerContainer.setPosition(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT);
-//	frame.setPosition(ownerContainer);
-//	owner->add(frame);
-//
-//	client.setPosition((NATIVE_WIDTH - CLIENT_SIZE) / 2, (NATIVE_HEIGHT - CLIENT_SIZE) / 2, CLIENT_SIZE, CLIENT_SIZE);
-//	clientBackground.setPosition(client);
-//	add(clientBackground);
-//	owner->add(client);
-
-//	setBackgroundColor(Color::getColorFromRGB(0, 0, 0));
-
-//	owner->add(frame);
-//	owner->add(client);
-
-//	logo.setBitmap(Bitmap(BITMAP_PROLON_178X178_ID));
-//	logo.setXY(0, 0);
-//	add(logo);
+	addToClient(clientBackground);
 }
 
 //-----------------------------------------------------------------------------
@@ -77,10 +54,31 @@ void CScreen::setBackgroundColor(colortype color)
 }
 
 //-----------------------------------------------------------------------------
-void CScreen::add(Drawable& d)
+void CScreen::addToClient(Drawable& d)
 {
+	int16_t newX;
+	int16_t newY;
+	int16_t newW;
+	int16_t newH;
+
 	client.add(d);
- 	dsp.setPosition(d);
+
+	if(dsp.orientation == CDisplay::LANDSCAPE)
+	{
+		newX = d.getParent()->getWidth() - d.getWidth() - d.getX() - 1;
+		newY = d.getParent()->getHeight() - d.getHeight() - d.getY() - 1;
+		newW = d.getWidth();
+		newH = d.getHeight();
+	}
+	else
+	{
+		newX = d.getParent()->getWidth() - d.getHeight() - 1;
+		newY = d.getX() + 1;
+		newW = d.getHeight();
+		newH = d.getWidth();
+	}
+
+	d.setPosition(newX, newY, newW, newH);
 }
 
 //-----------------------------------------------------------------------------
@@ -90,33 +88,3 @@ void CScreen::showFrame()
 }
 
 }   //namespace touchgfx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

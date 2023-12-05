@@ -10,16 +10,32 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CDisplay.cpp
+//         File : CScreenLogo.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Display parameters implementation file
+//  Description : Screen with company logo class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#define CDISPLAY_GLOBAL
-#include <CDisplay.hpp>
+#include <CScreenLogo.hpp>
+
+
+namespace touchgfx
+{
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+CScreenLogo::CScreenLogo(Container& ownerContainer)
+		    :CScreen(ownerContainer)
+{
+	logo.setBitmap(Bitmap(bitmap));
+	logo.setXY((client.getWidth() / 2) - (logo.getWidth() / 2), 0);
+	addToClient(logo);
+}
+
+}

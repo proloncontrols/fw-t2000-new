@@ -10,16 +10,84 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CDisplay.cpp
+//         File : CScreenLogo.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Display parameters implementation file
+//  Description : Screen with company logo class header file
 //=============================================================================
+#ifndef CSCREEN_LOGO_HPP
+#define CSCREEN_LOGO_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#define CDISPLAY_GLOBAL
-#include <CDisplay.hpp>
+#include <CScreen.hpp>
+#include <CImage.hpp>
+#include <touchgfx/Bitmap.hpp>
+#include <BitmapDatabase.hpp>
+
+
+namespace touchgfx
+{
+
+//=============================================================================
+//  D E F I N E S
+//-----------------------------------------------------------------------------
+#define LOGO_BITMAP   BITMAP_PROLON_178X178_ID
+
+
+//=============================================================================
+//  C L A S S E S
+//-----------------------------------------------------------------------------
+class CScreenLogo : public CScreen
+{
+public:
+	CScreenLogo(Container& ownerContainer);
+
+private:
+	static const BitmapId bitmap = LOGO_BITMAP;
+
+	CImage logo;
+};
+
+}   //namespace touchgfx
+
+
+#endif   //CSCREEN_LOGO_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

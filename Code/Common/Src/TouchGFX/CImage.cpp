@@ -87,6 +87,8 @@ void CImage::setXY(int16_t x, int16_t y)
 	setCameraDistance(1000.0f);
 	setCamera(getWidth()/2, getHeight()/2);
 	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+
+	TextureMapper::setXY(x, y);
 }
 
 }   //namespace touchgfx

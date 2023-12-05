@@ -23,12 +23,15 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <CImage.hpp>
 #include <touchgfx/Color.hpp>
 #include <touchgfx/Widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
-#include <CImage.hpp>
 
 
+//=============================================================================
+//  D I S P L A Y   C L I E N T   L A Y O U T
+//-----------------------------------------------------------------------------
 // Thermostat orientation (portrait)
 //
 //    Screen orientation (landscape)
@@ -70,48 +73,21 @@ namespace touchgfx
 class CScreen
 {
 public:
-	CScreen(Container& ownerContainer, bool wLogo);
+	CScreen(Container& ownerContainer);
+
 	void setBackgroundColor(colortype newColor);
-	void add(Drawable& d);
+	void addToClient(Drawable& d);
 	void showFrame();
 
-private:
-	Container* owner;
-	Box frame;
-
+protected:
 	Container client;
 	Box clientBackground;
 
-	CImage logo;
+private:
+	Box frame;
 };
 
 }   //namespace touchgfx
 
 
 #endif   //CSCREEN_HPP
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

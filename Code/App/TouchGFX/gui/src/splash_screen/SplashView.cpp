@@ -1,10 +1,4 @@
 #include <gui/splash_screen/SplashView.hpp>
-#include <CWidgets.hpp>
-#include <touchgfx/Color.hpp>
-
-#include <BitmapDatabase.hpp>
-#include <Meter/CMeter.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 
 SplashView::SplashView()
            :buttonCallback(this, &SplashView::onButtonClick)

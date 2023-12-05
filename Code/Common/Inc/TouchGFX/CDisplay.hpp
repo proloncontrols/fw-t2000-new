@@ -21,23 +21,29 @@
 
 
 //=============================================================================
-//  I N C L U D E S
+//  G L O B A L S
 //-----------------------------------------------------------------------------
-#include <touchgfx/hal/Types.hpp>
-#include <touchgfx/Widgets/Box.hpp>
+#ifndef CDISPLAY_GLOBAL
+#define CDISPLAY_EXTERN   extern
+#else
+#define CDISPLAY_EXTERN
+#endif
 
 
+//=============================================================================
+//  D I S P L A Y   N A T I V E   L A Y O U T
+//-----------------------------------------------------------------------------
 // Thermostat orientation (portrait)
 //
 //    Screen orientation (landscape)
 //    -------------------------------------   ---
+//    |(0,0)                              |    |
 //    |                                   |    |
 //    |                                   |    |
 //    |                                   |    |
 //    |                                   |    |
 //    |                                   |    |
-//    |                                   |    |
-//    |                                   |   672
+//    |              Display              |   672
 //    |                                   |    |
 //    |                                   |    |
 //    |                                   |    |
@@ -53,13 +59,6 @@ namespace touchgfx
 {
 
 //=============================================================================
-//  D E F I N E S
-//-----------------------------------------------------------------------------
-#define NATIVE_WIDTH    720
-#define NATIVE_HEIGHT   672
-
-
-//=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
 class CDisplay
@@ -69,20 +68,12 @@ public:
 		LANDSCAPE,   //Physical display is rotated 180° due to temperature/humidity sensor location
 		PORTRAIT     //Physical display is rotated 270° due to temperature/humidity sensor location
 	} orientation;
-
-	void setPosition(Drawable& d);
 };
 
 
 //=============================================================================
 //  G L O B A L   V A R I A B L E S
 //-----------------------------------------------------------------------------
-#ifndef CDISPLAY_GLOBAL
-#define CDISPLAY_EXTERN   extern
-#else
-#define CDISPLAY_EXTERN
-#endif
-
 CDISPLAY_EXTERN CDisplay dsp;
 
 }   //namespace touchgfx
