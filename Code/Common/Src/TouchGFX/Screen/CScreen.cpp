@@ -21,7 +21,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CScreen.hpp>
+#include <Screen/CScreen.hpp>
 #include <CDisplay.hpp>
 #include <touchgfx/Color.hpp>
 #include <BitmapDatabase.hpp>
@@ -31,7 +31,7 @@ namespace touchgfx
 {
 
 //=============================================================================
-//  M E T H O D S
+//  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
 CScreen::CScreen(Container& ownerContainer, bool wLogo)
 {
@@ -54,10 +54,14 @@ CScreen::CScreen(Container& ownerContainer, bool wLogo)
 	}
 }
 
+
+//=============================================================================
+//  M E T H O D S
 //-----------------------------------------------------------------------------
-void CScreen::setCallback(GenericCallback<const AbstractButtonContainer&>& callback)
-{
-}
+//void CScreen::setButtonClick(GenericCallback<const AbstractButtonContainer&>& callback)
+//{
+//	buttonCallback = &callback;
+//}
 
 //-----------------------------------------------------------------------------
 void CScreen::setBackgroundColor(colortype color)

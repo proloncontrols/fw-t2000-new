@@ -17,12 +17,3 @@ void SplashViewBase::setupScreen()
 {
 
 }
-
-//Called when the screen transition ends
-void SplashViewBase::afterTransition()
-{
-    //TransitionEnd
-    //When screen transition ends call virtual function
-    //Call OnTransitionEnd
-    OnTransitionEnd();
-}

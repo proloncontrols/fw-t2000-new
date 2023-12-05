@@ -1,6 +1,6 @@
 #include <gui/menumain_screen/MenuMainView.hpp>
 #include <touchgfx/Color.hpp>
-#include <CScreen.hpp>
+#include <Screen/CScreen.hpp>
 
 MenuMainView::MenuMainView()
              :menuButtonCallback(this, &MenuMainView::onMenuButtonClick)

@@ -29,8 +29,8 @@
 #include <touchgfx/Bitmap.hpp>
 #include <touchgfx/Color.hpp>
 #include <touchgfx/Widgets/Box.hpp>
-#include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 #include <touchgfx/Containers/Container.hpp>
+#include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 
 
 //=============================================================================
@@ -82,16 +82,15 @@ class CScreen
 public:
 	CScreen(Container& ownerContainer, bool wLogo);
 
+//	void setButtonClick(GenericCallback<const AbstractButtonContainer&>& callback);
 	void setBackgroundColor(colortype newColor);
 	void addToClient(Drawable& d);
-	void setCallback(GenericCallback<const AbstractButtonContainer&>& callback);
 	void showFrame();
 
 protected:
 	Container client;
 	Box clientBackground;
-//	GenericCallback<const AbstractButtonContainer&>& buttonCallback;
-	const AbstractButtonContainer& buttonCallback;
+	GenericCallback<const AbstractButtonContainer&>* buttonCallback = NULL;
 
 private:
 	static const BitmapId bitmap = LOGO_BITMAP;

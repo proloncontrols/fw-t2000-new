@@ -6,9 +6,7 @@
 #include <touchgfx/Containers/Container.hpp>
 #include <CImage.hpp>
 #include <CButton.hpp>
-#include <Meter/CMeterInt.hpp>
-#include <Meter/CMeterExt.hpp>
-#include <Meter/CMeterHum.hpp>
+#include <Screen/CScreenHome.hpp>
 
 class HomeView : public HomeViewBase
 {
@@ -19,21 +17,12 @@ public:
     virtual void tearDownScreen();
 
 protected:
-    Container container;
-    touchgfx::Box background;
-    CImage logo;
-    CImage statusImage;
-    CImage statusIcon;
-    CImage occupency;
-    CButton settings;
-    CButton setpoints;
-    CMeterInt meterInt;
-    CMeterExt meterExt;
-    CMeterHum meterHum;
+//    CScreenHome screen = CScreenHome(container);
+    CScreenHome* screen;
 
 private:
-    touchgfx::Callback<HomeView, const touchgfx::AbstractButtonContainer&> menuButtonCallback;
-    void onMenuButtonClick(const touchgfx::AbstractButtonContainer& src);
+    touchgfx::Callback<HomeView, const touchgfx::AbstractButtonContainer&> buttonCallback;
+    void onButtonClick(const touchgfx::AbstractButtonContainer& src);
 };
 
 #endif // HOMEVIEW_HPP

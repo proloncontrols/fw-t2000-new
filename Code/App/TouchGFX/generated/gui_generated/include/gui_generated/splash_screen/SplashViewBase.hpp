@@ -15,15 +15,6 @@ public:
     SplashViewBase();
     virtual ~SplashViewBase() {}
     virtual void setupScreen();
-    virtual void afterTransition();
-
-    /*
-     * Virtual Action Handlers
-     */
-    virtual void OnTransitionEnd()
-    {
-        // Override and implement this function in Splash
-    }
 
 protected:
     FrontendApplication& application() {

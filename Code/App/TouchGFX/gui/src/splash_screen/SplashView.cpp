@@ -3,8 +3,8 @@
 SplashView::SplashView()
            :buttonCallback(this, &SplashView::onButtonClick)
 {
-	screen.setCallback(buttonCallback);
-	screen.showFrame();
+//	screen.showFrame();
+	screen = new CScreen(container, true);
 }
 
 void SplashView::setupScreen()
@@ -17,11 +17,6 @@ void SplashView::tearDownScreen()
     SplashViewBase::tearDownScreen();
 }
 
-void SplashView::OnTransitionEnd()
-{
-}
-
 void SplashView::onButtonClick(const touchgfx::AbstractButtonContainer& src)
 {
-
 }

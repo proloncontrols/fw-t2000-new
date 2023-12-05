@@ -3,37 +3,8 @@
     "Screens": [
       {
         "Name": "Splash",
-        "Components": [
-          {
-            "Type": "TextureMapper",
-            "Name": "textureMapper1",
-            "Width": 182,
-            "Height": 180,
-            "RenderingAlgorithm": "Nearest-neighbor",
-            "FileNameImage": "Prolon_178x178.png",
-            "LockBitmapToCenter": true,
-            "XBitmapPosition": 2.0,
-            "YBitmapPosition": 1.0,
-            "ZAngle": 1.565,
-            "Scale": 1.0,
-            "XOrigo": 90.0,
-            "YOrigo": 90.0,
-            "ZOrigo": 1000.0,
-            "CameraDistance": 1000.0
-          }
-        ],
-        "Interactions": [
-          {
-            "InteractionName": "TransitionEnd",
-            "Trigger": {
-              "Type": "TriggerScreenEntered"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "OnTransitionEnd"
-            }
-          }
-        ]
+        "Components": [],
+        "Interactions": []
       },
       {
         "Name": "MenuMain",
@@ -53,7 +24,7 @@
       "Height": 672
     },
     "SelectedColorDepth": 32,
-    "StartupScreenName": "Splash",
+    "StartupScreenName": "Home",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
