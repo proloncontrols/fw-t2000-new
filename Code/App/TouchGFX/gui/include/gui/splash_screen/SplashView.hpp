@@ -6,8 +6,6 @@
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 
-
-
 class SplashView : public SplashViewBase
 {
 public:
@@ -17,7 +15,6 @@ public:
     virtual void tearDownScreen();
 
 protected:
-//    CScreen screen = CScreen(container, true);
     CScreen* screen;
 
 private:

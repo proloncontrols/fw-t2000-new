@@ -25,23 +25,13 @@
 //-----------------------------------------------------------------------------
 #include <stddef.h>
 #include <Screen/CScreen.hpp>
-#include <CImage.hpp>
-#include <CButton.hpp>
-#include <BitmapDatabase.hpp>
-#include <touchgfx/Bitmap.hpp>
-#include <touchgfx/Color.hpp>
-#include <touchgfx/Widgets/Box.hpp>
-#include <touchgfx/Containers/Container.hpp>
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
+#include <CButton.hpp>
+#include <CImage.hpp>
 
 
 namespace touchgfx
 {
-
-//=============================================================================
-//  D E F I N E S
-//-----------------------------------------------------------------------------
-
 
 //=============================================================================
 //  C L A S S E S
@@ -49,12 +39,25 @@ namespace touchgfx
 class CScreenHome : public CScreen
 {
 public:
+	enum Buttons {
+		BUTTON_SETTINGS,
+		BUTTON_SETPOINTS
+	};
+
 	CScreenHome(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback);
 
 protected:
+	CButton buttonSettings;
 	CButton buttonSetPoints;
+	CImage imageCooling;
 
 private:
+	static const int16_t buttonSetPointsSize = 200;
+
+	static const int16_t buttonSettingsImageReleasedId = BITMAP_SETTING_ID;
+	static const int16_t buttonSettingsImagePressedId  = BITMAP_SETTING_DARK2_ID;
+
+	static const int16_t imageCoolingId = BITMAP_COOLINGON_ID;
 };
 
 }   //namespace touchgfx

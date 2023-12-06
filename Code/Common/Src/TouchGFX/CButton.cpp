@@ -46,15 +46,15 @@ void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap relea
 	Container::setXY(x, y);
 	Container::setWidth(image.getWidth());
 	if(touchHeight != 0)
-		Container::setHeight(touchHeight);         //Touch area is the image visible area (rectangle)
+		Container::setHeight(touchHeight);         //Touch area is the image visible area only (rectangle)
 	else
 		Container::setHeight(image.getHeight());   //Touch area is the entire image area, visible and not visible (square)
 
 	imgReleased = new CImage;
 	imgReleased->setBitmap(image);
 	imgReleased->setXY(0, 0);
-	imgReleased->setWidth(image.getWidth());
-	imgReleased->setHeight(image.getHeight());
+//	imgReleased->setWidth(image.getWidth());
+//	imgReleased->setHeight(image.getHeight());
 	imgReleased->setVisible(true);
 	add(*imgReleased);
 
@@ -62,8 +62,8 @@ void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap relea
 	imgPressed = new CImage;
 	imgPressed->setBitmap(image);
 	imgPressed->setXY(0, 0);
-	imgPressed->setWidth(image.getWidth());
-	imgPressed->setHeight(image.getHeight());
+//	imgPressed->setWidth(image.getWidth());
+//	imgPressed->setHeight(image.getHeight());
 	imgPressed->setVisible(false);
 	add(*imgPressed);
 }

@@ -3,8 +3,8 @@
 SplashView::SplashView()
            :buttonCallback(this, &SplashView::onButtonClick)
 {
-//	screen.showFrame();
 	screen = new CScreen(container, true);
+	screen->showFrame();
 }
 
 void SplashView::setupScreen()

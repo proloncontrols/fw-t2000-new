@@ -22,6 +22,7 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <Screen/CScreenHome.hpp>
+#include <BitmapDatabase.hpp>
 
 
 namespace touchgfx
@@ -33,11 +34,19 @@ namespace touchgfx
 CScreenHome::CScreenHome(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback)
             :CScreen(ownerContainer, true)
 {
-//	buttonSetPoints.setAction(*buttonCallback);
-	buttonCallback = &callback;
+	imageCooling.setBitmap(imageCoolingId);
+	imageCooling.setXY(client.getWidth()/2 - imageCooling.getWidth()/2, 50);
+	addToClient(imageCooling);
 
-	buttonSetPoints.initialize(client.getX(), client.getY(), client.getWidth(), client.getHeight());
-	buttonSetPoints.setAction(*buttonCallback);
+	buttonSettings.initialize(client.getWidth() - Bitmap(buttonSettingsImageReleasedId).getWidth(), 0, 0, buttonSettingsImageReleasedId, buttonSettingsImagePressedId);
+	buttonSettings.setData(CScreenHome::BUTTON_SETTINGS);
+	buttonSettings.setAction(callback);
+	addToClient(buttonSettings);
+
+	buttonSetPoints.initialize(client.getWidth()/2 - buttonSetPointsSize/2, client.getHeight()/2 - buttonSetPointsSize/2, buttonSetPointsSize, buttonSetPointsSize);
+	buttonSetPoints.setData(CScreenHome::BUTTON_SETPOINTS);
+	buttonSetPoints.setAction(callback);
+	addToClient(buttonSetPoints);
 }
 
 }   //namespace touchgfx

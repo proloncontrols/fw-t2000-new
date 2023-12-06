@@ -3,9 +3,6 @@
 
 #include <gui_generated/home_screen/HomeViewBase.hpp>
 #include <gui/home_screen/HomePresenter.hpp>
-#include <touchgfx/Containers/Container.hpp>
-#include <CImage.hpp>
-#include <CButton.hpp>
 #include <Screen/CScreenHome.hpp>
 
 class HomeView : public HomeViewBase
@@ -17,7 +14,6 @@ public:
     virtual void tearDownScreen();
 
 protected:
-//    CScreenHome screen = CScreenHome(container);
     CScreenHome* screen;
 
 private:

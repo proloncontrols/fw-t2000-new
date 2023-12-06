@@ -31,8 +31,8 @@ namespace touchgfx
 //=============================================================================
 //  D E F I N E S
 //-----------------------------------------------------------------------------
-#define ANGLE_Z_ORIENTATION_LANDSCAPE   -3.142f
-#define ANGLE_Z_ORIENTATION_PORTRAIT     1.565f
+#define Z_ANGLE_LANDSCAPE   -3.142f
+#define Z_ANGLE_PORTRAIT     1.565f
 
 
 //=============================================================================
@@ -40,23 +40,36 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 void CImage::setXY(int16_t x, int16_t y)
 {
+//	if(dsp.orientation == CDisplay::LANDSCAPE)
+//	{
+//		setBitmapPosition(0.0f, 0.0f);
+//	    setAngles(0.0f, 0.0f, Z_ANGLE_LANDSCAPE);
+//	}
+//	else
+//	{
+//	    Bitmap image = getBitmap();
+//	    float newBitmapX = (float)((getWidth()/2 - image.getWidth()/2));
+//	    float newBitmapY = (float)((getHeight()/2 - image.getHeight()/2));
+//	    setBitmapPosition(newBitmapX, newBitmapY);
+//	    setAngles(0.0f, 0.0f, Z_ANGLE_PORTRAIT);
+//	}
+//
+//	setScale(1.0f);
+//    setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
+//	setCameraDistance(1000.0f);
+//	setCamera(getWidth()/2, getHeight()/2);
+//	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+//
+//	TextureMapper::setXY(x, y);
+
 	if(dsp.orientation == CDisplay::LANDSCAPE)
-	{
-		setBitmapPosition(1.0f, 1.0f);
-		setOrigo(90.0f, 90.0f, 1000.0f);
-	    setAngles(0.0f, 0.0f, ANGLE_Z_ORIENTATION_LANDSCAPE);
-	}
+	    setAngles(0.0f, 0.0f, Z_ANGLE_LANDSCAPE);
 	else
-	{
-	    Bitmap image = getBitmap();
-	    float newBitmapX = ((getWidth()/2 - image.getWidth()/2) + 1);
-	    float newBitmapY = ((getHeight()/2 - image.getHeight()/2) + 1);
-	    setBitmapPosition(newBitmapX, newBitmapY);
-	    setOrigo(getWidth()/2, getHeight()/2, 1000.0f);
-	    setAngles(0.0f, 0.0f, ANGLE_Z_ORIENTATION_PORTRAIT);
-	}
+	    setAngles(0.0f, 0.0f, Z_ANGLE_PORTRAIT);
 
 	setScale(1.0f);
+	setBitmapPosition(0.0f, 0.0f);
+    setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
 	setCameraDistance(1000.0f);
 	setCamera(getWidth()/2, getHeight()/2);
 	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);

@@ -30,11 +30,11 @@
 #include <touchgfx/Color.hpp>
 #include <touchgfx/Widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
-#include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
+//#include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 
 
 //=============================================================================
-//  D I S P L A Y   C L I E N T   L A Y O U T
+//  C L I E N T   D I S P L A Y   L A Y O U T
 //-----------------------------------------------------------------------------
 // Thermostat orientation (portrait)
 //
@@ -63,18 +63,6 @@ namespace touchgfx
 {
 
 //=============================================================================
-//  D E F I N E S
-//-----------------------------------------------------------------------------
-#define CLIENT_SIZE     648   //Client area is square
-
-#define FRAME_COLOR_R   35
-#define FRAME_COLOR_G   35
-#define FRAME_COLOR_B   35
-
-#define LOGO_BITMAP     BITMAP_PROLON_178X178_ID
-
-
-//=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
 class CScreen
@@ -82,7 +70,6 @@ class CScreen
 public:
 	CScreen(Container& ownerContainer, bool wLogo);
 
-//	void setButtonClick(GenericCallback<const AbstractButtonContainer&>& callback);
 	void setBackgroundColor(colortype newColor);
 	void addToClient(Drawable& d);
 	void showFrame();
@@ -90,10 +77,17 @@ public:
 protected:
 	Container client;
 	Box clientBackground;
-	GenericCallback<const AbstractButtonContainer&>* buttonCallback = NULL;
+//	GenericCallback<const AbstractButtonContainer&>* buttonCallback = NULL;
 
 private:
-	static const BitmapId bitmap = LOGO_BITMAP;
+	static const int16_t clientWidth  = 648;
+	static const int16_t clientHeight = 648;
+
+	static const uint8_t frameColorR = 35;
+	static const uint8_t frameColorG = 35;
+	static const uint8_t frameColorB = 35;
+
+	static const BitmapId bitmap = BITMAP_PROLON_178X178_ID;
 
 	Box frame;
 	CImage* logo = NULL;

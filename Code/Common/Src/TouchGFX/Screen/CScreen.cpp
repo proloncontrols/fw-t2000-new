@@ -38,7 +38,7 @@ CScreen::CScreen(Container& ownerContainer, bool wLogo)
 	frame.setPosition(ownerContainer);
 	ownerContainer.add(frame);
 
-	client.setPosition((ownerContainer.getWidth() - CLIENT_SIZE) / 2, (ownerContainer.getHeight() - CLIENT_SIZE) / 2, CLIENT_SIZE, CLIENT_SIZE);
+	client.setPosition((ownerContainer.getWidth() - clientWidth) / 2, (ownerContainer.getHeight() - clientHeight) / 2, clientWidth, clientHeight);
 	ownerContainer.add(client);
 
 	clientBackground.setPosition(0, 0, client.getWidth(), client.getHeight());
@@ -58,12 +58,6 @@ CScreen::CScreen(Container& ownerContainer, bool wLogo)
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-//void CScreen::setButtonClick(GenericCallback<const AbstractButtonContainer&>& callback)
-//{
-//	buttonCallback = &callback;
-//}
-
-//-----------------------------------------------------------------------------
 void CScreen::setBackgroundColor(colortype color)
 {
 	frame.setColor(color);
@@ -82,15 +76,19 @@ void CScreen::addToClient(Drawable& d)
 
 	if(dsp.orientation == CDisplay::LANDSCAPE)
 	{
-		newX = d.getParent()->getWidth() - d.getWidth() - d.getX() - 1;
-		newY = d.getParent()->getHeight() - d.getHeight() - d.getY() - 1;
+		newX = d.getParent()->getWidth() - d.getWidth() - d.getX(); // - 1;
+		newY = d.getParent()->getHeight() - d.getHeight() - d.getY(); // - 1;
 		newW = d.getWidth();
 		newH = d.getHeight();
 	}
 	else
 	{
-		newX = d.getParent()->getWidth() - d.getHeight() - 1;
-		newY = d.getX() + 1;
+//		newX = d.getParent()->getWidth() - d.getHeight(); // - 1;
+//		newY = d.getX(); // + 1;
+//		newW = d.getHeight();
+//		newH = d.getWidth();
+		newX = d.getParent()->getHeight() - d.getHeight() - d.getY(); // - 1;
+		newY = d.getParent()->getWidth() - d.getWidth() - d.getX(); // + 1;
 		newW = d.getHeight();
 		newH = d.getWidth();
 	}
@@ -101,7 +99,7 @@ void CScreen::addToClient(Drawable& d)
 //-----------------------------------------------------------------------------
 void CScreen::showFrame()
 {
-	frame.setColor(Color::getColorFromRGB(FRAME_COLOR_R, FRAME_COLOR_G, FRAME_COLOR_B));
+	frame.setColor(Color::getColorFromRGB(frameColorR, frameColorG, frameColorB));
 }
 
 }   //namespace touchgfx
