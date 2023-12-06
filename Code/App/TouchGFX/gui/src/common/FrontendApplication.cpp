@@ -14,10 +14,10 @@ FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
 	if(CFG.Dta.ScrOrientation == CfgScrOrientP)   //<-- T2000 orientation, not the display
 		dsp.orientation = CDisplay::LANDSCAPE;
 	else
-//	{
+	{
 		dsp.orientation = CDisplay::PORTRAIT;
-//	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
-//	}
+	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
+	}
 }
 
 void FrontendApplication::handleTickEvent()

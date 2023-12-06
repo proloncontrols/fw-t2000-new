@@ -47,7 +47,7 @@ protected:
 
 	static const uint8_t intPrecision = 3;   //Up to 3 digits integer "0" to "100" %
 
-	static const uint8_t intCharSpacingRation = 15;
+	static const uint8_t intCharSpacingRatio = 15;
 
 	static const TypedTextId intText  = T_METER_MEDIUM_DIGITS;
 	static const TypedTextId unitText = T_METER_TINY_UNIT_P;

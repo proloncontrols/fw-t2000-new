@@ -32,8 +32,8 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 CMeterInt::CMeterInt()
 {
-	addInteger(intPrecision, intCharSpacingRation, touchgfx::TypedText(intText), colorR, colorG, colorB);
-	addDecimal(decPrecision, decCharSpacingRation, touchgfx::TypedText(decText), colorR, colorG, colorB);
+	addInteger(intPrecision, intCharSpacingRatio, touchgfx::TypedText(intText), colorR, colorG, colorB);
+	addDecimal(decPrecision, decCharSpacingRatio, touchgfx::TypedText(decText), colorR, colorG, colorB);
 	addUnit(unitCText, unitFText, colorR, colorG, colorB);
 	addDot(dotText, colorR, colorG, colorB);
 

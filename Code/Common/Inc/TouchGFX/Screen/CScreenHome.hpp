@@ -28,7 +28,7 @@
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 #include <CButton.hpp>
 #include <CImage.hpp>
-#include <CText.hpp>
+#include <Meter/CMeterInt.hpp>
 
 
 namespace touchgfx
@@ -51,7 +51,7 @@ protected:
 	CButton buttonSettings;
 	CButton buttonSetPoints;
 	CImage imageCooling;
-	CText txt = CText(16);
+	CMeterInt meterInt;
 
 private:
 	static const int16_t buttonSetPointsSize = 200;

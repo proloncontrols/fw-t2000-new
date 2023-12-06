@@ -50,11 +50,9 @@ CScreenHome::CScreenHome(Container& ownerContainer, GenericCallback<const Abstra
 	buttonSetPoints.setAction(callback);
 	addToClient(buttonSetPoints);
 
-	txt.setXY(24, 30);
-	txt.setTypedText(T_MENU_BUTTON);
-	txt.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-	txt.setText((char*)"TestString...");
-	addToClient(txt);
+	meterInt.setXY(0, 0);
+	meterInt.display(21.5, true);
+	addToClient(meterInt);
 }
 
 }   //namespace touchgfx

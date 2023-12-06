@@ -4,7 +4,6 @@
 #include <Screen/CScreen.hpp>
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
-#include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -16,10 +15,6 @@ public:
 
 protected:
     CScreen* screen;
-
-private:
-    touchgfx::Callback<SplashView, const touchgfx::AbstractButtonContainer&> buttonCallback;
-    void onButtonClick(const touchgfx::AbstractButtonContainer& src);
 };
 
 #endif // SPLASHVIEW_HPP

@@ -25,6 +25,7 @@
 #include <CDisplay.hpp>
 #include <touchgfx/Color.hpp>
 #include <BitmapDatabase.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -67,27 +68,12 @@ void CScreen::setBackgroundColor(colortype color)
 //-----------------------------------------------------------------------------
 void CScreen::addToClient(Drawable& d)
 {
-	int16_t newX;
-	int16_t newY;
-	int16_t newW;
-	int16_t newH;
-
 	client.add(d);
 
-	if(dsp.orientation == CDisplay::LANDSCAPE)
-	{
-		newX = d.getParent()->getWidth() - d.getWidth() - d.getX();
-		newY = d.getParent()->getHeight() - d.getHeight() - d.getY();
-		newW = d.getWidth();
-		newH = d.getHeight();
-	}
-	else
-	{
-		newX = d.getParent()->getHeight() - d.getHeight() - d.getY();
-		newY = d.getParent()->getWidth() - d.getWidth() - d.getX();
-		newW = d.getHeight();
-		newH = d.getWidth();
-	}
+	int16_t newX = d.getParent()->getWidth() - d.getWidth() - d.getX();
+	int16_t newY = d.getParent()->getHeight() - d.getHeight() - d.getY();
+	int16_t newW = d.getWidth();
+	int16_t newH = d.getHeight();
 
 	d.setPosition(newX, newY, newW, newH);
 }
@@ -99,3 +85,26 @@ void CScreen::showFrame()
 }
 
 }   //namespace touchgfx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
