@@ -10,51 +10,45 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CScreenHome.cpp
+//         File : CText.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Home screen class implementation file
+//  Description : Text class header file
 //=============================================================================
+#ifndef CTEXT_HPP
+#define CTEXT_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Screen/CScreenHome.hpp>
-#include <BitmapDatabase.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
-#include <touchgfx/Color.hpp>
+#include <stddef.h>
+#include <touchgfx/TypedText.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C O N S T R U C T I O N
+//  C L A S S E S
 //-----------------------------------------------------------------------------
-CScreenHome::CScreenHome(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback)
-            :CScreen(ownerContainer, true)
+class CText : public TextAreaWithOneWildcard
 {
-	imageCooling.setBitmap(imageCoolingId);
-	imageCooling.setXY(client.getWidth()/2 - imageCooling.getWidth()/2, 50);
-	addToClient(imageCooling);
+public:
+	CText(int initialLength);
 
-	buttonSettings.initialize(client.getWidth() - Bitmap(buttonSettingsImageReleasedId).getWidth(), 0, 0, buttonSettingsImageReleasedId, buttonSettingsImagePressedId);
-	buttonSettings.setData(CScreenHome::BUTTON_SETTINGS);
-	buttonSettings.setAction(callback);
-	addToClient(buttonSettings);
+	void setXY(int16_t x, int16_t y);
+	void setText(const char* newText);
+	void setLength(int newLength);
 
-	buttonSetPoints.initialize(client.getWidth()/2 - buttonSetPointsSize/2, client.getHeight()/2 - buttonSetPointsSize/2, buttonSetPointsSize, buttonSetPointsSize);
-	buttonSetPoints.setData(CScreenHome::BUTTON_SETPOINTS);
-	buttonSetPoints.setAction(callback);
-	addToClient(buttonSetPoints);
-
-	txt.setXY(24, 30);
-	txt.setTypedText(T_MENU_BUTTON);
-	txt.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-	txt.setText((char*)"TestString...");
-	addToClient(txt);
-}
+private:
+	int curLength = 0;
+	Unicode::UnicodeChar* buffer = NULL;
+};
 
 }   //namespace touchgfx
+
+
+#endif   //CTEXT_HPP

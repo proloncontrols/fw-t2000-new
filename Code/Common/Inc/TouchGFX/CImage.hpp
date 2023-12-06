@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Custom image widget class header file
+//  Description : Cmage widget class header file
 //=============================================================================
 #ifndef CIMAGE_HPP
 #define CIMAGE_HPP

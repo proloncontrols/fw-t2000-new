@@ -76,19 +76,15 @@ void CScreen::addToClient(Drawable& d)
 
 	if(dsp.orientation == CDisplay::LANDSCAPE)
 	{
-		newX = d.getParent()->getWidth() - d.getWidth() - d.getX(); // - 1;
-		newY = d.getParent()->getHeight() - d.getHeight() - d.getY(); // - 1;
+		newX = d.getParent()->getWidth() - d.getWidth() - d.getX();
+		newY = d.getParent()->getHeight() - d.getHeight() - d.getY();
 		newW = d.getWidth();
 		newH = d.getHeight();
 	}
 	else
 	{
-//		newX = d.getParent()->getWidth() - d.getHeight(); // - 1;
-//		newY = d.getX(); // + 1;
-//		newW = d.getHeight();
-//		newH = d.getWidth();
-		newX = d.getParent()->getHeight() - d.getHeight() - d.getY(); // - 1;
-		newY = d.getParent()->getWidth() - d.getWidth() - d.getX(); // + 1;
+		newX = d.getParent()->getHeight() - d.getHeight() - d.getY();
+		newY = d.getParent()->getWidth() - d.getWidth() - d.getX();
 		newW = d.getHeight();
 		newH = d.getWidth();
 	}

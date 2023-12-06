@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Button base class implementation file
+//  Description : Button class implementation file
 //=============================================================================
 
 
@@ -53,8 +53,6 @@ void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap relea
 	imgReleased = new CImage;
 	imgReleased->setBitmap(image);
 	imgReleased->setXY(0, 0);
-//	imgReleased->setWidth(image.getWidth());
-//	imgReleased->setHeight(image.getHeight());
 	imgReleased->setVisible(true);
 	add(*imgReleased);
 
@@ -62,8 +60,6 @@ void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap relea
 	imgPressed = new CImage;
 	imgPressed->setBitmap(image);
 	imgPressed->setXY(0, 0);
-//	imgPressed->setWidth(image.getWidth());
-//	imgPressed->setHeight(image.getHeight());
 	imgPressed->setVisible(false);
 	add(*imgPressed);
 }

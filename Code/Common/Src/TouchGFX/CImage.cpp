@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Custom image class implementation file
+//  Description : Cmage class implementation file
 //=============================================================================
 
 
@@ -40,28 +40,6 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 void CImage::setXY(int16_t x, int16_t y)
 {
-//	if(dsp.orientation == CDisplay::LANDSCAPE)
-//	{
-//		setBitmapPosition(0.0f, 0.0f);
-//	    setAngles(0.0f, 0.0f, Z_ANGLE_LANDSCAPE);
-//	}
-//	else
-//	{
-//	    Bitmap image = getBitmap();
-//	    float newBitmapX = (float)((getWidth()/2 - image.getWidth()/2));
-//	    float newBitmapY = (float)((getHeight()/2 - image.getHeight()/2));
-//	    setBitmapPosition(newBitmapX, newBitmapY);
-//	    setAngles(0.0f, 0.0f, Z_ANGLE_PORTRAIT);
-//	}
-//
-//	setScale(1.0f);
-//    setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
-//	setCameraDistance(1000.0f);
-//	setCamera(getWidth()/2, getHeight()/2);
-//	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
-//
-//	TextureMapper::setXY(x, y);
-
 	if(dsp.orientation == CDisplay::LANDSCAPE)
 	    setAngles(0.0f, 0.0f, Z_ANGLE_LANDSCAPE);
 	else
@@ -78,35 +56,3 @@ void CImage::setXY(int16_t x, int16_t y)
 }
 
 }   //namespace touchgfx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

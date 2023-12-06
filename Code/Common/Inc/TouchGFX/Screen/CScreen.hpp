@@ -30,7 +30,6 @@
 #include <touchgfx/Color.hpp>
 #include <touchgfx/Widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
-//#include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 
 
 //=============================================================================
@@ -77,7 +76,6 @@ public:
 protected:
 	Container client;
 	Box clientBackground;
-//	GenericCallback<const AbstractButtonContainer&>* buttonCallback = NULL;
 
 private:
 	static const int16_t clientWidth  = 648;

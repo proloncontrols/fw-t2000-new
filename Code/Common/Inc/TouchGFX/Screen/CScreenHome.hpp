@@ -28,6 +28,7 @@
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 #include <CButton.hpp>
 #include <CImage.hpp>
+#include <CText.hpp>
 
 
 namespace touchgfx
@@ -50,6 +51,7 @@ protected:
 	CButton buttonSettings;
 	CButton buttonSetPoints;
 	CImage imageCooling;
+	CText txt = CText(16);
 
 private:
 	static const int16_t buttonSetPointsSize = 200;
