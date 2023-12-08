@@ -69,6 +69,7 @@ class CDisplay
 {
 public:
 	enum Orientation {
+		NATIVE,      //Physical display is set to native orientation (0°) used for development/testing pusposes
 		LANDSCAPE,   //Physical display is rotated 180° due to temperature/humidity sensor location
 		PORTRAIT     //Physical display is rotated 270° due to temperature/humidity sensor location
 	} orientation;

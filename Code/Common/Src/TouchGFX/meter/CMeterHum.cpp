@@ -54,7 +54,7 @@ void CMeterHum::display(double value)
 
 	integer->display(intValue);
 	integer->setXY(0, 0);
-	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
+//	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
 
 //	image->setXY(integer->getWidth(), Container::getHeight() - image->getHeight());
 //	image->setBitmap(touchgfx::Bitmap(imageId));

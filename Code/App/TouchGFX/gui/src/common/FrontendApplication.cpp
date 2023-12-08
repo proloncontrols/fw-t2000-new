@@ -11,13 +11,14 @@ FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
       transitionCallback()
 
 {
-	if(CFG.Dta.ScrOrientation == CfgScrOrientP)   //<-- T2000 orientation, not the display
-		dsp.orientation = CDisplay::LANDSCAPE;
-	else
-	{
-		dsp.orientation = CDisplay::PORTRAIT;
-	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
-	}
+	dsp.orientation = CDisplay::NATIVE;  //Testing
+//	if(CFG.Dta.ScrOrientation == CfgScrOrientP)   //<-- T2000 orientation, not the display
+//		dsp.orientation = CDisplay::LANDSCAPE;
+//	else
+//	{
+//		dsp.orientation = CDisplay::PORTRAIT;
+//	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
+//	}
 }
 
 void FrontendApplication::handleTickEvent()

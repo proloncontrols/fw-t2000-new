@@ -87,16 +87,16 @@ protected:
 		Box back;
 	};
 
-	CMeterValue* integer;
-	CMeterValue* decimal;
+	CMeterValue* integer = NULL;
+	CMeterValue* decimal = NULL;
 //	TextArea* dot;
 //	TextArea* unit;
-	CText* dot;
-	CText* unit;
+	CText* dot = NULL;
+	CText* unit = NULL;
 	TypedText unitTempC;
 	TypedText unitTempF;
 	TypedText unitTempP;
-	CImage* image;
+	CImage* image = NULL;
 
 private:
 	touchgfx::Box background;

@@ -49,9 +49,9 @@ protected:
 
 	static const uint8_t intCharSpacingRatio = 15;
 
-	static const TypedTextId intText   = T_METER_MEDIUM_DIGITS;
-	static const TypedTextId unitCText = T_METER_TINY_UNIT_C;
-	static const TypedTextId unitFText = T_METER_TINY_UNIT_F;
+	static const TypedTextId intText   = T_METER_MEDIUM;
+	static const TypedTextId unitCText = T_METER_TINY;
+	static const TypedTextId unitFText = T_METER_TINY;
 
 //	static const uint16_t imageId = BITMAP_OUTSIDE_24X24_ID;
 };

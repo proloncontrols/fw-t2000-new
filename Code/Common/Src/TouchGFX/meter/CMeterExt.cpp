@@ -55,11 +55,11 @@ void CMeterExt::display(double value, bool celsius)
 	integer->display(intValue);
 	integer->setXY(0, 0);
 
-	if(celsius)
-		unit->setTypedText(touchgfx::TypedText(unitTempC));
-	else
-		unit->setTypedText(touchgfx::TypedText(unitTempF));
-	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
+//	if(celsius)
+//		unit->setTypedText(touchgfx::TypedText(unitTempC));
+//	else
+//		unit->setTypedText(touchgfx::TypedText(unitTempF));
+//	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
 
 //	image->setXY(integer->getWidth(), Container::getHeight() - image->getHeight());
 //	image->setBitmap(touchgfx::Bitmap(imageId));
