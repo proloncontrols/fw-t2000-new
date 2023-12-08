@@ -25,6 +25,7 @@
 #include <string.h>
 #include <CButton.hpp>
 #include <touchgfx/Color.hpp>
+#include <CDisplay.hpp>
 
 
 namespace touchgfx
@@ -32,6 +33,16 @@ namespace touchgfx
 
 //=============================================================================
 //  M E T H O D S
+//-----------------------------------------------------------------------------
+void CButton::addTo(Container& c)
+{
+	dsp.add(c, *this);
+	dsp.add(*this, *imgReleased);
+	dsp.add(*this, *imgPressed);
+	if(text)
+		dsp.add(*this, *text);
+}
+
 //-----------------------------------------------------------------------------
 void CButton::initialize(int16_t x, int16_t y, int16_t width, int16_t height)
 {
@@ -54,14 +65,14 @@ void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap relea
 	imgReleased->setBitmap(image);
 	imgReleased->setXY(0, 0);
 	imgReleased->setVisible(true);
-	add(*imgReleased);
+//	add(*imgReleased);
 
 	image = touchgfx::Bitmap(pressed);
 	imgPressed = new CImage;
 	imgPressed->setBitmap(image);
 	imgPressed->setXY(0, 0);
 	imgPressed->setVisible(false);
-	add(*imgPressed);
+//	add(*imgPressed);
 }
 
 //-----------------------------------------------------------------------------
@@ -75,7 +86,7 @@ void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap relea
 	text->setWildcard(textBuffer);
 	text->setTypedText(textType);
 	text->setColor(textReleased);
-	add(*text);
+//	add(*text);
 
 	textColorReleased = textReleased;
 	textColorPressed = textPressed;

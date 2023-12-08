@@ -23,3 +23,24 @@
 //-----------------------------------------------------------------------------
 #define CDISPLAY_GLOBAL
 #include <CDisplay.hpp>
+
+
+namespace touchgfx
+{
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CDisplay::add(Container& c, Drawable& d)
+{
+	c.add(d);
+
+	int16_t newX = c.getWidth() - d.getWidth() - d.getX();
+	int16_t newY = c.getHeight() - d.getHeight() - d.getY();
+	int16_t newW = d.getWidth();
+	int16_t newH = d.getHeight();
+
+	d.setPosition(newX, newY, newW, newH);
+}
+
+}

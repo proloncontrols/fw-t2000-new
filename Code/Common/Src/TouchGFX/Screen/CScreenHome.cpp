@@ -25,6 +25,7 @@
 #include <BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Color.hpp>
+#include <CDisplay.hpp>
 
 
 namespace touchgfx
@@ -38,21 +39,29 @@ CScreenHome::CScreenHome(Container& ownerContainer, GenericCallback<const Abstra
 {
 	imageCooling.setBitmap(imageCoolingId);
 	imageCooling.setXY(client.getWidth()/2 - imageCooling.getWidth()/2, 50);
-	addToClient(imageCooling);
+//	addToClient(imageCooling);
+//	dsp.addToContainer(client, imageCooling);
+	imageCooling.add(client);
 
 	buttonSettings.initialize(client.getWidth() - Bitmap(buttonSettingsImageReleasedId).getWidth(), 0, 0, buttonSettingsImageReleasedId, buttonSettingsImagePressedId);
 	buttonSettings.setData(CScreenHome::BUTTON_SETTINGS);
 	buttonSettings.setAction(callback);
-	addToClient(buttonSettings);
+//	addToClient(buttonSettings);
+//	dsp.add(client, buttonSettings);
+	buttonSettings.addTo(client);
 
 	buttonSetPoints.initialize(client.getWidth()/2 - buttonSetPointsSize/2, client.getHeight()/2 - buttonSetPointsSize/2, buttonSetPointsSize, buttonSetPointsSize);
 	buttonSetPoints.setData(CScreenHome::BUTTON_SETPOINTS);
 	buttonSetPoints.setAction(callback);
-	addToClient(buttonSetPoints);
+//	addToClient(buttonSetPoints);
+	dsp.add(client, buttonSetPoints);
 
 	meterInt.setXY(0, 0);
-	meterInt.display(21.5, true);
-	addToClient(meterInt);
+	meterInt.display(-21.5, true);
+//	addToClient(meterInt);
+//	dsp.add(client, meterInt);
+	meterInt.addTo(client);
+//	client.add(meterInt);
 }
 
 }   //namespace touchgfx

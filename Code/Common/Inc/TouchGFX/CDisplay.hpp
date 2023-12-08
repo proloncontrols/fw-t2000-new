@@ -30,6 +30,10 @@
 #endif
 
 
+#include <touchgfx/Drawable.hpp>
+#include <touchgfx/Containers/Container.hpp>
+
+
 //=============================================================================
 //  N A T I V E   D I S P L A Y   L A Y O U T
 //-----------------------------------------------------------------------------
@@ -68,6 +72,8 @@ public:
 		LANDSCAPE,   //Physical display is rotated 180° due to temperature/humidity sensor location
 		PORTRAIT     //Physical display is rotated 270° due to temperature/humidity sensor location
 	} orientation;
+
+	void add(Container& c, Drawable& d);
 };
 
 
@@ -80,3 +86,30 @@ CDISPLAY_EXTERN CDisplay dsp;
 
 
 #endif   //CDISPLAY_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

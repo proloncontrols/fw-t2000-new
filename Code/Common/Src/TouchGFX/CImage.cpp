@@ -50,9 +50,15 @@ void CImage::setXY(int16_t x, int16_t y)
     setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
 	setCameraDistance(1000.0f);
 	setCamera(getWidth()/2, getHeight()/2);
-	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+	setRenderingAlgorithm(touchgfx::TextureMapper::BILINEAR_INTERPOLATION);
 
 	TextureMapper::setXY(x, y);
+}
+
+//-----------------------------------------------------------------------------
+void CImage::add(Container& c)
+{
+	dsp.add(c, *this);
 }
 
 }   //namespace touchgfx

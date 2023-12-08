@@ -26,6 +26,7 @@
 #include <stddef.h>
 #include <touchgfx/TypedText.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/Containers/Container.hpp>
 
 
 namespace touchgfx
@@ -37,14 +38,28 @@ namespace touchgfx
 class CText : public TextAreaWithOneWildcard
 {
 public:
-	CText(int initialLength);
+	CText(const TypedText& type, int capacity);
 
+	void addTo(Container& c);
 	void setXY(int16_t x, int16_t y);
-	void setText(const char* newText);
-	void setLength(int newLength);
+	void setType(const TypedText& newType);
+
+	void operator=(const char* newText);
+
+
+
+
+
+//	void setText(const char* newText);
+	char getCharAt(int index);
+	void setCharAt(int index, char newChar);
+	const Font* getTextFont();
+	const GlyphNode* getCharGlyph(int index);
+	void add(Container& c);
 
 private:
-	int curLength = 0;
+	TypedText curType;
+	int curCapacity = 0;
 	Unicode::UnicodeChar* buffer = NULL;
 };
 

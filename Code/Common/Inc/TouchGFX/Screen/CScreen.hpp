@@ -70,7 +70,7 @@ public:
 	CScreen(Container& ownerContainer, bool wLogo);
 
 	void setBackgroundColor(colortype newColor);
-	void addToClient(Drawable& d);
+//	void addToClient(Drawable& d);
 	void showFrame();
 
 protected:

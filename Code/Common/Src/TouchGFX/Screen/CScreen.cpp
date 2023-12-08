@@ -25,7 +25,6 @@
 #include <CDisplay.hpp>
 #include <touchgfx/Color.hpp>
 #include <BitmapDatabase.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -44,14 +43,16 @@ CScreen::CScreen(Container& ownerContainer, bool wLogo)
 
 	clientBackground.setPosition(0, 0, client.getWidth(), client.getHeight());
 	clientBackground.setColor(Color::getColorFromRGB(0, 0, 0));
-	addToClient(clientBackground);
+//	addToClient(clientBackground);
+	dsp.add(client, clientBackground);
 
 	if(wLogo)
 	{
 		logo = new CImage();
 		logo->setBitmap(Bitmap(bitmap));
 		logo->setXY((client.getWidth() / 2) - (logo->getWidth() / 2), 0);
-		addToClient(*logo);
+//		addToClient(*logo);
+		dsp.add(client, *logo);
 	}
 }
 
@@ -65,18 +66,18 @@ void CScreen::setBackgroundColor(colortype color)
 	clientBackground.setColor(color);
 }
 
-//-----------------------------------------------------------------------------
-void CScreen::addToClient(Drawable& d)
-{
-	client.add(d);
-
-	int16_t newX = d.getParent()->getWidth() - d.getWidth() - d.getX();
-	int16_t newY = d.getParent()->getHeight() - d.getHeight() - d.getY();
-	int16_t newW = d.getWidth();
-	int16_t newH = d.getHeight();
-
-	d.setPosition(newX, newY, newW, newH);
-}
+////-----------------------------------------------------------------------------
+//void CScreen::addToClient(Drawable& d)
+//{
+//	client.add(d);
+//
+//	int16_t newX = d.getParent()->getWidth() - d.getWidth() - d.getX();
+//	int16_t newY = d.getParent()->getHeight() - d.getHeight() - d.getY();
+//	int16_t newW = d.getWidth();
+//	int16_t newH = d.getHeight();
+//
+//	d.setPosition(newX, newY, newW, newH);
+//}
 
 //-----------------------------------------------------------------------------
 void CScreen::showFrame()

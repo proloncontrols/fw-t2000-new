@@ -23,6 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <CText.hpp>
 #include <CImage.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
@@ -41,6 +42,8 @@ class CMeter : public Container
 public:
 	CMeter();
 
+	void addTo(Container& c);
+
 protected:
 	void addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& nexTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 	void addDecimal(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
@@ -57,31 +60,39 @@ protected:
 		void display(int16_t value);
 		uint8_t getPrecision();
 		int16_t getMaxGlyphHeight();
+		int16_t getWidth();
 
 	protected:
-		typedef TextAreaWithOneWildcard MeterDigitWidget;
-		typedef Unicode::UnicodeChar MeterDigitBuffer[2];
-
-		class CMeterDigit
-		{
-		public:
-			MeterDigitWidget widget;
-			MeterDigitBuffer buffer = {0};
-		};
+//		typedef TextAreaWithOneWildcard MeterDigitWidget;
+//		typedef Unicode::UnicodeChar MeterDigitBuffer[2];
+//
+//		class CMeterDigit
+//		{
+//		public:
+//			MeterDigitWidget widget;
+//			MeterDigitBuffer buffer = {0};
+//		};
 
 	private:
 		char* valueString;
 		int16_t maxGlyphHeight;
-		CMeterDigit** digits;
+		int16_t newWidth;
+		int16_t trailingSpace;
+//		CMeterDigit** digits;
+		CText** digits;
 		uint8_t precision;
 		uint8_t spacingRatio;   //Set to 0 for no ratio (original font aspect)
 		TypedText textType;
+
+		Box back;
 	};
 
 	CMeterValue* integer;
 	CMeterValue* decimal;
-	TextArea* dot;
-	TextArea* unit;
+//	TextArea* dot;
+//	TextArea* unit;
+	CText* dot;
+	CText* unit;
 	TypedText unitTempC;
 	TypedText unitTempF;
 	TypedText unitTempP;
