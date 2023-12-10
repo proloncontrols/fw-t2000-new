@@ -23,6 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
@@ -43,13 +44,10 @@ namespace touchgfx
 class CText : public TextAreaWithOneWildcard
 {
 public:
-	CText(int initialLength, const TypedText& type, uint8_t colorR, uint8_t colorG, uint8_t colorB)
+	CText(const TypedText& textType, uint8_t colorR, uint8_t colorG, uint8_t colorB)
 	{
-		curLength = initialLength;
-		buffer = (Unicode::UnicodeChar*)calloc(curLength + 1, sizeof(Unicode::UnicodeChar));   //+1 = null termination character
-		setWildcard(buffer);
 		setColor(Color::getColorFromRGB(colorR, colorG, colorB));
-		setTypedText(type);
+		setTypedText(textType);
 	}
 
 	//-----------------------------------------------------------------------------
@@ -61,9 +59,18 @@ public:
 	//-----------------------------------------------------------------------------
 	void setXY(int16_t x, int16_t y)
 	{
-//		setRotation(TEXT_ROTATE_180);
+		if(dsp.orientation != CDisplay::NATIVE)
+			setRotation(TEXT_ROTATE_180);
 		TextAreaWithOneWildcard::setXY(x, y);
 	}
+
+//	//-----------------------------------------------------------------------------
+//	char getAt(int index)
+//	{
+//		char c;
+//		Unicode::toUTF8(&buffer[index], (uint8_t*)&c, 1);
+//		return c;
+//	}
 
 	//-----------------------------------------------------------------------------
 	void operator=(const char* newText)
@@ -71,16 +78,18 @@ public:
 		int newLen = strlen(newText);
 		if(newLen > curLength)
 		{
-			free(buffer);
+			if(buffer)
+				free(buffer);
 			buffer = (Unicode::UnicodeChar*)malloc((newLen + 1) * sizeof(Unicode::UnicodeChar));   //+1 = null termination character
+			setWildcard(buffer);
 		}
 		curLength = newLen;
-		memset(buffer, 0, curLength * sizeof(Unicode::UnicodeChar));
+		memset(buffer, 0, (curLength + 1) * sizeof(Unicode::UnicodeChar));
 		Unicode::fromUTF8((uint8_t*)newText, buffer, newLen);
 		resizeToCurrentText();
 	}
 
-	Unicode::UnicodeChar* buffer;
+	Unicode::UnicodeChar* buffer = NULL;
 
 protected:
 	int curLength = 0;
@@ -90,75 +99,302 @@ protected:
 
 
 
-class CMeterDigit : public Container
+class CDigit : public Container
 {
 public:
-	CMeterDigit(const TypedText& type, uint8_t colorR, uint8_t colorG, uint8_t colorB)
+	CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 	{
-		digit = new CText(1, type, colorR, colorG, colorB);
-		background.setColor(Color::getColorFromRGB(86, 88, 90));
+//		background.setColor(Color::getColorFromRGB(140,  80,  140));
+//		add(background);
+		if(dsp.orientation != CDisplay::NATIVE)
+			text.setRotation(TEXT_ROTATE_180);
+		text.setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
+		text.setTypedText(newType);
+		text.setWildcard(buffer);
+		add(text);
 	}
 
 	//-----------------------------------------------------------------------------
 	void addTo(Container& c)
 	{
 		dsp.add(c, *this);
-		dsp.add(*this, background);
-		digit->addTo(*this);
 	}
 
 	//-----------------------------------------------------------------------------
-	void operator=(const char* newDigit)
+	void setDigit(const char newDigit)
 	{
-		digit->operator=(newDigit);
-		const GlyphNode* node = digit->getTypedText().getFont()->getGlyph(digit->buffer[0]);
-		digit->setXY(node->left * -1, 0);
-		background.setWidthHeight(digit->getWidth() - (digit->getWidth() - node->width()), digit->getHeight());
-		Container::setWidthHeight(background);
+		Unicode::fromUTF8((uint8_t*)&newDigit, buffer, 1);
+		buffer[1] = 0;
+
+		text.resizeToCurrentText();
+
+		const GlyphNode* node = getGlyph();
+
+		if(dsp.orientation == CDisplay::NATIVE)
+		{
+			text.setXY(node->left * -1, 0);
+			Container::setWidthHeight(text.getWidth() - (text.getWidth() - node->width()), text.getHeight());
+		}
+		else
+		{
+			text.setXY((text.getWidth() - node->width() - node->left) * -1, 0);
+			Container::setWidthHeight(node->width(), text.getHeight());
+		}
+//		background.setWidthHeight(*this);
+	}
+
+	//-----------------------------------------------------------------------------
+	const Font* getFont()
+	{
+		return text.getTypedText().getFont();
+	}
+
+	//-----------------------------------------------------------------------------
+	const GlyphNode* getGlyph()
+	{
+		return getFont()->getGlyph(buffer[0]);
+	}
+
+private:
+//	Box background;
+	TextAreaWithOneWildcard text;
+	Unicode::UnicodeChar buffer[2];
+};
+
+
+
+
+
+//class CGaugeDigit : public Container
+//{
+////#define USE_DEV_BACKGROUND
+//public:
+//	CGaugeDigit(const TypedText& type, uint8_t colorR, uint8_t colorG, uint8_t colorB)
+//	{
+//#ifdef USE_DEV_BACKGROUND
+//		background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+//		dsp.add(*this, background);
+//#endif
+//		digit = new CText(type, colorR, colorG, colorB);
+//		digit->addTo(*this);
+//	}
+//
+//	//-----------------------------------------------------------------------------
+//	void addTo(Container& c)
+//	{
+//		dsp.add(c, *this);
+//	}
+//
+//	//-----------------------------------------------------------------------------
+//	void setDigit(const char newDigit)
+//	{
+//		char val[2] = {newDigit, 0};
+//
+//		if(dsp.orientation != CDisplay::NATIVE)
+//			digit->setRotation(TEXT_ROTATE_180);
+//		digit->operator=(val);
+//
+//		const GlyphNode* node = digit->getTypedText().getFont()->getGlyph(digit->buffer[0]);
+//
+//		if(dsp.orientation == CDisplay::NATIVE)
+//		{
+//			digit->setXY(node->left * -1, 0);
+//			Container::setWidthHeight(digit->getWidth() - (digit->getWidth() - node->width()), digit->getHeight());
+//		}
+//		else
+//		{
+//			digit->setXY((digit->getWidth() - node->width() - node->left) * -1, 0);
+//			Container::setWidthHeight(node->width(), digit->getHeight());
+//		}
+//#ifdef USE_DEV_BACKGROUND
+//		background.setWidthHeight(*this);
+//#endif
+//	}
+//
+//private:
+//#ifdef USE_DEV_BACKGROUND
+//	Box background;
+//#endif
+//	CText* digit;
+//};
+
+
+
+
+
+class CValue : public Container
+{
+public:
+	CValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+	{
+		precision = newPrecision;
+
+		setHeight(newType.getFont()->getFontHeight());
+		spacingWidth = 0;
+		if(newSpacingRatio != 0)
+			spacingWidth = getHeight() / newSpacingRatio;
+
+
+		background.setHeight(getHeight());
+		background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+		add(background);
+
+
+		digits = (CDigit**)malloc(precision * sizeof(CDigit*));   //precision MUST include the minus sign
+		for(uint8_t i = 0; i < precision; i++)
+		{
+			digits[i] = new CDigit(newType, newColorR, newColorG, newColorB);
+			add(*digits[i]);
+		}
+
+		valueString = (char*)calloc(precision + 1, sizeof(char));   //+1 = null termination character
+}
+
+	//-----------------------------------------------------------------------------
+	void addTo(Container& c)
+	{
+		dsp.add(c, *this);
+	}
+
+	//-----------------------------------------------------------------------------
+	void update(int16_t value)
+	{
+		sprintf(valueString, "%d", value);
+		int len = strlen(valueString);
+
+		int16_t gaugeWidth = 0;
+		for(int i = 0; i < len; i++)
+		{
+			digits[i]->setDigit(valueString[i]);
+			if(dsp.orientation == CDisplay::NATIVE)
+				digits[i]->setXY(gaugeWidth, 0);
+			gaugeWidth += digits[i]->getWidth();
+			gaugeWidth += spacingWidth;
+		}
+
+		background.setWidth(gaugeWidth);
+		Container::setWidth(gaugeWidth);
+
+		if(dsp.orientation != CDisplay::NATIVE)
+		{
+			for(int i = 0; i < len; i++)
+			{
+				digits[i]->setXY(gaugeWidth - digits[i]->getWidth(), 0);
+				gaugeWidth -= digits[i]->getWidth();
+				gaugeWidth -= spacingWidth;
+			}
+		}
 	}
 
 private:
 	Box background;
-	CText* digit;
-};
 
-
-
-
-
-class CMeterValue : public Container
-{
-public:
-	CMeterValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
-	void update(int16_t value);
-	uint8_t getPrecision();
-	int16_t getMaxGlyphHeight();
-	int16_t getWidth();
-
-protected:
-//		typedef TextAreaWithOneWildcard MeterDigitWidget;
-//		typedef Unicode::UnicodeChar MeterDigitBuffer[2];
-//
-//		class CMeterDigit
-//		{
-//		public:
-//			MeterDigitWidget widget;
-//			MeterDigitBuffer buffer = {0};
-//		};
-
-private:
-	char* valueString;
-	int16_t maxGlyphHeight;
-	int16_t newWidth;
-	int16_t trailingSpace;
-//		CMeterDigit** digits;
-	CText** digits;
 	uint8_t precision;
-	uint8_t spacingRatio;   //Set to 0 for no ratio (original font aspect)
-	TypedText textType;
 
-	Box back;
+	CDigit** digits;
+	char* valueString;
+	int16_t spacingWidth;
 };
+
+
+
+
+
+//class CGaugeValue : public Container
+//{
+//public:
+//	CGaugeValue(uint8_t valuePrecision, uint8_t spacingRatio, const TypedText& textType, uint8_t colorR, uint8_t colorG, uint8_t colorB)
+//	{
+//		background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+//		dsp.add(*this, background);
+//
+//		precision = valuePrecision;
+//		type = textType;
+//
+//		spacingWidth = 0;
+//		if(spacingRatio != 0)
+//			spacingWidth = type.getFont()->getFontHeight() / spacingRatio;
+//
+//		digits = (CGaugeDigit**)malloc(precision * sizeof(CGaugeDigit*));   //precision MUST include the minus sign
+//		for(uint8_t i = 0; i < precision; i++)
+//		{
+//			digits[i] = new CGaugeDigit(textType, colorR, colorG, colorB);
+//			digits[i]->addTo(*this);
+//		}
+//
+//		valueString = (char*)calloc(precision + 1, sizeof(char));   //+1 = null termination character
+//	}
+//
+//	//-----------------------------------------------------------------------------
+//	void addTo(Container& c)
+//	{
+//		dsp.add(c, *this);
+//	}
+//
+//	//-----------------------------------------------------------------------------
+//	void update(int16_t value)
+//	{
+//		int len;
+//		int16_t gaugeWidth;
+//
+//		sprintf(valueString, "%d", value);
+//		len = strlen(valueString);
+//
+//		gaugeWidth = 0;
+//		for(int i = 0; i < len; i++)
+//		{
+//			digits[i]->setDigit(valueString[i]);
+//			if(dsp.orientation == CDisplay::NATIVE)
+//				digits[i]->setXY(gaugeWidth, 0);
+//			gaugeWidth += digits[i]->getWidth();
+//			gaugeWidth += spacingWidth;
+//		}
+//
+//		background.setWidthHeight(gaugeWidth, type.getFont()->getFontHeight());
+//		Container::setWidthHeight(background);
+//
+//		if(dsp.orientation != CDisplay::NATIVE)
+//		{
+//			for(int i = 0; i < len; i++)
+//			{
+//				digits[i]->setXY(gaugeWidth - digits[i]->getWidth(), 0);
+//				gaugeWidth -= digits[i]->getWidth();
+//				gaugeWidth -= spacingWidth;
+//			}
+//		}
+//	}
+//
+//	uint8_t getPrecision();
+//	int16_t getMaxGlyphHeight();
+////	int16_t getWidth();
+//
+//protected:
+////		typedef TextAreaWithOneWildcard MeterDigitWidget;
+////		typedef Unicode::UnicodeChar MeterDigitBuffer[2];
+////
+////		class CMeterDigit
+////		{
+////		public:
+////			MeterDigitWidget widget;
+////			MeterDigitBuffer buffer = {0};
+////		};
+//
+//private:
+//	char* valueString;
+//	int16_t spacingWidth;
+//
+//
+//	int16_t maxGlyphHeight;
+////	int16_t newWidth;
+//	int16_t trailingSpace;
+////		CMeterDigit** digits;
+//	CGaugeDigit** digits;
+//	uint8_t precision;
+//	uint8_t spacingRatio;   //Set to 0 for no ratio (original font aspect)
+//	TypedText type;
+//
+//	Box background;
+//};
 
 
 

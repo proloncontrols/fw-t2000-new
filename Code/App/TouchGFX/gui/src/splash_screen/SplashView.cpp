@@ -27,10 +27,28 @@ SplashView::SplashView()
 //
 //	txt3.addTo(container);
 
-	md1 = new CMeterDigit(T_METER_HUGE, 255, 255, 255);
-	md1->setXY(100, 100);
-	*md1 = "-";
-	md1->addTo(container);
+//	md1 = new CGaugeDigit(T_METER_HUGE, 255, 255, 255);
+//	md1->setXY(100, 100);
+//	md1->setDigit('1');
+//	md1->addTo(container);
+
+//	gv1 = new CGaugeValue(4, 15, T_METER_HUGE, 255, 255, 255);
+//	gv1->setXY(100, 100);
+//	gv1->update(-21);
+//	gv1->addTo(container);
+
+//	dig.setXY(100, 100);
+//	dig.setDigit('1');
+//	dig.addTo(container);
+
+	val = new CValue(4, 15, T_METER_HUGE, 255, 255, 255);
+	val->setXY(100, 100);
+	val->update(-21);
+	val->addTo(container);
+
+	txt1.setXY(0, 500);
+    txt1 = "TestStringWithAnAppliedEdge2";
+    txt1.addTo(container);
 }
 
 void SplashView::setupScreen()

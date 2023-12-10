@@ -74,6 +74,10 @@ public:
 		PORTRAIT     //Physical display is rotated 270° due to temperature/humidity sensor location
 	} orientation;
 
+	static const uint8_t devBackgroundColorR = 140; //86;
+	static const uint8_t devBackgroundColorG = 80;  //86;
+	static const uint8_t devBackgroundColorB = 140; //90;
+
 	void add(Container& c, Drawable& d);
 };
 

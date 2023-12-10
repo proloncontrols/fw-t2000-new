@@ -19,11 +19,15 @@ public:
 protected:
 //    CScreen* screen;
 
-//    CText txt1 = CText(1);
+    CText txt1 = CText(T_MENU_BUTTON, 255, 255, 255);
 //    CText txt2 = CText(1);
 //    CText txt3 = CText(1);
 
-    CMeterDigit* md1;
+//    CGaugeDigit* md1;
+//    CGaugeValue* gv1;
+
+    CDigit dig = CDigit(T_METER_HUGE, 255, 255, 255);
+    CValue* val;
 };
 
 #endif // SPLASHVIEW_HPP
