@@ -23,6 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <math.h>
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -44,10 +45,10 @@ namespace touchgfx
 class CText : public TextAreaWithOneWildcard
 {
 public:
-	CText(const TypedText& textType, uint8_t colorR, uint8_t colorG, uint8_t colorB)
+	CText(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 	{
-		setColor(Color::getColorFromRGB(colorR, colorG, colorB));
-		setTypedText(textType);
+		setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
+		setTypedText(newType);
 	}
 
 	//-----------------------------------------------------------------------------
@@ -63,14 +64,6 @@ public:
 			setRotation(TEXT_ROTATE_180);
 		TextAreaWithOneWildcard::setXY(x, y);
 	}
-
-//	//-----------------------------------------------------------------------------
-//	char getAt(int index)
-//	{
-//		char c;
-//		Unicode::toUTF8(&buffer[index], (uint8_t*)&c, 1);
-//		return c;
-//	}
 
 	//-----------------------------------------------------------------------------
 	void operator=(const char* newText)
@@ -89,6 +82,18 @@ public:
 		resizeToCurrentText();
 	}
 
+	//-----------------------------------------------------------------------------
+	int16_t getTextMaxHeight()
+	{
+		int16_t maxHeight = 0;
+		for(int i = 0; i < curLength; i++)
+		{
+			if(getTypedText().getFont()->getGlyph(buffer[0])->height() > maxHeight)
+				maxHeight = getTypedText().getFont()->getGlyph(buffer[0])->height();
+		}
+		return maxHeight;
+	}
+
 	Unicode::UnicodeChar* buffer = NULL;
 
 protected:
@@ -104,8 +109,9 @@ class CDigit : public Container
 public:
 	CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 	{
-//		background.setColor(Color::getColorFromRGB(140,  80,  140));
-//		add(background);
+		background.setColor(Color::getColorFromRGB(140,  80,  140));
+		add(background);
+
 		if(dsp.orientation != CDisplay::NATIVE)
 			text.setRotation(TEXT_ROTATE_180);
 		text.setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
@@ -140,7 +146,7 @@ public:
 			text.setXY((text.getWidth() - node->width() - node->left) * -1, 0);
 			Container::setWidthHeight(node->width(), text.getHeight());
 		}
-//		background.setWidthHeight(*this);
+		background.setWidthHeight(*this);
 	}
 
 	//-----------------------------------------------------------------------------
@@ -156,7 +162,7 @@ public:
 	}
 
 private:
-//	Box background;
+	Box background;
 	TextAreaWithOneWildcard text;
 	Unicode::UnicodeChar buffer[2];
 };
@@ -235,9 +241,9 @@ public:
 			spacingWidth = getHeight() / newSpacingRatio;
 
 
-		background.setHeight(getHeight());
-		background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-		add(background);
+//		background.setHeight(getHeight());
+//		background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+//		add(background);
 
 
 		digits = (CDigit**)malloc(precision * sizeof(CDigit*));   //precision MUST include the minus sign
@@ -262,6 +268,7 @@ public:
 		sprintf(valueString, "%d", value);
 		int len = strlen(valueString);
 
+		maxTop = 0;
 		int16_t gaugeWidth = 0;
 		for(int i = 0; i < len; i++)
 		{
@@ -270,9 +277,12 @@ public:
 				digits[i]->setXY(gaugeWidth, 0);
 			gaugeWidth += digits[i]->getWidth();
 			gaugeWidth += spacingWidth;
+
+			if(digits[i]->getGlyph()->top() > maxTop)
+				maxTop = digits[i]->getGlyph()->top();
 		}
 
-		background.setWidth(gaugeWidth);
+//		background.setWidth(gaugeWidth);
 		Container::setWidth(gaugeWidth);
 
 		if(dsp.orientation != CDisplay::NATIVE)
@@ -286,14 +296,21 @@ public:
 		}
 	}
 
+	//-----------------------------------------------------------------------------
+	int16_t getTopLine()
+	{
+		return getHeight() - maxTop;;
+	}
+
 private:
-	Box background;
+//	Box background;
 
 	uint8_t precision;
 
 	CDigit** digits;
 	char* valueString;
 	int16_t spacingWidth;
+	int16_t maxTop;
 };
 
 
@@ -395,6 +412,65 @@ private:
 //
 //	Box background;
 //};
+
+
+
+
+
+class CGaugeTemperature : public Container
+{
+public:
+	CGaugeTemperature(uint8_t intPrecision, const TypedText& intType,
+					  uint8_t decPrecision, const TypedText& decType,
+					  const TypedText& unitType, uint8_t newSpacingRatio, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+	{
+		integer = new CValue(intPrecision, newSpacingRatio, intType, newColorR, newColorG, newColorB);
+		add(*integer);
+
+		decimal = new CValue(decPrecision, newSpacingRatio, decType, newColorR, newColorG, newColorB);
+		decimalPrecision = decPrecision;   //MUST include the dot
+		add(*decimal);
+
+		Container::setHeight(intType.getFont()->getFontHeight() + 10);
+
+//		unit = new CText(unitType, newColorR, newColorG, newColorB);
+//		add(*unit);
+	}
+
+	void addTo(Container& c)
+	{
+		dsp.add(c, *this);
+	}
+
+	void update(float temperature, bool celsius)
+	{
+		double intDoubleValue;
+		double decDoubleValue = modf(temperature, &intDoubleValue);
+
+		int16_t intValue = (int16_t)intDoubleValue;
+		int16_t decValue = (int16_t)abs((decDoubleValue * pow(10.0, (double)(decimalPrecision - 1))));   //-1 is to remove the dot
+
+		integer->update(intValue);
+		decimal->update(decValue);
+
+		integer->setXY(0, 0);
+		decimal->setXY(integer->getWidth(),  Container::getHeight() - decimal->getHeight());
+
+	//	if(celsius)
+	//		unit->setTypedText(touchgfx::TypedText(unitTempC));
+	//	else
+	//		unit->setTypedText(touchgfx::TypedText(unitTempF));
+	//	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
+
+		Container::setWidth(integer->getWidth() + decimal->getWidth());
+	}
+
+private:
+	CValue* integer = NULL;
+	CValue* decimal = NULL;
+	uint8_t decimalPrecision;
+//	CText* unit = NULL;
+};
 
 
 

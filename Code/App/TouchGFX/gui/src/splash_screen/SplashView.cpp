@@ -37,18 +37,32 @@ SplashView::SplashView()
 //	gv1->update(-21);
 //	gv1->addTo(container);
 
+
+
+
+
 //	dig.setXY(100, 100);
 //	dig.setDigit('1');
 //	dig.addTo(container);
 
-	val = new CValue(4, 15, T_METER_HUGE, 255, 255, 255);
-	val->setXY(100, 100);
-	val->update(-21);
-	val->addTo(container);
+//	val = new CValue(4, 15, T_METER_HUGE, 255, 255, 255);
+//	val->setXY(100, 100);
+//	val->update(-21);
+//	val->addTo(container);
+
+	temp.setXY(100, 100);
+	temp.update(-21.5, true);
+	temp.addTo(container);
 
 	txt1.setXY(0, 500);
     txt1 = "TestStringWithAnAppliedEdge2";
     txt1.addTo(container);
+
+//    txt2 = "°C";
+////	txt2.setXYToTopLine(val->getX() + val->getWidth(), val->getY() + val->getTopLine());
+////	txt2.setXY(val->getX() + val->getWidth(), val->getY() + val->getTopLine());
+//    txt2.setXY(val->getX() + val->getWidth(), val->getY() + txt2.getTypedText().getFont()->getFontHeight() - txt2.getTextMaxHeight());
+//    txt2.addTo(container);
 }
 
 void SplashView::setupScreen()

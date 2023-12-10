@@ -36,6 +36,6 @@
     <Typography Id="MeterSmall" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
     <Typography Id="MeterTiny" Font="AvenirNext-Regular-08.ttf" Size="22" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°,C,F,%" />
     <Typography Id="MenuButton" Font="AvenirNext-Regular-08.ttf" Size="45" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
-    <Typography Id="MenuTitle" Font="AvenirNext-Regular-08.ttf" Size="60" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
+    <Typography Id="MenuTitle" Font="AvenirNext-Regular-08.ttf" Size="60" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
   </Typographies>
 </TextDatabase>
