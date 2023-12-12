@@ -85,7 +85,7 @@ private:
 	static const uint8_t frameColorG = 35;
 	static const uint8_t frameColorB = 35;
 
-	static const BitmapId bitmap = BITMAP_PROLON_178X178_ID;
+//	static const BitmapId bitmap = BITMAP_PROLON_178X178_ID;
 
 	Box frame;
 	CImage* logo = NULL;

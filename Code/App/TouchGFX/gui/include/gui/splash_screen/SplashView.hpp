@@ -19,13 +19,21 @@ public:
 protected:
 //    CScreen* screen;
 
-    CText txt1 = CText(T_MENU_BUTTON, 255, 255, 255);
+//    CText txt1 = CText(T_MENU_BUTTON, 255, 255, 255);
 //    CText txt2 = CText(T_MENU_TITLE, 255, 255, 255);
 
-    CGaugeTemperature temp = CGaugeTemperature(4, T_METER_HUGE, 2, T_METER_MEDIUM, T_MENU_TITLE, 0, 255, 255, 255);
+//    CGaugeTemperature temp = CGaugeTemperature(4, T_GAUGE_HUGE, 2, T_GAUGE_MEDIUM, T_MENU_TITLE, 15, 255, 255, 255);
 
-//    CDigit dig = CDigit(T_METER_HUGE, 255, 255, 255);
-//    CValue* val;
+//    CDigit dig0 = CDigit(T_GAUGE_HUGE, 255, 255, 255);
+//    CDigit dig1 = CDigit(T_GAUGE_HUGE, 255, 255, 255);
+//    CDigit dig2 = CDigit(T_GAUGE_HUGE, 255, 255, 255);
+//    CDigit dig3 = CDigit(T_GAUGE_HUGE, 255, 255, 255);
+//    CDigit dig4 = CDigit(T_GAUGE_HUGE, 255, 255, 255);
+//    CDigit dig5 = CDigit(T_GAUGE_HUGE, 255, 255, 255);
+//    CDigit dig6 = CDigit(T_GAUGE_HUGE, 255, 255, 255);
+//    CDigit dig3 = CDigit(T_GAUGE_MEDIUM, 255, 255, 255);
+
+    CValue* val;
 };
 
 #endif // SPLASHVIEW_HPP

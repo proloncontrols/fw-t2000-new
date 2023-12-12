@@ -6,10 +6,6 @@
 #include <touchgfx/hal/Types.hpp>
 #include <touchgfx/Bitmap.hpp>
 
-const uint16_t BITMAP_COOLINGON_ID = 0;
-const uint16_t BITMAP_PROLON_178X178_ID = 1;
-const uint16_t BITMAP_SETTING_ID = 2;
-const uint16_t BITMAP_SETTING_DARK2_ID = 3;
 
 namespace BitmapDatabase
 {

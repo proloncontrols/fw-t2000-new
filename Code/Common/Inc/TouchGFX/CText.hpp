@@ -104,6 +104,11 @@ protected:
 
 
 
+
+
+
+
+
 class CDigit : public Container
 {
 public:
@@ -111,6 +116,8 @@ public:
 	{
 		background.setColor(Color::getColorFromRGB(140,  80,  140));
 		add(background);
+
+//		Container::setHeight(newType.getFont()->getFontHeight() + 30);   //TODO: Check for the +30
 
 		if(dsp.orientation != CDisplay::NATIVE)
 			text.setRotation(TEXT_ROTATE_180);
@@ -127,25 +134,80 @@ public:
 	}
 
 	//-----------------------------------------------------------------------------
+//	void setDigit(const char newDigit)
+//	{
+//		Unicode::fromUTF8((uint8_t*)&newDigit, buffer, 1);
+//		buffer[1] = 0;
+//
+//		text.resizeToCurrentText();
+//
+//		const GlyphNode* node = getGlyph();
+//
+//		if(dsp.orientation == CDisplay::NATIVE)
+//		{
+////			int16_t y = 0;
+////			if(node->height() > node->top())
+////				y = (node->height() - node->top()) * -1;
+//////			text.setXY(node->left * -1, 0);
+//////			Container::setWidthHeight(text.getWidth() - (text.getWidth() - node->width()), text.getHeight());
+////			text.setXY(node->left * -1, y);
+////			text.setXY(node->left * -1, 0);
+////			text.setXY(node->left * -1, ((getFont()->getFontHeight() - node->top()) - (node->height() - node->top())) * -1);
+////			Container::setWidth(text.getWidth() - (text.getWidth() - node->width()));
+//
+//			text.setXY(node->left * -1, 0);
+//
+//			Container::setWidthHeight(text.getWidth() - (text.getWidth() - node->width()), text.getHeight());
+//		}
+//		else
+//		{
+//			text.setXY((text.getWidth() - node->width() - node->left) * -1, 0);
+//			Container::setWidthHeight(node->width(), text.getHeight());
+//		}
+//		background.setWidthHeight(*this);
+//	}
+//	void setDigit(const char newDigit)
+//	{
+//		Unicode::fromUTF8((uint8_t*)&newDigit, buffer, 1);
+//		buffer[1] = 0;
+//
+//		text.resizeToCurrentText();
+//		Container::setHeight(text.getTypedText().getFont()->getFontHeight());
+//
+//		const GlyphNode* node = getGlyph();
+//		if(dsp.orientation == CDisplay::NATIVE)
+//		{
+//			text.setXY(node->left * -1, 1);
+//			Container::setWidth(text.getWidth() - (text.getWidth() - node->width()));
+//
+//			text.setY((text.getTypedText().getFont()->getFontHeight() - node->top()) * -1);
+////			Container::setHeight(text.getHeight() + text.getY());
+//		}
+//		else
+//		{
+//			text.setXY((text.getWidth() - node->width() - node->left) * -1, 1);
+//			Container::setWidth(node->width());
+//		}
+//
+//		background.setWidthHeight(*this);
+//	}
+
 	void setDigit(const char newDigit)
 	{
 		Unicode::fromUTF8((uint8_t*)&newDigit, buffer, 1);
 		buffer[1] = 0;
 
 		text.resizeToCurrentText();
-
-		const GlyphNode* node = getGlyph();
-
-		if(dsp.orientation == CDisplay::NATIVE)
-		{
-			text.setXY(node->left * -1, 0);
-			Container::setWidthHeight(text.getWidth() - (text.getWidth() - node->width()), text.getHeight());
-		}
-		else
-		{
-			text.setXY((text.getWidth() - node->width() - node->left) * -1, 0);
-			Container::setWidthHeight(node->width(), text.getHeight());
-		}
+		Container::setWidthHeight(text);
+//
+//		const GlyphNode* node = getGlyph();
+//
+//		text.setX(node->left * -1);
+//		Container::setWidth(node->width());
+//
+//		text.setY((text.getTypedText().getFont()->getFontHeight() - node->top()) * -1);
+//		Container::setHeight(text.getHeight() + text.getY());
+//
 		background.setWidthHeight(*this);
 	}
 
@@ -165,7 +227,13 @@ private:
 	Box background;
 	TextAreaWithOneWildcard text;
 	Unicode::UnicodeChar buffer[2];
+//	int16_t baseline;
 };
+
+
+
+
+
 
 
 
@@ -228,90 +296,193 @@ private:
 
 
 
+
+
+
+
+
+//class CValue : public Container
+//{
+//public:
+//	CValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+//	{
+//		precision = newPrecision;
+//
+//		Container::setHeight(newType.getFont()->getFontHeight());
+//		spacingWidth = 0;
+//		if(newSpacingRatio != 0)
+//			spacingWidth = getHeight() / newSpacingRatio;
+//
+//
+////		background.setHeight(getHeight());
+////		background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+////		add(background);
+//
+//
+//		digits = (CDigit**)malloc(precision * sizeof(CDigit*));   //precision MUST include the minus sign
+//		for(uint8_t i = 0; i < precision; i++)
+//		{
+//			digits[i] = new CDigit(newType, newColorR, newColorG, newColorB);
+//			add(*digits[i]);
+//		}
+//
+//		valueString = (char*)calloc(precision + 1, sizeof(char));   //+1 = null termination character
+//}
+//
+//	//-----------------------------------------------------------------------------
+//	void addTo(Container& c)
+//	{
+//		dsp.add(c, *this);
+//	}
+//
+//	//-----------------------------------------------------------------------------
+//	void update(int16_t value)
+//	{
+//		sprintf(valueString, "%d", value);
+//		int len = strlen(valueString);
+//
+//		topLine = 0;
+//		int16_t gaugeWidth = 0;
+//		for(int i = 0; i < len; i++)
+//		{
+//			digits[i]->setDigit(valueString[i]);
+//			if(dsp.orientation == CDisplay::NATIVE)
+//				digits[i]->setXY(gaugeWidth, 0);
+//			gaugeWidth += digits[i]->getWidth();
+//			gaugeWidth += spacingWidth;
+//
+//			const GlyphNode* node = digits[i]->getGlyph();
+//
+//			if(node->top() > topLine)
+//				topLine = node->top();
+//
+////			Container::setHeight(MAX(Container::getHeight(), digits[i]->getHeight()));
+//		}
+//
+////		background.setWidth(gaugeWidth);
+//		Container::setWidth(gaugeWidth);
+//
+//		if(dsp.orientation != CDisplay::NATIVE)
+//		{
+//			for(int i = 0; i < len; i++)
+//			{
+//				digits[i]->setXY(gaugeWidth - digits[i]->getWidth(), 0);
+//				gaugeWidth -= digits[i]->getWidth();
+//				gaugeWidth -= spacingWidth;
+//			}
+//		}
+//
+//		for(int i = 0; i < len; i++)
+//		{
+//			if(dsp.orientation == CDisplay::NATIVE)
+//				digits[i]->setY((Container::getHeight() - topLine) * -1);
+//			else
+//				digits[i]->setY(Container::getHeight() - topLine);
+//		}
+//	}
+//
+//	//-----------------------------------------------------------------------------
+//	int16_t getTopLine()
+//	{
+//		return getHeight() - topLine;
+//	}
+//
+//private:
+////	Box background;
+//
+//	uint8_t precision;
+//
+//	CDigit** digits;
+//	char* valueString;
+//	int16_t spacingWidth;
+//	int16_t topLine;
+//};
+
 class CValue : public Container
 {
 public:
-	CValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+	CValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+
+	void addTo(Container& c);
+	void update(int16_t value);
+
+public:
+//	class CDigit : public Container
+//	{
+//	public:
+//		CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+//
+//		void addTo(Container& c);
+//		void setDigit(const char newDigit);
+//		const Font* getFont();
+//		const GlyphNode* getGlyph();
+//
+//	private:
+////		Box background;
+//		TextAreaWithOneWildcard text;
+//		Unicode::UnicodeChar buffer[2];
+//	};
+	class CDigit : public Container
 	{
-		precision = newPrecision;
-
-		setHeight(newType.getFont()->getFontHeight());
-		spacingWidth = 0;
-		if(newSpacingRatio != 0)
-			spacingWidth = getHeight() / newSpacingRatio;
-
-
-//		background.setHeight(getHeight());
-//		background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-//		add(background);
-
-
-		digits = (CDigit**)malloc(precision * sizeof(CDigit*));   //precision MUST include the minus sign
-		for(uint8_t i = 0; i < precision; i++)
+	public:
+		CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 		{
-			digits[i] = new CDigit(newType, newColorR, newColorG, newColorB);
-			add(*digits[i]);
+//			background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+//			add(background);
+
+			if(dsp.orientation != CDisplay::NATIVE)
+				area.setRotation(TEXT_ROTATE_180);
+			area.setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
+			area.setTypedText(newType);
+			area.setWildcard(buffer);
+			add(area);
 		}
 
-		valueString = (char*)calloc(precision + 1, sizeof(char));   //+1 = null termination character
-}
-
-	//-----------------------------------------------------------------------------
-	void addTo(Container& c)
-	{
-		dsp.add(c, *this);
-	}
-
-	//-----------------------------------------------------------------------------
-	void update(int16_t value)
-	{
-		sprintf(valueString, "%d", value);
-		int len = strlen(valueString);
-
-		maxTop = 0;
-		int16_t gaugeWidth = 0;
-		for(int i = 0; i < len; i++)
+		void setDigit(const char newDigit)
 		{
-			digits[i]->setDigit(valueString[i]);
+			Unicode::fromUTF8((uint8_t*)&newDigit, buffer, 1);
+			buffer[1] = 0;
+
+			area.resizeToCurrentText();
+
+			const GlyphNode* node = getGlyph();
 			if(dsp.orientation == CDisplay::NATIVE)
-				digits[i]->setXY(gaugeWidth, 0);
-			gaugeWidth += digits[i]->getWidth();
-			gaugeWidth += spacingWidth;
+				area.setXY(node->left * -1, 0);
+			else
+				area.setXY((area.getWidth() - node->width() - node->left) * -1, 0);
+			Container::setWidthHeight(area.getWidth() - (area.getWidth() - node->width()), area.getHeight());
 
-			if(digits[i]->getGlyph()->top() > maxTop)
-				maxTop = digits[i]->getGlyph()->top();
+//			background.setWidthHeight(*this);
 		}
 
-//		background.setWidth(gaugeWidth);
-		Container::setWidth(gaugeWidth);
-
-		if(dsp.orientation != CDisplay::NATIVE)
+		const Font* getFont()
 		{
-			for(int i = 0; i < len; i++)
-			{
-				digits[i]->setXY(gaugeWidth - digits[i]->getWidth(), 0);
-				gaugeWidth -= digits[i]->getWidth();
-				gaugeWidth -= spacingWidth;
-			}
+			return area.getTypedText().getFont();
 		}
-	}
 
-	//-----------------------------------------------------------------------------
-	int16_t getTopLine()
-	{
-		return getHeight() - maxTop;;
-	}
+		const GlyphNode* getGlyph()
+		{
+			return getFont()->getGlyph(buffer[0]);
+		}
+
+	private:
+//		Box background;
+		TextAreaWithOneWildcard area;
+		Unicode::UnicodeChar buffer[2];
+	};
 
 private:
-//	Box background;
-
+	Box background;
 	uint8_t precision;
-
 	CDigit** digits;
 	char* valueString;
 	int16_t spacingWidth;
-	int16_t maxTop;
+	TypedText type;
 };
+
+
+
+
 
 
 
@@ -417,6 +588,11 @@ private:
 
 
 
+
+
+
+
+
 class CGaugeTemperature : public Container
 {
 public:
@@ -431,7 +607,10 @@ public:
 		decimalPrecision = decPrecision;   //MUST include the dot
 		add(*decimal);
 
-		Container::setHeight(intType.getFont()->getFontHeight() + 10);
+		dot = new CDigit(decType, newColorR, newColorG, newColorB);
+		add(*dot);
+
+//		Container::setHeight(decType.getFont()->getFontHeight());
 
 //		unit = new CText(unitType, newColorR, newColorG, newColorB);
 //		add(*unit);
@@ -444,17 +623,22 @@ public:
 
 	void update(float temperature, bool celsius)
 	{
-		double intDoubleValue;
-		double decDoubleValue = modf(temperature, &intDoubleValue);
+//		double intDoubleValue;
+//		double decDoubleValue = modf(temperature, &intDoubleValue);
 
-		int16_t intValue = (int16_t)intDoubleValue;
-		int16_t decValue = (int16_t)abs((decDoubleValue * pow(10.0, (double)(decimalPrecision - 1))));   //-1 is to remove the dot
+//		int16_t intValue = (int16_t)intDoubleValue;
+//		int16_t decValue = (int16_t)abs((decDoubleValue * pow(10.0, (double)(decimalPrecision - 1))));   //-1 is to remove the dot
 
-		integer->update(intValue);
-		decimal->update(decValue);
+//		integer->update(intValue);
+		dot->setDigit('.');
+//		decimal->update(decValue);
 
 		integer->setXY(0, 0);
-		decimal->setXY(integer->getWidth(),  Container::getHeight() - decimal->getHeight());
+//		decimal->setXY(integer->getWidth(),  Container::getHeight() - decimal->getHeight());
+		dot->setXY(integer->getWidth(), integer->getHeight() - dot->getHeight());
+
+//		decimal->setXY(integer->getWidth(), integer->getHeight() - decimal->getHeight());
+		decimal->setXY(integer->getWidth() + dot->getWidth(), integer->getHeight() - decimal->getHeight());
 
 	//	if(celsius)
 	//		unit->setTypedText(touchgfx::TypedText(unitTempC));
@@ -462,7 +646,7 @@ public:
 	//		unit->setTypedText(touchgfx::TypedText(unitTempF));
 	//	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
 
-		Container::setWidth(integer->getWidth() + decimal->getWidth());
+		Container::setWidthHeight(integer->getWidth() + dot->getWidth() + decimal->getWidth(), MAX(integer->getHeight(), decimal->getHeight()));
 	}
 
 private:
@@ -470,6 +654,7 @@ private:
 	CValue* decimal = NULL;
 	uint8_t decimalPrecision;
 //	CText* unit = NULL;
+	CDigit* dot = NULL;
 };
 
 

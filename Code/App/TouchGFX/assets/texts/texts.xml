@@ -5,13 +5,13 @@
   </Languages>
   <Texts>
     <TextGroup Id="Meter">
-      <Text Id="METER_HUGE" Alignment="Left" TypographyId="MeterHuge">
+      <Text Id="GAUGE_HUGE" Alignment="Left" TypographyId="GuageDigitsHuge">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="METER_LARGE" Alignment="Left" TypographyId="MeterLarge">
+      <Text Id="GAUGE_LARGE" Alignment="Left" TypographyId="GaugeDigitsLarge">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="METER_MEDIUM" Alignment="Left" TypographyId="MeterMedium">
+      <Text Id="GAUGE_MEDIUM" Alignment="Left" TypographyId="GaugeDigitsMedium">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="METER_SMALL" Alignment="Left" TypographyId="MeterSmall">
@@ -30,9 +30,9 @@
     <TextGroup Id="Unsorted" />
   </Texts>
   <Typographies>
-    <Typography Id="MeterHuge" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
-    <Typography Id="MeterLarge" Font="AvenirNext-Regular-08.ttf" Size="150" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
-    <Typography Id="MeterMedium" Font="AvenirNext-Regular-08.ttf" Size="70" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,.,°,C,F" WildcardCharacterRanges="0-9" />
+    <Typography Id="GuageDigitsHuge" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
+    <Typography Id="GaugeDigitsLarge" Font="AvenirNext-Regular-08.ttf" Size="150" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
+    <Typography Id="GaugeDigitsMedium" Font="AvenirNext-Regular-08.ttf" Size="80" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-." WildcardCharacterRanges="0-9" />
     <Typography Id="MeterSmall" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
     <Typography Id="MeterTiny" Font="AvenirNext-Regular-08.ttf" Size="22" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°,C,F,%" />
     <Typography Id="MenuButton" Font="AvenirNext-Regular-08.ttf" Size="45" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />

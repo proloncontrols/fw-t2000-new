@@ -56,10 +56,10 @@ protected:
 private:
 	static const int16_t buttonSetPointsSize = 200;
 
-	static const int16_t buttonSettingsImageReleasedId = BITMAP_SETTING_ID;
-	static const int16_t buttonSettingsImagePressedId  = BITMAP_SETTING_DARK2_ID;
+//	static const int16_t buttonSettingsImageReleasedId = BITMAP_SETTING_ID;
+//	static const int16_t buttonSettingsImagePressedId  = BITMAP_SETTING_DARK2_ID;
 
-	static const int16_t imageCoolingId = BITMAP_COOLINGON_ID;
+//	static const int16_t imageCoolingId = BITMAP_COOLINGON_ID;
 };
 
 }   //namespace touchgfx

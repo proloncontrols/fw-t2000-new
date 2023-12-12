@@ -37,7 +37,7 @@ CMeterExt::CMeterExt()
 //	addUnit(unitCText, unitFText, colorR, colorG, colorB);
 //	addImage(imageId);
 
-	Container::setHeight(touchgfx::TypedText(intText).getFont()->getFontHeight());
+//	Container::setHeight(touchgfx::TypedText(intText).getFont()->getFontHeight());
 }
 
 

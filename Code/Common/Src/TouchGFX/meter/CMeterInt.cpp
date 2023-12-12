@@ -34,12 +34,12 @@ CMeterInt::CMeterInt()
 {
 //	addInteger(intPrecision, intCharSpacingRatio, touchgfx::TypedText(intText), colorR, colorG, colorB);
 //	addDecimal(decPrecision, decCharSpacingRatio, touchgfx::TypedText(decText), colorR, colorG, colorB);
-	addInteger(intPrecision, intCharSpacingRatio, intText, colorR, colorG, colorB);
-	addDecimal(decPrecision, decCharSpacingRatio, decText, colorR, colorG, colorB);
-	addUnit(unitCText, unitFText, colorR, colorG, colorB);
-	addDot(dotText, colorR, colorG, colorB);
+//	addInteger(intPrecision, intCharSpacingRatio, intText, colorR, colorG, colorB);
+//	addDecimal(decPrecision, decCharSpacingRatio, decText, colorR, colorG, colorB);
+//	addUnit(unitCText, unitFText, colorR, colorG, colorB);
+//	addDot(dotText, colorR, colorG, colorB);
 
-	Container::setHeight(MAX(touchgfx::TypedText(intText).getFont()->getFontHeight(), touchgfx::TypedText(decText).getFont()->getFontHeight()));
+//	Container::setHeight(MAX(touchgfx::TypedText(intText).getFont()->getFontHeight(), touchgfx::TypedText(decText).getFont()->getFontHeight()));
 }
 
 }   //namespace touchgfx

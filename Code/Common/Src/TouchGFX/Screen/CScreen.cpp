@@ -49,7 +49,7 @@ CScreen::CScreen(Container& ownerContainer, bool wLogo)
 	if(wLogo)
 	{
 		logo = new CImage();
-		logo->setBitmap(Bitmap(bitmap));
+//		logo->setBitmap(Bitmap(bitmap));
 		logo->setXY((client.getWidth() / 2) - (logo->getWidth() / 2), 0);
 //		addToClient(*logo);
 		dsp.add(client, *logo);

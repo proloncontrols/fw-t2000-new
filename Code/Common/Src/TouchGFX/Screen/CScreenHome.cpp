@@ -37,13 +37,13 @@ namespace touchgfx
 CScreenHome::CScreenHome(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback)
             :CScreen(ownerContainer, true)
 {
-	imageCooling.setBitmap(imageCoolingId);
+//	imageCooling.setBitmap(imageCoolingId);
 	imageCooling.setXY(client.getWidth()/2 - imageCooling.getWidth()/2, 50);
 //	addToClient(imageCooling);
 //	dsp.addToContainer(client, imageCooling);
 	imageCooling.add(client);
 
-	buttonSettings.initialize(client.getWidth() - Bitmap(buttonSettingsImageReleasedId).getWidth(), 0, 0, buttonSettingsImageReleasedId, buttonSettingsImagePressedId);
+//	buttonSettings.initialize(client.getWidth() - Bitmap(buttonSettingsImageReleasedId).getWidth(), 0, 0, buttonSettingsImageReleasedId, buttonSettingsImagePressedId);
 	buttonSettings.setData(CScreenHome::BUTTON_SETTINGS);
 	buttonSettings.setAction(callback);
 //	addToClient(buttonSettings);

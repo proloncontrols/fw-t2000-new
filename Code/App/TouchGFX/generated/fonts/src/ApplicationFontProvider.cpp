@@ -9,14 +9,14 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
 {
     switch (typography)
     {
-    case Typography::METERHUGE:
+    case Typography::GUAGEDIGITSHUGE:
         // AvenirNext_Regular_08_220_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[0]);
-    case Typography::METERLARGE:
+    case Typography::GAUGEDIGITSLARGE:
         // AvenirNext_Regular_08_150_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[1]);
-    case Typography::METERMEDIUM:
-        // AvenirNext_Regular_08_70_4bpp
+    case Typography::GAUGEDIGITSMEDIUM:
+        // AvenirNext_Regular_08_80_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
     case Typography::METERSMALL:
         // AvenirNext_Regular_08_50_4bpp

@@ -49,11 +49,11 @@ protected:
 	static const uint8_t intCharSpacingRatio = 15;
 	static const uint8_t decCharSpacingRatio = 15;
 
-	static const TypedTextId intText   = T_METER_LARGE;
-	static const TypedTextId dotText   = T_METER_SMALL;
-	static const TypedTextId decText   = T_METER_SMALL;
-	static const TypedTextId unitCText = T_METER_SMALL;
-	static const TypedTextId unitFText = T_METER_SMALL;
+//	static const TypedTextId intText   = T_METER_LARGE;
+//	static const TypedTextId dotText   = T_METER_SMALL;
+//	static const TypedTextId decText   = T_METER_SMALL;
+//	static const TypedTextId unitCText = T_METER_SMALL;
+//	static const TypedTextId unitFText = T_METER_SMALL;
 };
 
 }   //namespace touchgfx
