@@ -81,18 +81,34 @@ SplashView::SplashView()
 //	dig3.setXY(dig2.getX() + dig2.getWidth(), dig2.getY() + (dig2.getHeight() - dig3.getHeight()));
 //	dig3.addTo(container);
 
-	val = new CValue(4, 15, T_GAUGE_HUGE, 255, 255, 255);
-	val->update(-20);
-	val->setXY(1, 1);
-	val->addTo(container);
+	txt1 = "-21";
+	txt1.setXY(1, 1);
+	txt1.addTo(container);
+//	int16_t bl1 = txt1.getBaseline();
+//	int16_t bl2 = txt1.getBaselineOffset();
+
+	txt3 = ".5";
+//	txt3.setXY(txt1.getWidth(), txt1.getY() + (txt1.getHeight() - txt3.getHeight()) + (txt3.getBaseline() - txt3.getBaselineOffset()));
+	txt3.setXY(txt1.getWidth(), txt1.getY() + (txt1.getHeight() - txt3.getHeight()) + txt3.getBaseline());
+	txt3.addTo(container);
+//	int16_t bl5 = txt3.getBaseline();
+//	int16_t bl6 = txt3.getBaselineOffset();
+
+	txt2 = "";
+//	txt2.setXY(1, 300);
+//	txt2.setXY(txt1.getWidth() + txt3.getWidth(), txt1.getY() + (txt1.getHeight() - txt2.getHeight()) + txt2.getBaseline());
+	txt2.setXY(txt1.getWidth(), txt1.getY());
+	txt2.addTo(container);
+//	int16_t bl3 = txt2.getBaseline();
+//	int16_t bl4 = txt2.getBaselineOffset();
 
 //	temp.update(20.5, true);
 //	temp.setXY(100, 100);
 //	temp.addTo(container);
 
-//    txt1 = "TestStringWithAnAppliedEdge2";
-//	txt1.setXY(0, 500);
-//    txt1.addTo(container);
+    str = "TestStringWithAnAppliedEdgé2";
+	str.setXY(1, 500);
+    str.addTo(container);
 
 //    txt2 = "°C";
 ////	txt2.setXYToTopLine(val->getX() + val->getWidth(), val->getY() + val->getTopLine());

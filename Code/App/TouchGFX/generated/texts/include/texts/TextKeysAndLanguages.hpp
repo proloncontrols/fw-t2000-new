@@ -12,6 +12,8 @@ enum LANGUAGES
 
 enum TEXTS
 {
+    T_TEMP_SMALL_C,
+    T_TEMP_SMALL_F,
     T_GAUGE_HUGE,
     T_GAUGE_LARGE,
     T_GAUGE_MEDIUM,

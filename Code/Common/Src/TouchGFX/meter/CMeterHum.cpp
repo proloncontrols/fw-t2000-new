@@ -59,7 +59,7 @@ void CMeterHum::display(double value)
 //	image->setXY(integer->getWidth(), Container::getHeight() - image->getHeight());
 //	image->setBitmap(touchgfx::Bitmap(imageId));
 
-	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), image->getWidth()));
+//	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), image->getWidth()));
 	resizeBackground();
 }
 

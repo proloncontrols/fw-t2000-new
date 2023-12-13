@@ -33,7 +33,11 @@ protected:
 //    CDigit dig6 = CDigit(T_GAUGE_HUGE, 255, 255, 255);
 //    CDigit dig3 = CDigit(T_GAUGE_MEDIUM, 255, 255, 255);
 
-    CValue* val;
+    CText txt1 = CText(4, 15, T_GAUGE_HUGE, 255, 255, 255);
+    CText txt2 = CText(3, 15, T_TEMP_SMALL_C, 255, 255, 255);
+    CText txt3 = CText(3, 15, T_GAUGE_MEDIUM, 255, 255, 255);
+
+    CString str = CString(T_MENU_BUTTON, 255, 255, 255);
 };
 
 #endif // SPLASHVIEW_HPP

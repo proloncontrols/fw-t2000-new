@@ -34,144 +34,88 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CValue::CValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-{
-	precision = newPrecision;
-
-	Container::setHeight(newType.getFont()->getFontHeight());
-	spacingWidth = 0;
-	if(newSpacingRatio != 0)
-		spacingWidth = getHeight() / newSpacingRatio;
-
-	type = newType;
-
-//-----------------------------------------------
-background.setHeight(getHeight());
-background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-add(background);
-//-----------------------------------------------
-
-	digits = (CDigit**)malloc(precision * sizeof(CDigit*));   //precision MUST include the minus sign
-	for(uint8_t i = 0; i < precision; i++)
-	{
-		digits[i] = new CDigit(newType, newColorR, newColorG, newColorB);
-		add(*digits[i]);
-	}
-
-	valueString = (char*)calloc(precision + 1, sizeof(char));   //+1 = null termination character
-}
+//CValue::CValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+//{
+//	precision = newPrecision;
+//
+//	Container::setHeight(newType.getFont()->getFontHeight());
+//	spacingWidth = 0;
+//	if(newSpacingRatio != 0)
+//		spacingWidth = getHeight() / newSpacingRatio;
+//
+//	type = newType;
+//
+////-----------------------------------------------
+//background.setHeight(getHeight());
+//background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+//add(background);
+////-----------------------------------------------
+//
+//	digits = (CDigit**)malloc(precision * sizeof(CDigit*));   //precision MUST include the minus sign
+//	for(uint8_t i = 0; i < precision; i++)
+//	{
+//		digits[i] = new CDigit(newType, newColorR, newColorG, newColorB);
+//		add(*digits[i]);
+//	}
+//
+//	valueString = (char*)calloc(precision + 1, sizeof(char));   //+1 = null termination character
+//}
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CValue::addTo(Container& c)
-{
-	dsp.add(c, *this);
-}
+//void CValue::addTo(Container& c)
+//{
+//	dsp.add(c, *this);
+//}
 
 //-----------------------------------------------------------------------------
-void CValue::update(int16_t value)
-{
-	int len;
-	int16_t minimumTop;
-	int16_t totalWidth = 0;
-
-	sprintf(valueString, "%d", value);
-	len = strlen(valueString);
-
-	for(int i = 0; i < len; i++)
-	{
-		digits[i]->setDigit(valueString[i]);
-		if(dsp.orientation == CDisplay::NATIVE)
-			digits[i]->setX(totalWidth);
-		totalWidth += digits[i]->getWidth();
-		totalWidth += spacingWidth;
-	}
-	Container::setWidth(totalWidth);
-
-	if(dsp.orientation != CDisplay::NATIVE)
-	{
-		for(int i = 0; i < len; i++)
-		{
-			digits[i]->setX(totalWidth - digits[i]->getWidth());
-			totalWidth -= digits[i]->getWidth();
-			totalWidth -= spacingWidth;
-		}
-	}
-
-	minimumTop = type.getFont()->getFontHeight();
-	for(int i = 0; i < len; i++)
-	{
-		if(digits[i]->getGlyph()->top() < minimumTop)
-			minimumTop = digits[i]->getGlyph()->top();
-	}
-
-	for(int i = 0; i < len; i++)
-	{
-		if(dsp.orientation == CDisplay::NATIVE)
-			digits[i]->setY(digits[i]->getY() - minimumTop);
-	}
-
-	Container::setHeight(digits[0]->getHeight() - minimumTop);
-
-	background.setWidthHeight(*this);
-
-
+//void CValue::update(int16_t value)
+//{
 //	int len;
-//	int16_t TotalWidth;
-//
-//	sprintf(valueString, "%d", value);
-//	len = strlen(valueString);
-//
-//	TotalWidth = 1;
-//	for(int i = 0; i < len; i++)
-//	{
-//		digits[i]->setDigit(valueString[i]);
-//		if(dsp.orientation == CDisplay::NATIVE)
-//			digits[i]->setXY(TotalWidth, 1);
-//		TotalWidth += digits[i]->getWidth();
-//		TotalWidth += spacingWidth;
-//	}
-//
-//	background.setWidthHeight(TotalWidth, type.getFont()->getFontHeight());
-//	Container::setWidthHeight(background);
-//
-//	if(dsp.orientation != CDisplay::NATIVE)
-//	{
-//		for(int i = 0; i < len; i++)
-//		{
-//			digits[i]->setXY(TotalWidth - digits[i]->getWidth(), 1);
-//			TotalWidth -= digits[i]->getWidth();
-//			TotalWidth -= spacingWidth;
-//		}
-//	}
-
-//	digits[0]->setDigit('2');
-//	digits[0]->setXY(1, 1);
-//
-//	Container::setWidthHeight(digits[0]->getWidth(), digits[0]->getHeight());
-//	background.setWidthHeight(*this);
-
-//	int len;
-//	int index = 0;
+//	int16_t minimumTop;
 //	int16_t totalWidth = 0;
 //
 //	sprintf(valueString, "%d", value);
 //	len = strlen(valueString);
 //
-//	if(value < 0)
+//	for(int i = 0; i < len; i++)
 //	{
-//		Unicode::fromUTF8((uint8_t*)&valueString[0], digits[0]->buffer, 1);
-//		digits[0]->buffer[1] = 0;
-//		index = 1;
+//		digits[i]->setDigit(valueString[i]);
+//		if(dsp.orientation == CDisplay::NATIVE)
+//			digits[i]->setX(totalWidth);
+//		totalWidth += digits[i]->getWidth();
+//		totalWidth += spacingWidth;
+//	}
+//	Container::setWidth(totalWidth);
+//
+//	if(dsp.orientation != CDisplay::NATIVE)
+//	{
+//		for(int i = 0; i < len; i++)
+//		{
+//			digits[i]->setX(totalWidth - digits[i]->getWidth());
+//			totalWidth -= digits[i]->getWidth();
+//			totalWidth -= spacingWidth;
+//		}
 //	}
 //
-//	for(int i = index; i < len; i++)
+//	minimumTop = type.getFont()->getFontHeight();
+//	for(int i = 0; i < len; i++)
 //	{
-//		Unicode::fromUTF8((uint8_t*)&valueString[i], digits[i]->buffer, 1);
-//		digits[i]->buffer[1] = 0;
+//		if(digits[i]->getGlyph()->top() < minimumTop)
+//			minimumTop = digits[i]->getGlyph()->top();
 //	}
-}
+//
+//	for(int i = 0; i < len; i++)
+//	{
+//		if(dsp.orientation == CDisplay::NATIVE)
+//			digits[i]->setY(digits[i]->getY() - minimumTop);
+//	}
+//
+//	Container::setHeight(digits[0]->getHeight() - minimumTop);
+//
+//	background.setWidthHeight(*this);
+//}
 
 
 
@@ -401,7 +345,7 @@ void CValue::update(int16_t value)
 
 
 
-#include <stdio.h>
+//#include <stdio.h>
 
 
 //CMeterDigit::CMeterDigit(const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)

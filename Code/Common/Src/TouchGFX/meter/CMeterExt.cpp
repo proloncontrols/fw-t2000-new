@@ -64,7 +64,7 @@ void CMeterExt::display(double value, bool celsius)
 //	image->setXY(integer->getWidth(), Container::getHeight() - image->getHeight());
 //	image->setBitmap(touchgfx::Bitmap(imageId));
 
-	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), image->getWidth()));
+//	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), image->getWidth()));
 	resizeBackground();
 }
 

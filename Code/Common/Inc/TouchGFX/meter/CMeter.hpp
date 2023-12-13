@@ -79,7 +79,7 @@ protected:
 		int16_t newWidth;
 		int16_t trailingSpace;
 //		CMeterDigit** digits;
-		CText** digits;
+//		CText** digits;
 		uint8_t precision;
 		uint8_t spacingRatio;   //Set to 0 for no ratio (original font aspect)
 		TypedText textType;
@@ -91,8 +91,8 @@ protected:
 	CMeterValue* decimal = NULL;
 //	TextArea* dot;
 //	TextArea* unit;
-	CText* dot = NULL;
-	CText* unit = NULL;
+//	CText* dot = NULL;
+//	CText* unit = NULL;
 	TypedText unitTempC;
 	TypedText unitTempF;
 	TypedText unitTempP;

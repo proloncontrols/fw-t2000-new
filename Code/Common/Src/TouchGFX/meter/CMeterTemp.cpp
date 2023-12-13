@@ -44,8 +44,8 @@ void CMeterTemp::display(double value, bool celsius)
 	decimal->display(decValue);
 
 	integer->setXY(0, 0);
-	dot->setXY(integer->getWidth(), Container::getHeight() - dot->getHeight());
-	decimal->setXY(integer->getWidth() + dot->getWidth(),  Container::getHeight() - decimal->getHeight());
+//	dot->setXY(integer->getWidth(), Container::getHeight() - dot->getHeight());
+//	decimal->setXY(integer->getWidth() + dot->getWidth(),  Container::getHeight() - decimal->getHeight());
 
 //	if(celsius)
 //		unit->setTypedText(touchgfx::TypedText(unitTempC));
@@ -53,7 +53,7 @@ void CMeterTemp::display(double value, bool celsius)
 //		unit->setTypedText(touchgfx::TypedText(unitTempF));
 //	unit->setXY(integer->getWidth(), Container::getHeight() - integer->getMaxGlyphHeight() - (unit->getTypedText().getFont()->getFontHeight() - unit->getTypedText().getFont()->getGlyph(unit->getTypedText().getText()[0])->top()));
 
-	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), dot->getWidth() + decimal->getWidth()));
+//	Container::setWidth(integer->getWidth() + MAX(unit->getWidth(), dot->getWidth() + decimal->getWidth()));
 	resizeBackground();
 }
 
