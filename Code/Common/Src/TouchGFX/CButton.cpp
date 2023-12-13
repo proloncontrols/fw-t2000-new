@@ -36,11 +36,11 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 void CButton::addTo(Container& c)
 {
-	dsp.add(c, *this);
-	dsp.add(*this, *imgReleased);
-	dsp.add(*this, *imgPressed);
-	if(text)
-		dsp.add(*this, *text);
+//	dsp.add(c, *this);
+//	dsp.add(*this, *imgReleased);
+//	dsp.add(*this, *imgPressed);
+//	if(text)
+//		dsp.add(*this, *text);
 }
 
 //-----------------------------------------------------------------------------

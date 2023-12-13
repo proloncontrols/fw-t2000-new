@@ -44,7 +44,7 @@ CScreen::CScreen(Container& ownerContainer, bool wLogo)
 	clientBackground.setPosition(0, 0, client.getWidth(), client.getHeight());
 	clientBackground.setColor(Color::getColorFromRGB(0, 0, 0));
 //	addToClient(clientBackground);
-	dsp.add(client, clientBackground);
+//	dsp.add(client, clientBackground);
 
 	if(wLogo)
 	{
@@ -52,7 +52,7 @@ CScreen::CScreen(Container& ownerContainer, bool wLogo)
 //		logo->setBitmap(Bitmap(bitmap));
 		logo->setXY((client.getWidth() / 2) - (logo->getWidth() / 2), 0);
 //		addToClient(*logo);
-		dsp.add(client, *logo);
+//		dsp.add(client, *logo);
 	}
 }
 

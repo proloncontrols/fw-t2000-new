@@ -54,7 +54,7 @@ CScreenHome::CScreenHome(Container& ownerContainer, GenericCallback<const Abstra
 	buttonSetPoints.setData(CScreenHome::BUTTON_SETPOINTS);
 	buttonSetPoints.setAction(callback);
 //	addToClient(buttonSetPoints);
-	dsp.add(client, buttonSetPoints);
+//	dsp.add(client, buttonSetPoints);
 
 	meterInt.setXY(0, 0);
 	meterInt.display(-21.5, true);

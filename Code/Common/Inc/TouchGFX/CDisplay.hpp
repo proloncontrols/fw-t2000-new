@@ -78,7 +78,15 @@ public:
 	static const uint8_t devBackgroundColorG = 80;  //86;
 	static const uint8_t devBackgroundColorB = 140; //90;
 
-	void add(Container& c, Drawable& d);
+//	void add(Container& c, Drawable& d);
+	void setX(Drawable& d, int16_t x);
+	void setY(Drawable& d, int16_t y);
+	void setXY(Drawable& d, int16_t x, int16_t y);
+//	void Render(Drawable& d);
+	const Rect& getPosition(Drawable& d);
+
+private:
+	Rect r;
 };
 
 

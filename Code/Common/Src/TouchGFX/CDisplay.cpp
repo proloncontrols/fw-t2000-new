@@ -31,19 +31,62 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CDisplay::add(Container& c, Drawable& d)
-{
-	c.add(d);
+//void CDisplay::add(Container& c, Drawable& d)
+//{
+//	c.add(d);
+//
+//	if(orientation != NATIVE)
+//	{
+//		int16_t newX = c.getWidth() - d.getWidth() - d.getX();
+//		int16_t newY = c.getHeight() - d.getHeight() - d.getY();
+//		int16_t newW = d.getWidth();
+//		int16_t newH = d.getHeight();
+//
+//		d.setPosition(newX, newY, newW, newH);
+//	}
+//}
 
+void CDisplay::setX(Drawable& d, int16_t x)
+{
+	if(dsp.orientation == CDisplay::NATIVE)
+		d.setX(x);
+	else
+		d.setX(d.getParent()->getWidth() - x - d.getWidth());
+}
+
+void CDisplay::setY(Drawable& d, int16_t y)
+{
+	if(dsp.orientation == CDisplay::NATIVE)
+		d.setY(y);
+	else
+		d.setY(d.getParent()->getHeight() - y - d.getHeight());
+}
+
+void CDisplay::setXY(Drawable& d, int16_t x, int16_t y)
+{
+//	if(dsp.orientation == CDisplay::NATIVE)
+//		d.setXY(x, y);
+//	else
+//		d.setXY(d.getParent()->getWidth() - x - d.getWidth(), d.getParent()->getHeight() - y - d.getHeight());
+	setX(d, x);
+	setY(d, y);
+}
+
+//void CDisplay::Render(Drawable& d)
+//{
+//	if(orientation != NATIVE)
+//		d.setXY(d.getParent()->getWidth() - d.getX(), d.getParent()->getHeight() - d.getY());
+//}
+
+const Rect& CDisplay::getPosition(Drawable& d)
+{
+	r = d.getRect();
 	if(orientation != NATIVE)
 	{
-		int16_t newX = c.getWidth() - d.getWidth() - d.getX();
-		int16_t newY = c.getHeight() - d.getHeight() - d.getY();
-		int16_t newW = d.getWidth();
-		int16_t newH = d.getHeight();
-
-		d.setPosition(newX, newY, newW, newH);
+		r.x = d.getParent()->getWidth() - r.width - r.x;
+		r.y = d.getParent()->getHeight() - r.height - r.y;
 	}
+	return r;
 }
 
 }

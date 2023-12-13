@@ -58,7 +58,7 @@ void CImage::setXY(int16_t x, int16_t y)
 //-----------------------------------------------------------------------------
 void CImage::add(Container& c)
 {
-	dsp.add(c, *this);
+//	dsp.add(c, *this);
 }
 
 }   //namespace touchgfx

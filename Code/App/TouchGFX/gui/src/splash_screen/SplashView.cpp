@@ -81,24 +81,31 @@ SplashView::SplashView()
 //	dig3.setXY(dig2.getX() + dig2.getWidth(), dig2.getY() + (dig2.getHeight() - dig3.getHeight()));
 //	dig3.addTo(container);
 
+	add(txt1);
 	txt1 = "-21";
-	txt1.setXY(1, 1);
-	txt1.addTo(container);
+	dsp.setXY(txt1, 50, 50);
+
+//	txt1 = "-21";
+//	txt1.setXY(50, 50);
+//	txt1.addTo(container);
 //	int16_t bl1 = txt1.getBaseline();
 //	int16_t bl2 = txt1.getBaselineOffset();
 
+	add(txt3);
 	txt3 = ".5";
 //	txt3.setXY(txt1.getWidth(), txt1.getY() + (txt1.getHeight() - txt3.getHeight()) + (txt3.getBaseline() - txt3.getBaselineOffset()));
-	txt3.setXY(txt1.getWidth(), txt1.getY() + (txt1.getHeight() - txt3.getHeight()) + txt3.getBaseline());
-	txt3.addTo(container);
+//	dsp.setXY(txt3, txt1.getX() + txt1.getWidth(), txt1.getY() + (txt1.getHeight() - txt3.getHeight()) + txt3.getBaseline());
+	Rect r = dsp.getPosition(txt1);
+	dsp.setXY(txt3, r.x + r.width, r.y + (r.height - txt3.getHeight()) + txt3.getBaseline());
+//	txt3.addTo(container);
 //	int16_t bl5 = txt3.getBaseline();
 //	int16_t bl6 = txt3.getBaselineOffset();
 
-	txt2 = "";
-//	txt2.setXY(1, 300);
-//	txt2.setXY(txt1.getWidth() + txt3.getWidth(), txt1.getY() + (txt1.getHeight() - txt2.getHeight()) + txt2.getBaseline());
-	txt2.setXY(txt1.getWidth(), txt1.getY());
-	txt2.addTo(container);
+//	txt2 = "";
+////	txt2.setXY(1, 300);
+////	txt2.setXY(txt1.getWidth() + txt3.getWidth(), txt1.getY() + (txt1.getHeight() - txt2.getHeight()) + txt2.getBaseline());
+//	txt2.setXY(txt1.getWidth(), txt1.getY());
+//	txt2.addTo(container);
 //	int16_t bl3 = txt2.getBaseline();
 //	int16_t bl4 = txt2.getBaselineOffset();
 

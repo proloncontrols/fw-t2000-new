@@ -49,21 +49,23 @@ public:
 	{
 		setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
 		setTypedText(newType);
+		if(dsp.orientation != CDisplay::NATIVE)
+			setRotation(TEXT_ROTATE_180);
 	}
 
 	//-----------------------------------------------------------------------------
 	void addTo(Container& c)
 	{
-		dsp.add(c, *this);
+//		dsp.add(c, *this);
 	}
 
 	//-----------------------------------------------------------------------------
-	void setXY(int16_t x, int16_t y)
-	{
-		if(dsp.orientation != CDisplay::NATIVE)
-			setRotation(TEXT_ROTATE_180);
-		TextAreaWithOneWildcard::setXY(x, y);
-	}
+//	void setXY(int16_t x, int16_t y)
+//	{
+//		if(dsp.orientation != CDisplay::NATIVE)
+//			setRotation(TEXT_ROTATE_180);
+//		TextAreaWithOneWildcard::setXY(x, y);
+//	}
 
 	//-----------------------------------------------------------------------------
 	void operator=(const char* newString)
@@ -551,8 +553,8 @@ public:
 
 		type = newType;
 
-//		background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-//		add(background);
+		background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+		add(background);
 
 		digits = (CDigit**)malloc(maxLength * sizeof(CDigit*));   //precision MUST include the minus sign
 		for(int i = 0; i < maxLength; i++)
@@ -566,9 +568,56 @@ public:
 
 	void addTo(Container& c)
 	{
-		dsp.add(c, *this);
+//		dsp.add(c, *this);
 	}
 
+//	void operator=(const char* newText)
+//	{
+//		int len;
+//		int16_t maximumTop;
+//		int16_t totalWidth = 0;
+//
+//		len = strlen(newText);
+//		if(len <= maxLength)
+//		{
+//			for(int i = 0; i < len; i++)
+//			{
+//				digits[i]->setDigit(newText[i]);
+//				if(dsp.orientation == CDisplay::NATIVE)
+//					digits[i]->setX(totalWidth);
+//				totalWidth += digits[i]->getWidth();
+//				totalWidth += spacingWidth;
+//			}
+//			Container::setWidth(totalWidth);
+//
+//			if(dsp.orientation != CDisplay::NATIVE)
+//			{
+//				for(int i = 0; i < len; i++)
+//				{
+//					digits[i]->setX(totalWidth - digits[i]->getWidth());
+//					totalWidth -= digits[i]->getWidth();
+//					totalWidth -= spacingWidth;
+//				}
+//			}
+//
+//			maximumTop = 0;
+//			for(int i = 0; i < len; i++)
+//			{
+//				if(digits[i]->getGlyph()->top() > maximumTop)
+//					maximumTop = digits[i]->getGlyph()->top();
+//			}
+//
+//			if(dsp.orientation == CDisplay::NATIVE)
+//			{
+//				for(int i = 0; i < len; i++)
+//					digits[i]->setY((type.getFont()->getFontHeight() - maximumTop) * -1);
+//			}
+//
+//			Container::setHeight(digits[0]->getHeight() - (type.getFont()->getFontHeight() - maximumTop));
+//			background.setWidthHeight(*this);
+//			curLength = len;
+//		}
+//	}
 	void operator=(const char* newText)
 	{
 		int len;
@@ -581,22 +630,15 @@ public:
 			for(int i = 0; i < len; i++)
 			{
 				digits[i]->setDigit(newText[i]);
-				if(dsp.orientation == CDisplay::NATIVE)
-					digits[i]->setX(totalWidth);
+				digits[i]->setX(totalWidth);
 				totalWidth += digits[i]->getWidth();
 				totalWidth += spacingWidth;
 			}
-			Container::setWidth(totalWidth);
+//			Container::setWidth(totalWidth);
+			Container::setWidthHeight(totalWidth, digits[0]->getHeight());
 
-			if(dsp.orientation != CDisplay::NATIVE)
-			{
-				for(int i = 0; i < len; i++)
-				{
-					digits[i]->setX(totalWidth - digits[i]->getWidth());
-					totalWidth -= digits[i]->getWidth();
-					totalWidth -= spacingWidth;
-				}
-			}
+			for(int i = 0; i < len; i++)
+				dsp.setX(*digits[i], digits[i]->getX());
 
 			maximumTop = 0;
 			for(int i = 0; i < len; i++)
@@ -605,14 +647,15 @@ public:
 					maximumTop = digits[i]->getGlyph()->top();
 			}
 
-			if(dsp.orientation == CDisplay::NATIVE)
-			{
+//			if(dsp.orientation == CDisplay::NATIVE)
+//			{
 				for(int i = 0; i < len; i++)
-					digits[i]->setY((type.getFont()->getFontHeight() - maximumTop) * -1);
-			}
+//					digits[i]->setY((type.getFont()->getFontHeight() - maximumTop) * -1);
+					dsp.setY(*digits[i], (type.getFont()->getFontHeight() - maximumTop) * -1);
+//			}
 
 			Container::setHeight(digits[0]->getHeight() - (type.getFont()->getFontHeight() - maximumTop));
-//			background.setWidthHeight(*this);
+			background.setWidthHeight(*this);
 			curLength = len;
 		}
 	}
@@ -687,7 +730,7 @@ public:
 	};
 
 private:
-//	Box background;
+	Box background;
 	int maxLength;
 	int curLength;
 	CDigit** digits;
@@ -833,7 +876,7 @@ public:
 
 	void addTo(Container& c)
 	{
-		dsp.add(c, *this);
+//		dsp.add(c, *this);
 	}
 
 	void update(float temperature, bool celsius)

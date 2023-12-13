@@ -56,13 +56,13 @@ CMeter::CMeter()
 //-----------------------------------------------------------------------------
 void CMeter::addTo(Container& c)
 {
-	dsp.add(c, *this);
+//	dsp.add(c, *this);
 
-	if(integer)   dsp.add(*this, *integer);
-	if(decimal)   dsp.add(*this, *decimal);
+//	if(integer)   dsp.add(*this, *integer);
+//	if(decimal)   dsp.add(*this, *decimal);
 //	if(unit)      dsp.add(*this, *unit);
 //	if(dot)       dsp.add(*this, *dot);
-	if(image)     dsp.add(*this, *image);
+//	if(image)     dsp.add(*this, *image);
 }
 
 //-----------------------------------------------------------------------------
