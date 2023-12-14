@@ -30,6 +30,9 @@
 #endif
 
 
+//=============================================================================
+//  I N C L U D E S
+//-----------------------------------------------------------------------------
 #include <touchgfx/Drawable.hpp>
 #include <touchgfx/Containers/Container.hpp>
 
@@ -69,20 +72,18 @@ class CDisplay
 {
 public:
 	enum Orientation {
-		NATIVE,      //Physical display is set to native orientation (0°) used for development/testing pusposes
-		LANDSCAPE,   //Physical display is rotated 180° due to temperature/humidity sensor location
-		PORTRAIT     //Physical display is rotated 270° due to temperature/humidity sensor location
+		NATIVE,      //Display is natively left at 0° (used for development/testing purposes)
+		LANDSCAPE,   //Display is natively left at 0° but is programmatically rotated 180° due to temperature/humidity sensor location
+		PORTRAIT     //Display is natively rotated 270° and is programmatically rotated 180° due to temperature/humidity sensor location
 	} orientation;
 
-	static const uint8_t devBackgroundColorR = 140; //86;
-	static const uint8_t devBackgroundColorG = 80;  //86;
-	static const uint8_t devBackgroundColorB = 140; //90;
+	static const uint8_t devBackgroundColorR = 140;
+	static const uint8_t devBackgroundColorG = 80;
+	static const uint8_t devBackgroundColorB = 140;
 
-//	void add(Container& c, Drawable& d);
 	void setX(Drawable& d, int16_t x);
 	void setY(Drawable& d, int16_t y);
 	void setXY(Drawable& d, int16_t x, int16_t y);
-//	void Render(Drawable& d);
 	const Rect& getPosition(Drawable& d);
 
 private:

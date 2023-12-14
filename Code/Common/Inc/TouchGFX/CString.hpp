@@ -10,23 +10,22 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CText.hpp
+//         File : CString.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Manipulated text class header file
+//  Description : Basic string class header file
 //=============================================================================
-#ifndef CTEXT_HPP
-#define CTEXT_HPP
+#ifndef CSTRING_HPP
+#define CSTRING_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stdlib.h>
 #include <touchgfx/TypedText.hpp>
-#include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/Containers/Container.hpp>
 
 
 namespace touchgfx
@@ -35,41 +34,19 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CText : public Container
+class CString : public TextAreaWithOneWildcard
 {
 public:
-	CText(int newMaxLength, int newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+	CString(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 
-	void operator=(const char* newText);
-
-	int16_t getBaseline();
-
-public:
-	class CDigit : public Container
-	{
-	public:
-		CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
-
-		void setDigit(const char newDigit);
-		const Font* getFont();
-		const GlyphNode* getGlyph();
-
-	private:
-//		Box background;
-		TextAreaWithOneWildcard area;
-		Unicode::UnicodeChar buffer[2];
-	};
+	void operator=(const char* newString);
 
 private:
-//	Box background;
-	int maxLength;
-	int curLength;
-	CDigit** digits;
-	int16_t spacingWidth;
-	TypedText type;
+	int curLength = 0;
+	Unicode::UnicodeChar* buffer = NULL;
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CTEXT_HPP
+#endif   //CSTRING_HPP

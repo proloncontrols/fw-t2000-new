@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Text class implementation file
+//  Description : Manipulated text class implementation file
 //=============================================================================
 
 
@@ -32,643 +32,142 @@ namespace touchgfx
 {
 
 //=============================================================================
+//  CText
+//-----------------------------------------------------------------------------
+//=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-//CValue::CValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-//{
-//	precision = newPrecision;
-//
-//	Container::setHeight(newType.getFont()->getFontHeight());
-//	spacingWidth = 0;
-//	if(newSpacingRatio != 0)
-//		spacingWidth = getHeight() / newSpacingRatio;
-//
-//	type = newType;
-//
-////-----------------------------------------------
-//background.setHeight(getHeight());
-//background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-//add(background);
-////-----------------------------------------------
-//
-//	digits = (CDigit**)malloc(precision * sizeof(CDigit*));   //precision MUST include the minus sign
-//	for(uint8_t i = 0; i < precision; i++)
-//	{
-//		digits[i] = new CDigit(newType, newColorR, newColorG, newColorB);
-//		add(*digits[i]);
-//	}
-//
-//	valueString = (char*)calloc(precision + 1, sizeof(char));   //+1 = null termination character
-//}
+CText::CText(int newMaxLength, int newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+{
+//	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+//	add(background);
+
+	maxLength = newMaxLength;
+
+	spacingWidth = 0;
+	if(newSpacingRatio != 0)
+		spacingWidth = newType.getFont()->getFontHeight() / newSpacingRatio;
+
+	type = newType;
+
+	digits = (CDigit**)malloc(maxLength * sizeof(CDigit*));   //precision MUST include the minus sign
+	for(int i = 0; i < maxLength; i++)
+	{
+		digits[i] = new CDigit(newType, newColorR, newColorG, newColorB);
+		add(*digits[i]);
+	}
+
+	curLength = 0;
+}
+
+
+//=============================================================================
+//  O P E R A T O R S
+//-----------------------------------------------------------------------------
+void CText::operator=(const char* newText)
+{
+	int len;
+	int16_t maximumTop;
+	int16_t totalWidth = 0;
+
+	len = strlen(newText);
+	if(len <= maxLength)
+	{
+		for(int i = 0; i < len; i++)
+		{
+			digits[i]->setDigit(newText[i]);
+			digits[i]->setX(totalWidth);
+			totalWidth += digits[i]->getWidth();
+			totalWidth += spacingWidth;
+		}
+		Container::setWidth(totalWidth);
+
+		for(int i = 0; i < len; i++)
+			dsp.setX(*digits[i], digits[i]->getX());
+
+		maximumTop = 0;
+		for(int i = 0; i < len; i++)
+		{
+			if(digits[i]->getGlyph()->top() > maximumTop)
+				maximumTop = digits[i]->getGlyph()->top();
+		}
+
+		if(dsp.orientation == CDisplay::NATIVE)
+		{
+			for(int i = 0; i < len; i++)
+				digits[i]->setY((type.getFont()->getFontHeight() - maximumTop) * -1);
+		}
+
+		Container::setHeight(digits[0]->getHeight() - (type.getFont()->getFontHeight() - maximumTop));
+		curLength = len;
+
+//		background.setWidthHeight(*this);
+	}
+}
+
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-//void CValue::addTo(Container& c)
-//{
-//	dsp.add(c, *this);
-//}
+int16_t CText::getBaseline()
+{
+	return digits[0]->getHeight() - type.getFont()->getFontHeight();
+}
 
+
+
+
+
+//=============================================================================
+//  CText::CDigit
 //-----------------------------------------------------------------------------
-//void CValue::update(int16_t value)
-//{
-//	int len;
-//	int16_t minimumTop;
-//	int16_t totalWidth = 0;
-//
-//	sprintf(valueString, "%d", value);
-//	len = strlen(valueString);
-//
-//	for(int i = 0; i < len; i++)
-//	{
-//		digits[i]->setDigit(valueString[i]);
-//		if(dsp.orientation == CDisplay::NATIVE)
-//			digits[i]->setX(totalWidth);
-//		totalWidth += digits[i]->getWidth();
-//		totalWidth += spacingWidth;
-//	}
-//	Container::setWidth(totalWidth);
-//
-//	if(dsp.orientation != CDisplay::NATIVE)
-//	{
-//		for(int i = 0; i < len; i++)
-//		{
-//			digits[i]->setX(totalWidth - digits[i]->getWidth());
-//			totalWidth -= digits[i]->getWidth();
-//			totalWidth -= spacingWidth;
-//		}
-//	}
-//
-//	minimumTop = type.getFont()->getFontHeight();
-//	for(int i = 0; i < len; i++)
-//	{
-//		if(digits[i]->getGlyph()->top() < minimumTop)
-//			minimumTop = digits[i]->getGlyph()->top();
-//	}
-//
-//	for(int i = 0; i < len; i++)
-//	{
-//		if(dsp.orientation == CDisplay::NATIVE)
-//			digits[i]->setY(digits[i]->getY() - minimumTop);
-//	}
-//
-//	Container::setHeight(digits[0]->getHeight() - minimumTop);
-//
+//=============================================================================
+//  C O N S T R U C T I O N
+//-----------------------------------------------------------------------------
+CText::CDigit::CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+{
+//	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+//	add(background);
+
+	if(dsp.orientation != CDisplay::NATIVE)
+		area.setRotation(TEXT_ROTATE_180);
+	area.setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
+	area.setTypedText(newType);
+	area.setWildcard(buffer);
+	add(area);
+}
+
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CText::CDigit::setDigit(const char newDigit)
+{
+	Unicode::fromUTF8((uint8_t*)&newDigit, buffer, 1);
+	buffer[1] = 0;
+
+	area.resizeToCurrentText();
+
+	const GlyphNode* node = getGlyph();
+	if(dsp.orientation == CDisplay::NATIVE)
+		area.setXY(node->left * -1, 0);
+	else
+		area.setXY((area.getWidth() - node->width() - node->left) * -1, 0);
+	Container::setWidthHeight(area.getWidth() - (area.getWidth() - node->width()), area.getHeight());
+
 //	background.setWidthHeight(*this);
-//}
-
-
-
-
-
-
-
-
-
-
-////=============================================================================
-////  C O N S T R U C T I O N
-////-----------------------------------------------------------------------------
-//CValue::CDigit::CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-//{
-////-----------------------------------------------
-////background.setColor(Color::getColorFromRGB(140,  80,  140));
-////add(background);
-////-----------------------------------------------
-//
-//	if(dsp.orientation != CDisplay::NATIVE)
-//		text.setRotation(TEXT_ROTATE_180);
-//	text.setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
-//	text.setTypedText(newType);
-//	text.setWildcard(buffer);
-//	add(text);
-//}
-//
-////=============================================================================
-////  M E T H O D S
-////-----------------------------------------------------------------------------
-//void CValue::CDigit::addTo(Container& c)
-//{
-//	dsp.add(c, *this);
-//}
-//
-//void CValue::CDigit::setDigit(const char newDigit)
-//{
-//	Unicode::fromUTF8((uint8_t*)&newDigit, buffer, 1);
-//	buffer[1] = 0;
-//
-//	text.resizeToCurrentText();
-//	Container::setWidthHeight(text);
-////	background.setWidthHeight(*this);
-//}
-//
-////-----------------------------------------------------------------------------
-//const Font* CValue::CDigit::getFont()
-//{
-//	return text.getTypedText().getFont();
-//}
-//
-////-----------------------------------------------------------------------------
-//const GlyphNode* CValue::CDigit::getGlyph()
-//{
-//	return getFont()->getGlyph(buffer[0]);
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//=============================================================================
-//  C O N S T R U C T I O N
-//-----------------------------------------------------------------------------
-//CText::CText(int capacity)
-//{
-//	curCapacity = capacity;
-//
-//	buffer = (Unicode::UnicodeChar*)calloc(curCapacity + 1, sizeof(Unicode::UnicodeChar));   //+1 = null termination character
-//	text.setWildcard(buffer);
-//
-//	setColorFore(defaultForeColorR, defaultForeColorG, defaultForeColorB);
-//	setColorBack(defaultBackColorR, defaultBackColorG, defaultBackColorB);
-//}
-
-
-//=============================================================================
-//  M E T H O D S
-//-----------------------------------------------------------------------------
-//void CText::addTo(Container& c)
-//{
-//	dsp.add(c, *this);
-//
-//	dsp.add(*this, back);
-//	dsp.add(*this, text);
-//}
+}
 
 //-----------------------------------------------------------------------------
-//void CText::setXY(int16_t x, int16_t y)
-//{
-////	text.setRotation(TEXT_ROTATE_180);
-////	TextAreaWithOneWildcard::setXY(x, y);
-//	Container::setXY(x, y);
-//}
+const Font* CText::CDigit::getFont()
+{
+	return area.getTypedText().getFont();
+}
 
 //-----------------------------------------------------------------------------
-//void CText::setTypedText(const TypedText& type)
-//{
-//	text.setTypedText(type);
-//}
-
-//-----------------------------------------------------------------------------
-//void CText::setColorFore(uint8_t colorR, uint8_t colorG, uint8_t colorB)
-//{
-//	text.setColor(Color::getColorFromRGB(colorR, colorG, colorB));
-//}
-
-//-----------------------------------------------------------------------------
-//void CText::setColorBack(uint8_t colorR, uint8_t colorG, uint8_t colorB)
-//{
-//	back.setColor(Color::getColorFromRGB(colorR, colorG, colorB));
-//}
-
-//-----------------------------------------------------------------------------
-//void CText::operator=(const char* newText)
-//{
-//	int newLen = strlen(newText);
-//
-//	if(newLen > curCapacity)
-//	{
-//		free(buffer);
-//		buffer = (Unicode::UnicodeChar*)malloc((newLen + 1) * sizeof(Unicode::UnicodeChar));   //+1 = null termination character
-//	}
-//	curCapacity = newLen;
-//	memset(buffer, 0, curCapacity * sizeof(Unicode::UnicodeChar));
-//
-//	Unicode::fromUTF8((uint8_t*)newText, buffer, strlen(newText));
-//	text.resizeToCurrentText();
-//
-//	const GlyphNode* node = getCharGlyph(0);
-//
-//	text.setX(node->left * -1);
-//
-//	back.setWidthHeight(text.getWidth() - (text.getWidth() - node->width()), text.getHeight());
-//	Container::setWidthHeight(text.getWidth() - (text.getWidth() - node->width()), text.getHeight());
-//
-////	back.setWidth(text.getWidth());
-////	Container::setWidth(text.getWidth());
-//}
-
-//-----------------------------------------------------------------------------
-//void CText::setText(const char* newText)
-//{
-//	int newLen = strlen(newText);
-//
-//	if(newLen > curCapacity)
-//	{
-//		free(buffer);
-//		buffer = (Unicode::UnicodeChar*)malloc((newLen + 1) * sizeof(Unicode::UnicodeChar));   //+1 = null termination character
-//	}
-//	curCapacity = newLen;
-//	memset(buffer, 0, curCapacity * sizeof(Unicode::UnicodeChar));
-//
-//	Unicode::fromUTF8((uint8_t*)newText, buffer, strlen(newText));
-//	resizeToCurrentText();
-//}
-
-////-----------------------------------------------------------------------------
-//char CText::getCharAt(int index)
-//{
-//	char c = 0;
-//
-//	if(index < curLength)
-//		Unicode::toUTF8(&buffer[index], (uint8_t*)&c, 1);
-//
-//	return c;
-//}
-//
-////-----------------------------------------------------------------------------
-//void CText::setCharAt(int index, char newChar)
-//{
-//	if(index < curLength)
-//	{
-//		Unicode::fromUTF8((uint8_t*)&newChar, &buffer[index], 1);
-////		resizeToCurrentText();
-//	}
-//}
-//
-////-----------------------------------------------------------------------------
-//const Font* CText::getTextFont()
-//{
-//	return text.getTypedText().getFont();
-//}
-//
-////-----------------------------------------------------------------------------
-//const GlyphNode* CText::getCharGlyph(int index)
-//{
-//	if(index >= curLength)
-//		index = 0;
-//
-//	return getTextFont()->getGlyph(buffer[index]);
-//}
-
-
-
-
-
-//#include <stdio.h>
-
-
-//CMeterDigit::CMeterDigit(const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-//{
-//	CText::setTypedText(newTypedText);
-//	CText::setColorFore(newColorR, newColorG, newColorB);
-//}
-
-
-//CGaugeValue::CGaugeValue(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& nexTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-//{
-////	precision = newPrecision;
-////	spacingRatio = newSpacingRatio;
-////	textType = nexTypedText;
-////
-////	digits = (CMeterDigit**)malloc(sizeof(CMeterDigit*) * precision);
-////	for(uint8_t i = 0; i < precision; i++)
-////	{
-////		digits[i] = new CMeterDigit;
-////		digits[i]->widget.setTypedText(textType);
-////		digits[i]->widget.setWildcard(digits[i]->buffer);
-////		digits[i]->widget.setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
-////		add(digits[i]->widget);
-////	}
-////
-////	valueString = (char*)calloc(precision + 1, sizeof(char));
-////
-////	Container::setHeight(textType.getFont()->getFontHeight());
-//
-//	precision = newPrecision;
-//	spacingRatio = newSpacingRatio;
-//	textType = nexTypedText;
-//
-//	digits = (CText**)malloc(sizeof(CText*) * precision);
-//	for(uint8_t i = 0; i < precision; i++)
-//	{
-////		digits[i] = new CText(1);
-////		digits[i]->setTypedText(textType);
-////		digits[i]->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
-//		add(*digits[i]);
-////		dsp.add(*this, *digits[i]);
-//	}
-//
-//	valueString = (char*)calloc(precision + 1, sizeof(char));
-//
-//	Container::setHeight(textType.getFont()->getFontHeight());
-//
-//	back.setPosition(*this);
-//	Container::add(back);
-//}
-
-
-//=============================================================================
-//  M E T H O D S
-//-----------------------------------------------------------------------------
-//int16_t width[4];
-//int16_t left[4];
-//void CGaugeValue::update(int16_t value)
-//{
-////	int len;
-////	int16_t newWidth;
-////	int16_t spacingWidth;
-////	char* valPtr;
-////	CMeterDigit* digPtr;
-////	CMeterDigit** dspPtr;
-////	const GlyphNode* glyph;
-////
-////	sprintf(valueString, "%d", value);
-////	len = strlen(valueString);
-////
-////	newWidth = 0;
-////	if(spacingRatio != 0)
-////	{
-////		spacingWidth = textType.getFont()->getFontHeight() / spacingRatio;
-////		newWidth = spacingWidth;
-////	}
-////
-////	maxGlyphHeight = 0;
-////
-////	valPtr = &valueString[len - 1];
-////	dspPtr = &digits[precision - 1];
-////	for(int i = 0; i < len; i++)
-////	{
-////		digPtr = *dspPtr;
-////		Unicode::fromUTF8((uint8_t*)valPtr, digPtr->buffer, 1);
-////		digPtr->widget.resizeToCurrentText();
-////
-////		glyph = textType.getFont()->getGlyph(digPtr->buffer[0]);
-////
-////		if(glyph->top() > maxGlyphHeight)
-////			maxGlyphHeight = glyph->top();
-////
-////		if(spacingRatio == 0)
-////			newWidth += digPtr->widget.getWidth();
-////		else
-////			newWidth += glyph->width() + spacingWidth;
-////
-////		valPtr--;
-////		dspPtr--;
-////	}
-////
-////	Container::setWidth(newWidth);
-////
-////	if(spacingRatio != 0)
-////		newWidth -= spacingWidth;
-////
-////	dspPtr = &digits[precision - 1];
-////	for(int i = 0; i < len; i++)
-////	{
-////		digPtr = *dspPtr;
-////		if(spacingRatio == 0)
-////		{
-////			newWidth -= digPtr->widget.getWidth();
-////			digPtr->widget.setXY(newWidth, Container::getHeight() - digPtr->widget.getHeight());
-////		}
-////		else
-////		{
-////			glyph = textType.getFont()->getGlyph(digPtr->buffer[0]);
-////			newWidth -= glyph->width();
-////			digPtr->widget.setXY(newWidth - glyph->left, Container::getHeight() - digPtr->widget.getHeight());
-////			newWidth -= spacingWidth;
-////		}
-////
-////		dspPtr--;
-////	}
-//
-//	int len;
-////	int16_t newWidth;
-//	int16_t spacingWidth;
-////	char* valPtr;
-////	CText* digPtr;
-////	CText** dspPtr;
-////	const GlyphNode* glyph;
-//
-//	sprintf(valueString, "%d", value);
-//	len = strlen(valueString);
-//
-//	newWidth = 0;
-//	if(spacingRatio != 0)
-//	{
-//		spacingWidth = textType.getFont()->getFontHeight() / spacingRatio;
-//		newWidth = spacingWidth;
-//	}
-//
-//	maxGlyphHeight = 0;
-//
-////	valPtr = &valueString[len - 1];
-////	dspPtr = &digits[precision - 1];
-////	for(int i = 0; i < len; i++)
-////	{
-////		digPtr = *dspPtr;
-////		digPtr->setCharAt(0, *valPtr);
-//////		Unicode::fromUTF8((uint8_t*)valPtr, digPtr->buffer, 1);
-////		digPtr->resizeToCurrentText();
-////
-////		glyph = digPtr->getCharGlyph(0);
-//////		glyph = textType.getFont()->getGlyph(digPtr->buffer[0]);
-////
-////		if(glyph->top() > maxGlyphHeight)
-////			maxGlyphHeight = glyph->top();
-////
-////		if(spacingRatio == 0)
-////			newWidth += digPtr->getWidth();
-////		else
-////			newWidth += glyph->width() + spacingWidth;
-////
-////		valPtr--;
-////		dspPtr--;
-////	}
-//
-////	valPtr = &valueString[0];
-////	dspPtr = &digits[0];
-////	for(int i = 0; i < len; i++)
-////	{
-////		digPtr = *dspPtr;
-////		digPtr->setCharAt(0, *valPtr);
-//////		Unicode::fromUTF8((uint8_t*)valPtr, digPtr->buffer, 1);
-////		digPtr->resizeToCurrentText();
-////
-////		glyph = digPtr->getCharGlyph(0);
-//////		glyph = textType.getFont()->getGlyph(digPtr->buffer[0]);
-////
-////		if(glyph->top() > maxGlyphHeight)
-////			maxGlyphHeight = glyph->top();
-////
-////		if(spacingRatio == 0)
-////			newWidth += digPtr->getWidth();
-////		else
-////			newWidth += glyph->width() + spacingWidth;
-////
-////		valPtr++;
-////		dspPtr++;
-////	}
-//
-//	newWidth = 0;
-//	for(int i = 0; i < len; i++)
-//	{
-////		digits[i]->setCharAt(0, valueString[i]);
-//
-////		width[i] = digits[i]->getTextWidth();
-////		left[i] = digits[i]->getCharGlyph(0)->left;
-//
-//		newWidth += digits[i]->getWidth();
-//	}
-//
-//	Container::setWidth(newWidth);
-//
-////	if(spacingRatio != 0)
-////		newWidth -= spacingWidth;
-//
-////	dspPtr = &digits[precision - 1];
-////	for(int i = 0; i < len; i++)
-////	{
-////		digPtr = *dspPtr;
-////		if(spacingRatio == 0)
-////		{
-////			newWidth -= digPtr->getWidth();
-////			digPtr->setXY(newWidth, Container::getHeight() - digPtr->getHeight());
-////		}
-////		else
-////		{
-////			glyph = digPtr->getCharGlyph(0);
-//////			glyph = textType.getFont()->getGlyph(digPtr->buffer[0]);
-////			newWidth -= glyph->width();
-////			digPtr->setXY(newWidth - glyph->left, Container::getHeight() - digPtr->getHeight());
-////			newWidth -= spacingWidth;
-////		}
-////
-////		dspPtr--;
-////	}
-//
-////	dspPtr = &digits[0];
-////	for(int i = 0; i < len; i++)
-////	{
-////		digPtr = *dspPtr;
-////		if(spacingRatio == 0)
-////		{
-////			newWidth -= digPtr->getWidth();
-////			digPtr->setXY(newWidth, Container::getHeight() - digPtr->getHeight());
-////		}
-////		else
-////		{
-////			glyph = digPtr->getCharGlyph(0);
-//////			glyph = textType.getFont()->getGlyph(digPtr->buffer[0]);
-////			newWidth -= glyph->width();
-////			digPtr->setXY(newWidth - glyph->left, Container::getHeight() - digPtr->getHeight());
-////			newWidth -= spacingWidth;
-////		}
-////
-////		dspPtr++;
-////	}
-//
-//	newWidth = 0;
-////	trailingSpace = 0;
-//	int j = len - 1;
-//	for(int i = 0; i < len; i++)
-//	{
-////		if(digits[j]->getCharGlyph(0)->left > trailingSpace)
-////			trailingSpace = digits[j]->getCharGlyph(0)->left;
-//
-//		digits[j]->setXY(newWidth, Container::getHeight() - digits[j]->getHeight());
-//
-////		newWidth += (digits[j]->getWidth() - digits[j]->getCharGlyph(0)->left);
-//
-//		j--;
-//	}
-//
-////	back.setPosition(*this);
-////	back.setColor(touchgfx::Color::getColorFromRGB(86, 88, 90));
-////	Container::setWidth(newWidth);
-//}
-
-////-----------------------------------------------------------------------------
-//uint8_t CGaugeValue::getPrecision()
-//{
-//	return precision;
-//}
-//
-////-----------------------------------------------------------------------------
-//int16_t CGaugeValue::getMaxGlyphHeight()
-//{
-//	return maxGlyphHeight;
-//}
-
-////-----------------------------------------------------------------------------
-//int16_t CGaugeValue::getWidth()
-//{
-//	return newWidth;
-//}
-
-
-
-
+const GlyphNode* CText::CDigit::getGlyph()
+{
+	return getFont()->getGlyph(buffer[0]);
+}
 
 }   //namespace touchgfx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

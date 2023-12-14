@@ -10,66 +10,56 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CText.hpp
+//         File : CString.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Manipulated text class header file
+//  Description : Basic string class implementation file
 //=============================================================================
-#ifndef CTEXT_HPP
-#define CTEXT_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <touchgfx/TypedText.hpp>
-#include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/Containers/Container.hpp>
+#include <CString.hpp>
+#include <CDisplay.hpp>
+#include <string.h>
+#include <touchgfx/Color.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C L A S S E S
+//  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-class CText : public Container
+CString::CString(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 {
-public:
-	CText(int newMaxLength, int newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+	setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
+	setTypedText(newType);
+	if(dsp.orientation != CDisplay::NATIVE)
+		setRotation(TEXT_ROTATE_180);
+}
 
-	void operator=(const char* newText);
 
-	int16_t getBaseline();
-
-public:
-	class CDigit : public Container
+//=============================================================================
+//  O P E R A T O R S
+//-----------------------------------------------------------------------------
+void CString::operator=(const char* newString)
+{
+	int newLen = strlen(newString);
+	if(newLen > curLength)
 	{
-	public:
-		CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
-
-		void setDigit(const char newDigit);
-		const Font* getFont();
-		const GlyphNode* getGlyph();
-
-	private:
-//		Box background;
-		TextAreaWithOneWildcard area;
-		Unicode::UnicodeChar buffer[2];
-	};
-
-private:
-//	Box background;
-	int maxLength;
-	int curLength;
-	CDigit** digits;
-	int16_t spacingWidth;
-	TypedText type;
-};
+		if(buffer)
+			free(buffer);
+		buffer = (Unicode::UnicodeChar*)malloc((newLen + 1) * sizeof(Unicode::UnicodeChar));   //+1 = null termination character
+		setWildcard(buffer);
+	}
+	curLength = newLen;
+	memset(buffer, 0, (curLength + 1) * sizeof(Unicode::UnicodeChar));
+	Unicode::fromUTF8((uint8_t*)newString, buffer, newLen);
+	resizeToCurrentText();
+	invalidate();
+}
 
 }   //namespace touchgfx
-
-
-#endif   //CTEXT_HPP
