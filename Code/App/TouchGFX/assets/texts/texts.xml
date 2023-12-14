@@ -4,46 +4,41 @@
     <Language Id="GB" />
   </Languages>
   <Texts>
-    <TextGroup Id="Units">
-      <Text Id="TEMP_SMALL_C" Alignment="Left" TypographyId="DegreesSmall">
+    <TextGroup Id="Gauge">
+      <Text Id="GAUGE_DIGITS_INTEGER_HUGE" Alignment="Left" TypographyId="GaugeHuge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="GAUGE_DIGITS_INTEGER_LARGE" Alignment="Left" TypographyId="GaugeLarge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="GAUGE_DIGITS_DECIMAL_MEDIUM" Alignment="Left" TypographyId="GaugeMedium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="GAUGE_DIGITS_DECIMAL_SMALL" Alignment="Left" TypographyId="GaugeSmall">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="GAUGE_UNIT_C_SMALL" Alignment="Left" TypographyId="GaugeSmall">
         <Translation Language="GB">°C</Translation>
       </Text>
-      <Text Id="TEMP_SMALL_F" Alignment="Left" TypographyId="DegreesSmall">
+      <Text Id="GAUGE_UNIT_C_TINY" Alignment="Left" TypographyId="GaugeTiny">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="GAUGE_UNIT_F_SMALL" Alignment="Left" TypographyId="GaugeSmall">
         <Translation Language="GB">°F</Translation>
       </Text>
-    </TextGroup>
-    <TextGroup Id="Meter">
-      <Text Id="GAUGE_HUGE" Alignment="Left" TypographyId="GuageDigitsHuge">
-        <Translation Language="GB">&lt;value&gt;</Translation>
+      <Text Id="GAUGE_UNIT_F_TINY" Alignment="Left" TypographyId="GaugeTiny">
+        <Translation Language="GB">°F</Translation>
       </Text>
-      <Text Id="GAUGE_LARGE" Alignment="Left" TypographyId="GaugeDigitsLarge">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="GAUGE_MEDIUM" Alignment="Left" TypographyId="GaugeDigitsMedium">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="METER_SMALL" Alignment="Left" TypographyId="MeterSmall">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="METER_TINY" Alignment="Left" TypographyId="MeterTiny">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="MENU_BUTTON" Alignment="Left" TypographyId="MenuButton">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="MENU_TITLE" Alignment="Left" TypographyId="MenuTitle">
-        <Translation Language="GB">&lt;value&gt;</Translation>
+      <Text Id="GAUGE_UNIT_P" Alignment="Left" TypographyId="GaugeTiny">
+        <Translation Language="GB">%</Translation>
       </Text>
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="GuageDigitsHuge" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
-    <Typography Id="GaugeDigitsLarge" Font="AvenirNext-Regular-08.ttf" Size="150" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
-    <Typography Id="GaugeDigitsMedium" Font="AvenirNext-Regular-08.ttf" Size="80" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-." WildcardCharacterRanges="0-9" />
-    <Typography Id="MeterSmall" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF" WildcardCharacterRanges="0-9" />
-    <Typography Id="MeterTiny" Font="AvenirNext-Regular-08.ttf" Size="22" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°,C,F,%" />
-    <Typography Id="MenuButton" Font="AvenirNext-Regular-08.ttf" Size="45" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-é" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
-    <Typography Id="MenuTitle" Font="AvenirNext-Regular-08.ttf" Size="60" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°." WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
-    <Typography Id="DegreesSmall" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF" />
+    <Typography Id="GaugeHuge" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
+    <Typography Id="GaugeLarge" Font="AvenirNext-Regular-08.ttf" Size="150" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
+    <Typography Id="GaugeMedium" Font="AvenirNext-Regular-08.ttf" Size="80" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-." WildcardCharacterRanges="0-9" />
+    <Typography Id="GaugeSmall" Font="AvenirNext-Regular-08.ttf" Size="60" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF" />
+    <Typography Id="GaugeTiny" Font="AvenirNext-Regular-08.ttf" Size="24" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF%" />
   </Typographies>
 </TextDatabase>

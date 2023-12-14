@@ -59,7 +59,7 @@ CMenu::CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuIte
 
 	titleBuffer = (Unicode::UnicodeChar*)calloc(strlen(menuTitle) + 1, sizeof(Unicode::UnicodeChar));   //+1 = null termination character
 	title.setWildcard(titleBuffer);
-	title.setTypedText(T_MENU_TITLE);
+//	title.setTypedText(T_MENU_TITLE);
     title.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
 	Unicode::fromUTF8((uint8_t*)menuTitle, titleBuffer, strlen(menuTitle));
 	title.resizeToCurrentText();

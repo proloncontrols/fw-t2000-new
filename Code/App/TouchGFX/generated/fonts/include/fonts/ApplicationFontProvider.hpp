@@ -13,27 +13,21 @@ class FlashDataReader;
 
 struct Typography
 {
-    static const touchgfx::FontId GUAGEDIGITSHUGE = 0;
-    static const touchgfx::FontId GAUGEDIGITSLARGE = 1;
-    static const touchgfx::FontId GAUGEDIGITSMEDIUM = 2;
-    static const touchgfx::FontId METERSMALL = 3;
-    static const touchgfx::FontId METERTINY = 4;
-    static const touchgfx::FontId MENUBUTTON = 5;
-    static const touchgfx::FontId MENUTITLE = 6;
-    static const touchgfx::FontId DEGREESSMALL = 7;
+    static const touchgfx::FontId GAUGEHUGE = 0;
+    static const touchgfx::FontId GAUGELARGE = 1;
+    static const touchgfx::FontId GAUGEMEDIUM = 2;
+    static const touchgfx::FontId GAUGESMALL = 3;
+    static const touchgfx::FontId GAUGETINY = 4;
 };
 
 struct TypographyFontIndex
 {
-    static const touchgfx::FontId GUAGEDIGITSHUGE = 0;   // AvenirNext_Regular_08_220_4bpp
-    static const touchgfx::FontId GAUGEDIGITSLARGE = 1;  // AvenirNext_Regular_08_150_4bpp
-    static const touchgfx::FontId GAUGEDIGITSMEDIUM = 2; // AvenirNext_Regular_08_80_4bpp
-    static const touchgfx::FontId METERSMALL = 3;        // AvenirNext_Regular_08_50_4bpp
-    static const touchgfx::FontId METERTINY = 4;         // AvenirNext_Regular_08_22_4bpp
-    static const touchgfx::FontId MENUBUTTON = 5;        // AvenirNext_Regular_08_45_4bpp
-    static const touchgfx::FontId MENUTITLE = 6;         // AvenirNext_Regular_08_60_4bpp
-    static const touchgfx::FontId DEGREESSMALL = 3;      // AvenirNext_Regular_08_50_4bpp
-    static const uint16_t NUMBER_OF_FONTS = 7;
+    static const touchgfx::FontId GAUGEHUGE = 0;   // AvenirNext_Regular_08_220_4bpp
+    static const touchgfx::FontId GAUGELARGE = 1;  // AvenirNext_Regular_08_150_4bpp
+    static const touchgfx::FontId GAUGEMEDIUM = 2; // AvenirNext_Regular_08_80_4bpp
+    static const touchgfx::FontId GAUGESMALL = 3;  // AvenirNext_Regular_08_60_4bpp
+    static const touchgfx::FontId GAUGETINY = 4;   // AvenirNext_Regular_08_24_4bpp
+    static const uint16_t NUMBER_OF_FONTS = 5;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider

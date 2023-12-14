@@ -3,6 +3,7 @@
 
 #include <CText.hpp>
 #include <CString.hpp>
+#include <Gauge/CGaugeTempInt.hpp>
 
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
@@ -16,11 +17,15 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 
-protected:
-    CText txt1 = CText(4, 15, T_GAUGE_HUGE, 255, 255, 255);
-    CText txt2 = CText(3, 15, T_GAUGE_MEDIUM, 255, 255, 255);
+    virtual void moveIt();
 
-    CString str = CString(T_MENU_BUTTON, 255, 255, 255);
+protected:
+    CText txt1 = CText(4, 15, T_GAUGE_DIGITS_INTEGER_HUGE, 255, 255, 255);
+    CText txt2 = CText(3, 15, T_GAUGE_DIGITS_DECIMAL_MEDIUM, 255, 255, 255);
+
+//    CString str = CString(T_MENU_BUTTON, 255, 255, 255);
+
+    CGaugeTempInt temp;
 };
 
 #endif // SPLASHVIEW_HPP

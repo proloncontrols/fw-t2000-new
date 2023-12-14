@@ -16,3 +16,8 @@ void SplashPresenter::deactivate()
 {
 
 }
+
+void SplashPresenter::moveIt()
+{
+	view.moveIt();
+}

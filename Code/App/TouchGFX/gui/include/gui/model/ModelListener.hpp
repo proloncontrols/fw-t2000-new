@@ -17,6 +17,8 @@ public:
 
     virtual void DisplayEnv(ENV_Readings_t* Env) {};
 
+    virtual void moveIt() {};
+
 protected:
     Model* model;
 };

@@ -27,6 +27,8 @@ public:
 
     virtual ~SplashPresenter() {};
 
+    virtual void moveIt();
+
 private:
     SplashPresenter();
 
