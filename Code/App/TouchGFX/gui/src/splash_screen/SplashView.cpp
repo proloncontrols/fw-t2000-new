@@ -22,10 +22,11 @@ SplashView::SplashView()
 //    str = "TestStringWithAnAppliedEdgé2";
 //	dsp.setXY(str, 1, 500);
 
-	add(temp);
-	dsp.setXY(temp, 50, 50);
+//	add(temp);
+//	dsp.setXY(temp, 50, 50);
 //	temp.init();
-//	temp.update(-21, true);
+	dsp.setXY(temp, 50, 50);
+	temp.update(-21, true);
 //	dsp.setXY(temp, tmp, 100);
 }
 

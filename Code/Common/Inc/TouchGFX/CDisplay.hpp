@@ -37,28 +37,31 @@
 
 
 //=============================================================================
-//  N A T I V E   D I S P L A Y   L A Y O U T
+//  D I S P L A Y   L A Y O U T S
 //-----------------------------------------------------------------------------
-// Thermostat orientation (portrait)
+//  Thermostat orientation (portrait)
+//  Screen orientation (landscape)
 //
-//    Screen orientation (landscape)
-//    -------------------------------------   ---
-//    |(0,0)                              |    |
-//    |                                   |    |
-//    |                                   |    |
-//    |                                   |    |
-//    |                                   |    |
-//    |                                   |    |
-//    |              Display              |   672
-//    |                                   |    |
-//    |                                   |    |
-//    |                                   |    |
-//    |                                   |    |
-//    |                                   |    |
-//    |                                   |    |
-//    -------------------------------------   ---
+//  ----------                                      ----------                                      ----------
+//  | sensor |                                      | sensor |                                      | sensor |
+//  ----------                       NATIVE         ----------                    LANDSCAPE         ----------                     PORTRAIT
+//    -------------------------------------   ---     -------------------------------------   ---     -------------------------------------   ---
+//    |(0,0)-->                           |    |      |                                   |    |      |                              (0,0)|    |
+//    |                                   |    |      |                                   |    |      |                                |  |    |
+//    |                                   |    |      |                                   |    |      |                                V  |    |
+//    |                                   |    |      |                                   |    |      |                                   |    |
+//    |                                   |    |      |                                   |    |      |                                   |    |
+//    |                                   |    |      |                                   |    |      |                                   |    |
+//    |              Display              |   672     |              Display              |   672     |              Display              |   672
+//    |                                   |    |      |                                   |    |      |                                   |    |
+//    |                                   |    |      |                                   |    |      |                                   |    |
+//    |                                   |    |      |                                   |    |      |                                   |    |
+//    |                                   |    |      |                                   |    |      |                                   |    |
+//    |                                   |    |      |                                   |    |      |                                   |    |
+//    |                                   |    |      |                           <--(0,0)|    |      |                                   |    |
+//    -------------------------------------   ---     -------------------------------------   ---     -------------------------------------   ---
 //
-//    |--------------- 720 ---------------|
+//    |--------------- 720 ---------------|           |--------------- 720 ---------------|           |--------------- 720 ---------------|
 
 
 namespace touchgfx
@@ -83,10 +86,17 @@ public:
 	void setX(Drawable& d, int16_t x);
 	void setY(Drawable& d, int16_t y);
 	void setXY(Drawable& d, int16_t x, int16_t y);
-	const Rect& getPosition(Drawable& d);
 
-private:
-	Rect r;
+	int16_t getX(Drawable& d);
+	int16_t getY(Drawable& d);
+
+	void setWidth(Drawable& d, int16_t width);
+	void setHeight(Drawable& d, int16_t height);
+	void setWidthHeight(Drawable& d, int16_t width, int16_t height);
+	void setWidthHeight(Drawable& d, Drawable& from);
+
+	int16_t getWidth(Drawable& d);
+	int16_t getHeight(Drawable& d);
 };
 
 
@@ -99,6 +109,16 @@ CDISPLAY_EXTERN CDisplay dsp;
 
 
 #endif   //CDISPLAY_HPP
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -20,12 +20,12 @@ public:
     virtual void moveIt();
 
 protected:
-    CText txt1 = CText(4, 15, T_GAUGE_DIGITS_INTEGER_HUGE, 255, 255, 255);
-    CText txt2 = CText(3, 15, T_GAUGE_DIGITS_DECIMAL_MEDIUM, 255, 255, 255);
+//    CText txt1 = CText(4, 15, T_GAUGE_DIGITS_INTEGER_HUGE, 255, 255, 255);
+//    CText txt2 = CText(3, 15, T_GAUGE_DIGITS_DECIMAL_MEDIUM, 255, 255, 255);
 
 //    CString str = CString(T_MENU_BUTTON, 255, 255, 255);
 
-    CGaugeTempInt temp;
+    CGaugeTemperatureInterior temp = CGaugeTemperatureInterior(container);
 };
 
 #endif // SPLASHVIEW_HPP
