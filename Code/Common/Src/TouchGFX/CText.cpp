@@ -39,8 +39,8 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 CText::CText(int newMaxLength, int newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 {
-//	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-//	add(background);
+	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+	add(background);
 
 	maxLength = newMaxLength;
 
@@ -82,32 +82,34 @@ void CText::operator=(const char* newText)
 		}
 		Container::setWidth(totalWidth);
 
-		for(int i = 0; i < len; i++)
-			dsp.setX(*digits[i], digits[i]->getX());
-
 		maximumTop = 0;
 		for(int i = 0; i < len; i++)
 		{
 			if(digits[i]->getGlyph()->top() > maximumTop)
 				maximumTop = digits[i]->getGlyph()->top();
 		}
-
-		if(dsp.orientation == CDisplay::NATIVE)
-		{
-			for(int i = 0; i < len; i++)
-				digits[i]->setY((type.getFont()->getFontHeight() - maximumTop) * -1);
-		}
-
+		for(int i = 0; i < len; i++)
+			digits[i]->setY((type.getFont()->getFontHeight() - maximumTop) * -1);
 		Container::setHeight(digits[0]->getHeight() - (type.getFont()->getFontHeight() - maximumTop));
+
 		curLength = len;
 
-//		background.setWidthHeight(*this);
+		background.setWidthHeight(*this);
 	}
 }
 
 
 //=============================================================================
 //  M E T H O D S
+//-----------------------------------------------------------------------------
+void CText::invalidate()
+{
+	dsp.setPosition(*this, *this);
+
+	for(int i = 0; i < curLength; i++)
+		digits[i]->invalidate();
+}
+
 //-----------------------------------------------------------------------------
 int16_t CText::getBaseline()
 {
@@ -156,6 +158,11 @@ void CText::CDigit::setDigit(const char newDigit)
 	Container::setWidthHeight(area.getWidth() - (area.getWidth() - node->width()), area.getHeight());
 
 //	background.setWidthHeight(*this);
+}
+
+void CText::CDigit::invalidate()
+{
+	dsp.setPosition(*this, *this);
 }
 
 //-----------------------------------------------------------------------------

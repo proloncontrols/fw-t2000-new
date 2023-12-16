@@ -95,6 +95,8 @@ public:
 	void setWidthHeight(Drawable& d, int16_t width, int16_t height);
 	void setWidthHeight(Drawable& d, Drawable& from);
 
+	void setPosition(Drawable& d, Drawable& from);
+
 	int16_t getWidth(Drawable& d);
 	int16_t getHeight(Drawable& d);
 };

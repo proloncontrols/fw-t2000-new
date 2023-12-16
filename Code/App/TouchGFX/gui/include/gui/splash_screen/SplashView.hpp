@@ -25,7 +25,9 @@ protected:
 
 //    CString str = CString(T_MENU_BUTTON, 255, 255, 255);
 
-    CGaugeTemperatureInterior temp = CGaugeTemperatureInterior(container);
+    CGaugeTemperatureInterior tempInt = CGaugeTemperatureInterior();
+
+//    CText::CDigit dig1 = CText::CDigit(T_GAUGE_DIGITS_INTEGER_HUGE, 255, 255, 255);
 };
 
 #endif // SPLASHVIEW_HPP

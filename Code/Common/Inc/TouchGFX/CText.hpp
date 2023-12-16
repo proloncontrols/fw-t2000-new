@@ -41,6 +41,7 @@ public:
 	CText(int newMaxLength, int newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 
 	void operator=(const char* newText);
+	void invalidate();
 
 	int16_t getBaseline();
 
@@ -51,6 +52,7 @@ public:
 		CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 
 		void setDigit(const char newDigit);
+		void invalidate();
 		const Font* getFont();
 		const GlyphNode* getGlyph();
 
@@ -61,7 +63,7 @@ public:
 	};
 
 private:
-//	Box background;
+	Box background;
 	int maxLength;
 	int curLength;
 	CDigit** digits;

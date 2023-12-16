@@ -21,11 +21,6 @@ FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
 //	}
 
 	dsp.orientation = CDisplay::NATIVE;
-
-
-
-
-
 	if(dsp.orientation == CDisplay::PORTRAIT)
 	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
 }
