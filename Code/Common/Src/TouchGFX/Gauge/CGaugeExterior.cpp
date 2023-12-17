@@ -21,43 +21,77 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Gauge/CGaugeTemperatureExterior.hpp>
+#include <stdio.h>
+#include <CDisplay.hpp>
+#include <touchgfx/Color.hpp>
+#include <Gauge/CGaugeExterior.hpp>
 
 
 namespace touchgfx
 {
-
+//#define SHOW_BACKGROUND
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CGaugeTemperatureExterior::CGaugeTemperatureExterior()
+CGaugeExterior::CGaugeExterior()
 {
-	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
-	add(*integer);
+#ifdef SHOW_BACKGROUND
+	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+	add(background);
+#endif
 
-	unitC = new CLabel(unitTextC, colorR, colorG, colorB);
-	add(*unitC);
-
-	unitF = new CLabel(unitTextF, colorR, colorG, colorB);
-	add(*unitF);
-
-	image = new CImage(imageId);
-	add(*image);
+	add(integer);
+	add(unitC);
+	add(unitF);
+	add(image);
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CGaugeTemperatureExterior::update(float temp, bool celsius)
+void CGaugeExterior::update(float temperature, bool celsius)
 {
-	CGaugeTemperature::update(temp, celsius);
+	uint8_t temp = (uint8_t)(temperature);
+
+	char string[8];
+	sprintf(string, "%d", temp);
+
+	integer = string;
+	integer.setXY(1, 1);
+
+	CLabel* unit;
+	if(celsius)
+	{
+		unit = &unitC;
+		unitC.setVisible(true);
+		unitF.setVisible(false);
+	}
+	else
+	{
+		unit = &unitF;
+		unitC.setVisible(false);
+		unitF.setVisible(true);
+	}
+	unit->setXY(integer.getWidth(), integer.getY());
+
+	image.setXY(integer.getWidth() + (integerSpacingRatio / 2), integer.getHeight() - image.getHeight());
+
+	Container::setWidthHeight(MAX(unit->getX() + unit->getWidth(), image.getX() + image.getWidth()), integer.getHeight() + integer.getBaseline());
+
+#ifdef SHOW_BACKGROUND
+	background.setWidthHeight(*this);
+#endif
 }
 
 //-----------------------------------------------------------------------------
-void CGaugeTemperatureExterior::invalidate()
+void CGaugeExterior::invalidate()
 {
-	CGauge::invalidate();
+	dsp.setPosition(*this, *this);
+	integer.invalidate();
+	unitC.invalidate();
+	unitF.invalidate();
+	image.invalidate();
 }
 
 }   //namespace touchgfx

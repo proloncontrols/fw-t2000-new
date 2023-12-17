@@ -10,14 +10,14 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CGaugeTemperatureSetpoint.hpp
+//         File : CGaugeInterior.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Setpoint temperature gauge display class header file
+//  Description : Interior temperature gauge display class header file
 //=============================================================================
-#ifndef CGAUGE_TEMPERATURE_SETPOINT_HPP
-#define CGAUGE_TEMPERATURE_SETPOINT_HPP
+#ifndef CGAUGE_INTERIOR_HPP
+#define CGAUGE_INTERIOR_HPP
 
 
 //=============================================================================
@@ -33,10 +33,10 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CGaugeTemperatureSetpoint : public CGaugeTemperature
+class CGaugeInterior : public CGaugeTemperature
 {
 public:
-	CGaugeTemperatureSetpoint();
+	CGaugeInterior();
 
 	void update(float temp, bool celsius);
 	void invalidate();
@@ -44,14 +44,14 @@ public:
 private:
 	const static int integerPrecision = 4;   //Includes the minus sign
 	const static int integerSpacingRatio = 15;
-	const static TypedTextId integerText = T_GAUGE_TEMPERATURE_SETPOINT_LARGE;
+	const static TypedTextId integerText = T_GAUGE_TEMPERATURE_INTERIOR_LARGE;
 
 	const static int decimalPrecision = 2;   //Includes the dot
 	const static int decimalSpacingRatio = 15;
-	const static TypedTextId decimalText = T_GAUGE_TEMPERATURE_SETPOINT_MEDIUM;
+	const static TypedTextId decimalText = T_GAUGE_TEMPERATURE_INTERIOR_MEDIUM;
 
-	const static TypedTextId unitTextC = T_GAUGE_TEMPERATURE_SETPOINT_SMALL_C;
-	const static TypedTextId unitTextF = T_GAUGE_TEMPERATURE_SETPOINT_SMALL_F;
+	const static TypedTextId unitTextC = T_GAUGE_TEMPERATURE_INTERIOR_SMALL_C;
+	const static TypedTextId unitTextF = T_GAUGE_TEMPERATURE_INTERIOR_SMALL_F;
 
 	const static uint8_t colorR = 255;
 	const static uint8_t colorG = 255;
@@ -61,4 +61,4 @@ private:
 }   //namespace touchgfx
 
 
-#endif   //CGAUGE_TEMPERATURE_SETPOINT_HPP
+#endif   //CGAUGE_INTERIOR_HPP

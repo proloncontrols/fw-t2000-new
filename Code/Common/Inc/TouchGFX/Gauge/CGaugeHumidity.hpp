@@ -23,9 +23,12 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Gauge/CGaugeTemperature.hpp>
+#include <CText.hpp>
+#include <CLabel.hpp>
+#include <CImage.hpp>
 #include <Bitmapdatabase.hpp>
 #include <touchgfx/Bitmap.hpp>
+#include <touchgfx/widgets/Box.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 
@@ -35,7 +38,7 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CGaugeHumidity : public CGaugeTemperature
+class CGaugeHumidity : public Container
 {
 public:
 	CGaugeHumidity();
@@ -44,17 +47,22 @@ public:
 	void invalidate();
 
 private:
+	const static uint8_t colorR = 186;
+	const static uint8_t colorG = 188;
+	const static uint8_t colorB = 190;
+
 	const static int integerPrecision = 3;   //0-100%
 	const static int integerSpacingRatio = 15;
 	const static TypedTextId integerText = T_GAUGE_TEMPERATURE_EXTERIOR_LARGE;
 
-	const static TypedTextId unit = T_GAUGE_TEMPERATURE_EXTERIOR_SMALL_P;
+	const static TypedTextId unitText = T_GAUGE_TEMPERATURE_EXTERIOR_SMALL_P;
 
 	const static BitmapId imageId = BITMAP_HUMIDITY_30X30_ID;
 
-	const static uint8_t colorR = 86;
-	const static uint8_t colorG = 88;
-	const static uint8_t colorB = 90;
+	Box background;
+	CText integer = CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
+	CLabel unit = CLabel(unitText, colorR, colorG, colorB);
+	CImage image = CImage(imageId);
 };
 
 }   //namespace touchgfx

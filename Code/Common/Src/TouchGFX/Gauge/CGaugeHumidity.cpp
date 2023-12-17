@@ -21,25 +21,28 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stdio.h>
+#include <CDisplay.hpp>
+#include <touchgfx/Color.hpp>
 #include <Gauge/CGaugeHumidity.hpp>
 
 
 namespace touchgfx
 {
-
+//#define SHOW_BACKGROUND
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
 CGaugeHumidity::CGaugeHumidity()
 {
-	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
-	add(*integer);
+#ifdef SHOW_BACKGROUND
+	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+	add(background);
+#endif
 
-	unitP = new CLabel(unit, colorR, colorG, colorB);
-	add(*unitF);
-
-	image = new CImage(imageId);
-	add(*image);
+	add(integer);
+	add(unit);
+	add(image);
 }
 
 
@@ -48,13 +51,33 @@ CGaugeHumidity::CGaugeHumidity()
 //-----------------------------------------------------------------------------
 void CGaugeHumidity::update(uint8_t humidity)
 {
-//	CGaugeTemperature::update(temp, celsius);
+	if(humidity > 100)
+		humidity = 100;
+
+	char string[8];
+	sprintf(string, "%d", humidity);
+
+	integer = string;
+	integer.setXY(1, 1);
+
+	unit.setXY(integer.getWidth(), integer.getY());
+
+	image.setXY(integer.getWidth(), integer.getHeight() - image.getHeight());
+
+	Container::setWidthHeight(integer.getWidth() + MAX(unit.getWidth(), image.getWidth()), integer.getHeight() + integer.getBaseline());
+
+#ifdef SHOW_BACKGROUND
+	background.setWidthHeight(*this);
+#endif
 }
 
 //-----------------------------------------------------------------------------
 void CGaugeHumidity::invalidate()
 {
-	CGauge::invalidate();
+	dsp.setPosition(*this, *this);
+	integer.invalidate();
+	unit.invalidate();
+	image.invalidate();
 }
 
 }   //namespace touchgfx

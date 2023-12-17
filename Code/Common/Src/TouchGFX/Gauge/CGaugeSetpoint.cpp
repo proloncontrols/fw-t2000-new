@@ -10,55 +10,55 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CGaugeTemperatureExterior.hpp
+//         File : CGaugeTemperatureSetpoint.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Exterior temperature gauge display class header file
+//  Description : Interior temperature gauge display class implementation file
 //=============================================================================
-#ifndef CGAUGE_TEMPERATURE_EXTERIOR_HPP
-#define CGAUGE_TEMPERATURE_EXTERIOR_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Gauge/CGaugeTemperature.hpp>
-#include <Bitmapdatabase.hpp>
-#include <touchgfx/Bitmap.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
+#include <Gauge/CGaugeSetpoint.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C L A S S E S
+//  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-class CGaugeTemperatureExterior : public CGaugeTemperature
+CGaugeSetpoint::CGaugeSetpoint()
 {
-public:
-	CGaugeTemperatureExterior();
+	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
+	add(*integer);
 
-	void update(float temp, bool celsius);
-	void invalidate();
+	decimal = new CText(decimalPrecision, decimalSpacingRatio, decimalText, colorR, colorG, colorB);
+	decimalDigits = decimalPrecision -1;   //-1 removes the dot
+	add(*decimal);
 
-private:
-	const static int integerPrecision = 4;   //Includes the minus sign
-	const static int integerSpacingRatio = 15;
-	const static TypedTextId integerText = T_GAUGE_TEMPERATURE_EXTERIOR_LARGE;
+	unitC = new CLabel(unitTextC, colorR, colorG, colorB);
+	add(*unitC);
 
-	const static TypedTextId unitTextC = T_GAUGE_TEMPERATURE_EXTERIOR_SMALL_C;
-	const static TypedTextId unitTextF = T_GAUGE_TEMPERATURE_EXTERIOR_SMALL_F;
+	unitF = new CLabel(unitTextF, colorR, colorG, colorB);
+	add(*unitF);
+}
 
-	const static BitmapId imageId = BITMAP_OUTSIDE_24X24_ID;
 
-	const static uint8_t colorR = 86;
-	const static uint8_t colorG = 88;
-	const static uint8_t colorB = 90;
-};
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CGaugeSetpoint::update(float temp, bool celsius)
+{
+	CGaugeTemperature::update(temp, celsius);
+}
+
+//-----------------------------------------------------------------------------
+void CGaugeSetpoint::invalidate()
+{
+	CGauge::invalidate();
+}
 
 }   //namespace touchgfx
-
-
-#endif   //CGAUGE_TEMPERATURE_EXTERIOR_HPP

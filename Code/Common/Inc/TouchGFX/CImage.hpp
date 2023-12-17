@@ -24,7 +24,6 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <touchgfx/widgets/TextureMapper.hpp>
-//#include <touchgfx/Containers/Container.hpp>
 
 
 namespace touchgfx
@@ -39,8 +38,6 @@ public:
 	CImage(BitmapId id);
 
 	void invalidate();
-//	void setXY(int16_t x, int16_t y);
-//	void add(Container& c);
 };
 
 }   //namespace touchgfx

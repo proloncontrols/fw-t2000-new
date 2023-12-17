@@ -59,28 +59,6 @@ CImage::CImage(BitmapId id)
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-//void CImage::setXY(int16_t x, int16_t y)
-//{
-//	if(dsp.orientation == CDisplay::LANDSCAPE)
-//	    setAngles(0.0f, 0.0f, Z_ANGLE_LANDSCAPE);
-//	else
-//	    setAngles(0.0f, 0.0f, Z_ANGLE_PORTRAIT);
-//
-//	setScale(1.0f);
-//	setBitmapPosition(0.0f, 0.0f);
-//    setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
-//	setCameraDistance(1000.0f);
-//	setCamera(getWidth()/2, getHeight()/2);
-//	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
-//
-//	TextureMapper::setXY(x, y);
-//}
-
-//-----------------------------------------------------------------------------
-//void CImage::add(Container& c)
-//{
-////	dsp.add(c, *this);
-//}
 void CImage::invalidate()
 {
 	dsp.setPosition(*this, *this);

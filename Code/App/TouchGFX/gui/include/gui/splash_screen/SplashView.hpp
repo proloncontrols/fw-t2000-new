@@ -6,10 +6,11 @@
 //#include <CLabel.hpp>
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
+#include <Gauge/CGaugeExterior.hpp>
 //#include <texts/TextKeysAndLanguages.hpp>
-#include <Gauge/CGaugeTemperatureInterior.hpp>
-#include <Gauge/CGaugeTemperatureSetpoint.hpp>
-#include <Gauge/CGaugeTemperatureExterior.hpp>
+#include <Gauge/CGaugeInterior.hpp>
+#include <Gauge/CGaugeSetpoint.hpp>
+#include <Gauge/CGaugeHumidity.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -29,11 +30,13 @@ protected:
 
 //    CLabel lbl1 = CLabel(T_GAUGE_UNIT_C_SMALL, 255, 255, 255);
 
-    CGaugeTemperatureInterior tempInt = CGaugeTemperatureInterior();
+//    CGaugeTemperatureInterior tempInt = CGaugeTemperatureInterior();
 
-    CGaugeTemperatureSetpoint tempSet = CGaugeTemperatureSetpoint();
+//    CGaugeTemperatureSetpoint tempSet = CGaugeTemperatureSetpoint();
 
-    CGaugeTemperatureExterior tempExt = CGaugeTemperatureExterior();
+    CGaugeExterior tempExt = CGaugeExterior();
+
+    CGaugeHumidity hum = CGaugeHumidity();
 
 //    CText::CDigit dig1 = CText::CDigit(T_GAUGE_DIGITS_INTEGER_HUGE, 255, 255, 255);
 };

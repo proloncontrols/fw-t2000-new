@@ -10,7 +10,7 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CGaugeTemperatureSetpoint.cpp
+//         File : CGaugeTemperatureInterior.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
@@ -21,7 +21,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Gauge/CGaugeTemperatureSetpoint.hpp>
+#include <Gauge/CGaugeInterior.hpp>
 
 
 namespace touchgfx
@@ -30,7 +30,7 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CGaugeTemperatureSetpoint::CGaugeTemperatureSetpoint()
+CGaugeInterior::CGaugeInterior()
 {
 	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
 	add(*integer);
@@ -50,13 +50,13 @@ CGaugeTemperatureSetpoint::CGaugeTemperatureSetpoint()
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CGaugeTemperatureSetpoint::update(float temp, bool celsius)
+void CGaugeInterior::update(float temp, bool celsius)
 {
 	CGaugeTemperature::update(temp, celsius);
 }
 
 //-----------------------------------------------------------------------------
-void CGaugeTemperatureSetpoint::invalidate()
+void CGaugeInterior::invalidate()
 {
 	CGauge::invalidate();
 }
