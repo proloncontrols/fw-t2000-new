@@ -37,7 +37,7 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-//This class is not meant to be called directly. Use its derived classes instead.
+//This class is not meant to be called directly. Derive from it.
 class CGauge : public Container
 {
 public:
@@ -51,6 +51,7 @@ protected:
 	CText* decimal = NULL;
 	CLabel* unitC = NULL;
 	CLabel* unitF = NULL;
+	CLabel* unitP = NULL;
 	CImage* image = NULL;
 };
 

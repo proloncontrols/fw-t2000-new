@@ -97,8 +97,11 @@ void CGaugeTemperature::update(float temp, bool celsius)
 	}
 	unit->setXY(integer->getWidth(), integer->getY());
 
+	if(image)
+ 		image->setXY(integer->getWidth(), integer->getHeight() - image->getHeight());
+
 	if(!decimal)
-		Container::setWidthHeight(integer->getWidth() + unit->getWidth(), integer->getHeight());
+		Container::setWidthHeight(integer->getWidth() + MAX(unit->getWidth(), image->getWidth()), integer->getHeight() + integer->getBaseline());
 	else
 		Container::setWidthHeight(integer->getWidth() + MAX(unit->getWidth(), decimal->getWidth()), integer->getHeight() + decimal->getBaseline());
 

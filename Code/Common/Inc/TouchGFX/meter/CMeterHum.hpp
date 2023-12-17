@@ -36,23 +36,23 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CMeterHum : public CMeter
 {
-public:
-	CMeterHum();
-	void display(double Value);
-
-protected:
-	static const uint8_t colorR = 186;
-	static const uint8_t colorG = 188;
-	static const uint8_t colorB = 190;
-
-	static const uint8_t intPrecision = 3;   //Up to 3 digits integer "0" to "100" %
-
-	static const uint8_t intCharSpacingRatio = 15;
-
-//	static const TypedTextId intText  = T_METER_MEDIUM;
-//	static const TypedTextId unitText = T_METER_TINY;
-
-//	static const uint16_t imageId = BITMAP_HUMIDITY_30X30_ID;
+//public:
+//	CMeterHum();
+//	void display(double Value);
+//
+//protected:
+//	static const uint8_t colorR = 186;
+//	static const uint8_t colorG = 188;
+//	static const uint8_t colorB = 190;
+//
+//	static const uint8_t intPrecision = 3;   //Up to 3 digits integer "0" to "100" %
+//
+//	static const uint8_t intCharSpacingRatio = 15;
+//
+////	static const TypedTextId intText  = T_METER_MEDIUM;
+////	static const TypedTextId unitText = T_METER_TINY;
+//
+////	static const uint16_t imageId = BITMAP_HUMIDITY_30X30_ID;
 };
 
 }   //namespace touchgfx

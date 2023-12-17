@@ -39,27 +39,27 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CScreenHome : public CScreen
 {
-public:
-	enum Buttons {
-		BUTTON_SETTINGS,
-		BUTTON_SETPOINTS
-	};
-
-	CScreenHome(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback);
-
-protected:
-	CButton buttonSettings;
-	CButton buttonSetPoints;
-	CImage imageCooling;
-	CMeterInt meterInt;
-
-private:
-	static const int16_t buttonSetPointsSize = 200;
-
-//	static const int16_t buttonSettingsImageReleasedId = BITMAP_SETTING_ID;
-//	static const int16_t buttonSettingsImagePressedId  = BITMAP_SETTING_DARK2_ID;
-
-//	static const int16_t imageCoolingId = BITMAP_COOLINGON_ID;
+//public:
+//	enum Buttons {
+//		BUTTON_SETTINGS,
+//		BUTTON_SETPOINTS
+//	};
+//
+//	CScreenHome(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback);
+//
+//protected:
+//	CButton buttonSettings;
+//	CButton buttonSetPoints;
+//	CImage imageCooling;
+//	CMeterInt meterInt;
+//
+//private:
+//	static const int16_t buttonSetPointsSize = 200;
+//
+////	static const int16_t buttonSettingsImageReleasedId = BITMAP_SETTING_ID;
+////	static const int16_t buttonSettingsImagePressedId  = BITMAP_SETTING_DARK2_ID;
+//
+////	static const int16_t imageCoolingId = BITMAP_COOLINGON_ID;
 };
 
 }   //namespace touchgfx

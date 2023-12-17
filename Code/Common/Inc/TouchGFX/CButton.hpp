@@ -69,31 +69,31 @@ namespace touchgfx
 
 class CButton : public AbstractButtonContainer
 {
-public:
-	void addTo(Container& c);
-
-	void initialize(int16_t x, int16_t y, int16_t width, int16_t height);
-	void initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed);
-	void initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed, const TypedText& textType, int16_t textMaxLen, colortype textReleased, colortype textPressed);
-
-	void setText(const char* newText);
-	void setTextPosition(int16_t x, int16_t y);
-
-	void setData(uint32_t newData);
-	uint32_t getData();
-
-    virtual void handleClickEvent(const ClickEvent& event);
-
-private:
-    uint32_t data;   //User defined general purpose data associated with button
-
-    CImage* imgReleased = NULL;
-    CImage* imgPressed = NULL;
-
-	TextAreaWithOneWildcard* text = NULL;
-	Unicode::UnicodeChar* textBuffer = NULL;
-	colortype textColorReleased;
-	colortype textColorPressed;
+//public:
+//	void addTo(Container& c);
+//
+//	void initialize(int16_t x, int16_t y, int16_t width, int16_t height);
+//	void initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed);
+//	void initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed, const TypedText& textType, int16_t textMaxLen, colortype textReleased, colortype textPressed);
+//
+//	void setText(const char* newText);
+//	void setTextPosition(int16_t x, int16_t y);
+//
+//	void setData(uint32_t newData);
+//	uint32_t getData();
+//
+//    virtual void handleClickEvent(const ClickEvent& event);
+//
+//private:
+//    uint32_t data;   //User defined general purpose data associated with button
+//
+//    CImage* imgReleased = NULL;
+//    CImage* imgPressed = NULL;
+//
+//	TextAreaWithOneWildcard* text = NULL;
+//	Unicode::UnicodeChar* textBuffer = NULL;
+//	colortype textColorReleased;
+//	colortype textColorPressed;
 };
 
 }   //namespace touchgfx

@@ -13,21 +13,27 @@ class FlashDataReader;
 
 struct Typography
 {
-    static const touchgfx::FontId GAUGEHUGE = 0;
-    static const touchgfx::FontId GAUGELARGE = 1;
-    static const touchgfx::FontId GAUGEMEDIUM = 2;
-    static const touchgfx::FontId GAUGESMALL = 3;
-    static const touchgfx::FontId GAUGETINY = 4;
+    static const touchgfx::FontId GAUGETEMPINTLARGE = 0;
+    static const touchgfx::FontId GAUGETEMPINTMEDIUM = 1;
+    static const touchgfx::FontId GAUGETEMPINTSMALL = 2;
+    static const touchgfx::FontId GAUGETEMPSETLARGE = 3;
+    static const touchgfx::FontId GAUGETEMPSETMEDIUM = 4;
+    static const touchgfx::FontId GAUGETEMPSETSMALL = 5;
+    static const touchgfx::FontId GAUGETEMPEXTLARGE = 6;
+    static const touchgfx::FontId GAUGETEMPEXTSMALL = 7;
 };
 
 struct TypographyFontIndex
 {
-    static const touchgfx::FontId GAUGEHUGE = 0;   // AvenirNext_Regular_08_220_4bpp
-    static const touchgfx::FontId GAUGELARGE = 1;  // AvenirNext_Regular_08_150_4bpp
-    static const touchgfx::FontId GAUGEMEDIUM = 2; // AvenirNext_Regular_08_80_4bpp
-    static const touchgfx::FontId GAUGESMALL = 3;  // AvenirNext_Regular_08_50_4bpp
-    static const touchgfx::FontId GAUGETINY = 4;   // AvenirNext_Regular_08_24_4bpp
-    static const uint16_t NUMBER_OF_FONTS = 5;
+    static const touchgfx::FontId GAUGETEMPINTLARGE = 0;  // AvenirNext_Regular_08_220_4bpp
+    static const touchgfx::FontId GAUGETEMPINTMEDIUM = 1; // AvenirNext_Regular_08_80_4bpp
+    static const touchgfx::FontId GAUGETEMPINTSMALL = 2;  // AvenirNext_Regular_08_50_4bpp
+    static const touchgfx::FontId GAUGETEMPSETLARGE = 3;  // AvenirNext_Regular_08_150_4bpp
+    static const touchgfx::FontId GAUGETEMPSETMEDIUM = 4; // AvenirNext_Regular_08_54_4bpp
+    static const touchgfx::FontId GAUGETEMPSETSMALL = 5;  // AvenirNext_Regular_08_34_4bpp
+    static const touchgfx::FontId GAUGETEMPEXTLARGE = 1;  // AvenirNext_Regular_08_80_4bpp
+    static const touchgfx::FontId GAUGETEMPEXTSMALL = 6;  // AvenirNext_Regular_08_24_4bpp
+    static const uint16_t NUMBER_OF_FONTS = 7;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider

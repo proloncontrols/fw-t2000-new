@@ -10,35 +10,55 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterTemp.hpp
+//         File : CGaugeTemperatureSetpoint.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Interior/Setpoint temperature meter base class header file
+//  Description : Interior temperature gauge display class implementation file
 //=============================================================================
-#ifndef CMETER_TEMP_HPP
-#define CMETER_TEMP_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Meter/CMeter.hpp>
+#include <Gauge/CGaugeTemperatureSetpoint.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C L A S S E S
+//  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-class CMeterTemp : public CMeter
+CGaugeTemperatureSetpoint::CGaugeTemperatureSetpoint()
 {
-//public:
-//	void display(double Value, bool celsius);
-};
+	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
+	add(*integer);
+
+	decimal = new CText(decimalPrecision, decimalSpacingRatio, decimalText, colorR, colorG, colorB);
+	decimalDigits = decimalPrecision -1;   //-1 removes the dot
+	add(*decimal);
+
+	unitC = new CLabel(unitTextC, colorR, colorG, colorB);
+	add(*unitC);
+
+	unitF = new CLabel(unitTextF, colorR, colorG, colorB);
+	add(*unitF);
+}
+
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CGaugeTemperatureSetpoint::update(float temp, bool celsius)
+{
+	CGaugeTemperature::update(temp, celsius);
+}
+
+//-----------------------------------------------------------------------------
+void CGaugeTemperatureSetpoint::invalidate()
+{
+	CGauge::invalidate();
+}
 
 }   //namespace touchgfx
-
-
-#endif   //CMETER_TEMP_HPP

@@ -10,20 +10,23 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterTemp.hpp
+//         File : CGaugeTemperatureExterior.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Interior/Setpoint temperature meter base class header file
+//  Description : Exterior temperature gauge display class header file
 //=============================================================================
-#ifndef CMETER_TEMP_HPP
-#define CMETER_TEMP_HPP
+#ifndef CGAUGE_TEMPERATURE_EXTERIOR_HPP
+#define CGAUGE_TEMPERATURE_EXTERIOR_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Meter/CMeter.hpp>
+#include <Gauge/CGaugeTemperature.hpp>
+#include <Bitmapdatabase.hpp>
+#include <touchgfx/Bitmap.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -32,13 +35,30 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMeterTemp : public CMeter
+class CGaugeTemperatureExterior : public CGaugeTemperature
 {
-//public:
-//	void display(double Value, bool celsius);
+public:
+	CGaugeTemperatureExterior();
+
+	void update(float temp, bool celsius);
+	void invalidate();
+
+private:
+	const static int integerPrecision = 4;   //Includes the minus sign
+	const static int integerSpacingRatio = 15;
+	const static TypedTextId integerText = T_GAUGE_TEMPERATURE_EXTERIOR_LARGE;
+
+	const static TypedTextId unitTextC = T_GAUGE_TEMPERATURE_EXTERIOR_SMALL_C;
+	const static TypedTextId unitTextF = T_GAUGE_TEMPERATURE_EXTERIOR_SMALL_F;
+
+	const static BitmapId imageId = BITMAP_OUTSIDE_24X24_ID;
+
+	const static uint8_t colorR = 86;
+	const static uint8_t colorG = 88;
+	const static uint8_t colorB = 90;
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMETER_TEMP_HPP
+#endif   //CGAUGE_TEMPERATURE_EXTERIOR_HPP

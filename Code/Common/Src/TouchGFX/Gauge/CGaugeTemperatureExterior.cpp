@@ -10,35 +10,54 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterTemp.hpp
+//         File : CGaugeTemperatureExterior.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Interior/Setpoint temperature meter base class header file
+//  Description : Exterior temperature gauge display class implementation file
 //=============================================================================
-#ifndef CMETER_TEMP_HPP
-#define CMETER_TEMP_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Meter/CMeter.hpp>
+#include <Gauge/CGaugeTemperatureExterior.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C L A S S E S
+//  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-class CMeterTemp : public CMeter
+CGaugeTemperatureExterior::CGaugeTemperatureExterior()
 {
-//public:
-//	void display(double Value, bool celsius);
-};
+	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
+	add(*integer);
+
+	unitC = new CLabel(unitTextC, colorR, colorG, colorB);
+	add(*unitC);
+
+	unitF = new CLabel(unitTextF, colorR, colorG, colorB);
+	add(*unitF);
+
+	image = new CImage(imageId);
+	add(*image);
+}
+
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CGaugeTemperatureExterior::update(float temp, bool celsius)
+{
+	CGaugeTemperature::update(temp, celsius);
+}
+
+//-----------------------------------------------------------------------------
+void CGaugeTemperatureExterior::invalidate()
+{
+	CGauge::invalidate();
+}
 
 }   //namespace touchgfx
-
-
-#endif   //CMETER_TEMP_HPP

@@ -40,19 +40,19 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CMenu : public Container
 {
-public:
-	CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuItemsCount, GenericCallback<const AbstractButtonContainer&>& menuCallback);
-	ButtonId getButtonId(const touchgfx::AbstractButtonContainer& src);
-
-private:
-	touchgfx::Box background;
-	CButton home;
-	CButton back;
-	CImage logo;
-	CImage line;
-	TextAreaWithOneWildcard title;
-	Unicode::UnicodeChar* titleBuffer = NULL;
-	ListLayout items;
+//public:
+//	CMenu(char* menuTitle, bool menuAsRoot, CMenuItem* menuItems, int menuItemsCount, GenericCallback<const AbstractButtonContainer&>& menuCallback);
+//	ButtonId getButtonId(const touchgfx::AbstractButtonContainer& src);
+//
+//private:
+//	touchgfx::Box background;
+//	CButton home;
+//	CButton back;
+//	CImage logo;
+//	CImage line;
+//	TextAreaWithOneWildcard title;
+//	Unicode::UnicodeChar* titleBuffer = NULL;
+//	ListLayout items;
 };
 
 }   //namespace touchgfx

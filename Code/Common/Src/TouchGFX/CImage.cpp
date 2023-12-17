@@ -36,13 +36,16 @@ namespace touchgfx
 
 
 //=============================================================================
-//  M E T H O D S
+//  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-void CImage::setXY(int16_t x, int16_t y)
+CImage::CImage(BitmapId id)
 {
+	setBitmap(id);
+
 	if(dsp.orientation == CDisplay::LANDSCAPE)
 	    setAngles(0.0f, 0.0f, Z_ANGLE_LANDSCAPE);
-	else
+
+	if(dsp.orientation == CDisplay::PORTRAIT)
 	    setAngles(0.0f, 0.0f, Z_ANGLE_PORTRAIT);
 
 	setScale(1.0f);
@@ -50,15 +53,37 @@ void CImage::setXY(int16_t x, int16_t y)
     setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
 	setCameraDistance(1000.0f);
 	setCamera(getWidth()/2, getHeight()/2);
-	setRenderingAlgorithm(touchgfx::TextureMapper::BILINEAR_INTERPOLATION);
-
-	TextureMapper::setXY(x, y);
+	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 }
 
+//=============================================================================
+//  M E T H O D S
 //-----------------------------------------------------------------------------
-void CImage::add(Container& c)
+//void CImage::setXY(int16_t x, int16_t y)
+//{
+//	if(dsp.orientation == CDisplay::LANDSCAPE)
+//	    setAngles(0.0f, 0.0f, Z_ANGLE_LANDSCAPE);
+//	else
+//	    setAngles(0.0f, 0.0f, Z_ANGLE_PORTRAIT);
+//
+//	setScale(1.0f);
+//	setBitmapPosition(0.0f, 0.0f);
+//    setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
+//	setCameraDistance(1000.0f);
+//	setCamera(getWidth()/2, getHeight()/2);
+//	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+//
+//	TextureMapper::setXY(x, y);
+//}
+
+//-----------------------------------------------------------------------------
+//void CImage::add(Container& c)
+//{
+////	dsp.add(c, *this);
+//}
+void CImage::invalidate()
 {
-//	dsp.add(c, *this);
+	dsp.setPosition(*this, *this);
 }
 
 }   //namespace touchgfx

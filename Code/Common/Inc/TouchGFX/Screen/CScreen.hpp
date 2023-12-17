@@ -66,29 +66,29 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CScreen
 {
-public:
-	CScreen(Container& ownerContainer, bool wLogo);
-
-	void setBackgroundColor(colortype newColor);
-//	void addToClient(Drawable& d);
-	void showFrame();
-
-protected:
-	Container client;
-	Box clientBackground;
-
-private:
-	static const int16_t clientWidth  = 648;
-	static const int16_t clientHeight = 648;
-
-	static const uint8_t frameColorR = 35;
-	static const uint8_t frameColorG = 35;
-	static const uint8_t frameColorB = 35;
-
-//	static const BitmapId bitmap = BITMAP_PROLON_178X178_ID;
-
-	Box frame;
-	CImage* logo = NULL;
+//public:
+//	CScreen(Container& ownerContainer, bool wLogo);
+//
+//	void setBackgroundColor(colortype newColor);
+////	void addToClient(Drawable& d);
+//	void showFrame();
+//
+//protected:
+//	Container client;
+//	Box clientBackground;
+//
+//private:
+//	static const int16_t clientWidth  = 648;
+//	static const int16_t clientHeight = 648;
+//
+//	static const uint8_t frameColorR = 35;
+//	static const uint8_t frameColorG = 35;
+//	static const uint8_t frameColorB = 35;
+//
+////	static const BitmapId bitmap = BITMAP_PROLON_178X178_ID;
+//
+//	Box frame;
+//	CImage* logo = NULL;
 };
 
 }   //namespace touchgfx

@@ -10,20 +10,21 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterTemp.hpp
+//         File : CGaugeTemperatureSetpoint.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Interior/Setpoint temperature meter base class header file
+//  Description : Setpoint temperature gauge display class header file
 //=============================================================================
-#ifndef CMETER_TEMP_HPP
-#define CMETER_TEMP_HPP
+#ifndef CGAUGE_TEMPERATURE_SETPOINT_HPP
+#define CGAUGE_TEMPERATURE_SETPOINT_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Meter/CMeter.hpp>
+#include <Gauge/CGaugeTemperature.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -32,13 +33,32 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMeterTemp : public CMeter
+class CGaugeTemperatureSetpoint : public CGaugeTemperature
 {
-//public:
-//	void display(double Value, bool celsius);
+public:
+	CGaugeTemperatureSetpoint();
+
+	void update(float temp, bool celsius);
+	void invalidate();
+
+private:
+	const static int integerPrecision = 4;   //Includes the minus sign
+	const static int integerSpacingRatio = 15;
+	const static TypedTextId integerText = T_GAUGE_TEMPERATURE_SETPOINT_LARGE;
+
+	const static int decimalPrecision = 2;   //Includes the dot
+	const static int decimalSpacingRatio = 15;
+	const static TypedTextId decimalText = T_GAUGE_TEMPERATURE_SETPOINT_MEDIUM;
+
+	const static TypedTextId unitTextC = T_GAUGE_TEMPERATURE_SETPOINT_SMALL_C;
+	const static TypedTextId unitTextF = T_GAUGE_TEMPERATURE_SETPOINT_SMALL_F;
+
+	const static uint8_t colorR = 255;
+	const static uint8_t colorG = 255;
+	const static uint8_t colorB = 255;
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMETER_TEMP_HPP
+#endif   //CGAUGE_TEMPERATURE_SETPOINT_HPP

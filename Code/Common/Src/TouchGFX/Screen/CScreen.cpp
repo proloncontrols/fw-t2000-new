@@ -33,38 +33,38 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CScreen::CScreen(Container& ownerContainer, bool wLogo)
-{
-	frame.setPosition(ownerContainer);
-	ownerContainer.add(frame);
-
-	client.setPosition((ownerContainer.getWidth() - clientWidth) / 2, (ownerContainer.getHeight() - clientHeight) / 2, clientWidth, clientHeight);
-	ownerContainer.add(client);
-
-	clientBackground.setPosition(0, 0, client.getWidth(), client.getHeight());
-	clientBackground.setColor(Color::getColorFromRGB(0, 0, 0));
-//	addToClient(clientBackground);
-//	dsp.add(client, clientBackground);
-
-	if(wLogo)
-	{
-		logo = new CImage();
-//		logo->setBitmap(Bitmap(bitmap));
-		logo->setXY((client.getWidth() / 2) - (logo->getWidth() / 2), 0);
-//		addToClient(*logo);
-//		dsp.add(client, *logo);
-	}
-}
+//CScreen::CScreen(Container& ownerContainer, bool wLogo)
+//{
+////	frame.setPosition(ownerContainer);
+////	ownerContainer.add(frame);
+////
+////	client.setPosition((ownerContainer.getWidth() - clientWidth) / 2, (ownerContainer.getHeight() - clientHeight) / 2, clientWidth, clientHeight);
+////	ownerContainer.add(client);
+////
+////	clientBackground.setPosition(0, 0, client.getWidth(), client.getHeight());
+////	clientBackground.setColor(Color::getColorFromRGB(0, 0, 0));
+//////	addToClient(clientBackground);
+//////	dsp.add(client, clientBackground);
+////
+////	if(wLogo)
+////	{
+//////		logo = new CImage();
+//////		logo->setBitmap(Bitmap(bitmap));
+////		logo->setXY((client.getWidth() / 2) - (logo->getWidth() / 2), 0);
+//////		addToClient(*logo);
+//////		dsp.add(client, *logo);
+////	}
+//}
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CScreen::setBackgroundColor(colortype color)
-{
-	frame.setColor(color);
-	clientBackground.setColor(color);
-}
+//void CScreen::setBackgroundColor(colortype color)
+//{
+//	frame.setColor(color);
+//	clientBackground.setColor(color);
+//}
 
 ////-----------------------------------------------------------------------------
 //void CScreen::addToClient(Drawable& d)
@@ -80,10 +80,10 @@ void CScreen::setBackgroundColor(colortype color)
 //}
 
 //-----------------------------------------------------------------------------
-void CScreen::showFrame()
-{
-	frame.setColor(Color::getColorFromRGB(frameColorR, frameColorG, frameColorB));
-}
+//void CScreen::showFrame()
+//{
+//	frame.setColor(Color::getColorFromRGB(frameColorR, frameColorG, frameColorB));
+//}
 
 }   //namespace touchgfx
 

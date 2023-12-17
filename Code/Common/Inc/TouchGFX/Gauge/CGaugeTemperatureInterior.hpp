@@ -24,7 +24,6 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <Gauge/CGaugeTemperature.hpp>
-#include <touchgfx/hal/Types.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 
@@ -45,14 +44,14 @@ public:
 private:
 	const static int integerPrecision = 4;   //Includes the minus sign
 	const static int integerSpacingRatio = 15;
-	const static TypedTextId integerText = T_GAUGE_DIGITS_INTEGER_HUGE;
+	const static TypedTextId integerText = T_GAUGE_TEMPERATURE_INTERIOR_LARGE;
 
 	const static int decimalPrecision = 2;   //Includes the dot
 	const static int decimalSpacingRatio = 15;
-	const static TypedTextId decimalText = T_GAUGE_DIGITS_DECIMAL_MEDIUM;
+	const static TypedTextId decimalText = T_GAUGE_TEMPERATURE_INTERIOR_MEDIUM;
 
-	const static TypedTextId unitTextC = T_GAUGE_UNIT_C_SMALL;
-	const static TypedTextId unitTextF = T_GAUGE_UNIT_F_SMALL;
+	const static TypedTextId unitTextC = T_GAUGE_TEMPERATURE_INTERIOR_SMALL_C;
+	const static TypedTextId unitTextF = T_GAUGE_TEMPERATURE_INTERIOR_SMALL_F;
 
 	const static uint8_t colorR = 255;
 	const static uint8_t colorG = 255;

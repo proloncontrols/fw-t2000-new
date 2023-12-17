@@ -12,9 +12,18 @@ SplashView::SplashView()
 
 	add(tempInt);
 	tempInt.update(temp, celsius);
-	tempInt.setX((container.getWidth() - tempInt.getWidth()) / 2);
-	tempInt.setY(100);
+	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
 	tempInt.invalidate();
+
+	add(tempSet);
+	tempSet.update(temp, celsius);
+	tempSet.setXY((container.getWidth() - tempSet.getWidth()) / 2, 320);
+	tempSet.invalidate();
+
+	add(tempExt);
+	tempExt.update(temp, celsius);
+	tempExt.setXY((container.getWidth() - tempExt.getWidth()) / 2, 500);
+	tempExt.invalidate();
 
 //	add(dig1);
 //	dig1.setXY(50, 50);
@@ -40,9 +49,18 @@ void SplashView::tearDownScreen()
 void SplashView::moveIt()
 {
 	temp += 0.1;
+
 	tempInt.update(temp, celsius);
-	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 100);
+	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
 	tempInt.invalidate();
+
+	tempSet.update(temp, celsius);
+	tempSet.setXY((container.getWidth() - tempSet.getWidth()) / 2, 320);
+	tempSet.invalidate();
+
+	tempExt.update(temp, celsius);
+	tempExt.setXY((container.getWidth() - tempExt.getWidth()) / 2, 500);
+	tempExt.invalidate();
 
 	invalidate();
 

@@ -57,6 +57,12 @@ void CGauge::invalidate()
 
 	if(unitF)
 		unitF->invalidate();
+
+	if(unitP)
+		unitP->invalidate();
+
+	if(image)
+		image->invalidate();
 }
 
 }   //namespace touchgfx

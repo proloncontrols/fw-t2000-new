@@ -5,41 +5,53 @@
   </Languages>
   <Texts>
     <TextGroup Id="Gauge">
-      <Text Id="GAUGE_DIGITS_INTEGER_HUGE" Alignment="Left" TypographyId="GaugeHuge">
+      <Text Id="GAUGE_TEMPERATURE_INTERIOR_LARGE" Alignment="Left" TypographyId="GaugeTempIntLarge">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="GAUGE_DIGITS_INTEGER_LARGE" Alignment="Left" TypographyId="GaugeLarge">
+      <Text Id="GAUGE_TEMPERATURE_INTERIOR_MEDIUM" Alignment="Left" TypographyId="GaugeTempIntMedium">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="GAUGE_DIGITS_DECIMAL_MEDIUM" Alignment="Left" TypographyId="GaugeMedium">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="GAUGE_DIGITS_DECIMAL_SMALL" Alignment="Left" TypographyId="GaugeSmall">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="GAUGE_UNIT_C_SMALL" Alignment="Left" TypographyId="GaugeSmall">
+      <Text Id="GAUGE_TEMPERATURE_INTERIOR_SMALL_C" Alignment="Left" TypographyId="GaugeTempIntSmall">
         <Translation Language="GB">°C</Translation>
       </Text>
-      <Text Id="GAUGE_UNIT_C_TINY" Alignment="Left" TypographyId="GaugeTiny">
+      <Text Id="GAUGE_TEMPERATURE_INTERIOR_SMALL_F" Alignment="Left" TypographyId="GaugeTempIntSmall">
+        <Translation Language="GB">°F</Translation>
+      </Text>
+      <Text Id="GAUGE_TEMPERATURE_SETPOINT_LARGE" Alignment="Left" TypographyId="GaugeTempSetLarge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="GAUGE_TEMPERATURE_SETPOINT_MEDIUM" Alignment="Left" TypographyId="GaugeTempSetMedium">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="GAUGE_TEMPERATURE_SETPOINT_SMALL_C" Alignment="Left" TypographyId="GaugeTempSetSmall">
         <Translation Language="GB">°C</Translation>
       </Text>
-      <Text Id="GAUGE_UNIT_F_SMALL" Alignment="Left" TypographyId="GaugeSmall">
+      <Text Id="GAUGE_TEMPERATURE_SETPOINT_SMALL_F" Alignment="Left" TypographyId="GaugeTempSetSmall">
         <Translation Language="GB">°F</Translation>
       </Text>
-      <Text Id="GAUGE_UNIT_F_TINY" Alignment="Left" TypographyId="GaugeTiny">
+      <Text Id="GAUGE_TEMPERATURE_EXTERIOR_LARGE" Alignment="Left" TypographyId="GaugeTempExtLarge">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="GAUGE_TEMPERATURE_EXTERIOR_SMALL_C" Alignment="Left" TypographyId="GaugeTempExtSmall">
+        <Translation Language="GB">°C</Translation>
+      </Text>
+      <Text Id="GAUGE_TEMPERATURE_EXTERIOR_SMALL_F" Alignment="Left" TypographyId="GaugeTempExtSmall">
         <Translation Language="GB">°F</Translation>
       </Text>
-      <Text Id="GAUGE_UNIT_P" Alignment="Left" TypographyId="GaugeTiny">
+      <Text Id="GAUGE_TEMPERATURE_EXTERIOR_SMALL_P" Alignment="Left" TypographyId="GaugeTempExtSmall">
         <Translation Language="GB">%</Translation>
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted" />
   </Texts>
   <Typographies>
-    <Typography Id="GaugeHuge" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
-    <Typography Id="GaugeLarge" Font="AvenirNext-Regular-08.ttf" Size="150" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
-    <Typography Id="GaugeMedium" Font="AvenirNext-Regular-08.ttf" Size="80" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-." WildcardCharacterRanges="0-9" />
-    <Typography Id="GaugeSmall" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF" />
-    <Typography Id="GaugeTiny" Font="AvenirNext-Regular-08.ttf" Size="24" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF%" />
+    <Typography Id="GaugeTempIntLarge" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
+    <Typography Id="GaugeTempIntMedium" Font="AvenirNext-Regular-08.ttf" Size="80" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
+    <Typography Id="GaugeTempIntSmall" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF" />
+    <Typography Id="GaugeTempSetLarge" Font="AvenirNext-Regular-08.ttf" Size="150" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
+    <Typography Id="GaugeTempSetMedium" Font="AvenirNext-Regular-08.ttf" Size="54" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="." WildcardCharacterRanges="0-9" />
+    <Typography Id="GaugeTempSetSmall" Font="AvenirNext-Regular-08.ttf" Size="34" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF" />
+    <Typography Id="GaugeTempExtLarge" Font="AvenirNext-Regular-08.ttf" Size="80" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
+    <Typography Id="GaugeTempExtSmall" Font="AvenirNext-Regular-08.ttf" Size="24" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF%" />
   </Typographies>
 </TextDatabase>

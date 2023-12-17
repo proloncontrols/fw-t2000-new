@@ -42,88 +42,88 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMeter::CMeter()
-{
-#ifdef CMETER_WITH_BACKGROUND
-	add(background);
-	background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-#endif
-}
-
-
-//=============================================================================
-//  M E T H O D S
-//-----------------------------------------------------------------------------
-void CMeter::addTo(Container& c)
-{
-//	dsp.add(c, *this);
-
-//	if(integer)   dsp.add(*this, *integer);
-//	if(decimal)   dsp.add(*this, *decimal);
-//	if(unit)      dsp.add(*this, *unit);
-//	if(dot)       dsp.add(*this, *dot);
-//	if(image)     dsp.add(*this, *image);
-}
-
-//-----------------------------------------------------------------------------
-void CMeter::addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-{
-	integer = new CMeterValue(newPrecision, newSpacingRatio, touchgfx::TypedText(newTypedText), newColorR, newColorG, newColorB);
-//	add(*integer);
-}
-
-//-----------------------------------------------------------------------------
-void CMeter::addDecimal(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-{
-	decimal = new CMeterValue(newPrecision, newSpacingRatio, touchgfx::TypedText(newTypedText), newColorR, newColorG, newColorB);
-//	add(*decimal);
-}
-
-//-----------------------------------------------------------------------------
-void CMeter::addUnit(const TypedText& newTypedTextC, const TypedText& newTypedTextF, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-{
-//	unit = new TextArea;
-//	unit = new CText(2);
-//	unit->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
-	unitTempC = newTypedTextC;
-	unitTempF = newTypedTextF;
-//	add(*unit);
-}
-
-void CMeter::addUnit(const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-{
-//	unit = new TextArea;
-//	unit = new CText(1);
-//	unit->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
-//	unit->setTypedText(touchgfx::TypedText(newTypedText));
-//	add(*unit);
-}
-
-//-----------------------------------------------------------------------------
-void CMeter::addDot(const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-{
-//	dot = new TextArea;
-//	dot = new CText(1);
-//	dot->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
-//	dot->setTypedText(touchgfx::TypedText(newTypedText));
-//	add(*dot);
-}
-
-//-----------------------------------------------------------------------------
-void CMeter::addImage(const Bitmap& bmp)
-{
-	image = new CImage;
-	image->setBitmap(bmp);
-//	add(*image);
-}
-
-//-----------------------------------------------------------------------------
-void CMeter::resizeBackground()
-{
-#ifdef CMETER_WITH_BACKGROUND
-	background.setWidthHeight(*this);
-#endif
-}
+//CMeter::CMeter()
+//{
+//#ifdef CMETER_WITH_BACKGROUND
+//	add(background);
+//	background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+//#endif
+//}
+//
+//
+////=============================================================================
+////  M E T H O D S
+////-----------------------------------------------------------------------------
+//void CMeter::addTo(Container& c)
+//{
+////	dsp.add(c, *this);
+//
+////	if(integer)   dsp.add(*this, *integer);
+////	if(decimal)   dsp.add(*this, *decimal);
+////	if(unit)      dsp.add(*this, *unit);
+////	if(dot)       dsp.add(*this, *dot);
+////	if(image)     dsp.add(*this, *image);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CMeter::addInteger(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+//{
+//	integer = new CMeterValue(newPrecision, newSpacingRatio, touchgfx::TypedText(newTypedText), newColorR, newColorG, newColorB);
+////	add(*integer);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CMeter::addDecimal(uint8_t newPrecision, uint8_t newSpacingRatio, const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+//{
+//	decimal = new CMeterValue(newPrecision, newSpacingRatio, touchgfx::TypedText(newTypedText), newColorR, newColorG, newColorB);
+////	add(*decimal);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CMeter::addUnit(const TypedText& newTypedTextC, const TypedText& newTypedTextF, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+//{
+////	unit = new TextArea;
+////	unit = new CText(2);
+////	unit->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
+//	unitTempC = newTypedTextC;
+//	unitTempF = newTypedTextF;
+////	add(*unit);
+//}
+//
+//void CMeter::addUnit(const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+//{
+////	unit = new TextArea;
+////	unit = new CText(1);
+////	unit->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
+////	unit->setTypedText(touchgfx::TypedText(newTypedText));
+////	add(*unit);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CMeter::addDot(const TypedText& newTypedText, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+//{
+////	dot = new TextArea;
+////	dot = new CText(1);
+////	dot->setColor(touchgfx::Color::getColorFromRGB(newColorR, newColorG, newColorB));
+////	dot->setTypedText(touchgfx::TypedText(newTypedText));
+////	add(*dot);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CMeter::addImage(const Bitmap& bmp)
+//{
+//	image = new CImage;
+//	image->setBitmap(bmp);
+////	add(*image);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CMeter::resizeBackground()
+//{
+//#ifdef CMETER_WITH_BACKGROUND
+//	background.setWidthHeight(*this);
+//#endif
+//}
 
 
 

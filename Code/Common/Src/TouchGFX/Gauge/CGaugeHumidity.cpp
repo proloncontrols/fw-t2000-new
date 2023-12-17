@@ -10,35 +10,51 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterTemp.hpp
+//         File : CGaugeHumidity.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Interior/Setpoint temperature meter base class header file
+//  Description : Exterior humifity gauge display class implementation file
 //=============================================================================
-#ifndef CMETER_TEMP_HPP
-#define CMETER_TEMP_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Meter/CMeter.hpp>
+#include <Gauge/CGaugeHumidity.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C L A S S E S
+//  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-class CMeterTemp : public CMeter
+CGaugeHumidity::CGaugeHumidity()
 {
-//public:
-//	void display(double Value, bool celsius);
-};
+	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
+	add(*integer);
+
+	unitP = new CLabel(unit, colorR, colorG, colorB);
+	add(*unitF);
+
+	image = new CImage(imageId);
+	add(*image);
+}
+
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CGaugeHumidity::update(uint8_t humidity)
+{
+//	CGaugeTemperature::update(temp, celsius);
+}
+
+//-----------------------------------------------------------------------------
+void CGaugeHumidity::invalidate()
+{
+	CGauge::invalidate();
+}
 
 }   //namespace touchgfx
-
-
-#endif   //CMETER_TEMP_HPP

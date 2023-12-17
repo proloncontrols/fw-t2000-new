@@ -9,21 +9,30 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
 {
     switch (typography)
     {
-    case Typography::GAUGEHUGE:
+    case Typography::GAUGETEMPINTLARGE:
         // AvenirNext_Regular_08_220_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[0]);
-    case Typography::GAUGELARGE:
-        // AvenirNext_Regular_08_150_4bpp
-        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[1]);
-    case Typography::GAUGEMEDIUM:
+    case Typography::GAUGETEMPINTMEDIUM:
         // AvenirNext_Regular_08_80_4bpp
-        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
-    case Typography::GAUGESMALL:
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[1]);
+    case Typography::GAUGETEMPINTSMALL:
         // AvenirNext_Regular_08_50_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
+    case Typography::GAUGETEMPSETLARGE:
+        // AvenirNext_Regular_08_150_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
-    case Typography::GAUGETINY:
-        // AvenirNext_Regular_08_24_4bpp
+    case Typography::GAUGETEMPSETMEDIUM:
+        // AvenirNext_Regular_08_54_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[4]);
+    case Typography::GAUGETEMPSETSMALL:
+        // AvenirNext_Regular_08_34_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[5]);
+    case Typography::GAUGETEMPEXTLARGE:
+        // AvenirNext_Regular_08_80_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[1]);
+    case Typography::GAUGETEMPEXTSMALL:
+        // AvenirNext_Regular_08_24_4bpp
+        return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[6]);
     default:
         return 0;
     }

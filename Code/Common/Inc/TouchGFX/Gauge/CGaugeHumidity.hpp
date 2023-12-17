@@ -10,20 +10,23 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMeterTemp.hpp
+//         File : CGaugeHumidity.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Interior/Setpoint temperature meter base class header file
+//  Description : Exterior humidity gauge display class header file
 //=============================================================================
-#ifndef CMETER_TEMP_HPP
-#define CMETER_TEMP_HPP
+#ifndef CGAUGE_HUMIDITY_HPP
+#define CGAUGE_HUMIDITY_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Meter/CMeter.hpp>
+#include <Gauge/CGaugeTemperature.hpp>
+#include <Bitmapdatabase.hpp>
+#include <touchgfx/Bitmap.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -32,13 +35,29 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMeterTemp : public CMeter
+class CGaugeHumidity : public CGaugeTemperature
 {
-//public:
-//	void display(double Value, bool celsius);
+public:
+	CGaugeHumidity();
+
+	void update(uint8_t percent);
+	void invalidate();
+
+private:
+	const static int integerPrecision = 3;   //0-100%
+	const static int integerSpacingRatio = 15;
+	const static TypedTextId integerText = T_GAUGE_TEMPERATURE_EXTERIOR_LARGE;
+
+	const static TypedTextId unit = T_GAUGE_TEMPERATURE_EXTERIOR_SMALL_P;
+
+	const static BitmapId imageId = BITMAP_HUMIDITY_30X30_ID;
+
+	const static uint8_t colorR = 86;
+	const static uint8_t colorG = 88;
+	const static uint8_t colorB = 90;
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMETER_TEMP_HPP
+#endif   //CGAUGE_HUMIDITY_HPP
