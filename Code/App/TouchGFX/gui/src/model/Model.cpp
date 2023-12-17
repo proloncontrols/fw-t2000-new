@@ -14,16 +14,16 @@ Model::Model() : modelListener(0)
 //-----------------------------------------------------------------------------
 void Model::tick()
 {
-	static int tmp = 0;
-
-	if(osMessageQueueGet(UI_QueueEnv, &EnvReadings, NULL, 0) == osOK)
-		modelListener->DisplayEnv(&EnvReadings);
-
-	if(++tmp >= 12)
-	{
-		tmp = 0;
-		modelListener->moveIt();
-	}
+//	static int tmp = 0;
+//
+//	if(osMessageQueueGet(UI_QueueEnv, &EnvReadings, NULL, 0) == osOK)
+//		modelListener->DisplayEnv(&EnvReadings);
+//
+//	if(++tmp >= 12)
+//	{
+//		tmp = 0;
+//		modelListener->moveIt();
+//	}
 }
 
 //-----------------------------------------------------------------------------

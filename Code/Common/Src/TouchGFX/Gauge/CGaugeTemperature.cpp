@@ -47,43 +47,6 @@ CGaugeTemperature::CGaugeTemperature()
 //-----------------------------------------------------------------------------
 void CGaugeTemperature::update(float temp, bool celsius)
 {
-//	char integerString[8];
-//	char decimalString[8];
-//
-//	double intDoubleValue;
-//	double decDoubleValue = modf(temp, &intDoubleValue);
-//
-//	int16_t intValue = (int16_t)intDoubleValue;
-//	int16_t decValue = (int16_t)abs((decDoubleValue * pow(10.0, (double)decimalDigits)));   //-1 removes the dot
-//
-//	sprintf(integerString, "%d", intValue);
-//	sprintf(decimalString, ".%d", decValue);
-//
-//	*integer = integerString;
-//	integer->setXY(1, 1);
-//
-//	*decimal = decimalString;
-//	decimal->setXY(integer->getWidth(), integer->getHeight() - decimal->getHeight() + decimal->getBaseline());
-//
-//	CLabel* unit;
-//	if(celsius)
-//	{
-//		unit = unitC;
-//		unitC->setVisible(true);
-//		unitF->setVisible(false);
-//	}
-//	else
-//	{
-//		unit = unitF;
-//		unitC->setVisible(false);
-//		unitF->setVisible(true);
-//	}
-//	unit->setXY(integer->getWidth(), integer->getY());
-//
-//	Container::setWidthHeight(integer->getWidth() + MAX(unit->getWidth(), decimal->getWidth()), integer->getHeight() + decimal->getBaseline());
-//
-////	background.setWidthHeight(*this);
-
 	int index;
 	int dotIndex;
 	char integerString[8];
