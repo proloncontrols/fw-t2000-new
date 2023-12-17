@@ -2,7 +2,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include <CDisplay.hpp>
 
-static float tmp = 21.5;
+static bool celsius = true;
+static float temp = -10.0;
 
 SplashView::SplashView()
 {
@@ -10,7 +11,7 @@ SplashView::SplashView()
 		__background.setPosition(0, 0, 672, 720);
 
 	add(tempInt);
-	tempInt.update(tmp, true);
+	tempInt.update(temp, celsius);
 	tempInt.setX((container.getWidth() - tempInt.getWidth()) / 2);
 	tempInt.setY(100);
 	tempInt.invalidate();
@@ -38,8 +39,8 @@ void SplashView::tearDownScreen()
 
 void SplashView::moveIt()
 {
-	tmp += 0.1;
-	tempInt.update(tmp, true);
+	temp += 0.1;
+	tempInt.update(temp, celsius);
 	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 100);
 	tempInt.invalidate();
 

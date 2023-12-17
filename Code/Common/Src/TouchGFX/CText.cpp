@@ -73,6 +73,9 @@ void CText::operator=(const char* newText)
 	len = strlen(newText);
 	if(len <= maxLength)
 	{
+		for(int i = 0; i < maxLength; i++)
+			digits[i]->setDigit(0);
+
 		for(int i = 0; i < len; i++)
 		{
 			digits[i]->setDigit(newText[i]);
@@ -166,6 +169,7 @@ void CText::CDigit::setDigit(const char newDigit)
 //	background.setWidthHeight(*this);
 }
 
+//-----------------------------------------------------------------------------
 void CText::CDigit::invalidate()
 {
 	dsp.setPosition(*this, *this);

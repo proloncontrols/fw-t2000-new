@@ -33,12 +33,13 @@
         <Translation Language="GB">%</Translation>
       </Text>
     </TextGroup>
+    <TextGroup Id="Unsorted" />
   </Texts>
   <Typographies>
     <Typography Id="GaugeHuge" Font="AvenirNext-Regular-08.ttf" Size="220" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
     <Typography Id="GaugeLarge" Font="AvenirNext-Regular-08.ttf" Size="150" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
     <Typography Id="GaugeMedium" Font="AvenirNext-Regular-08.ttf" Size="80" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-." WildcardCharacterRanges="0-9" />
-    <Typography Id="GaugeSmall" Font="AvenirNext-Regular-08.ttf" Size="60" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF" />
+    <Typography Id="GaugeSmall" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF" />
     <Typography Id="GaugeTiny" Font="AvenirNext-Regular-08.ttf" Size="24" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF%" />
   </Typographies>
 </TextDatabase>

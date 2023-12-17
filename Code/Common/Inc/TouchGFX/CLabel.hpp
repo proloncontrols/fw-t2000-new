@@ -10,55 +10,38 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CGaugeTemperatureInterior.cpp
+//         File : CLabel.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Interior temperature gauge display class implementation file
+//  Description : Fixed text class header file
 //=============================================================================
+#ifndef CLABEL_HPP
+#define CLABEL_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Gauge/CGaugeTemperatureInterior.hpp>
+#include <touchgfx/TypedText.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C O N S T R U C T I O N
+//  C L A S S E S
 //-----------------------------------------------------------------------------
-CGaugeTemperatureInterior::CGaugeTemperatureInterior()
+class CLabel : public TextArea
 {
-	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
-	add(*integer);
+public:
+	CLabel(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 
-	decimal = new CText(decimalPrecision, decimalSpacingRatio, decimalText, colorR, colorG, colorB);
-	decimalDigits = decimalPrecision -1;   //-1 removes the dot
-	add(*decimal);
-
-	unitC = new CLabel(unitTextC, colorR, colorG, colorB);
-	add(*unitC);
-
-	unitF = new CLabel(unitTextF, colorR, colorG, colorB);
-	add(*unitF);
-}
-
-
-//=============================================================================
-//  M E T H O D S
-//-----------------------------------------------------------------------------
-void CGaugeTemperatureInterior::update(float temp, bool celsius)
-{
-	CGaugeTemperature::update(temp, celsius);
-}
-
-//-----------------------------------------------------------------------------
-void CGaugeTemperatureInterior::invalidate()
-{
-	CGauge::invalidate();
-}
+	void invalidate();
+};
 
 }   //namespace touchgfx
+
+
+#endif   //CTEXT_HPP

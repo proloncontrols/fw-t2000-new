@@ -19,7 +19,7 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
         // AvenirNext_Regular_08_80_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
     case Typography::GAUGESMALL:
-        // AvenirNext_Regular_08_60_4bpp
+        // AvenirNext_Regular_08_50_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
     case Typography::GAUGETINY:
         // AvenirNext_Regular_08_24_4bpp

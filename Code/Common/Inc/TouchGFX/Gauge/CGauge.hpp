@@ -25,6 +25,7 @@
 //-----------------------------------------------------------------------------
 #include <stddef.h>
 #include <CText.hpp>
+#include <CLabel.hpp>
 #include <CImage.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
@@ -48,8 +49,8 @@ protected:
 //	Box background;
 	CText* integer = NULL;
 	CText* decimal = NULL;
-	CText* unitC = NULL;
-	CText* unitF = NULL;
+	CLabel* unitC = NULL;
+	CLabel* unitF = NULL;
 	CImage* image = NULL;
 };
 

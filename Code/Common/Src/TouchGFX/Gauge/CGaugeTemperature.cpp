@@ -23,7 +23,10 @@
 //-----------------------------------------------------------------------------
 #include <math.h>
 #include <stdio.h>
+#include <string.h>
+#include <CDisplay.hpp>
 #include <Gauge/CGaugeTemperature.hpp>
+#include <touchgfx/Color.hpp>
 
 
 namespace touchgfx
@@ -44,27 +47,137 @@ CGaugeTemperature::CGaugeTemperature()
 //-----------------------------------------------------------------------------
 void CGaugeTemperature::update(float temp, bool celsius)
 {
+//	char integerString[8];
+//	char decimalString[8];
+//
+//	double intDoubleValue;
+//	double decDoubleValue = modf(temp, &intDoubleValue);
+//
+//	int16_t intValue = (int16_t)intDoubleValue;
+//	int16_t decValue = (int16_t)abs((decDoubleValue * pow(10.0, (double)decimalDigits)));   //-1 removes the dot
+//
+//	sprintf(integerString, "%d", intValue);
+//	sprintf(decimalString, ".%d", decValue);
+//
+//	*integer = integerString;
+//	integer->setXY(1, 1);
+//
+//	*decimal = decimalString;
+//	decimal->setXY(integer->getWidth(), integer->getHeight() - decimal->getHeight() + decimal->getBaseline());
+//
+//	CLabel* unit;
+//	if(celsius)
+//	{
+//		unit = unitC;
+//		unitC->setVisible(true);
+//		unitF->setVisible(false);
+//	}
+//	else
+//	{
+//		unit = unitF;
+//		unitC->setVisible(false);
+//		unitF->setVisible(true);
+//	}
+//	unit->setXY(integer->getWidth(), integer->getY());
+//
+//	Container::setWidthHeight(integer->getWidth() + MAX(unit->getWidth(), decimal->getWidth()), integer->getHeight() + decimal->getBaseline());
+//
+////	background.setWidthHeight(*this);
+
+	int index;
+	int dotIndex;
 	char integerString[8];
 	char decimalString[8];
 
-	double intDoubleValue;
-	double decDoubleValue = modf(temp, &intDoubleValue);
+	char precisionString[2];
+	sprintf(precisionString, "%d", decimalDigits);
 
-	int16_t intValue = (int16_t)intDoubleValue;
-	int16_t decValue = (int16_t)abs((decDoubleValue * pow(10.0, (double)decimalDigits)));   //-1 removes the dot
+	char formatString[6];
+	strcpy(formatString, "%.");
+	strcat(formatString, precisionString);
+	strcat(formatString, "f");
 
-	sprintf(integerString, "%d", intValue);
-	sprintf(decimalString, ".%d", decValue);
+	char valueString[8];
+	sprintf(valueString, formatString, temp);
 
+	memset(integerString, 0, sizeof(integerString));
+	for(index = 0; valueString[index] != '.'; index++)
+		integerString[index] = valueString[index];
 	*integer = integerString;
 	integer->setXY(1, 1);
 
-	*decimal = decimalString;
-	decimal->setXY(integer->getWidth(), integer->getHeight() - decimal->getHeight() + decimal->getBaseline());
+	if(decimal)
+	{
+		dotIndex = index;
+		memset(decimalString, 0, sizeof(decimalString));
+		while(index < (int)strlen(valueString))
+		{
+			decimalString[index - dotIndex] = valueString[index];
+			index++;
+		}
+		*decimal = decimalString;
+		decimal->setXY(integer->getWidth(), integer->getHeight() - decimal->getHeight() + decimal->getBaseline());
+	}
 
-	Container::setWidthHeight(integer->getWidth() + decimal->getWidth(), integer->getHeight() + decimal->getBaseline());
+	CLabel* unit;
+	if(celsius)
+	{
+		unit = unitC;
+		unitC->setVisible(true);
+		unitF->setVisible(false);
+	}
+	else
+	{
+		unit = unitF;
+		unitC->setVisible(false);
+		unitF->setVisible(true);
+	}
+	unit->setXY(integer->getWidth(), integer->getY());
+
+	if(!decimal)
+		Container::setWidthHeight(integer->getWidth() + unit->getWidth(), integer->getHeight());
+	else
+		Container::setWidthHeight(integer->getWidth() + MAX(unit->getWidth(), decimal->getWidth()), integer->getHeight() + decimal->getBaseline());
 
 //	background.setWidthHeight(*this);
 }
 
 }   //namespace touchgfx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

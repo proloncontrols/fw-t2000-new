@@ -25,7 +25,7 @@ struct TypographyFontIndex
     static const touchgfx::FontId GAUGEHUGE = 0;   // AvenirNext_Regular_08_220_4bpp
     static const touchgfx::FontId GAUGELARGE = 1;  // AvenirNext_Regular_08_150_4bpp
     static const touchgfx::FontId GAUGEMEDIUM = 2; // AvenirNext_Regular_08_80_4bpp
-    static const touchgfx::FontId GAUGESMALL = 3;  // AvenirNext_Regular_08_60_4bpp
+    static const touchgfx::FontId GAUGESMALL = 3;  // AvenirNext_Regular_08_50_4bpp
     static const touchgfx::FontId GAUGETINY = 4;   // AvenirNext_Regular_08_24_4bpp
     static const uint16_t NUMBER_OF_FONTS = 5;
 };

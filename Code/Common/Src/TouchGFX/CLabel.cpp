@@ -10,18 +10,20 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CGaugeTemperatureInterior.cpp
+//         File : CLabel.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Interior temperature gauge display class implementation file
+//  Description : Fixed text class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Gauge/CGaugeTemperatureInterior.hpp>
+#include <CLabel.hpp>
+#include <CDisplay.hpp>
+#include <touchgfx/Color.hpp>
 
 
 namespace touchgfx
@@ -30,35 +32,21 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CGaugeTemperatureInterior::CGaugeTemperatureInterior()
+CLabel::CLabel(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 {
-	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
-	add(*integer);
-
-	decimal = new CText(decimalPrecision, decimalSpacingRatio, decimalText, colorR, colorG, colorB);
-	decimalDigits = decimalPrecision -1;   //-1 removes the dot
-	add(*decimal);
-
-	unitC = new CLabel(unitTextC, colorR, colorG, colorB);
-	add(*unitC);
-
-	unitF = new CLabel(unitTextF, colorR, colorG, colorB);
-	add(*unitF);
+	if(dsp.orientation != CDisplay::NATIVE)
+		setRotation(TEXT_ROTATE_180);
+	setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
+	setTypedText(newType);
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CGaugeTemperatureInterior::update(float temp, bool celsius)
+void CLabel::invalidate()
 {
-	CGaugeTemperature::update(temp, celsius);
-}
-
-//-----------------------------------------------------------------------------
-void CGaugeTemperatureInterior::invalidate()
-{
-	CGauge::invalidate();
+	dsp.setPosition(*this, *this);
 }
 
 }   //namespace touchgfx

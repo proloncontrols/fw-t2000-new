@@ -51,8 +51,6 @@ private:
 	const static int decimalSpacingRatio = 15;
 	const static TypedTextId decimalText = T_GAUGE_DIGITS_DECIMAL_MEDIUM;
 
-	const static int unitPrecision = 2;
-	const static int unitSpacingRatio = 15;
 	const static TypedTextId unitTextC = T_GAUGE_UNIT_C_SMALL;
 	const static TypedTextId unitTextF = T_GAUGE_UNIT_F_SMALL;
 

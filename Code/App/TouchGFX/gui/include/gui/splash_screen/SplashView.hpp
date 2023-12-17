@@ -3,10 +3,11 @@
 
 //#include <CText.hpp>
 //#include <CString.hpp>
+//#include <CLabel.hpp>
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <Gauge/CGaugeTemperatureInterior.hpp>
-//#include <texts/TextKeysAndLanguages.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -23,6 +24,8 @@ protected:
 //    CText txt2 = CText(3, 15, T_GAUGE_DIGITS_DECIMAL_MEDIUM, 255, 255, 255);
 
 //    CString str = CString(T_MENU_BUTTON, 255, 255, 255);
+
+//    CLabel lbl1 = CLabel(T_GAUGE_UNIT_C_SMALL, 255, 255, 255);
 
     CGaugeTemperatureInterior tempInt = CGaugeTemperatureInterior();
 
