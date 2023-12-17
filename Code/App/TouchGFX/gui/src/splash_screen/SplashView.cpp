@@ -2,7 +2,7 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include <CDisplay.hpp>
 
-//static int16_t tmp = 50;
+static float tmp = 21.5;
 
 SplashView::SplashView()
 {
@@ -10,7 +10,7 @@ SplashView::SplashView()
 		__background.setPosition(0, 0, 672, 720);
 
 	add(tempInt);
-	tempInt.update(-21.5, true);
+	tempInt.update(tmp, true);
 	tempInt.setX((container.getWidth() - tempInt.getWidth()) / 2);
 	tempInt.setY(100);
 	tempInt.invalidate();
@@ -38,9 +38,13 @@ void SplashView::tearDownScreen()
 
 void SplashView::moveIt()
 {
-//	invalidate();
-//
-//	tmp += 50;
+	tmp += 0.1;
+	tempInt.update(tmp, true);
+	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 100);
+	tempInt.invalidate();
+
+	invalidate();
+
 //
 ////	dsp.setXY(txt1, tmp, 50);
 ////	txt1.invalidate();

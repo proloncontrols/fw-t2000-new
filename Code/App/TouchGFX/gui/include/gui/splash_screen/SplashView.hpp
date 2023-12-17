@@ -1,13 +1,12 @@
 #ifndef SPLASHVIEW_HPP
 #define SPLASHVIEW_HPP
 
-#include <CText.hpp>
-#include <CString.hpp>
-#include <Gauge/CGaugeTempInt.hpp>
-
+//#include <CText.hpp>
+//#include <CString.hpp>
 #include <gui_generated/splash_screen/SplashViewBase.hpp>
 #include <gui/splash_screen/SplashPresenter.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
+#include <Gauge/CGaugeTemperatureInterior.hpp>
+//#include <texts/TextKeysAndLanguages.hpp>
 
 class SplashView : public SplashViewBase
 {

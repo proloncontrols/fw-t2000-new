@@ -10,25 +10,22 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CGaugeTempInt.hpp
+//         File : CGaugeTemperatureInterior.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
 //  Description : Interior temperature gauge display class header file
 //=============================================================================
-#ifndef CGAUGE_TEMP_INT_HPP
-#define CGAUGE_TEMP_INT_HPP
+#ifndef CGAUGE_TEMPERATURE_INTERIOR_HPP
+#define CGAUGE_TEMPERATURE_INTERIOR_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CDisplay.hpp>
-#include <Gauge/CGauge.hpp>
+#include <Gauge/CGaugeTemperature.hpp>
 #include <touchgfx/hal/Types.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
-#include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/Color.hpp>
 
 
 namespace touchgfx
@@ -37,58 +34,34 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CGaugeTemperatureInterior : public Container //CGauge
+class CGaugeTemperatureInterior : public CGaugeTemperature
 {
 public:
-    CGaugeTemperatureInterior()
-	{
-		add(background);
-		background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+	CGaugeTemperatureInterior();
 
-		add(integer);
-		add(decimal);
-	}
-
-	void update(float temp, bool celsius)
-	{
-		integer = "-21";
-		integer.setXY(1, 1);
-
-		decimal = ".5";
-		decimal.setXY(integer.getWidth(), integer.getHeight() - decimal.getHeight() + decimal.getBaseline());
-
-		Container::setWidthHeight(integer.getWidth() + decimal.getWidth(), integer.getHeight() + decimal.getBaseline());
-
-		background.setWidthHeight(*this);
-	}
-
-	void invalidate()
-	{
-		dsp.setPosition(*this, *this);
-
-		integer.invalidate();
-		decimal.invalidate();
-	}
+	void update(float temp, bool celsius);
+	void invalidate();
 
 private:
-	const static int integerPrecision = 4;
+	const static int integerPrecision = 4;   //Includes the minus sign
 	const static int integerSpacingRatio = 15;
 	const static TypedTextId integerText = T_GAUGE_DIGITS_INTEGER_HUGE;
 
-	const static int decimalPrecision = 2;
+	const static int decimalPrecision = 2;   //Includes the dot
 	const static int decimalSpacingRatio = 15;
 	const static TypedTextId decimalText = T_GAUGE_DIGITS_DECIMAL_MEDIUM;
+
+	const static int unitPrecision = 2;
+	const static int unitSpacingRatio = 15;
+	const static TypedTextId unitTextC = T_GAUGE_UNIT_C_SMALL;
+	const static TypedTextId unitTextF = T_GAUGE_UNIT_F_SMALL;
 
 	const static uint8_t colorR = 255;
 	const static uint8_t colorG = 255;
 	const static uint8_t colorB = 255;
-
-	Box background;
-	CText integer = CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
-	CText decimal = CText(decimalPrecision, decimalSpacingRatio, decimalText, colorR, colorG, colorB);
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CGAUGE_TEMP_INT_HPP
+#endif   //CGAUGE_TEMPERATURE_INTERIOR_HPP

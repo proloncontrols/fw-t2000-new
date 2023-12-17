@@ -10,20 +10,20 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CGauge.cpp
+//         File : CGaugeTemperature.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Gauge display base class implementation file
+//  Description : Temperature gauge display base class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CDisplay.hpp>
-#include <Gauge/CGauge.hpp>
-#include <touchgfx/Color.hpp>
+#include <math.h>
+#include <stdio.h>
+#include <Gauge/CGaugeTemperature.hpp>
 
 
 namespace touchgfx
@@ -32,31 +32,39 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CGauge::CGauge()
+CGaugeTemperature::CGaugeTemperature()
 {
-//	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
 //	add(background);
+//	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CGauge::invalidate()
+void CGaugeTemperature::update(float temp, bool celsius)
 {
-	dsp.setPosition(*this, *this);
+	char integerString[8];
+	char decimalString[8];
 
-	if(integer)
-		integer->invalidate();
+	double intDoubleValue;
+	double decDoubleValue = modf(temp, &intDoubleValue);
 
-	if(decimal)
-		decimal->invalidate();
+	int16_t intValue = (int16_t)intDoubleValue;
+	int16_t decValue = (int16_t)abs((decDoubleValue * pow(10.0, (double)decimalDigits)));   //-1 removes the dot
 
-	if(unitC)
-		unitC->invalidate();
+	sprintf(integerString, "%d", intValue);
+	sprintf(decimalString, ".%d", decValue);
 
-	if(unitF)
-		unitF->invalidate();
+	*integer = integerString;
+	integer->setXY(1, 1);
+
+	*decimal = decimalString;
+	decimal->setXY(integer->getWidth(), integer->getHeight() - decimal->getHeight() + decimal->getBaseline());
+
+	Container::setWidthHeight(integer->getWidth() + decimal->getWidth(), integer->getHeight() + decimal->getBaseline());
+
+//	background.setWidthHeight(*this);
 }
 
 }   //namespace touchgfx

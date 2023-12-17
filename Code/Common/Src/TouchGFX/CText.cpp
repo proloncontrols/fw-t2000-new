@@ -39,8 +39,8 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 CText::CText(int newMaxLength, int newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
 {
-	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-	add(background);
+//	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+//	add(background);
 
 	maxLength = newMaxLength;
 
@@ -94,7 +94,7 @@ void CText::operator=(const char* newText)
 
 		curLength = len;
 
-		background.setWidthHeight(*this);
+//		background.setWidthHeight(*this);
 	}
 }
 
@@ -114,6 +114,12 @@ void CText::invalidate()
 int16_t CText::getBaseline()
 {
 	return digits[0]->getHeight() - type.getFont()->getFontHeight();
+}
+
+//-----------------------------------------------------------------------------
+int CText::getLength()
+{
+	return curLength;
 }
 
 

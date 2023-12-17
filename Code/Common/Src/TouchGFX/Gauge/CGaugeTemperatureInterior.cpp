@@ -10,68 +10,55 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CText.hpp
+//         File : CGaugeTemperatureInterior.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Manipulated text class header file
+//  Description : Interior temperature gauge display class implementation file
 //=============================================================================
-#ifndef CTEXT_HPP
-#define CTEXT_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <touchgfx/TypedText.hpp>
-#include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/Containers/Container.hpp>
+#include <Gauge/CGaugeTemperatureInterior.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C L A S S E S
+//  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-class CText : public Container
+CGaugeTemperatureInterior::CGaugeTemperatureInterior()
 {
-public:
-	CText(int newMaxLength, int newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
+	add(*integer);
 
-	void operator=(const char* newText);
-	void invalidate();
-	int16_t getBaseline();
-	int getLength();
+	decimal = new CText(decimalPrecision, decimalSpacingRatio, decimalText, colorR, colorG, colorB);
+	decimalDigits = decimalPrecision -1;   //-1 removes the dot
+	add(*decimal);
 
-public:
-	class CDigit : public Container
-	{
-	public:
-		CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+	unitC = new CText(unitPrecision, unitSpacingRatio, unitTextC, colorR, colorG, colorB);
+	add(*unitC);
 
-		void setDigit(const char newDigit);
-		void invalidate();
-		const Font* getFont();
-		const GlyphNode* getGlyph();
+	unitF = new CText(unitPrecision, unitSpacingRatio, unitTextF, colorR, colorG, colorB);
+	add(*unitF);
+}
 
-	private:
-//		Box background;
-		TextAreaWithOneWildcard area;
-		Unicode::UnicodeChar buffer[2];
-	};
 
-private:
-//	Box background;
-	int maxLength;
-	int curLength;
-	CDigit** digits;
-	int16_t spacingWidth;
-	TypedText type;
-};
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CGaugeTemperatureInterior::update(float temp, bool celsius)
+{
+	CGaugeTemperature::update(temp, celsius);
+}
+
+//-----------------------------------------------------------------------------
+void CGaugeTemperatureInterior::invalidate()
+{
+	CGauge::invalidate();
+}
 
 }   //namespace touchgfx
-
-
-#endif   //CTEXT_HPP

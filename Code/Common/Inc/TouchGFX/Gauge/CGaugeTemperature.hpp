@@ -10,23 +10,20 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CText.hpp
+//         File : CGaugeTemperature.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Manipulated text class header file
+//  Description : Temperature gauge display base class header file
 //=============================================================================
-#ifndef CTEXT_HPP
-#define CTEXT_HPP
+#ifndef CGAUGE_TEMPERATURE_HPP
+#define CGAUGE_TEMPERATURE_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <touchgfx/TypedText.hpp>
-#include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/Containers/Container.hpp>
+#include <Gauge/CGauge.hpp>
 
 
 namespace touchgfx
@@ -35,43 +32,18 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CText : public Container
+class CGaugeTemperature : public CGauge
 {
 public:
-	CText(int newMaxLength, int newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+    CGaugeTemperature();
 
-	void operator=(const char* newText);
-	void invalidate();
-	int16_t getBaseline();
-	int getLength();
+protected:
+	void update(float temp, bool celsius);
 
-public:
-	class CDigit : public Container
-	{
-	public:
-		CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
-
-		void setDigit(const char newDigit);
-		void invalidate();
-		const Font* getFont();
-		const GlyphNode* getGlyph();
-
-	private:
-//		Box background;
-		TextAreaWithOneWildcard area;
-		Unicode::UnicodeChar buffer[2];
-	};
-
-private:
-//	Box background;
-	int maxLength;
-	int curLength;
-	CDigit** digits;
-	int16_t spacingWidth;
-	TypedText type;
+	int decimalDigits;
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CTEXT_HPP
+#endif   //CGAUGE_TEMPERATURE_HPP
