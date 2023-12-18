@@ -32,16 +32,6 @@ SplashView::SplashView()
 	hum.update(humidity);
 	hum.setXY(500, 500);
 	hum.invalidate();
-
-//	add(dig1);
-//	dig1.setXY(50, 50);
-//	dig1.setDigit('2');
-//	dig1.invalidate();
-
-//	add(txt1);
-//	txt1.setXY(1, 1);
-//	txt1 = "-21";
-//	txt1.invalidate();
 }
 
 void SplashView::setupScreen()
@@ -79,14 +69,4 @@ void SplashView::moveIt()
 	hum.invalidate();
 
 	invalidate();
-
-//
-////	dsp.setXY(txt1, tmp, 50);
-////	txt1.invalidate();
-////
-////	Rect r = dsp.getPosition(txt1);
-////	dsp.setXY(txt2, r.x + r.width, r.y + (r.height - txt2.getHeight()) + txt2.getBaseline());
-////	txt2.invalidate();
-//
-//	dsp.setXY(temp, tmp, 100);
 }

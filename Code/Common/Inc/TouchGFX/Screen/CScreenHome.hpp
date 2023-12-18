@@ -28,7 +28,7 @@
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 #include <CButton.hpp>
 #include <CImage.hpp>
-#include <Meter/CMeterInt.hpp>
+//#include <Meter/CMeterInt.hpp>
 
 
 namespace touchgfx
