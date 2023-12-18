@@ -10,7 +10,7 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CGaugeTemperatureSetpoint.cpp
+//         File : CGaugeSetpoint.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
@@ -21,44 +21,81 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <CDisplay.hpp>
+#include <touchgfx/Color.hpp>
 #include <Gauge/CGaugeSetpoint.hpp>
 
 
 namespace touchgfx
 {
-
+//#define SHOW_BACKGROUND
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
 CGaugeSetpoint::CGaugeSetpoint()
 {
-	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
-	add(*integer);
+#ifdef SHOW_BACKGROUND
+	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+	add(background);
+#endif
 
-	decimal = new CText(decimalPrecision, decimalSpacingRatio, decimalText, colorR, colorG, colorB);
-	decimalDigits = decimalPrecision -1;   //-1 removes the dot
-	add(*decimal);
-
-	unitC = new CLabel(unitTextC, colorR, colorG, colorB);
-	add(*unitC);
-
-	unitF = new CLabel(unitTextF, colorR, colorG, colorB);
-	add(*unitF);
+	add(integer);
+	add(decimal);
+	add(unitC);
+	add(unitF);
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CGaugeSetpoint::update(float temp, bool celsius)
+void CGaugeSetpoint::update(int16_t temperature, bool celsius)
 {
-	CGaugeTemperature::update(temp, celsius);
+	char integerString[8];
+	int integerValue = temperature / 100;
+	sprintf(integerString, "%d", integerValue);
+	integer = integerString;
+	integer.setXY(1, 1);
+
+	char decimalString[8];
+	int decimalValue = abs((temperature % 100) / 10);
+	sprintf(decimalString, ".%d", decimalValue);
+	decimal = decimalString;
+	decimal.setXY(integer.getWidth(), integer.getHeight() - decimal.getHeight() + decimal.getBaseline());
+
+	CLabel* unit;
+	if(celsius)
+	{
+		unit = &unitC;
+		unitC.setVisible(true);
+		unitF.setVisible(false);
+	}
+	else
+	{
+		unit = &unitF;
+		unitC.setVisible(false);
+		unitF.setVisible(true);
+	}
+	unit->setXY(integer.getWidth(), integer.getY());
+
+	Container::setWidthHeight(integer.getWidth() + MAX(unit->getWidth(), decimal.getWidth()), integer.getHeight() + decimal.getBaseline());
+
+#ifdef SHOW_BACKGROUND
+	background.setWidthHeight(*this);
+#endif
 }
 
 //-----------------------------------------------------------------------------
 void CGaugeSetpoint::invalidate()
 {
-	CGauge::invalidate();
+	dsp.setPosition(*this, *this);
+	integer.invalidate();
+	decimal.invalidate();
+	unitC.invalidate();
+	unitF.invalidate();
 }
 
 }   //namespace touchgfx

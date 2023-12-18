@@ -10,7 +10,7 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CGaugeTemperatureExterior.cpp
+//         File : CGaugeExterior.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
@@ -50,12 +50,15 @@ CGaugeExterior::CGaugeExterior()
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CGaugeExterior::update(float temperature, bool celsius)
+void CGaugeExterior::update(int16_t temperature, bool celsius)
 {
-	uint8_t temp = (uint8_t)(temperature);
+	if(temperature < -999)
+		temperature = -999;
+	else if(temperature > 999)
+		temperature = 999;
 
 	char string[8];
-	sprintf(string, "%d", temp);
+	sprintf(string, "%d", temperature);
 
 	integer = string;
 	integer.setXY(1, 1);

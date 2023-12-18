@@ -44,7 +44,7 @@ class CGaugeExterior : public Container
 public:
 	CGaugeExterior();
 
-	void update(float temperature, bool celsius);
+	void update(int16_t temperature, bool celsius);
 	void invalidate();
 
 private:

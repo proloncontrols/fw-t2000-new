@@ -3,7 +3,9 @@
 #include <CDisplay.hpp>
 
 static bool celsius = true;
-static float temp = 0;
+static float temp = -21;
+static float tempIn = -10.3;
+static int16_t tempSt = -1000;
 static uint8_t humidity = 0;
 
 SplashView::SplashView()
@@ -11,24 +13,24 @@ SplashView::SplashView()
 	if(dsp.orientation == CDisplay::PORTRAIT)
 		__background.setPosition(0, 0, 672, 720);
 
-//	add(tempInt);
-//	tempInt.update(temp, celsius);
-//	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
-//	tempInt.invalidate();
-//
-//	add(tempSet);
-//	tempSet.update(temp, celsius);
-//	tempSet.setXY((container.getWidth() - tempSet.getWidth()) / 2, 320);
-//	tempSet.invalidate();
+	add(tempInt);
+	tempInt.update(temp, celsius);
+	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
+	tempInt.invalidate();
+
+	add(tempSet);
+	tempSet.update(tempSt, celsius);
+	tempSet.setXY((container.getWidth() - tempSet.getWidth()) / 2, 320);
+	tempSet.invalidate();
 
 	add(tempExt);
-	tempExt.update(temp, celsius);
-	tempExt.setXY((container.getWidth() - tempExt.getWidth()) / 2, 350);
+	tempExt.update((int16_t)temp, celsius);
+	tempExt.setXY(100, 500);
 	tempExt.invalidate();
 
 	add(hum);
 	hum.update(humidity);
-	hum.setXY((container.getWidth() - hum.getWidth()) / 2, 500);
+	hum.setXY(500, 500);
 	hum.invalidate();
 
 //	add(dig1);
@@ -55,22 +57,25 @@ void SplashView::tearDownScreen()
 void SplashView::moveIt()
 {
 	temp += 1;
+	tempIn += 0.1;
+	tempSt += 50;
 	humidity += 1;
 
-//	tempInt.update(temp, celsius);
-//	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
-//	tempInt.invalidate();
-//
-//	tempSet.update(temp, celsius);
-//	tempSet.setXY((container.getWidth() - tempSet.getWidth()) / 2, 320);
-//	tempSet.invalidate();
+	tempInt.update(tempIn, celsius);
+	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
+	tempInt.invalidate();
 
-	tempExt.update(temp, celsius);
-	tempExt.setXY((container.getWidth() - tempExt.getWidth()) / 2, 350);
+	tempSet.update(tempSt, celsius);
+	tempSet.setXY((container.getWidth() - tempSet.getWidth()) / 2, 320);
+	tempSet.invalidate();
+
+	celsius = !celsius;
+	tempExt.update((int16_t)temp, celsius);
+	tempExt.setXY(100, 500);
 	tempExt.invalidate();
 
 	hum.update(humidity);
-	hum.setXY((container.getWidth() - hum.getWidth()) / 2, 500);
+	hum.setXY(500, 500);
 	hum.invalidate();
 
 	invalidate();

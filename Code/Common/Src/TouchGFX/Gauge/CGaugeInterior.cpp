@@ -21,44 +21,105 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stdio.h>
+#include <string.h>
+#include <CDisplay.hpp>
+#include <touchgfx/Color.hpp>
 #include <Gauge/CGaugeInterior.hpp>
 
 
 namespace touchgfx
 {
-
+//#define SHOW_BACKGROUND
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
 CGaugeInterior::CGaugeInterior()
 {
-	integer = new CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
-	add(*integer);
+#ifdef SHOW_BACKGROUND
+	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+	add(background);
+#endif
 
-	decimal = new CText(decimalPrecision, decimalSpacingRatio, decimalText, colorR, colorG, colorB);
-	decimalDigits = decimalPrecision -1;   //-1 removes the dot
-	add(*decimal);
-
-	unitC = new CLabel(unitTextC, colorR, colorG, colorB);
-	add(*unitC);
-
-	unitF = new CLabel(unitTextF, colorR, colorG, colorB);
-	add(*unitF);
+	add(integer);
+	add(decimal);
+	add(unitC);
+	add(unitF);
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CGaugeInterior::update(float temp, bool celsius)
+void CGaugeInterior::update(float temperature, bool celsius)
 {
-	CGaugeTemperature::update(temp, celsius);
+	int index;
+	int dotIndex;
+	char integerString[8];
+	char decimalString[8];
+
+	if(temperature < -999.9)
+		temperature = -999.9;
+	else if(temperature > 999.9)
+		temperature = 999.9;
+
+	char precisionString[2];
+	sprintf(precisionString, "%d", decimalPrecision - 1);   //-1 removes the dot
+
+	char formatString[6];
+	strcpy(formatString, "%.");
+	strcat(formatString, precisionString);
+	strcat(formatString, "f");
+
+	char valueString[8];
+	sprintf(valueString, formatString, temperature);
+
+	memset(integerString, 0, sizeof(integerString));
+	for(index = 0; valueString[index] != '.'; index++)
+		integerString[index] = valueString[index];
+	integer = integerString;
+	integer.setXY(1, 1);
+
+	dotIndex = index;
+	memset(decimalString, 0, sizeof(decimalString));
+	while(index < (int)strlen(valueString))
+	{
+		decimalString[index - dotIndex] = valueString[index];
+		index++;
+	}
+	decimal = decimalString;
+	decimal.setXY(integer.getWidth(), integer.getHeight() - decimal.getHeight() + decimal.getBaseline());
+
+	CLabel* unit;
+	if(celsius)
+	{
+		unit = &unitC;
+		unitC.setVisible(true);
+		unitF.setVisible(false);
+	}
+	else
+	{
+		unit = &unitF;
+		unitC.setVisible(false);
+		unitF.setVisible(true);
+	}
+	unit->setXY(integer.getWidth(), integer.getY());
+
+	Container::setWidthHeight(integer.getWidth() + MAX(unit->getWidth(), decimal.getWidth()), integer.getHeight() + decimal.getBaseline());
+
+#ifdef SHOW_BACKGROUND
+	background.setWidthHeight(*this);
+#endif
 }
 
 //-----------------------------------------------------------------------------
 void CGaugeInterior::invalidate()
 {
-	CGauge::invalidate();
+	dsp.setPosition(*this, *this);
+	integer.invalidate();
+	decimal.invalidate();
+	unitC.invalidate();
+	unitF.invalidate();
 }
 
 }   //namespace touchgfx

@@ -23,7 +23,10 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Gauge/CGaugeTemperature.hpp>
+#include <CText.hpp>
+#include <CLabel.hpp>
+#include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/Containers/Container.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 
@@ -33,15 +36,19 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CGaugeInterior : public CGaugeTemperature
+class CGaugeInterior : public Container
 {
 public:
 	CGaugeInterior();
 
-	void update(float temp, bool celsius);
+	void update(float temperature, bool celsius);
 	void invalidate();
 
 private:
+	const static uint8_t colorR = 255;
+	const static uint8_t colorG = 255;
+	const static uint8_t colorB = 255;
+
 	const static int integerPrecision = 4;   //Includes the minus sign
 	const static int integerSpacingRatio = 15;
 	const static TypedTextId integerText = T_GAUGE_TEMPERATURE_INTERIOR_LARGE;
@@ -53,9 +60,11 @@ private:
 	const static TypedTextId unitTextC = T_GAUGE_TEMPERATURE_INTERIOR_SMALL_C;
 	const static TypedTextId unitTextF = T_GAUGE_TEMPERATURE_INTERIOR_SMALL_F;
 
-	const static uint8_t colorR = 255;
-	const static uint8_t colorG = 255;
-	const static uint8_t colorB = 255;
+	Box background;
+	CText integer = CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
+	CText decimal = CText(decimalPrecision, integerSpacingRatio, decimalText, colorR, colorG, colorB);
+	CLabel unitC = CLabel(unitTextC, colorR, colorG, colorB);
+	CLabel unitF = CLabel(unitTextF, colorR, colorG, colorB);
 };
 
 }   //namespace touchgfx

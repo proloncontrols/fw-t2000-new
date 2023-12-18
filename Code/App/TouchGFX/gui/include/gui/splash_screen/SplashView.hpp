@@ -30,9 +30,9 @@ protected:
 
 //    CLabel lbl1 = CLabel(T_GAUGE_UNIT_C_SMALL, 255, 255, 255);
 
-//    CGaugeTemperatureInterior tempInt = CGaugeTemperatureInterior();
+    CGaugeInterior tempInt = CGaugeInterior();
 
-//    CGaugeTemperatureSetpoint tempSet = CGaugeTemperatureSetpoint();
+    CGaugeSetpoint tempSet = CGaugeSetpoint();
 
     CGaugeExterior tempExt = CGaugeExterior();
 
