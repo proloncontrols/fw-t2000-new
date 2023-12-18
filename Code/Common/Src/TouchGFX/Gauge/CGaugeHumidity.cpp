@@ -78,6 +78,7 @@ void CGaugeHumidity::invalidate()
 	integer.invalidate();
 	unit.invalidate();
 	image.invalidate();
+	Container::invalidate();
 }
 
 }   //namespace touchgfx

@@ -108,9 +108,9 @@ void CText::operator=(const char* newText)
 void CText::invalidate()
 {
 	dsp.setPosition(*this, *this);
-
 	for(int i = 0; i < curLength; i++)
 		digits[i]->invalidate();
+	Container::invalidate();
 }
 
 //-----------------------------------------------------------------------------

@@ -115,20 +115,20 @@ void APP_OnFlag(uint32_t Flag)
 
 //	if(Flag & NUM2POS(EvtGrpUi))
 //		UI_ScreenTimeoutReset();
-//
-//	if(Flag & NUM2POS(EvtGrpEnv))
-//	{
+
+	if(Flag & NUM2POS(EvtGrpEnv))
+	{
 //		if(!APP.SplashDone)
 //			UI_ScreenSwitchTo(UiScreenIdMain);
 //		APP.SplashDone = TRUE;
-//
-//		ENV_Read(&APP.Env);
-//		if(APP.Env.Device > EnvDevPowerup)
-//		{
-//			if(APP.Env.Device > EnvDevNone)
-//				UI_PostEnv(&APP.Env);
-//		}
-//	}
+
+		ENV_Read(&APP.Env);
+		if(APP.Env.Device > EnvDevPowerup)
+		{
+			if(APP.Env.Device > EnvDevNone)
+				UI_PostEnv(&APP.Env);
+		}
+	}
 }
 
 

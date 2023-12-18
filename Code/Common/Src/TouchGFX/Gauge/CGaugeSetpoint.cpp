@@ -96,6 +96,7 @@ void CGaugeSetpoint::invalidate()
 	decimal.invalidate();
 	unitC.invalidate();
 	unitF.invalidate();
+	Container::invalidate();
 }
 
 }   //namespace touchgfx

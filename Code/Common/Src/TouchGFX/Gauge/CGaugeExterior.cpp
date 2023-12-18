@@ -95,6 +95,7 @@ void CGaugeExterior::invalidate()
 	unitC.invalidate();
 	unitF.invalidate();
 	image.invalidate();
+	Container::invalidate();
 }
 
 }   //namespace touchgfx

@@ -7,6 +7,7 @@
 #include <Gauge/CGaugeInterior.hpp>
 #include <Gauge/CGaugeSetpoint.hpp>
 #include <Gauge/CGaugeHumidity.hpp>
+#include <CButton.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -16,13 +17,20 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 
+    virtual void updateEnvironment(ENV_Readings_t* Env);
     virtual void moveIt();
 
 protected:
-    CGaugeInterior tempInt = CGaugeInterior();
-    CGaugeSetpoint tempSet = CGaugeSetpoint();
-    CGaugeExterior tempExt = CGaugeExterior();
-    CGaugeHumidity hum = CGaugeHumidity();
+    CGaugeInterior tempInt;
+    CGaugeSetpoint tempSet;
+    CGaugeExterior tempExt;
+    CGaugeHumidity hum;
+
+    CButton btn;
+
+private:
+    touchgfx::Callback<SplashView, const touchgfx::AbstractButtonContainer&> buttonCallback;
+    void buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
 };
 
 #endif // SPLASHVIEW_HPP

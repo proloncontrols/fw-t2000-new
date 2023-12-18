@@ -198,7 +198,7 @@ void FMK_Init(void)
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	FMK.E2Mutex = osMutexNew(NULL);
-//	UI_Init();
+	UI_Init();
 	FMK_Flags = osEventFlagsNew(NULL);
 //	MB_Init();
 //	COM_Init();
