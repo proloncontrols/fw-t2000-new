@@ -14,13 +14,14 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Rotating container class implementation file
+//  Description : Container base class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <CDisplay.hpp>
 #include <CContainer.hpp>
 
 
@@ -35,5 +36,15 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
+//void CContainer::render()
+//{
+//	dsp.setPosition(*this, *this);
+//
+//	Drawable* d = getFirstChild();
+//	while(d)
+//	{
+//		d = d->getNextSibling();
+//	}
+//}
 
 }   //namespace touchgfx

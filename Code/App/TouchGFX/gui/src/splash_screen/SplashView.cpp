@@ -4,7 +4,7 @@
 #include <BitmapDatabase.hpp>
 #include <touchgfx/Color.hpp>
 
-static bool celsius = true;
+//static bool celsius = true;
 //static float temp = -21;
 //static float tempIn = -10.3;
 //static int16_t tempSt = -1000;
@@ -13,13 +13,22 @@ static bool celsius = true;
 SplashView::SplashView()
            :buttonCallback(this, &SplashView::buttonCallbackHandler)
 {
-//	if(dsp.orientation == CDisplay::PORTRAIT)
-//		__background.setPosition(0, 0, 672, 720);
+	if(dsp.orientation == CDisplay::PORTRAIT)
+		__background.setPosition(0, 0, 672, 720);
 
-	scr.client.add(tempInt);
-	tempInt.update(0, celsius);
-	tempInt.setXY((scr.client.getWidth() - tempInt.getWidth()) / 2, 50);
-	tempInt.render();
+	c1.setPosition(5, 10, 500, 400);
+	add(c1);
+
+	c2.setPosition(20, 30, 300, 200);
+	c1.add(c2);
+
+	c1.setX(50);
+	c1.invalidate();
+
+//	scr.client.add(tempInt);
+//	tempInt.update(0, celsius);
+//	tempInt.setXY((scr.client.getWidth() - tempInt.getWidth()) / 2, 50);
+//	tempInt.render();
 
 ////	add(tempSet);
 ////	tempSet.update(tempSt, celsius);
@@ -43,11 +52,11 @@ SplashView::SplashView()
 //	btn.setAction(buttonCallback);
 //	btn.render();
 
-	scr.client.add(item);
-	item.setXY((scr.client.getWidth() - item.getWidth()) / 2, 300);
-	item.setText((char*)"About me");
-	item.setAction(buttonCallback);
-	item.render();
+//	scr.client.add(item);
+//	item.setXY((scr.client.getWidth() - item.getWidth()) / 2, 300);
+//	item.setText((char*)"About me");
+//	item.setAction(buttonCallback);
+//	item.render();
 }
 
 void SplashView::setupScreen()
@@ -62,15 +71,15 @@ void SplashView::tearDownScreen()
 
 void SplashView::updateEnvironment(ENV_Readings_t* Env)
 {
-	tempInt.update((float)(Env->TempC)/100.0, celsius);
-	tempInt.setXY((scr.client.getWidth() - tempInt.getWidth()) / 2, 50);
-	tempInt.render();
-
-	hum.update(Env->HumP/100);
-	hum.setXY(500, 500);
-	hum.render();
-
-	invalidate();
+//	tempInt.update((float)(Env->TempC)/100.0, celsius);
+//	tempInt.setXY((scr.client.getWidth() - tempInt.getWidth()) / 2, 50);
+//	tempInt.render();
+//
+//	hum.update(Env->HumP/100);
+//	hum.setXY(500, 500);
+//	hum.render();
+//
+//	invalidate();
 }
 
 void SplashView::moveIt()

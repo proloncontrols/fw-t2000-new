@@ -30,9 +30,12 @@ protected:
 
     CButton btn;
 
-    CScreen scr = CScreen(container);
+//    CScreen scr = CScreen(container);
 
     CMenuItem item;
+
+    Container c1;
+    Container c2;
 
 private:
     touchgfx::Callback<SplashView, const touchgfx::AbstractButtonContainer&> buttonCallback;

@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Rotating container class header file
+//  Description : Container base class header file
 //=============================================================================
 #ifndef CCONTAINER_HPP
 #define CCONTAINER_HPP
@@ -24,7 +24,7 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <touchgfx/Containers/Container.hpp>
-#include <CDisplay.hpp>
+#include <touchgfx/widgets/TextureMapper.hpp>
 
 
 namespace touchgfx
@@ -33,29 +33,115 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CContainer : public Container
+//class CContainer : public Container
+//{
+//	Container& owner;
+//
+//public:
+//	CContainer(Container& ownerContainer)
+//	          :owner(ownerContainer)
+//	{
+//	}
+//
+//	void render()
+//	{
+//		dsp.setPosition(*this, owner);
+//
+//		CContainer* c = (CContainer*)getFirstChild();
+//		while(c)
+//		{
+//			c->render();
+//			c = (CContainer*)c->getNextSibling();
+//		}
+//	}
+//};
+
+
+
+class CImage2 : public Container
 {
+	const float zAngleLandscape = -3.142;
+    const float zAnglePortrait = 1.565;
+
+	TextureMapper mapper;
+
 public:
-	CContainer()
+	CImage2(Container& owner)
 	{
-		nativeX = Container::getX();
-		nativeY = Container::getY();
+		owner.add(*this);
 	}
 
-	void add(Drawable& d)
+	void setImage(BitmapId id)
 	{
-		Container::add(d);
+		mapper.setBitmap(id);
 
-		if(dsp.orientation != CDisplay::NATIVE)
-		{
-		}
+		if(dsp.orientation == CDisplay::LANDSCAPE)
+			mapper.setAngles(0.0f, 0.0f, zAngleLandscape);
+
+		if(dsp.orientation == CDisplay::PORTRAIT)
+			mapper.setAngles(0.0f, 0.0f, zAnglePortrait);
+
+		mapper.setScale(1.0f);
+		mapper.setBitmapPosition(0.0f, 0.0f);
+		mapper.setOrigo((float)(mapper.getWidth()/2), (float)(mapper.getHeight()/2), 1000.0f);
+		mapper.setCameraDistance(1000.0f);
+		mapper.setCamera(mapper.getWidth()/2, mapper.getHeight()/2);
+		mapper.setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
+
+		add(mapper);
 	}
 
-	int16_t nativeX = 0;
-	int16_t nativeY = 0;
+	void render()
+	{
+		dsp.setPosition(mapper, *this);
+	}
+};
+
+
+
+class CButton2 : public Container
+{
+	CImage2 img = CImage2(*this);
+
+public:
+	CButton2(Container& owner)
+	{
+		owner.add(*this);
+	}
 };
 
 }   //namespace touchgfx
 
 
 #endif   //CCONTAINER_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
