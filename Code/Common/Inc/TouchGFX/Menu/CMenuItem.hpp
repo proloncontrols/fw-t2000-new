@@ -25,8 +25,11 @@
 //-----------------------------------------------------------------------------
 #include <CImage.hpp>
 #include <CButton.hpp>
+#include <BitmapDatabase.hpp>
+#include <touchgfx/Bitmap.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -45,21 +48,35 @@ typedef enum {
 //-----------------------------------------------------------------------------
 class CMenuItem : public Container
 {
-//public:
-//	CMenuItem();
-//	void setText(char* newText);
-//    void setAction(GenericCallback<const AbstractButtonContainer&>& callback);
-//    CButton* getButton();
-//
-//private:
-//	static const int16_t itemWidth = 500;
-//	static const int16_t itemHeight = 110;
-//	static const int16_t buttonHeight = 72;   //This is the height ot the button inside the image
-//	static const int16_t lineHeight = 3;      //This is the height of the separator line inside the image
-//
-//    CButton button;
-//	CImage line;
-//    touchgfx::Box background;
+public:
+	CMenuItem();
+
+	void setText(char* newText);
+    void setAction(GenericCallback<const AbstractButtonContainer&>& callback);
+    const CButton& getButton();
+	void render();
+
+private:
+	const static uint8_t buttonTextColorReleasedR = 255;
+	const static uint8_t buttonTextColorReleasedG = 255;
+	const static uint8_t buttonTextColorReleasedB = 255;
+
+	const static uint8_t buttonTextColorPressedR = 75;
+	const static uint8_t buttonTextColorPressedG = 75;
+	const static uint8_t buttonTextColorPressedB = 75;
+
+	const static int16_t itemWidth = 500;
+	const static int16_t itemHeight = 110;
+	const static int16_t buttonHeight = 72;   //This is the height ot the button inside the image
+	const static int16_t lineHeight = 3;      //This is the height of the separator line inside the image
+
+	const static TypedTextId buttonTextType = T_MENU_BUTTON;
+	const static BitmapId buttonImage = BITMAP_MENU_BUTTON_ID;
+	const static BitmapId lineImage = BITMAP_MENU_LINE_GRAY_494X494X3_ID;
+
+	Box background;
+    CButton button;
+	CImage line = CImage(lineImage);
 };
 
 }   //namespace touchgfx

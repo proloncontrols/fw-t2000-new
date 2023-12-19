@@ -4,6 +4,11 @@
     <Language Id="GB" />
   </Languages>
   <Texts>
+    <TextGroup Id="Menu">
+      <Text Id="MENU_BUTTON" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+    </TextGroup>
     <TextGroup Id="Gauge">
       <Text Id="GAUGE_TEMPERATURE_INTERIOR_LARGE" Alignment="Left" TypographyId="GaugeTempIntLarge">
         <Translation Language="GB">&lt;value&gt;</Translation>
@@ -53,5 +58,6 @@
     <Typography Id="GaugeTempSetSmall" Font="AvenirNext-Regular-08.ttf" Size="34" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF" />
     <Typography Id="GaugeTempExtLarge" Font="AvenirNext-Regular-08.ttf" Size="80" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
     <Typography Id="GaugeTempExtSmall" Font="AvenirNext-Regular-08.ttf" Size="24" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF%" />
+    <Typography Id="MenuButton" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
   </Typographies>
 </TextDatabase>

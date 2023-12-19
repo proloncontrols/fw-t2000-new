@@ -42,6 +42,12 @@ SplashView::SplashView()
 //	btn.setTextPosition(1, 1);
 //	btn.setAction(buttonCallback);
 //	btn.render();
+
+	scr.client.add(item);
+	item.setXY((scr.client.getWidth() - item.getWidth()) / 2, 300);
+	item.setText((char*)"About me");
+	item.setAction(buttonCallback);
+	item.render();
 }
 
 void SplashView::setupScreen()

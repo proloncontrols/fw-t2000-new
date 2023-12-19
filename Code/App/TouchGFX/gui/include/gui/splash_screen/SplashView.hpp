@@ -9,6 +9,7 @@
 #include <Gauge/CGaugeHumidity.hpp>
 #include <CButton.hpp>
 #include <Screen/CScreen.hpp>
+#include <Menu/CMenuItem.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -30,6 +31,8 @@ protected:
     CButton btn;
 
     CScreen scr = CScreen(container);
+
+    CMenuItem item;
 
 private:
     touchgfx::Callback<SplashView, const touchgfx::AbstractButtonContainer&> buttonCallback;

@@ -21,47 +21,69 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <CDisplay.hpp>
 #include <Menu/CMenuItem.hpp>
 #include <touchgfx/Color.hpp>
 #include <BitmapDatabase.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
 {
+//#define SHOW_BACKGROUND
+//=============================================================================
+//  C O N S T R U C T I O N
+//-----------------------------------------------------------------------------
+CMenuItem::CMenuItem()
+{
+	Container::setWidthHeight(itemWidth, itemHeight);
+
+#ifdef SHOW_BACKGROUND
+	background.setWidthHeight(*this);
+	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+	add(background);
+#endif
+
+	line.setXY(0, itemHeight - lineHeight);
+	add(line);
+
+	button.initialize(2, (itemHeight - lineHeight - buttonHeight) / 2, buttonHeight,
+			          buttonImage, buttonImage,
+			          buttonTextType,
+					  touchgfx::Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
+					  touchgfx::Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
+	button.setTextPosition(30, 4);
+	add(button);
+}
+
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-//CMenuItem::CMenuItem()
-//{
-//	Container::setWidthHeight(itemWidth, itemHeight);
-//	background.setWidthHeight(*this);
-//    background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-//    add(background);
-//
-////    line.setBitmap(touchgfx::Bitmap(BITMAP_MENU_LINE_GRAY_494X494X3_ID));
-////    line.setXY(0, itemHeight - lineHeight);
-////    add(line);
-//
-////    button.initialize(2, (itemHeight - lineHeight - buttonHeight) / 2, buttonHeight, BITMAP_MENU_BUTTON_ID, BITMAP_MENU_BUTTON_ID, T_MENU_BUTTON, 32, touchgfx::Color::getColorFromRGB(255, 255, 255), touchgfx::Color::getColorFromRGB(75, 75, 75));
-////    button.setTextPosition(30, 4);
-////    add(button);
-//}
-//
-//void CMenuItem::setText(char* newText)
-//{
-//	button.setText(newText);
-//}
-//
-//void CMenuItem::setAction(GenericCallback<const AbstractButtonContainer&>& callback)
-//{
-//	button.setAction(callback);
-//}
-//
-//CButton* CMenuItem::getButton()
-//{
-//	return &button;
-//}
+void CMenuItem::setText(char* newText)
+{
+	button.setTextPosition(30, 4);
+	button.setText(newText);
+}
+
+//-----------------------------------------------------------------------------
+void CMenuItem::setAction(GenericCallback<const AbstractButtonContainer&>& callback)
+{
+	button.setAction(callback);
+}
+
+//-----------------------------------------------------------------------------
+const CButton& CMenuItem::getButton()
+{
+	return button;
+}
+
+//-----------------------------------------------------------------------------
+void CMenuItem::render()
+{
+	dsp.setPosition(*this, *this);
+	line.render();
+	button.render();
+	Container::invalidate();
+}
 
 }   //namespace touchgfx
