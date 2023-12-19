@@ -13,35 +13,35 @@ static bool celsius = true;
 SplashView::SplashView()
            :buttonCallback(this, &SplashView::buttonCallbackHandler)
 {
-	if(dsp.orientation == CDisplay::PORTRAIT)
-		__background.setPosition(0, 0, 672, 720);
+//	if(dsp.orientation == CDisplay::PORTRAIT)
+//		__background.setPosition(0, 0, 672, 720);
 
-	add(tempInt);
+	scr.client.add(tempInt);
 	tempInt.update(0, celsius);
-	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
+	tempInt.setXY((scr.client.getWidth() - tempInt.getWidth()) / 2, 50);
 	tempInt.render();
 
-//	add(tempSet);
-//	tempSet.update(tempSt, celsius);
-//	tempSet.setXY((container.getWidth() - tempSet.getWidth()) / 2, 320);
-//	tempSet.invalidate();
-
-//	add(tempExt);
-//	tempExt.update((int16_t)temp, celsius);
-//	tempExt.setXY(100, 500);
-//	tempExt.invalidate();
-
-	add(hum);
-	hum.update(0);
-	hum.setXY(500, 500);
-	hum.render();
-
-	add(btn);
-	btn.initialize(50, 300, 0, BITMAP_SETTING_ID, BITMAP_SETTING_DARK2_ID, T_GAUGE_TEMPERATURE_EXTERIOR_LARGE, Color::getColorFromRGB(255, 255, 255), Color::getColorFromRGB(200, 20, 20));
-	btn.setText("2");
-	btn.setTextPosition(1, 1);
-	btn.setAction(buttonCallback);
-	btn.render();
+////	add(tempSet);
+////	tempSet.update(tempSt, celsius);
+////	tempSet.setXY((container.getWidth() - tempSet.getWidth()) / 2, 320);
+////	tempSet.invalidate();
+//
+////	add(tempExt);
+////	tempExt.update((int16_t)temp, celsius);
+////	tempExt.setXY(100, 500);
+////	tempExt.invalidate();
+//
+//	add(hum);
+//	hum.update(0);
+//	hum.setXY(500, 500);
+//	hum.render();
+//
+//	add(btn);
+//	btn.initialize(50, 300, 0, BITMAP_SETTING_ID, BITMAP_SETTING_DARK2_ID, T_GAUGE_TEMPERATURE_EXTERIOR_LARGE, Color::getColorFromRGB(255, 255, 255), Color::getColorFromRGB(200, 20, 20));
+//	btn.setText("2");
+//	btn.setTextPosition(1, 1);
+//	btn.setAction(buttonCallback);
+//	btn.render();
 }
 
 void SplashView::setupScreen()
@@ -57,7 +57,7 @@ void SplashView::tearDownScreen()
 void SplashView::updateEnvironment(ENV_Readings_t* Env)
 {
 	tempInt.update((float)(Env->TempC)/100.0, celsius);
-	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
+	tempInt.setXY((scr.client.getWidth() - tempInt.getWidth()) / 2, 50);
 	tempInt.render();
 
 	hum.update(Env->HumP/100);

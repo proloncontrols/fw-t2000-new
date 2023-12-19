@@ -83,6 +83,10 @@ public:
 	static const uint8_t devBackgroundColorG = 80;
 	static const uint8_t devBackgroundColorB = 140;
 
+	static const uint8_t devFrameColorR = 50;
+	static const uint8_t devFrameColorG = 50;
+	static const uint8_t devFrameColorB = 50;
+
 	void setX(Drawable& d, int16_t x);
 	void setY(Drawable& d, int16_t y);
 	void setXY(Drawable& d, int16_t x, int16_t y);

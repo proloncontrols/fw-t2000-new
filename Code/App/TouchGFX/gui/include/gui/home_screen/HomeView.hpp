@@ -14,7 +14,7 @@ public:
     virtual void tearDownScreen();
 
 protected:
-    CScreenHome* screen;
+//    CScreenHome* screen;
 
 private:
     touchgfx::Callback<HomeView, const touchgfx::AbstractButtonContainer&> buttonCallback;

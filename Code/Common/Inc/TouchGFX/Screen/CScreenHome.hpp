@@ -37,8 +37,8 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CScreenHome : public CScreen
-{
+//class CScreenHome : public CScreen
+//{
 //public:
 //	enum Buttons {
 //		BUTTON_SETTINGS,
@@ -60,7 +60,7 @@ class CScreenHome : public CScreen
 ////	static const int16_t buttonSettingsImagePressedId  = BITMAP_SETTING_DARK2_ID;
 //
 ////	static const int16_t imageCoolingId = BITMAP_COOLINGON_ID;
-};
+//};
 
 }   //namespace touchgfx
 

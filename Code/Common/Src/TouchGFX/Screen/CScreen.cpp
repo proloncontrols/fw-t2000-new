@@ -21,91 +21,41 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Screen/CScreen.hpp>
 #include <CDisplay.hpp>
+#include <Screen/CScreen.hpp>
 #include <touchgfx/Color.hpp>
-#include <BitmapDatabase.hpp>
 
 
 namespace touchgfx
 {
-
+#define SHOW_FRAME
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-//CScreen::CScreen(Container& ownerContainer, bool wLogo)
-//{
-////	frame.setPosition(ownerContainer);
-////	ownerContainer.add(frame);
-////
-////	client.setPosition((ownerContainer.getWidth() - clientWidth) / 2, (ownerContainer.getHeight() - clientHeight) / 2, clientWidth, clientHeight);
-////	ownerContainer.add(client);
-////
-////	clientBackground.setPosition(0, 0, client.getWidth(), client.getHeight());
-////	clientBackground.setColor(Color::getColorFromRGB(0, 0, 0));
-//////	addToClient(clientBackground);
-//////	dsp.add(client, clientBackground);
-////
-////	if(wLogo)
-////	{
-//////		logo = new CImage();
-//////		logo->setBitmap(Bitmap(bitmap));
-////		logo->setXY((client.getWidth() / 2) - (logo->getWidth() / 2), 0);
-//////		addToClient(*logo);
-//////		dsp.add(client, *logo);
-////	}
-//}
+CScreen::CScreen(Container& ownerContainer)
+		:container(ownerContainer)
+{
+	container.removeAll();
 
+	if(dsp.orientation != CDisplay::PORTRAIT)
+		container.setPosition(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT);
+	else
+		container.setPosition(0, 0, NATIVE_HEIGHT, NATIVE_WIDTH);
 
-//=============================================================================
-//  M E T H O D S
-//-----------------------------------------------------------------------------
-//void CScreen::setBackgroundColor(colortype color)
-//{
-//	frame.setColor(color);
-//	clientBackground.setColor(color);
-//}
+	frame.setPosition(container);
+#ifdef SHOW_FRAME
+	frame.setColor(Color::getColorFromRGB(dsp.devFrameColorR, dsp.devFrameColorG, dsp.devFrameColorB));
+#else
+	frame.setColor(Color::getColorFromRGB(0, 0, 0));
+#endif
+	container.add(frame);
 
-////-----------------------------------------------------------------------------
-//void CScreen::addToClient(Drawable& d)
-//{
-//	client.add(d);
-//
-//	int16_t newX = d.getParent()->getWidth() - d.getWidth() - d.getX();
-//	int16_t newY = d.getParent()->getHeight() - d.getHeight() - d.getY();
-//	int16_t newW = d.getWidth();
-//	int16_t newH = d.getHeight();
-//
-//	d.setPosition(newX, newY, newW, newH);
-//}
+	client.setPosition((frame.getWidth() - CLIENT_SIZE) / 2, (frame.getHeight() - CLIENT_SIZE) / 2, CLIENT_SIZE, CLIENT_SIZE);
+	container.add(client);
 
-//-----------------------------------------------------------------------------
-//void CScreen::showFrame()
-//{
-//	frame.setColor(Color::getColorFromRGB(frameColorR, frameColorG, frameColorB));
-//}
+	clientBackground.setWidthHeight(client);
+	clientBackground.setColor(Color::getColorFromRGB(0, 0, 0));
+	client.add(clientBackground);
+}
 
 }   //namespace touchgfx
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

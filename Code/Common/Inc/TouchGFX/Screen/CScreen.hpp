@@ -23,11 +23,6 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <stddef.h>
-#include <CImage.hpp>
-#include <BitmapDatabase.hpp>
-#include <touchgfx/Bitmap.hpp>
-#include <touchgfx/Color.hpp>
 #include <touchgfx/Widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
 
@@ -58,6 +53,14 @@
 //    |--------------- 720 ---------------|
 
 
+//=============================================================================
+//  D E F I N E S
+//-----------------------------------------------------------------------------
+#define NATIVE_WIDTH    720
+#define NATIVE_HEIGHT   672
+#define CLIENT_SIZE     648   //Client area is square
+
+
 namespace touchgfx
 {
 
@@ -66,29 +69,15 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CScreen
 {
-//public:
-//	CScreen(Container& ownerContainer, bool wLogo);
-//
-//	void setBackgroundColor(colortype newColor);
-////	void addToClient(Drawable& d);
-//	void showFrame();
-//
-//protected:
-//	Container client;
-//	Box clientBackground;
-//
-//private:
-//	static const int16_t clientWidth  = 648;
-//	static const int16_t clientHeight = 648;
-//
-//	static const uint8_t frameColorR = 35;
-//	static const uint8_t frameColorG = 35;
-//	static const uint8_t frameColorB = 35;
-//
-////	static const BitmapId bitmap = BITMAP_PROLON_178X178_ID;
-//
-//	Box frame;
-//	CImage* logo = NULL;
+public:
+	CScreen(Container& ownerContainer);
+
+	Container client;
+
+private:
+	Box frame;
+	Box clientBackground;
+	Container& container;
 };
 
 }   //namespace touchgfx
