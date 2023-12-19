@@ -105,11 +105,11 @@ void CText::operator=(const char* newText)
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CText::invalidate()
+void CText::render()
 {
 	dsp.setPosition(*this, *this);
 	for(int i = 0; i < curLength; i++)
-		digits[i]->invalidate();
+		digits[i]->render();
 	Container::invalidate();
 }
 
@@ -170,7 +170,7 @@ void CText::CDigit::setDigit(const char newDigit)
 }
 
 //-----------------------------------------------------------------------------
-void CText::CDigit::invalidate()
+void CText::CDigit::render()
 {
 	dsp.setPosition(*this, *this);
 }

@@ -37,7 +37,7 @@ class CImage : public TextureMapper
 public:
 	CImage(BitmapId id);
 
-	void invalidate();
+	void render();
 };
 
 }   //namespace touchgfx

@@ -88,13 +88,13 @@ void CGaugeExterior::update(int16_t temperature, bool celsius)
 }
 
 //-----------------------------------------------------------------------------
-void CGaugeExterior::invalidate()
+void CGaugeExterior::render()
 {
 	dsp.setPosition(*this, *this);
-	integer.invalidate();
-	unitC.invalidate();
-	unitF.invalidate();
-	image.invalidate();
+	integer.render();
+	unitC.render();
+	unitF.render();
+	image.render();
 	Container::invalidate();
 }
 

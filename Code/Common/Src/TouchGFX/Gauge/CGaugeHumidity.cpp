@@ -72,12 +72,12 @@ void CGaugeHumidity::update(uint8_t humidity)
 }
 
 //-----------------------------------------------------------------------------
-void CGaugeHumidity::invalidate()
+void CGaugeHumidity::render()
 {
 	dsp.setPosition(*this, *this);
-	integer.invalidate();
-	unit.invalidate();
-	image.invalidate();
+	integer.render();
+	unit.render();
+	image.render();
 	Container::invalidate();
 }
 

@@ -127,12 +127,15 @@ uint32_t CButton::getData()
 }
 
 //-----------------------------------------------------------------------------
-void CButton::invalidate()
+void CButton::render()
 {
 	dsp.setPosition(*this, *this);
-	imgReleased->invalidate();
-	imgPressed->invalidate();
-	text->invalidate();
+	if(imgReleased)
+		imgReleased->render();
+	if(imgPressed)
+		imgReleased->render();
+	if(imgReleased)
+		text->render();
 	Container::invalidate();
 }
 
@@ -161,8 +164,15 @@ void CButton::handleClickEvent(const ClickEvent& event)
 			if(text)
 				text->setColor(textColorReleased);
 		}
+
+		if(imgReleased)
+			imgReleased->invalidate();
+		if(imgPressed)
+			imgReleased->invalidate();
+		if(imgReleased)
+			text->invalidate();
+
 		setPressed(newPressedValue);
-		invalidate();
 	}
 	if(wasPressed && (event.getType() == ClickEvent::RELEASED))
 		executeAction();

@@ -21,9 +21,10 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <string.h>
+#include <stdlib.h>
 #include <CString.hpp>
 #include <CDisplay.hpp>
-#include <string.h>
 #include <touchgfx/Color.hpp>
 
 
@@ -60,6 +61,15 @@ void CString::operator=(const char* newString)
 	Unicode::fromUTF8((uint8_t*)newString, buffer, newLen);
 	resizeToCurrentText();
 	invalidate();
+}
+
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CString::render()
+{
+	dsp.setPosition(*this, *this);
 }
 
 }   //namespace touchgfx

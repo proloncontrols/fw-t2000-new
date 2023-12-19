@@ -59,7 +59,7 @@ CImage::CImage(BitmapId id)
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CImage::invalidate()
+void CImage::render()
 {
 	dsp.setPosition(*this, *this);
 }

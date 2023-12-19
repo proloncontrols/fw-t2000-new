@@ -41,7 +41,7 @@ public:
 	CText(int newMaxLength, int newSpacingRatio, const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 
 	void operator=(const char* newText);
-	void invalidate();
+	void render();
 	int16_t getBaseline();
 	int getLength();
 
@@ -52,7 +52,7 @@ public:
 		CDigit(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 
 		void setDigit(const char newDigit);
-		void invalidate();
+		void render();
 		const Font* getFont();
 		const GlyphNode* getGlyph();
 

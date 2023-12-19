@@ -38,7 +38,7 @@ class CLabel : public TextArea
 public:
 	CLabel(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 
-	void invalidate();
+	void render();
 };
 
 }   //namespace touchgfx

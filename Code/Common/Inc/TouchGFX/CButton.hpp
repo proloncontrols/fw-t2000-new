@@ -79,7 +79,7 @@ public:
 	void setTextPosition(int16_t x, int16_t y);
 	void setData(uint32_t newData);
 	uint32_t getData();
-	void invalidate();
+	void render();
 
 protected:
 	virtual void handleClickEvent(const ClickEvent& event);

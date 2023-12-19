@@ -45,7 +45,7 @@ public:
 	CGaugeExterior();
 
 	void update(int16_t temperature, bool celsius);
-	void invalidate();
+	void render();
 
 private:
 	const static uint8_t colorR = 186;

@@ -44,7 +44,7 @@ CLabel::CLabel(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, u
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CLabel::invalidate()
+void CLabel::render()
 {
 	dsp.setPosition(*this, *this);
 }

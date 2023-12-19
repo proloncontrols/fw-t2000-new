@@ -40,6 +40,7 @@ public:
 	CString(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 
 	void operator=(const char* newString);
+	void render();
 
 private:
 	int curLength = 0;

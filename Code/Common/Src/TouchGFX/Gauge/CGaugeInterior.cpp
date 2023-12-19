@@ -113,13 +113,13 @@ void CGaugeInterior::update(float temperature, bool celsius)
 }
 
 //-----------------------------------------------------------------------------
-void CGaugeInterior::invalidate()
+void CGaugeInterior::render()
 {
 	dsp.setPosition(*this, *this);
-	integer.invalidate();
-	decimal.invalidate();
-	unitC.invalidate();
-	unitF.invalidate();
+	integer.render();
+	decimal.render();
+	unitC.render();
+	unitF.render();
 	Container::invalidate();
 }
 

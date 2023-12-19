@@ -19,7 +19,7 @@ SplashView::SplashView()
 	add(tempInt);
 	tempInt.update(0, celsius);
 	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
-	tempInt.invalidate();
+	tempInt.render();
 
 //	add(tempSet);
 //	tempSet.update(tempSt, celsius);
@@ -34,14 +34,14 @@ SplashView::SplashView()
 	add(hum);
 	hum.update(0);
 	hum.setXY(500, 500);
-	hum.invalidate();
+	hum.render();
 
 	add(btn);
-	btn.initialize(50, 300, 0, BITMAP_SETTING_ID, BITMAP_SETTING_DARK2_ID, T_GAUGE_TEMPERATURE_EXTERIOR_LARGE, Color::getColorFromRGB(255, 255, 255), Color::getColorFromRGB(186, 188, 190));
-	btn.setText("C");
+	btn.initialize(50, 300, 0, BITMAP_SETTING_ID, BITMAP_SETTING_DARK2_ID, T_GAUGE_TEMPERATURE_EXTERIOR_LARGE, Color::getColorFromRGB(255, 255, 255), Color::getColorFromRGB(200, 20, 20));
+	btn.setText("2");
 	btn.setTextPosition(1, 1);
 	btn.setAction(buttonCallback);
-	btn.invalidate();
+	btn.render();
 }
 
 void SplashView::setupScreen()
@@ -58,11 +58,11 @@ void SplashView::updateEnvironment(ENV_Readings_t* Env)
 {
 	tempInt.update((float)(Env->TempC)/100.0, celsius);
 	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
-	tempInt.invalidate();
+	tempInt.render();
 
 	hum.update(Env->HumP/100);
 	hum.setXY(500, 500);
-	hum.invalidate();
+	hum.render();
 
 	invalidate();
 }

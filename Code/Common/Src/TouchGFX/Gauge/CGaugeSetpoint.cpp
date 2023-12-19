@@ -89,13 +89,13 @@ void CGaugeSetpoint::update(int16_t temperature, bool celsius)
 }
 
 //-----------------------------------------------------------------------------
-void CGaugeSetpoint::invalidate()
+void CGaugeSetpoint::render()
 {
 	dsp.setPosition(*this, *this);
-	integer.invalidate();
-	decimal.invalidate();
-	unitC.invalidate();
-	unitF.invalidate();
+	integer.render();
+	decimal.render();
+	unitC.render();
+	unitF.render();
 	Container::invalidate();
 }
 

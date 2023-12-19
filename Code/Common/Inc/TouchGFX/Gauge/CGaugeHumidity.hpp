@@ -44,7 +44,7 @@ public:
 	CGaugeHumidity();
 
 	void update(uint8_t percent);
-	void invalidate();
+	void render();
 
 private:
 	const static uint8_t colorR = 186;
