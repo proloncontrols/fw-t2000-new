@@ -16,9 +16,9 @@ SplashView::SplashView()
 //	if(dsp.orientation == CDisplay::PORTRAIT)
 //		__background.setPosition(0, 0, 672, 720);
 
-	scr.client.add(tempInt);
+	screen.client.add(tempInt);
 	tempInt.update(0, celsius);
-	tempInt.setXY((scr.client.getWidth() - tempInt.getWidth()) / 2, 50);
+	tempInt.setXY((screen.client.getWidth() - tempInt.getWidth()) / 2, 50);
 	tempInt.render();
 
 ////	add(tempSet);
@@ -37,17 +37,22 @@ SplashView::SplashView()
 //	hum.render();
 //
 //	add(btn);
-//	btn.initialize(50, 300, 0, BITMAP_SETTING_ID, BITMAP_SETTING_DARK2_ID, T_GAUGE_TEMPERATURE_EXTERIOR_LARGE, Color::getColorFromRGB(255, 255, 255), Color::getColorFromRGB(200, 20, 20));
-//	btn.setText("2");
-//	btn.setTextPosition(1, 1);
+//	btn.initialize(50, 300, 76, BITMAP_MENU_BUTTON_496X496X76_ID, BITMAP_MENU_BUTTON_496X496X76_ID, T_MENU_BUTTON, Color::getColorFromRGB(255, 255, 255), Color::getColorFromRGB(200, 20, 20));
+//	btn.setText("About me");
+//	btn.setTextPosition(30, 4);
 //	btn.setAction(buttonCallback);
 //	btn.render();
 
-	scr.client.add(item);
-	item.setXY((scr.client.getWidth() - item.getWidth()) / 2, 300);
+	screen.client.add(item);
+	item.setXY((screen.client.getWidth() - item.getWidth()) / 2, 300);
 	item.setText((char*)"About me");
 	item.setAction(buttonCallback);
 	item.render();
+
+//    add(img);
+//    img.setImage(BITMAP_MENU_LINE_GRAY_494X494X3_ID);
+//	img.setXY(50, 25);
+//	img.render();
 }
 
 void SplashView::setupScreen()
@@ -63,14 +68,14 @@ void SplashView::tearDownScreen()
 void SplashView::updateEnvironment(ENV_Readings_t* Env)
 {
 	tempInt.update((float)(Env->TempC)/100.0, celsius);
-	tempInt.setXY((scr.client.getWidth() - tempInt.getWidth()) / 2, 50);
+	tempInt.setXY((screen.client.getWidth() - tempInt.getWidth()) / 2, 50);
 	tempInt.render();
 
-	hum.update(Env->HumP/100);
-	hum.setXY(500, 500);
-	hum.render();
-
-	invalidate();
+//	hum.update(Env->HumP/100);
+//	hum.setXY(500, 500);
+//	hum.render();
+//
+//	invalidate();
 }
 
 void SplashView::moveIt()
@@ -81,7 +86,7 @@ void SplashView::moveIt()
 //	humidity += 1;
 //
 //	tempInt.update(tempIn, celsius);
-//	tempInt.setXY((container.getWidth() - tempInt.getWidth()) / 2, 50);
+//	tempInt.setXY((screen.client.getWidth() - tempInt.getWidth()) / 2, 50);
 //	tempInt.invalidate();
 //
 //	tempSet.update(tempSt, celsius);

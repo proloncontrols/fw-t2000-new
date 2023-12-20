@@ -43,6 +43,8 @@ CGaugeExterior::CGaugeExterior()
 	add(integer);
 	add(unitC);
 	add(unitF);
+
+	image.setImage(BITMAP_OUTSIDE_24X24_ID);
 	add(image);
 }
 

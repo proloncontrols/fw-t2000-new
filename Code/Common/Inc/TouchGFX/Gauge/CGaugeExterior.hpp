@@ -65,7 +65,7 @@ private:
 	CText integer = CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
 	CLabel unitC = CLabel(unitTextC, colorR, colorG, colorB);
 	CLabel unitF = CLabel(unitTextF, colorR, colorG, colorB);
-	CImage image = CImage(imageId);
+	CImage image; // = CImage(imageId);
 };
 
 }   //namespace touchgfx

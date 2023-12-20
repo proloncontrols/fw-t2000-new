@@ -36,13 +36,16 @@ namespace touchgfx
 CMenuItem::CMenuItem()
 {
 	Container::setWidthHeight(itemWidth, itemHeight);
+	background = NULL;
 
 #ifdef SHOW_BACKGROUND
-	background.setWidthHeight(*this);
-	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-	add(background);
+	background = new Box;
+	background->setWidthHeight(*this);
+	background->setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+	add(*background);
 #endif
 
+	line.setImage(lineImage);
 	line.setXY(0, itemHeight - lineHeight);
 	add(line);
 

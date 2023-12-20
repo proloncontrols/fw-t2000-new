@@ -23,10 +23,8 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <stddef.h>
 #include <CImage.hpp>
 #include <CString.hpp>
-#include <BitmapDatabase.hpp>
 #include <touchgfx/TypedText.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
@@ -69,6 +67,15 @@ namespace touchgfx
 
 class CButton : public AbstractButtonContainer
 {
+	Box* background;
+	CImage* imgReleased;
+	CImage* imgPressed;
+	CString* text;
+
+	uint32_t data;   //User defined general purpose data associated with button
+	colortype textColorReleased;
+	colortype textColorPressed;
+
 public:
 	CButton();
 
@@ -83,16 +90,6 @@ public:
 
 protected:
 	virtual void handleClickEvent(const ClickEvent& event);
-
-private:
-	Box background;
-	CImage* imgReleased = NULL;
-	CImage* imgPressed = NULL;
-	CString* text = NULL;
-
-	uint32_t data;   //User defined general purpose data associated with button
-	colortype textColorReleased;
-	colortype textColorPressed;
 };
 
 }   //namespace touchgfx

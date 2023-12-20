@@ -21,6 +21,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
 #include <CButton.hpp>
@@ -36,9 +37,15 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 CButton::CButton()
 {
+	background = NULL;
+	imgReleased = NULL;
+	imgPressed = NULL;
+	text = NULL;
+
 #ifdef SHOW_BACKGROUND
-	background.setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-	add(background);
+	background = new Box;
+	background->setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
+	add(*background);
 #endif
 }
 
@@ -51,37 +58,37 @@ void CButton::initialize(int16_t x, int16_t y, int16_t width, int16_t height)
 	Container::setPosition(x, y, width, height);
 
 #ifdef SHOW_BACKGROUND
-	background.setWidthHeight(*this);
+	background->setWidthHeight(*this);
 #endif
 }
 
 //-----------------------------------------------------------------------------
 void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed)
 {
-	Bitmap image = Bitmap(released);               //Both released and pressed images are assumed to have the same size
-
-	Container::setXY(x, y);
-	Container::setWidth(image.getWidth());
-	if(touchHeight != 0)
-		Container::setHeight(touchHeight);         //Touch area is the image visible area only (rectangle)
-	else
-		Container::setHeight(image.getHeight());   //Touch area is the entire image area, visible and not visible (square)
-
-	imgReleased = new CImage(released);
-	imgReleased->setBitmap(image);
+	imgReleased = new CImage;
+	imgReleased->setImage(released);
 	imgReleased->setXY(0, 0);
 	imgReleased->setVisible(true);
 	add(*imgReleased);
 
-	image = Bitmap(pressed);
-	imgPressed = new CImage(pressed);
-	imgPressed->setBitmap(image);
+	imgPressed = new CImage;
+	imgPressed->setImage(released);
 	imgPressed->setXY(0, 0);
 	imgPressed->setVisible(false);
 	add(*imgPressed);
 
+	Container::setXY(x, y);
+	Container::setWidth(imgReleased->getWidth());
+	if(touchHeight != 0)
+		Container::setHeight(touchHeight);                //Touch area is the image visible area only (rectangle)
+	else
+		Container::setHeight(imgReleased->getHeight());   //Touch area is the entire image area, visible and not visible (square)
+
+	imgReleased->render();
+	imgPressed->render();
+
 #ifdef SHOW_BACKGROUND
-	background.setWidthHeight(*this);
+	background->setWidthHeight(*this);
 #endif
 }
 
@@ -97,7 +104,7 @@ void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap relea
 	textColorPressed = textPressed;
 
 #ifdef SHOW_BACKGROUND
-	background.setWidthHeight(*this);
+	background->setWidthHeight(*this);
 #endif
 }
 

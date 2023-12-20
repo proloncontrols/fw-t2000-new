@@ -34,9 +34,11 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CImage : public TextureMapper
 {
-public:
-	CImage(BitmapId id);
+	const float zAngleLandscape = -3.142;
+	const float zAnglePortrait = 1.571;
 
+public:
+	void setImage(BitmapId id);
 	void render();
 };
 

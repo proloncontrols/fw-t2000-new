@@ -29,35 +29,28 @@ namespace touchgfx
 {
 
 //=============================================================================
-//  D E F I N E S
+//  M E T H O D S
 //-----------------------------------------------------------------------------
-#define Z_ANGLE_LANDSCAPE   -3.142f
-#define Z_ANGLE_PORTRAIT     1.565f
-
-
-//=============================================================================
-//  C O N S T R U C T I O N
-//-----------------------------------------------------------------------------
-CImage::CImage(BitmapId id)
+void CImage::setImage(BitmapId id)
 {
 	setBitmap(id);
 
+	setWidthHeight(getWidth()+1, getHeight()+1);   //Increase container to make sure the image fits since its position is (1.0, 1.0)
+	setBitmapPosition(1.0f, 1.0f);
+
 	if(dsp.orientation == CDisplay::LANDSCAPE)
-	    setAngles(0.0f, 0.0f, Z_ANGLE_LANDSCAPE);
+	    setAngles(0.0f, 0.0f, zAngleLandscape);
 
 	if(dsp.orientation == CDisplay::PORTRAIT)
-	    setAngles(0.0f, 0.0f, Z_ANGLE_PORTRAIT);
+	    setAngles(0.0f, 0.0f, zAnglePortrait);
 
 	setScale(1.0f);
-	setBitmapPosition(0.0f, 0.0f);
     setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
 	setCameraDistance(1000.0f);
 	setCamera(getWidth()/2, getHeight()/2);
 	setRenderingAlgorithm(touchgfx::TextureMapper::NEAREST_NEIGHBOR);
 }
 
-//=============================================================================
-//  M E T H O D S
 //-----------------------------------------------------------------------------
 void CImage::render()
 {

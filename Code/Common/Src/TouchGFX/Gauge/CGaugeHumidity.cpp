@@ -42,6 +42,8 @@ CGaugeHumidity::CGaugeHumidity()
 
 	add(integer);
 	add(unit);
+
+	image.setImage(BITMAP_HUMIDITY_30X30_ID);
 	add(image);
 }
 

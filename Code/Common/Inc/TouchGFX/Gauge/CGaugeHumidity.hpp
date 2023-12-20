@@ -62,7 +62,7 @@ private:
 	Box background;
 	CText integer = CText(integerPrecision, integerSpacingRatio, integerText, colorR, colorG, colorB);
 	CLabel unit = CLabel(unitText, colorR, colorG, colorB);
-	CImage image = CImage(imageId);
+	CImage image; // = CImage(imageId);
 };
 
 }   //namespace touchgfx
