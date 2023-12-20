@@ -97,7 +97,8 @@ void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap relea
 {
 	initialize(x, y, touchHeight, released, pressed);
 
-	text = new CString(textType, Color::getRed(textReleased), Color::getGreen(textReleased), Color::getBlue(textReleased));
+	text = new CString;
+	text->initialize(textType, Color::getRed(textReleased), Color::getGreen(textReleased), Color::getBlue(textReleased));
 	add(*text);
 
 	textColorReleased = textReleased;
@@ -140,8 +141,8 @@ void CButton::render()
 	if(imgReleased)
 		imgReleased->render();
 	if(imgPressed)
-		imgReleased->render();
-	if(imgReleased)
+		imgPressed->render();
+	if(text)
 		text->render();
 	Container::invalidate();
 }
@@ -175,8 +176,8 @@ void CButton::handleClickEvent(const ClickEvent& event)
 		if(imgReleased)
 			imgReleased->invalidate();
 		if(imgPressed)
-			imgReleased->invalidate();
-		if(imgReleased)
+			imgPressed->invalidate();
+		if(text)
 			text->invalidate();
 
 		setPressed(newPressedValue);

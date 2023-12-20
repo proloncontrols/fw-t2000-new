@@ -35,13 +35,6 @@
 namespace touchgfx
 {
 
-typedef enum {
-	buttonNone = -3,
-	buttonHome = -2,
-	buttonBack = -1,
-	buttonUser =  0
-} ButtonId;
-
 
 //=============================================================================
 //  C L A S S E S
@@ -74,7 +67,7 @@ public:
 
 	void setText(char* newText);
     void setAction(GenericCallback<const AbstractButtonContainer&>& callback);
-    const CButton& getButton();
+    CButton* getButton();
 	void render();
 };
 

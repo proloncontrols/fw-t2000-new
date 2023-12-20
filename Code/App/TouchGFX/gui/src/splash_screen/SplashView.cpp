@@ -16,10 +16,10 @@ SplashView::SplashView()
 //	if(dsp.orientation == CDisplay::PORTRAIT)
 //		__background.setPosition(0, 0, 672, 720);
 
-	screen.client.add(tempInt);
-	tempInt.update(0, celsius);
-	tempInt.setXY((screen.client.getWidth() - tempInt.getWidth()) / 2, 50);
-	tempInt.render();
+//	screen.client.add(tempInt);
+//	tempInt.update(0, celsius);
+//	tempInt.setXY((screen.client.getWidth() - tempInt.getWidth()) / 2, 50);
+//	tempInt.render();
 
 ////	add(tempSet);
 ////	tempSet.update(tempSt, celsius);
@@ -43,11 +43,11 @@ SplashView::SplashView()
 //	btn.setAction(buttonCallback);
 //	btn.render();
 
-	screen.client.add(item);
-	item.setXY((screen.client.getWidth() - item.getWidth()) / 2, 300);
-	item.setText((char*)"About me");
-	item.setAction(buttonCallback);
-	item.render();
+//	screen.client.add(item);
+//	item.setXY((screen.client.getWidth() - item.getWidth()) / 2, 300);
+//	item.setText((char*)"About me");
+//	item.setAction(buttonCallback);
+//	item.render();
 
 //    add(img);
 //    img.setImage(BITMAP_MENU_LINE_GRAY_494X494X3_ID);
@@ -67,13 +67,13 @@ void SplashView::tearDownScreen()
 
 void SplashView::updateEnvironment(ENV_Readings_t* Env)
 {
-	tempInt.update((float)(Env->TempC)/100.0, celsius);
-	tempInt.setXY((screen.client.getWidth() - tempInt.getWidth()) / 2, 50);
-	tempInt.render();
-
-//	hum.update(Env->HumP/100);
-//	hum.setXY(500, 500);
-//	hum.render();
+//	tempInt.update((float)(Env->TempC)/100.0, celsius);
+//	tempInt.setXY((screen.client.getWidth() - tempInt.getWidth()) / 2, 50);
+//	tempInt.render();
+//
+////	hum.update(Env->HumP/100);
+////	hum.setXY(500, 500);
+////	hum.render();
 //
 //	invalidate();
 }
@@ -105,7 +105,53 @@ void SplashView::moveIt()
 //	invalidate();
 }
 
+int tmp = 0;
 void SplashView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
+	CMenu::ButtonId id = menu.getButtonId(src);
 
+	if(id)
+	{
+		tmp++;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

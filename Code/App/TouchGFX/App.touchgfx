@@ -3,23 +3,16 @@
     "Screens": [
       {
         "Name": "Splash",
-        "Components": [
-          {
-            "Type": "Box",
-            "Name": "box1",
-            "Width": 720,
-            "Height": 672
-          }
-        ],
-        "Interactions": []
-      },
-      {
-        "Name": "MenuMain",
         "Components": [],
         "Interactions": []
       },
       {
         "Name": "Home",
+        "Components": [],
+        "Interactions": []
+      },
+      {
+        "Name": "MenuMain",
         "Components": [],
         "Interactions": []
       }

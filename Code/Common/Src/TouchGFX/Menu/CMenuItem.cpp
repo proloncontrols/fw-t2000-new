@@ -75,9 +75,9 @@ void CMenuItem::setAction(GenericCallback<const AbstractButtonContainer&>& callb
 }
 
 //-----------------------------------------------------------------------------
-const CButton& CMenuItem::getButton()
+CButton* CMenuItem::getButton()
 {
-	return button;
+	return &button;
 }
 
 //-----------------------------------------------------------------------------

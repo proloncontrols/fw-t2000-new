@@ -193,12 +193,6 @@
     <Filter Include="Source Files\gui\menumain_screen">
       <UniqueIdentifier>952EFCB0-CFC6-2FC5-1115-DBC7ED57FFD1</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\generated\gui_generated\menumain_screen">
-      <UniqueIdentifier>FDC9A2E2-24B5-697C-72B3-E5C70F007E16</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\menumain_screen">
-      <UniqueIdentifier>82413DDB-0934-1D92-D259-8D087204DC8D</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\home_screen">
       <UniqueIdentifier>FD1C3A71-030A-7081-17EF-DD9B8D7ED452</UniqueIdentifier>
     </Filter>
@@ -213,6 +207,12 @@
     </Filter>
     <Filter Include="Header Files\gui\containers">
       <UniqueIdentifier>A656400B-DA1D-191F-2FD2-928A19C50BFF</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\menumain_screen">
+      <UniqueIdentifier>CF6072B0-B21D-4722-9655-55DDBC8E284A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\menumain_screen">
+      <UniqueIdentifier>1D4D513C-622B-9169-42D7-D7FE2A93EA76</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -261,14 +261,8 @@
     <ClCompile Include="..\..\gui\src\containers\cntTempInside.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainPresenter.cpp">
-      <Filter>Source Files\gui\menumain_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainView.cpp">
       <Filter>Source Files\gui\menumain_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\menumain_screen\MenuMainViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\menumain_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\home_screen\HomePresenter.cpp">
       <Filter>Source Files\gui\home_screen</Filter>
@@ -284,6 +278,12 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\SetpointHeat.cpp">
       <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainPresenter.cpp">
+      <Filter>Source Files\gui\menumain_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\menumain_screen\MenuMainViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\menumain_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -736,14 +736,8 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\splash_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainPresenter.hpp">
-      <Filter>Header Files\gui\menumain_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainView.hpp">
       <Filter>Header Files\gui\menumain_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\menumain_screen\MenuMainViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\menumain_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\home_screen\HomePresenter.hpp">
       <Filter>Header Files\gui\home_screen</Filter>
@@ -759,6 +753,12 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\containers\SetpointHeat.hpp">
       <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainPresenter.hpp">
+      <Filter>Header Files\gui\menumain_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\menumain_screen\MenuMainViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\menumain_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

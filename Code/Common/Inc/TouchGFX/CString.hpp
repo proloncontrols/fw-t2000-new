@@ -36,15 +36,15 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CString : public TextAreaWithOneWildcard
 {
+	int curLength;
+	Unicode::UnicodeChar* buffer;
+
 public:
-	CString(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
+	CString();
 
 	void operator=(const char* newString);
+	void initialize(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
 	void render();
-
-private:
-	int curLength = 0;
-	Unicode::UnicodeChar* buffer = NULL;
 };
 
 }   //namespace touchgfx

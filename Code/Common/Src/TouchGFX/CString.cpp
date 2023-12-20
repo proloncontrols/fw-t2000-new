@@ -21,8 +21,9 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <string.h>
+#include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 #include <CString.hpp>
 #include <CDisplay.hpp>
 #include <touchgfx/Color.hpp>
@@ -34,10 +35,10 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CString::CString(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+CString::CString()
 {
-	setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
-	setTypedText(newType);
+	curLength = 0;
+	buffer = NULL;
 	if(dsp.orientation != CDisplay::NATIVE)
 		setRotation(TEXT_ROTATE_180);
 }
@@ -66,6 +67,13 @@ void CString::operator=(const char* newString)
 
 //=============================================================================
 //  M E T H O D S
+//-----------------------------------------------------------------------------
+void CString::initialize(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
+{
+	setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
+	setTypedText(newType);
+}
+
 //-----------------------------------------------------------------------------
 void CString::render()
 {

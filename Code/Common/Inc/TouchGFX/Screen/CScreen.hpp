@@ -84,28 +84,3 @@ private:
 
 
 #endif   //CSCREEN_HPP
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

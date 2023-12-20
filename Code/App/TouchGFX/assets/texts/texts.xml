@@ -5,6 +5,9 @@
   </Languages>
   <Texts>
     <TextGroup Id="Menu">
+      <Text Id="MENU_TITLE" Alignment="Left" TypographyId="MenuTitle">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="MENU_BUTTON" Alignment="Left" TypographyId="MenuButton">
         <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
@@ -59,5 +62,6 @@
     <Typography Id="GaugeTempExtLarge" Font="AvenirNext-Regular-08.ttf" Size="80" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
     <Typography Id="GaugeTempExtSmall" Font="AvenirNext-Regular-08.ttf" Size="24" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF%" />
     <Typography Id="MenuButton" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
+    <Typography Id="MenuTitle" Font="AvenirNext-Regular-08.ttf" Size="71" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
   </Typographies>
 </TextDatabase>

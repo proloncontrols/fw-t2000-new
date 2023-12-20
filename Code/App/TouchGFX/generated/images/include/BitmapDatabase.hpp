@@ -6,12 +6,16 @@
 #include <touchgfx/hal/Types.hpp>
 #include <touchgfx/Bitmap.hpp>
 
-const uint16_t BITMAP_HUMIDITY_30X30_ID = 0;
-const uint16_t BITMAP_MENU_BUTTON_496X496X76_ID = 1;
-const uint16_t BITMAP_MENU_LINE_GRAY_494X494X4_ID = 2;
-const uint16_t BITMAP_OUTSIDE_24X24_ID = 3;
-const uint16_t BITMAP_SETTING_ID = 4;
-const uint16_t BITMAP_SETTING_DARK2_ID = 5;
+const uint16_t BITMAP_HOME_ID = 0;
+const uint16_t BITMAP_HUMIDITY_30X30_ID = 1;
+const uint16_t BITMAP_MENU_BUTTON_496X496X76_ID = 2;
+const uint16_t BITMAP_MENU_LINE_GRAY_494X494X4_ID = 3;
+const uint16_t BITMAP_MENU_LINE_WHITE_496X496X6_ID = 4;
+const uint16_t BITMAP_OUTSIDE_24X24_ID = 5;
+const uint16_t BITMAP_PROLON_178X178_ID = 6;
+const uint16_t BITMAP_RETURN_50X50_ID = 7;
+const uint16_t BITMAP_SETTING_ID = 8;
+const uint16_t BITMAP_SETTING_DARK2_ID = 9;
 
 namespace BitmapDatabase
 {

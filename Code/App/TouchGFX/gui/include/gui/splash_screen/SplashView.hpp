@@ -12,6 +12,7 @@
 #include <CButton.hpp>
 #include <Screen/CScreen.hpp>
 #include <Menu/CMenuItem.hpp>
+#include <Menu/CMenuSettings.hpp>
 
 class SplashView : public SplashViewBase
 {
@@ -32,7 +33,9 @@ protected:
 
     CButton btn;
 
-    CScreen screen = CScreen(container);
+//    CScreen screen = CScreen(container);
+
+    CMenuSettings menu = CMenuSettings(container, buttonCallback);
 
     CMenuItem item;
 

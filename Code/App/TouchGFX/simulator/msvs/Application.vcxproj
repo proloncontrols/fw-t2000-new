@@ -26,14 +26,14 @@
     <ClCompile Include="..\..\generated\gui_generated\src\splash_screen\SplashViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\cntBlue.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\cntTempInside.cpp"/>
-    <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\menumain_screen\MenuMainViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\home_screen\HomePresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\home_screen\HomeView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\home_screen\HomeViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\SetpointCool.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\SetpointHeat.cpp"/>
+    <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainPresenter.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\menumain_screen\MenuMainViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -187,14 +187,14 @@
     <ClInclude Include="..\..\gui\include\gui\splash_screen\SplashPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\splash_screen\SplashView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\menumain_screen\MenuMainViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\home_screen\HomePresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\home_screen\HomeView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\home_screen\HomeViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\SetpointCool.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\SetpointHeat.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainPresenter.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\menumain_screen\MenuMainViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>
