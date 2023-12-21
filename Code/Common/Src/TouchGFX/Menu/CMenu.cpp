@@ -92,6 +92,56 @@ CMenu::CMenu(Container& ownerContainer, GenericCallback<const AbstractButtonCont
 //-----------------------------------------------------------------------------
 void CMenu::initialize(const char* newTitle, CMenuItem* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback)
 {
+//	client.add(home);
+//	home.initialize(1, 1, 0, homeImageReleased, homeImagePressed);
+//	home.setAction(callback);
+//	home.setData(CMenu::buttonHome);
+//
+//	client.add(logo);
+//	logo.setImage(logoImage);
+//	logo.setXY((client.getWidth() - logo.getWidth()) / 2, 1);
+//
+//	client.add(back);
+//	back.initialize(1, 1, 0, backImageReleased, backImagePressed);
+//	back.setAction(callback);
+//	back.setXY(client.getWidth() - back.getWidth(), 1);
+//	back.setData(CMenu::buttonBack);
+//
+//	client.add(title);
+//	title.initialize(titleText, titleColorR, titleColorG, titleColorB);
+//	title = newTitle;
+//	title.setXY((client.getWidth() - title.getWidth()) / 2, 60);
+//
+//	client.add(line);
+//	line.setImage(titleLine);
+//	line.setXY((client.getWidth() - line.getWidth()) / 2, title.getY() + title.getHeight() + 5);
+//
+//	client.add(items);
+//	items.setDirection(SOUTH);
+//	items.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
+//	dsp.setPosition(items, items);
+//
+//	for(int i = 0; i < itemsCount; i++)
+//	{
+//		itemsList[i].getButton()->setData(CMenu::buttonUser + i);
+//		itemsList[i].setAction(callback);
+////		itemsList[i].render();
+//		items.add(itemsList[i]);
+//	}
+//
+//	client.add(scroll);
+//	scroll.setXY(items);
+//	scroll.setWidth(items.getWidth());
+//	scroll.setHeight(client.getHeight() - items.getHeight());
+//    scroll.setScrollbarsColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+//	scroll.add(items);
+//
+//	home.render();
+//	logo.render();
+//	back.render();
+//	title.render();
+//	line.render();
+
 	client.add(home);
 	home.initialize(1, 1, 0, homeImageReleased, homeImagePressed);
 	home.setAction(callback);
@@ -116,18 +166,31 @@ void CMenu::initialize(const char* newTitle, CMenuItem* itemsList, int itemsCoun
 	line.setImage(titleLine);
 	line.setXY((client.getWidth() - line.getWidth()) / 2, title.getY() + title.getHeight() + 5);
 
-	client.add(items);
 	items.setDirection(SOUTH);
-	items.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
-	dsp.setPosition(items, items);
-
+	items.setXY(0, 0);
 	for(int i = 0; i < itemsCount; i++)
 	{
 		itemsList[i].getButton()->setData(CMenu::buttonUser + i);
 		itemsList[i].setAction(callback);
-//		itemsList[i].render();
 		items.add(itemsList[i]);
 	}
+
+	scroll.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
+	scroll.setWidth(items.getWidth() + 40);
+	scroll.setHeight(client.getHeight() - scroll.getY());
+
+	scroll.enableHorizontalScroll(false);
+//	scroll.setMaxVelocity(10);
+	scroll.setScrollThreshold(5);
+//	scroll.setScrollDurationSpeedup(0);
+//	scroll.setScrollDurationSlowdown(0);
+
+    scroll.setScrollbarsColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    scroll.setScrollbarWidth(10);
+    scroll.setScrollbarsPermanentlyVisible(true);
+    scroll.setScrollbarsVisible(true);
+	scroll.add(items);
+	client.add(scroll);
 
 	home.render();
 	logo.render();

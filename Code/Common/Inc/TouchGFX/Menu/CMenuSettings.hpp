@@ -35,7 +35,7 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CMenuSettings : public CMenu
 {
-	static const int menuItemsCount = 4;
+	static const int menuItemsCount = 8;
 
 	CMenuItem menuItems[menuItemsCount];
 

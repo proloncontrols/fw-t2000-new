@@ -38,6 +38,11 @@ CMenuSettings::CMenuSettings(Container& ownerContainer, GenericCallback<const Ab
 	menuItems[2].setText((char*)"Visualize");
 	menuItems[3].setText((char*)"Device");
 
+	menuItems[4].setText((char*)"Item1");
+	menuItems[5].setText((char*)"Item2");
+	menuItems[6].setText((char*)"Item3");
+	menuItems[7].setText((char*)"Item4");
+
 	initialize("Settings", menuItems, menuItemsCount, callback);
 }
 

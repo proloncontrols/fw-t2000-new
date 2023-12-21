@@ -33,7 +33,7 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Containers/Container.hpp>
 #include <touchgfx/Containers/Listlayout.hpp>
-
+#include <touchgfx/Containers/ScrollableContainer.hpp>
 
 namespace touchgfx
 {
@@ -62,6 +62,7 @@ class CMenu : public CScreen
 	CImage logo;
 	CImage line;
 	ListLayout items;
+	ScrollableContainer scroll;
 
 protected:
 	CString title;
