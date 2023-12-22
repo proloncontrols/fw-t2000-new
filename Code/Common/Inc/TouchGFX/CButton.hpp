@@ -25,7 +25,6 @@
 //-----------------------------------------------------------------------------
 #include <CImage.hpp>
 #include <CLabel.hpp>
-//#include <CString.hpp>
 #include <touchgfx/TypedText.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
@@ -76,11 +75,13 @@ class CButton : public AbstractButtonContainer
 	colortype textColorPressed;
 	uint32_t data;   //User defined general purpose data associated with button
 
+	void validateText();
+
+protected:
+	virtual void handleClickEvent(const ClickEvent& event);
+
 public:
 	CButton();
-
-//	void initialize(int16_t touchHeight, Bitmap released, Bitmap pressed);
-//	void initialize(int16_t touchHeight, Bitmap released, Bitmap pressed, const TypedText& textType, colortype textReleased, colortype textPressed);
 
 	void setBitmaps(Bitmap released, Bitmap pressed);
 	void setTouchHeight(int16_t touchHeight);
@@ -93,40 +94,9 @@ public:
 	uint32_t getData();
 
 	void transpose();
-
-protected:
-	virtual void handleClickEvent(const ClickEvent& event);
 };
 
 }   //namespace touchgfx
 
 
 #endif   //CBUTTON_HPP
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

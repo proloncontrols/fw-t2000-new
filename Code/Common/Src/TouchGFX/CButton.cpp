@@ -58,55 +58,40 @@ void CButton::setBitmaps(Bitmap released, Bitmap pressed)
 	imgPressed->setXY(0, 0);
 	add(*imgPressed);
 
-	text = new CLabel;
-	add(*text);
-
 	setTouchHeight(0);
 }
 
 //-----------------------------------------------------------------------------
 void CButton::setTouchHeight(int16_t touchHeight)
 {
-	setWidth(imgReleased->getWidth());
-	if(touchHeight != 0)
-		setHeight(touchHeight);
-	else
-		setHeight(imgReleased->getHeight());
+	if(imgReleased)   //Both release and pressed images are assumed to be the same size and used together
+	{
+		setWidth(imgReleased->getWidth());
+		if(touchHeight != 0)
+			setHeight(touchHeight);
+		else
+			setHeight(imgReleased->getHeight());
+	}
 }
 
 //-----------------------------------------------------------------------------
 void CButton::setText(const TypedText& textType)
 {
-//	if(!text)
-//	{
-//		text = new CLabel;
-//		add(*text);
-//	}
-	text->setLinespacing(0);
+	validateText();
 	text->setTypedText(textType);
-//	text->setWidth(600);
-//	text->resizeToCurrentText();
 }
 
 //-----------------------------------------------------------------------------
 void CButton::setTextPosition(int16_t x, int16_t y)
 {
-//	if(!text)
-//	{
-//		text = new CLabel;
-//		add(*text);
-//	}
+	validateText();
 	text->setXY(x, y);
 }
 
 //-----------------------------------------------------------------------------
 void CButton::setTextColors(colortype textReleased, colortype textPressed)
 {
-//	if(!text)
-//	{
-//		text = new CLabel;
-//		add(*text);
-//	}
+	validateText();
 	text->setColor(textReleased);
 
 	textColorReleased = textReleased;
@@ -174,6 +159,16 @@ void CButton::handleClickEvent(const ClickEvent& event)
 	}
 	if(wasPressed && (event.getType() == ClickEvent::RELEASED))
 		executeAction();
+}
+
+//-----------------------------------------------------------------------------
+void CButton::validateText()
+{
+	if(!text)
+	{
+		text = new CLabel;
+		add(*text);
+	}
 }
 
 }   //namespace touchgfx
