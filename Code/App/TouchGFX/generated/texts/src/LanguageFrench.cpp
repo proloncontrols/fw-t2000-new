@@ -5,16 +5,16 @@
 #include <touchgfx/Unicode.hpp>
 
 TEXT_LOCATION_FLASH_PRAGMA
-KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
+KEEP extern const uint32_t indicesFrench[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 
 // Remap all strings
 TEXT_LOCATION_FLASH_PRAGMA
-KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
-    57, // T_MENU_SETTINGS_TITLE: "Settings"
+KEEP extern const uint32_t indicesFrench[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
+    16, // T_MENU_SETTINGS_TITLE: "Param?tres"
     68, // T_MENU_SETTINGS_OPTIONS: "Options"
-    48, // T_MENU_SETTINGS_ABOUT_ME: "About me"
-    38, // T_MENU_SETTINGS_VISUALIZE: "Visualize"
-    76, // T_MENU_SETTINGS_DEVICE: "Device"
+    0,  // T_MENU_SETTINGS_ABOUT_ME: "? propos de moi"
+    27, // T_MENU_SETTINGS_VISUALIZE: "Visualiser"
+    83, // T_MENU_SETTINGS_DEVICE: "Module"
     66, // T_GAUGE_TEMPERATURE_INTERIOR_LARGE: "<>"
     66, // T_GAUGE_TEMPERATURE_INTERIOR_MEDIUM: "<>"
     90, // T_GAUGE_TEMPERATURE_INTERIOR_SMALL_C: "?C"

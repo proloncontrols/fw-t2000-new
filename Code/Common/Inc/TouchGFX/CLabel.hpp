@@ -23,7 +23,6 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <touchgfx/TypedText.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 
 
@@ -36,9 +35,7 @@ namespace touchgfx
 class CLabel : public TextArea
 {
 public:
-	CLabel(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB);
-
-	void render();
+	void transpose();
 };
 
 }   //namespace touchgfx

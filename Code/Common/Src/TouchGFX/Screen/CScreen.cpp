@@ -53,9 +53,9 @@ CScreen::CScreen(Container& ownerContainer)
 	client.setPosition((frame.getWidth() - CLIENT_SIZE) / 2, (frame.getHeight() - CLIENT_SIZE) / 2, CLIENT_SIZE, CLIENT_SIZE);
 	container.add(client);
 
-	clientBackground.setWidthHeight(client);
-	clientBackground.setColor(Color::getColorFromRGB(0, 0, 0));
-	client.add(clientBackground);
+	background.setWidthHeight(client);
+	background.setColor(Color::getColorFromRGB(0, 0, 0));
+	client.add(background);
 }
 
 }   //namespace touchgfx

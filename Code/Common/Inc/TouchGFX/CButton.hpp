@@ -24,7 +24,8 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <CImage.hpp>
-#include <CString.hpp>
+#include <CLabel.hpp>
+//#include <CString.hpp>
 #include <touchgfx/TypedText.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
@@ -67,26 +68,31 @@ namespace touchgfx
 
 class CButton : public AbstractButtonContainer
 {
-	Box* background;
 	CImage* imgReleased;
 	CImage* imgPressed;
-	CString* text;
+	CLabel* text;
 
-	uint32_t data;   //User defined general purpose data associated with button
 	colortype textColorReleased;
 	colortype textColorPressed;
+	uint32_t data;   //User defined general purpose data associated with button
 
 public:
 	CButton();
 
-	void initialize(int16_t x, int16_t y, int16_t width, int16_t height);
-	void initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed);
-	void initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed, const TypedText& textType, colortype textReleased, colortype textPressed);
-	void setText(const char* newText);
+//	void initialize(int16_t touchHeight, Bitmap released, Bitmap pressed);
+//	void initialize(int16_t touchHeight, Bitmap released, Bitmap pressed, const TypedText& textType, colortype textReleased, colortype textPressed);
+
+	void setBitmaps(Bitmap released, Bitmap pressed);
+	void setTouchHeight(int16_t touchHeight);
+
+	void setText(const TypedText& textType);
 	void setTextPosition(int16_t x, int16_t y);
+	void setTextColors(colortype textReleased, colortype textPressed);
+
 	void setData(uint32_t newData);
 	uint32_t getData();
-	void render();
+
+	void transpose();
 
 protected:
 	virtual void handleClickEvent(const ClickEvent& event);
@@ -96,3 +102,31 @@ protected:
 
 
 #endif   //CBUTTON_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

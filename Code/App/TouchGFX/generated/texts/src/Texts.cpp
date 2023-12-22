@@ -60,14 +60,26 @@ extern const touchgfx::TypedText::TypedTextData* const typedTextDatabaseArray[];
 
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::Unicode::UnicodeChar texts_all_languages[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
-    0x2, 0x0, // @0 "<>"
-    0xb0, 0x43, 0x0, // @2 "?C"
-    0xb0, 0x46, 0x0, // @5 "?F"
-    0x25, 0x0 // @8 "%"
+    0xc0, 0x20, 0x70, 0x72, 0x6f, 0x70, 0x6f, 0x73, 0x20, 0x64, 0x65, 0x20, 0x6d, 0x6f, 0x69, 0x0, // @0 "? propos de moi"
+    0x50, 0x61, 0x72, 0x61, 0x6d, 0xe8, 0x74, 0x72, 0x65, 0x73, 0x0, // @16 "Param?tres"
+    0x56, 0x69, 0x73, 0x75, 0x61, 0x6c, 0x69, 0x73, 0x65, 0x72, 0x0, // @27 "Visualiser"
+    0x56, 0x69, 0x73, 0x75, 0x61, 0x6c, 0x69, 0x7a, 0x65, 0x0, // @38 "Visualize"
+    0x41, 0x62, 0x6f, 0x75, 0x74, 0x20, 0x6d, 0x65, 0x0, // @48 "About me"
+    0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x73, 0x0, // @57 "Settings"
+    0x2, 0x0, // @66 "<>"
+    0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x0, // @68 "Options"
+    0x44, 0x65, 0x76, 0x69, 0x63, 0x65, 0x0, // @76 "Device"
+    0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x0, // @83 "Module"
+    0xb0, 0x43, 0x0, // @90 "?C"
+    0xb0, 0x46, 0x0, // @93 "?F"
+    0x25, 0x0 // @96 "%"
 };
 
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern uint32_t const indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
+
+TEXT_LOCATION_FLASH_PRAGMA
+KEEP extern uint32_t const indicesFrench[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 
 // Array holding dynamically installed languages
 struct TranslationHeader
@@ -76,11 +88,12 @@ struct TranslationHeader
     uint32_t offset_to_indices;
     uint32_t offset_to_typedtext;
 };
-static const TranslationHeader* languagesArray[1] = { 0 };
+static const TranslationHeader* languagesArray[2] = { 0 };
 
 // Compiled and linked in languages
 static const uint32_t* const staticLanguageIndices[] = {
-    indicesGb
+    indicesGb,
+    indicesFrench
 };
 
 touchgfx::LanguageId touchgfx::Texts::currentLanguage = static_cast<touchgfx::LanguageId>(0);
@@ -90,7 +103,7 @@ static const uint32_t* currentLanguageIndices = 0;
 void touchgfx::Texts::setLanguage(touchgfx::LanguageId id)
 {
     const touchgfx::TypedText::TypedTextData* currentLanguageTypedText = 0;
-    if (id < 1)
+    if (id < 2)
     {
         if (languagesArray[id] != 0)
         {

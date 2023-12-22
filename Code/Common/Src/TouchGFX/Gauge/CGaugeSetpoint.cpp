@@ -44,8 +44,8 @@ CGaugeSetpoint::CGaugeSetpoint()
 
 	add(integer);
 	add(decimal);
-	add(unitC);
-	add(unitF);
+//	add(unitC);
+//	add(unitF);
 }
 
 
@@ -66,22 +66,22 @@ void CGaugeSetpoint::update(int16_t temperature, bool celsius)
 	decimal = decimalString;
 	decimal.setXY(integer.getWidth(), integer.getHeight() - decimal.getHeight() + decimal.getBaseline());
 
-	CLabel* unit;
+//	CLabel* unit;
 	if(celsius)
 	{
-		unit = &unitC;
-		unitC.setVisible(true);
-		unitF.setVisible(false);
+//		unit = &unitC;
+//		unitC.setVisible(true);
+//		unitF.setVisible(false);
 	}
 	else
 	{
-		unit = &unitF;
-		unitC.setVisible(false);
-		unitF.setVisible(true);
+//		unit = &unitF;
+//		unitC.setVisible(false);
+//		unitF.setVisible(true);
 	}
-	unit->setXY(integer.getWidth(), integer.getY());
+//	unit->setXY(integer.getWidth(), integer.getY());
 
-	Container::setWidthHeight(integer.getWidth() + MAX(unit->getWidth(), decimal.getWidth()), integer.getHeight() + decimal.getBaseline());
+//	Container::setWidthHeight(integer.getWidth() + MAX(unit->getWidth(), decimal.getWidth()), integer.getHeight() + decimal.getBaseline());
 
 #ifdef SHOW_BACKGROUND
 	background.setWidthHeight(*this);
@@ -91,11 +91,11 @@ void CGaugeSetpoint::update(int16_t temperature, bool celsius)
 //-----------------------------------------------------------------------------
 void CGaugeSetpoint::render()
 {
-	dsp.setPosition(*this, *this);
+//	dsp.setPosition(*this, *this);
 	integer.render();
 	decimal.render();
-	unitC.render();
-	unitF.render();
+//	unitC.render();
+//	unitF.render();
 	Container::invalidate();
 }
 

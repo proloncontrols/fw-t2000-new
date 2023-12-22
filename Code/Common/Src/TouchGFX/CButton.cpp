@@ -22,8 +22,6 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <stddef.h>
-#include <stdlib.h>
-#include <string.h>
 #include <CButton.hpp>
 #include <CDisplay.hpp>
 #include <touchgfx/Color.hpp>
@@ -31,95 +29,88 @@
 
 namespace touchgfx
 {
-//#define SHOW_BACKGROUND
+
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
 CButton::CButton()
 {
-	background = NULL;
 	imgReleased = NULL;
 	imgPressed = NULL;
 	text = NULL;
-
-#ifdef SHOW_BACKGROUND
-	background = new Box;
-	background->setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-	add(*background);
-#endif
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CButton::initialize(int16_t x, int16_t y, int16_t width, int16_t height)
-{
-	Container::setPosition(x, y, width, height);
-
-#ifdef SHOW_BACKGROUND
-	background->setWidthHeight(*this);
-#endif
-}
-
-//-----------------------------------------------------------------------------
-void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed)
+void CButton::setBitmaps(Bitmap released, Bitmap pressed)
 {
 	imgReleased = new CImage;
-	imgReleased->setImage(released);
-	imgReleased->setXY(0, 0);
+	imgReleased->setBitmap(released);
 	imgReleased->setVisible(true);
+	imgReleased->setXY(0, 0);
 	add(*imgReleased);
 
 	imgPressed = new CImage;
-	imgPressed->setImage(released);
-	imgPressed->setXY(0, 0);
+	imgPressed->setBitmap(released);
 	imgPressed->setVisible(false);
+	imgPressed->setXY(0, 0);
 	add(*imgPressed);
 
-	Container::setXY(x, y);
-	Container::setWidth(imgReleased->getWidth());
-	if(touchHeight != 0)
-		Container::setHeight(touchHeight);                //Touch area is the image visible area only (rectangle)
-	else
-		Container::setHeight(imgReleased->getHeight());   //Touch area is the entire image area, visible and not visible (square)
-
-	imgReleased->render();
-	imgPressed->render();
-
-#ifdef SHOW_BACKGROUND
-	background->setWidthHeight(*this);
-#endif
-}
-
-//-----------------------------------------------------------------------------
-void CButton::initialize(int16_t x, int16_t y, int16_t touchHeight, Bitmap released, Bitmap pressed, const TypedText& textType, colortype textReleased, colortype textPressed)
-{
-	initialize(x, y, touchHeight, released, pressed);
-
-	text = new CString;
-	text->initialize(textType, Color::getRed(textReleased), Color::getGreen(textReleased), Color::getBlue(textReleased));
+	text = new CLabel;
 	add(*text);
 
-	textColorReleased = textReleased;
-	textColorPressed = textPressed;
-
-#ifdef SHOW_BACKGROUND
-	background->setWidthHeight(*this);
-#endif
+	setTouchHeight(0);
 }
 
 //-----------------------------------------------------------------------------
-void CButton::setText(const char* newText)
+void CButton::setTouchHeight(int16_t touchHeight)
 {
-	*text = newText;
-	text->resizeToCurrentText();
+	setWidth(imgReleased->getWidth());
+	if(touchHeight != 0)
+		setHeight(touchHeight);
+	else
+		setHeight(imgReleased->getHeight());
+}
+
+//-----------------------------------------------------------------------------
+void CButton::setText(const TypedText& textType)
+{
+//	if(!text)
+//	{
+//		text = new CLabel;
+//		add(*text);
+//	}
+	text->setLinespacing(0);
+	text->setTypedText(textType);
+//	text->setWidth(600);
+//	text->resizeToCurrentText();
 }
 
 //-----------------------------------------------------------------------------
 void CButton::setTextPosition(int16_t x, int16_t y)
 {
+//	if(!text)
+//	{
+//		text = new CLabel;
+//		add(*text);
+//	}
 	text->setXY(x, y);
+}
+
+//-----------------------------------------------------------------------------
+void CButton::setTextColors(colortype textReleased, colortype textPressed)
+{
+//	if(!text)
+//	{
+//		text = new CLabel;
+//		add(*text);
+//	}
+	text->setColor(textReleased);
+
+	textColorReleased = textReleased;
+	textColorPressed = textPressed;
 }
 
 //-----------------------------------------------------------------------------
@@ -135,16 +126,20 @@ uint32_t CButton::getData()
 }
 
 //-----------------------------------------------------------------------------
-void CButton::render()
+void CButton::transpose()
 {
-	dsp.setPosition(*this, *this);
-	if(imgReleased)
-		imgReleased->render();
-	if(imgPressed)
-		imgPressed->render();
-	if(text)
-		text->render();
-	Container::invalidate();
+	if(dsp.orientation != CDisplay::NATIVE)
+	{
+		dsp.transpose(*this);
+		if(imgReleased)
+			imgReleased->transpose();
+		if(imgPressed)
+			imgPressed->transpose();
+		if(text)
+			text->transpose();
+	}
+
+	invalidate();
 }
 
 //-----------------------------------------------------------------------------
@@ -173,12 +168,7 @@ void CButton::handleClickEvent(const ClickEvent& event)
 				text->setColor(textColorReleased);
 		}
 
-		if(imgReleased)
-			imgReleased->invalidate();
-		if(imgPressed)
-			imgPressed->invalidate();
-		if(text)
-			text->invalidate();
+		invalidate();
 
 		setPressed(newPressedValue);
 	}

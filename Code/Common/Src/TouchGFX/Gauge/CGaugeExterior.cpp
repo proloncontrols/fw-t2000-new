@@ -41,10 +41,10 @@ CGaugeExterior::CGaugeExterior()
 #endif
 
 	add(integer);
-	add(unitC);
-	add(unitF);
+//	add(unitC);
+//	add(unitF);
 
-	image.setImage(BITMAP_OUTSIDE_24X24_ID);
+//	image.setImage(BITMAP_OUTSIDE_24X24_ID);
 	add(image);
 }
 
@@ -65,24 +65,24 @@ void CGaugeExterior::update(int16_t temperature, bool celsius)
 	integer = string;
 	integer.setXY(1, 1);
 
-	CLabel* unit;
+//	CLabel* unit;
 	if(celsius)
 	{
-		unit = &unitC;
-		unitC.setVisible(true);
-		unitF.setVisible(false);
+//		unit = &unitC;
+//		unitC.setVisible(true);
+//		unitF.setVisible(false);
 	}
 	else
 	{
-		unit = &unitF;
-		unitC.setVisible(false);
-		unitF.setVisible(true);
+//		unit = &unitF;
+//		unitC.setVisible(false);
+//		unitF.setVisible(true);
 	}
-	unit->setXY(integer.getWidth(), integer.getY());
+//	unit->setXY(integer.getWidth(), integer.getY());
 
 	image.setXY(integer.getWidth() + (integerSpacingRatio / 2), integer.getHeight() - image.getHeight());
 
-	Container::setWidthHeight(MAX(unit->getX() + unit->getWidth(), image.getX() + image.getWidth()), integer.getHeight() + integer.getBaseline());
+//	Container::setWidthHeight(MAX(unit->getX() + unit->getWidth(), image.getX() + image.getWidth()), integer.getHeight() + integer.getBaseline());
 
 #ifdef SHOW_BACKGROUND
 	background.setWidthHeight(*this);
@@ -92,11 +92,11 @@ void CGaugeExterior::update(int16_t temperature, bool celsius)
 //-----------------------------------------------------------------------------
 void CGaugeExterior::render()
 {
-	dsp.setPosition(*this, *this);
+//	dsp.setPosition(*this, *this);
 	integer.render();
-	unitC.render();
-	unitF.render();
-	image.render();
+//	unitC.render();
+//	unitF.render();
+//	image.render();
 	Container::invalidate();
 }
 

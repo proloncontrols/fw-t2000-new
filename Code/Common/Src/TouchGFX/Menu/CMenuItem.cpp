@@ -24,52 +24,42 @@
 #include <CDisplay.hpp>
 #include <Menu/CMenuItem.hpp>
 #include <touchgfx/Color.hpp>
-#include <BitmapDatabase.hpp>
 
 
 namespace touchgfx
 {
-//#define SHOW_BACKGROUND
+
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
 CMenuItem::CMenuItem()
 {
-	Container::setWidthHeight(itemWidth, itemHeight);
-	background = NULL;
+	setWidthHeight(itemWidth, itemHeight);
 
-#ifdef SHOW_BACKGROUND
-	background = new Box;
-	background->setWidthHeight(*this);
-	background->setColor(Color::getColorFromRGB(dsp.devBackgroundColorR, dsp.devBackgroundColorG, dsp.devBackgroundColorB));
-	add(*background);
-#endif
-
-	line.setImage(lineImage);
-	line.setXY(0, itemHeight - lineHeight);
 	add(line);
+	line.setXY(0, itemHeight - lineHeight);
+	line.setBitmap(lineImage);
 
-	button.initialize(2, (itemHeight - lineHeight - buttonHeight) / 2, buttonHeight,
-			          buttonImage, buttonImage,
-			          buttonTextType,
-					  touchgfx::Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
-					  touchgfx::Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
-	button.setTextPosition(30, 4);
 	add(button);
+	button.setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
+	button.setBitmaps(buttonImage, buttonImage);
+	button.setTouchHeight(76);
+	button.setTextPosition(30, 4);
+	button.setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
+			             Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMenuItem::setText(char* newText)
+void CMenuItem::setButtonText(const TypedText& textType)
 {
-	button.setTextPosition(30, 4);
-	button.setText(newText);
+	button.setText(textType);
 }
 
 //-----------------------------------------------------------------------------
-void CMenuItem::setAction(GenericCallback<const AbstractButtonContainer&>& callback)
+void CMenuItem::setButtonAction(GenericCallback<const AbstractButtonContainer&>& callback)
 {
 	button.setAction(callback);
 }
@@ -81,12 +71,16 @@ CButton* CMenuItem::getButton()
 }
 
 //-----------------------------------------------------------------------------
-void CMenuItem::render()
+void CMenuItem::transpose()
 {
-	dsp.setPosition(*this, *this);
-	line.render();
-	button.render();
-	Container::invalidate();
+	if(dsp.orientation != CDisplay::NATIVE)
+	{
+		dsp.transpose(*this);
+		line.transpose();
+		button.transpose();
+	}
+
+	invalidate();
 }
 
 }   //namespace touchgfx

@@ -41,9 +41,9 @@ CGaugeHumidity::CGaugeHumidity()
 #endif
 
 	add(integer);
-	add(unit);
+//	add(unit);
 
-	image.setImage(BITMAP_HUMIDITY_30X30_ID);
+//	image.setImage(BITMAP_HUMIDITY_30X30_ID);
 	add(image);
 }
 
@@ -62,11 +62,11 @@ void CGaugeHumidity::update(uint8_t humidity)
 	integer = string;
 	integer.setXY(1, 1);
 
-	unit.setXY(integer.getWidth(), integer.getY());
+//	unit.setXY(integer.getWidth(), integer.getY());
 
 	image.setXY(integer.getWidth(), integer.getHeight() - image.getHeight());
 
-	Container::setWidthHeight(integer.getWidth() + MAX(unit.getWidth(), image.getWidth()), integer.getHeight() + integer.getBaseline());
+//	Container::setWidthHeight(integer.getWidth() + MAX(unit.getWidth(), image.getWidth()), integer.getHeight() + integer.getBaseline());
 
 #ifdef SHOW_BACKGROUND
 	background.setWidthHeight(*this);
@@ -76,10 +76,10 @@ void CGaugeHumidity::update(uint8_t humidity)
 //-----------------------------------------------------------------------------
 void CGaugeHumidity::render()
 {
-	dsp.setPosition(*this, *this);
+//	dsp.setPosition(*this, *this);
 	integer.render();
-	unit.render();
-	image.render();
+//	unit.render();
+//	image.render();
 	Container::invalidate();
 }
 

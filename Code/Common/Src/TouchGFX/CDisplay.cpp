@@ -31,97 +31,168 @@ namespace touchgfx
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CDisplay::setX(Drawable& d, int16_t x)
-{
-	if(orientation == NATIVE)
-		d.setX(x);
-	else
-		d.setX(d.getParent()->getWidth() - x);
-}
+//void CDisplay::setX(Drawable& d, int16_t x)
+//{
+//	if(orientation == NATIVE)
+//		d.setX(x);
+//	else
+//		d.setX(d.getParent()->getWidth() - x);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CDisplay::setY(Drawable& d, int16_t y)
+//{
+//	if(orientation == NATIVE)
+//		d.setY(y);
+//	else
+//		d.setY(d.getParent()->getHeight() - y);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CDisplay::setXY(Drawable& d, int16_t x, int16_t y)
+//{
+//	CDisplay::setX(d, x);
+//	CDisplay::setY(d, y);
+//}
+//
+////-----------------------------------------------------------------------------
+//int16_t CDisplay::getX(Drawable& d)
+//{
+//	if(orientation == NATIVE)
+//		return d.getX();
+//	else
+//		return d.getParent()->getWidth() - d.getX();
+//}
+//
+////-----------------------------------------------------------------------------
+//int16_t CDisplay::getY(Drawable& d)
+//{
+//	if(orientation == NATIVE)
+//		return d.getY();
+//	else
+//		return d.getParent()->getHeight() - d.getY();
+//}
+//
+////-----------------------------------------------------------------------------
+//void CDisplay::setWidth(Drawable& d, int16_t width)
+//{
+//	d.setWidth(width);
+//	if(orientation != NATIVE)
+//		d.setX(d.getX() - width);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CDisplay::setHeight(Drawable& d, int16_t height)
+//{
+//	d.setHeight(height);
+//	if(orientation != NATIVE)
+//		d.setY(d.getY() - height);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CDisplay::setWidthHeight(Drawable& d, int16_t width, int16_t height)
+//{
+//	CDisplay::setWidth(d, width);
+//	CDisplay::setHeight(d, height);
+//}
+//
+////-----------------------------------------------------------------------------
+//void CDisplay::setWidthHeight(Drawable& d, Drawable& from)
+//{
+//	CDisplay::setWidthHeight(d, from.getWidth(), from.getHeight());
+//}
+//
+////-----------------------------------------------------------------------------
+//void CDisplay::setPosition(Drawable& d, Drawable& from)
+//{
+//	CDisplay::setXY(d, from.getX(), from.getY());
+//	CDisplay::setWidthHeight(d, from.getWidth(), from.getHeight());
+//}
+
+
+
+
 
 //-----------------------------------------------------------------------------
-void CDisplay::setY(Drawable& d, int16_t y)
-{
-	if(orientation == NATIVE)
-		d.setY(y);
-	else
-		d.setY(d.getParent()->getHeight() - y);
-}
+//void CDisplay::addTo(Drawable& d, Container& c)
+//{
+//	c.add(d);
+//}
+//
+//void CDisplay::setPosition(Drawable& d)
+//{
+//	if((orientation != NATIVE) && (d.getParent()))
+//	{
+//		d.setX(d.getParent()->getWidth() - d.getWidth() - d.getX());
+//		d.setY(d.getParent()->getHeight() - d.getHeight() - d.getY());
+//	}
+//}
+//
+//void CDisplay::setX(Drawable& d, int16_t x)
+//{
+//	d.setX(x);
+//	setPosition(d);
+//}
+//int16_t CDisplay::getX(Drawable& d)
+//{
+//	if(orientation != NATIVE)
+//		return d.getParent()->getWidth() - d.getX();
+//	return d.getX();
+//}
+//
+//void CDisplay::setY(Drawable& d, int16_t y)
+//{
+//	d.setY(y);
+//	setPosition(d);
+//}
+//int16_t CDisplay::getY(Drawable& d)
+//{
+//	if(orientation != NATIVE)
+//		return d.getParent()->getHeight() - d.getY();
+//	return d.getY();
+//}
+//
+//void CDisplay::setXY(Drawable& d, int16_t x, int16_t y)
+//{
+//	d.setXY(x, y);
+//	setPosition(d);
+//}
+//
+//void CDisplay::setWidth(Drawable& d, int16_t width)
+//{
+//	d.setWidth(width);
+//	setPosition(d);
+//}
+//
+//void CDisplay::setHeight(Drawable& d, int16_t height)
+//{
+//	d.setHeight(height);
+//	setPosition(d);
+//}
+//
+//void CDisplay::setWidthHeight(Drawable& d, int16_t width, int16_t height)
+//{
+//	d.setWidthHeight(width, height);
+//	setPosition(d);
+//}
 
-//-----------------------------------------------------------------------------
-void CDisplay::setXY(Drawable& d, int16_t x, int16_t y)
-{
-	CDisplay::setX(d, x);
-	CDisplay::setY(d, y);
-}
 
-//-----------------------------------------------------------------------------
-int16_t CDisplay::getX(Drawable& d)
-{
-	if(orientation == NATIVE)
-		return d.getX();
-	else
-		return d.getParent()->getWidth() - d.getX();
-}
 
-//-----------------------------------------------------------------------------
-int16_t CDisplay::getY(Drawable& d)
-{
-	if(orientation == NATIVE)
-		return d.getY();
-	else
-		return d.getParent()->getHeight() - d.getY();
-}
 
-//-----------------------------------------------------------------------------
-void CDisplay::setWidth(Drawable& d, int16_t width)
-{
-	d.setWidth(width);
-	if(orientation != NATIVE)
-		d.setX(d.getX() - width);
-}
 
-//-----------------------------------------------------------------------------
-void CDisplay::setHeight(Drawable& d, int16_t height)
-{
-	d.setHeight(height);
-	if(orientation != NATIVE)
-		d.setY(d.getY() - height);
-}
+////-----------------------------------------------------------------------------
+//int16_t CDisplay::getWidth(Drawable& d)
+//{
+//	return d.getWidth();
+//}
+//
+////-----------------------------------------------------------------------------
+//int16_t CDisplay::getHeight(Drawable& d)
+//{
+//	return d.getHeight();
+//}
 
-//-----------------------------------------------------------------------------
-void CDisplay::setWidthHeight(Drawable& d, int16_t width, int16_t height)
-{
-	CDisplay::setWidth(d, width);
-	CDisplay::setHeight(d, height);
-}
-
-//-----------------------------------------------------------------------------
-void CDisplay::setWidthHeight(Drawable& d, Drawable& from)
-{
-	CDisplay::setWidthHeight(d, from.getWidth(), from.getHeight());
-}
-
-//-----------------------------------------------------------------------------
-void CDisplay::setPosition(Drawable& d, Drawable& from)
-{
-	CDisplay::setXY(d, from.getX(), from.getY());
-	CDisplay::setWidthHeight(d, from.getWidth(), from.getHeight());
-}
-
-//-----------------------------------------------------------------------------
-int16_t CDisplay::getWidth(Drawable& d)
-{
-	return d.getWidth();
-}
-
-//-----------------------------------------------------------------------------
-int16_t CDisplay::getHeight(Drawable& d)
-{
-	return d.getHeight();
-}
-
-}
+}   //namespace touchgfx
 
 
 

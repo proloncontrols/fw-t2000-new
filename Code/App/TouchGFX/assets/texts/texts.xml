@@ -2,52 +2,79 @@
 <TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.20.0">
   <Languages>
     <Language Id="GB" />
+    <Language Id="French" />
   </Languages>
   <Texts>
-    <TextGroup Id="Menu">
-      <Text Id="MENU_TITLE" Alignment="Left" TypographyId="MenuTitle">
-        <Translation Language="GB">&lt;value&gt;</Translation>
+    <TextGroup Id="MenuSettings">
+      <Text Id="MENU_SETTINGS_TITLE" Alignment="Left" TypographyId="MenuTitle">
+        <Translation Language="GB">Settings</Translation>
+        <Translation Language="French">Paramètres</Translation>
       </Text>
-      <Text Id="MENU_BUTTON" Alignment="Left" TypographyId="MenuButton">
-        <Translation Language="GB">&lt;value&gt;</Translation>
+      <Text Id="MENU_SETTINGS_OPTIONS" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Options</Translation>
+        <Translation Language="French">Options</Translation>
+      </Text>
+      <Text Id="MENU_SETTINGS_ABOUT_ME" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">About me</Translation>
+        <Translation Language="French">À propos de moi</Translation>
+      </Text>
+      <Text Id="MENU_SETTINGS_VISUALIZE" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Visualize</Translation>
+        <Translation Language="French">Visualiser</Translation>
+      </Text>
+      <Text Id="MENU_SETTINGS_DEVICE" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Device</Translation>
+        <Translation Language="French">Module</Translation>
       </Text>
     </TextGroup>
     <TextGroup Id="Gauge">
       <Text Id="GAUGE_TEMPERATURE_INTERIOR_LARGE" Alignment="Left" TypographyId="GaugeTempIntLarge">
         <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="French">&lt;value&gt;</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_INTERIOR_MEDIUM" Alignment="Left" TypographyId="GaugeTempIntMedium">
         <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="French">&lt;value&gt;</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_INTERIOR_SMALL_C" Alignment="Left" TypographyId="GaugeTempIntSmall">
         <Translation Language="GB">°C</Translation>
+        <Translation Language="French">°C</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_INTERIOR_SMALL_F" Alignment="Left" TypographyId="GaugeTempIntSmall">
         <Translation Language="GB">°F</Translation>
+        <Translation Language="French">°F</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_SETPOINT_LARGE" Alignment="Left" TypographyId="GaugeTempSetLarge">
         <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="French">&lt;value&gt;</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_SETPOINT_MEDIUM" Alignment="Left" TypographyId="GaugeTempSetMedium">
         <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="French">&lt;value&gt;</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_SETPOINT_SMALL_C" Alignment="Left" TypographyId="GaugeTempSetSmall">
         <Translation Language="GB">°C</Translation>
+        <Translation Language="French">°C</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_SETPOINT_SMALL_F" Alignment="Left" TypographyId="GaugeTempSetSmall">
         <Translation Language="GB">°F</Translation>
+        <Translation Language="French">°F</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_EXTERIOR_LARGE" Alignment="Left" TypographyId="GaugeTempExtLarge">
         <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="French">&lt;value&gt;</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_EXTERIOR_SMALL_C" Alignment="Left" TypographyId="GaugeTempExtSmall">
         <Translation Language="GB">°C</Translation>
+        <Translation Language="French">°C</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_EXTERIOR_SMALL_F" Alignment="Left" TypographyId="GaugeTempExtSmall">
         <Translation Language="GB">°F</Translation>
+        <Translation Language="French">°F</Translation>
       </Text>
       <Text Id="GAUGE_TEMPERATURE_EXTERIOR_SMALL_P" Alignment="Left" TypographyId="GaugeTempExtSmall">
         <Translation Language="GB">%</Translation>
+        <Translation Language="French">%</Translation>
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted" />

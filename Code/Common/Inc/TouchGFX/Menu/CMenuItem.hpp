@@ -27,9 +27,7 @@
 #include <CButton.hpp>
 #include <BitmapDatabase.hpp>
 #include <touchgfx/Bitmap.hpp>
-#include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -44,7 +42,6 @@ class CMenuItem : public Container
 	const uint8_t buttonTextColorReleasedR = 255;
 	const uint8_t buttonTextColorReleasedG = 255;
 	const uint8_t buttonTextColorReleasedB = 255;
-
 	const uint8_t buttonTextColorPressedR = 75;
 	const uint8_t buttonTextColorPressedG = 75;
 	const uint8_t buttonTextColorPressedB = 75;
@@ -54,21 +51,20 @@ class CMenuItem : public Container
 	const int16_t buttonHeight = 76;   //This is the height ot the button inside the image
 	const int16_t lineHeight = 4;      //This is the height of the separator line inside the image
 
-	const TypedTextId buttonTextType = T_MENU_BUTTON;
 	const BitmapId buttonImage = BITMAP_MENU_BUTTON_496X496X76_ID;
 	const BitmapId lineImage = BITMAP_MENU_LINE_GRAY_494X494X4_ID;
 
-	Box* background;
     CButton button;
 	CImage line;
 
 public:
 	CMenuItem();
 
-	void setText(char* newText);
-    void setAction(GenericCallback<const AbstractButtonContainer&>& callback);
+	void setButtonText(const TypedText& textType);
+    void setButtonAction(GenericCallback<const AbstractButtonContainer&>& callback);
     CButton* getButton();
-	void render();
+
+    void transpose();
 };
 
 }   //namespace touchgfx

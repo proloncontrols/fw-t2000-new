@@ -33,17 +33,26 @@ namespace touchgfx
 CMenuSettings::CMenuSettings(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback)
               :CMenu(ownerContainer, callback)
 {
-	menuItems[0].setText((char*)"Options");
-	menuItems[1].setText((char*)"About me");
-	menuItems[2].setText((char*)"Visualize");
-	menuItems[3].setText((char*)"Device");
+	setTitle(title);
 
-	menuItems[4].setText((char*)"Item1");
-	menuItems[5].setText((char*)"Item2");
-	menuItems[6].setText((char*)"Item3");
-	menuItems[7].setText((char*)"Item4");
+	menuItems[0].setButtonText(item0);
+	menuItems[0].setButtonAction(callback);
 
-	initialize("Settings", menuItems, menuItemsCount, callback);
+	menuItems[1].setButtonText(item1);
+	menuItems[1].setButtonAction(callback);
+
+	menuItems[2].setButtonText(item2);
+	menuItems[2].setButtonAction(callback);
+
+	menuItems[3].setButtonText(item3);
+	menuItems[3].setButtonAction(callback);
+
+	setItems(menuItems, menuItemsCount);
+
+	home.setVisible(false);
+	back.setVisible(false);
+
+	CMenu::transpose();
 }
 
 }   //namespace touchgfx

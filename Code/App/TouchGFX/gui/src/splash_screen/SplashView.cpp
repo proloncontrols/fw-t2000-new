@@ -4,7 +4,7 @@
 #include <BitmapDatabase.hpp>
 #include <touchgfx/Color.hpp>
 
-static bool celsius = true;
+//static bool celsius = true;
 //static float temp = -21;
 //static float tempIn = -10.3;
 //static int16_t tempSt = -1000;
@@ -53,6 +53,61 @@ SplashView::SplashView()
 //    img.setImage(BITMAP_MENU_LINE_GRAY_494X494X3_ID);
 //	img.setXY(50, 25);
 //	img.render();
+
+//	img.addTo(container);
+//	img.setImage(BITMAP_MENU_BUTTON_496X496X76_ID);
+//	img.setXY(10, 10);
+
+
+
+
+
+
+
+//	img.setImage(BITMAP_MENU_BUTTON_496X496X76_ID);
+//	dsp.setXY(img, 10, 10);
+//	dsp.addTo(img, container);
+//
+//	dsp.setPosition(container2, dsp.getX(img)+img.getWidth()+20, 20, 150, 400);
+//	dsp.addTo(container2, container);
+//
+//	box.setColor(Color::getColorFromRGB(CDisplay::devBackgroundColorR, CDisplay::devBackgroundColorG, CDisplay::devBackgroundColorB));
+//	dsp.setPosition(box, 0, 0, container2.getWidth(), container2.getHeight());
+//	dsp.addTo(box, container2);
+//
+//	box2.setColor(Color::getColorFromRGB(0, 0, 0));
+//	dsp.setPosition(box2, 20, 20, 50, 300);
+//	dsp.addTo(box2, container2);
+//
+//	Texts::setLanguage(1);
+//	str.initialize(T_MENU_TITLE_SETTINGS, 255, 255, 255);
+//	dsp.setXY(str, 1, 1);
+//	dsp.addTo(str, container);
+
+//	Texts::setLanguage(1);
+//	add(btn);
+//	btn.setXY(20, 20);
+//	btn.setBitmaps(BITMAP_MENU_BUTTON_496X496X76_ID, BITMAP_MENU_BUTTON_496X496X76_ID);
+//	btn.setTouchHeight(76);
+//	btn.setText(T_MENU_BUTTON_SETTINGS);
+//	btn.setTextColors(Color::getColorFromRGB(255, 255, 255), Color::getColorFromRGB(200, 20, 20));
+//	btn.setTextPosition(30, 4);
+//	btn.setAction(buttonCallback);
+//	btn.transpose();
+
+
+//	add(lbl);
+//	lbl.setXY(50, 50);
+//	lbl.setTypedText(T_MENU_BUTTON_SETTINGS);
+//	lbl.setColor(Color::getColorFromRGB(255, 255, 255));
+//	lbl.invalidate();
+
+//	add(item);
+//	item.setXY(50, 50);
+//	item.setButtonText(T_MENU_BUTTON_SETTINGS);
+//	item.setButtonAction(buttonCallback);
+//	item.transpose();
+
 }
 
 void SplashView::setupScreen()
@@ -105,15 +160,15 @@ void SplashView::moveIt()
 //	invalidate();
 }
 
-int tmp = 0;
+//int tmp = 0;
 void SplashView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-	CMenu::ButtonId id = menu.getButtonId(src);
-
-	if(id)
-	{
-		tmp++;
-	}
+//	CMenu::ButtonId id = menu.getButtonId(src);
+//
+//	if(id)
+//	{
+//		tmp++;
+//	}
 }
 
 

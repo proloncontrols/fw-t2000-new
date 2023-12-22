@@ -77,7 +77,7 @@ void CString::initialize(const TypedText& newType, uint8_t newColorR, uint8_t ne
 //-----------------------------------------------------------------------------
 void CString::render()
 {
-	dsp.setPosition(*this, *this);
+//	dsp.setPosition(*this, *this);
 }
 
 }   //namespace touchgfx

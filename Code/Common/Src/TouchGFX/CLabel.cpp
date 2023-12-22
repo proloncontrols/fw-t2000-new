@@ -23,30 +23,25 @@
 //-----------------------------------------------------------------------------
 #include <CLabel.hpp>
 #include <CDisplay.hpp>
-#include <touchgfx/Color.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C O N S T R U C T I O N
-//-----------------------------------------------------------------------------
-CLabel::CLabel(const TypedText& newType, uint8_t newColorR, uint8_t newColorG, uint8_t newColorB)
-{
-	if(dsp.orientation != CDisplay::NATIVE)
-		setRotation(TEXT_ROTATE_180);
-	setColor(Color::getColorFromRGB(newColorR, newColorG, newColorB));
-	setTypedText(newType);
-}
-
-
-//=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CLabel::render()
+void CLabel::transpose()
 {
-	dsp.setPosition(*this, *this);
+	if(dsp.orientation == CDisplay::NATIVE)
+		setRotation(TEXT_ROTATE_0);
+	else
+	{
+		setRotation(TEXT_ROTATE_180);
+		dsp.transpose(*this);
+	}
+
+	invalidate();
 }
 
 }   //namespace touchgfx

@@ -24,6 +24,7 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <touchgfx/widgets/TextureMapper.hpp>
+#include <touchgfx/Containers/Container.hpp>
 
 
 namespace touchgfx
@@ -38,8 +39,7 @@ class CImage : public TextureMapper
 	const float zAnglePortrait = 1.571;
 
 public:
-	void setImage(BitmapId id);
-	void render();
+	void transpose();
 };
 
 }   //namespace touchgfx

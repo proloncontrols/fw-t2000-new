@@ -24,7 +24,8 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <Menu/CMenu.hpp>
-#include <BitmapDatabase.hpp>
+#include <Menu/CMenuItem.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
@@ -35,7 +36,14 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CMenuSettings : public CMenu
 {
-	static const int menuItemsCount = 8;
+	const TypedText& title = T_MENU_SETTINGS_TITLE;
+
+	const TypedText& item0 = T_MENU_SETTINGS_OPTIONS;
+	const TypedText& item1 = T_MENU_SETTINGS_ABOUT_ME;
+	const TypedText& item2 = T_MENU_SETTINGS_VISUALIZE;
+	const TypedText& item3 = T_MENU_SETTINGS_DEVICE;
+
+	static const int menuItemsCount = 4;
 
 	CMenuItem menuItems[menuItemsCount];
 
