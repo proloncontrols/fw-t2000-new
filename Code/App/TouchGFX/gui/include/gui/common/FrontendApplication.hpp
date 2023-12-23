@@ -10,17 +10,29 @@ using namespace touchgfx;
 class FrontendApplication : public FrontendApplicationBase
 {
 public:
-    FrontendApplication(Model& m, FrontendHeap& heap);
+	typedef enum {
+		Home,
+		Settings,
+		Options,
+		AboutMe,
+		Visualize,
+		Device
+	} ScreenId;
+
+	FrontendApplication(Model& m, FrontendHeap& heap);
     virtual ~FrontendApplication() { }
     virtual void handleTickEvent();
 
 //    void gotoSetpointsScreenNoTransition();
 
 //    void gotoSettingsScreenNoTransition();
-    void gotoOptionsScreenNoTransition();
-    void gotoAboutMeScreenNoTransition();
-    void gotoVisualizeScreenNoTransition();
-    void gotoDeviceScreenNoTransition();
+
+    void gotoScreen(ScreenId newScreen);
+
+//    void gotoOptionsScreenNoTransition();
+//    void gotoAboutMeScreenNoTransition();
+//    void gotoVisualizeScreenNoTransition();
+//    void gotoDeviceScreenNoTransition();
 
 protected:
     touchgfx::Callback<FrontendApplication> transitionCallback;

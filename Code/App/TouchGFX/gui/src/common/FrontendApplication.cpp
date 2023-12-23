@@ -59,11 +59,25 @@ void FrontendApplication::handleTickEvent()
 
 
 
-void FrontendApplication::gotoOptionsScreenNoTransition()
+void FrontendApplication::gotoScreen(ScreenId newScreen)
 {
-    transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoOptionsScreenNoTransitionImpl);
+	switch(newScreen)
+	{
+		case Options:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoOptionsScreenNoTransitionImpl);   }
+		case AboutMe:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoAboutMeScreenNoTransitionImpl);   }
+		case Visualize: { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoVisualizeScreenNoTransitionImpl); }
+		case Device:    { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoDeviceScreenNoTransitionImpl);    }
+	}
     pendingScreenTransitionCallback = &transitionCallback;
 }
+
+
+
+//void FrontendApplication::gotoOptionsScreenNoTransition()
+//{
+//    transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoOptionsScreenNoTransitionImpl);
+//    pendingScreenTransitionCallback = &transitionCallback;
+//}
 void FrontendApplication::gotoOptionsScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<OptionsView, OptionsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
@@ -71,11 +85,11 @@ void FrontendApplication::gotoOptionsScreenNoTransitionImpl()
 
 
 
-void FrontendApplication::gotoAboutMeScreenNoTransition()
-{
-    transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoAboutMeScreenNoTransitionImpl);
-    pendingScreenTransitionCallback = &transitionCallback;
-}
+//void FrontendApplication::gotoAboutMeScreenNoTransition()
+//{
+//    transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoAboutMeScreenNoTransitionImpl);
+//    pendingScreenTransitionCallback = &transitionCallback;
+//}
 void FrontendApplication::gotoAboutMeScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<AboutMeView, AboutMePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
@@ -83,11 +97,11 @@ void FrontendApplication::gotoAboutMeScreenNoTransitionImpl()
 
 
 
-void FrontendApplication::gotoVisualizeScreenNoTransition()
-{
-    transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoVisualizeScreenNoTransitionImpl);
-    pendingScreenTransitionCallback = &transitionCallback;
-}
+//void FrontendApplication::gotoVisualizeScreenNoTransition()
+//{
+//    transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoVisualizeScreenNoTransitionImpl);
+//    pendingScreenTransitionCallback = &transitionCallback;
+//}
 void FrontendApplication::gotoVisualizeScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<VisualizeView, VisualizePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
@@ -95,11 +109,11 @@ void FrontendApplication::gotoVisualizeScreenNoTransitionImpl()
 
 
 
-void FrontendApplication::gotoDeviceScreenNoTransition()
-{
-    transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoDeviceScreenNoTransitionImpl);
-    pendingScreenTransitionCallback = &transitionCallback;
-}
+//void FrontendApplication::gotoDeviceScreenNoTransition()
+//{
+//    transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoDeviceScreenNoTransitionImpl);
+//    pendingScreenTransitionCallback = &transitionCallback;
+//}
 void FrontendApplication::gotoDeviceScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<DeviceView, DevicePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
