@@ -23,12 +23,9 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <stddef.h>
 #include <Screen/CScreen.hpp>
-#include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
-#include <CButton.hpp>
 #include <CImage.hpp>
-//#include <Meter/CMeterInt.hpp>
+#include <CButton.hpp>
 
 
 namespace touchgfx
@@ -37,30 +34,19 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-//class CScreenHome : public CScreen
-//{
-//public:
-//	enum Buttons {
-//		BUTTON_SETTINGS,
-//		BUTTON_SETPOINTS
-//	};
-//
-//	CScreenHome(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback);
-//
-//protected:
-//	CButton buttonSettings;
-//	CButton buttonSetPoints;
-//	CImage imageCooling;
-//	CMeterInt meterInt;
-//
-//private:
-//	static const int16_t buttonSetPointsSize = 200;
-//
-////	static const int16_t buttonSettingsImageReleasedId = BITMAP_SETTING_ID;
-////	static const int16_t buttonSettingsImagePressedId  = BITMAP_SETTING_DARK2_ID;
-//
-////	static const int16_t imageCoolingId = BITMAP_COOLINGON_ID;
-//};
+class CScreenHome : public CScreen
+{
+public:
+	CScreenHome(Container& owner);
+
+private:
+	CImage logo;
+	CImage standby;
+	CImage cooling;
+	CImage snowflake;
+	CButton settings;
+	CButton setpoints;
+};
 
 }   //namespace touchgfx
 

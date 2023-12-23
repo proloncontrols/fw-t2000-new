@@ -44,7 +44,7 @@
       "Height": 672
     },
     "SelectedColorDepth": 32,
-    "StartupScreenName": "Settings",
+    "StartupScreenName": "Home",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

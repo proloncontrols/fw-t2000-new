@@ -18,5 +18,5 @@ void AboutMeView::tearDownScreen()
 
 void AboutMeView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-	application().gotoSettingsScreenNoTransition();
+//	application().gotoSettingsScreenNoTransition();
 }

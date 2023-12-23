@@ -23,9 +23,6 @@
 //-----------------------------------------------------------------------------
 #include <Screen/CScreenHome.hpp>
 #include <BitmapDatabase.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
-#include <touchgfx/Color.hpp>
-#include <CDisplay.hpp>
 
 
 namespace touchgfx
@@ -34,34 +31,38 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-//CScreenHome::CScreenHome(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback)
-//            :CScreen(ownerContainer, true)
-//{
-//////	imageCooling.setBitmap(imageCoolingId);
-////	imageCooling.setXY(client.getWidth()/2 - imageCooling.getWidth()/2, 50);
-//////	addToClient(imageCooling);
-//////	dsp.addToContainer(client, imageCooling);
-//////	imageCooling.add(client);
-////
-//////	buttonSettings.initialize(client.getWidth() - Bitmap(buttonSettingsImageReleasedId).getWidth(), 0, 0, buttonSettingsImageReleasedId, buttonSettingsImagePressedId);
-////	buttonSettings.setData(CScreenHome::BUTTON_SETTINGS);
-////	buttonSettings.setAction(callback);
-//////	addToClient(buttonSettings);
-//////	dsp.add(client, buttonSettings);
-////	buttonSettings.addTo(client);
-////
-////	buttonSetPoints.initialize(client.getWidth()/2 - buttonSetPointsSize/2, client.getHeight()/2 - buttonSetPointsSize/2, buttonSetPointsSize, buttonSetPointsSize);
-////	buttonSetPoints.setData(CScreenHome::BUTTON_SETPOINTS);
-////	buttonSetPoints.setAction(callback);
-//////	addToClient(buttonSetPoints);
-//////	dsp.add(client, buttonSetPoints);
-////
-////	meterInt.setXY(0, 0);
-////	meterInt.display(-21.5, true);
-//////	addToClient(meterInt);
-//////	dsp.add(client, meterInt);
-////	meterInt.addTo(client);
-//////	client.add(meterInt);
-//}
+CScreenHome::CScreenHome(Container& owner)
+            :CScreen(owner)
+{
+	client.add(logo);
+	logo.setBitmap(BITMAP_PROLON_178X178_ID);
+	logo.setXY((client.getWidth() - logo.getWidth()) / 2, 1);
+	logo.transpose();
+
+	client.add(standby);
+	standby.setBitmap(BITMAP_STANDBY_MODE_58X58_ID);
+	standby.setXY(client.getWidth() - standby.getWidth(), client.getHeight() - standby.getHeight());
+	standby.transpose();
+
+	client.add(cooling);
+	cooling.setBitmap(BITMAP_COOLING_ON_576X576_ID);
+	cooling.setXY((client.getWidth() - cooling.getWidth()) / 2, 50);
+	cooling.transpose();
+
+	client.add(snowflake);
+	snowflake.setBitmap(BITMAP_SNOWFLAKE_50X50_ID);
+	snowflake.setXY((client.getWidth() - snowflake.getWidth()) / 2, 440);
+	snowflake.transpose();
+
+	client.add(settings);
+	settings.setBitmaps(BITMAP_SETTING_ID, BITMAP_SETTING_DARK2_ID);
+	settings.setXY(client.getWidth() - settings.getWidth(), 1);
+	settings.transpose();
+
+	client.add(setpoints);
+	setpoints.setWidthHeight(200, 200);
+	setpoints.setXY((client.getWidth() - setpoints.getWidth()) / 2, (client.getHeight() - setpoints.getHeight()) / 2);
+	setpoints.transpose();
+}
 
 }   //namespace touchgfx

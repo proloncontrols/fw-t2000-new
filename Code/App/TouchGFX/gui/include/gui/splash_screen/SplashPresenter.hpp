@@ -27,10 +27,6 @@ public:
 
     virtual ~SplashPresenter() {};
 
-    virtual void moveIt();
-
-    virtual void DisplayEnv(ENV_Readings_t* Env);
-
 private:
     SplashPresenter();
 

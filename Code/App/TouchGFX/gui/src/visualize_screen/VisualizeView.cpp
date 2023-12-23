@@ -18,5 +18,5 @@ void VisualizeView::tearDownScreen()
 
 void VisualizeView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-	application().gotoSettingsScreenNoTransition();
+//	application().gotoSettingsScreenNoTransition();
 }

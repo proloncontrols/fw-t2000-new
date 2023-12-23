@@ -53,7 +53,7 @@ void CButton::setBitmaps(Bitmap released, Bitmap pressed)
 	add(*imgReleased);
 
 	imgPressed = new CImage;
-	imgPressed->setBitmap(released);
+	imgPressed->setBitmap(pressed);
 	imgPressed->setVisible(false);
 	imgPressed->setXY(0, 0);
 	add(*imgPressed);

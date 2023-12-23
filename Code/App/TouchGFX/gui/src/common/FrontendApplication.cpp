@@ -61,14 +61,14 @@ void FrontendApplication::handleTickEvent()
 
 void FrontendApplication::gotoScreen(ScreenId newScreen)
 {
-	switch(newScreen)
-	{
-		case Options:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoOptionsScreenNoTransitionImpl);   }
-		case AboutMe:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoAboutMeScreenNoTransitionImpl);   }
-		case Visualize: { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoVisualizeScreenNoTransitionImpl); }
-		case Device:    { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoDeviceScreenNoTransitionImpl);    }
-	}
-    pendingScreenTransitionCallback = &transitionCallback;
+//	switch(newScreen)
+//	{
+//		case Options:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoOptionsScreenNoTransitionImpl);   }
+//		case AboutMe:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoAboutMeScreenNoTransitionImpl);   }
+//		case Visualize: { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoVisualizeScreenNoTransitionImpl); }
+//		case Device:    { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoDeviceScreenNoTransitionImpl);    }
+//	}
+//    pendingScreenTransitionCallback = &transitionCallback;
 }
 
 

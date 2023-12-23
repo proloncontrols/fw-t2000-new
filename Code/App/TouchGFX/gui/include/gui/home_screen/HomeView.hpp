@@ -3,6 +3,7 @@
 
 #include <gui_generated/home_screen/HomeViewBase.hpp>
 #include <gui/home_screen/HomePresenter.hpp>
+
 #include <Screen/CScreenHome.hpp>
 
 class HomeView : public HomeViewBase
@@ -14,11 +15,7 @@ public:
     virtual void tearDownScreen();
 
 protected:
-//    CScreenHome* screen;
-
-private:
-    touchgfx::Callback<HomeView, const touchgfx::AbstractButtonContainer&> buttonCallback;
-    void onButtonClick(const touchgfx::AbstractButtonContainer& src);
+    CScreenHome screen = CScreenHome(container);
 };
 
 #endif // HOMEVIEW_HPP

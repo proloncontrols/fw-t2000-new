@@ -33,27 +33,54 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 void CImage::transpose()
 {
-	setBitmapPosition(1.0f, 1.0f);
+//	setScale(1.0f);
+//    setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
+//	setCameraDistance(1000.0f);
+//	setCamera(getWidth()/2, getHeight()/2);
+//	setRenderingAlgorithm(TextureMapper::NEAREST_NEIGHBOR);
+//
+//	if(dsp.orientation == CDisplay::NATIVE)
+//	{
+//		setBitmapPosition(1.0f, 1.0f);
+//		setWidthHeight(getWidth()+1, getHeight()+1);       //Resize container to fit image offset according to mapper angle
+//		setAngles(0.0f, 0.0f, 0.0f);
+//	}
+//	else
+//	{
+//		if(dsp.orientation == CDisplay::LANDSCAPE)
+//		{
+//			setBitmapPosition(-1.0f, 1.0f);
+//			setWidthHeight(getWidth()-1, getHeight()+1);   //Resize container to fit image offset according to mapper angle
+//		    setAngles(0.0f, 0.0f, zAngleLandscape);
+//		}
+//
+//		if(dsp.orientation == CDisplay::PORTRAIT)
+//		{
+//			setBitmapPosition(-1.0f, -1.0f);
+//			setWidthHeight(getWidth()-1, getHeight()-1);   //Resize container to fit image offset according to mapper angle
+//		    setAngles(0.0f, 0.0f, zAnglePortrait);
+//		}
+//
+//		dsp.transpose(*this);
+//	}
+//
+//	invalidate();
+
+	setBitmapPosition(0.0f, 0.0f);
 	setScale(1.0f);
     setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
 	setCameraDistance(1000.0f);
-	setCamera(getWidth()/2, getHeight()/2);
+	setCamera((float)(getWidth()/2), (float)(getHeight()/2));
 	setRenderingAlgorithm(TextureMapper::NEAREST_NEIGHBOR);
 
-	if(dsp.orientation == CDisplay::NATIVE)
+	setAngles(0.0f, 0.0f, 0.0f);
+	if(dsp.orientation != CDisplay::NATIVE)
 	{
-		setWidthHeight(getWidth()+1, getHeight()+1);   //Increase container size to make sure the image fits since its position is (1.0, 1.0)
-		setAngles(0.0f, 0.0f, 0.0f);
-	}
-	else
-	{
-		setWidthHeight(getWidth()-1, getHeight()-1);   //Increase container size here also but by substracting instead of adding since the image will be transposed
-
 		if(dsp.orientation == CDisplay::LANDSCAPE)
-		    setAngles(0.0f, 0.0f, zAngleLandscape);
+		    setZAngle(zAngleLandscape);
 
 		if(dsp.orientation == CDisplay::PORTRAIT)
-		    setAngles(0.0f, 0.0f, zAnglePortrait);
+		    setZAngle(zAnglePortrait);
 
 		dsp.transpose(*this);
 	}
@@ -62,3 +89,23 @@ void CImage::transpose()
 }
 
 }   //namespace touchgfx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

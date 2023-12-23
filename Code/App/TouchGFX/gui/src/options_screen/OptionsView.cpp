@@ -18,5 +18,5 @@ void OptionsView::tearDownScreen()
 
 void OptionsView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-	application().gotoSettingsScreenNoTransition();
+//	application().gotoSettingsScreenNoTransition();
 }
