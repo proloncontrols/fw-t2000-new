@@ -61,7 +61,7 @@ protected:
 	CLabel title;
 
 	void setTitle(const TypedText& textType);
-	void setItems(CMenuItem* itemsList, int itemsCount);
+	void setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
 
 public:
 	typedef enum {

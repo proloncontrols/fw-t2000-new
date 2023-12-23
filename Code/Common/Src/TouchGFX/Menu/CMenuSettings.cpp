@@ -35,24 +35,16 @@ CMenuSettings::CMenuSettings(Container& ownerContainer, GenericCallback<const Ab
 {
 	setTitle(title);
 
-	menuItems[0].setButtonText(item0);
-	menuItems[0].setButtonAction(callback);
+	menuItems[0].setButtonText(itemOptions);
+	menuItems[1].setButtonText(itemAboutMe);
+	menuItems[2].setButtonText(itemVisualize);
+	menuItems[3].setButtonText(itemDevice);
+	setItems(menuItems, menuItemsCount, callback);
 
-	menuItems[1].setButtonText(item1);
-	menuItems[1].setButtonAction(callback);
-
-	menuItems[2].setButtonText(item2);
-	menuItems[2].setButtonAction(callback);
-
-	menuItems[3].setButtonText(item3);
-	menuItems[3].setButtonAction(callback);
-
-	setItems(menuItems, menuItemsCount);
+	transpose();
 
 	home.setVisible(false);
 	back.setVisible(false);
-
-	CMenu::transpose();
 }
 
 }   //namespace touchgfx

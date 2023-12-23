@@ -38,10 +38,10 @@ class CMenuSettings : public CMenu
 {
 	const TypedText& title = T_MENU_SETTINGS_TITLE;
 
-	const TypedText& item0 = T_MENU_SETTINGS_OPTIONS;
-	const TypedText& item1 = T_MENU_SETTINGS_ABOUT_ME;
-	const TypedText& item2 = T_MENU_SETTINGS_VISUALIZE;
-	const TypedText& item3 = T_MENU_SETTINGS_DEVICE;
+	const TypedText& itemOptions   = T_MENU_SETTINGS_OPTIONS;
+	const TypedText& itemAboutMe   = T_MENU_SETTINGS_ABOUT_ME;
+	const TypedText& itemVisualize = T_MENU_SETTINGS_VISUALIZE;
+	const TypedText& itemDevice    = T_MENU_SETTINGS_DEVICE;
 
 	static const int menuItemsCount = 4;
 

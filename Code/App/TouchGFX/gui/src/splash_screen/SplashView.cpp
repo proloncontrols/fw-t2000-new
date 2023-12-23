@@ -160,15 +160,15 @@ void SplashView::moveIt()
 //	invalidate();
 }
 
-//int tmp = 0;
+int tmp = 0;
 void SplashView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
-//	CMenu::ButtonId id = menu.getButtonId(src);
-//
-//	if(id)
-//	{
-//		tmp++;
-//	}
+	CMenu::ButtonId id = menu.getButtonId(src);
+
+	if(id)
+	{
+		tmp++;
+	}
 }
 
 

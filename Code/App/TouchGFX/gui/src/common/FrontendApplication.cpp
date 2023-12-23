@@ -20,8 +20,8 @@ FrontendApplication::FrontendApplication(Model& m, FrontendHeap& heap)
 //	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
 //	}
 
-	Texts::setLanguage(dsp.language);
 	dsp.orientation = CDisplay::NATIVE;
+	Texts::setLanguage(dsp.language);
  	if(dsp.orientation == CDisplay::PORTRAIT)
 	    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_PORTRAIT);
 }
