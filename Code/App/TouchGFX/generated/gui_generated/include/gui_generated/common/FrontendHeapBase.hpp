@@ -16,8 +16,16 @@
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <gui/home_screen/HomeView.hpp>
 #include <gui/home_screen/HomePresenter.hpp>
-#include <gui/menumain_screen/MenuMainView.hpp>
-#include <gui/menumain_screen/MenuMainPresenter.hpp>
+#include <gui/settings_screen/SettingsView.hpp>
+#include <gui/settings_screen/SettingsPresenter.hpp>
+#include <gui/options_screen/OptionsView.hpp>
+#include <gui/options_screen/OptionsPresenter.hpp>
+#include <gui/aboutme_screen/AboutMeView.hpp>
+#include <gui/aboutme_screen/AboutMePresenter.hpp>
+#include <gui/visualize_screen/VisualizeView.hpp>
+#include <gui/visualize_screen/VisualizePresenter.hpp>
+#include <gui/device_screen/DeviceView.hpp>
+#include <gui/device_screen/DevicePresenter.hpp>
 
 
 /**
@@ -42,8 +50,12 @@ public:
      */
     typedef touchgfx::meta::TypeList< SplashView,
             touchgfx::meta::TypeList< HomeView,
-            touchgfx::meta::TypeList< MenuMainView,
-            touchgfx::meta::Nil > >
+            touchgfx::meta::TypeList< SettingsView,
+            touchgfx::meta::TypeList< OptionsView,
+            touchgfx::meta::TypeList< AboutMeView,
+            touchgfx::meta::TypeList< VisualizeView,
+            touchgfx::meta::TypeList< DeviceView,
+            touchgfx::meta::Nil > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -57,8 +69,12 @@ public:
      */
     typedef touchgfx::meta::TypeList< SplashPresenter,
             touchgfx::meta::TypeList< HomePresenter,
-            touchgfx::meta::TypeList< MenuMainPresenter,
-            touchgfx::meta::Nil > >
+            touchgfx::meta::TypeList< SettingsPresenter,
+            touchgfx::meta::TypeList< OptionsPresenter,
+            touchgfx::meta::TypeList< AboutMePresenter,
+            touchgfx::meta::TypeList< VisualizePresenter,
+            touchgfx::meta::TypeList< DevicePresenter,
+            touchgfx::meta::Nil > > > > > >
             > GeneratedPresenterTypes;
 
     /**
@@ -81,7 +97,7 @@ public:
 
     virtual void gotoStartScreen(FrontendApplication& app)
     {
-        app.gotoSplashScreenNoTransition();
+        app.gotoSettingsScreenNoTransition();
     }
 protected:
     FrontendHeapBase(touchgfx::AbstractPartition& presenters, touchgfx::AbstractPartition& views, touchgfx::AbstractPartition& transitions, FrontendApplication& app)

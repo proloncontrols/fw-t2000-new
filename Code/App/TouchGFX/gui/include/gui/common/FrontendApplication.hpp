@@ -14,15 +14,25 @@ public:
     virtual ~FrontendApplication() { }
     virtual void handleTickEvent();
 
-    void gotoMenuMainScreenNoTransition();
-    void gotoSetpointsScreenNoTransition();
+//    void gotoSetpointsScreenNoTransition();
+
+//    void gotoSettingsScreenNoTransition();
+    void gotoOptionsScreenNoTransition();
+    void gotoAboutMeScreenNoTransition();
+    void gotoVisualizeScreenNoTransition();
+    void gotoDeviceScreenNoTransition();
 
 protected:
     touchgfx::Callback<FrontendApplication> transitionCallback;
 
 private:
-    void gotoMenuMainScreenNoTransitionImpl();
-    void gotoSetpointsScreenNoTransitionImpl();
+//    void gotoSetpointsScreenNoTransitionImpl();
+
+//    void gotoSettingsScreenNoTransitionImpl();
+    void gotoOptionsScreenNoTransitionImpl();
+    void gotoAboutMeScreenNoTransitionImpl();
+    void gotoVisualizeScreenNoTransitionImpl();
+    void gotoDeviceScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATION_HPP

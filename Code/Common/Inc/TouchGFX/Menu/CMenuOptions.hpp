@@ -10,41 +10,43 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMenuSettings.cpp
+//         File : CMenuOptions.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Settings menu class implementation file
+//  Description : Options menu class header file
 //=============================================================================
+#ifndef CMENU_OPTIONS_HPP
+#define CMENU_OPTIONS_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-//#include <Menu/CMenuSettings.hpp>
+#include <Menu/CMenu.hpp>
+#include <Menu/CMenuItem.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
-//namespace touchgfx
-//{
-//
+namespace touchgfx
+{
+
 //=============================================================================
-//  C O N S T R U C T I O N
+//  C L A S S E S
 //-----------------------------------------------------------------------------
-//CMenuSettings::CMenuSettings(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback)
-//              :CMenu(ownerContainer, callback)
-//{
-//	setTitle(title);
-//
-//	menuItems[0].setButtonText(itemOptions);
-//	menuItems[1].setButtonText(itemAboutMe);
-//	menuItems[2].setButtonText(itemVisualize);
-//	menuItems[3].setButtonText(itemDevice);
-//	setItems(menuItems, menuItemsCount, callback);
-//
-//	transpose();
-//
-//	home.setVisible(false);
-//	back.setVisible(false);
-//}
-//
-//}   //namespace touchgfx
+class CMenuOptions : public CMenu
+{
+public:
+	CMenuOptions(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+	            :CMenu(owner, callback)
+	{
+		setTitle(T_MENU_OPTIONS_TITLE);
+
+		transpose();
+	}
+};
+
+}   //namespace touchgfx
+
+
+#endif   //CMENU_OPTIONS_HPP

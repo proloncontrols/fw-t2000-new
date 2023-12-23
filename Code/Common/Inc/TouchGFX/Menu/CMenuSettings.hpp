@@ -36,34 +36,23 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CMenuSettings : public CMenu
 {
-	const TypedText& title = T_MENU_SETTINGS_TITLE;
-
-	const TypedText& itemOptions   = T_MENU_SETTINGS_OPTIONS;
-	const TypedText& itemAboutMe   = T_MENU_SETTINGS_ABOUT_ME;
-	const TypedText& itemVisualize = T_MENU_SETTINGS_VISUALIZE;
-	const TypedText& itemDevice    = T_MENU_SETTINGS_DEVICE;
-
 	static const int menuItemsCount = 4;
-
 	CMenuItem menuItems[menuItemsCount];
 
 public:
-//	CMenuSettings(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback);
-
 	CMenuSettings(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
 	             :CMenu(owner, callback)
 	{
-		setTitle(title);
+		setTitle(T_MENU_SETTINGS_TITLE);
 
-		menuItems[0].setButtonText(itemOptions);
-		menuItems[1].setButtonText(itemAboutMe);
-		menuItems[2].setButtonText(itemVisualize);
-		menuItems[3].setButtonText(itemDevice);
+		menuItems[0].setButtonText(T_MENU_SETTINGS_OPTIONS);
+		menuItems[1].setButtonText(T_MENU_SETTINGS_ABOUT_ME);
+		menuItems[2].setButtonText(T_MENU_SETTINGS_VISUALIZE);
+		menuItems[3].setButtonText(T_MENU_SETTINGS_DEVICE);
 		setItems(menuItems, menuItemsCount, callback);
 
 		transpose();
 
-		home.setVisible(false);
 		back.setVisible(false);
 	}
 };

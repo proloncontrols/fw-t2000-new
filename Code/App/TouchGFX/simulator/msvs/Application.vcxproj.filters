@@ -187,12 +187,6 @@
     <Filter Include="Source Files\gui\containers">
       <UniqueIdentifier>8FF737F6-D63F-B0BD-C9C0-EFFB7B557701</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\menumain_screen">
-      <UniqueIdentifier>028378B7-D482-6E76-3649-0DE481CAE53C</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\menumain_screen">
-      <UniqueIdentifier>952EFCB0-CFC6-2FC5-1115-DBC7ED57FFD1</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\home_screen">
       <UniqueIdentifier>FD1C3A71-030A-7081-17EF-DD9B8D7ED452</UniqueIdentifier>
     </Filter>
@@ -208,11 +202,65 @@
     <Filter Include="Header Files\gui\containers">
       <UniqueIdentifier>A656400B-DA1D-191F-2FD2-928A19C50BFF</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\menumain_screen">
-      <UniqueIdentifier>CF6072B0-B21D-4722-9655-55DDBC8E284A</UniqueIdentifier>
+    <Filter Include="Source Files\gui\settings_screen">
+      <UniqueIdentifier>E6062196-E9EC-5301-6095-EC027BC0BA6E</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\generated\gui_generated\menumain_screen">
-      <UniqueIdentifier>1D4D513C-622B-9169-42D7-D7FE2A93EA76</UniqueIdentifier>
+    <Filter Include="Header Files\gui\settings_screen">
+      <UniqueIdentifier>5AB32146-5E4C-2F43-D1E6-60C4367CE46A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\settings_screen">
+      <UniqueIdentifier>74AA68DF-6A5A-C55E-38ED-21D120C3B487</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\settings_screen">
+      <UniqueIdentifier>B3B562D0-3B10-ABAB-F046-28D8B5F1A9C7</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\device_screen">
+      <UniqueIdentifier>823E8C43-2224-FF34-988F-C7C0D8271CEB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\options_screen">
+      <UniqueIdentifier>C72AC71D-23C0-918F-81EB-1839289A2DBB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\device_screen">
+      <UniqueIdentifier>D50003B4-2804-5D2B-A46D-15184DAB7A3E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\options_screen">
+      <UniqueIdentifier>92CE4FB2-7B62-6906-F20F-9C7F0AEAAE4B</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\visualize_screen">
+      <UniqueIdentifier>FE2844BA-7718-A04D-87D4-8EA6D80B1BAE</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\aboutme_screen">
+      <UniqueIdentifier>DF791F66-EE48-6828-621A-17489A730746</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\aboutme_screen">
+      <UniqueIdentifier>86FE298F-A91F-B7BB-A19F-4DA2A8D8302A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\visualize_screen">
+      <UniqueIdentifier>622217FB-D438-46AB-26F7-F043018A069C</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\aboutme_screen">
+      <UniqueIdentifier>A4117077-A42B-46E4-E3EA-4DE679455E7B</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\options_screen">
+      <UniqueIdentifier>7A32AE35-BFA9-14CA-B8AE-88B2B2A2499A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\options_screen">
+      <UniqueIdentifier>F783FF06-4798-1343-FFED-95A73B0005B2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\aboutme_screen">
+      <UniqueIdentifier>C7945250-D160-22FE-1BE0-CBBC491B9C7F</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\device_screen">
+      <UniqueIdentifier>72E248D5-5082-8F13-2D8E-016356AB2075</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\visualize_screen">
+      <UniqueIdentifier>83DAD445-DE4D-F46B-C17F-DF7F53C164D2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\visualize_screen">
+      <UniqueIdentifier>391DE4E2-5E65-FDDC-DC62-CBB602E76539</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\device_screen">
+      <UniqueIdentifier>92B71D79-A2B7-BC30-BC3F-45531ADC8230</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -261,9 +309,6 @@
     <ClCompile Include="..\..\gui\src\containers\cntTempInside.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainView.cpp">
-      <Filter>Source Files\gui\menumain_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\home_screen\HomePresenter.cpp">
       <Filter>Source Files\gui\home_screen</Filter>
     </ClCompile>
@@ -279,11 +324,50 @@
     <ClCompile Include="..\..\gui\src\containers\SetpointHeat.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainPresenter.cpp">
-      <Filter>Source Files\gui\menumain_screen</Filter>
+    <ClCompile Include="..\..\gui\src\settings_screen\SettingsPresenter.cpp">
+      <Filter>Source Files\gui\settings_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\menumain_screen\MenuMainViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\menumain_screen</Filter>
+    <ClCompile Include="..\..\gui\src\settings_screen\SettingsView.cpp">
+      <Filter>Source Files\gui\settings_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\settings_screen\SettingsViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\settings_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\aboutme_screen\AboutMePresenter.cpp">
+      <Filter>Source Files\gui\aboutme_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\aboutme_screen\AboutMeView.cpp">
+      <Filter>Source Files\gui\aboutme_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\aboutme_screen\AboutMeViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\aboutme_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\device_screen\DevicePresenter.cpp">
+      <Filter>Source Files\gui\device_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\device_screen\DeviceView.cpp">
+      <Filter>Source Files\gui\device_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\device_screen\DeviceViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\device_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\options_screen\OptionsPresenter.cpp">
+      <Filter>Source Files\gui\options_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\options_screen\OptionsView.cpp">
+      <Filter>Source Files\gui\options_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\options_screen\OptionsViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\options_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\visualize_screen\VisualizePresenter.cpp">
+      <Filter>Source Files\gui\visualize_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\visualize_screen\VisualizeView.cpp">
+      <Filter>Source Files\gui\visualize_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\visualize_screen\VisualizeViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\visualize_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -736,9 +820,6 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\splash_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainView.hpp">
-      <Filter>Header Files\gui\menumain_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\home_screen\HomePresenter.hpp">
       <Filter>Header Files\gui\home_screen</Filter>
     </ClInclude>
@@ -754,11 +835,50 @@
     <ClInclude Include="..\..\gui\include\gui\containers\SetpointHeat.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainPresenter.hpp">
-      <Filter>Header Files\gui\menumain_screen</Filter>
+    <ClInclude Include="..\..\gui\include\gui\settings_screen\SettingsPresenter.hpp">
+      <Filter>Header Files\gui\settings_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\menumain_screen\MenuMainViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\menumain_screen</Filter>
+    <ClInclude Include="..\..\gui\include\gui\settings_screen\SettingsView.hpp">
+      <Filter>Header Files\gui\settings_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\settings_screen\SettingsViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\settings_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\aboutme_screen\AboutMePresenter.hpp">
+      <Filter>Header Files\gui\aboutme_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\aboutme_screen\AboutMeView.hpp">
+      <Filter>Header Files\gui\aboutme_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\aboutme_screen\AboutMeViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\aboutme_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\device_screen\DevicePresenter.hpp">
+      <Filter>Header Files\gui\device_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\device_screen\DeviceView.hpp">
+      <Filter>Header Files\gui\device_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\device_screen\DeviceViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\device_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\options_screen\OptionsPresenter.hpp">
+      <Filter>Header Files\gui\options_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\options_screen\OptionsView.hpp">
+      <Filter>Header Files\gui\options_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\options_screen\OptionsViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\options_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\visualize_screen\VisualizePresenter.hpp">
+      <Filter>Header Files\gui\visualize_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\visualize_screen\VisualizeView.hpp">
+      <Filter>Header Files\gui\visualize_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\visualize_screen\VisualizeViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\visualize_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -13,8 +13,16 @@
 #include <gui/splash_screen/SplashPresenter.hpp>
 #include <gui/home_screen/HomeView.hpp>
 #include <gui/home_screen/HomePresenter.hpp>
-#include <gui/menumain_screen/MenuMainView.hpp>
-#include <gui/menumain_screen/MenuMainPresenter.hpp>
+#include <gui/settings_screen/SettingsView.hpp>
+#include <gui/settings_screen/SettingsPresenter.hpp>
+#include <gui/options_screen/OptionsView.hpp>
+#include <gui/options_screen/OptionsPresenter.hpp>
+#include <gui/aboutme_screen/AboutMeView.hpp>
+#include <gui/aboutme_screen/AboutMePresenter.hpp>
+#include <gui/visualize_screen/VisualizeView.hpp>
+#include <gui/visualize_screen/VisualizePresenter.hpp>
+#include <gui/device_screen/DeviceView.hpp>
+#include <gui/device_screen/DevicePresenter.hpp>
 
 using namespace touchgfx;
 
@@ -33,15 +41,15 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
  * Screen Transition Declarations
  */
 
-// Splash
+// Settings
 
-void FrontendApplicationBase::gotoSplashScreenNoTransition()
+void FrontendApplicationBase::gotoSettingsScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoSplashScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoSettingsScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoSplashScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoSettingsScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<SplashView, SplashPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<SettingsView, SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

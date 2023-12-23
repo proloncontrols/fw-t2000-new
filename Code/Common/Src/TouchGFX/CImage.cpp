@@ -33,7 +33,6 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 void CImage::transpose()
 {
-	setWidthHeight(getWidth()+1, getHeight()+1);   //Increase container to make sure the image fits since its position is (1.0, 1.0)
 	setBitmapPosition(1.0f, 1.0f);
 	setScale(1.0f);
     setOrigo((float)(getWidth()/2), (float)(getHeight()/2), 1000.0f);
@@ -42,9 +41,14 @@ void CImage::transpose()
 	setRenderingAlgorithm(TextureMapper::NEAREST_NEIGHBOR);
 
 	if(dsp.orientation == CDisplay::NATIVE)
+	{
+		setWidthHeight(getWidth()+1, getHeight()+1);   //Increase container size to make sure the image fits since its position is (1.0, 1.0)
 		setAngles(0.0f, 0.0f, 0.0f);
+	}
 	else
 	{
+		setWidthHeight(getWidth()-1, getHeight()-1);   //Increase container size here also but by substracting instead of adding since the image will be transposed
+
 		if(dsp.orientation == CDisplay::LANDSCAPE)
 		    setAngles(0.0f, 0.0f, zAngleLandscape);
 

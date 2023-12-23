@@ -27,6 +27,30 @@
         <Translation Language="French">Module</Translation>
       </Text>
     </TextGroup>
+    <TextGroup Id="MenuOptions">
+      <Text Id="MENU_OPTIONS_TITLE" Alignment="Left" TypographyId="MenuTitle">
+        <Translation Language="GB">Options</Translation>
+        <Translation Language="French">Options</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="MenuAboutMe">
+      <Text Id="MENU_ABOUT_ME_TITLE" Alignment="Left" TypographyId="MenuTitle">
+        <Translation Language="GB">About me</Translation>
+        <Translation Language="French">À propos de moi</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="MenuVisualize">
+      <Text Id="MENU_VISUALIZE_TITLE" Alignment="Left" TypographyId="MenuTitle">
+        <Translation Language="GB">Visualize</Translation>
+        <Translation Language="French">Visualiser</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="MenuDevice">
+      <Text Id="MENU_DEVICE_TITLE" Alignment="Left" TypographyId="MenuTitle">
+        <Translation Language="GB">Device</Translation>
+        <Translation Language="French">Module</Translation>
+      </Text>
+    </TextGroup>
     <TextGroup Id="Gauge">
       <Text Id="GAUGE_TEMPERATURE_INTERIOR_LARGE" Alignment="Left" TypographyId="GaugeTempIntLarge">
         <Translation Language="GB">&lt;value&gt;</Translation>

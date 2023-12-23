@@ -26,14 +26,26 @@
     <ClCompile Include="..\..\generated\gui_generated\src\splash_screen\SplashViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\cntBlue.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\cntTempInside.cpp"/>
-    <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainView.cpp"/>
     <ClCompile Include="..\..\gui\src\home_screen\HomePresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\home_screen\HomeView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\home_screen\HomeViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\SetpointCool.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\SetpointHeat.cpp"/>
-    <ClCompile Include="..\..\gui\src\menumain_screen\MenuMainPresenter.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\menumain_screen\MenuMainViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\settings_screen\SettingsPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\settings_screen\SettingsView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\settings_screen\SettingsViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\aboutme_screen\AboutMePresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\aboutme_screen\AboutMeView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\aboutme_screen\AboutMeViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\device_screen\DevicePresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\device_screen\DeviceView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\device_screen\DeviceViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\options_screen\OptionsPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\options_screen\OptionsView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\options_screen\OptionsViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\visualize_screen\VisualizePresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\visualize_screen\VisualizeView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\visualize_screen\VisualizeViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -187,14 +199,26 @@
     <ClInclude Include="..\..\gui\include\gui\splash_screen\SplashPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\splash_screen\SplashView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\splash_screen\SplashViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainView.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\home_screen\HomePresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\home_screen\HomeView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\home_screen\HomeViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\SetpointCool.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\SetpointHeat.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\menumain_screen\MenuMainPresenter.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\menumain_screen\MenuMainViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\settings_screen\SettingsPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\settings_screen\SettingsView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\settings_screen\SettingsViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\aboutme_screen\AboutMePresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\aboutme_screen\AboutMeView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\aboutme_screen\AboutMeViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\device_screen\DevicePresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\device_screen\DeviceView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\device_screen\DeviceViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\options_screen\OptionsPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\options_screen\OptionsView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\options_screen\OptionsViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\visualize_screen\VisualizePresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\visualize_screen\VisualizeView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\visualize_screen\VisualizeViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

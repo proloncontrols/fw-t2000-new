@@ -1,8 +1,8 @@
 #include <gui/splash_screen/SplashView.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
-#include <CDisplay.hpp>
-#include <BitmapDatabase.hpp>
-#include <touchgfx/Color.hpp>
+//#include <texts/TextKeysAndLanguages.hpp>
+//#include <CDisplay.hpp>
+//#include <BitmapDatabase.hpp>
+//#include <touchgfx/Color.hpp>
 
 //static bool celsius = true;
 //static float temp = -21;
@@ -11,7 +11,7 @@
 //static uint8_t humidity = 0;
 
 SplashView::SplashView()
-           :buttonCallback(this, &SplashView::buttonCallbackHandler)
+//           :buttonCallback(this, &SplashView::buttonCallbackHandler)
 {
 //	if(dsp.orientation == CDisplay::PORTRAIT)
 //		__background.setPosition(0, 0, 672, 720);
@@ -160,16 +160,16 @@ void SplashView::moveIt()
 //	invalidate();
 }
 
-int tmp = 0;
-void SplashView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
-{
-	CMenu::ButtonId id = menu.getButtonId(src);
-
-	if(id)
-	{
-		tmp++;
-	}
-}
+//int tmp = 0;
+//void SplashView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+//{
+//	CMenu::ButtonId id = menu.getButtonId(src);
+//
+//	if(id)
+//	{
+//		tmp++;
+//	}
+//}
 
 
 
