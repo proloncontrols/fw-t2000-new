@@ -21,30 +21,30 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Menu/CMenuSettings.hpp>
+//#include <Menu/CMenuSettings.hpp>
 
 
-namespace touchgfx
-{
-
+//namespace touchgfx
+//{
+//
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMenuSettings::CMenuSettings(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback)
-              :CMenu(ownerContainer, callback)
-{
-	setTitle(title);
-
-	menuItems[0].setButtonText(itemOptions);
-	menuItems[1].setButtonText(itemAboutMe);
-	menuItems[2].setButtonText(itemVisualize);
-	menuItems[3].setButtonText(itemDevice);
-	setItems(menuItems, menuItemsCount, callback);
-
-	transpose();
-
-	home.setVisible(false);
-	back.setVisible(false);
-}
-
-}   //namespace touchgfx
+//CMenuSettings::CMenuSettings(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback)
+//              :CMenu(ownerContainer, callback)
+//{
+//	setTitle(title);
+//
+//	menuItems[0].setButtonText(itemOptions);
+//	menuItems[1].setButtonText(itemAboutMe);
+//	menuItems[2].setButtonText(itemVisualize);
+//	menuItems[3].setButtonText(itemDevice);
+//	setItems(menuItems, menuItemsCount, callback);
+//
+//	transpose();
+//
+//	home.setVisible(false);
+//	back.setVisible(false);
+//}
+//
+//}   //namespace touchgfx

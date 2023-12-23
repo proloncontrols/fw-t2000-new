@@ -71,7 +71,7 @@ public:
 		buttonUser =  0
 	} ButtonId;
 
-	CMenu(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback);
+	CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback);
 
 	ButtonId getButtonId(const AbstractButtonContainer& src);
 	void transpose();

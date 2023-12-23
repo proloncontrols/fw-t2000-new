@@ -70,7 +70,7 @@ namespace touchgfx
 class CScreen
 {
 public:
-	CScreen(Container& ownerContainer);
+	CScreen(Container& owner);
 
 	Container client;
 

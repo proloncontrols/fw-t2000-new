@@ -48,7 +48,24 @@ class CMenuSettings : public CMenu
 	CMenuItem menuItems[menuItemsCount];
 
 public:
-	CMenuSettings(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback);
+//	CMenuSettings(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback);
+
+	CMenuSettings(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+	             :CMenu(owner, callback)
+	{
+		setTitle(title);
+
+		menuItems[0].setButtonText(itemOptions);
+		menuItems[1].setButtonText(itemAboutMe);
+		menuItems[2].setButtonText(itemVisualize);
+		menuItems[3].setButtonText(itemDevice);
+		setItems(menuItems, menuItemsCount, callback);
+
+		transpose();
+
+		home.setVisible(false);
+		back.setVisible(false);
+	}
 };
 
 }   //namespace touchgfx

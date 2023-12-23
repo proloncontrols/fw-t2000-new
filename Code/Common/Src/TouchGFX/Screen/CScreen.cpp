@@ -32,8 +32,8 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CScreen::CScreen(Container& ownerContainer)
-		:container(ownerContainer)
+CScreen::CScreen(Container& owner)
+		:container(owner)
 {
 	container.removeAll();
 

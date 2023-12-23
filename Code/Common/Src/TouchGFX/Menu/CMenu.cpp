@@ -33,8 +33,8 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMenu::CMenu(Container& ownerContainer, GenericCallback<const AbstractButtonContainer&>& callback)
-      :CScreen(ownerContainer)
+CMenu::CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+      :CScreen(owner)
 {
 	client.add(home);
 	home.setXY(1, 1);
