@@ -3,6 +3,8 @@
 
 #include <gui_generated/common/FrontendApplicationBase.hpp>
 
+#include <Screen/CScreen.hpp>
+
 class FrontendHeap;
 
 using namespace touchgfx;
@@ -10,15 +12,6 @@ using namespace touchgfx;
 class FrontendApplication : public FrontendApplicationBase
 {
 public:
-	typedef enum {
-		Home,
-		Settings,
-		Options,
-		AboutMe,
-		Visualize,
-		Device
-	} ScreenId;
-
 	FrontendApplication(Model& m, FrontendHeap& heap);
     virtual ~FrontendApplication() { }
     virtual void handleTickEvent();
@@ -27,7 +20,7 @@ public:
 
 //    void gotoSettingsScreenNoTransition();
 
-    void gotoScreen(ScreenId newScreen);
+    void gotoScreen(ScreenId nextScreen);
 
 //    void gotoOptionsScreenNoTransition();
 //    void gotoAboutMeScreenNoTransition();
@@ -41,8 +34,15 @@ private:
 //    void gotoSetpointsScreenNoTransitionImpl();
 
 //    void gotoSettingsScreenNoTransitionImpl();
+
+//    void gotoHomeScreenNoTransitionImpl();
+
+    //Home screen
+    void gotoSettingsScreenNoTransitionImpl();
+
+    //Settings screen
     void gotoOptionsScreenNoTransitionImpl();
-    void gotoAboutMeScreenNoTransitionImpl();
+    void gotoAboutmeScreenNoTransitionImpl();
     void gotoVisualizeScreenNoTransitionImpl();
     void gotoDeviceScreenNoTransitionImpl();
 };

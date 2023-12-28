@@ -1,7 +1,8 @@
 #include <gui/settings_screen/SettingsView.hpp>
+#include <Screen/CScreen.hpp>
 
 SettingsView::SettingsView()
-             :buttonCallback(this, &SettingsView::buttonCallbackHandler)
+             :buttonCallback(this, &SettingsView::onButtonClicked)
 {
 
 }
@@ -16,19 +17,22 @@ void SettingsView::tearDownScreen()
     SettingsViewBase::tearDownScreen();
 }
 
-void SettingsView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+void SettingsView::onButtonClicked(const touchgfx::AbstractButtonContainer& src)
 {
-	CMenu::ButtonId id = menu.getButtonId(src);
+	ButtonId id = menu.getButtonId(src);
 
-	if(id == CMenu::buttonUser)
-		application().gotoScreen(FrontendApplication::ScreenId::Options);
+	if(id == ButtonId::ButtonHome)
+		application().gotoScreen(ScreenId::ScreenHome);
 
-	else if(id == CMenu::buttonUser+1)
-		application().gotoScreen(FrontendApplication::ScreenId::AboutMe);
+	else if(id == ButtonId::ButtonUser)
+		application().gotoScreen(ScreenId::ScreenOptions);
 
-	else if(id == CMenu::buttonUser+2)
-		application().gotoScreen(FrontendApplication::ScreenId::Visualize);
+	else if(id == ButtonId::ButtonUser+1)
+		application().gotoScreen(ScreenId::ScreenAboutme);
 
-	else if(id == CMenu::buttonUser+3)
-		application().gotoScreen(FrontendApplication::ScreenId::Device);
+	else if(id == ButtonId::ButtonUser+2)
+		application().gotoScreen(ScreenId::ScreenVisualize);
+
+	else if(id == ButtonId::ButtonUser+3)
+		application().gotoScreen(ScreenId::ScreenDevice);
 }

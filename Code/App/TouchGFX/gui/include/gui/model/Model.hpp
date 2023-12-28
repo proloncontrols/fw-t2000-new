@@ -1,12 +1,16 @@
 #ifndef MODEL_HPP
 #define MODEL_HPP
 
+#include <CApp.hpp>
+#include <Screen/CScreen.hpp>
 #include "env.h"
 
 class ModelListener;
 
 class Model
 {
+	touchgfx::ScreenId previousScreen;
+
 public:
     Model();
 
@@ -16,6 +20,20 @@ public:
     }
 
     void tick();
+
+    void setPreviousScreen(touchgfx::ScreenId id)
+    {
+    	previousScreen = id;
+    };
+
+    touchgfx::ScreenId getPreviousScreen()
+    {
+    	return previousScreen;
+    };
+
+
+
+
 
     void PostSystemReady();
     void PostSystemReset();

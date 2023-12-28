@@ -27,6 +27,9 @@ public:
 
     virtual ~HomePresenter() {};
 
+//    virtual void setPreviousScreen(touchgfx::CScreen::ScreenId id);
+//    virtual touchgfx::CScreen::ScreenId getPreviousScreen();
+
 private:
     HomePresenter();
 

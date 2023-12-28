@@ -62,6 +62,7 @@ public:
 
 	void setButtonText(const TypedText& textType);
     void setButtonAction(GenericCallback<const AbstractButtonContainer&>& callback);
+    void setButtonGotoScreenId(ScreenId id);
     CButton* getButton();
 
     void transpose();

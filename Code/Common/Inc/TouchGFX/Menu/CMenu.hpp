@@ -23,6 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <CApp.hpp>
 #include <CImage.hpp>
 #include <CButton.hpp>
 #include <Menu/CMenuItem.hpp>
@@ -30,6 +31,7 @@
 #include <BitmapDatabase.hpp>
 #include <touchgfx/Containers/Listlayout.hpp>
 #include <touchgfx/Containers/ScrollableContainer.hpp>
+
 
 namespace touchgfx
 {
@@ -52,25 +54,21 @@ class CMenu : public CScreen
 
 	CImage logo;
 	CImage line;
+	CLabel title;
 	ListLayout items;
 	ScrollableContainer scroll;
 
 protected:
 	CButton home;
 	CButton back;
-	CLabel title;
+//    Callback<CMenu, const AbstractButtonContainer&> internalButtonCallback;
 
-	void setTitle(const TypedText& textType);
+    void setTitle(const TypedText& textType);
 	void setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
+//    void internalButtonCallbackHandler(const AbstractButtonContainer& src);
 
 public:
-	typedef enum {
-		buttonNone = -3,
-		buttonHome = -2,
-		buttonBack = -1,
-		buttonUser =  0
-	} ButtonId;
-
+//	CMenu(Container& owner);
 	CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback);
 
 	ButtonId getButtonId(const AbstractButtonContainer& src);

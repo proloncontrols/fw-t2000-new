@@ -59,16 +59,39 @@ void FrontendApplication::handleTickEvent()
 
 
 
-void FrontendApplication::gotoScreen(ScreenId newScreen)
+void FrontendApplication::gotoScreen(ScreenId nextScreen)
 {
-//	switch(newScreen)
-//	{
-//		case Options:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoOptionsScreenNoTransitionImpl);   }
-//		case AboutMe:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoAboutMeScreenNoTransitionImpl);   }
-//		case Visualize: { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoVisualizeScreenNoTransitionImpl); }
-//		case Device:    { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoDeviceScreenNoTransitionImpl);    }
-//	}
-//    pendingScreenTransitionCallback = &transitionCallback;
+	switch(nextScreen)
+	{
+		//From any screen, goto:
+		case ScreenId::ScreenHome:       { gotoHomeScreenNoTransition(); return; }
+
+		//From Home screen, goto:
+		case ScreenId::ScreenSettings:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoSettingsScreenNoTransitionImpl);  break; }
+
+		//From Settings screen, goto:
+		case ScreenId::ScreenOptions:    { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoOptionsScreenNoTransitionImpl);   break; }
+		case ScreenId::ScreenAboutme:    { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoAboutmeScreenNoTransitionImpl);   break; }
+		case ScreenId::ScreenVisualize:  { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoVisualizeScreenNoTransitionImpl); break; }
+		case ScreenId::ScreenDevice:     { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoDeviceScreenNoTransitionImpl);    break; }
+
+		default: return;
+	}
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+
+
+//void FrontendApplication::gotoHomeScreenNoTransitionImpl()
+//{
+//    touchgfx::makeTransition<HomeView, HomePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+//}
+
+
+
+void FrontendApplication::gotoSettingsScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<SettingsView, SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 
@@ -90,7 +113,7 @@ void FrontendApplication::gotoOptionsScreenNoTransitionImpl()
 //    transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoAboutMeScreenNoTransitionImpl);
 //    pendingScreenTransitionCallback = &transitionCallback;
 //}
-void FrontendApplication::gotoAboutMeScreenNoTransitionImpl()
+void FrontendApplication::gotoAboutmeScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<AboutMeView, AboutMePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

@@ -65,6 +65,12 @@ void CMenuItem::setButtonAction(GenericCallback<const AbstractButtonContainer&>&
 }
 
 //-----------------------------------------------------------------------------
+void CMenuItem::setButtonGotoScreenId(ScreenId id)
+{
+	button.setGotoScreenId(id);
+}
+
+//-----------------------------------------------------------------------------
 CButton* CMenuItem::getButton()
 {
 	return &button;

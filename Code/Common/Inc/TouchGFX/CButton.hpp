@@ -23,8 +23,10 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <CApp.hpp>
 #include <CImage.hpp>
 #include <CLabel.hpp>
+#include <Screen/CScreen.hpp>
 #include <touchgfx/TypedText.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
@@ -74,6 +76,8 @@ class CButton : public AbstractButtonContainer
 	colortype textColorReleased;
 	colortype textColorPressed;
 	uint32_t data;   //User defined general purpose data associated with button
+	ScreenId ownerScreenId;
+	ScreenId gotoScreenId;
 
 	void validateText();
 
@@ -92,6 +96,11 @@ public:
 
 	void setData(uint32_t newData);
 	uint32_t getData();
+
+	void setOwnerScreenId(ScreenId id);
+
+	void setGotoScreenId(ScreenId id);
+	ScreenId getGotoScreenId();
 
 	void transpose();
 };

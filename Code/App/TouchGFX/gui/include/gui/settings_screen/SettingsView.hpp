@@ -9,17 +9,17 @@
 class SettingsView : public SettingsViewBase
 {
 public:
-    SettingsView();
-    virtual ~SettingsView() {}
-    virtual void setupScreen();
-    virtual void tearDownScreen();
+    touchgfx::Callback<SettingsView, const touchgfx::AbstractButtonContainer&> buttonCallback;
+    void onButtonClicked(const touchgfx::AbstractButtonContainer& src);
 
 protected:
     CMenuSettings menu = CMenuSettings(container, buttonCallback);
 
-private:
-    touchgfx::Callback<SettingsView, const touchgfx::AbstractButtonContainer&> buttonCallback;
-    void buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+public:
+    SettingsView();
+    virtual ~SettingsView() {}
+    virtual void setupScreen();
+    virtual void tearDownScreen();
 };
 
 #endif // SETTINGSVIEW_HPP

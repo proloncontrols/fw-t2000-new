@@ -10,43 +10,44 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMenuVisualize.hpp
+//         File : CApp.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Visualize menu class header file
+//  Description : Application constants class header file
 //=============================================================================
-#ifndef CMENU_VISUALIZE_HPP
-#define CMENU_VISUALIZE_HPP
+#ifndef CAPP_HPP
+#define CAPP_HPP
 
 
 //=============================================================================
-//  I N C L U D E S
+//  E N U M S
 //-----------------------------------------------------------------------------
-#include <Menu/CMenu.hpp>
-#include <Menu/CMenuItem.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
-
-
 namespace touchgfx
 {
 
-//=============================================================================
-//  C L A S S E S
-//-----------------------------------------------------------------------------
-class CMenuVisualize : public CMenu
-{
-public:
-	CMenuVisualize( Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
-	              :CMenu(owner, callback)
-	{
-		setTitle(T_MENU_VISUALIZE_TITLE);
+typedef enum {
+	ScreenNone,
+	//-----
+	ScreenHome,
+	//-----
+	ScreenSettings,
+	ScreenOptions,
+	ScreenAboutme,
+	ScreenVisualize,
+	ScreenDevice,
+	//-----
+	ScreenSetpoints
+} ScreenId;
 
-		transpose();
-	}
-};
+typedef enum {
+	ButtonNone = -3,
+	ButtonHome = -2,
+	ButtonBack = -1,
+	ButtonUser =  0
+} ButtonId;
 
 }   //namespace touchgfx
 
 
-#endif   //CMENU_VISUALIZE_HPP
+#endif   //CAPP_HPP

@@ -23,6 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <CApp.hpp>
 #include <touchgfx/Widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
 
@@ -69,15 +70,16 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CScreen
 {
+	Box frame;
+	Box background;
+	Container& container;
+
 public:
 	CScreen(Container& owner);
 
 	Container client;
-
-private:
-	Box frame;
-	Box background;
-	Container& container;
+	ScreenId id;
+	ScreenId previous;
 };
 
 }   //namespace touchgfx
