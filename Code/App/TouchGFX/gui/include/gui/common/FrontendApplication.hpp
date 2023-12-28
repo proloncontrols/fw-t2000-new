@@ -11,32 +11,6 @@ using namespace touchgfx;
 
 class FrontendApplication : public FrontendApplicationBase
 {
-public:
-	FrontendApplication(Model& m, FrontendHeap& heap);
-    virtual ~FrontendApplication() { }
-    virtual void handleTickEvent();
-
-//    void gotoSetpointsScreenNoTransition();
-
-//    void gotoSettingsScreenNoTransition();
-
-    void gotoScreen(ScreenId nextScreen);
-
-//    void gotoOptionsScreenNoTransition();
-//    void gotoAboutMeScreenNoTransition();
-//    void gotoVisualizeScreenNoTransition();
-//    void gotoDeviceScreenNoTransition();
-
-protected:
-    touchgfx::Callback<FrontendApplication> transitionCallback;
-
-private:
-//    void gotoSetpointsScreenNoTransitionImpl();
-
-//    void gotoSettingsScreenNoTransitionImpl();
-
-//    void gotoHomeScreenNoTransitionImpl();
-
     //Home screen
     void gotoSettingsScreenNoTransitionImpl();
 
@@ -45,6 +19,16 @@ private:
     void gotoAboutmeScreenNoTransitionImpl();
     void gotoVisualizeScreenNoTransitionImpl();
     void gotoDeviceScreenNoTransitionImpl();
+
+protected:
+    touchgfx::Callback<FrontendApplication> transitionCallback;
+
+public:
+	FrontendApplication(Model& m, FrontendHeap& heap);
+    virtual ~FrontendApplication() { }
+    virtual void handleTickEvent();
+
+    void gotoScreen(ScreenId nextScreen);
 };
 
 #endif // FRONTENDAPPLICATION_HPP

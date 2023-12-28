@@ -18,9 +18,6 @@ public:
     virtual ~HomeView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-
-//    virtual void setPreviousScreen(touchgfx::CScreen::ScreenId id);
-//    virtual touchgfx::CScreen::ScreenId getPreviousScreen();
 };
 
 #endif // HOMEVIEW_HPP

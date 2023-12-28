@@ -5,7 +5,7 @@
 #include <touchgfx/Bitmap.hpp>
 
 extern const unsigned char image_cooling_on_576x576[]; // BITMAP_COOLING_ON_576X576_ID = 0, Size: 576x576 pixels
-extern const unsigned char image_home[]; // BITMAP_HOME_ID = 1, Size: 60x60 pixels
+extern const unsigned char image_home_60x60[]; // BITMAP_HOME_60X60_ID = 1, Size: 60x60 pixels
 extern const unsigned char image_humidity_30x30[]; // BITMAP_HUMIDITY_30X30_ID = 2, Size: 30x30 pixels
 extern const unsigned char image_menu_button_496x496x76[]; // BITMAP_MENU_BUTTON_496X496X76_ID = 3, Size: 496x496 pixels
 extern const unsigned char image_menu_line_gray_494x494x4[]; // BITMAP_MENU_LINE_GRAY_494X494X4_ID = 4, Size: 494x494 pixels
@@ -21,7 +21,7 @@ extern const unsigned char image_standby_mode_58x58[]; // BITMAP_STANDBY_MODE_58
 
 const touchgfx::Bitmap::BitmapData bitmap_database[] = {
     { image_cooling_on_576x576, 0, 576, 576, 116, 109, 344, ((uint8_t)touchgfx::Bitmap::ARGB8888) >> 3, 344, ((uint8_t)touchgfx::Bitmap::ARGB8888) & 0x7 },
-    { image_home, 0, 60, 60, 36, 28, 15, ((uint8_t)touchgfx::Bitmap::ARGB8888) >> 3, 20, ((uint8_t)touchgfx::Bitmap::ARGB8888) & 0x7 },
+    { image_home_60x60, 0, 60, 60, 36, 28, 15, ((uint8_t)touchgfx::Bitmap::ARGB8888) >> 3, 20, ((uint8_t)touchgfx::Bitmap::ARGB8888) & 0x7 },
     { image_humidity_30x30, 0, 30, 30, 4, 8, 12, ((uint8_t)touchgfx::Bitmap::ARGB8888) >> 3, 20, ((uint8_t)touchgfx::Bitmap::ARGB8888) & 0x7 },
     { image_menu_button_496x496x76, 0, 496, 496, 28, 1, 440, ((uint8_t)touchgfx::Bitmap::ARGB8888) >> 3, 71, ((uint8_t)touchgfx::Bitmap::ARGB8888) & 0x7 },
     { image_menu_line_gray_494x494x4, 0, 494, 494, 0, 0, 494, ((uint8_t)touchgfx::Bitmap::ARGB8888) >> 3, 3, ((uint8_t)touchgfx::Bitmap::ARGB8888) & 0x7 },

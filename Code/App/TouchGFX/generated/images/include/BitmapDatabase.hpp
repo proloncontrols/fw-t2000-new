@@ -7,7 +7,7 @@
 #include <touchgfx/Bitmap.hpp>
 
 const uint16_t BITMAP_COOLING_ON_576X576_ID = 0;
-const uint16_t BITMAP_HOME_ID = 1;
+const uint16_t BITMAP_HOME_60X60_ID = 1;
 const uint16_t BITMAP_HUMIDITY_30X30_ID = 2;
 const uint16_t BITMAP_MENU_BUTTON_496X496X76_ID = 3;
 const uint16_t BITMAP_MENU_LINE_GRAY_494X494X4_ID = 4;

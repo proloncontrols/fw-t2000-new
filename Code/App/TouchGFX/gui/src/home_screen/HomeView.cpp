@@ -8,13 +8,11 @@ HomeView::HomeView()
 void HomeView::setupScreen()
 {
     HomeViewBase::setupScreen();
-//    screen.previous = presenter->getPreviousScreen();
 }
 
 void HomeView::tearDownScreen()
 {
     HomeViewBase::tearDownScreen();
-//    presenter->setPreviousScreen(screen.id);
 }
 
 void HomeView::onButtonClicked(const AbstractButtonContainer& src)
