@@ -48,8 +48,6 @@ public:
 	CScreenHome(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
                :CScreen(owner)
 	{
-		id = ScreenId::ScreenHome;
-
 		client.add(logo);
 		logo.setBitmap(BITMAP_PROLON_178X178_ID);
 		logo.setXY((client.getWidth() - logo.getWidth()) / 2, 0);

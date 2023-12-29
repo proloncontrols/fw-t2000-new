@@ -22,7 +22,27 @@
         "Interactions": []
       },
       {
-        "Name": "AboutMe",
+        "Name": "Language",
+        "Components": [],
+        "Interactions": []
+      },
+      {
+        "Name": "Unit",
+        "Components": [],
+        "Interactions": []
+      },
+      {
+        "Name": "Time",
+        "Components": [],
+        "Interactions": []
+      },
+      {
+        "Name": "Orientation",
+        "Components": [],
+        "Interactions": []
+      },
+      {
+        "Name": "Aboutme",
         "Components": [],
         "Interactions": []
       },
@@ -44,7 +64,7 @@
       "Height": 672
     },
     "SelectedColorDepth": 32,
-    "StartupScreenName": "Home",
+    "StartupScreenName": "Splash",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",

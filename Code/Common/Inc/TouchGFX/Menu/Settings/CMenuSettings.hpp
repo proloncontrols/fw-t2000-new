@@ -10,34 +10,62 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CScreenSplash.cpp
+//         File : CMenuSettings.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Splash screen class implementation file
+//  Description : Settings menu class header file
 //=============================================================================
+#ifndef CMENU_SETTINGS_HPP
+#define CMENU_SETTINGS_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Screen/CScreenSplash.hpp>
-#include <BitmapDatabase.hpp>
+#include <Menu/CMenu.hpp>
+#include <Menu/CMenuItem.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C O N S T R U C T I O N
+//  C L A S S E S
 //-----------------------------------------------------------------------------
-CScreenSplash::CScreenSplash(Container& owner)
-		      :CScreen(owner)
+class CMenuSettings : public CMenu
 {
-	client.add(logo);
-	logo.setBitmap(BITMAP_PROLONLOGO470X470_ID);
-	logo.setXY((client.getWidth() - logo.getWidth()) / 2, 130);
-	logo.transpose();
-}
+	static const int menuItemsCount = 4;
+	CMenuItem menuItems[menuItemsCount];
+
+public:
+	CMenuSettings(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+	             :CMenu(owner, callback)
+	{
+		setTitle(T_MENU_SETTINGS_TITLE);
+
+		menuItems[0].setButtonText(T_MENU_SETTINGS_OPTIONS);
+		menuItems[0].setButtonGotoScreenId(ScreenId::ScreenOptions);
+
+		menuItems[1].setButtonText(T_MENU_SETTINGS_ABOUTME);
+		menuItems[1].setButtonGotoScreenId(ScreenId::ScreenAboutme);
+
+		menuItems[2].setButtonText(T_MENU_SETTINGS_VISUALIZE);
+		menuItems[2].setButtonGotoScreenId(ScreenId::ScreenVisualize);
+
+		menuItems[3].setButtonText(T_MENU_SETTINGS_DEVICE);
+		menuItems[3].setButtonGotoScreenId(ScreenId::ScreenDevice);
+
+		setItems(menuItems, menuItemsCount, callback);
+
+		transpose();
+
+		back.setVisible(false);
+	}
+};
 
 }   //namespace touchgfx
+
+
+#endif   //CMENU_SETTINGS_HPP

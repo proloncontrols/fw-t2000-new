@@ -2,6 +2,7 @@
 
 SplashView::SplashView()
 {
+	splashTimer = CScreenSplash::SplashTime;
 }
 
 void SplashView::setupScreen()
@@ -12,4 +13,15 @@ void SplashView::setupScreen()
 void SplashView::tearDownScreen()
 {
     SplashViewBase::tearDownScreen();
+}
+
+void SplashView::handleTickEvent()
+{
+	SplashViewBase::handleTickEvent();
+
+	if(splashTimer > 0)
+	{
+		if(--splashTimer == 0)
+			application().gotoScreen(ScreenId::ScreenHome);
+	}
 }

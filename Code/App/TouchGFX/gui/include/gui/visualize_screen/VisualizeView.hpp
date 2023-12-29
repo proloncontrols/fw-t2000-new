@@ -4,7 +4,7 @@
 #include <gui_generated/visualize_screen/VisualizeViewBase.hpp>
 #include <gui/visualize_screen/VisualizePresenter.hpp>
 
-#include <Menu/CMenuVisualize.hpp>
+#include <Menu/Visualize/CMenuVisualize.hpp>
 
 class VisualizeView : public VisualizeViewBase
 {

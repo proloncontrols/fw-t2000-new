@@ -241,12 +241,6 @@
     <Filter Include="Source Files\generated\gui_generated\aboutme_screen">
       <UniqueIdentifier>A4117077-A42B-46E4-E3EA-4DE679455E7B</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\options_screen">
-      <UniqueIdentifier>7A32AE35-BFA9-14CA-B8AE-88B2B2A2499A</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\options_screen">
-      <UniqueIdentifier>F783FF06-4798-1343-FFED-95A73B0005B2</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\generated\gui_generated\aboutme_screen">
       <UniqueIdentifier>C7945250-D160-22FE-1BE0-CBBC491B9C7F</UniqueIdentifier>
     </Filter>
@@ -261,6 +255,66 @@
     </Filter>
     <Filter Include="Header Files\generated\gui_generated\device_screen">
       <UniqueIdentifier>92B71D79-A2B7-BC30-BC3F-45531ADC8230</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\language_screen">
+      <UniqueIdentifier>BB75822E-697D-BBCA-0F98-D5526835B060</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\language_screen">
+      <UniqueIdentifier>2EA7C01D-86E6-C968-0014-CC06CC4EA0DD</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\units_screen">
+      <UniqueIdentifier>49EFC129-0D36-99BF-3FDA-E5F0B1E080BB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\units_screen">
+      <UniqueIdentifier>837D60D3-5B9F-4D31-3AB9-D031A398505B</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\orientation_screen">
+      <UniqueIdentifier>8AD76BDB-AFAA-D9A4-4878-3109258ED95E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\orientation_screen">
+      <UniqueIdentifier>475E2C56-B5D5-1502-62A0-81FF6CC38858</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\time_screen">
+      <UniqueIdentifier>F438A87B-0599-FA73-EB21-A2AA3F56539C</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\time_screen">
+      <UniqueIdentifier>270FD93B-ECD9-BF90-6D78-5920C022AC41</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\time_screen">
+      <UniqueIdentifier>DB924F21-3602-7B65-5ED3-457D5506FFA4</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\time_screen">
+      <UniqueIdentifier>23A8A0B5-348A-5831-B105-254CEFA314A2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\orientation_screen">
+      <UniqueIdentifier>18C9C5C1-CF7C-D394-4DA9-2AAD853842E6</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\orientation_screen">
+      <UniqueIdentifier>3D86B6A4-B3B2-5BEF-B316-7B7A5259A073</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\options_screen">
+      <UniqueIdentifier>E11FBD75-4D87-7090-CE6E-186F994DE8CF</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\language_screen">
+      <UniqueIdentifier>0903525D-A4D4-0EDA-B5DF-C895A3F92F77</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\language_screen">
+      <UniqueIdentifier>B30E9234-A10B-EA07-2FE4-8ED490C2775B</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\options_screen">
+      <UniqueIdentifier>BF803068-5AE7-1730-30B5-722BB3F4BB50</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\unit_screen">
+      <UniqueIdentifier>CB2C04B8-F27B-308A-3A49-13CC8C981ED7</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\unit_screen">
+      <UniqueIdentifier>6D7E2B1A-3C72-6AED-ED2E-191A7D4D74B5</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\unit_screen">
+      <UniqueIdentifier>FB40CBF6-50D0-BB43-485D-FF18A5CA7519</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\unit_screen">
+      <UniqueIdentifier>2470C75D-5D11-EBF9-931E-407298D88BB1</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -333,14 +387,8 @@
     <ClCompile Include="..\..\generated\gui_generated\src\settings_screen\SettingsViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\settings_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\aboutme_screen\AboutMePresenter.cpp">
-      <Filter>Source Files\gui\aboutme_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\aboutme_screen\AboutMeView.cpp">
       <Filter>Source Files\gui\aboutme_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\aboutme_screen\AboutMeViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\aboutme_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\device_screen\DevicePresenter.cpp">
       <Filter>Source Files\gui\device_screen</Filter>
@@ -351,14 +399,8 @@
     <ClCompile Include="..\..\generated\gui_generated\src\device_screen\DeviceViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\device_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\options_screen\OptionsPresenter.cpp">
-      <Filter>Source Files\gui\options_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\options_screen\OptionsView.cpp">
       <Filter>Source Files\gui\options_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\options_screen\OptionsViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\options_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\visualize_screen\VisualizePresenter.cpp">
       <Filter>Source Files\gui\visualize_screen</Filter>
@@ -368,6 +410,57 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\visualize_screen\VisualizeViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\visualize_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\language_screen\LanguageView.cpp">
+      <Filter>Source Files\gui\language_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\units_screen\UnitsView.cpp">
+      <Filter>Source Files\gui\units_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\language_screen\LanguagePresenter.cpp">
+      <Filter>Source Files\gui\language_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\language_screen\LanguageViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\language_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\options_screen\OptionsPresenter.cpp">
+      <Filter>Source Files\gui\options_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\options_screen\OptionsViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\options_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\orientation_screen\OrientationPresenter.cpp">
+      <Filter>Source Files\gui\orientation_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\orientation_screen\OrientationView.cpp">
+      <Filter>Source Files\gui\orientation_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\orientation_screen\OrientationViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\orientation_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\time_screen\TimePresenter.cpp">
+      <Filter>Source Files\gui\time_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\time_screen\TimeView.cpp">
+      <Filter>Source Files\gui\time_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\time_screen\TimeViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\time_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\aboutme_screen\AboutmePresenter.cpp">
+      <Filter>Source Files\gui\aboutme_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\aboutme_screen\AboutmeViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\aboutme_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\unit_screen\UnitPresenter.cpp">
+      <Filter>Source Files\gui\unit_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\unit_screen\UnitView.cpp">
+      <Filter>Source Files\gui\unit_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\unit_screen\UnitViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\unit_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -844,14 +937,8 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\settings_screen\SettingsViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\settings_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\aboutme_screen\AboutMePresenter.hpp">
-      <Filter>Header Files\gui\aboutme_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\aboutme_screen\AboutMeView.hpp">
       <Filter>Header Files\gui\aboutme_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\aboutme_screen\AboutMeViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\aboutme_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\device_screen\DevicePresenter.hpp">
       <Filter>Header Files\gui\device_screen</Filter>
@@ -862,14 +949,8 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\device_screen\DeviceViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\device_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\options_screen\OptionsPresenter.hpp">
-      <Filter>Header Files\gui\options_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\options_screen\OptionsView.hpp">
       <Filter>Header Files\gui\options_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\options_screen\OptionsViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\options_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\visualize_screen\VisualizePresenter.hpp">
       <Filter>Header Files\gui\visualize_screen</Filter>
@@ -879,6 +960,57 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\visualize_screen\VisualizeViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\visualize_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\language_screen\LanguageView.hpp">
+      <Filter>Header Files\gui\language_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\units_screen\UnitsView.hpp">
+      <Filter>Header Files\gui\units_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\language_screen\LanguagePresenter.hpp">
+      <Filter>Header Files\gui\language_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\language_screen\LanguageViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\language_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\options_screen\OptionsPresenter.hpp">
+      <Filter>Header Files\gui\options_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\options_screen\OptionsViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\options_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\orientation_screen\OrientationPresenter.hpp">
+      <Filter>Header Files\gui\orientation_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\orientation_screen\OrientationView.hpp">
+      <Filter>Header Files\gui\orientation_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\orientation_screen\OrientationViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\orientation_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\time_screen\TimePresenter.hpp">
+      <Filter>Header Files\gui\time_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\time_screen\TimeView.hpp">
+      <Filter>Header Files\gui\time_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\time_screen\TimeViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\time_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\aboutme_screen\AboutmePresenter.hpp">
+      <Filter>Header Files\gui\aboutme_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\aboutme_screen\AboutmeViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\aboutme_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\unit_screen\UnitPresenter.hpp">
+      <Filter>Header Files\gui\unit_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\unit_screen\UnitView.hpp">
+      <Filter>Header Files\gui\unit_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\unit_screen\UnitViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\unit_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

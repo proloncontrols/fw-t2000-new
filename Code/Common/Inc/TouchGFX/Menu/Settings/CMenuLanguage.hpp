@@ -10,14 +10,14 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMenuAboutMe.hpp
+//         File : CMenuLanguage.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : About me menu class header file
+//  Description : Options language selection menu class header file
 //=============================================================================
-#ifndef CMENU_ABOUT_ME_HPP
-#define CMENU_ABOUT_ME_HPP
+#ifndef CMENU_LANGUAGE_HPP
+#define CMENU_LANGUAGE_HPP
 
 
 //=============================================================================
@@ -34,13 +34,23 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMenuAboutMe : public CMenu
+class CMenuLanguage : public CMenu
 {
+	static const int menuItemsCount = 2;
+	CMenuItem menuItems[menuItemsCount];
+
 public:
-	CMenuAboutMe(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
-	            :CMenu(owner, callback)
+	CMenuLanguage(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+	                    :CMenu(owner, callback)
 	{
-		setTitle(T_MENU_ABOUT_ME_TITLE);
+		previous = ScreenId::ScreenOptions;
+
+		setTitle(T_MENU_LANGUAGE_TITLE);
+
+		menuItems[0].setButtonText(T_MENU_LANGUAGE_ENGLISH);
+		menuItems[1].setButtonText(T_MENU_LANGUAGE_FRENCH);
+
+		setItems(menuItems, menuItemsCount, callback);
 
 		transpose();
 	}
@@ -49,4 +59,4 @@ public:
 }   //namespace touchgfx
 
 
-#endif   //CMENU_ABOUT_ME_HPP
+#endif   //CMENU_LANGUAGE_HPP

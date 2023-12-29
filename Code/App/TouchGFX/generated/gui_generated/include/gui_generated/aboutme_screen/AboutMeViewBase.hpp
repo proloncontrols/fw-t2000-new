@@ -6,14 +6,14 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <mvp/View.hpp>
-#include <gui/aboutme_screen/AboutMePresenter.hpp>
+#include <gui/aboutme_screen/AboutmePresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 
-class AboutMeViewBase : public touchgfx::View<AboutMePresenter>
+class AboutmeViewBase : public touchgfx::View<AboutmePresenter>
 {
 public:
-    AboutMeViewBase();
-    virtual ~AboutMeViewBase() {}
+    AboutmeViewBase();
+    virtual ~AboutmeViewBase() {}
     virtual void setupScreen();
 
 protected:

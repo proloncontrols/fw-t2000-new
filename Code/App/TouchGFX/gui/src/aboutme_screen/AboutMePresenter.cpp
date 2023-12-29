@@ -1,18 +1,18 @@
-#include <gui/aboutme_screen/AboutMeView.hpp>
-#include <gui/aboutme_screen/AboutMePresenter.hpp>
+#include <gui/aboutme_screen/AboutmeView.hpp>
+#include <gui/aboutme_screen/AboutmePresenter.hpp>
 
-AboutMePresenter::AboutMePresenter(AboutMeView& v)
+AboutmePresenter::AboutmePresenter(AboutmeView& v)
     : view(v)
 {
 
 }
 
-void AboutMePresenter::activate()
+void AboutmePresenter::activate()
 {
 
 }
 
-void AboutMePresenter::deactivate()
+void AboutmePresenter::deactivate()
 {
 
 }

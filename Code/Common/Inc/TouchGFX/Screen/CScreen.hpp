@@ -24,6 +24,8 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <CApp.hpp>
+#include <CDisplay.hpp>
+#include <touchgfx/Color.hpp>
 #include <touchgfx/Widgets/Box.hpp>
 #include <touchgfx/Containers/Container.hpp>
 
@@ -64,7 +66,7 @@
 
 namespace touchgfx
 {
-
+#define SHOW_FRAME
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
@@ -75,11 +77,34 @@ class CScreen
 	Container& container;
 
 public:
-	CScreen(Container& owner);
-
 	Container client;
-	ScreenId id;
 	ScreenId previous;
+
+	CScreen(Container& owner)
+	       :container(owner)
+	{
+		container.removeAll();
+
+		if(dsp.orientation != CDisplay::PORTRAIT)
+			container.setPosition(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT);
+		else
+			container.setPosition(0, 0, NATIVE_HEIGHT, NATIVE_WIDTH);
+
+		frame.setPosition(container);
+#ifdef SHOW_FRAME
+		frame.setColor(Color::getColorFromRGB(dsp.devFrameColorR, dsp.devFrameColorG, dsp.devFrameColorB));
+#else
+		frame.setColor(Color::getColorFromRGB(0, 0, 0));
+#endif
+		container.add(frame);
+
+		client.setPosition((frame.getWidth() - CLIENT_SIZE) / 2, (frame.getHeight() - CLIENT_SIZE) / 2, CLIENT_SIZE, CLIENT_SIZE);
+		container.add(client);
+
+		background.setWidthHeight(client);
+		background.setColor(Color::getColorFromRGB(0, 0, 0));
+		client.add(background);
+	}
 };
 
 }   //namespace touchgfx

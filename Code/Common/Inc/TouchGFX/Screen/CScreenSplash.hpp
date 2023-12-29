@@ -23,6 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <BitmapDatabase.hpp>
 #include <Screen/CScreen.hpp>
 #include <CImage.hpp>
 
@@ -35,11 +36,19 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CScreenSplash : public CScreen
 {
-public:
-	CScreenSplash(Container& owner);
-
-private:
 	CImage logo;
+
+public:
+	static const int SplashTime = 20;   //Splash screen display time (20 = 1 second)
+
+	CScreenSplash(Container& owner)
+                 :CScreen(owner)
+	{
+		client.add(logo);
+		logo.setBitmap(BITMAP_PROLONLOGO470X470_ID);
+		logo.setXY((client.getWidth() - logo.getWidth()) / 2, 130);
+		logo.transpose();
+	}
 };
 
 }   //namespace touchgfx

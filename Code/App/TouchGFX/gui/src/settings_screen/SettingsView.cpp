@@ -1,5 +1,4 @@
 #include <gui/settings_screen/SettingsView.hpp>
-#include <Screen/CScreen.hpp>
 
 SettingsView::SettingsView()
              :buttonCallback(this, &SettingsView::onButtonClicked)
@@ -24,15 +23,13 @@ void SettingsView::onButtonClicked(const touchgfx::AbstractButtonContainer& src)
 	if(id == ButtonId::ButtonHome)
 		application().gotoScreen(ScreenId::ScreenHome);
 
-	else if(id == ButtonId::ButtonUser)
-		application().gotoScreen(ScreenId::ScreenOptions);
+	else
+	{
+//		presenter->setPreviousScreen(menu.id);
 
-	else if(id == ButtonId::ButtonUser+1)
-		application().gotoScreen(ScreenId::ScreenAboutme);
-
-	else if(id == ButtonId::ButtonUser+2)
-		application().gotoScreen(ScreenId::ScreenVisualize);
-
-	else if(id == ButtonId::ButtonUser+3)
-		application().gotoScreen(ScreenId::ScreenDevice);
+		     if(id == ButtonId::ButtonUser)   application().gotoScreen(ScreenId::ScreenOptions);
+		else if(id == ButtonId::ButtonUser+1) application().gotoScreen(ScreenId::ScreenAboutme);
+		else if(id == ButtonId::ButtonUser+2) application().gotoScreen(ScreenId::ScreenVisualize);
+		else if(id == ButtonId::ButtonUser+3) application().gotoScreen(ScreenId::ScreenDevice);
+	}
 }

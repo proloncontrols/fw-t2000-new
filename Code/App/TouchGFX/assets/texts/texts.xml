@@ -14,7 +14,7 @@
         <Translation Language="GB">Options</Translation>
         <Translation Language="French">Options</Translation>
       </Text>
-      <Text Id="MENU_SETTINGS_ABOUT_ME" Alignment="Left" TypographyId="MenuButton">
+      <Text Id="MENU_SETTINGS_ABOUTME" Alignment="Left" TypographyId="MenuButton">
         <Translation Language="GB">About me</Translation>
         <Translation Language="French">À propos de moi</Translation>
       </Text>
@@ -32,8 +32,80 @@
         <Translation Language="GB">Options</Translation>
         <Translation Language="French">Options</Translation>
       </Text>
+      <Text Id="MENU_OPTIONS_LANGUAGE" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Language</Translation>
+        <Translation Language="French">Langue</Translation>
+      </Text>
+      <Text Id="MENU_OPTIONS_UNITS" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Temperature unit</Translation>
+        <Translation Language="French">Unité de température</Translation>
+      </Text>
+      <Text Id="MENU_OPTIONS_TIME" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Time format</Translation>
+        <Translation Language="French">Format de l'heure</Translation>
+      </Text>
+      <Text Id="MENU_OPTIONS_ORIENTATION" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Screen orientation</Translation>
+        <Translation Language="French">Orientation d'écran</Translation>
+      </Text>
     </TextGroup>
-    <TextGroup Id="MenuAboutMe">
+    <TextGroup Id="MenuLanguage">
+      <Text Id="MENU_LANGUAGE_TITLE" Alignment="Left" TypographyId="MenuTitle">
+        <Translation Language="GB">Language</Translation>
+        <Translation Language="French">Langue</Translation>
+      </Text>
+      <Text Id="MENU_LANGUAGE_ENGLISH" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">English</Translation>
+        <Translation Language="French">Anglais</Translation>
+      </Text>
+      <Text Id="MENU_LANGUAGE_FRENCH" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">French</Translation>
+        <Translation Language="French">Français</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="MenuUnit">
+      <Text Id="MENU_UNIT_TITLE" Alignment="Left" TypographyId="MenuTitle">
+        <Translation Language="GB">Unit</Translation>
+        <Translation Language="French">Unité</Translation>
+      </Text>
+      <Text Id="MENU_UNIT_CELSIUS" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Celsius</Translation>
+        <Translation Language="French">Celsius</Translation>
+      </Text>
+      <Text Id="MENU_UNIT_FAHRENHEIT" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Fahrenheit</Translation>
+        <Translation Language="French">Fahrenheit</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="MenuTime">
+      <Text Id="MENU_TIME_TITLE" Alignment="Left" TypographyId="MenuTitle">
+        <Translation Language="GB">Time</Translation>
+        <Translation Language="French">Heure</Translation>
+      </Text>
+      <Text Id="MENU_TIME_STANDARD" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">12:00 am</Translation>
+        <Translation Language="French">12:00 am</Translation>
+      </Text>
+      <Text Id="MENU_TIME_INTERNATIONAL" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">00:00</Translation>
+        <Translation Language="French">00:00</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="MenuOrientation">
+      <Text Id="MENU_ORIENTATION_TITLE" Alignment="Left" TypographyId="MenuTitle">
+        <Translation Language="GB">Orientation</Translation>
+        <Translation Language="French">Orientation</Translation>
+      </Text>
+      <Text Id="MENU_ORIENTATION_LANDSCAPE" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Landscape</Translation>
+        <Translation Language="French">Paysage</Translation>
+      </Text>
+      <Text Id="MENU_ORIENTATION_PORTRAIT" Alignment="Left" TypographyId="MenuButton">
+        <Translation Language="GB">Portrait</Translation>
+        <Translation Language="French">Portrait</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="MenuAboutme">
       <Text Id="MENU_ABOUT_ME_TITLE" Alignment="Left" TypographyId="MenuTitle">
         <Translation Language="GB">About me</Translation>
         <Translation Language="French">À propos de moi</Translation>
@@ -112,7 +184,7 @@
     <Typography Id="GaugeTempSetSmall" Font="AvenirNext-Regular-08.ttf" Size="34" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF" />
     <Typography Id="GaugeTempExtLarge" Font="AvenirNext-Regular-08.ttf" Size="80" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-" WildcardCharacterRanges="0-9" />
     <Typography Id="GaugeTempExtSmall" Font="AvenirNext-Regular-08.ttf" Size="24" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="°CF%" />
-    <Typography Id="MenuButton" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
+    <Typography Id="MenuButton" Font="AvenirNext-Regular-08.ttf" Size="50" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters=":" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
     <Typography Id="MenuTitle" Font="AvenirNext-Regular-08.ttf" Size="71" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="a-z,A-Z,0-9,0x20" />
   </Typographies>
 </TextDatabase>

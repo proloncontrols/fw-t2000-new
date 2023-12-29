@@ -3,16 +3,13 @@
 
 #include <gui_generated/settings_screen/SettingsViewBase.hpp>
 #include <gui/settings_screen/SettingsPresenter.hpp>
-#include <Menu/CMenuSettings.hpp>
+#include <Menu/Settings/CMenuSettings.hpp>
 
 class SettingsView : public SettingsViewBase
 {
-public:
+    CMenuSettings menu = CMenuSettings(container, buttonCallback);
     touchgfx::Callback<SettingsView, const touchgfx::AbstractButtonContainer&> buttonCallback;
     void onButtonClicked(const touchgfx::AbstractButtonContainer& src);
-
-protected:
-    CMenuSettings menu = CMenuSettings(container, buttonCallback);
 
 public:
     SettingsView();

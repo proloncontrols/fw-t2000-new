@@ -8,14 +8,17 @@
 
 class SplashView : public SplashViewBase
 {
+    CScreenSplash screen = CScreenSplash(container);
+    int splashTimer;
+
+protected:
+    virtual void handleTickEvent();
+
 public:
     SplashView();
     virtual ~SplashView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-
-protected:
-    CScreenSplash screen = CScreenSplash(container);
 };
 
 #endif

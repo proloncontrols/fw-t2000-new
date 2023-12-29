@@ -4,7 +4,7 @@
 #include <gui_generated/device_screen/DeviceViewBase.hpp>
 #include <gui/device_screen/DevicePresenter.hpp>
 
-#include <Menu/CMenuDevice.hpp>
+#include <Menu/Device/CMenuDevice.hpp>
 
 class DeviceView : public DeviceViewBase
 {

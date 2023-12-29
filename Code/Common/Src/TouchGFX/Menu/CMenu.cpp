@@ -80,7 +80,6 @@ void CMenu::setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<const
 	{
 		itemsList[i].getButton()->setAction(callback);
 		itemsList[i].getButton()->setData(i);
-		itemsList[i].getButton()->setOwnerScreenId(id);
 		items.add(itemsList[i]);
 	}
 }

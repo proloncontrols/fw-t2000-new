@@ -10,14 +10,14 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMenuSettings.hpp
+//         File : CMenuAboutMe.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Settings menu class header file
+//  Description : About me menu class header file
 //=============================================================================
-#ifndef CMENU_SETTINGS_HPP
-#define CMENU_SETTINGS_HPP
+#ifndef CMENU_ABOUT_ME_HPP
+#define CMENU_ABOUT_ME_HPP
 
 
 //=============================================================================
@@ -34,38 +34,19 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMenuSettings : public CMenu
+class CMenuAboutme : public CMenu
 {
-	static const int menuItemsCount = 4;
-	CMenuItem menuItems[menuItemsCount];
-
 public:
-	CMenuSettings(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
-	             :CMenu(owner, callback)
+	CMenuAboutme(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+	            :CMenu(owner, callback)
 	{
-		setTitle(T_MENU_SETTINGS_TITLE);
-
-		menuItems[0].setButtonText(T_MENU_SETTINGS_OPTIONS);
-		menuItems[0].setButtonGotoScreenId(ScreenId::ScreenOptions);
-
-		menuItems[1].setButtonText(T_MENU_SETTINGS_ABOUT_ME);
-		menuItems[1].setButtonGotoScreenId(ScreenId::ScreenAboutme);
-
-		menuItems[2].setButtonText(T_MENU_SETTINGS_VISUALIZE);
-		menuItems[2].setButtonGotoScreenId(ScreenId::ScreenVisualize);
-
-		menuItems[3].setButtonText(T_MENU_SETTINGS_DEVICE);
-		menuItems[3].setButtonGotoScreenId(ScreenId::ScreenDevice);
-
-		setItems(menuItems, menuItemsCount, callback);
+		setTitle(T_MENU_ABOUT_ME_TITLE);
 
 		transpose();
-
-		back.setVisible(false);
 	}
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMENU_SETTINGS_HPP
+#endif   //CMENU_ABOUT_ME_HPP

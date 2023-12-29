@@ -21,20 +21,6 @@ public:
 
     void tick();
 
-    void setPreviousScreen(touchgfx::ScreenId id)
-    {
-    	previousScreen = id;
-    };
-
-    touchgfx::ScreenId getPreviousScreen()
-    {
-    	return previousScreen;
-    };
-
-
-
-
-
     void PostSystemReady();
     void PostSystemReset();
 

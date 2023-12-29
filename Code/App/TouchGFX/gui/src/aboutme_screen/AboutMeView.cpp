@@ -1,22 +1,22 @@
 #include <gui/aboutme_screen/AboutMeView.hpp>
 
-AboutMeView::AboutMeView()
-            :buttonCallback(this, &AboutMeView::buttonCallbackHandler)
+AboutmeView::AboutmeView()
+            :buttonCallback(this, &AboutmeView::buttonCallbackHandler)
 {
 
 }
 
-void AboutMeView::setupScreen()
+void AboutmeView::setupScreen()
 {
-    AboutMeViewBase::setupScreen();
+    AboutmeViewBase::setupScreen();
 }
 
-void AboutMeView::tearDownScreen()
+void AboutmeView::tearDownScreen()
 {
-    AboutMeViewBase::tearDownScreen();
+    AboutmeViewBase::tearDownScreen();
 }
 
-void AboutMeView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+void AboutmeView::buttonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
 {
 //	application().gotoSettingsScreenNoTransition();
 }

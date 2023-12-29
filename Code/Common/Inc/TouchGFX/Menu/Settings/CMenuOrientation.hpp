@@ -10,14 +10,14 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMenuOptions.hpp
+//         File : CMenuOrientation.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Options menu class header file
+//  Description : Options screen orientation selection menu class header file
 //=============================================================================
-#ifndef CMENU_OPTIONS_HPP
-#define CMENU_OPTIONS_HPP
+#ifndef CMENU_ORIENTATION_HPP
+#define CMENU_ORIENTATION_HPP
 
 
 //=============================================================================
@@ -34,13 +34,23 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMenuOptions : public CMenu
+class CMenuOrientation : public CMenu
 {
+	static const int menuItemsCount = 2;
+	CMenuItem menuItems[menuItemsCount];
+
 public:
-	CMenuOptions(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
-	            :CMenu(owner, callback)
+	CMenuOrientation(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+                    :CMenu(owner, callback)
 	{
-		setTitle(T_MENU_OPTIONS_TITLE);
+		previous = ScreenId::ScreenOptions;
+
+		setTitle(T_MENU_ORIENTATION_TITLE);
+
+		menuItems[0].setButtonText(T_MENU_ORIENTATION_LANDSCAPE);
+		menuItems[1].setButtonText(T_MENU_ORIENTATION_PORTRAIT);
+
+		setItems(menuItems, menuItemsCount, callback);
 
 		transpose();
 	}
@@ -49,4 +59,4 @@ public:
 }   //namespace touchgfx
 
 
-#endif   //CMENU_OPTIONS_HPP
+#endif   //CMENU_ORIENTATION_HPP

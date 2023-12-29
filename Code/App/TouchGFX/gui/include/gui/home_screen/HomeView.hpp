@@ -7,11 +7,9 @@
 
 class HomeView : public HomeViewBase
 {
+    CScreenHome screen = CScreenHome(container, buttonCallback);
     Callback<HomeView, const AbstractButtonContainer&> buttonCallback;
     void onButtonClicked(const AbstractButtonContainer& src);
-
-protected:
-    CScreenHome screen = CScreenHome(container, buttonCallback);
 
 public:
     HomeView();

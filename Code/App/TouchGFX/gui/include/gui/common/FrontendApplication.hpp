@@ -11,14 +11,21 @@ using namespace touchgfx;
 
 class FrontendApplication : public FrontendApplicationBase
 {
-    //Home screen
+	//From any screen, goto...:
+    void gotoHomeScreenNoTransitionImpl();
+
+	//From Home screen, goto...:
     void gotoSettingsScreenNoTransitionImpl();
 
-    //Settings screen
+    //From Settings screen, goto...:
     void gotoOptionsScreenNoTransitionImpl();
     void gotoAboutmeScreenNoTransitionImpl();
     void gotoVisualizeScreenNoTransitionImpl();
     void gotoDeviceScreenNoTransitionImpl();
+
+    //From Options screen, goto...:
+   	void gotoLanguageScreenNoTransitionImpl();
+   	void gotoUnitsScreenNoTransitionImpl();
 
 protected:
     touchgfx::Callback<FrontendApplication> transitionCallback;

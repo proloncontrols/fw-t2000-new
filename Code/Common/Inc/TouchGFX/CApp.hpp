@@ -32,10 +32,12 @@ typedef enum {
 	ScreenHome,
 	//-----
 	ScreenSettings,
-	ScreenOptions,
-	ScreenAboutme,
-	ScreenVisualize,
-	ScreenDevice,
+		ScreenOptions,
+			ScreenLanguage,
+			ScreenUnit,
+		ScreenAboutme,
+		ScreenVisualize,
+		ScreenDevice,
 	//-----
 	ScreenSetpoints
 } ScreenId;

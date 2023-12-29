@@ -10,52 +10,53 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CScreen.cpp
+//         File : CMenuUnits.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Screen starting point class implementation file
+//  Description : Options temperature units selection  menu class header file
 //=============================================================================
+#ifndef CMENU_UNITS_HPP
+#define CMENU_UNITS_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CDisplay.hpp>
-#include <Screen/CScreen.hpp>
-#include <touchgfx/Color.hpp>
+#include <Menu/CMenu.hpp>
+#include <Menu/CMenuItem.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 
 namespace touchgfx
 {
-#define SHOW_FRAME
+
 //=============================================================================
-//  C O N S T R U C T I O N
+//  C L A S S E S
 //-----------------------------------------------------------------------------
-CScreen::CScreen(Container& owner)
-		:container(owner)
+class CMenuUnit : public CMenu
 {
-	container.removeAll();
+	static const int menuItemsCount = 2;
+	CMenuItem menuItems[menuItemsCount];
 
-	if(dsp.orientation != CDisplay::PORTRAIT)
-		container.setPosition(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT);
-	else
-		container.setPosition(0, 0, NATIVE_HEIGHT, NATIVE_WIDTH);
+public:
+	CMenuUnit(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+	                 :CMenu(owner, callback)
+	{
+		previous = ScreenId::ScreenOptions;
 
-	frame.setPosition(container);
-#ifdef SHOW_FRAME
-	frame.setColor(Color::getColorFromRGB(dsp.devFrameColorR, dsp.devFrameColorG, dsp.devFrameColorB));
-#else
-	frame.setColor(Color::getColorFromRGB(0, 0, 0));
-#endif
-	container.add(frame);
+		setTitle(T_MENU_UNIT_TITLE);
 
-	client.setPosition((frame.getWidth() - CLIENT_SIZE) / 2, (frame.getHeight() - CLIENT_SIZE) / 2, CLIENT_SIZE, CLIENT_SIZE);
-	container.add(client);
+		menuItems[0].setButtonText(T_MENU_UNIT_CELSIUS);
+		menuItems[1].setButtonText(T_MENU_UNIT_FAHRENHEIT);
 
-	background.setWidthHeight(client);
-	background.setColor(Color::getColorFromRGB(0, 0, 0));
-	client.add(background);
-}
+		setItems(menuItems, menuItemsCount, callback);
+
+		transpose();
+	}
+};
 
 }   //namespace touchgfx
+
+
+#endif   //CMENU_UNITS_HPP

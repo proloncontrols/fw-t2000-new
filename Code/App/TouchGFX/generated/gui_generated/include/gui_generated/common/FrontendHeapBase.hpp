@@ -20,8 +20,16 @@
 #include <gui/settings_screen/SettingsPresenter.hpp>
 #include <gui/options_screen/OptionsView.hpp>
 #include <gui/options_screen/OptionsPresenter.hpp>
-#include <gui/aboutme_screen/AboutMeView.hpp>
-#include <gui/aboutme_screen/AboutMePresenter.hpp>
+#include <gui/language_screen/LanguageView.hpp>
+#include <gui/language_screen/LanguagePresenter.hpp>
+#include <gui/unit_screen/UnitView.hpp>
+#include <gui/unit_screen/UnitPresenter.hpp>
+#include <gui/time_screen/TimeView.hpp>
+#include <gui/time_screen/TimePresenter.hpp>
+#include <gui/orientation_screen/OrientationView.hpp>
+#include <gui/orientation_screen/OrientationPresenter.hpp>
+#include <gui/aboutme_screen/AboutmeView.hpp>
+#include <gui/aboutme_screen/AboutmePresenter.hpp>
 #include <gui/visualize_screen/VisualizeView.hpp>
 #include <gui/visualize_screen/VisualizePresenter.hpp>
 #include <gui/device_screen/DeviceView.hpp>
@@ -52,10 +60,14 @@ public:
             touchgfx::meta::TypeList< HomeView,
             touchgfx::meta::TypeList< SettingsView,
             touchgfx::meta::TypeList< OptionsView,
-            touchgfx::meta::TypeList< AboutMeView,
+            touchgfx::meta::TypeList< LanguageView,
+            touchgfx::meta::TypeList< UnitView,
+            touchgfx::meta::TypeList< TimeView,
+            touchgfx::meta::TypeList< OrientationView,
+            touchgfx::meta::TypeList< AboutmeView,
             touchgfx::meta::TypeList< VisualizeView,
             touchgfx::meta::TypeList< DeviceView,
-            touchgfx::meta::Nil > > > > > >
+            touchgfx::meta::Nil > > > > > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -71,10 +83,14 @@ public:
             touchgfx::meta::TypeList< HomePresenter,
             touchgfx::meta::TypeList< SettingsPresenter,
             touchgfx::meta::TypeList< OptionsPresenter,
-            touchgfx::meta::TypeList< AboutMePresenter,
+            touchgfx::meta::TypeList< LanguagePresenter,
+            touchgfx::meta::TypeList< UnitPresenter,
+            touchgfx::meta::TypeList< TimePresenter,
+            touchgfx::meta::TypeList< OrientationPresenter,
+            touchgfx::meta::TypeList< AboutmePresenter,
             touchgfx::meta::TypeList< VisualizePresenter,
             touchgfx::meta::TypeList< DevicePresenter,
-            touchgfx::meta::Nil > > > > > >
+            touchgfx::meta::Nil > > > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**
@@ -97,7 +113,7 @@ public:
 
     virtual void gotoStartScreen(FrontendApplication& app)
     {
-        app.gotoHomeScreenNoTransition();
+        app.gotoSplashScreenNoTransition();
     }
 protected:
     FrontendHeapBase(touchgfx::AbstractPartition& presenters, touchgfx::AbstractPartition& views, touchgfx::AbstractPartition& transitions, FrontendApplication& app)
