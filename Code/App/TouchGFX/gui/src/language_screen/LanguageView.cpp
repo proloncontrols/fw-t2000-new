@@ -28,6 +28,12 @@ void LanguageView::onButtonClicked(const touchgfx::AbstractButtonContainer& src)
 
 	else
 	{
-
+//		if(id == ButtonId::ButtonUser)
+//			dsp.language = 0;
+//		else
+//			dsp.language = 1;
+//		Texts::setLanguage(dsp.language);
+//		invalidate();
+////		application().gotoScreen(menu.previous);
 	}
 }

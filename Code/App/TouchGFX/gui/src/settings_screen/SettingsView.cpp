@@ -25,8 +25,6 @@ void SettingsView::onButtonClicked(const touchgfx::AbstractButtonContainer& src)
 
 	else
 	{
-//		presenter->setPreviousScreen(menu.id);
-
 		     if(id == ButtonId::ButtonUser)   application().gotoScreen(ScreenId::ScreenOptions);
 		else if(id == ButtonId::ButtonUser+1) application().gotoScreen(ScreenId::ScreenAboutme);
 		else if(id == ButtonId::ButtonUser+2) application().gotoScreen(ScreenId::ScreenVisualize);

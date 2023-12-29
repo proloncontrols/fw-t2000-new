@@ -35,6 +35,8 @@ typedef enum {
 		ScreenOptions,
 			ScreenLanguage,
 			ScreenUnit,
+			ScreenTime,
+			ScreenOrientation,
 		ScreenAboutme,
 		ScreenVisualize,
 		ScreenDevice,

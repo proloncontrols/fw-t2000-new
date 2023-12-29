@@ -43,7 +43,6 @@
     <ClCompile Include="..\..\gui\src\visualize_screen\VisualizeView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\visualize_screen\VisualizeViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\language_screen\LanguageView.cpp"/>
-    <ClCompile Include="..\..\gui\src\units_screen\UnitsView.cpp"/>
     <ClCompile Include="..\..\gui\src\language_screen\LanguagePresenter.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\language_screen\LanguageViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\options_screen\OptionsPresenter.cpp"/>
@@ -229,7 +228,6 @@
     <ClInclude Include="..\..\gui\include\gui\visualize_screen\VisualizeView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\visualize_screen\VisualizeViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\language_screen\LanguageView.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\units_screen\UnitsView.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\language_screen\LanguagePresenter.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\language_screen\LanguageViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\options_screen\OptionsPresenter.hpp"/>

@@ -17,7 +17,7 @@ KEEP extern const uint32_t indicesFrench[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     305, // T_MENU_SETTINGS_DEVICE: "Module"
     268, // T_MENU_OPTIONS_TITLE: "Options"
     298, // T_MENU_OPTIONS_LANGUAGE: "Langue"
-    0,   // T_MENU_OPTIONS_UNITS: "Unit? de temp?rature"
+    0,   // T_MENU_OPTIONS_UNIT: "Unit? de temp?rature"
     60,  // T_MENU_OPTIONS_TIME: "Format de l'heure"
     21,  // T_MENU_OPTIONS_ORIENTATION: "Orientation d'?cran"
     298, // T_MENU_LANGUAGE_TITLE: "Langue"

@@ -9,7 +9,6 @@ OptionsView::OptionsView()
 void OptionsView::setupScreen()
 {
     OptionsViewBase::setupScreen();
-//    menu.previous = presenter->getPreviousScreen();
 }
 
 void OptionsView::tearDownScreen()
@@ -29,9 +28,9 @@ void OptionsView::onButtonClicked(const touchgfx::AbstractButtonContainer& src)
 
 	else
 	{
-//		presenter->setPreviousScreen(menu.id);
-
 	     if(id == ButtonId::ButtonUser)   application().gotoScreen(ScreenId::ScreenLanguage);
 	else if(id == ButtonId::ButtonUser+1) application().gotoScreen(ScreenId::ScreenUnit);
+	else if(id == ButtonId::ButtonUser+2) application().gotoScreen(ScreenId::ScreenTime);
+	else if(id == ButtonId::ButtonUser+3) application().gotoScreen(ScreenId::ScreenOrientation);
 	}
 }

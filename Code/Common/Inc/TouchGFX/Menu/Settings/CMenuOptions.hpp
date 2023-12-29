@@ -36,7 +36,7 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CMenuOptions : public CMenu
 {
-	static const int menuItemsCount = 2;
+	static const int menuItemsCount = 4;
 	CMenuItem menuItems[menuItemsCount];
 
 public:
@@ -50,8 +50,14 @@ public:
 		menuItems[0].setButtonText(T_MENU_OPTIONS_LANGUAGE);
 		menuItems[0].setButtonGotoScreenId(ScreenId::ScreenLanguage);
 
-		menuItems[1].setButtonText(T_MENU_OPTIONS_UNITS);
+		menuItems[1].setButtonText(T_MENU_OPTIONS_UNIT);
 		menuItems[1].setButtonGotoScreenId(ScreenId::ScreenUnit);
+
+		menuItems[2].setButtonText(T_MENU_OPTIONS_TIME);
+		menuItems[2].setButtonGotoScreenId(ScreenId::ScreenTime);
+
+		menuItems[3].setButtonText(T_MENU_OPTIONS_ORIENTATION);
+		menuItems[3].setButtonGotoScreenId(ScreenId::ScreenOrientation);
 
 		setItems(menuItems, menuItemsCount, callback);
 

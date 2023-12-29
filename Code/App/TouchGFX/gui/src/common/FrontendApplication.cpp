@@ -37,18 +37,20 @@ void FrontendApplication::gotoScreen(ScreenId nextScreen)
 	switch(nextScreen)
 	{
 		//From any screen, goto...:
-		case ScreenId::ScreenHome:       { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoHomeScreenNoTransitionImpl);      break; }
+		case ScreenId::ScreenHome:        { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoHomeScreenNoTransitionImpl);        break; }
 
 		//From Home screen, goto...:
-		case ScreenId::ScreenSettings:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoSettingsScreenNoTransitionImpl);  break; }
+		case ScreenId::ScreenSettings:    { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoSettingsScreenNoTransitionImpl);    break; }
 
 		//From Settings screen, goto...:
-		case ScreenId::ScreenOptions:    { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoOptionsScreenNoTransitionImpl);   break; }
-		case ScreenId::ScreenLanguage:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoLanguageScreenNoTransitionImpl);  break; }
-		case ScreenId::ScreenUnit:       { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoUnitsScreenNoTransitionImpl);     break; }
-		case ScreenId::ScreenAboutme:    { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoAboutmeScreenNoTransitionImpl);   break; }
-		case ScreenId::ScreenVisualize:  { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoVisualizeScreenNoTransitionImpl); break; }
-		case ScreenId::ScreenDevice:     { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoDeviceScreenNoTransitionImpl);    break; }
+		case ScreenId::ScreenOptions:     { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoOptionsScreenNoTransitionImpl);     break; }
+		case ScreenId::ScreenLanguage:    { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoLanguageScreenNoTransitionImpl);    break; }
+		case ScreenId::ScreenUnit:        { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoUnitScreenNoTransitionImpl);        break; }
+		case ScreenId::ScreenTime:        { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoTimeScreenNoTransitionImpl);        break; }
+		case ScreenId::ScreenOrientation: { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoOrientationScreenNoTransitionImpl); break; }
+		case ScreenId::ScreenAboutme:     { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoAboutmeScreenNoTransitionImpl);     break; }
+		case ScreenId::ScreenVisualize:   { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoVisualizeScreenNoTransitionImpl);   break; }
+		case ScreenId::ScreenDevice:      { transitionCallback = touchgfx::Callback<FrontendApplication>(this, &FrontendApplication::gotoDeviceScreenNoTransitionImpl);      break; }
 
 		default: return;
 	}
@@ -60,6 +62,8 @@ void FrontendApplication::gotoHomeScreenNoTransitionImpl()
     touchgfx::makeTransition<HomeView, HomePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
+
+
 void FrontendApplication::gotoSettingsScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<SettingsView, SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
@@ -68,10 +72,20 @@ void FrontendApplication::gotoLanguageScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<LanguageView, LanguagePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
-void FrontendApplication::gotoUnitsScreenNoTransitionImpl()
+void FrontendApplication::gotoUnitScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<UnitView, UnitPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
+void FrontendApplication::gotoTimeScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<TimeView, TimePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+void FrontendApplication::gotoOrientationScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<OrientationView, OrientationPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+
 
 void FrontendApplication::gotoOptionsScreenNoTransitionImpl()
 {

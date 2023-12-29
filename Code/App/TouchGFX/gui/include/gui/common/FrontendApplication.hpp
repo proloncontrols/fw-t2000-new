@@ -25,7 +25,9 @@ class FrontendApplication : public FrontendApplicationBase
 
     //From Options screen, goto...:
    	void gotoLanguageScreenNoTransitionImpl();
-   	void gotoUnitsScreenNoTransitionImpl();
+   	void gotoUnitScreenNoTransitionImpl();
+   	void gotoTimeScreenNoTransitionImpl();
+   	void gotoOrientationScreenNoTransitionImpl();
 
 protected:
     touchgfx::Callback<FrontendApplication> transitionCallback;

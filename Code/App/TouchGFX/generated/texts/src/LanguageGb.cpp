@@ -17,7 +17,7 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     284, // T_MENU_SETTINGS_DEVICE: "Device"
     268, // T_MENU_OPTIONS_TITLE: "Options"
     215, // T_MENU_OPTIONS_LANGUAGE: "Language"
-    78,  // T_MENU_OPTIONS_UNITS: "Temperature unit"
+    78,  // T_MENU_OPTIONS_UNIT: "Temperature unit"
     123, // T_MENU_OPTIONS_TIME: "Time format"
     41,  // T_MENU_OPTIONS_ORIENTATION: "Screen orientation"
     215, // T_MENU_LANGUAGE_TITLE: "Language"

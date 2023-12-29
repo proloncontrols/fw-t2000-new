@@ -262,12 +262,6 @@
     <Filter Include="Source Files\gui\language_screen">
       <UniqueIdentifier>2EA7C01D-86E6-C968-0014-CC06CC4EA0DD</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\units_screen">
-      <UniqueIdentifier>49EFC129-0D36-99BF-3FDA-E5F0B1E080BB</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\units_screen">
-      <UniqueIdentifier>837D60D3-5B9F-4D31-3AB9-D031A398505B</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\orientation_screen">
       <UniqueIdentifier>8AD76BDB-AFAA-D9A4-4878-3109258ED95E</UniqueIdentifier>
     </Filter>
@@ -413,9 +407,6 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\language_screen\LanguageView.cpp">
       <Filter>Source Files\gui\language_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\units_screen\UnitsView.cpp">
-      <Filter>Source Files\gui\units_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\language_screen\LanguagePresenter.cpp">
       <Filter>Source Files\gui\language_screen</Filter>
@@ -963,9 +954,6 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\language_screen\LanguageView.hpp">
       <Filter>Header Files\gui\language_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\units_screen\UnitsView.hpp">
-      <Filter>Header Files\gui\units_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\language_screen\LanguagePresenter.hpp">
       <Filter>Header Files\gui\language_screen</Filter>
