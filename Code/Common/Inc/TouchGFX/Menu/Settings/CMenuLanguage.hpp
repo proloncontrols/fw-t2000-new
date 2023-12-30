@@ -37,11 +37,11 @@ namespace touchgfx
 class CMenuLanguage : public CMenu
 {
 	static const int menuItemsCount = 2;
-	CMenuItem menuItems[menuItemsCount];
+	CMenuItemData menuItems[menuItemsCount];
 
 public:
 	CMenuLanguage(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
-	                    :CMenu(owner, callback)
+	             :CMenu(owner, callback)
 	{
 		previous = ScreenId::ScreenOptions;
 

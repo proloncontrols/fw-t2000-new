@@ -174,14 +174,7 @@ void CButton::handleClickEvent(const ClickEvent& event)
 		setPressed(newPressedValue);
 	}
 	if(wasPressed && (event.getType() == ClickEvent::RELEASED))
-	{
-		if(gotoScreenId != ScreenId::ScreenNone)
-		{
-			//Save current screen as previous and goto associated screen
-
-		}
 		executeAction();
-	}
 }
 
 //-----------------------------------------------------------------------------

@@ -37,7 +37,7 @@ namespace touchgfx
 class CMenuTime : public CMenu
 {
 	static const int menuItemsCount = 2;
-	CMenuItem menuItems[menuItemsCount];
+	CMenuItemList menuItems[menuItemsCount];
 
 public:
 	CMenuTime(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)

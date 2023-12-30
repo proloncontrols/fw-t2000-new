@@ -37,7 +37,7 @@ namespace touchgfx
 class CMenuSettings : public CMenu
 {
 	static const int menuItemsCount = 4;
-	CMenuItem menuItems[menuItemsCount];
+	CMenuItemList menuItems[menuItemsCount];
 
 public:
 	CMenuSettings(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)

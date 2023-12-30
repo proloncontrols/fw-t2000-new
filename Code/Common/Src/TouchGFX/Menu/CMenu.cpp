@@ -70,7 +70,20 @@ void CMenu::setTitle(const TypedText& textType)
 }
 
 //-----------------------------------------------------------------------------
-void CMenu::setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback)
+void CMenu::setItems(CMenuItemList* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback)
+{
+	client.add(items);
+	items.setDirection(SOUTH);
+	items.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
+
+	for(int i = 0; i < itemsCount; i++)
+	{
+		itemsList[i].getButton()->setAction(callback);
+		itemsList[i].getButton()->setData(i);
+		items.add(itemsList[i]);
+	}
+}
+void CMenu::setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback)
 {
 	client.add(items);
 	items.setDirection(SOUTH);
@@ -119,7 +132,7 @@ ButtonId CMenu::getButtonId(const AbstractButtonContainer& src)
 	CMenuItem* item = (CMenuItem*)items.getFirstChild();
 	while(item)
 	{
-		CButton* button = item->getButton();
+		CButton* button = (CButton*)item->getButton();
 		if(&src == button)
 			return (ButtonId)button->getData();
 		item = (CMenuItem*)item->getNextSibling();

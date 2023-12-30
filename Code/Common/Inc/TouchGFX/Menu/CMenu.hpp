@@ -27,6 +27,7 @@
 #include <CImage.hpp>
 #include <CButton.hpp>
 #include <Menu/CMenuItem.hpp>
+#include <Menu/CMenuItemSelection.hpp>
 #include <Screen/CScreen.hpp>
 #include <BitmapDatabase.hpp>
 #include <touchgfx/Containers/Listlayout.hpp>
@@ -63,7 +64,8 @@ protected:
 	CButton back;
 
     void setTitle(const TypedText& textType);
-	void setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
+	void setItems(CMenuItemList* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
+	void setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
 
 public:
 	CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback);
