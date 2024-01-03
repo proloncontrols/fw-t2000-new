@@ -33,8 +33,10 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMenu::CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+//CMenu::CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+CMenu::CMenu(Container& owner)
       :CScreen(owner)
+//	   btnCallback(this, &CMenu::onButtonClicked)
 {
 	client.add(logo);
 	logo.setBitmap(logoImage);
@@ -43,12 +45,12 @@ CMenu::CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& 
 	client.add(home);
 	home.setXY(1, 1);
 	home.setBitmaps(homeImageReleased, homeImagePressed);
-	home.setAction(callback);
+//	home.setAction(callback);
 	home.setData(ButtonId::ButtonHome);
 
 	client.add(back);
 	back.setBitmaps(backImageReleased, backImagePressed);
-	back.setAction(callback);
+//	back.setAction(callback);
 	back.setXY(client.getWidth() - back.getWidth(), 1);
 	back.setData(ButtonId::ButtonBack);
 }
@@ -132,10 +134,10 @@ ButtonId CMenu::getButtonId(const AbstractButtonContainer& src)
 	CMenuItem* item = (CMenuItem*)items.getFirstChild();
 	while(item)
 	{
-		CButton* button = (CButton*)item->getButton();
-		if(&src == button)
-			return (ButtonId)button->getData();
-		item = (CMenuItem*)item->getNextSibling();
+//		CButton* button = (CButton*)item->getButton();
+//		if(&src == button)
+//			return (ButtonId)button->getData();
+//		item = (CMenuItem*)item->getNextSibling();
 	}
 
 	return ButtonId::ButtonNone;

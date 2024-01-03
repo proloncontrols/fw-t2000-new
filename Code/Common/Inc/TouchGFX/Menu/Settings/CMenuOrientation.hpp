@@ -41,7 +41,8 @@ class CMenuOrientation : public CMenu
 
 public:
 	CMenuOrientation(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
-                    :CMenu(owner, callback)
+//    :CMenu(owner, callback)
+                    :CMenu(owner)
 	{
 		previous = ScreenId::ScreenOptions;
 

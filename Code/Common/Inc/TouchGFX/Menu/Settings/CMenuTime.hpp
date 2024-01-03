@@ -41,7 +41,8 @@ class CMenuTime : public CMenu
 
 public:
 	CMenuTime(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
-             :CMenu(owner, callback)
+//    :CMenu(owner, callback)
+             :CMenu(owner)
 	{
 		previous = ScreenId::ScreenOptions;
 

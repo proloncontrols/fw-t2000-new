@@ -40,6 +40,47 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
+//class CMenu : public CScreen
+//{
+//	const uint8_t titleColorR = 255;
+//	const uint8_t titleColorG = 255;
+//	const uint8_t titleColorB = 255;
+//
+//	const BitmapId homeImageReleased = BITMAP_HOME_60X60_ID;
+//	const BitmapId homeImagePressed = BITMAP_HOME_60X60_ID;
+//	const BitmapId backImageReleased = BITMAP_RETURN_50X50_ID;
+//	const BitmapId backImagePressed = BITMAP_RETURN_50X50_ID;
+//	const BitmapId logoImage = BITMAP_PROLON_178X178_ID;
+//	const BitmapId lineImage = BITMAP_MENU_LINE_WHITE_496X496X6_ID;
+//
+//	CImage logo;
+//	CImage line;
+//	CLabel title;
+//	ListLayout items;
+//	ScrollableContainer scroll;
+//
+//protected:
+//	CButton home;
+//	CButton back;
+//
+//    void setTitle(const TypedText& textType);
+//	void setItems(CMenuItemList* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
+//	void setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
+//
+//public:
+//	CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback);
+//
+//	ButtonId getButtonId(const AbstractButtonContainer& src);
+//	void transpose();
+//
+//    Callback<CMenu, const AbstractButtonContainer&> btnCallback;
+//    void onButtonClicked(const AbstractButtonContainer& src) {}
+//};
+
+
+
+
+
 class CMenu : public CScreen
 {
 	const uint8_t titleColorR = 255;
@@ -67,14 +108,106 @@ protected:
 	void setItems(CMenuItemList* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
 	void setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
 
+//    virtual void onButtonClicked(const AbstractButtonContainer& src) {}
+
 public:
-	CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback);
+//	CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback);
+	CMenu(Container& owner);
 
 	ButtonId getButtonId(const AbstractButtonContainer& src);
 	void transpose();
+
+//    Callback<CMenu, const AbstractButtonContainer&> btnCallback;
 };
+
+
+
+
+
+class CMenuList : public CMenu
+{
+    Callback<CMenuList, const AbstractButtonContainer&> internalCallback;
+//    GenericCallback<const CButton&>* externalCallback;
+    GenericCallback<ScreenId>* externalCallback;
+
+    void onButtonClicked(const AbstractButtonContainer& src)
+    {
+    	ScreenId nextScreen;
+
+    	if(&src == &home)
+    		nextScreen = ScreenId::ScreenHome;
+
+    	if(&src == &back)
+    		nextScreen = ScreenId::ScreenBack;
+
+    	CMenuItem* item = (CMenuItem*)items.getFirstChild();
+    	while(item)
+    	{
+    //		CButton* button = (CButton*)item->getButton();
+    //		if(&src == button)
+    //			return (ButtonId)button->getData();
+    //		item = (CMenuItem*)item->getNextSibling();
+    	}
+
+    	nextScreen = ButtonId::ButtonNone;
+
+    	externalCallback->execute(nextScreen);
+    }
+
+public:
+//	CMenuList(Container& owner, GenericCallback<const CButton&>& extCallback)
+	CMenuList(Container& owner, GenericCallback<ScreenId> extCallback)
+	         :CMenu(owner),
+			  internalCallback(this, &CMenuList::onButtonClicked),
+			  externalCallback(&extCallback)
+	{
+		home.setAction(internalCallback);
+		back.setAction(internalCallback);
+	}
+};
+
+
+
+
+
+class CMenuData : public CMenu
+{
+    Callback<CMenuData, const AbstractButtonContainer&> internalCallback;
+
+    void onButtonClicked(const AbstractButtonContainer& src)
+    {
+    }
+
+public:
+	CMenuData(Container& owner, GenericCallback<const CButtonToggle&>& extCallback)
+	         :CMenu(owner),
+			  internalCallback(this, &CMenuData::onButtonClicked)
+	{
+		home.setAction(internalCallback);
+		back.setAction(internalCallback);
+	}
+};
+
+
+
+
 
 }   //namespace touchgfx
 
 
 #endif   //CMENU_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -41,7 +41,8 @@ class CMenuLanguage : public CMenu
 
 public:
 	CMenuLanguage(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
-	             :CMenu(owner, callback)
+//    :CMenu(owner, callback)
+	             :CMenu(owner)
 	{
 		previous = ScreenId::ScreenOptions;
 

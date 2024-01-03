@@ -41,7 +41,8 @@ class CMenuUnit : public CMenu
 
 public:
 	CMenuUnit(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
-	                 :CMenu(owner, callback)
+//    :CMenu(owner, callback)
+	                 :CMenu(owner)
 	{
 		previous = ScreenId::ScreenOptions;
 

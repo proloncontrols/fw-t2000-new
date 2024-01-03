@@ -38,7 +38,8 @@ class CMenuVisualize : public CMenu
 {
 public:
 	CMenuVisualize( Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
-	              :CMenu(owner, callback)
+//    :CMenu(owner, callback)
+	              :CMenu(owner)
 	{
 		setTitle(T_MENU_VISUALIZE_TITLE);
 
