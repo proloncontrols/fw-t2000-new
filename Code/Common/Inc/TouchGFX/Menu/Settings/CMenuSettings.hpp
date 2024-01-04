@@ -69,31 +69,33 @@ namespace touchgfx
 class CMenuSettings : public CMenuList
 {
 	static const int menuItemsCount = 4;
-	CMenuItemList menuItems[menuItemsCount];
+	CMenuItem menuItems[menuItemsCount];
 
 public:
-	CMenuSettings(Container& owner, GenericCallback<const CButton&>& callback)
+//	CMenuSettings(Container& owner, GenericCallback<ScreenId>& callback)
+	CMenuSettings(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
 	             :CMenuList(owner, callback)
 	{
 		setTitle(T_MENU_SETTINGS_TITLE);
 
-		menuItems[0].setButtonText(T_MENU_SETTINGS_OPTIONS);
-		menuItems[0].setButtonGotoScreenId(ScreenId::ScreenOptions);
+		menuItems[0].setText(T_MENU_SETTINGS_OPTIONS);
+		menuItems[0].setNextScreenId(ScreenId::ScreenOptions);
 
-		menuItems[1].setButtonText(T_MENU_SETTINGS_ABOUTME);
-		menuItems[1].setButtonGotoScreenId(ScreenId::ScreenAboutme);
+		menuItems[1].setText(T_MENU_SETTINGS_ABOUTME);
+		menuItems[1].setNextScreenId(ScreenId::ScreenAboutme);
 
-		menuItems[2].setButtonText(T_MENU_SETTINGS_VISUALIZE);
-		menuItems[2].setButtonGotoScreenId(ScreenId::ScreenVisualize);
+		menuItems[2].setText(T_MENU_SETTINGS_VISUALIZE);
+		menuItems[2].setNextScreenId(ScreenId::ScreenVisualize);
 
-		menuItems[3].setButtonText(T_MENU_SETTINGS_DEVICE);
-		menuItems[3].setButtonGotoScreenId(ScreenId::ScreenDevice);
+		menuItems[3].setText(T_MENU_SETTINGS_DEVICE);
+		menuItems[3].setNextScreenId(ScreenId::ScreenDevice);
 
 //		setItems(menuItems, menuItemsCount, callback);
+//		setItems(menuItems, menuItemsCount);
 
 		transpose();
 
-		back.setVisible(false);
+		home.setVisible(false);
 	}
 };
 

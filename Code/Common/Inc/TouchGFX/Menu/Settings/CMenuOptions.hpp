@@ -37,10 +37,11 @@ namespace touchgfx
 class CMenuOptions : public CMenu
 {
 	static const int menuItemsCount = 4;
-	CMenuItemList menuItems[menuItemsCount];
+	CMenuItem menuItems[menuItemsCount];
 
 public:
-	CMenuOptions(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+//	CMenuOptions(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+	CMenuOptions(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
 //    :CMenu(owner, callback)
 	            :CMenu(owner)
 	{
@@ -48,19 +49,19 @@ public:
 
 		setTitle(T_MENU_OPTIONS_TITLE);
 
-		menuItems[0].setButtonText(T_MENU_OPTIONS_LANGUAGE);
-		menuItems[0].setButtonGotoScreenId(ScreenId::ScreenLanguage);
+		menuItems[0].setText(T_MENU_OPTIONS_LANGUAGE);
+		menuItems[0].setNextScreenId(ScreenId::ScreenLanguage);
 
-		menuItems[1].setButtonText(T_MENU_OPTIONS_UNIT);
-		menuItems[1].setButtonGotoScreenId(ScreenId::ScreenUnit);
+		menuItems[1].setText(T_MENU_OPTIONS_UNIT);
+		menuItems[1].setNextScreenId(ScreenId::ScreenUnit);
 
-		menuItems[2].setButtonText(T_MENU_OPTIONS_TIME);
-		menuItems[2].setButtonGotoScreenId(ScreenId::ScreenTime);
+		menuItems[2].setText(T_MENU_OPTIONS_TIME);
+		menuItems[2].setNextScreenId(ScreenId::ScreenTime);
 
-		menuItems[3].setButtonText(T_MENU_OPTIONS_ORIENTATION);
-		menuItems[3].setButtonGotoScreenId(ScreenId::ScreenOrientation);
+		menuItems[3].setText(T_MENU_OPTIONS_ORIENTATION);
+		menuItems[3].setNextScreenId(ScreenId::ScreenOrientation);
 
-		setItems(menuItems, menuItemsCount, callback);
+//		setItems(menuItems, menuItemsCount, callback);
 
 		transpose();
 	}

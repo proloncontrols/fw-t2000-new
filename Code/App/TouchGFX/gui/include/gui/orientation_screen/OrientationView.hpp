@@ -8,8 +8,8 @@
 class OrientationView : public OrientationViewBase
 {
     CMenuOrientation menu = CMenuOrientation(container, buttonCallback);
-    touchgfx::Callback<OrientationView, const touchgfx::AbstractButtonContainer&> buttonCallback;
-    void onButtonClicked(const touchgfx::AbstractButtonContainer& src);
+    touchgfx::Callback<OrientationView, uint32_t, uint32_t> buttonCallback;
+    void onButtonClicked(uint32_t, uint32_t);
 
 public:
     OrientationView();

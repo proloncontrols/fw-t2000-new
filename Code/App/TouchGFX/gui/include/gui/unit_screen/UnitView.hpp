@@ -8,8 +8,8 @@
 class UnitView : public UnitViewBase
 {
     CMenuUnit menu = CMenuUnit(container, buttonCallback);
-    touchgfx::Callback<UnitView, const touchgfx::AbstractButtonContainer&> buttonCallback;
-    void onButtonClicked(const touchgfx::AbstractButtonContainer& src);
+    touchgfx::Callback<UnitView, uint32_t, uint32_t> buttonCallback;
+    void onButtonClicked(uint32_t, uint32_t);
 
 public:
     UnitView();

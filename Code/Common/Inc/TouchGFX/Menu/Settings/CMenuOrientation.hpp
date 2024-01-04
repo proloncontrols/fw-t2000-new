@@ -37,10 +37,11 @@ namespace touchgfx
 class CMenuOrientation : public CMenu
 {
 	static const int menuItemsCount = 2;
-	CMenuItemList menuItems[menuItemsCount];
+	CMenuItem menuItems[menuItemsCount];
 
 public:
-	CMenuOrientation(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+//	CMenuOrientation(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+	CMenuOrientation(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
 //    :CMenu(owner, callback)
                     :CMenu(owner)
 	{
@@ -48,10 +49,10 @@ public:
 
 		setTitle(T_MENU_ORIENTATION_TITLE);
 
-		menuItems[0].setButtonText(T_MENU_ORIENTATION_LANDSCAPE);
-		menuItems[1].setButtonText(T_MENU_ORIENTATION_PORTRAIT);
+		menuItems[0].setText(T_MENU_ORIENTATION_LANDSCAPE);
+		menuItems[1].setText(T_MENU_ORIENTATION_PORTRAIT);
 
-		setItems(menuItems, menuItemsCount, callback);
+//		setItems(menuItems, menuItemsCount, callback);
 
 		transpose();
 	}

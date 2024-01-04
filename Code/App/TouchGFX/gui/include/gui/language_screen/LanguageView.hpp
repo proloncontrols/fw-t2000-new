@@ -8,8 +8,8 @@
 class LanguageView : public LanguageViewBase
 {
     CMenuLanguage menu = CMenuLanguage(container, buttonCallback);
-    touchgfx::Callback<LanguageView, const touchgfx::AbstractButtonContainer&> buttonCallback;
-    void onButtonClicked(const touchgfx::AbstractButtonContainer& src);
+    touchgfx::Callback<LanguageView, uint32_t, uint32_t> buttonCallback;
+    void onButtonClicked(uint32_t, uint32_t);
 
 public:
     LanguageView();

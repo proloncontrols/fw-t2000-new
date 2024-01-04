@@ -8,8 +8,8 @@
 class TimeView : public TimeViewBase
 {
     CMenuTime menu = CMenuTime(container, buttonCallback);
-    touchgfx::Callback<TimeView, const touchgfx::AbstractButtonContainer&> buttonCallback;
-    void onButtonClicked(const touchgfx::AbstractButtonContainer& src);
+    touchgfx::Callback<TimeView, uint32_t, uint32_t> buttonCallback;
+    void onButtonClicked(uint32_t, uint32_t);
 
 public:
     TimeView();

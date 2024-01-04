@@ -8,8 +8,8 @@
 class OptionsView : public OptionsViewBase
 {
     CMenuOptions menu = CMenuOptions(container, buttonCallback);
-    touchgfx::Callback<OptionsView, const touchgfx::AbstractButtonContainer&> buttonCallback;
-    void onButtonClicked(const touchgfx::AbstractButtonContainer& src);
+    touchgfx::Callback<OptionsView, uint32_t, uint32_t> buttonCallback;
+    void onButtonClicked(uint32_t, uint32_t);
 
 public:
     OptionsView();

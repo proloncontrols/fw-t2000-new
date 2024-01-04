@@ -95,18 +95,21 @@ class CMenu : public CScreen
 	const BitmapId lineImage = BITMAP_MENU_LINE_WHITE_496X496X6_ID;
 
 	CImage logo;
-	CImage line;
 	CLabel title;
-	ListLayout items;
 	ScrollableContainer scroll;
 
 protected:
 	CButton home;
 	CButton back;
+	CImage line;
+	ListLayout items;
 
     void setTitle(const TypedText& textType);
-	void setItems(CMenuItemList* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
-	void setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
+//	void setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
+	void setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<uint32_t, uint32_t>& callback);
+//	void setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
+//	void setItems(CMenuItemList* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
+//	void setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
 
 //    virtual void onButtonClicked(const AbstractButtonContainer& src) {}
 
@@ -128,37 +131,36 @@ class CMenuList : public CMenu
 {
     Callback<CMenuList, const AbstractButtonContainer&> internalCallback;
 //    GenericCallback<const CButton&>* externalCallback;
-    GenericCallback<ScreenId>* externalCallback;
+//    GenericCallback<ScreenId>* externalCallback;
+    GenericCallback<uint32_t, uint32_t>* externalCallback;
 
-    void onButtonClicked(const AbstractButtonContainer& src)
+    void internalButtonClicked(const AbstractButtonContainer& src)
     {
     	ScreenId nextScreen;
 
-    	if(&src == &home)
+    	if(&src == &back)
     		nextScreen = ScreenId::ScreenHome;
 
-    	if(&src == &back)
-    		nextScreen = ScreenId::ScreenBack;
-
-    	CMenuItem* item = (CMenuItem*)items.getFirstChild();
-    	while(item)
+    	else
     	{
-    //		CButton* button = (CButton*)item->getButton();
-    //		if(&src == button)
-    //			return (ButtonId)button->getData();
-    //		item = (CMenuItem*)item->getNextSibling();
+			CMenuItem* item = (CMenuItem*)items.getFirstChild();
+			while(item)
+			{
+				if(&src == item->getButtonList())
+	    			nextScreen = item->getNextScreenId();
+				item = (CMenuItem*)item->getNextSibling();
+			}
     	}
 
-    	nextScreen = ButtonId::ButtonNone;
-
-    	externalCallback->execute(nextScreen);
+    	externalCallback->execute((uint32_t)nextScreen, 0);
     }
 
 public:
 //	CMenuList(Container& owner, GenericCallback<const CButton&>& extCallback)
-	CMenuList(Container& owner, GenericCallback<ScreenId> extCallback)
+//	CMenuList(Container& owner, GenericCallback<ScreenId>& extCallback)
+	CMenuList(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback)
 	         :CMenu(owner),
-			  internalCallback(this, &CMenuList::onButtonClicked),
+			  internalCallback(this, &CMenuList::internalButtonClicked),
 			  externalCallback(&extCallback)
 	{
 		home.setAction(internalCallback);
@@ -170,18 +172,20 @@ public:
 
 
 
+
+
 class CMenuData : public CMenu
 {
     Callback<CMenuData, const AbstractButtonContainer&> internalCallback;
 
-    void onButtonClicked(const AbstractButtonContainer& src)
+    void internalButtonClicked(const AbstractButtonContainer& src)
     {
     }
 
 public:
 	CMenuData(Container& owner, GenericCallback<const CButtonToggle&>& extCallback)
 	         :CMenu(owner),
-			  internalCallback(this, &CMenuData::onButtonClicked)
+			  internalCallback(this, &CMenuData::internalButtonClicked)
 	{
 		home.setAction(internalCallback);
 		back.setAction(internalCallback);

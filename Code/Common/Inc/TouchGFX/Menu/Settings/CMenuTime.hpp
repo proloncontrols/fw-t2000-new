@@ -37,10 +37,11 @@ namespace touchgfx
 class CMenuTime : public CMenu
 {
 	static const int menuItemsCount = 2;
-	CMenuItemList menuItems[menuItemsCount];
+	CMenuItem menuItems[menuItemsCount];
 
 public:
-	CMenuTime(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+//	CMenuTime(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+	CMenuTime(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
 //    :CMenu(owner, callback)
              :CMenu(owner)
 	{
@@ -48,10 +49,10 @@ public:
 
 		setTitle(T_MENU_TIME_TITLE);
 
-		menuItems[0].setButtonText(T_MENU_TIME_STANDARD);
-		menuItems[1].setButtonText(T_MENU_TIME_INTERNATIONAL);
+		menuItems[0].setText(T_MENU_TIME_STANDARD);
+		menuItems[1].setText(T_MENU_TIME_INTERNATIONAL);
 
-		setItems(menuItems, menuItemsCount, callback);
+//		setItems(menuItems, menuItemsCount, callback);
 
 		transpose();
 	}

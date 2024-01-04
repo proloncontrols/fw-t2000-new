@@ -37,10 +37,11 @@ namespace touchgfx
 class CMenuLanguage : public CMenu
 {
 	static const int menuItemsCount = 2;
-	CMenuItemData menuItems[menuItemsCount];
+	CMenuItem menuItems[menuItemsCount];
 
 public:
-	CMenuLanguage(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+//	CMenuLanguage(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
+	CMenuLanguage(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
 //    :CMenu(owner, callback)
 	             :CMenu(owner)
 	{
@@ -48,10 +49,10 @@ public:
 
 		setTitle(T_MENU_LANGUAGE_TITLE);
 
-		menuItems[0].setButtonText(T_MENU_LANGUAGE_ENGLISH);
-		menuItems[1].setButtonText(T_MENU_LANGUAGE_FRENCH);
+		menuItems[0].setText(T_MENU_LANGUAGE_ENGLISH);
+		menuItems[1].setText(T_MENU_LANGUAGE_FRENCH);
 
-		setItems(menuItems, menuItemsCount, callback);
+//		setItems(menuItems, menuItemsCount, callback);
 
 		transpose();
 	}

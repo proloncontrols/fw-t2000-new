@@ -23,6 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stddef.h>
 #include <CImage.hpp>
 #include <CButton.hpp>
 #include <BitmapDatabase.hpp>
@@ -74,7 +75,6 @@ namespace touchgfx
 
 class CMenuItem : public Container
 {
-protected:
 	const uint8_t buttonTextColorReleasedR = 255;
 	const uint8_t buttonTextColorReleasedG = 255;
 	const uint8_t buttonTextColorReleasedB = 255;
@@ -87,11 +87,20 @@ protected:
 	const int16_t buttonHeight = 76;   //This is the height ot the button inside the image
 	const int16_t lineHeight = 4;      //This is the height of the separator line inside the image
 
+	const BitmapId buttonImage = BITMAP_MENU_BUTTON_496X496X76_ID;
+	const BitmapId buttonImageSelected = BITMAP_MENU_SELECTED_496X496X76_ID;
 	const BitmapId lineImage = BITMAP_MENU_LINE_GRAY_494X494X4_ID;
 
 	CImage line;
+	CButton* btnList;
+	CButtonToggle* btnData;
 
 public:
+	enum menuMode {
+		MenuModeList,
+		MenuModeData
+	};
+
 	CMenuItem()
 	{
 		setWidthHeight(itemWidth, itemHeight);
@@ -99,120 +108,224 @@ public:
 		add(line);
 		line.setXY(0, itemHeight - lineHeight);
 		line.setBitmap(lineImage);
+
+		btnList = NULL;
+		btnData = NULL;
 	}
 
-	virtual void setButtonText(const TypedText& textType) {}
-	virtual void setButtonAction(GenericCallback<const AbstractButtonContainer&>& callback) {}
-	virtual void setButtonGotoScreenId(ScreenId id) {}
-    virtual void transpose() {}
-};
-
-
-
-class CMenuItemList : public CMenuItem
-{
-	const BitmapId buttonImage = BITMAP_MENU_BUTTON_496X496X76_ID;
-
-	CButton button;
-
-public:
-	CMenuItemList()
+	void setMode(menuMode mode)
 	{
-		add(button);
-		button.setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
-		button.setBitmaps(buttonImage, buttonImage);
-		button.setTouchHeight(76);
-		button.setTextPosition(30, 4);
-		button.setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
-				             Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
+		if(mode == MenuModeList)
+		{
+			btnList = new CButton;
+			add(*btnList);
+			btnList->setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
+			btnList->setBitmaps(buttonImage, buttonImage);
+			btnList->setTouchHeight(76);
+			btnList->setTextPosition(30, 4);
+			btnList->setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
+					               Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
+		}
+		else
+		{
+			btnData = new CButtonToggle;
+			add(*btnData);
+			btnData->setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
+			btnData->setBitmaps(buttonImage, buttonImageSelected);
+			btnData->setTouchHeight(76);
+			btnData->setTextPosition(30, 4);
+			btnData->setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
+					               Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
+		}
+	}
+	menuMode getMode()
+	{
+		if(btnList)
+			return MenuModeList;
+		return MenuModeData;
 	}
 
-	virtual void setButtonText(const TypedText& textType)
+	const CButton* getButtonList()
 	{
-		button.setText(textType);
+		return btnList;
 	}
 
-	virtual void setButtonAction(GenericCallback<const AbstractButtonContainer&>& callback)
+	const CButtonToggle* getButtonData()
 	{
-
+		return btnData;
 	}
 
-	virtual void setButtonGotoScreenId(ScreenId id)
+	void setText(const TypedText& textType)
 	{
-
+		if(btnList)
+			btnList->setText(textType);
+		else
+			btnData->setText(textType);
 	}
 
-	CButton* getButton()
+	void setAction(GenericCallback<const AbstractButtonContainer&>& callback)
 	{
-		return &button;
+		if(btnList)
+			btnList->setAction(callback);
+		else
+			btnData->setAction(callback);
 	}
 
-	virtual void transpose()
+	void setNextScreenId(ScreenId id)
 	{
+		if(btnList)
+			btnList->setGotoScreenId(id);
+		else
+			btnData->setGotoScreenId(id);
+	}
+	ScreenId getNextScreenId()
+	{
+		if(btnList)
+			return btnList->getGotoScreenId();
+		return btnData->getGotoScreenId();
+	}
+
+	void setData(uint32_t data)
+	{
+		if(btnList)
+			btnList->setData(data);
+		else
+			btnData->setData(data);
+	}
+	uint32_t getData()
+	{
+		if(btnList)
+			return btnList->getData();
+		return btnData->getData();
+	}
+
+	bool getState()
+	{
+		return btnData->getState();
+	}
+
+    void transpose()
+    {
 		if(dsp.orientation != CDisplay::NATIVE)
 		{
 			dsp.transpose(*this);
 			line.transpose();
-			button.transpose();
+			if(btnList)
+				btnList->transpose();
+			else
+				btnData->transpose();
 		}
 
 		invalidate();
-	}
+    }
 };
 
 
 
-class CMenuItemData : public CMenuItem
-{
-	const BitmapId buttonImageOff = BITMAP_MENU_BUTTON_496X496X76_ID;
-	const BitmapId buttonImageOn = BITMAP_MENU_SELECTED_496X496X76_ID;
-
-	CButtonToggle button;
-
-public:
-	CMenuItemData()
-	{
-		add(button);
-		button.setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
-		button.setBitmaps(buttonImageOff, buttonImageOn);
-		button.setTouchHeight(76);
-		button.setTextPosition(30, 4);
-		button.setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
-				             Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
-	}
-
-	virtual void setButtonText(const TypedText& textType)
-	{
-		button.setText(textType);
-	}
-
-	virtual void setButtonAction(GenericCallback<const AbstractButtonContainer&>& callback)
-	{
-
-	}
-
-	virtual void setButtonGotoScreenId(ScreenId id)
-	{
-
-	}
-
-	CButtonToggle* getButton()
-	{
-		return &button;
-	}
-
-	virtual void transpose()
-	{
-		if(dsp.orientation != CDisplay::NATIVE)
-		{
-			dsp.transpose(*this);
-			line.transpose();
-			button.transpose();
-		}
-
-		invalidate();
-	}
-};
+//class CMenuItemList : public CMenuItem
+//{
+//	const BitmapId buttonImage = BITMAP_MENU_BUTTON_496X496X76_ID;
+//
+//	CButton button;
+//
+//public:
+//	CMenuItemList()
+//	{
+//		add(button);
+//		button.setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
+//		button.setBitmaps(buttonImage, buttonImage);
+//		button.setTouchHeight(76);
+//		button.setTextPosition(30, 4);
+//		button.setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
+//				             Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
+//	}
+//
+//	virtual void setButtonText(const TypedText& textType)
+//	{
+//		button.setText(textType);
+//	}
+//
+//	virtual void setButtonAction(GenericCallback<const AbstractButtonContainer&>& callback)
+//	{
+//
+//	}
+//
+//	virtual void setButtonGotoScreenId(ScreenId id)
+//	{
+//
+//	}
+//
+//	CButton* getButton()
+//	{
+//		return &button;
+//	}
+//
+//	virtual void transpose()
+//	{
+//		if(dsp.orientation != CDisplay::NATIVE)
+//		{
+//			dsp.transpose(*this);
+//			line.transpose();
+//			button.transpose();
+//		}
+//
+//		invalidate();
+//	}
+//};
+//
+//
+//
+//class CMenuItemData : public CMenuItem
+//{
+//	const BitmapId buttonImageOff = BITMAP_MENU_BUTTON_496X496X76_ID;
+//	const BitmapId buttonImageOn = BITMAP_MENU_SELECTED_496X496X76_ID;
+//
+//	CButtonToggle button;
+//
+//public:
+//	CMenuItemData()
+//	{
+//		add(button);
+//		button.setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
+//		button.setBitmaps(buttonImageOff, buttonImageOn);
+//		button.setTouchHeight(76);
+//		button.setTextPosition(30, 4);
+//		button.setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
+//				             Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
+//	}
+//
+//	virtual void setButtonText(const TypedText& textType)
+//	{
+//		button.setText(textType);
+//	}
+//
+//	virtual void setButtonAction(GenericCallback<const AbstractButtonContainer&>& callback)
+//	{
+//
+//	}
+//
+//	virtual void setButtonGotoScreenId(ScreenId id)
+//	{
+//
+//	}
+//
+//	CButtonToggle* getButton()
+//	{
+//		return &button;
+//	}
+//
+//	virtual void transpose()
+//	{
+//		if(dsp.orientation != CDisplay::NATIVE)
+//		{
+//			dsp.transpose(*this);
+//			line.transpose();
+//			button.transpose();
+//		}
+//
+//		invalidate();
+//	}
+//};
 
 }   //namespace touchgfx
 
