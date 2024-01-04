@@ -31,3 +31,10 @@ void SettingsView::tearDownScreen()
 //		else if(id == ButtonId::ButtonUser+3) application().gotoScreen(ScreenId::ScreenDevice);
 //	}
 //}
+
+void SettingsView::onButtonClicked(uint32_t param1, uint32_t param2)
+{
+	(void)param2;
+
+	application().gotoScreen(ScreenId(param1));
+}

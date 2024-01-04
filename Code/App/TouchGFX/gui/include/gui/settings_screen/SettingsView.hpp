@@ -14,16 +14,14 @@ class SettingsView : public SettingsViewBase
 //    touchgfx::Callback<SettingsView, ScreenId> buttonCallback;
     touchgfx::Callback<SettingsView, uint32_t, uint32_t> buttonCallback;
 //    void onButtonClicked(ScreenId id)
-    void onButtonClicked(uint32_t param1, uint32_t param2)
-    {
-
-    }
 
 public:
     SettingsView();
     virtual ~SettingsView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    void onButtonClicked(uint32_t param1, uint32_t param2);
 };
 
 #endif // SETTINGSVIEW_HPP

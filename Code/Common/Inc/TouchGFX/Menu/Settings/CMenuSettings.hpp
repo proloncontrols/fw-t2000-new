@@ -69,7 +69,7 @@ namespace touchgfx
 class CMenuSettings : public CMenuList
 {
 	static const int menuItemsCount = 4;
-	CMenuItem menuItems[menuItemsCount];
+	CMenuItemList menuItems[menuItemsCount];
 
 public:
 //	CMenuSettings(Container& owner, GenericCallback<ScreenId>& callback)
@@ -91,11 +91,13 @@ public:
 		menuItems[3].setNextScreenId(ScreenId::ScreenDevice);
 
 //		setItems(menuItems, menuItemsCount, callback);
-//		setItems(menuItems, menuItemsCount);
+		setItems(menuItems, menuItemsCount);
 
 		transpose();
 
 		home.setVisible(false);
+
+		back.setGotoScreenId(ScreenId::ScreenHome);
 	}
 };
 

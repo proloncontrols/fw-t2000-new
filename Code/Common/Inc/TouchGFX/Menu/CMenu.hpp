@@ -106,7 +106,7 @@ protected:
 
     void setTitle(const TypedText& textType);
 //	void setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
-	void setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<uint32_t, uint32_t>& callback);
+//	void setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<uint32_t, uint32_t>& callback);
 //	void setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
 //	void setItems(CMenuItemList* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
 //	void setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback);
@@ -136,23 +136,29 @@ class CMenuList : public CMenu
 
     void internalButtonClicked(const AbstractButtonContainer& src)
     {
-    	ScreenId nextScreen;
 
-    	if(&src == &back)
-    		nextScreen = ScreenId::ScreenHome;
 
-    	else
-    	{
-			CMenuItem* item = (CMenuItem*)items.getFirstChild();
-			while(item)
-			{
-				if(&src == item->getButtonList())
-	    			nextScreen = item->getNextScreenId();
-				item = (CMenuItem*)item->getNextSibling();
-			}
-    	}
 
-    	externalCallback->execute((uint32_t)nextScreen, 0);
+
+//    	ScreenId nextScreen = ((CButton*)&src)->getGotoScreenId();
+
+//    	if(&src == &home)
+//    		nextScreen = ScreenId::ScreenHome;
+//
+//    	else
+//    	{
+//			CMenuItem* item = (CMenuItem*)items.getFirstChild();
+//			while(item)
+//			{
+//				if(&src == item->getButtonList())
+//	    			nextScreen = item->getNextScreenId();
+//				item = (CMenuItem*)item->getNextSibling();
+//			}
+//    	}
+
+//    	externalCallback->execute((uint32_t)nextScreen, 0);
+
+    	externalCallback->execute(((CButton*)&src)->getGotoScreenId(), 0);
     }
 
 public:
@@ -165,6 +171,21 @@ public:
 	{
 		home.setAction(internalCallback);
 		back.setAction(internalCallback);
+	}
+
+//	void setItems(CMenuItemList* itemsList, int itemsCount, GenericCallback<uint32_t, uint32_t>& callback)
+	void setItems(CMenuItemList* itemsList, int itemsCount)
+	{
+		client.add(items);
+		items.setDirection(SOUTH);
+		items.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
+
+		for(int i = 0; i < itemsCount; i++)
+		{
+			itemsList[i].setInternalAction(internalCallback);
+			itemsList[i].setData(i);
+			items.add(itemsList[i]);
+		}
 	}
 };
 
@@ -189,6 +210,21 @@ public:
 	{
 		home.setAction(internalCallback);
 		back.setAction(internalCallback);
+	}
+
+//	void setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<uint32_t, uint32_t>& callback)
+	void setItems(CMenuItemData* itemsList, int itemsCount)
+	{
+		client.add(items);
+		items.setDirection(SOUTH);
+		items.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
+
+		for(int i = 0; i < itemsCount; i++)
+		{
+			itemsList[i].setInternalAction(internalCallback);
+			itemsList[i].setData(i);
+			items.add(itemsList[i]);
+		}
 	}
 };
 
