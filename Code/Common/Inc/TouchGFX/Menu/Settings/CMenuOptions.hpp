@@ -8,7 +8,7 @@
 //         PP        RR   RR   OO    OO  LL     OO    OO  NN   NNN
 //         PP        RR    RR   OOOOOO   LLLLLL  OOOOOO   NN    NN
 //
-//                        (c) Copyright  2022-2023
+//                        (c) Copyright  2022-2024
 //-----------------------------------------------------------------------------
 //         File : CMenuOptions.hpp
 //         Date : -----------
@@ -23,8 +23,8 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Menu/CMenu.hpp>
-#include <Menu/CMenuItem.hpp>
+#include <Menu/CMenuList.hpp>
+#include <Menu/CMenuItemList.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 
@@ -34,18 +34,16 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMenuOptions : public CMenu
+class CMenuOptions : public CMenuList
 {
 	static const int menuItemsCount = 4;
-	CMenuItem menuItems[menuItemsCount];
+	CMenuItemList menuItems[menuItemsCount];
 
 public:
-//	CMenuOptions(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
 	CMenuOptions(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
-//    :CMenu(owner, callback)
-	            :CMenu(owner)
+	            :CMenuList(owner, callback)
 	{
-		previous = ScreenId::ScreenSettings;
+//		previous = ScreenId::ScreenSettings;
 
 		setTitle(T_MENU_OPTIONS_TITLE);
 
@@ -61,9 +59,11 @@ public:
 		menuItems[3].setText(T_MENU_OPTIONS_ORIENTATION);
 		menuItems[3].setNextScreenId(ScreenId::ScreenOrientation);
 
-//		setItems(menuItems, menuItemsCount, callback);
+		setItems(menuItems, menuItemsCount);
 
 		transpose();
+
+		back.setGotoScreenId(ScreenId::ScreenSettings);
 	}
 };
 

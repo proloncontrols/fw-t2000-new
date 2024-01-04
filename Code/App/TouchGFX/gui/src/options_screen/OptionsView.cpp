@@ -33,4 +33,6 @@ void OptionsView::onButtonClicked(uint32_t param1, uint32_t param2)
 //	else if(id == ButtonId::ButtonUser+2) application().gotoScreen(ScreenId::ScreenTime);
 //	else if(id == ButtonId::ButtonUser+3) application().gotoScreen(ScreenId::ScreenOrientation);
 //	}
+	(void)param2;
+	application().gotoScreen(ScreenId(param1));
 }

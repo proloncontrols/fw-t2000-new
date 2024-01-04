@@ -8,7 +8,7 @@
 //         PP        RR   RR   OO    OO  LL     OO    OO  NN   NNN
 //         PP        RR    RR   OOOOOO   LLLLLL  OOOOOO   NN    NN
 //
-//                        (c) Copyright  2022-2023
+//                        (c) Copyright  2022-2024
 //-----------------------------------------------------------------------------
 //         File : CMenuUnits.hpp
 //         Date : -----------
@@ -45,7 +45,7 @@ public:
 //    :CMenu(owner, callback)
 	                 :CMenu(owner)
 	{
-		previous = ScreenId::ScreenOptions;
+//		previous = ScreenId::ScreenOptions;
 
 		setTitle(T_MENU_UNIT_TITLE);
 

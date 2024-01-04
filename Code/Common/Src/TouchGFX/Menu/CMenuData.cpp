@@ -8,7 +8,7 @@
 //         PP        RR   RR   OO    OO  LL     OO    OO  NN   NNN
 //         PP        RR    RR   OOOOOO   LLLLLL  OOOOOO   NN    NN
 //
-//                        (c) Copyright  2022-2023
+//                        (c) Copyright  2022-2024
 //-----------------------------------------------------------------------------
 //         File : CMenuData.cpp
 //         Date : -----------
@@ -60,6 +60,7 @@ void CMenuData::setItems(CMenuItemData* itemsList, int itemsCount)
 //-----------------------------------------------------------------------------
 void CMenuData::internalButtonClicked(const AbstractButtonContainer& src)
 {
+	externalCallback->execute((uint32_t)&src, 0);
 }
 
 }   //namespace touchgfx

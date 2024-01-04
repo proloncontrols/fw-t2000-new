@@ -8,7 +8,7 @@
 //         PP        RR   RR   OO    OO  LL     OO    OO  NN   NNN
 //         PP        RR    RR   OOOOOO   LLLLLL  OOOOOO   NN    NN
 //
-//                        (c) Copyright  2022-2023
+//                        (c) Copyright  2022-2024
 //-----------------------------------------------------------------------------
 //         File : CMenu.cpp
 //         Date : -----------
@@ -43,12 +43,13 @@ CMenu::CMenu(Container& owner)
 	client.add(home);
 	home.setXY(1, 1);
 	home.setBitmaps(homeImageReleased, homeImagePressed);
-	home.setData(ButtonId::ButtonHome);
+	home.setId(ButtonId::ButtonHome);
+	home.setGotoScreenId(ScreenId::ScreenHome);
 
 	client.add(back);
 	back.setBitmaps(backImageReleased, backImagePressed);
 	back.setXY(client.getWidth() - back.getWidth(), 1);
-	back.setData(ButtonId::ButtonBack);
+	back.setId(ButtonId::ButtonBack);
 }
 
 

@@ -36,4 +36,15 @@ void LanguageView::onButtonClicked(uint32_t param1, uint32_t param2)
 ////		invalidate();
 //////		application().gotoScreen(menu.previous);
 //	}
+	(void)param2;
+
+
+	CButton* btn = (CButton*)param1;
+
+	if((btn->getId() == ButtonId::ButtonHome) || (btn->getId() == ButtonId::ButtonBack))
+		application().gotoScreen(btn->getGotoScreenId());
+
+	else
+	{
+	}
 }

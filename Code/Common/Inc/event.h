@@ -87,7 +87,7 @@ void EVT_PostToApp(EVT_Group_t Group, EVT_Event_t Event, EVT_DataType_t DataType
 //         PP        RR   RR   OO    OO  LL     OO    OO  NN   NNN
 //         PP        RR    RR   OOOOOO   LLLLLL  OOOOOO   NN    NN
 //
-//                        (c) Copyright  2022-2023
+//                        (c) Copyright  2022-2024
 //-----------------------------------------------------------------------------
 //         File : event.h
 //         Date : -----------

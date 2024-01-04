@@ -8,7 +8,7 @@
 //         PP        RR   RR   OO    OO  LL     OO    OO  NN   NNN
 //         PP        RR    RR   OOOOOO   LLLLLL  OOOOOO   NN    NN
 //
-//                        (c) Copyright  2022-2023
+//                        (c) Copyright  2022-2024
 //-----------------------------------------------------------------------------
 //         File : CButton.cpp
 //         Date : -----------
@@ -99,12 +99,20 @@ void CButton::setTextColors(colortype textReleased, colortype textPressed)
 }
 
 //-----------------------------------------------------------------------------
+void CButton::setId(ButtonId newId)
+{
+	id = newId;
+}
+ButtonId CButton::getId()
+{
+	return id;
+}
+
+//-----------------------------------------------------------------------------
 void CButton::setData(uint32_t newData)
 {
 	data = newData;
 }
-
-//-----------------------------------------------------------------------------
 uint32_t CButton::getData()
 {
 	return data;

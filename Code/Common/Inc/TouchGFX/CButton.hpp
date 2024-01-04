@@ -8,7 +8,7 @@
 //         PP        RR   RR   OO    OO  LL     OO    OO  NN   NNN
 //         PP        RR    RR   OOOOOO   LLLLLL  OOOOOO   NN    NN
 //
-//                        (c) Copyright  2022-2023
+//                        (c) Copyright  2022-2024
 //-----------------------------------------------------------------------------
 //         File : CButton.hpp
 //         Date : -----------
@@ -66,6 +66,7 @@ namespace touchgfx
 
 class CButton : public AbstractButtonContainer
 {
+	ButtonId id;
 	uint32_t data;   //User defined general purpose data associated with button
 	ScreenId ownerScreenId;
 	ScreenId gotoScreenId;
@@ -91,6 +92,9 @@ public:
 	void setText(const TypedText& textType);
 	void setTextPosition(int16_t x, int16_t y);
 	void setTextColors(colortype textReleased, colortype textPressed);
+
+	void setId(ButtonId newId);
+	ButtonId getId();
 
 	void setData(uint32_t newData);
 	uint32_t getData();
