@@ -23,12 +23,9 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <CApp.hpp>
 #include <CImage.hpp>
 #include <CLabel.hpp>
 #include <Screen/CScreen.hpp>
-#include <touchgfx/TypedText.hpp>
-#include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/Containers/Buttons/AbstractButtonContainer.hpp>
 
 
@@ -69,12 +66,6 @@ namespace touchgfx
 
 class CButton : public AbstractButtonContainer
 {
-//	CImage* imgReleased;
-//	CImage* imgPressed;
-//	CLabel* text;
-//
-//	colortype textColorReleased;
-//	colortype textColorPressed;
 	uint32_t data;   //User defined general purpose data associated with button
 	ScreenId ownerScreenId;
 	ScreenId gotoScreenId;
@@ -112,103 +103,7 @@ public:
 	void transpose();
 };
 
-
-
-class CButtonToggle : public CButton
-{
-	bool state;
-
-protected:
-	virtual void handleClickEvent(const ClickEvent& event)
-	{
-		bool wasPressed = getPressed();
-		bool newPressedValue = (event.getType() == ClickEvent::PRESSED);
-		if((newPressedValue && !wasPressed) || (!newPressedValue && wasPressed))
-		{
-			if(newPressedValue)
-			{
-//				if(imgReleased)
-//					imgReleased->setVisible(false);
-//				if(imgPressed)
-//					imgPressed->setVisible(true);
-				if(text)
-					text->setColor(textColorPressed);
-			}
-			else
-			{
-				state = !state;
-				if(state)
-				{
-					if(imgReleased)
-						imgReleased->setVisible(true);
-					if(imgPressed)
-						imgPressed->setVisible(false);
-				}
-				else
-				{
-					if(imgReleased)
-						imgReleased->setVisible(false);
-					if(imgPressed)
-						imgPressed->setVisible(true);
-				}
-
-				if(text)
-					text->setColor(textColorReleased);
-			}
-
-			invalidate();
-
-			setPressed(newPressedValue);
-		}
-		if(wasPressed && (event.getType() == ClickEvent::RELEASED))
-			executeAction();
-	}
-
-public:
-	CButtonToggle()
-	{
-		state = false;
-	}
-
-	void setState(bool newState)
-	{
-		state = newState;
-	}
-
-	bool getState()
-	{
-		return state;
-	}
-};
-
 }   //namespace touchgfx
 
 
 #endif   //CBUTTON_HPP
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

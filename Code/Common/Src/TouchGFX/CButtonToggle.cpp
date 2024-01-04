@@ -10,20 +10,18 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMenuItem.cpp
+//         File : CButtonToggle.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Menu item class implementation file
+//  Description : Toggle button class implementation file
 //=============================================================================
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <stddef.h>
-#include <CDisplay.hpp>
-#include <Menu/CMenuItem.hpp>
+#include <CButtonToggle.hpp>
 
 
 namespace touchgfx
@@ -32,79 +30,69 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMenuItem::CMenuItem()
+CButtonToggle::CButtonToggle()
 {
-	setWidthHeight(itemWidth, itemHeight);
-
-	add(line);
-	line.setXY(0, itemHeight - lineHeight);
-	line.setBitmap(lineImage);
-
-	btnList = NULL;
-	btnData = NULL;
+	state = false;
 }
+
+
+//=============================================================================
+//  E V E N T S
+//-----------------------------------------------------------------------------
+void CButtonToggle::handleClickEvent(const ClickEvent& event)
+{
+	bool wasPressed = getPressed();
+	bool newPressedValue = (event.getType() == ClickEvent::PRESSED);
+	if((newPressedValue && !wasPressed) || (!newPressedValue && wasPressed))
+	{
+		if(newPressedValue)
+		{
+			if(text)
+				text->setColor(textColorPressed);
+		}
+		else
+		{
+			state = !state;
+			if(state)
+			{
+				if(imgReleased)
+					imgReleased->setVisible(true);
+				if(imgPressed)
+					imgPressed->setVisible(false);
+			}
+			else
+			{
+				if(imgReleased)
+					imgReleased->setVisible(false);
+				if(imgPressed)
+					imgPressed->setVisible(true);
+			}
+
+			if(text)
+				text->setColor(textColorReleased);
+		}
+
+		invalidate();
+
+		setPressed(newPressedValue);
+	}
+	if(wasPressed && (event.getType() == ClickEvent::RELEASED))
+		executeAction();
+}
+
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMenuItem::setText(const TypedText& textType)
+void CButtonToggle::setState(bool newState)
 {
-	if(btnList)
-		btnList->setText(textType);
-	else
-		btnData->setText(textType);
+	state = newState;
 }
 
-void CMenuItem::setInternalAction(GenericCallback<const AbstractButtonContainer&>& callback)
+bool CButtonToggle::getState()
 {
-	if(btnList)
-		btnList->setAction(callback);
-	else
-		btnData->setAction(callback);
-}
-
-void CMenuItem::setNextScreenId(ScreenId id)
-{
-	if(btnList)
-		btnList->setGotoScreenId(id);
-	else
-		btnData->setGotoScreenId(id);
-}
-ScreenId CMenuItem::getNextScreenId()
-{
-	if(btnList)
-		return btnList->getGotoScreenId();
-	return btnData->getGotoScreenId();
-}
-
-void CMenuItem::setData(uint32_t data)
-{
-	if(btnList)
-		btnList->setData(data);
-	else
-		btnData->setData(data);
-}
-uint32_t CMenuItem::getData()
-{
-	if(btnList)
-		return btnList->getData();
-	return btnData->getData();
-}
-
-void CMenuItem::transpose()
-{
-	if(dsp.orientation != CDisplay::NATIVE)
-	{
-		dsp.transpose(*this);
-		line.transpose();
-		if(btnList)
-			btnList->transpose();
-		else
-			btnData->transpose();
-	}
-
-	invalidate();
+	return state;
 }
 
 }   //namespace touchgfx

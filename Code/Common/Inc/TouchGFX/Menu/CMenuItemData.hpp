@@ -10,22 +10,22 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMenuSettings.hpp
+//         File : CMenuItemData.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Settings menu class header file
+//  Description : Data menu item class header file
 //=============================================================================
-#ifndef CMENU_SETTINGS_HPP
-#define CMENU_SETTINGS_HPP
+#ifndef CMENU_ITEM_DATA_HPP
+#define CMENU_ITEM_DATA_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Menu/CMenuList.hpp>
-#include <Menu/CMenuItemList.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
+#include <Menu/CMenuItem.hpp>
+#include <Menu/CMenuItemData.hpp>
+#include <BitmapDatabase.hpp>
 
 
 namespace touchgfx
@@ -34,40 +34,19 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMenuSettings : public CMenuList
+class CMenuItemData : public CMenuItem
 {
-	static const int menuItemsCount = 4;
-	CMenuItemList menuItems[menuItemsCount];
+	const BitmapId buttonImageSelected = BITMAP_MENU_SELECTED_496X496X76_ID;
 
 public:
-	CMenuSettings(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
-	             :CMenuList(owner, callback)
-	{
-		setTitle(T_MENU_SETTINGS_TITLE);
+	CMenuItemData();
 
-		menuItems[0].setText(T_MENU_SETTINGS_OPTIONS);
-		menuItems[0].setNextScreenId(ScreenId::ScreenOptions);
-
-		menuItems[1].setText(T_MENU_SETTINGS_ABOUTME);
-		menuItems[1].setNextScreenId(ScreenId::ScreenAboutme);
-
-		menuItems[2].setText(T_MENU_SETTINGS_VISUALIZE);
-		menuItems[2].setNextScreenId(ScreenId::ScreenVisualize);
-
-		menuItems[3].setText(T_MENU_SETTINGS_DEVICE);
-		menuItems[3].setNextScreenId(ScreenId::ScreenDevice);
-
-		setItems(menuItems, menuItemsCount);
-
-		transpose();
-
-		home.setVisible(false);
-
-		back.setGotoScreenId(ScreenId::ScreenHome);
-	}
+	const CButtonToggle* getButton();
+	void setState(bool newState);
+	bool getState();
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMENU_SETTINGS_HPP
+#endif   //CMENU_ITEM_DATA_HPP

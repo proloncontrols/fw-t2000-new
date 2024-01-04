@@ -33,10 +33,8 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-//CMenu::CMenu(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
 CMenu::CMenu(Container& owner)
       :CScreen(owner)
-//	   btnCallback(this, &CMenu::onButtonClicked)
 {
 	client.add(logo);
 	logo.setBitmap(logoImage);
@@ -45,12 +43,10 @@ CMenu::CMenu(Container& owner)
 	client.add(home);
 	home.setXY(1, 1);
 	home.setBitmaps(homeImageReleased, homeImagePressed);
-//	home.setAction(callback);
 	home.setData(ButtonId::ButtonHome);
 
 	client.add(back);
 	back.setBitmaps(backImageReleased, backImagePressed);
-//	back.setAction(callback);
 	back.setXY(client.getWidth() - back.getWidth(), 1);
 	back.setData(ButtonId::ButtonBack);
 }
@@ -70,35 +66,6 @@ void CMenu::setTitle(const TypedText& textType)
 	line.setBitmap(lineImage);
 	line.setXY((client.getWidth() - line.getWidth()) / 2, title.getY() + title.getHeight() + 5);
 }
-
-//-----------------------------------------------------------------------------
-//void CMenu::setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback)
-//void CMenu::setItems(CMenuItem* itemsList, int itemsCount, GenericCallback<uint32_t, uint32_t>& callback)
-//{
-//	client.add(items);
-//	items.setDirection(SOUTH);
-//	items.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
-//
-//	for(int i = 0; i < itemsCount; i++)
-//	{
-//		itemsList[i].setAction(internalCallback);
-//		itemsList[i].setData(i);
-//		items.add(itemsList[i]);
-//	}
-//}
-//void CMenu::setItems(CMenuItemData* itemsList, int itemsCount, GenericCallback<const AbstractButtonContainer&>& callback)
-//{
-//	client.add(items);
-//	items.setDirection(SOUTH);
-//	items.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
-//
-//	for(int i = 0; i < itemsCount; i++)
-//	{
-//		itemsList[i].getButton()->setAction(callback);
-//		itemsList[i].getButton()->setData(i);
-//		items.add(itemsList[i]);
-//	}
-//}
 
 //-----------------------------------------------------------------------------
 void CMenu::transpose()

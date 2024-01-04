@@ -10,14 +10,14 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMenuItemSelection.hpp
+//         File : CMenuItemList.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Menu item selection class header file
+//  Description : List menu item class header file
 //=============================================================================
-#ifndef CMENU_ITEM_SELECTION_HPP
-#define CMENU_ITEM_SELECTION_HPP
+#ifndef CMENU_ITEM_LIST_HPP
+#define CMENU_ITEM_LIST_HPP
 
 
 //=============================================================================
@@ -32,18 +32,15 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-//class CMenuItemSelection : public CMenuItem
-//{
-//	const BitmapId buttonImageSelected = BITMAP_MENU_SELECTED_496X496X76_ID;
-//
-//protected:
-//	CButtonToggle button;
-//
-//public:
-//	CMenuItemSelection();
-//};
+class CMenuItemList : public CMenuItem
+{
+public:
+	CMenuItemList();
+
+	const CButton* getButton();
+};
 
 }   //namespace touchgfx
 
 
-#endif   //CMENU_ITEM_SELECTION_HPP
+#endif   //CMENU_ITEM_LIST_HPP

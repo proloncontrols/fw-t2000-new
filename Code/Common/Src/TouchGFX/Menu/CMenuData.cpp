@@ -10,64 +10,56 @@
 //
 //                        (c) Copyright  2022-2023
 //-----------------------------------------------------------------------------
-//         File : CMenuSettings.hpp
+//         File : CMenuData.cpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Settings menu class header file
+//  Description : Data menu base class implementation file
 //=============================================================================
-#ifndef CMENU_SETTINGS_HPP
-#define CMENU_SETTINGS_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Menu/CMenuList.hpp>
-#include <Menu/CMenuItemList.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
+#include <Menu/CMenuData.hpp>
 
 
 namespace touchgfx
 {
 
 //=============================================================================
-//  C L A S S E S
+//  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-class CMenuSettings : public CMenuList
+CMenuData::CMenuData(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback)
+		  :CMenu(owner),
+		   internalCallback(this, &CMenuData::internalButtonClicked),
+		   externalCallback(&extCallback)
 {
-	static const int menuItemsCount = 4;
-	CMenuItemList menuItems[menuItemsCount];
+	home.setAction(internalCallback);
+	back.setAction(internalCallback);
+}
 
-public:
-	CMenuSettings(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
-	             :CMenuList(owner, callback)
+
+//=============================================================================
+//  M E T H O D S
+//-----------------------------------------------------------------------------
+void CMenuData::setItems(CMenuItemData* itemsList, int itemsCount)
+{
+	client.add(items);
+	items.setDirection(SOUTH);
+	items.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
+
+	for(int i = 0; i < itemsCount; i++)
 	{
-		setTitle(T_MENU_SETTINGS_TITLE);
-
-		menuItems[0].setText(T_MENU_SETTINGS_OPTIONS);
-		menuItems[0].setNextScreenId(ScreenId::ScreenOptions);
-
-		menuItems[1].setText(T_MENU_SETTINGS_ABOUTME);
-		menuItems[1].setNextScreenId(ScreenId::ScreenAboutme);
-
-		menuItems[2].setText(T_MENU_SETTINGS_VISUALIZE);
-		menuItems[2].setNextScreenId(ScreenId::ScreenVisualize);
-
-		menuItems[3].setText(T_MENU_SETTINGS_DEVICE);
-		menuItems[3].setNextScreenId(ScreenId::ScreenDevice);
-
-		setItems(menuItems, menuItemsCount);
-
-		transpose();
-
-		home.setVisible(false);
-
-		back.setGotoScreenId(ScreenId::ScreenHome);
+		itemsList[i].setInternalAction(internalCallback);
+		itemsList[i].setData(i);
+		items.add(itemsList[i]);
 	}
-};
+}
+
+//-----------------------------------------------------------------------------
+void CMenuData::internalButtonClicked(const AbstractButtonContainer& src)
+{
+}
 
 }   //namespace touchgfx
-
-
-#endif   //CMENU_SETTINGS_HPP
