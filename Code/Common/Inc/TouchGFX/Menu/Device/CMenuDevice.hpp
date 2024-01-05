@@ -39,7 +39,7 @@ class CMenuDevice : public CMenu
 public:
 	CMenuDevice(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
 //    :CMenu(owner, callback)
-	           :CMenu(owner)
+	           :CMenu(owner, 1)
 	{
 		setTitle(T_MENU_DEVICE_TITLE);
 

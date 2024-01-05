@@ -24,7 +24,6 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <Menu/CMenuList.hpp>
-#include <Menu/CMenuItemList.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 
@@ -37,33 +36,21 @@ namespace touchgfx
 class CMenuSettings : public CMenuList
 {
 	static const int menuItemsCount = 4;
-	CMenuItemList menuItems[menuItemsCount];
 
 public:
 	CMenuSettings(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
-	             :CMenuList(owner, callback)
+	             :CMenuList(owner, callback, menuItemsCount)
 	{
+		home.setVisible(false);
+		back.setGotoScreenId(ScreenId::ScreenHome);
+
 		setTitle(T_MENU_SETTINGS_TITLE);
-
-		menuItems[0].setText(T_MENU_SETTINGS_OPTIONS);
-		menuItems[0].setNextScreenId(ScreenId::ScreenOptions);
-
-		menuItems[1].setText(T_MENU_SETTINGS_ABOUTME);
-		menuItems[1].setNextScreenId(ScreenId::ScreenAboutme);
-
-		menuItems[2].setText(T_MENU_SETTINGS_VISUALIZE);
-		menuItems[2].setNextScreenId(ScreenId::ScreenVisualize);
-
-		menuItems[3].setText(T_MENU_SETTINGS_DEVICE);
-		menuItems[3].setNextScreenId(ScreenId::ScreenDevice);
-
-		setItems(menuItems, menuItemsCount);
+		addItem(new CMenuItem(T_MENU_SETTINGS_OPTIONS, ScreenId::ScreenOptions));
+		addItem(new CMenuItem(T_MENU_SETTINGS_ABOUTME, ScreenId::ScreenAboutme));
+		addItem(new CMenuItem(T_MENU_SETTINGS_VISUALIZE, ScreenId::ScreenVisualize));
+		addItem(new CMenuItem(T_MENU_SETTINGS_DEVICE, ScreenId::ScreenDevice));
 
 		transpose();
-
-		home.setVisible(false);
-
-		back.setGotoScreenId(ScreenId::ScreenHome);
 	}
 };
 

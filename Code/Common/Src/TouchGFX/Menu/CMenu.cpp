@@ -21,6 +21,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stdlib.h>
 #include <CDisplay.hpp>
 #include <Menu/CMenu.hpp>
 #include <Menu/CMenuItem.hpp>
@@ -33,8 +34,10 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMenu::CMenu(Container& owner)
-      :CScreen(owner)
+CMenu::CMenu(Container& owner, int itemsCount)
+      :CScreen(owner),
+	   itemsCount(itemsCount),
+	   itemsCounter(0)
 {
 	client.add(logo);
 	logo.setBitmap(logoImage);
@@ -50,6 +53,16 @@ CMenu::CMenu(Container& owner)
 	back.setBitmaps(backImageReleased, backImagePressed);
 	back.setXY(client.getWidth() - back.getWidth(), 1);
 	back.setId(ButtonId::ButtonBack);
+
+	client.add(line);
+	line.setBitmap(lineImage);
+	line.setXY((client.getWidth() - line.getWidth()) / 2, titleTextPosY + titleTextHeight + 20);
+
+	client.add(list);
+	list.setDirection(SOUTH);
+	list.setXY(line.getX(), line.getY() + titleLineThickness + titleLineSpacing);
+
+	items = (CMenuItem**)malloc(sizeof(CMenuItem*) * itemsCount);
 }
 
 
@@ -61,11 +74,17 @@ void CMenu::setTitle(const TypedText& textType)
 	client.add(title);
 	title.setTypedText(textType);
 	title.setColor(Color::getColorFromRGB(titleColorR, titleColorG, titleColorB));
-	title.setXY((client.getWidth() - title.getWidth()) / 2, 60);
+	title.setXY((client.getWidth() - title.getWidth()) / 2, titleTextPosY);
+}
 
-	client.add(line);
-	line.setBitmap(lineImage);
-	line.setXY((client.getWidth() - line.getWidth()) / 2, title.getY() + title.getHeight() + 5);
+//-----------------------------------------------------------------------------
+void CMenu::addItem(CMenuItem* newItem)
+{
+	if(itemsCounter < itemsCount)
+	{
+		items[itemsCounter++] = newItem;
+		list.add(*newItem);
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -79,8 +98,8 @@ void CMenu::transpose()
 		title.transpose();
 		line.transpose();
 
-		dsp.transpose(items);
-		CMenuItem* item = (CMenuItem*)items.getFirstChild();
+		dsp.transpose(list);
+		CMenuItem* item = (CMenuItem*)list.getFirstChild();
 		while(item)
 		{
 			item->transpose();
@@ -100,7 +119,7 @@ ButtonId CMenu::getButtonId(const AbstractButtonContainer& src)
 	if(&src == &back)
 		return ButtonId::ButtonBack;
 
-	CMenuItem* item = (CMenuItem*)items.getFirstChild();
+	CMenuItem* item = (CMenuItem*)list.getFirstChild();
 	while(item)
 	{
 //		CButton* button = (CButton*)item->getButton();

@@ -12,7 +12,7 @@ extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_150_4bpp();
 extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_54_4bpp();
 extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_34_4bpp();
 extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_24_4bpp();
-extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_71_4bpp();
+extern touchgfx::GeneratedFont& getFont_AvenirNext_Regular_08_70_4bpp();
 
 const touchgfx::Font* touchgfx_fonts[] = {
     &(getFont_AvenirNext_Regular_08_220_4bpp()),
@@ -22,7 +22,7 @@ const touchgfx::Font* touchgfx_fonts[] = {
     &(getFont_AvenirNext_Regular_08_54_4bpp()),
     &(getFont_AvenirNext_Regular_08_34_4bpp()),
     &(getFont_AvenirNext_Regular_08_24_4bpp()),
-    &(getFont_AvenirNext_Regular_08_71_4bpp())
+    &(getFont_AvenirNext_Regular_08_70_4bpp())
 };
 
 extern const touchgfx::TypedText::TypedTextData typedText_database_DEFAULT[];
@@ -125,7 +125,7 @@ void resetFont(touchgfx::FontId fontId)
         touchgfx_fonts[6] = &(getFont_AvenirNext_Regular_08_24_4bpp());
         break;
     case 7:
-        touchgfx_fonts[7] = &(getFont_AvenirNext_Regular_08_71_4bpp());
+        touchgfx_fonts[7] = &(getFont_AvenirNext_Regular_08_70_4bpp());
         break;
     }
 }

@@ -36,7 +36,7 @@ struct TypographyFontIndex
     static const touchgfx::FontId GAUGETEMPEXTLARGE = 1;  // AvenirNext_Regular_08_80_4bpp
     static const touchgfx::FontId GAUGETEMPEXTSMALL = 6;  // AvenirNext_Regular_08_24_4bpp
     static const touchgfx::FontId MENUBUTTON = 2;         // AvenirNext_Regular_08_50_4bpp
-    static const touchgfx::FontId MENUTITLE = 7;          // AvenirNext_Regular_08_71_4bpp
+    static const touchgfx::FontId MENUTITLE = 7;          // AvenirNext_Regular_08_70_4bpp
     static const uint16_t NUMBER_OF_FONTS = 8;
 };
 

@@ -39,6 +39,12 @@ namespace touchgfx
 //-----------------------------------------------------------------------------
 class CMenuItem : public Container
 {
+public:
+	typedef enum {
+		ModeList,
+		ModeData
+	} Mode;
+
 protected:
 	const uint8_t buttonTextColorReleasedR = 255;
 	const uint8_t buttonTextColorReleasedG = 255;
@@ -53,21 +59,27 @@ protected:
 	const int16_t lineHeight = 4;      //This is the height of the separator line inside the image
 
 	const BitmapId buttonImage = BITMAP_MENU_BUTTON_496X496X76_ID;
+	const BitmapId buttonImageSelected = BITMAP_MENU_SELECTED_496X496X76_ID;
 	const BitmapId lineImage = BITMAP_MENU_LINE_GRAY_494X494X4_ID;
 
 	CImage line;
 	CButton* btnList;
 	CButtonToggle* btnData;
 
-public:
-	CMenuItem();
+	Mode mode;
 
-	void setText(const TypedText& textType);
+public:
+	CMenuItem(Mode newMode);
+	CMenuItem(const TypedText& textType, ScreenId nextId);
+
+//	void setText(const TypedText& textType);
 	void setInternalAction(GenericCallback<const AbstractButtonContainer&>& callback);
-	void setNextScreenId(ScreenId id);
+//	void setNextScreenId(ScreenId id);
 	ScreenId getNextScreenId();
 	void setData(uint32_t data);
 	uint32_t getData();
+	void setState(bool state);
+	bool getState();
     void transpose();
 };
 

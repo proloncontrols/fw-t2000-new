@@ -30,21 +30,21 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMenuItemList::CMenuItemList()
-{
-	btnList = new CButton;
-	add(*btnList);
-	btnList->setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
-	btnList->setBitmaps(buttonImage, buttonImage);
-	btnList->setTouchHeight(76);
-	btnList->setTextPosition(30, 4);
-	btnList->setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
-						   Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
-}
+//CMenuItemList::CMenuItemList()
+//{
+//	btnList = new CButton;
+//	add(*btnList);
+//	btnList->setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
+//	btnList->setBitmaps(buttonImage, buttonImage);
+//	btnList->setTouchHeight(76);
+//	btnList->setTextPosition(30, 4);
+//	btnList->setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
+//						   Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
+//}
 
-const CButton* CMenuItemList::getButton()
-{
-	return btnList;
-}
+//const CButton* CMenuItemList::getButton()
+//{
+//	return btnList;
+//}
 
 }   //namespace touchgfx

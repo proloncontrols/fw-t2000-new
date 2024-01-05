@@ -37,7 +37,7 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
         // AvenirNext_Regular_08_50_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
     case Typography::MENUTITLE:
-        // AvenirNext_Regular_08_71_4bpp
+        // AvenirNext_Regular_08_70_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[7]);
     default:
         return 0;

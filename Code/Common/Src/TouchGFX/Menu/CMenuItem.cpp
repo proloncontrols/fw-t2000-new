@@ -32,7 +32,7 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMenuItem::CMenuItem()
+CMenuItem::CMenuItem(Mode newMode)
 {
 	setWidthHeight(itemWidth, itemHeight);
 
@@ -40,22 +40,44 @@ CMenuItem::CMenuItem()
 	line.setXY(0, itemHeight - lineHeight);
 	line.setBitmap(lineImage);
 
-	btnList = NULL;
-	btnData = NULL;
+	if(newMode == ModeList)
+	{
+		btnData = NULL;
+		btnList = new CButton;
+		add(*btnList);
+		btnList->setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
+		btnList->setBitmaps(buttonImage, buttonImage);
+		btnList->setTouchHeight(76);
+		btnList->setTextPosition(30, 4);
+		btnList->setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
+							   Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
+	}
+	else
+	{
+		btnList = NULL;
+		btnData = new CButtonToggle;
+		add(*btnData);
+		btnData->setXY(2, (itemHeight - lineHeight - buttonHeight) / 2);
+		btnData->setBitmaps(buttonImage, buttonImageSelected);
+		btnData->setTouchHeight(76);
+		btnData->setTextPosition(30, 4);
+		btnData->setTextColors(Color::getColorFromRGB(buttonTextColorReleasedR, buttonTextColorReleasedG, buttonTextColorReleasedB),
+							   Color::getColorFromRGB(buttonTextColorPressedR, buttonTextColorPressedG, buttonTextColorPressedB));
+	}
+}
+
+//-----------------------------------------------------------------------------
+CMenuItem::CMenuItem(const TypedText& textType, ScreenId nextId)
+          :CMenuItem(ModeList)
+{
+	btnList->setText(textType);
+	btnList->setGotoScreenId(nextId);
 }
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMenuItem::setText(const TypedText& textType)
-{
-	if(btnList)
-		btnList->setText(textType);
-	else
-		btnData->setText(textType);
-}
-
 void CMenuItem::setInternalAction(GenericCallback<const AbstractButtonContainer&>& callback)
 {
 	if(btnList)
@@ -64,13 +86,7 @@ void CMenuItem::setInternalAction(GenericCallback<const AbstractButtonContainer&
 		btnData->setAction(callback);
 }
 
-void CMenuItem::setNextScreenId(ScreenId id)
-{
-	if(btnList)
-		btnList->setGotoScreenId(id);
-	else
-		btnData->setGotoScreenId(id);
-}
+//-----------------------------------------------------------------------------
 ScreenId CMenuItem::getNextScreenId()
 {
 	if(btnList)
@@ -78,6 +94,7 @@ ScreenId CMenuItem::getNextScreenId()
 	return btnData->getGotoScreenId();
 }
 
+//-----------------------------------------------------------------------------
 void CMenuItem::setData(uint32_t data)
 {
 	if(btnList)
@@ -92,6 +109,20 @@ uint32_t CMenuItem::getData()
 	return btnData->getData();
 }
 
+//-----------------------------------------------------------------------------
+void CMenuItem::setState(bool state)
+{
+	if(btnData)
+		btnData->setState(state);
+}
+bool CMenuItem::getState()
+{
+	if(btnData)
+		return btnData->getState();
+	return false;
+}
+
+//-----------------------------------------------------------------------------
 void CMenuItem::transpose()
 {
 	if(dsp.orientation != CDisplay::NATIVE)

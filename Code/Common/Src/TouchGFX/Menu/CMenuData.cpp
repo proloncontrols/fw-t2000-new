@@ -30,8 +30,8 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMenuData::CMenuData(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback)
-		  :CMenu(owner),
+CMenuData::CMenuData(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount)
+		  :CMenu(owner, itemsCount),
 		   internalCallback(this, &CMenuData::internalButtonClicked),
 		   externalCallback(&extCallback)
 {
@@ -45,15 +45,15 @@ CMenuData::CMenuData(Container& owner, GenericCallback<uint32_t, uint32_t>& extC
 //-----------------------------------------------------------------------------
 void CMenuData::setItems(CMenuItemData* itemsList, int itemsCount)
 {
-	client.add(items);
-	items.setDirection(SOUTH);
-	items.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
+	client.add(list);
+	list.setDirection(SOUTH);
+	list.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
 
 	for(int i = 0; i < itemsCount; i++)
 	{
 		itemsList[i].setInternalAction(internalCallback);
 		itemsList[i].setData(i);
-		items.add(itemsList[i]);
+		list.add(itemsList[i]);
 	}
 }
 

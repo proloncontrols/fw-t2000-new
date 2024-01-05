@@ -23,6 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
+#include <stddef.h>
 #include <Menu/CMenu.hpp>
 #include <Menu/CMenuItemList.hpp>
 
@@ -38,15 +39,53 @@ class CMenuList : public CMenu
     Callback<CMenuList, const AbstractButtonContainer&> internalCallback;
     GenericCallback<uint32_t, uint32_t>* externalCallback;
 
-    void internalButtonClicked(const AbstractButtonContainer& src);
+    void internalButtonClicked(const AbstractButtonContainer& src)
+    {
+    	externalCallback->execute(((CButton*)&src)->getGotoScreenId(), 0);
+    }
 
 public:
-	CMenuList(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback);
+	CMenuList(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount)
+	         :CMenu(owner, itemsCount),
+	          internalCallback(this, &CMenuList::internalButtonClicked),
+	          externalCallback(&extCallback)
+	{
+		home.setAction(internalCallback);
+		back.setAction(internalCallback);
+	}
 
-	void setItems(CMenuItemList* itemsList, int itemsCount);
+	virtual void addItem(CMenuItem* newItem)
+	{
+		CMenu::addItem(newItem);
+		newItem->setInternalAction(internalCallback);
+	}
 };
 
 }   //namespace touchgfx
 
 
 #endif   //CMENU_LIST_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

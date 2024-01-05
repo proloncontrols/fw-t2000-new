@@ -32,13 +32,13 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMenuItemList : public CMenuItem
-{
-public:
-	CMenuItemList();
-
-	const CButton* getButton();
-};
+//class CMenuItemList : public CMenuItem
+//{
+//public:
+//	CMenuItemList();
+//
+//	const CButton* getButton();
+//};
 
 }   //namespace touchgfx
 

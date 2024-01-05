@@ -26,6 +26,7 @@
 #include <CImage.hpp>
 #include <CButton.hpp>
 #include <Screen/CScreen.hpp>
+#include <Menu/CMenuItem.hpp>
 #include <BitmapDatabase.hpp>
 #include <touchgfx/Containers/Listlayout.hpp>
 #include <touchgfx/Containers/ScrollableContainer.hpp>
@@ -43,6 +44,11 @@ class CMenu : public CScreen
 	const uint8_t titleColorG = 255;
 	const uint8_t titleColorB = 255;
 
+	const int16_t titleTextPosY = 60;
+	const int16_t titleTextHeight = 70;
+	const int16_t titleLineThickness = 6;
+	const int16_t titleLineSpacing = 10;
+
 	const BitmapId homeImageReleased = BITMAP_HOME_60X60_ID;
 	const BitmapId homeImagePressed = BITMAP_HOME_60X60_ID;
 	const BitmapId backImageReleased = BITMAP_RETURN_50X50_ID;
@@ -58,12 +64,16 @@ protected:
 	CButton home;
 	CButton back;
 	CImage line;
-	ListLayout items;
+	ListLayout list;
+    CMenuItem** items;
+  	int itemsCount;
+  	int itemsCounter;
 
     void setTitle(const TypedText& textType);
+	virtual void addItem(CMenuItem* newItem);
 
 public:
-	CMenu(Container& owner);
+	CMenu(Container& owner, int itemsCount);
 
 	ButtonId getButtonId(const AbstractButtonContainer& src);
 	void transpose();

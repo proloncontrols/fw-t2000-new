@@ -41,7 +41,7 @@ class CMenuData : public CMenu
     void internalButtonClicked(const AbstractButtonContainer& src);
 
 public:
-	CMenuData(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback);
+	CMenuData(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount);
 
 	void setItems(CMenuItemData* itemsList, int itemsCount);
 };
