@@ -56,10 +56,10 @@
       </Text>
       <Text Id="MENU_LANGUAGE_ENGLISH" Alignment="Left" TypographyId="MenuButton">
         <Translation Language="GB">English</Translation>
-        <Translation Language="French">Anglais</Translation>
+        <Translation Language="French">English</Translation>
       </Text>
       <Text Id="MENU_LANGUAGE_FRENCH" Alignment="Left" TypographyId="MenuButton">
-        <Translation Language="GB">French</Translation>
+        <Translation Language="GB">Français</Translation>
         <Translation Language="French">Français</Translation>
       </Text>
     </TextGroup>
