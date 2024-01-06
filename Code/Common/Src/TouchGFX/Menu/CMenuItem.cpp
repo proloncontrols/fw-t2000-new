@@ -67,11 +67,23 @@ CMenuItem::CMenuItem(Mode newMode)
 }
 
 //-----------------------------------------------------------------------------
-CMenuItem::CMenuItem(const TypedText& textType, ScreenId nextId)
-          :CMenuItem(ModeList)
+CMenuItem::CMenuItem(Mode newMode, const TypedText& textType)
+          :CMenuItem(newMode)
 {
-	btnList->setText(textType);
-	btnList->setGotoScreenId(nextId);
+	if(btnList)
+		btnList->setText(textType);
+	else
+		btnData->setText(textType);
+}
+
+//-----------------------------------------------------------------------------
+CMenuItem::CMenuItem(Mode newMode, const TypedText& textType, ScreenId nextId)
+          :CMenuItem(newMode, textType)
+{
+	if(btnList)
+		btnList->setGotoScreenId(nextId);
+	else
+		btnData->setGotoScreenId(nextId);
 }
 
 

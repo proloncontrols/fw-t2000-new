@@ -53,20 +53,7 @@ void CButtonToggle::handleClickEvent(const ClickEvent& event)
 		else
 		{
 			state = !state;
-			if(state)
-			{
-				if(imgReleased)
-					imgReleased->setVisible(true);
-				if(imgPressed)
-					imgPressed->setVisible(false);
-			}
-			else
-			{
-				if(imgReleased)
-					imgReleased->setVisible(false);
-				if(imgPressed)
-					imgPressed->setVisible(true);
-			}
+			setState(state);
 
 			if(text)
 				text->setColor(textColorReleased);
@@ -88,8 +75,26 @@ void CButtonToggle::handleClickEvent(const ClickEvent& event)
 void CButtonToggle::setState(bool newState)
 {
 	state = newState;
+
+	if(!state)
+	{
+		if(imgReleased)
+			imgReleased->setVisible(true);
+		if(imgPressed)
+			imgPressed->setVisible(false);
+	}
+	else
+	{
+		if(imgReleased)
+			imgReleased->setVisible(false);
+		if(imgPressed)
+			imgPressed->setVisible(true);
+	}
+
+	invalidate();
 }
 
+//-----------------------------------------------------------------------------
 bool CButtonToggle::getState()
 {
 	return state;

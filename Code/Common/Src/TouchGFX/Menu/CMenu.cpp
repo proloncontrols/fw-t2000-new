@@ -56,7 +56,7 @@ CMenu::CMenu(Container& owner, int itemsCount)
 
 	client.add(line);
 	line.setBitmap(lineImage);
-	line.setXY((client.getWidth() - line.getWidth()) / 2, titleTextPosY + titleTextHeight + 20);
+	line.setXY((client.getWidth() - line.getWidth()) / 2, titleTextPosY + titleTextHeight + 23);
 
 	client.add(list);
 	list.setDirection(SOUTH);
@@ -82,6 +82,7 @@ void CMenu::addItem(CMenuItem* newItem)
 {
 	if(itemsCounter < itemsCount)
 	{
+		newItem->setData(itemsCounter);   //To indicate index in list (used in radio menus)
 		items[itemsCounter++] = newItem;
 		list.add(*newItem);
 	}
@@ -108,27 +109,6 @@ void CMenu::transpose()
 	}
 
 	client.invalidate();
-}
-
-//-----------------------------------------------------------------------------
-ButtonId CMenu::getButtonId(const AbstractButtonContainer& src)
-{
-	if(&src == &home)
-		return ButtonId::ButtonHome;
-
-	if(&src == &back)
-		return ButtonId::ButtonBack;
-
-	CMenuItem* item = (CMenuItem*)list.getFirstChild();
-	while(item)
-	{
-//		CButton* button = (CButton*)item->getButton();
-//		if(&src == button)
-//			return (ButtonId)button->getData();
-//		item = (CMenuItem*)item->getNextSibling();
-	}
-
-	return ButtonId::ButtonNone;
 }
 
 }   //namespace touchgfx

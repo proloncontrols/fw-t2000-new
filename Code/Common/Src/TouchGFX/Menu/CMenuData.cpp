@@ -21,7 +21,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Menu/CMenuData.hpp>
+#include <Menu/CMenuRadio.hpp>
 
 
 namespace touchgfx
@@ -30,37 +30,37 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMenuData::CMenuData(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount)
-		  :CMenu(owner, itemsCount),
-		   internalCallback(this, &CMenuData::internalButtonClicked),
-		   externalCallback(&extCallback)
-{
-	home.setAction(internalCallback);
-	back.setAction(internalCallback);
-}
+//CMenuData::CMenuData(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount)
+//		  :CMenu(owner, itemsCount),
+//		   internalCallback(this, &CMenuData::internalButtonClicked),
+//		   externalCallback(&extCallback)
+//{
+//	home.setAction(internalCallback);
+//	back.setAction(internalCallback);
+//}
 
 
 //=============================================================================
 //  M E T H O D S
 //-----------------------------------------------------------------------------
-void CMenuData::setItems(CMenuItemData* itemsList, int itemsCount)
-{
-	client.add(list);
-	list.setDirection(SOUTH);
-	list.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
-
-	for(int i = 0; i < itemsCount; i++)
-	{
-		itemsList[i].setInternalAction(internalCallback);
-		itemsList[i].setData(i);
-		list.add(itemsList[i]);
-	}
-}
+//void CMenuData::setItems(CMenuItemData* itemsList, int itemsCount)
+//{
+//	client.add(list);
+//	list.setDirection(SOUTH);
+//	list.setXY(line.getX(), line.getY() + 6 + 10);   //6 = line thickness, 10 = space after line
+//
+//	for(int i = 0; i < itemsCount; i++)
+//	{
+//		itemsList[i].setInternalAction(internalCallback);
+//		itemsList[i].setData(i);
+//		list.add(itemsList[i]);
+//	}
+//}
 
 //-----------------------------------------------------------------------------
-void CMenuData::internalButtonClicked(const AbstractButtonContainer& src)
-{
-	externalCallback->execute((uint32_t)&src, 0);
-}
+//void CMenuData::internalButtonClicked(const AbstractButtonContainer& src)
+//{
+//	externalCallback->execute((uint32_t)&src, 0);
+//}
 
 }   //namespace touchgfx

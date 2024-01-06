@@ -75,7 +75,6 @@ protected:
 public:
 	CMenu(Container& owner, int itemsCount);
 
-	ButtonId getButtonId(const AbstractButtonContainer& src);
 	void transpose();
 };
 

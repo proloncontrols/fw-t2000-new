@@ -10,14 +10,14 @@
 //
 //                        (c) Copyright  2022-2024
 //-----------------------------------------------------------------------------
-//         File : CMenuList.hpp
+//         File : CMenuRadio.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : List menu base class header file
+//  Description : Radio button style data selection menu class header file
 //=============================================================================
-#ifndef CMENU_LIST_HPP
-#define CMENU_LIST_HPP
+#ifndef CMENU_RADIO_HPP
+#define CMENU_RADIO_HPP
 
 
 //=============================================================================
@@ -32,21 +32,34 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMenuList : public CMenu
+class CMenuRadio : public CMenu
 {
-    Callback<CMenuList, const AbstractButtonContainer&> internalCallback;
+	int selection;
+
+    Callback<CMenuRadio, const AbstractButtonContainer&> internalCallback;
     GenericCallback<uint32_t, uint32_t>* externalCallback;
 
     void internalButtonClicked(const AbstractButtonContainer& src)
     {
-    	externalCallback->execute(((CButton*)&src)->getGotoScreenId(), 0);
+    	CButtonToggle* btn = (CButtonToggle*)&src;
+
+    	if((btn->getId() == ButtonId::ButtonHome) || (btn->getId() == ButtonId::ButtonBack))
+        	externalCallback->execute(btn->getGotoScreenId(), 0);
+    	else
+    	{
+        	for(int i = 0; i < itemsCount; i++)
+        		items[i]->setState(false);
+        	btn->setState(true);
+        	selection = btn->getData();
+    	}
     }
 
 public:
-	CMenuList(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount)
-	         :CMenu(owner, itemsCount),
-	          internalCallback(this, &CMenuList::internalButtonClicked),
-	          externalCallback(&extCallback)
+	CMenuRadio(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount)
+	          :CMenu(owner, itemsCount),
+			   selection(0),
+	           internalCallback(this, &CMenuRadio::internalButtonClicked),
+	           externalCallback(&extCallback)
 	{
 		home.setAction(internalCallback);
 		back.setAction(internalCallback);
@@ -57,33 +70,20 @@ public:
 		CMenu::addItem(newItem);
 		newItem->setInternalAction(internalCallback);
 	}
+
+	void setSelection(int newSelection)
+	{
+		selection = newSelection;
+		items[selection]->setState(true);
+	}
+
+	int getSelection()
+	{
+		return selection;
+	}
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMENU_LIST_HPP
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#endif   //CMENU_RADIO_HPP

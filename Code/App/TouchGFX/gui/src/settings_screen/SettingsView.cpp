@@ -16,22 +16,6 @@ void SettingsView::tearDownScreen()
     SettingsViewBase::tearDownScreen();
 }
 
-//void SettingsView::onButtonClicked(const touchgfx::AbstractButtonContainer& src)
-//{
-//	ButtonId id = menu.getButtonId(src);
-//
-//	if(id == ButtonId::ButtonHome)
-//		application().gotoScreen(ScreenId::ScreenHome);
-//
-//	else
-//	{
-//		     if(id == ButtonId::ButtonUser)   application().gotoScreen(ScreenId::ScreenOptions);
-//		else if(id == ButtonId::ButtonUser+1) application().gotoScreen(ScreenId::ScreenAboutme);
-//		else if(id == ButtonId::ButtonUser+2) application().gotoScreen(ScreenId::ScreenVisualize);
-//		else if(id == ButtonId::ButtonUser+3) application().gotoScreen(ScreenId::ScreenDevice);
-//	}
-//}
-
 void SettingsView::onButtonClicked(uint32_t param1, uint32_t param2)
 {
 	(void)param2;

@@ -45,10 +45,10 @@ public:
 		back.setGotoScreenId(ScreenId::ScreenHome);
 
 		setTitle(T_MENU_SETTINGS_TITLE);
-		addItem(new CMenuItem(T_MENU_SETTINGS_OPTIONS, ScreenId::ScreenOptions));
-		addItem(new CMenuItem(T_MENU_SETTINGS_ABOUTME, ScreenId::ScreenAboutme));
-		addItem(new CMenuItem(T_MENU_SETTINGS_VISUALIZE, ScreenId::ScreenVisualize));
-		addItem(new CMenuItem(T_MENU_SETTINGS_DEVICE, ScreenId::ScreenDevice));
+		addItem(new CMenuItem(CMenuItem::ModeList, T_MENU_SETTINGS_OPTIONS,   ScreenId::ScreenOptions));
+		addItem(new CMenuItem(CMenuItem::ModeList, T_MENU_SETTINGS_ABOUTME,   ScreenId::ScreenAboutme));
+		addItem(new CMenuItem(CMenuItem::ModeList, T_MENU_SETTINGS_VISUALIZE, ScreenId::ScreenVisualize));
+		addItem(new CMenuItem(CMenuItem::ModeList, T_MENU_SETTINGS_DEVICE,    ScreenId::ScreenDevice));
 
 		transpose();
 	}

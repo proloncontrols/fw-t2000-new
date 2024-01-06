@@ -10,21 +10,20 @@
 //
 //                        (c) Copyright  2022-2024
 //-----------------------------------------------------------------------------
-//         File : CMenuData.hpp
+//         File : CMenuCheck.hpp
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Data menu base class header file
+//  Description : Check box style data selection menu class header file
 //=============================================================================
-#ifndef CMENU_DATA_HPP
-#define CMENU_DATA_HPP
+#ifndef CMENU_CHECK_HPP
+#define CMENU_CHECK_HPP
 
 
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <Menu/CMenu.hpp>
-#include <Menu/CMenuItemData.hpp>
 
 
 namespace touchgfx
@@ -33,20 +32,33 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
-class CMenuData : public CMenu
+class CMenuCheck : public CMenu
 {
-    Callback<CMenuData, const AbstractButtonContainer&> internalCallback;
+    Callback<CMenuCheck, const AbstractButtonContainer&> internalCallback;
     GenericCallback<uint32_t, uint32_t>* externalCallback;
 
-    void internalButtonClicked(const AbstractButtonContainer& src);
+    void internalButtonClicked(const AbstractButtonContainer& src)
+    {
+    }
 
 public:
-	CMenuData(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount);
+	CMenuCheck(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount)
+	          :CMenu(owner, itemsCount),
+	           internalCallback(this, &CMenuCheck::internalButtonClicked),
+	           externalCallback(&extCallback)
+	{
+		home.setAction(internalCallback);
+		back.setAction(internalCallback);
+	}
 
-	void setItems(CMenuItemData* itemsList, int itemsCount);
+	virtual void addItem(CMenuItem* newItem)
+	{
+		CMenu::addItem(newItem);
+		newItem->setInternalAction(internalCallback);
+	}
 };
 
 }   //namespace touchgfx
 
 
-#endif   //CMENU_DATA_HPP
+#endif   //CMENU_CHECK_HPP

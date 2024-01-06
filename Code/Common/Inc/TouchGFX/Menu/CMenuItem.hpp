@@ -42,7 +42,8 @@ class CMenuItem : public Container
 public:
 	typedef enum {
 		ModeList,
-		ModeData
+		ModeRadio,
+		ModeCheck
 	} Mode;
 
 protected:
@@ -68,13 +69,13 @@ protected:
 
 	Mode mode;
 
-public:
 	CMenuItem(Mode newMode);
-	CMenuItem(const TypedText& textType, ScreenId nextId);
 
-//	void setText(const TypedText& textType);
+public:
+	CMenuItem(Mode newMode, const TypedText& textType);
+	CMenuItem(Mode newMode, const TypedText& textType, ScreenId nextId);
+
 	void setInternalAction(GenericCallback<const AbstractButtonContainer&>& callback);
-//	void setNextScreenId(ScreenId id);
 	ScreenId getNextScreenId();
 	void setData(uint32_t data);
 	uint32_t getData();

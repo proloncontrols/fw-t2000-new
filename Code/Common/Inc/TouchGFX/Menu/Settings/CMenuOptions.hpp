@@ -24,7 +24,6 @@
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
 #include <Menu/CMenuList.hpp>
-#include <Menu/CMenuItemList.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 
@@ -37,33 +36,20 @@ namespace touchgfx
 class CMenuOptions : public CMenuList
 {
 	static const int menuItemsCount = 4;
-//	CMenuItemList menuItems[menuItemsCount];
 
 public:
 	CMenuOptions(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
-	            :CMenuList(owner, callback, menuItemsCount)
+                :CMenuList(owner, callback, menuItemsCount)
 	{
-////		previous = ScreenId::ScreenSettings;
-//
-//		setTitle(T_MENU_OPTIONS_TITLE);
-//
-//		menuItems[0].setText(T_MENU_OPTIONS_LANGUAGE);
-//		menuItems[0].setNextScreenId(ScreenId::ScreenLanguage);
-//
-//		menuItems[1].setText(T_MENU_OPTIONS_UNIT);
-//		menuItems[1].setNextScreenId(ScreenId::ScreenUnit);
-//
-//		menuItems[2].setText(T_MENU_OPTIONS_TIME);
-//		menuItems[2].setNextScreenId(ScreenId::ScreenTime);
-//
-//		menuItems[3].setText(T_MENU_OPTIONS_ORIENTATION);
-//		menuItems[3].setNextScreenId(ScreenId::ScreenOrientation);
-//
-//		setItems(menuItems, menuItemsCount);
-//
-//		transpose();
-//
-//		back.setGotoScreenId(ScreenId::ScreenSettings);
+		back.setGotoScreenId(ScreenId::ScreenSettings);
+
+		setTitle(T_MENU_OPTIONS_TITLE);
+		addItem(new CMenuItem(CMenuItem::ModeList, T_MENU_OPTIONS_LANGUAGE,    ScreenId::ScreenLanguage));
+		addItem(new CMenuItem(CMenuItem::ModeList, T_MENU_OPTIONS_UNIT,        ScreenId::ScreenUnit));
+		addItem(new CMenuItem(CMenuItem::ModeList, T_MENU_OPTIONS_TIME,        ScreenId::ScreenTime));
+		addItem(new CMenuItem(CMenuItem::ModeList, T_MENU_OPTIONS_ORIENTATION, ScreenId::ScreenOrientation));
+
+		transpose();
 	}
 };
 

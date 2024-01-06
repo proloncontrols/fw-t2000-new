@@ -14,7 +14,7 @@
 //         Date : -----------
 //       Author : Jean-Francois Barriere
 //-----------------------------------------------------------------------------
-//  Description : Options language selection menu class header file
+//  Description : Language selection menu class header file
 //=============================================================================
 #ifndef CMENU_LANGUAGE_HPP
 #define CMENU_LANGUAGE_HPP
@@ -23,8 +23,7 @@
 //=============================================================================
 //  I N C L U D E S
 //-----------------------------------------------------------------------------
-#include <Menu/CMenuData.hpp>
-#include <Menu/CMenuItemData.hpp>
+#include <Menu/CMenuRadio.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
 
@@ -34,6 +33,24 @@ namespace touchgfx
 //=============================================================================
 //  C L A S S E S
 //-----------------------------------------------------------------------------
+class CMenuLanguage : public CMenuRadio
+{
+	static const int menuItemsCount = 2;
+
+public:
+	CMenuLanguage(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
+	             :CMenuRadio(owner, callback, menuItemsCount)
+	{
+		back.setGotoScreenId(ScreenId::ScreenOptions);
+
+		setTitle(T_MENU_LANGUAGE_TITLE);
+		addItem(new CMenuItem(CMenuItem::ModeRadio, T_MENU_LANGUAGE_ENGLISH));
+		addItem(new CMenuItem(CMenuItem::ModeRadio, T_MENU_LANGUAGE_FRENCH));
+
+		transpose();
+	}
+};
+
 //class CMenuLanguage : public CMenuData
 //{
 //	static const int menuItemsCount = 2;

@@ -8,12 +8,7 @@
 class SettingsView : public SettingsViewBase
 {
     CMenuSettings menu = CMenuSettings(container, buttonCallback);
-
-//    touchgfx::Callback<SettingsView, const touchgfx::AbstractButtonContainer&> buttonCallback;
-//    void onButtonClicked(const touchgfx::AbstractButtonContainer& src);
-//    touchgfx::Callback<SettingsView, ScreenId> buttonCallback;
     touchgfx::Callback<SettingsView, uint32_t, uint32_t> buttonCallback;
-//    void onButtonClicked(ScreenId id)
     void onButtonClicked(uint32_t param1, uint32_t param2);
 
 public:
