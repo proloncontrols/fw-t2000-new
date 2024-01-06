@@ -7,6 +7,8 @@
 
 class LanguageView : public LanguageViewBase
 {
+	int programmedSelection;
+
     CMenuLanguage menu = CMenuLanguage(container, buttonCallback);
     touchgfx::Callback<LanguageView, uint32_t, uint32_t> buttonCallback;
     void onButtonClicked(uint32_t, uint32_t);
@@ -16,7 +18,6 @@ public:
     virtual ~LanguageView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-protected:
 };
 
 #endif // LANGUAGEVIEW_HPP

@@ -9,24 +9,26 @@ UnitView::UnitView()
 void UnitView::setupScreen()
 {
     UnitViewBase::setupScreen();
+
+    programmedSelection = 0;   //This is the value retrieved from E2 (model)
+    menu.setSelection(programmedSelection);
 }
 
 void UnitView::tearDownScreen()
 {
     UnitViewBase::tearDownScreen();
+
+	int currentSelection = menu.getSelection();
+	if(currentSelection != programmedSelection)
+	{
+		//New language selected. System restart required.
+		//Ask user to restart or not.
+		//If yes, save new selection to E2 (model) then restart
+	}
 }
 
 void UnitView::onButtonClicked(uint32_t param1, uint32_t param2)
 {
-//	ButtonId id = menu.getButtonId(src);
-//
-//	if(id == ButtonId::ButtonHome)
-//		application().gotoScreen(ScreenId::ScreenHome);
-//
-//	else if(id == ButtonId::ButtonBack)
-//		application().gotoScreen(menu.previous);
-//
-//	else
-//	{
-//	}
+	(void)param2;
+	application().gotoScreen(ScreenId(param1));
 }

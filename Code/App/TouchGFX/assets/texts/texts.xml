@@ -38,15 +38,15 @@
       </Text>
       <Text Id="MENU_OPTIONS_UNIT" Alignment="Left" TypographyId="MenuButton">
         <Translation Language="GB">Temperature unit</Translation>
-        <Translation Language="French">Unité de température</Translation>
+        <Translation Language="French">Unité température</Translation>
       </Text>
       <Text Id="MENU_OPTIONS_TIME" Alignment="Left" TypographyId="MenuButton">
         <Translation Language="GB">Time format</Translation>
-        <Translation Language="French">Format de l'heure</Translation>
+        <Translation Language="French">Format heure</Translation>
       </Text>
       <Text Id="MENU_OPTIONS_ORIENTATION" Alignment="Left" TypographyId="MenuButton">
         <Translation Language="GB">Screen orientation</Translation>
-        <Translation Language="French">Orientation d'écran</Translation>
+        <Translation Language="French">Écran orientation</Translation>
       </Text>
     </TextGroup>
     <TextGroup Id="MenuLanguage">

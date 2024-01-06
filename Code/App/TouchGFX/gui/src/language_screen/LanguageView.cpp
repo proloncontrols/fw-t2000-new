@@ -9,13 +9,22 @@ LanguageView::LanguageView()
 void LanguageView::setupScreen()
 {
     LanguageViewBase::setupScreen();
-    menu.setSelection(0);
+
+    programmedSelection = 0;   //This is the value retrieved from E2 (model)
+    menu.setSelection(programmedSelection);
 }
 
 void LanguageView::tearDownScreen()
 {
 	LanguageViewBase::tearDownScreen();
-	menu.getSelection();
+
+	int currentSelection = menu.getSelection();
+	if(currentSelection != programmedSelection)
+	{
+		//New language selected. System restart required.
+		//Ask user to restart or not.
+		//If yes, save new selection to E2 (model) then restart
+	}
 }
 
 void LanguageView::onButtonClicked(uint32_t param1, uint32_t param2)

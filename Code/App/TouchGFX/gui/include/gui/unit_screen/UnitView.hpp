@@ -7,6 +7,8 @@
 
 class UnitView : public UnitViewBase
 {
+	int programmedSelection;
+
     CMenuUnit menu = CMenuUnit(container, buttonCallback);
     touchgfx::Callback<UnitView, uint32_t, uint32_t> buttonCallback;
     void onButtonClicked(uint32_t, uint32_t);

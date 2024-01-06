@@ -51,28 +51,6 @@ public:
 	}
 };
 
-//class CMenuLanguage : public CMenuData
-//{
-//	static const int menuItemsCount = 2;
-//	CMenuItemData menuItems[menuItemsCount];
-//
-//public:
-//	CMenuLanguage(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
-//	             :CMenuData(owner, callback)
-//	{
-//		setTitle(T_MENU_LANGUAGE_TITLE);
-//
-//		menuItems[0].setText(T_MENU_LANGUAGE_ENGLISH);
-//		menuItems[1].setText(T_MENU_LANGUAGE_FRENCH);
-//
-//		setItems(menuItems, menuItemsCount);
-//
-//		transpose();
-//
-//		back.setGotoScreenId(ScreenId::ScreenOptions);
-//	}
-//};
-
 }   //namespace touchgfx
 
 

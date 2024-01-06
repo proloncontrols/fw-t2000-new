@@ -47,9 +47,17 @@ class CMenuRadio : public CMenu
         	externalCallback->execute(btn->getGotoScreenId(), 0);
     	else
     	{
+//        	for(int i = 0; i < itemsCount; i++)
+//        		items[i]->setState(false);
+//        	btn->setState(true);
+//        	selection = btn->getData();
         	for(int i = 0; i < itemsCount; i++)
-        		items[i]->setState(false);
-        	btn->setState(true);
+        	{
+        		if(i == (int)btn->getData())
+        			items[i]->setState(true);
+        		else
+        			items[i]->setState(false);
+        	}
         	selection = btn->getData();
     	}
     }
