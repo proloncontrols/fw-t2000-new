@@ -43,7 +43,7 @@ public:
 //	CMenuTime(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
 	CMenuTime(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
 //    :CMenu(owner, callback)
-             :CMenu(owner, menuItemsCount)
+             :CMenu(owner, NULL, menuItemsCount)
 	{
 ////		previous = ScreenId::ScreenOptions;
 //

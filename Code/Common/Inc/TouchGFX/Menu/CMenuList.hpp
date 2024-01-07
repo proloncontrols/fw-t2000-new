@@ -43,8 +43,8 @@ class CMenuList : public CMenu
     }
 
 public:
-	CMenuList(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount)
-	         :CMenu(owner, itemsCount),
+	CMenuList(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, CMenuItem** itemsList, int itemsCount)
+	         :CMenu(owner, itemsList, itemsCount),
 	          internalCallback(this, &CMenuList::internalButtonClicked),
 	          externalCallback(&extCallback)
 	{

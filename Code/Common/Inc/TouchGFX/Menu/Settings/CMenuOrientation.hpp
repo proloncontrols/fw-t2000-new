@@ -43,7 +43,7 @@ public:
 //	CMenuOrientation(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
 	CMenuOrientation(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
 //    :CMenu(owner, callback)
-                    :CMenu(owner, menuItemsCount)
+                    :CMenu(owner, NULL, menuItemsCount)
 	{
 ////		previous = ScreenId::ScreenOptions;
 //

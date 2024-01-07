@@ -34,8 +34,9 @@ namespace touchgfx
 //=============================================================================
 //  C O N S T R U C T I O N
 //-----------------------------------------------------------------------------
-CMenu::CMenu(Container& owner, int itemsCount)
+CMenu::CMenu(Container& owner, CMenuItem** itemsList, int itemsCount)
       :CScreen(owner),
+//	   items(items),
 	   itemsCount(itemsCount),
 	   itemsCounter(0)
 {

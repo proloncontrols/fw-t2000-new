@@ -73,7 +73,7 @@ protected:
 	virtual void addItem(CMenuItem* newItem);
 
 public:
-	CMenu(Container& owner, int itemsCount);
+	CMenu(Container& owner, CMenuItem** itemsList, int itemsCount);
 
 	void transpose();
 };

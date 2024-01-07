@@ -36,10 +36,11 @@ namespace touchgfx
 class CMenuSettings : public CMenuList
 {
 	static const int menuItemsCount = 4;
+//	CMenuItem menuItems[menuItemsCount];
 
 public:
 	CMenuSettings(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
-	             :CMenuList(owner, callback, menuItemsCount)
+	             :CMenuList(owner, callback, NULL, menuItemsCount)
 	{
 		home.setVisible(false);
 		back.setGotoScreenId(ScreenId::ScreenHome);

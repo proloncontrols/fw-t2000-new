@@ -39,7 +39,7 @@ class CMenuOptions : public CMenuList
 
 public:
 	CMenuOptions(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
-                :CMenuList(owner, callback, menuItemsCount)
+                :CMenuList(owner, callback, NULL, menuItemsCount)
 	{
 		back.setGotoScreenId(ScreenId::ScreenSettings);
 

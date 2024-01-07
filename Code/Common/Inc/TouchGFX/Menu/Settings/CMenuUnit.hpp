@@ -39,7 +39,7 @@ class CMenuUnit : public CMenuRadio
 
 public:
 	CMenuUnit(Container& owner, GenericCallback<uint32_t, uint32_t>& callback)
-	         :CMenuRadio(owner, callback, menuItemsCount)
+	         :CMenuRadio(owner, callback, NULL, menuItemsCount)
 	{
 		back.setGotoScreenId(ScreenId::ScreenOptions);
 

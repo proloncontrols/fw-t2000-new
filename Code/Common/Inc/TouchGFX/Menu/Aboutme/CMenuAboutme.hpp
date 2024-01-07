@@ -39,7 +39,7 @@ class CMenuAboutme : public CMenu
 public:
 	CMenuAboutme(Container& owner, GenericCallback<const AbstractButtonContainer&>& callback)
 //    :CMenu(owner, callback)
-	            :CMenu(owner, 1)
+	            :CMenu(owner, NULL, 1)
 	{
 		setTitle(T_MENU_ABOUT_ME_TITLE);
 

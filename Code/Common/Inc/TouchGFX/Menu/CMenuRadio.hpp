@@ -53,9 +53,7 @@ class CMenuRadio : public CMenu
 //        	selection = btn->getData();
         	for(int i = 0; i < itemsCount; i++)
         	{
-        		if(i == (int)btn->getData())
-        			items[i]->setState(true);
-        		else
+        		if(i != (int)btn->getData())
         			items[i]->setState(false);
         	}
         	selection = btn->getData();
@@ -63,8 +61,8 @@ class CMenuRadio : public CMenu
     }
 
 public:
-	CMenuRadio(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, int itemsCount)
-	          :CMenu(owner, itemsCount),
+	CMenuRadio(Container& owner, GenericCallback<uint32_t, uint32_t>& extCallback, CMenuItem** itemsList, int itemsCount)
+	          :CMenu(owner, itemsList, itemsCount),
 			   selection(0),
 	           internalCallback(this, &CMenuRadio::internalButtonClicked),
 	           externalCallback(&extCallback)
